@@ -1,0 +1,4 @@
+[build]
+base = "admin/"
+publish = "admin/build/"
+command = "yarn build"
