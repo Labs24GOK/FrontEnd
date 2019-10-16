@@ -33,9 +33,9 @@
 
 ## Project Overview
 
-1️⃣ [Trello Board](🚫add link to trello board here)
+1️⃣ [Trello Board](https://trello.com/b/QXam2tKX/labs17-speakout)
 
-1️⃣ [Product Canvas](🚫add link to product canvas here)
+1️⃣ [Product Canvas](https://www.notion.so/Speak-Out-bf0efc0a7c3847a4b3bfc33d9a12c6e9)
 
 1️⃣ [UX Design files](🚫add link to design files here) - 🚫 delete if not applicable
 
@@ -58,28 +58,49 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 
 ### Front end built using:
 
-#### _Front end framework goes here_
+#### _Front end framework is React
+-    familiarity is one the biggest advantage using React, everyone can start coding right day one.
+-    a popular js library that is fast, scalable, simple, and maintained by a lot of developers.
+-    We also are likely to have a need to reuse modular units of code (due to student info) that will appear in our various routes/views.
+-  We also want something that is performant and easy to maintain/extend. 
 
-🚫 Why did you choose this framework?
 
--    point one
--    point two
--    point three
--    point four
+List the rest of the front end features and libraries in the same format as the framework above.
+## Material UI - a UI framework that works well with React.
+-  For primary styling of the site. Given the number of developers who may work on the app, there could be difficulty achieving stylistic uniformity across all views (the "too many cooks in the kitchen" issue). Material UI would allow for a clean and consistent user interface, and save time, since it is implemented in a standard way regardless of who is using it.
+- Pros: Reusable, prebuilt components save time
+## Styled Components - an add-on for creating dynamic styles directly in React components.
+- Use Case: Having a base library implemented for overall site styling will cover most use cases, but we may need more flexibility on a per-component basis and the ability to add/alter styles dynamically based user interaction/the state of the application, and Styled Components can provide this.
+- Pros: easy to use, easy to create, can make them custom
 
-🚫List the rest of the front end features and libraries in the same format as the framework above.
+
 
 #### Front end deployed to `🚫insert service here`
 
-#### [Back end](🚫link to back end repo here) built using:
+#### [Back end](https://github.com/Lambda-School-Labs/speak-out-be) built using:
 
-#### 🚫 back end framework goes here
+####  back end framework are Node JS and Express
 
--    point one
--    point two
--    point three
+-   Node.js is an open-source, cross-platform, JavaScript run-time environment that executes JavaScript code outside of a browser.
+-   Node.js allows the team to build platform-independent web apps.
+-   Popular, easy to use, and allows us to write JS on the backend, access to NPM packages
+-  Express is a web server application designed for building web applications and APIs. It has been called the de facto standard server framework for Node.js.
+-  On Top of Node.js it allows the team to make a REST API to make a web server and it allows flexibility through the routes api that express provides.
+-  It's highly flexible for all different kinds of API requirements, supports middleware which are easy to create, and a huge number of packages available on NPM.
 
-🚫 List the rest of the back end end features and libraries in the same format as the framework above
+List the rest of the back end end features and libraries in the same format as the framework above
+## PostgreSQL - also known as Postgres, is a free and open-source relational database 
+- Using postgresql will help us link up data to one another which will help us identify data uniquely.
+- Popular, well-supported, well-documented and has a free tier for developing environments.
+
+## SQLite3 (For Local Testing) - SQLite is a relational database management system contained in a C library.
+- Sqlite3 will help us make a local database to make testing easier.
+
+## Passport JS - A extremely flexible and modular authentication middleware for express.
+- PassportJS will give us a way to handle authentication in different strategies based on the stakeholders needs.
+- Passport is a well documented authentication library and works very well with node and express
+
+
 
 # APIs
 
