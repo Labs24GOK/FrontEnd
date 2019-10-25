@@ -1,4 +1,7 @@
 import React from 'react';
+import { withRouter } from "react-router";
+import { connect } from 'react-redux';
+import { logOut, loggedIn } from '../../actions/authenticationActions.js';
 
 function NavBar(props) {
 
@@ -14,4 +17,13 @@ function NavBar(props) {
   )
 }
 
-export default NavBar;
+const mapStateToProps = state => {
+  return {
+    state: state
+  };
+};
+
+export default withRouter(connect(
+  mapStateToProps,
+  { logOut, loggedIn }
+)(NavBar));

@@ -12,19 +12,16 @@ axios.defaults.withCredentials = true
 function Container(props) {
 
   useEffect(() => {
-    console.log('APP props: ', props)
     props.loggedIn(props.history);
-    // props.history.push('/login')
   }, [])
   
   return (
     <div className="Container">
       <Switch>
         { props.state.authenticationReducer.user.authenticated && 
-            <Route exact path='/' render={(routeProps) => <Home {...props} {...routeProps}/> } />  
+            <Route exact path='/' render={() => <Home /> } />  
           }
-
-        <Route  path='/login' render={(routeProps) => <Login {...props} {...routeProps}/>} />
+        <Route  path='/login' render={() => <Login />} />
       </Switch>
     </div>
   );
@@ -38,5 +35,5 @@ const mapStateToProps = state => {
 
 export default withRouter(connect(
   mapStateToProps,
-  { logIn, logOut, loggedIn }
+  { loggedIn }
 )(Container));

@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect} from 'react-router-dom';
+import { withRouter } from "react-router";
+import { connect } from 'react-redux';
+import { logIn, loggedIn } from '../actions/authenticationActions.js';
 
 
 function Login(props)  {
@@ -10,7 +13,6 @@ function Login(props)  {
 
   const [formValid, setFormValid] = useState(true);
   
-
 
   useEffect(() => {
     console.log('LOGIN props: ', props)
@@ -79,4 +81,13 @@ function Login(props)  {
     }
 }
 
-export default Login;
+const mapStateToProps = state => {
+  return {
+    state: state
+  };
+};
+
+export default withRouter(connect(
+  mapStateToProps,
+  { logIn, loggedIn }
+)(Login));

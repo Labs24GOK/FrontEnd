@@ -13,3 +13,10 @@ export {
   LOGGEDIN_FAILURE
 
 } from './authenticationActions.js';
+
+export {
+  getStudentTable,
+  FETCH_STUDENT_DATA_START,
+  FETCH_STUDENT_DATA_SUCCESS,
+  FETCH_STUDENT_DATA_FAILURE
+} from './studentTableActions';
