@@ -3,10 +3,13 @@ import { Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { logIn, logOut, loggedIn } from './actions/authenticationActions';
-import './App.css';
 import Login from './authentication/Login';
 import Home from './components/Home';
 import { withRouter } from "react-router";
+import Panel from "./components/main/Panel"
+
+import './App.css';
+
 axios.defaults.withCredentials = true
 
 function Container(props) {
@@ -22,6 +25,7 @@ function Container(props) {
             <Route exact path='/' render={() => <Home /> } />  
           }
         <Route  path='/login' render={() => <Login />} />
+        <Route path='/panel' render={() => <Panel />} />
       </Switch>
     </div>
   );
