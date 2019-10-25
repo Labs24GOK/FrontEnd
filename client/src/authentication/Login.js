@@ -8,6 +8,10 @@ function Login(props)  {
       password: ''
   });
 
+  const [formValid, setFormValid] = useState(true);
+  
+
+
   useEffect(() => {
     console.log('LOGIN props: ', props)
   }, [])
@@ -20,13 +24,19 @@ function Login(props)  {
   };
 
   const handleSubmit = (e) => {
-      e.preventDefault()
+    e.preventDefault();
+    if(user.username.length && user.password.length) {
       props.logIn(user, props.history); 
-
+      
       setUser({           
           username: '',
           password: ''
-      })
+      });
+    } else {
+      setFormValid(false)
+    }
+    
+      
   };
 
   if (props.state.authenticationReducer.user.authenticated) {
@@ -60,6 +70,9 @@ function Login(props)  {
                     Sign in
                 </button>
               </fieldset>
+              <div>
+                {!formValid && <p>Username and Password are required.</p>}
+              </div>
           </form>
         </div>
       )
