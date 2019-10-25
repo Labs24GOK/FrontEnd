@@ -74,6 +74,7 @@ function Login(props)  {
               </fieldset>
               <div>
                 {!formValid && <p>Username and Password are required.</p>}
+                {props.state.authenticationReducer.logIn.error && <p>Login credentials incorrect.</p>}
               </div>
           </form>
         </div>

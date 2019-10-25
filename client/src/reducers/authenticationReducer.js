@@ -53,7 +53,7 @@ export const authenticationReducer = (state = initialState, action) => {
         ...state,
         logIn: {
           isLoading: false,
-          error: 'Error' //update the be endpoint to return an error
+          error: action.payload //update the be endpoint to return an error
         }
       };
     case LOGOUT_START:

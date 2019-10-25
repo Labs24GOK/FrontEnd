@@ -27,7 +27,8 @@ export const loggedIn = (history) => {
       })
       .catch(err => {
         console.log('ERROR', err)
-        dispatch({ type: LOGGEDIN_FAILURE })
+        let wrongCredentials = true;
+        dispatch({ type: LOGGEDIN_FAILURE, payload: wrongCredentials })
       })  
   };
 }
