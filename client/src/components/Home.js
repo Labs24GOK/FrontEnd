@@ -13,8 +13,8 @@ function Home(props) {
   return (
     <div>
       <NavBar />
-      {/* <Panel /> */}
-      <Link to='/panel'>Panel </Link>
+      <Panel />
+      {/* <Link to='/panel'>Panel </Link> */}
     </div>
   ) 
 }
