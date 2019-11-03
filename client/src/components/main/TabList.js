@@ -19,7 +19,7 @@ function TabList({tabs, navigation, setNavigation, tabColor, setTabColor}) {
   return (
       <TabsWrap>
         {tabs.map((tab, index) => {
-          return <Link to='/' key={index} style={{textDecoration: 'none', color: 'black'}} ><Tab tab={tab}  selected={selected} setSelected={setSelected} tabColor={tabColor} navigation={navigation} setTabColor={setTabColor} setNavigation={setNavigation} /></Link>
+          return <Link to='/dashboard' key={index} style={{textDecoration: 'none', color: 'black'}} ><Tab tab={tab}  selected={selected} setSelected={setSelected} tabColor={tabColor} navigation={navigation} setTabColor={setTabColor} setNavigation={setNavigation} /></Link>
         })}
       </TabsWrap>
   )
