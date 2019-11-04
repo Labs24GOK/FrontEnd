@@ -22,7 +22,9 @@ export const loggedIn = (history) => {
       .then(res => {
         dispatch({ type: LOGGEDIN_SUCCESS, payload: res.data })
         if (!res.data.authenticated) {
-          history.push('/login')
+          history.push('/')
+        } else {
+          history.push('/dashboard')
         }
       })
       .catch(err => {
@@ -41,7 +43,8 @@ export const logIn = (user, history) => {
       .post('https://speak-out-be-staging.herokuapp.com/login', user)
       .then(res => {
         dispatch({ type: LOGIN_SUCCESS, payload: res.data })
-        history.push('/');
+        console.log('LOGIN SUCCESS: ', res)
+        history.push('/dashboard');
       })
       .catch(err => {
         console.log('ERROR', err)
@@ -58,7 +61,7 @@ export const logOut = history => {
       .get('https://speak-out-be-staging.herokuapp.com/logout')
       .then(res => {
         dispatch({ type: LOGOUT_SUCCESS, payload: res.data })
-        history.push('/login');
+        history.push('/');
       })
       .catch(err => {
         console.log('ERROR API', err)

@@ -43,9 +43,13 @@ export const authenticationReducer = (state = initialState, action) => {
     case LOGIN_SUCCESS:
       return {
         ...state,
+        login: {
+          isLoading: false,
+          error: null
+        },
         user: {
           authenticated: true,
-          username: 'username', //update the be login endpoint to return username
+          username: action.payload.username, //update the be login endpoint to return username
         }
       }
     case LOGIN_FAILURE:

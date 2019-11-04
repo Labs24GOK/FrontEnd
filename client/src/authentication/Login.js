@@ -54,7 +54,7 @@ function Login(props) {
   }
 
   if (props.state.authenticationReducer.user.authenticated) {
-    return <Redirect to='/' />
+    return <Redirect to='/dashboard' />
   } else {
     return (
       <div>
