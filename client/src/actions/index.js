@@ -50,3 +50,15 @@ export {
   FETCH_PARENTBYID_SUCCESS,
   FETCH_PARENTBYID_FAILURE,
 } from './adminDashboardActions/parentAction.js'
+
+export {
+  getPlacementTests,
+  FETCH_PLACEMENTTESTS_START,
+  FETCH_PLACEMENTTESTS_SUCCESS,
+  FETCH_PLACEMENTTESTS_FAILURE,
+
+  getPlacementTestById,
+  FETCH_PLACEMENTTESTTBYID_START,
+  FETCH_PLACEMENTTESTTBYID_SUCCESS,
+  FETCH_PLACEMENTTESTTBYID_FAILURE
+} from './adminDashboardActions/placementTestAction.js'

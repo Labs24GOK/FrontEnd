@@ -2,6 +2,9 @@ import React, {useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 import { getParentById } from '../../../../actions';
+import { Spin } from 'antd';
+import 'antd/dist/antd.css';
+
 
 const ParentCard = props => {
     console.log('props.parentId.first_name', props.parentById)
@@ -11,7 +14,12 @@ const ParentCard = props => {
 
     return(
         <>
-        <h1>{props.parentById.father_name}</h1>
+        {props.isLoading ? (
+              <Spin style={{marginTop: '20px'}}size="large" />
+            ) : ( 
+            <h1>{props.parentById.father_name}</h1>
+            )}
+        
         </>
     )
 }
