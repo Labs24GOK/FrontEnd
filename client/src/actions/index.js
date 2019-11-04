@@ -38,3 +38,10 @@ export {
   DELETE_STUDENTBYID_SUCCESS,
   DELETE_STUDENTBYID_FAILURE,
 } from './adminDashboardActions/studentByIdAction.js'
+
+export {
+  getParentTable,
+  FETCH_PARENTS_START,
+  FETCH_PARENTS_SUCCESS,
+  FETCH_PARENTS_FAILURE,
+} from './adminDashboardActions/parentTableAction.js'
