@@ -14,13 +14,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const StudentCard = props => {
     useEffect(() => {
       console.log('STUDENT CARD props: ', props)
-        props.getStudentById(props.match.params.id)
+        props.getStudentById(props.studentID)
     }, [])
 
     const panes = [
         {
             menuItem: 'STUDENT INFORMATION',
-            render: () => <Tab.Pane attached={false}><StudentInformationTab /></Tab.Pane>,
+            render: () => <Tab.Pane attached={false}><StudentInformationTab props={props.studentID} /></Tab.Pane>,
         },
         {
             menuItem: 'ENROLLMENT',

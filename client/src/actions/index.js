@@ -38,3 +38,14 @@ export {
   DELETE_STUDENTBYID_SUCCESS,
   DELETE_STUDENTBYID_FAILURE,
 } from './adminDashboardActions/studentByIdAction.js'
+
+export {
+  getStaffTable,
+  FETCH_STAFF_START,
+  FETCH_STAFF_SUCCESS,
+  FETCH_STAFF_FAILURE,
+  getStaffById,
+  FETCH_STAFFBYID_START,
+  FETCH_STAFFBYID_SUCCESS,
+  FETCH_STAFFBYID_FAILURE
+} from './adminDashboardActions/staff/staffAction';

@@ -9,7 +9,7 @@ import Documents from '../documents/Documents';
 import MainUserPage from '../mainUserPage/Main';
 import Parents from '../parents/Parents';
 import Courses from '../courses/Courses';
-import Staff from '../staff/Staff';
+import StaffTable from '../staff/StaffTable';
 
 function Display({ navigation }) {
 
@@ -53,7 +53,7 @@ function Display({ navigation }) {
     )
   } else if (navigation === 'staff') {
     return (
-      <Staff />
+      <StaffTable />
     )
   }
   // else if (navigation === 'tables') {
