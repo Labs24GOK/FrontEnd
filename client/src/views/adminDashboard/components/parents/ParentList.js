@@ -15,35 +15,25 @@ function ParentList(props) {
 
   const columns = [
     {
-          title: 'Student ID',
+          title: 'Parent ID',
           dataIndex: 'id',
           key: 1,
       },
       {
-          title: 'CPR',
-          dataIndex: 'cpr',
+          title: 'Father Name',
+          dataIndex: 'father_name',
           key: 2,
       },
       {
-          title: 'First Name',
-          dataIndex: 'first_name',
+          title: 'Mother Name',
+          dataIndex: 'mother_name',
+          key: 3,
+      },
+      {
+          title: 'Telephone',
+          dataIndex: 'telephone',
           key: 4,
       },
-      {
-          title: 'Additional Name',
-          dataIndex: 'additional_names',
-          key: 5,
-      },
-      {
-          title: 'Gender',
-          dataIndex: 'gender',
-          key: 6,
-      },
-      {
-        title: 'Phone Number',
-        dataIndex: 'mobile_telephone',
-        key: 7,
-    },
   ];
   
   const parentData = props.parentList.sort((a,b) => { 

@@ -6,9 +6,9 @@ export const FETCH_PARENTS_FAILURE = 'FETCH_PARENTS_FAILURE';
 
 export const getParentTable = () => dispatch => {
     dispatch({type: FETCH_PARENTS_START})
-    axios.get('https://speak-out-be-staging.herokuapp.com/api?table=student')
+    axios.get('https://speak-out-be-staging.herokuapp.com/api?table=family')
         .then(res => {
-            console.log('student table', res)
+            console.log('parent table', res)
            dispatch({type: FETCH_PARENTS_SUCCESS, payload:res.data.tableData})
         }).catch(err=> {
             console.log('err',err)
@@ -23,7 +23,7 @@ export const FETCH_PARENTBYID_FAILURE = 'FETCH_PARENTBYID_FAILURE';
 
 export const getParentById = id => dispatch => {
     dispatch({ type: FETCH_PARENTBYID_START })
-    axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=student&where=id=${id}`)
+    axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=family&where=id=${id}`)
     .then(res => {
         console.log('getParentById', res.data.tableData[0])
         dispatch({

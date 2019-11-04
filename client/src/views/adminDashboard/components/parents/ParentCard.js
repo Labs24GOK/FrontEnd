@@ -11,7 +11,7 @@ const ParentCard = props => {
 
     return(
         <>
-        <h1>{props.parentById.first_name}</h1>
+        <h1>{props.parentById.father_name}</h1>
         </>
     )
 }
