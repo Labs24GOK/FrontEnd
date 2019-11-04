@@ -8,9 +8,6 @@ import { BrowserRouter } from "react-router-dom";
 import { reducer } from "./reducers/index";
 // import 'semantic-ui-css/semantic.min.css';
 
-import { logIn, logOut, loggedIn } from './actions/authenticationActions';
-
-
 import './index.css';
 import App from './App';
 
@@ -22,7 +19,6 @@ ReactDOM.render(
     <Provider store={store} >
         <BrowserRouter>
             <App />
-            {/* <Container /> */}
         </BrowserRouter>
     </Provider>, 
     document.getElementById('root')

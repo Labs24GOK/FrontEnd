@@ -19,7 +19,7 @@ export {
   FETCH_STUDENTS_START,
   FETCH_STUDENTS_SUCCESS,
   FETCH_STUDENTS_FAILURE
-} from './studentTableActions';
+} from './adminDashboardActions/studentTableActions.js';
 
 export {
   toggleEditComponent,
@@ -37,4 +37,4 @@ export {
   DELETE_STUDENTBYID_START,
   DELETE_STUDENTBYID_SUCCESS,
   DELETE_STUDENTBYID_FAILURE,
-} from './studentByIdAction'
+} from './adminDashboardActions/studentByIdAction.js'
