@@ -1,43 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getStudentById, toggleEditComponent } from '../../../../../actions';
+import { getStudentById, toggleEditComponent } from '../../../../actions';
+import CourseInformationTab from './courseCardTabs/CourseInformationTab.js';
 import { withRouter, Link } from 'react-router-dom';
-import StudentInformationTab from './StudentInformationTab';
 import { Tab } from 'semantic-ui-react';
 import 'antd/dist/antd.css';
-import './StudentCard.css';
-import './StudentInformationTab.css';
+import 'semantic-ui-css/semantic.min.css'
+import './course.scss';
+// import './StudentInformationTab.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-const StudentCard = props => {
+const CourseCard = props => {
+
     useEffect(() => {
-        props.getStudentById(props.studentID)
+      console.log('STUDENT CARD props: ', props)
+        props.getStudentById(props.match.params.id)
     }, [])
 
     const panes = [
         {
-            menuItem: 'STUDENT INFORMATION',
-            render: () => <Tab.Pane attached={false}><StudentInformationTab studentID={props.studentID}/></Tab.Pane>,
+            menuItem: 'COURSE INFORMATION',
+            render: () => <Tab.Pane attached={false}>{<CourseInformationTab/>}</Tab.Pane>,
         },
         {
-            menuItem: 'ENROLLMENT',
+            menuItem: 'ENROLLED STUDENTS',
             render: () => <Tab.Pane attached={false}>Tab 2 Content</Tab.Pane>,
-        },
-        {
-            menuItem: 'ATTENDANCE',
-            render: () => <Tab.Pane attached={false}>Tab 3 Content</Tab.Pane>,
-        },
-        {
-            menuItem: 'BILLING',
-            render: () => <Tab.Pane attached={false}>Tab 4 Content</Tab.Pane>,
         },
     ]
 
     const goBack = () => {
-        if(props.studentView === 'studentCardView') {
-            props.setStudentView('studentTableView')
+        if(props.courseView === 'courseCardView') {
+            props.setCourseView('courseTableView')
         }
     }
 
@@ -48,7 +43,6 @@ const StudentCard = props => {
 >
                     <FontAwesomeIcon icon='angle-left' size='lg' color='gray'/> {''}
                     Back
-                    
                     </div>
                 <div className='student-title'>
                     <h2>{props.studentById.first_name}</h2>
@@ -75,5 +69,5 @@ export default withRouter(
     connect(
         mapStateToProps,
         { getStudentById, toggleEditComponent }
-    )(StudentCard)
+    )(CourseCard)
 )

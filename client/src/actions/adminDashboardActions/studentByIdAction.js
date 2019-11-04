@@ -6,7 +6,7 @@ export const FETCH_STUDENTBYID_FAILURE = 'FETCH_STUDENTBYID_FAILURE';
 
 export const getStudentById = id => dispatch => {
     dispatch({ type: FETCH_STUDENTBYID_START })
-    axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=students&where=id=${id}`)
+    axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=student&where=id=${id}`)
     .then(res => {
         console.log('getById', res.data.tableData[0])
         dispatch({
@@ -33,7 +33,7 @@ export const toggleEditComponent = () => dispatch => {
 }
 
 export const editStudentById = (id, state) => dispatch => {
-    axios.put(`https://speak-out-be-staging.herokuapp.com/api/?table=students&where=id=${id}`, state)
+    axios.put(`https://speak-out-be-staging.herokuapp.com/api/?table=student&where=id=${id}`, state)
     .then(res => {
         console.log("res for editStudentById", res)
         dispatch({
@@ -55,7 +55,7 @@ export const DELETE_STUDENTBYID_FAILURE = 'DELETE_STUDENTBYID_FAILURE';
 
 export const deleteStudentById = id => dispatch => {
     dispatch({ type: DELETE_STUDENTBYID_START })
-    axios.put(`https://speak-out-be-staging.herokuapp.com/api/?table=students&where=id=${id}`)
+    axios.put(`https://speak-out-be-staging.herokuapp.com/api/?table=student&where=id=${id}`)
     .then(res => {
         dispatch({
             type: DELETE_STUDENTBYID_SUCCESS,

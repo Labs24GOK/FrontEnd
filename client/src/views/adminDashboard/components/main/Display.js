@@ -1,5 +1,5 @@
 import React from 'react';
-import StudentTable from '../students/StudentTable';
+import Student from '../students/Student.js';
 import Calendar from '../calendar/Calendar';
 import Schedule from '../schedule/Schedule';
 import Payments from '../payments/Payments';
@@ -20,7 +20,7 @@ function Display({ navigation }) {
   } else if (navigation === 'students') {
     return (
       <div>
-        <StudentTable />
+        <Student />
       </div>
     )
   } else if (navigation === 'parents') {
