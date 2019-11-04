@@ -18,8 +18,7 @@ export const loggedIn = (history) => {
     dispatch({ type: LOGGEDIN_START });
     
     axios 
-      // .get('https://speak-out-be-staging.herokuapp.com/user')
-      .get('http://localhost:3300/user')
+      .get('https://speak-out-be-staging.herokuapp.com/user')
       .then(res => {
         dispatch({ type: LOGGEDIN_SUCCESS, payload: res.data })
         if (!res.data.authenticated) {
@@ -41,8 +40,7 @@ export const logIn = (user, history) => {
     dispatch( {type: LOGIN_START} );
 
     axios
-      // .post('https://speak-out-be-staging.herokuapp.com/login', user)
-      .post('http://localhost:3300/login', user)
+      .post('https://speak-out-be-staging.herokuapp.com/login', user)
       .then(res => {
         dispatch({ type: LOGIN_SUCCESS, payload: res.data })
         console.log('LOGIN SUCCESS: ', res)
@@ -60,8 +58,7 @@ export const logOut = history => {
     dispatch({ type: LOGOUT_START });
 
     axios
-      // .get('https://speak-out-be-staging.herokuapp.com/logout')
-      .get('http://localhost:3300/logout')
+      .get('https://speak-out-be-staging.herokuapp.com/logout')
       .then(res => {
         dispatch({ type: LOGOUT_SUCCESS, payload: res.data })
         history.push('/');

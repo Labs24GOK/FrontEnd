@@ -9,6 +9,7 @@ import Documents from '../documents/Documents';
 import MainUserPage from '../mainUserPage/Main';
 import Parents from '../parents/Parents';
 import Courses from '../courses/Courses';
+import Staff from '../staff/Staff';
 
 function Display({ navigation }) {
 
@@ -26,6 +27,7 @@ function Display({ navigation }) {
     return (
       <Parents />
     )
+  
   // } 
   // else if (navigation === 'calendar') {
   //   return (
@@ -49,7 +51,11 @@ function Display({ navigation }) {
     return (
       <Courses />
     )
-  } 
+  } else if (navigation === 'staff') {
+    return (
+      <Staff />
+    )
+  }
   // else if (navigation === 'tables') {
   //   return (
   //     <div>
