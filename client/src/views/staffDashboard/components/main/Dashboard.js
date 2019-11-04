@@ -22,7 +22,7 @@ const DisplayWrap = styled.div`
 `
 
 function Dashboard() {
-const [navigation, setNavigation] = useState("staff");
+const [navigation, setNavigation] = useState("main");
 const [tabColor, setTabColor] = useState("transparent");
 
 
