@@ -8,6 +8,7 @@ import Queries from '../queries/Queries';
 import Documents from '../documents/Documents';
 import MainUserPage from '../mainUserPage/Main';
 import Parents from '../parents/Parents';
+import Courses from '../courses/Courses';
 
 function Display({ navigation }) {
 
@@ -43,6 +44,10 @@ function Display({ navigation }) {
       <div>
         <Payments />
       </div>
+    )
+  } else if (navigation === 'courses') {
+    return (
+      <Courses />
     )
   } 
   // else if (navigation === 'tables') {

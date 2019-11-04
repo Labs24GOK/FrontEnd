@@ -2,6 +2,7 @@ export const adminDashboardTabs = [
   {key: "Main"},
   {key: "Students"},
   {key: "Parents"},
+  {key: "Courses"},
   // {key: "Calendar"},
   // {key: "Schedule"},
   {key: "Payments"},
