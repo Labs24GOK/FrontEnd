@@ -105,8 +105,8 @@ const StudentTable = props => {
               rowKey='id'
               onRow={(record, rowIndex) => {
                 return {
-                  onClick: event => {
-                    props.history.push(`/students/${record.id}`);
+                    onClick: event => {
+                      props.history.push(`/students/${record.id}`);
                   }
                 };
               }}

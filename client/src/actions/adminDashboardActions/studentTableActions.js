@@ -6,7 +6,7 @@ export const FETCH_STUDENTS_FAILURE = 'FETCH_STUDENTS_FAILURE';
 
 export const getStudentTable = () => dispatch => {
     dispatch({type: FETCH_STUDENTS_START})
-    axios.get('https://speak-out-be-staging.herokuapp.com/api?table=students')
+    axios.get('https://speak-out-be-staging.herokuapp.com/api?table=student')
         .then(res => {
             console.log('student table', res)
            dispatch({type: FETCH_STUDENTS_SUCCESS, payload:res.data.tableData})

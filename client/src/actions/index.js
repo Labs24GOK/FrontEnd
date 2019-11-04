@@ -44,4 +44,9 @@ export {
   FETCH_PARENTS_START,
   FETCH_PARENTS_SUCCESS,
   FETCH_PARENTS_FAILURE,
-} from './adminDashboardActions/parentTableAction.js'
+
+  getParentById,
+  FETCH_PARENTBYID_START,
+  FETCH_PARENTBYID_SUCCESS,
+  FETCH_PARENTBYID_FAILURE,
+} from './adminDashboardActions/parentAction.js'
