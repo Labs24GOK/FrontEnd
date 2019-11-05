@@ -40,6 +40,31 @@ export {
 } from './adminDashboardActions/studentByIdAction.js'
 
 export {
+  getParentTable,
+  FETCH_PARENTS_START,
+  FETCH_PARENTS_SUCCESS,
+  FETCH_PARENTS_FAILURE,
+
+  getParentById,
+  FETCH_PARENTBYID_START,
+  FETCH_PARENTBYID_SUCCESS,
+  FETCH_PARENTBYID_FAILURE,
+} from './adminDashboardActions/parentAction.js'
+
+export {
+  getPlacementTests,
+  FETCH_PLACEMENTTESTS_START,
+  FETCH_PLACEMENTTESTS_SUCCESS,
+  FETCH_PLACEMENTTESTS_FAILURE,
+
+  getPlacementTestById,
+  FETCH_PLACEMENTTESTTBYID_START,
+  FETCH_PLACEMENTTESTTBYID_SUCCESS,
+  FETCH_PLACEMENTTESTTBYID_FAILURE
+} from './adminDashboardActions/placementTestAction.js'
+
+
+export {
   getStaffTable,
   FETCH_STAFF_START,
   FETCH_STAFF_SUCCESS,

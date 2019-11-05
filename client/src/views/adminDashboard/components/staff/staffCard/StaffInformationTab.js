@@ -1,9 +1,10 @@
 import React, {useState, useEffect } from 'react'
-// import { bindActionCreators } from 'redux';
+// imPort { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getStaffById, toggleEditComponent } from '../../../../../actions';
 import { withRouter, Link } from 'react-router-dom';
-import '../../students/studentCard/StudentInformationTab.css'
+import { Row, RowRight, Column2, H4, P} from './../../../../../styles/styledComponents'
+
 
 
 
@@ -17,113 +18,84 @@ const StaffInformationTab = props => {
 
     let options = { year: 'numeric', month: 'numeric', day: 'numeric' }; //'long'
     let birthdate = new Date(props.staffById.birthdate).toLocaleDateString('en-US', options) 
-    // let registration_date = new Date(props.staffById.registration_date).toLocaleDateString('en-US', options)
+    // let registration_date = new Date(props.staffById.registration_date).toLocaleDateString('en-US', oPtions)
     
     const editStudentInfo = e => {
         console.log('hi')
-        e.preventDefault();
+        e.PreventDefault();
         props.toggleEditComponent();
    }
 
     return (
         <>
-        {
-            !props.isEditing ? <div className='grid-container'>
-                 <div className='row1'>
-                <h4>Staff ID</h4>
-                <p>{props.staffById.id}</p>
-                </div>
-            <div className='row1'>
-                <h4>Name</h4>
-                <p>{props.staffById.name}</p>
-                </div>
-            <div className='row1'>
-                <h4>Short Name</h4>
-                <p>{props.staffById.short_name}</p>
-                </div>
-            <div className='row1'>
-                <h4>CPR</h4>
-                <p>{props.staffById.cpr}</p>
-                </div>
-                <div className='row1'>
-                <h4>Mobile Number</h4>
-                <p>{props.staffById.mobile_number}</p>
-            </div>
-            {/* <div className='row2'>
-                <h4>Mobile Telephone</h4>
-                <p>{props.staffById.mobile_telephone}</p>
-            </div> */}
-            {/* <div className='row2'>
-                <h4>Email</h4>
-                <p>{props.staffById.id}</p>
-                </div> */}
-            <div className='row2'>
-                <h4>Accent</h4>
-                <p>{props.staffById.accent}</p>
-            </div>
+            {
+                !props.isEditing ?
+            <>
+            <RowRight className='button-container'>
+                <button className='Placement-button' onClick={editStudentInfo}>Edit</button>
+            </RowRight>
+                <Row>
+                 <Column2>
+                    <H4>Staff ID</H4>
+                    <P>{props.staffById.id}</P>
+                </Column2>
+                <Column2>
+                    <H4>Name</H4>
+                    <P>{props.staffById.name}</P>
+                </Column2>
+            <Column2>
+                <H4>Short Name</H4>
+                <P>{props.staffById.short_name}</P>
+                </Column2>
+            <Column2>
+                <H4>CPR</H4>
+                <P>{props.staffById.cPr}</P>
+                </Column2>
+                </Row>
 
-            <div className='row2'>
-                <h4>Gender</h4>
-                <p>{props.staffById.gender}</p>
-            </div>
+                <Row>
+                <Column2>
+                <H4>Mobile Number</H4>
+                <P>{props.staffById.mobile_number}</P>
+            </Column2>
+            <Column2>
+                <H4>Accent</H4>
+                <P>{props.staffById.accent}</P>
+            </Column2>
 
-                <div className='row3'>
-                <h4>Birth date</h4>
-                <p>{birthdate}</p>
-                </div>
+            <Column2>
+                <H4>Gender</H4>
+                <P>{props.staffById.gender}</P>
+            </Column2>
 
-            <div className='row3'>
-                <h4>Teaching Rate</h4>
-                <p>{props.staffById.teaching_rate}</p>
-                </div>
-            <div className='row3'>
-                <h4>Admin</h4>
-                <p>{props.staffById.admin}</p>
-                </div>
-            <div className='row3'>
-                <h4>Active</h4>
-                <p>{props.staffById.active}</p>
-                </div>
-            {/* <div className='row3'>
-                <h4>Road</h4>
-                <p>{props.staffById.road}</p>
-                </div>
-            <div className='row3'>
-                <h4>Flat</h4>
-                <p>{props.staffById.flat}</p>
-                </div>
-            <div className='row3'>
-                <h4>Building</h4>
-                <p>{props.staffById.building}</p>
-                </div>
+                <Column2 className='row3'>
+                <H4>Birth date</H4>
+                <P>{birthdate}</P>
+                </Column2>
+                </Row>
 
-            <div className='row4'>
-                <h4>No Call</h4>
-                <p>{props.staffById.no_call}</p>
-                </div>
-            <div className='row4'>
-                <h4>Delinquent Account</h4>
-                <p>{props.staffById.delinquent_account}</p>
-                </div>
-            <div className='row4'>
-                <h4>Expelled</h4>
-                <p>{props.staffById.expelled}</p>
-                </div>
-
-            <div className='row5'>
-                <h4>Notes</h4>
-                <p>{props.staffById.notes}</p>
-                </div> */}
-
-            <div className='button-container'>
-                <button className='placement-button' onClick={editStudentInfo}>Edit</button>
-            </div>
-
-        </div> : null
+                <Row>
+            <Column2 className='row3'>
+                <H4>Teaching Rate</H4>
+                <P>{props.staffById.teaching_rate}</P>
+                </Column2>
+            <Column2 className='row3'>
+                <H4>Admin</H4>
+                <P>{props.staffById.admin}</P>
+                </Column2>
+            <Column2 className='row3'>
+                <H4>Active</H4>
+                <P>{props.staffById.active}</P>
+                </Column2>
+                <Column2 className='row3'>
+                <H4>User ID</H4>
+                <P>{props.staffById.user_id}</P>
+                </Column2>
+                </Row>
+         
+        </> : null
         }
-            
-            
-            
+               
         </>
     )
 }

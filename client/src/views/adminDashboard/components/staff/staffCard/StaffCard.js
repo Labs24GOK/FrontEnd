@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getStaffById, toggleEditComponent } from '../../../../../actions';
 import { withRouter, Link } from 'react-router-dom';
 import StaffInformationTab from './StaffInformationTab';
+import { CardWrapper, BackButton, BigTitle, SmallTitle, HeaderWrapper } from '../../../../../styles/styledComponents'
 import { Tab } from 'semantic-ui-react';
 import 'antd/dist/antd.css';
 // import './StudentCard.css';
@@ -13,7 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const StaffCard = props => {
     useEffect(() => {
-      console.log('STAFF CARD props:', props.getStaffById)
+      console.log('STAFF CARD props:', props)
         props.getStaffById(props.staffID)
     }, [])
 
@@ -33,32 +34,27 @@ const StaffCard = props => {
     ]
 
     const goBack = () => {
-        console.log("props", props)
-        if(!props.isEditing){
-            props.history.goBack();
-        } else {
-            props.toggleEditComponent()
-        }
+        console.log("go back button", props)
+       if(props.staffView === 'staffCardView') {
+           props.setStaffView('staffTableView')
+       }
     }
 
     return (
         <div>
-            <div className="student-card">
-                <div className="back-button" onClick={goBack} style={{cursor:"pointer"}}
->
+            <CardWrapper>
+                <BackButton onClick={goBack} style={{cursor:"pointer"}}>
                     <FontAwesomeIcon icon='angle-left' size='lg' color='gray'/> {''}
                     Back
-                    
-                    </div>
-                <div className='student-title'>
-                    <h2>{props.staffById.name}</h2>
-                    <p>CPR: {props.staffById.cpr}</p>
-                    <p>Staff ID: {props.staffById.id}</p>
-                </div>
+                    </BackButton>
+                <HeaderWrapper>
+                    <BigTitle>{props.staffById.name}</BigTitle>
+                    <SmallTitle>CPR: {props.staffById.cpr}</SmallTitle>
+                    <SmallTitle>Staff ID: {props.staffById.id}</SmallTitle>
+                </HeaderWrapper>
              <Tab menu={{ secondary: true, pointing: true }} panes={panes}  />
-            </div>
+        </CardWrapper>
         </div>
-        
  )
 }
 

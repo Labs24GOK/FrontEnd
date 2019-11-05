@@ -5,7 +5,7 @@ import { getStudentById, toggleEditComponent } from '../../../../../actions';
 import { withRouter, Link } from 'react-router-dom';
 import StudentForm from './StudentForm';
 import './StudentInformationTab.css'
-
+import { Row, RowRight, Column4, H4, P} from '../../../../../styles/styledComponents'
 
 
 const StudentInformationTab = props => {
@@ -28,89 +28,101 @@ const StudentInformationTab = props => {
         <>
             {
                 !props.isEditing ?
-                <div className='grid-container'>
-                <div className='row1'>
-                    <h4>First Name</h4>
-                    <p>{props.studentById.first_name}</p>
-                    </div>
-                <div className='row1'>
-                    <h4>Additional Names</h4>
-                    <p>{props.studentById.additional_names}</p>
-                    </div>
-                <div className='row1'>
-                    <h4>Gender</h4>
-                    <p>{props.studentById.gender}</p>
-                    </div>
-                <div className='row1'>
-                    <h4>Birth date</h4>
-                    <p>{birthdate}</p>
-                    </div>
-    
-                <div className='row2'>
-                    <h4>Home Telephone</h4>
-                    <p>{props.studentById.home_telephone}</p>
-                    </div>
-                <div className='row2'>
-                    <h4>Mobile Telephone</h4>
-                    <p>{props.studentById.mobile_telephone}</p>
-                </div>
-                <div className='row2'>
-                    <h4>Email</h4>
-                    <p>{props.studentById.email}</p>
-                    </div>
-                <div className='row2'>
-                    <h4>Preferred Contact Method</h4>
-                    <p>{props.studentById.preferred_contact_method}</p>
-                </div>
-    
-                <div className='row3'>
-                    <h4>Location</h4>
-                    <p>Not done</p>
-                    </div>
-                <div className='row3'>
-                    <h4>Registration Date</h4>
-                    <p>{registration_date}</p>
-                    </div>
-                <div className='row3'>
-                    <h4>Block</h4>
-                    <p>{props.studentById.block}</p>
-                    </div>
-                <div className='row3'>
-                    <h4>Road</h4>
-                    <p>{props.studentById.road}</p>
-                    </div>
-                <div className='row3'>
-                    <h4>Flat</h4>
-                    <p>{props.studentById.flat}</p>
-                    </div>
-                <div className='row3'>
-                    <h4>Building</h4>
-                    <p>{props.studentById.building}</p>
-                    </div>
-    
-                <div className='row4'>
-                    <h4>No Call</h4>
-                    <p>{props.studentById.no_call}</p>
-                    </div>
-                <div className='row4'>
-                    <h4>Delinquent Account</h4>
-                    <p>{props.studentById.delinquent_account}</p>
-                    </div>
-                <div className='row4'>
-                    <h4>Expelled</h4>
-                    <p>{props.studentById.expelled}</p>
-                    </div>
-    
-                <div className='row5'>
-                    <h4>Notes</h4>
-                    <p>{props.studentById.notes}</p>
-                    </div>
-    
-                <div className='button-container'>
-                    <button className='placement-button' onClick={editStudentInfo}>Edit</button>
+                <>
+                <RowRight>
+                <button className='placement-button' onClick={editStudentInfo}>Edit</button>
+                </RowRight>
+                <Row>
+                    <Column4>
+                        <H4>First Name</H4>
+                        <P>{props.studentById.first_name}</P>
+                    </Column4>
+                    <Column4>
+                        <H4>Additional Names</H4>
+                        <P>{props.studentById.additional_names}</P>
+                    </Column4>
+                    <Column4>
+                        <H4>Gender</H4>
+                        <P>{props.studentById.gender}</P>
+                    </Column4>
+                    <Column4>
+                        <H4>Birth Date</H4>
+                        <P>{birthdate}</P>
+                    </Column4>
+                </Row>
+                <Row>
+                    <Column4>
+                        <H4>Home Telephone</H4>
+                        <P>{props.studentById.home_telephone}</P>
+                    </Column4>
+                    <Column4>
+                        <H4>Mobile Telephone</H4>
+                        <P>{props.studentById.mobile_telephone}</P>
+                    </Column4>
+                    <Column4>
+                        <H4>Email</H4>
+                        <P>{props.studentById.email}</P>
+                    </Column4>
+                    <Column4>
+                        <H4>Preferred Contact Method</H4>
+                        <P>{props.studentById.preferred_contact_method}</P>
+                    </Column4>
+                </Row>
+                <Row>
+                    <Column4>
+                        <H4>Location</H4>
+                        <P>{props.studentById.location_id}</P>
+                    </Column4>
+                    <Column4>
+                        <H4>Registration Date</H4>
+                        <P>{registration_date}</P>
+                    </Column4>
+                    <Column4>
+                        <H4>Block</H4>
+                        <P>{props.studentById.block}</P>
+                    </Column4>
+                    <Column4>
+                        <H4>Road</H4>
+                        <P>{props.studentById.road}</P>
+                    </Column4>
+                </Row>
+                <Row>
+                    <Column4>
+                        <H4>Flat</H4>
+                        <P>{props.studentById.flat}</P>
+                    </Column4>
+                    <Column4>
+                        <H4>Building</H4>
+                        <P>{props.studentById.building}</P>
+                    </Column4>
+                    <Column4>
+                        <H4>No Call</H4>
+                        <P>{props.studentById.no_call}</P>
+                    </Column4>
+                    <Column4>
+                        <H4>Delinquent Account</H4>
+                        <P>{props.studentById.delinquent_account}</P>
+                    </Column4>
+                </Row>
+                <Row>
+                    <Column4>
+                        <H4>Expelled</H4>
+                        <P>{props.studentById.expelled}</P>
+                    </Column4>
+                    <Column4>
+                        <H4>Notes</H4>
+                        <P>{props.studentById.notes}</P>
+                    </Column4>
+                    <Column4>
+                        <div></div>
+                    </Column4>
+                    <Column4>
                     <button className='placement-button' >Placement Test</button>
-                </div>
-            </div>
+                    </Column4>
+                </Row>
+                    
+                    
+            </>
             : <StudentForm {...props}/>      
             }
        

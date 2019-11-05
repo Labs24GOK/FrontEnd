@@ -4,6 +4,7 @@ import { getStudentById, toggleEditComponent } from '../../../../../actions';
 import { withRouter, Link } from 'react-router-dom';
 import StudentInformationTab from './StudentInformationTab';
 import { Tab } from 'semantic-ui-react';
+import { CardWrapper, BackButton, BigTitle, SmallTitle, HeaderWrapper } from '../../../../../styles/styledComponents'
 import 'antd/dist/antd.css';
 import './StudentCard.css';
 import './StudentInformationTab.css';
@@ -43,22 +44,19 @@ const StudentCard = props => {
 
     return (
         <div>
-            <div className="student-card">
-                <div className="back-button" onClick={goBack} style={{cursor:"pointer"}}
->
+            <CardWrapper>
+                <BackButton onClick={goBack} style={{cursor:"pointer"}}>
                     <FontAwesomeIcon icon='angle-left' size='lg' color='gray'/> {''}
                     Back
-                    
-                    </div>
-                <div className='student-title'>
-                    <h2>{props.studentById.first_name}</h2>
-                    <p>CPR: {props.studentById.cpr}</p>
-                    <p>Student ID: {props.studentById.id}</p>
-                </div>
+                </BackButton>
+                <HeaderWrapper>
+                    <BigTitle>{props.studentById.first_name}</BigTitle>
+                    <SmallTitle>CPR: {props.studentById.cpr}</SmallTitle>
+                    <SmallTitle>Student ID: {props.studentById.id}</SmallTitle>
+                </HeaderWrapper>
              <Tab menu={{ secondary: true, pointing: true }} panes={panes}  />
-            </div>
+            </CardWrapper>
         </div>
-        
     )
 }
 

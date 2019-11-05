@@ -4,12 +4,17 @@ import { studentTableReducer } from './adminDashboardReducers/studentTableReduce
 import { studentByIdReducer } from './adminDashboardReducers/studentByIdReducer';
 import { staffByIdReducer } from './adminDashboardReducers/staffByIdReducer';
 import { staffTableReducer } from './adminDashboardReducers/staffTableReducer';
+import { parentReducer } from './adminDashboardReducers/parentReducer';
+import { placementTestReducer } from './adminDashboardReducers/placementTestReducer';
+
 
 export const reducer = combineReducers({
   authenticationReducer,
   studentTableReducer,
   studentByIdReducer,
   staffByIdReducer,
-  staffTableReducer
+  staffTableReducer,
+  parentReducer,
+  placementTestReducer,
 });
 
