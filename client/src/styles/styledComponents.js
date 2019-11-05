@@ -33,11 +33,6 @@ export const RowRight = styled.div`
     width: 100%;
 `;
 
-export const Column4 = styled.div`
-    width: 25%;
-    margin: 7px;
-`;
-
 export const Column2 = styled.div`
     width: 50%;
     margin: 7px;
@@ -45,6 +40,15 @@ export const Column2 = styled.div`
 
 export const Column3 = styled.div`
     width: 33%;
+    margin: 7px;
+`;
+
+export const Column4 = styled.div`
+    width: 25%;
+    margin: 7px;
+`;
+export const Column5 = styled.div`
+    width: 20%;
     margin: 7px;
 `;
 
