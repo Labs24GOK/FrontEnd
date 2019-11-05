@@ -10,40 +10,44 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import StaffRegistrationForm from './StaffRegistrationForm';
 
 const StaffTable = props => {
+console.log('staff table props', props)
+  const [search, setSearch] = useState('');
+  const [form, setForm] = useState(false);
 
-  // const [search, setSearch] = useState('');
-  // const [form, setForm] = useState(false);
-  
  
     
     useEffect(() => {
         props.getStaffTable();
     }, [])
 
-    // const handleCancelButtonOnForm = () => {
-    //   setForm(false);
-    // }
+    const handleCancelButtonOnForm = () => {
+      setForm(false);
+    }
 
-    // const handleSearchInput = () => {
+    const handleSearchInput = () => {
 
-    // }
+    }
 
-    // const handleAddButton = () => {
-    //   console.log('Click');
-    //   setForm(!form);
-    // }
+    const handleAddButton = () => {
+      console.log('Click');
+      setForm(!form);
+    }
 
     const columns = [
-      
-        {
+          {
+              title: 'Staff ID',
+              dataIndex: 'id',
+              key: 1,
+          },
+          {
               title: 'Name',
               dataIndex: 'name',
-              key: 1,
+              key: 2,
           },
           {
               title: 'Short Name',
               dataIndex: 'short_name',
-              key: 2,
+              key: 3,
           },
           {
               title: 'CPR',
@@ -56,8 +60,8 @@ const StaffTable = props => {
               key: 5,
           },
           {
-              title: 'Email',
-              dataIndex: 'email',
+              title: 'Gender',
+              dataIndex: 'gender',
               key: 6,
           },
           {
@@ -65,11 +69,6 @@ const StaffTable = props => {
               dataIndex: 'accent',
               key: 7,
            },
-          {
-              title: 'Gender',
-              dataIndex: 'gender',
-              key: 8,
-          },
           {
               title: 'BirthDate',
               dataIndex: 'birthdate',
@@ -88,18 +87,8 @@ const StaffTable = props => {
         {
             title: 'Active',
             dataIndex: 'active',
-            key: 12,
-        },
-        {
-            title: 'User ID',
-            dataIndex: 'user_id',
             key: 13,
-          },
-          {
-            title: 'Student ID',
-            dataIndex: 'id',
-            key: 14,
-          },
+         },
       ];
       
     const staffData = props.staffList.sort((a,b) => { 
@@ -107,31 +96,54 @@ const StaffTable = props => {
     )
 
 
-
     return (
       <div>
-        {props.isLoading ? (
-                <Spin style={{marginTop: '20px'}}size="large" />
-              ) : (
-              <Table
-                className="rowHover"
-                dataSource={staffData} 
-                columns={columns} 
-                pagination={{ pageSize: 15 }} 
-                rowKey='id'
-                onRow={(record, rowIndex) => {
-                  return {
-                    onClick: event => {
-                      props.setStaffId(record.id);
-                      props.setStaffView("staffInfo")
-                    }
-                  };
-                }}
+          <div className="row-above">
+            <div>
+              <input
+                className="row-above-input"
+                type="text"
+                name="Search"
+                placeholder="Search by registration date, name, cpr, etc..."
+                value={search}
+                onChange={handleSearchInput}
               />
-              )}
+            </div>
+            <div className="create-new-entry">
+              <div style={{marginRight: '10px'}}>Create new entry</div>
+              <div><FontAwesomeIcon onClick={handleAddButton} style={{width: '25px', height: '25px', cursor: 'pointer'}} icon={faPlusCircle} size='lg'/></div>
+            </div>
+          </div>
+
+          {form ? (
+            <StaffRegistrationForm handleCancelButtonOnForm={handleCancelButtonOnForm}/>
+          ) : null}
+          
+          
+          {props.isLoading ? (
+            <Spin style={{marginTop: '20px'}}size="large" />
+          ) : (
+          <Table
+            className="rowHover"
+            dataSource={staffData} 
+            columns={columns} 
+            pagination={{ pageSize: 15 }} 
+            rowKey='id'
+            onRow={(record) => {
+              return {
+                onClick: () => {
+                  props.setStaffID(record.id);
+                  props.setStaffView('staffCardView');
+                  // console.log('hey hey', props.setStaffView)
+                  
+                }
+              };
+            }}
+          />
+          )}
       </div>
-    )
-  }
+  )
+}
        
 
 

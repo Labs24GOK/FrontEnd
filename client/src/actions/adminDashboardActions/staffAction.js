@@ -6,9 +6,9 @@ export const FETCH_STAFF_FAILURE = 'FETCH_STAFF_FAILURE';
 
 export const getStaffTable = () => dispatch => {
     dispatch({type: FETCH_STAFF_START})
-    axios.get('https://speak-out-be-staging.herokuapp.com/api?table=student')
+    axios.get('https://speak-out-be-staging.herokuapp.com/api?table=staff')
         .then(res => {
-            console.log('student table', res)
+            console.log('staff table', res)
            dispatch({type: FETCH_STAFF_SUCCESS, payload:res.data.tableData})
         }).catch(err=> {
             console.log('err',err)
@@ -23,7 +23,7 @@ export const FETCH_STAFFBYID_FAILURE = 'FETCH_STAFFBYID_FAILURE';
 
 export const getStaffById = id => dispatch => {
     dispatch({ type: FETCH_STAFFBYID_START })
-    axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=student&where=id=${id}`)
+    axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=staff&where=id=${id}`)
     .then(res => {
         console.log('getSTAFFBYID', res.data.tableData[0])
         dispatch({
@@ -32,6 +32,7 @@ export const getStaffById = id => dispatch => {
         })
     })
     .catch(err => {
+        console.log(err)
        dispatch({
         type: FETCH_STAFFBYID_FAILURE,
         payload: err.data

@@ -5,61 +5,61 @@ import { withRouter, Link } from 'react-router-dom';
 import StaffInformationTab from './StaffInformationTab';
 import { Tab } from 'semantic-ui-react';
 import 'antd/dist/antd.css';
-import './StudentCard.css';
-import './StudentInformationTab.css';
+// import './StudentCard.css';
+// import './StudentInformationTab.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 const StaffCard = props => {
     useEffect(() => {
-      console.log('STAFF CARD props: ', props.getStaffById)
-        props.getStaffById(props.staffId)
+      console.log('STAFF CARD props:', props.getStaffById)
+        props.getStaffById(props.staffID)
     }, [])
 
-//     const panes = [
-//         {
-//             menuItem: 'STAFF INFORMATION',
-//             render: () => <Tab.Pane attached={false}><StaffInformationTab /></Tab.Pane>,
-//         },
-//         {
-//             menuItem: 'COURSES',
-//             render: () => <Tab.Pane attached={false}>Tab 2 Content</Tab.Pane>,
-//         },
-//         {
-//             menuItem: 'WORKLOG',
-//             render: () => <Tab.Pane attached={false}>Tab 3 Content</Tab.Pane>,
-//         },
-//     ]
+  const panes = [
+        {
+            menuItem: 'STAFF INFORMATION',
+            render: () => <Tab.Pane attached={false}><StaffInformationTab staffID={props.staffID} /></Tab.Pane>,
+        },
+        {
+            menuItem: 'COURSES',
+            render: () => <Tab.Pane attached={false}>Tab 2 Content</Tab.Pane>,
+        },
+        {
+            menuItem: 'WORKLOG',
+            render: () => <Tab.Pane attached={false}>Tab 3 Content</Tab.Pane>,
+        },
+    ]
 
-//     const goBack = () => {
-//         console.log("props", props)
-//         if(!props.isEditing){
-//             props.history.goBack();
-//         } else {
-//             props.toggleEditComponent()
-//         }
-//     }
+    const goBack = () => {
+        console.log("props", props)
+        if(!props.isEditing){
+            props.history.goBack();
+        } else {
+            props.toggleEditComponent()
+        }
+    }
 
-//     return (
-//         <div>
-//             <div className="student-card">
-//                 <div className="back-button" onClick={goBack} style={{cursor:"pointer"}}
-// >
-//                     <FontAwesomeIcon icon='angle-left' size='lg' color='gray'/> {''}
-//                     Back
+    return (
+        <div>
+            <div className="student-card">
+                <div className="back-button" onClick={goBack} style={{cursor:"pointer"}}
+>
+                    <FontAwesomeIcon icon='angle-left' size='lg' color='gray'/> {''}
+                    Back
                     
-//                     </div>
-//                 <div className='student-title'>
-//                     <h2>{props.staffById.name}</h2>
-//                     <p>CPR: {props.stafftById.cpr}</p>
-//                     <p>Student ID: {props.staffById.id}</p>
-//                 </div>
-//              <Tab menu={{ secondary: true, pointing: true }} panes={panes}  />
-//             </div>
-//         </div>
+                    </div>
+                <div className='student-title'>
+                    <h2>{props.staffById.name}</h2>
+                    <p>CPR: {props.staffById.cpr}</p>
+                    <p>Staff ID: {props.staffById.id}</p>
+                </div>
+             <Tab menu={{ secondary: true, pointing: true }} panes={panes}  />
+            </div>
+        </div>
         
-//     )
+ )
 }
 
 
@@ -74,6 +74,6 @@ const mapStateToProps = state => {
 export default withRouter(
     connect(
         mapStateToProps,
-        { getStaffById }
+        { getStaffById, toggleEditComponent}
     )(StaffCard)
 )

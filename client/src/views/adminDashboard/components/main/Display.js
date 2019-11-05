@@ -1,5 +1,5 @@
 import React from 'react';
-import StudentTable from '../students/StudentTable';
+import Student from '../students/Student.js';
 import Calendar from '../calendar/Calendar';
 import Schedule from '../schedule/Schedule';
 import Payments from '../payments/Payments';
@@ -9,7 +9,7 @@ import Documents from '../documents/Documents';
 import MainUserPage from '../mainUserPage/Main';
 import Parents from '../parents/Parents';
 import Courses from '../courses/Courses';
-import StaffTable from '../staff/StaffTable';
+import Staff from '../staff/Staff';
 
 function Display({ navigation }) {
 
@@ -20,7 +20,7 @@ function Display({ navigation }) {
   } else if (navigation === 'students') {
     return (
       <div>
-        <StudentTable />
+        <Student />
       </div>
     )
   } else if (navigation === 'parents') {
@@ -53,7 +53,7 @@ function Display({ navigation }) {
     )
   } else if (navigation === 'staff') {
     return (
-      <StaffTable />
+      <Staff />
     )
   }
   // else if (navigation === 'tables') {

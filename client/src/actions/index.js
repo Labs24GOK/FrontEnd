@@ -48,4 +48,4 @@ export {
   FETCH_STAFFBYID_START,
   FETCH_STAFFBYID_SUCCESS,
   FETCH_STAFFBYID_FAILURE
-} from './adminDashboardActions/staff/staffAction';
+} from './adminDashboardActions/staffAction.js';

@@ -9,6 +9,7 @@ const initialState = {
     staffById: [],
     isLoading: false,
     error: null,
+    fetching: false,
 }
 
 export const staffByIdReducer = (state = initialState, action) => {
@@ -23,7 +24,7 @@ export const staffByIdReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                error: null,
+                fetching: true,
                 staffById: action.payload
             };
         case FETCH_STAFFBYID_FAILURE:
@@ -33,6 +34,5 @@ export const staffByIdReducer = (state = initialState, action) => {
                 error: action.payload
             }
         default: return state;
-  
     }
   }

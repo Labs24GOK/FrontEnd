@@ -8,7 +8,8 @@ import {
 const initialState = {
     isLoading: false,
     error: null,
-    staffList: []
+    staffList: [],
+    
 }
 
 export const staffTableReducer = (state = initialState, action) => {
