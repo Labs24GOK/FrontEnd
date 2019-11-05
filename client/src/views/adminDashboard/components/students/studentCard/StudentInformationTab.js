@@ -46,7 +46,7 @@ const StudentInformationTab = props => {
                         <P>{props.studentById.gender}</P>
                     </Column4>
                     <Column4>
-                        <H4>Birth date</H4>
+                        <H4>Birth Date</H4>
                         <P>{birthdate}</P>
                     </Column4>
                 </Row>
@@ -71,7 +71,7 @@ const StudentInformationTab = props => {
                 <Row>
                     <Column4>
                         <H4>Location</H4>
-                        <P>Not done</P>
+                        <P>{props.studentById.location_id}</P>
                     </Column4>
                     <Column4>
                         <H4>Registration Date</H4>

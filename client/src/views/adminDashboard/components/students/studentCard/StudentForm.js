@@ -20,7 +20,7 @@ const StudentForm = (props) => {
         mobile_telephone: props.studentById.mobile_telephone,
         email: props.studentById.email,
         preferred_contact_method: props.studentById.preferred_contact_method,
-        location: props.studentById.location,
+        location_id: props.studentById.location_id,
         registration_date: props.studentById.registration_date,
         block: props.studentById.block,
         road: props.studentById.road,
@@ -143,7 +143,7 @@ const StudentForm = (props) => {
                         name='location'
                         placeholder='Location'
                         onChange={handleChange}
-                        value={state.location}
+                        value={state.location_id}
                     />
                 </Column4>
                 <Column4>
@@ -230,7 +230,6 @@ const StudentForm = (props) => {
                         value={state.expelled}
                     />
                 </Column4>
-                <Column4><div></div></Column4>
                 <Column4>
                     <H4>Notes</H4>
                 <input 
@@ -241,6 +240,7 @@ const StudentForm = (props) => {
                     value={state.notes}
                     />
                 </Column4>
+                <Column4><div></div></Column4>
                 <Column4><div></div></Column4>
             </Row>
             <RowRight>
