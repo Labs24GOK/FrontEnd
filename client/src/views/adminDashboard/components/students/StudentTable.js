@@ -70,8 +70,6 @@ const StudentTable = props => {
 
     return (
         <div>
-            {/* <Link to='/'>Home</Link>
-            <h1>Student Table</h1> */}
             <div className="row-above">
               <div>
                 <input
@@ -105,8 +103,9 @@ const StudentTable = props => {
               rowKey='id'
               onRow={(record, rowIndex) => {
                 return {
-                    onClick: event => {
-                      props.history.push(`/students/${record.id}`);
+                  onClick: event => {
+                    props.setStudentView('studentCardView');
+                    props.setStudentID(record.id)
                   }
                 };
               }}

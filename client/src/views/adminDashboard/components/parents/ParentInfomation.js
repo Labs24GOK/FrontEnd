@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ParentInfo = props => {
+const ParentInfomation = props => {
 
     return (
         <>
@@ -9,4 +9,4 @@ const ParentInfo = props => {
     )
 }
 
-export default ParentInfo;
+export default ParentInfomation;

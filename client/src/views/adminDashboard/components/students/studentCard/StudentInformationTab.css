@@ -2,7 +2,7 @@
   display: grid;
   height: 600px;
   /* border: 2px solid black; */
-  background-color: #F7F7F8;
+  /* background-color: #F7F7F8; */
   opacity: 0.9;
   grid-gap: 5%;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; 

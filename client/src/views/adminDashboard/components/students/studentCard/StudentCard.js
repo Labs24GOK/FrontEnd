@@ -4,6 +4,7 @@ import { getStudentById, toggleEditComponent } from '../../../../../actions';
 import { withRouter, Link } from 'react-router-dom';
 import StudentInformationTab from './StudentInformationTab';
 import { Tab } from 'semantic-ui-react';
+import { CardWrapper, BackButton, BigTitle, SmallTitle, HeaderWrapper } from '../../../../../styles/styledComponents'
 import 'antd/dist/antd.css';
 import './StudentCard.css';
 import './StudentInformationTab.css';
@@ -13,14 +14,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const StudentCard = props => {
     useEffect(() => {
-      console.log('STUDENT CARD props: ', props)
-        props.getStudentById(props.match.params.id)
+        props.getStudentById(props.studentID)
     }, [])
 
     const panes = [
         {
             menuItem: 'STUDENT INFORMATION',
-            render: () => <Tab.Pane attached={false}><StudentInformationTab /></Tab.Pane>,
+            render: () => <Tab.Pane attached={false}><StudentInformationTab studentID={props.studentID}/></Tab.Pane>,
         },
         {
             menuItem: 'ENROLLMENT',
@@ -37,32 +37,26 @@ const StudentCard = props => {
     ]
 
     const goBack = () => {
-        console.log("props", props)
-        if(!props.isEditing){
-            props.history.goBack();
-        } else {
-            props.toggleEditComponent()
+        if(props.studentView === 'studentCardView') {
+            props.setStudentView('studentTableView')
         }
     }
 
     return (
         <div>
-            <div className="student-card">
-                <div className="back-button" onClick={goBack} style={{cursor:"pointer"}}
->
+            <CardWrapper>
+                <BackButton onClick={goBack} style={{cursor:"pointer"}}>
                     <FontAwesomeIcon icon='angle-left' size='lg' color='gray'/> {''}
                     Back
-                    
-                    </div>
-                <div className='student-title'>
-                    <h2>{props.studentById.first_name}</h2>
-                    <p>CPR: {props.studentById.cpr}</p>
-                    <p>Student ID: {props.studentById.id}</p>
-                </div>
+                </BackButton>
+                <HeaderWrapper>
+                    <BigTitle>{props.studentById.first_name}</BigTitle>
+                    <SmallTitle>CPR: {props.studentById.cpr}</SmallTitle>
+                    <SmallTitle>Student ID: {props.studentById.id}</SmallTitle>
+                </HeaderWrapper>
              <Tab menu={{ secondary: true, pointing: true }} panes={panes}  />
-            </div>
+            </CardWrapper>
         </div>
-        
     )
 }
 
