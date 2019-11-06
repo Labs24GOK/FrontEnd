@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 const TabsWrap = styled.div`
   display: flex;
   flex-direction: column;
-  overflow: scroll;
-  padding-top: 25px;
+  // overflow: scroll;
+  // padding-top: 25px;
 `
 
 function TabList({tabs, navigation, setNavigation, tabColor, setTabColor}) {

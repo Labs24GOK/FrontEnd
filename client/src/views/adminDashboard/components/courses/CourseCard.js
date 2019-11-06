@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getStudentById, toggleEditComponent } from '../../../../actions';
 import CourseInformationTab from './courseCardTabs/CourseInformationTab.js';
 import { withRouter, Link } from 'react-router-dom';
-import { Tab } from 'semantic-ui-react';
+import { Tab, Image, Header, Icon } from 'semantic-ui-react';
 import 'antd/dist/antd.css';
 import 'semantic-ui-css/semantic.min.css'
 import './course.scss';
@@ -39,15 +39,25 @@ const CourseCard = props => {
     return (
         <div>
             <div className="student-card">
-                <div className="back-button" onClick={goBack} style={{cursor:"pointer"}}
->
-                    <FontAwesomeIcon icon='angle-left' size='lg' color='gray'/> {''}
+                <div className="back-button" onClick={goBack} style={{cursor:"pointer", width:"10%"}}>   
+                    <Icon name='angle left'/>
                     Back
                     </div>
                 <div className='student-title'>
-                    <h2>{props.studentById.first_name}</h2>
-                    <p>CPR: {props.studentById.cpr}</p>
-                    <p>Student ID: {props.studentById.id}</p>
+                    
+                <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' circular size='small' />
+                    
+                    <Header as='h2'>
+                    BEGINNER'S ENGLISH
+                    <div className="headerDiv">
+                        <div>
+                    <div className="headerSeparateDiv">Fall 2018</div>
+                    <div className="headerSeparateDiv">MS.PARKER</div>
+                    </div>
+                    <div className="headerSeparateDiv">MON-THURS</div>
+                    </div>
+                    
+                    </Header>
                 </div>
              <Tab menu={{ secondary: true, pointing: true }} panes={panes}  />
             </div>

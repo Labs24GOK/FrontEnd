@@ -4,11 +4,12 @@ import { getStudentById, toggleEditComponent } from '../../../../../actions';
 import { withRouter, Link } from 'react-router-dom';
 import StudentInformationTab from './StudentInformationTab';
 import { Tab } from 'semantic-ui-react';
+import { Header, Image, Icon } from 'semantic-ui-react'
+
 import 'antd/dist/antd.css';
 import './StudentCard.css';
 import './StudentInformationTab.css';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 const StudentCard = props => {
@@ -19,7 +20,7 @@ const StudentCard = props => {
     const panes = [
         {
             menuItem: 'STUDENT INFORMATION',
-            render: () => <Tab.Pane attached={false}><StudentInformationTab studentID={props.studentID}/></Tab.Pane>,
+            render: () => <Tab.Pane attached={false}><StudentInformationTab studentID={props.studentID} /></Tab.Pane>,
         },
         {
             menuItem: 'ENROLLMENT',
@@ -36,29 +37,41 @@ const StudentCard = props => {
     ]
 
     const goBack = () => {
-        if(props.studentView === 'studentCardView') {
+        if (props.studentView === 'studentCardView') {
             props.setStudentView('studentTableView')
+        }
+        if(props.isEditing){
+            props.toggleEditComponent()
+            props.setStudentView('studentCardView')
         }
     }
 
     return (
         <div>
             <div className="student-card">
-                <div className="back-button" onClick={goBack} style={{cursor:"pointer"}}
->
-                    <FontAwesomeIcon icon='angle-left' size='lg' color='gray'/> {''}
+                <div className="back-button" onClick={goBack} style={{ cursor: "pointer", width: "10%" }}>
+                    <Icon name='angle left' />
                     Back
-                    
                     </div>
                 <div className='student-title'>
-                    <h2>{props.studentById.first_name}</h2>
-                    <p>CPR: {props.studentById.cpr}</p>
-                    <p>Student ID: {props.studentById.id}</p>
+
+                    <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' circular size='small' />
+
+                    <Header as='h2'>
+                        {props.studentById.first_name, props.studentById.additional_names}
+                    <div className="headerDiv">
+                            <div>
+                                <div className="headerSeparateDiv">CPR # {props.studentById.cpr}</div>
+                                <div className="headerSeparateDiv">STUDENT ID {props.studentById.id}</div>
+                            </div>
+                        </div>
+
+                    </Header>
                 </div>
-             <Tab menu={{ secondary: true, pointing: true }} panes={panes}  />
+                <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
             </div>
         </div>
-        
+
     )
 }
 

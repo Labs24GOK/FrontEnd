@@ -6,19 +6,25 @@ import Display from './Display';
 
 const DashboardWrap = styled.div`
   display: flex;
-  padding: 0px 0 0 0;
+  padding: 0 0 0 0;
+  
 `
 
 const TabsWrap = styled.div`
-  width: 20%;
+  width: 200px;
   height: 100vh;
-  overflow: scroll;
+  position: fixed;
+  top: 100px;
+  // overflow-x: hidden;
   background: #269FB0;
 `
 const DisplayWrap = styled.div`
   width: 80%;
   height: 100vh;
-  overflow: scroll;
+  position: relative;
+  top:100px;
+  left: 200px;
+  // overflow-x: hidden;
 `
 
 function Dashboard() {

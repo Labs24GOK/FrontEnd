@@ -1,8 +1,8 @@
 .student-card {
   /* border: 1px solid red; */
   float: right;
-  height: 800px;
-  width: 85vw;
+  height: auto;
+  width: 100%;
 }
 
 .back-button {

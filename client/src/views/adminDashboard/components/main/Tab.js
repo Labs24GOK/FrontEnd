@@ -7,7 +7,7 @@ const TabWrap = styled.div`
   line-height: 60px;
   vertical-alignment: center; 
   color: white;
-  margin: 0 0 30px 0;
+  // margin: 0 0 30px 0;
 `
 
 function Tab({ tab, navigation, setNavigation, tabColor, setTabColor, selected, setSelected }) {

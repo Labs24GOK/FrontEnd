@@ -9,3 +9,88 @@
 .ui.secondary.pointing.menu .item:hover{
     color: #26ABBD !important;
 }
+
+.ui.secondary.pointing.menu{
+    border: none;
+}
+.ui.segment :first-child{
+    margin-bottom:0;
+    border:none;
+    box-shadow: none;
+    color: rgb(146, 118, 118);
+    padding-bottom: 5px;
+}
+.ui.segment :last-child{
+    margin-top:0;
+    border:none;
+    box-shadow: none;
+    color: #2F3333;
+    padding-top:0;
+}
+.ui.segment.tab.active{
+    box-shadow: none;
+    margin-top: 15px;
+}
+.column{
+    text-align:left;
+}
+.row{
+    padding:0 ;
+}
+.img.ui.circular.image{
+    width: 100px;
+}
+.student-title{
+    display:flex;
+    margin: 30px 0 30px 15px;
+}
+.ui.header{
+    text-align: left;
+    margin:5px 0 0 20px
+}
+.headerDiv{
+    display:flex;
+    margin: 10px 0 0 0;
+}
+.headerSeparateDiv{
+    font-weight: normal;
+    width: 152px;
+    height: 34px;
+    margin: 0 15px 10px 0;
+    padding-left:10px;
+    font-size: 15px;
+    background-color: #CDD5E9;
+    color: #000000;
+}
+.ui.input{
+    width: 90%;
+    margin-left: 10px;
+    padding-left: -10;
+    text-align: left;
+    padding-bottom: 25px;
+}
+.ui.label {
+    background: #E0EBF0;
+    padding-bottom: 10px;
+}
+
+.ui.segment.active.tab.editForm{
+    background: #E0EBF0;
+    margin-top: 15px;
+}
+
+.ui.segment.active.tab.editForm .ui.segment{
+    background: #E0EBF0;
+}
+
+
+
+
+
+// .ui.segment.active.tab.editForm.input :last-child{
+//     width: 100%;
+//     padding-left: 0;
+//     text-align: left;
+// }
+
+

@@ -1,5 +1,5 @@
-import React, {useState, useEffect } from 'react'
-// import { bindActionCreators } from 'redux';
+import React, { useState, useEffect } from 'react'
+import { Grid, Segment, Form, Icon, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { getStudentById, toggleEditComponent } from '../../../../../actions';
 import { withRouter, Link } from 'react-router-dom';
@@ -9,112 +9,102 @@ import './StudentInformationTab.css'
 
 
 const StudentInformationTab = props => {
-    console.log('props from studnet information tab',props)
+    console.log('props from studnet information tab', props)
     useEffect(() => {
         props.getStudentById(props.studentID)
     }, [])
 
     let options = { year: 'numeric', month: 'numeric', day: 'numeric' }; //'long'
-    let birthdate = new Date(props.studentById.birthdate).toLocaleDateString('en-US', options) 
+    let birthdate = new Date(props.studentById.birthdate).toLocaleDateString('en-US', options)
     let registration_date = new Date(props.studentById.registration_date).toLocaleDateString('en-US', options)
-    
+
     const editStudentInfo = e => {
         console.log('hi')
         e.preventDefault();
         props.toggleEditComponent();
-   }
+    }
 
     return (
         <>
             {
                 !props.isEditing ?
-                <div className='grid-container'>
-                <div className='row1'>
-                    <h4>First Name</h4>
-                    <p>{props.studentById.first_name}</p>
-                    </div>
-                <div className='row1'>
-                    <h4>Additional Names</h4>
-                    <p>{props.studentById.additional_names}</p>
-                    </div>
-                <div className='row1'>
-                    <h4>Gender</h4>
-                    <p>{props.studentById.gender}</p>
-                    </div>
-                <div className='row1'>
-                    <h4>Birth date</h4>
-                    <p>{birthdate}</p>
-                    </div>
-    
-                <div className='row2'>
-                    <h4>Home Telephone</h4>
-                    <p>{props.studentById.home_telephone}</p>
-                    </div>
-                <div className='row2'>
-                    <h4>Mobile Telephone</h4>
-                    <p>{props.studentById.mobile_telephone}</p>
-                </div>
-                <div className='row2'>
-                    <h4>Email</h4>
-                    <p>{props.studentById.email}</p>
-                    </div>
-                <div className='row2'>
-                    <h4>Preferred Contact Method</h4>
-                    <p>{props.studentById.preferred_contact_method}</p>
-                </div>
-    
-                <div className='row3'>
-                    <h4>Location</h4>
-                    <p>Not done</p>
-                    </div>
-                <div className='row3'>
-                    <h4>Registration Date</h4>
-                    <p>{registration_date}</p>
-                    </div>
-                <div className='row3'>
-                    <h4>Block</h4>
-                    <p>{props.studentById.block}</p>
-                    </div>
-                <div className='row3'>
-                    <h4>Road</h4>
-                    <p>{props.studentById.road}</p>
-                    </div>
-                <div className='row3'>
-                    <h4>Flat</h4>
-                    <p>{props.studentById.flat}</p>
-                    </div>
-                <div className='row3'>
-                    <h4>Building</h4>
-                    <p>{props.studentById.building}</p>
-                    </div>
-    
-                <div className='row4'>
-                    <h4>No Call</h4>
-                    <p>{props.studentById.no_call}</p>
-                    </div>
-                <div className='row4'>
-                    <h4>Delinquent Account</h4>
-                    <p>{props.studentById.delinquent_account}</p>
-                    </div>
-                <div className='row4'>
-                    <h4>Expelled</h4>
-                    <p>{props.studentById.expelled}</p>
-                    </div>
-    
-                <div className='row5'>
-                    <h4>Notes</h4>
-                    <p>{props.studentById.notes}</p>
-                    </div>
-    
-                <div className='button-container'>
-                    <button className='placement-button' onClick={editStudentInfo}>Edit</button>
-                    <button className='placement-button' >Placement Test</button>
-                </div>
-            </div>
-            : <StudentForm {...props}/>      
+                    <Grid columns='equal'>
+                        <Grid.Row>
+                            <Grid.Column>
+                                <Segment>First name</Segment>
+                                <Segment>{props.studentById.first_name}</Segment>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Segment>Additional names</Segment>
+                                <Segment>{props.studentById.additional_names}</Segment>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Segment>Gender</Segment>
+                                <Segment>{props.studentById.gender}</Segment>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Segment>Birthdate</Segment>
+                                <Segment>{birthdate}</Segment>
+                            </Grid.Column>
+                            <Grid.Column >
+                                <Segment style={{color: "#26ABBD", cursor:"pointer", width:"fit-content"}} onClick={editStudentInfo}>
+                                <Icon name="edit" style = {{color:"#26ABBD",cursor:"pointer"}}/> Edit 
+                                </Segment>
+                            </Grid.Column>
+                        </Grid.Row>
+                        <Grid.Row>
+                            <Grid.Column>
+                                <Segment>Home Phone</Segment>
+                                <Segment>{props.studentById.home_telephone}</Segment>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Segment>Mobile</Segment>
+                                <Segment>{props.studentById.mobile_telephone}</Segment>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Segment>Email</Segment>
+                                <Segment>{props.studentById.email}</Segment>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Segment>Contact Method</Segment>
+                                <Segment>{props.studentById.preferred_contact_method}</Segment>
+                            </Grid.Column>
+                            <Grid.Column>
+                            </Grid.Column>
+                        </Grid.Row>
+                        <Grid.Row>
+                            <Grid.Column>
+                                <Segment>Location</Segment>
+                                <Segment>{props.studentById.location}</Segment>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Segment>Registration Date</Segment>
+                                <Segment>{registration_date}</Segment>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Segment>Road</Segment>
+                                <Segment>{props.studentById.road}</Segment>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Segment>Flat</Segment>
+                                <Segment>{props.studentById.flat}</Segment>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Segment>Building</Segment>
+                                <Segment>{props.studentById.building}</Segment>
+                            </Grid.Column>
+                        </Grid.Row>
+                        <Grid.Row>
+                            <Grid.Column>
+                                <Segment>Notes</Segment>
+                                <Segment><Form> <Form.TextArea placeholder='Enter any notes here...' style={{ "padding-left": "0" }} /></Form></Segment>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
+                    : <StudentForm {...props} />
             }
-       
-            
+
+
         </>
     )
 }
@@ -126,11 +116,11 @@ const mapStateToProps = state => {
         studentById: state.studentByIdReducer.studentById,
         isEditing: state.studentByIdReducer.isEditting,
     };
-  };
-  
-  export default withRouter(
+};
+
+export default withRouter(
     connect(
-      mapStateToProps,
-      { getStudentById, toggleEditComponent }
-  )(StudentInformationTab)
-  )
+        mapStateToProps,
+        { getStudentById, toggleEditComponent }
+    )(StudentInformationTab)
+)
