@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { getStudentById, toggleEditComponent } from '../../../../actions';
 import CourseInformationTab from './courseCardTabs/CourseInformationTab.js';
-import { withRouter, Link } from 'react-router-dom';
+import CoursesTab from './courseCardTabs/CoursesTab.js';
 import { Tab, Image, Header, Icon } from 'semantic-ui-react';
+
+import '../mainStyle/mainCard.scss';
 import 'antd/dist/antd.css';
-import 'semantic-ui-css/semantic.min.css'
+import 'semantic-ui-css/semantic.min.css';
 
 
 const CourseCard = props => {
 
     useEffect(() => {
-      console.log('STUDENT CARD props: ', props)
+        console.log('props from CourseCard.js', props)
         props.getStudentById(props.match.params.id)
     }, [])
 
@@ -22,7 +25,7 @@ const CourseCard = props => {
         },
         {
             menuItem: 'ENROLLED STUDENTS',
-            render: () => <Tab.Pane attached={false}>Tab 2 Content</Tab.Pane>,
+            render: () => <Tab.Pane attached={false}>{<CoursesTab />}</Tab.Pane>,
         },
     ]
 
@@ -38,7 +41,7 @@ const CourseCard = props => {
                     <Icon name='angle left'/>
                     Back
                     </div>
-                <div className='student-title'>
+                <div className='card-title'>
                 
                 <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' circular size='small' />
                     

@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import { getStudentById, toggleEditComponent } from '../../../../../actions';
 import { withRouter, Link } from 'react-router-dom';
 import StudentInformationTab from './StudentInformationTab';
+import StudentCoursesTab from './StudentCoursesTab';
 import { Tab } from 'semantic-ui-react';
 import { Header, Image, Icon } from 'semantic-ui-react'
 
 import 'antd/dist/antd.css';
+import '../../mainStyle/mainCard.scss'
 
 const StudentCard = props => {
     useEffect(() => {
@@ -19,8 +21,8 @@ const StudentCard = props => {
             render: () => <Tab.Pane attached={false}><StudentInformationTab studentID={props.studentID} /></Tab.Pane>,
         },
         {
-            menuItem: 'ENROLLMENT',
-            render: () => <Tab.Pane attached={false}>Tab 2 Content</Tab.Pane>,
+            menuItem: 'COURSES',
+            render: () => <Tab.Pane attached={false}>{<StudentCoursesTab />}</Tab.Pane>,
         },
         {
             menuItem: 'PROGRESS',
@@ -44,12 +46,11 @@ const StudentCard = props => {
 
     return (
         <div>
-            <div className="student-card">
                 <div className="back-button" onClick={goBack} style={{ cursor: "pointer", width: "10%" }}>
                     <Icon name='angle left' />
                     Back
                     </div>
-                <div className='student-title'>
+                <div className='card-title'>
 
                     <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' circular size='small' />
 
@@ -65,7 +66,6 @@ const StudentCard = props => {
                     </Header>
                 </div>
                 <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
-            </div>
         </div>
 
     )

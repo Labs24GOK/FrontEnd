@@ -38,3 +38,44 @@ export {
   DELETE_STUDENTBYID_SUCCESS,
   DELETE_STUDENTBYID_FAILURE,
 } from './adminDashboardActions/studentByIdAction.js'
+
+export {
+  getParentTable,
+  FETCH_PARENTS_START,
+  FETCH_PARENTS_SUCCESS,
+  FETCH_PARENTS_FAILURE,
+
+  getParentById,
+  FETCH_PARENTBYID_START,
+  FETCH_PARENTBYID_SUCCESS,
+  FETCH_PARENTBYID_FAILURE,
+
+  toggleEditParent,
+  editParentById,
+  EDIT_PARENTBYID_START,
+  EDIT_PARENTBYID_SUCCESS,
+  EDIT_PARENTBYID_FAILURE,
+} from './adminDashboardActions/parentAction.js'
+
+export {
+  getStaffTable,
+  FETCH_STAFF_START,
+  FETCH_STAFF_SUCCESS,
+  FETCH_STAFF_FAILURE,
+
+  getStaffById,
+  FETCH_STAFFBYID_START,
+  FETCH_STAFFBYID_SUCCESS,
+  FETCH_STAFFBYID_FAILURE,
+  
+  editStaffById,
+  toggleStaffEditComponent,
+  EDIT_STAFFBYID_START,
+  EDIT_STAFFBYID_SUCCESS,
+  EDIT_STAFFBYID_FAILURE,
+
+  addStaff,
+  ADD_STAFF_START,
+  ADD_STAFF_SUCCESS,
+  ADD_STAFF_FAILURE
+} from './adminDashboardActions/staffActions.js';

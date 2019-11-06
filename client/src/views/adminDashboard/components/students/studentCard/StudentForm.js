@@ -6,7 +6,8 @@ import { withRouter, Link } from 'react-router-dom';
 
 //might need status 
 const StudentForm = (props) => {
-    console.log("props from student form", props.studentById.birthdate)
+    console.log("props from student form", props.studentById)
+    
     const { studentID } = props;
 
     let birthdate = new Date(props.studentById.birthdate).toISOString().split("T")[0];
@@ -20,21 +21,20 @@ const StudentForm = (props) => {
         home_telephone: props.studentById.home_telephone,
         mobile_telephone: props.studentById.mobile_telephone,
         email: props.studentById.email,
-        preferred_contact_method: props.studentById.preferred_contact_method,
-        location: props.studentById.location,
+        preferred_contact_type_id: props.studentById.preferred_contact_method,
+        location_id: props.studentById.location,
         registration_date: registration_date,
-        block: props.studentById.block,
+        // block: props.studentById.block,
         road: props.studentById.road,
         flat: props.studentById.flat,
         building: props.studentById.building,
         no_call: props.studentById.no_call,
-        delinquent_account: props.studentById.delinquent_account,
+        // delinquent_account: props.studentById.delinquent_account,
         expelled: props.studentById.expelled,
         notes: props.studentById.notes
     })
-
+    
     const handleChange = e => {
-        console.log('e', e)
         setState({
             ...state,
             [e.target.name]: e.target.value
@@ -42,6 +42,7 @@ const StudentForm = (props) => {
     }
 
     const handleSubmit = e => {
+        console.log('state we are sending', state)
         e.preventDefault();
         props.editStudentById(studentID, state)
     }
@@ -55,7 +56,9 @@ const StudentForm = (props) => {
 
         <>
             <div className="ui segment active tab editForm">
+                <form onSubmit={handleSubmit}>
                 <Grid columns='equal'>
+                    
                     <Grid.Row>
                         <Grid.Column>
                             <Segment>
@@ -100,8 +103,8 @@ const StudentForm = (props) => {
                             />
                         </Grid.Column>
                         <Grid.Column >
-                            <Segment.Group horizontal style={{ background: "#E0EBF0" }}>
-                                <Segment.Inline onClick={handleSubmit} style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" }}>
+                            <Segment.Group horizontal style={{ background: "#E0EBF0", "box-shadow":"none", border:"none" }}>
+                                <Segment.Inline onClick={handleSubmit} style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" ,margin: 0}}>
                                     <Icon name="save" style={{ color: "#26ABBD", cursor: "pointer" }} /> Save
                             </Segment.Inline>
                                 <Segment.Inline onClick={handleCancel} style={{ color: "#C73642", cursor: "pointer", width: "fit-content", "margin-left": "10px" }}>
@@ -147,7 +150,7 @@ const StudentForm = (props) => {
                             <Segment>Contact Method</Segment>
                             <Input
                                 type='text'
-                                name='preferred_contact_method'
+                                name='preferred_contact_type_id'
                                 placeholder='Preferred Contact Method'
                                 onChange={handleChange}
                                 value={state.preferred_contact_method}
@@ -163,7 +166,7 @@ const StudentForm = (props) => {
                             <Segment>Location</Segment>
                             <Input
                                 type='text'
-                                name='location'
+                                name='location_id'
                                 placeholder='Location'
                                 onChange={handleChange}
                                 value={state.location}
@@ -210,7 +213,9 @@ const StudentForm = (props) => {
                             />
                         </Grid.Column>
                     </Grid.Row>
+                   
                 </Grid>
+               </form>
             </div>
         </>
     )
