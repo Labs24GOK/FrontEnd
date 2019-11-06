@@ -1,5 +1,4 @@
 import React, {useState, useEffect } from 'react'
-// imPort { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getStaffById, toggleStaffEditComponent } from '../../../../../actions';
 import { withRouter, Link } from 'react-router-dom';

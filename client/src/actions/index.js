@@ -79,5 +79,10 @@ export {
   toggleStaffEditComponent,
   EDIT_STAFFBYID_START,
   EDIT_STAFFBYID_SUCCESS,
-  EDIT_STAFFBYID_FAILURE
+  EDIT_STAFFBYID_FAILURE,
+
+  addStaff,
+  ADD_STAFF_START,
+  ADD_STAFF_SUCCESS,
+  ADD_STAFF_FAILURE
 } from './adminDashboardActions/staffAction.js';

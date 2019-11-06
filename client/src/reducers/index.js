@@ -6,7 +6,7 @@ import { staffByIdReducer } from './adminDashboardReducers/staffByIdReducer';
 import { staffTableReducer } from './adminDashboardReducers/staffTableReducer';
 import { parentReducer } from './adminDashboardReducers/parentReducer';
 import { placementTestReducer } from './adminDashboardReducers/placementTestReducer';
-
+import { addStaffReducer } from './adminDashboardReducers/addStaffReducer';
 
 export const reducer = combineReducers({
   authenticationReducer,
@@ -16,5 +16,6 @@ export const reducer = combineReducers({
   staffTableReducer,
   parentReducer,
   placementTestReducer,
+  addStaffReducer
 });
 

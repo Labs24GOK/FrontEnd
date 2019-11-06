@@ -67,4 +67,22 @@ export const editStaffById = (id, state) => dispatch => {
 }
 
 
+export const ADD_STAFF_START = 'ADD_STAFF_START';
+export const ADD_STAFF_SUCCESS = 'ADD_STAFF_SUCCESS';
+export const ADD_STAFF_FAILURE = 'ADD_STAFF_FAILURE';
+
+
+
+export const addStaff = staff => dispatch => {
+    dispatch({ type: ADD_STAFF_START })
+    axios.post('https://speak-out-be-staging.herokuapp.com/api?table=staff', staff)
+        .then(res => {
+            console.log('add staff action', res)
+           dispatch({type: ADD_STAFF_SUCCESS, payload:res.data})
+        }).catch(err=> {
+            console.log('err',err)
+            dispatch({type: ADD_STAFF_FAILURE, payload: err.payload})
+        });
+};
+
 
