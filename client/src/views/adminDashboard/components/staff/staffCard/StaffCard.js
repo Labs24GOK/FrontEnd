@@ -6,9 +6,6 @@ import StaffInformationTab from './StaffInformationTab';
 import { CardWrapper, BackButton, BigTitle, SmallTitle, HeaderWrapper } from '../../../../../styles/styledComponents'
 import { Tab } from 'semantic-ui-react';
 import 'antd/dist/antd.css';
-// import './StudentCard.css';
-// import './StudentInformationTab.css';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 

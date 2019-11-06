@@ -1,8 +1,9 @@
 import React, {useState, useEffect } from 'react'
 // imPort { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getStaffById, toggleEditComponent } from '../../../../../actions';
+import { getStaffById, toggleStaffEditComponent } from '../../../../../actions';
 import { withRouter, Link } from 'react-router-dom';
+import StaffForm from './StaffForm';
 import { Row, RowRight, Column2, H4, P} from './../../../../../styles/styledComponents'
 
 
@@ -18,12 +19,12 @@ const StaffInformationTab = props => {
 
     let options = { year: 'numeric', month: 'numeric', day: 'numeric' }; //'long'
     let birthdate = new Date(props.staffById.birthdate).toLocaleDateString('en-US', options) 
-    // let registration_date = new Date(props.staffById.registration_date).toLocaleDateString('en-US', oPtions)
+    // let registration_date = new Date(props.staffById.registration_date).toLocaleDateString('en-US', options)
     
-    const editStudentInfo = e => {
-        console.log('hi')
-        e.PreventDefault();
-        props.toggleEditComponent();
+    const editStaffInfo = e => {
+        console.log(editStaffInfo)
+        e.preventDefault();
+        props.toggleStaffEditComponent();
    }
 
     return (
@@ -32,7 +33,7 @@ const StaffInformationTab = props => {
                 !props.isEditing ?
             <>
             <RowRight className='button-container'>
-                <button className='Placement-button' onClick={editStudentInfo}>Edit</button>
+                <button  onClick={editStaffInfo}>Edit</button>
             </RowRight>
                 <Row>
                  <Column2>
@@ -93,7 +94,7 @@ const StaffInformationTab = props => {
                 </Column2>
                 </Row>
          
-        </> : null
+        </> : <StaffForm {...props} />
         }
                
         </>
@@ -114,6 +115,6 @@ const mapStateToProps = state => {
   export default withRouter(
     connect(
       mapStateToProps,
-      { getStaffById, toggleEditComponent}
+      { getStaffById, toggleStaffEditComponent}
   )(StaffInformationTab)
   )

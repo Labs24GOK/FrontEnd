@@ -39,3 +39,32 @@ export const getStaffById = id => dispatch => {
        }) 
     })
 }
+
+export const EDIT_STAFFBYID_START = 'EDIT_STAFFBYID_START';
+export const EDIT_STAFFBYID_SUCCESS = 'EDIT_STAFFBYID_SUCCESS';
+export const EDIT_STAFFBYID_FAILURE = 'EDIT_STAFFBYID_FAILURE';
+
+export const toggleStaffEditComponent = () => dispatch => {
+    console.log('hey')
+    dispatch({ type: EDIT_STAFFBYID_START })
+}
+
+export const editStaffById = (id, state) => dispatch => {
+    axios.put(`https://speak-out-be-staging.herokuapp.com/api/?table=staff&where=id=${id}`, state)
+    .then(res => {
+        console.log("res for editSTAFFBYID", res)
+        dispatch({
+            type: EDIT_STAFFBYID_SUCCESS,
+            payload: res.data
+        })
+    })
+    .catch(err => {
+       dispatch({
+        type: EDIT_STAFFBYID_FAILURE,
+        payload: err.data
+       }) 
+    })
+}
+
+
+

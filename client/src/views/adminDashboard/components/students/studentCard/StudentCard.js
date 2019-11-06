@@ -37,6 +37,7 @@ const StudentCard = props => {
     ]
 
     const goBack = () => {
+        console.log('go back students', props)
         if(props.studentView === 'studentCardView') {
             props.setStudentView('studentTableView')
         }
