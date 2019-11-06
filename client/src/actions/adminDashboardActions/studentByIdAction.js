@@ -33,7 +33,7 @@ export const toggleEditComponent = () => dispatch => {
 }
 
 export const editStudentById = (id, state) => dispatch => {
-    let obj1 = {id:id, block:"1", delinquent:true}
+    let obj1 = {id:id, block_code:"431", delinquent:true}
     let state1 = {...state, ...obj1 }
     console.log('state edit', state1, id)
     axios.put(`https://speak-out-be-staging.herokuapp.com/api/?table=student&where=id=${id}`, state1)

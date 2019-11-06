@@ -21,6 +21,8 @@ const ParentInfomation = props => {
     
     return (
         <>
+        {!props.isEditting ? 
+        <>
             <Grid columns='equal'>
                 <Grid.Row>
                     <Grid.Column>
@@ -67,6 +69,7 @@ const ParentInfomation = props => {
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
+            </> : <ParentForm {...props}/>}
         </>
     )
 }

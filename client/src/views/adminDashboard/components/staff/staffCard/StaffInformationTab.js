@@ -2,11 +2,8 @@ import React, {useState, useEffect } from 'react'
 import { Grid, Segment, Form, Icon, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { getStaffById, toggleStaffEditComponent } from '../../../../../actions';
-import{ withRouter, Link } from 'react-router-dom';
+import{ withRouter } from 'react-router-dom';
 import StaffForm from './StaffForm';
-
-
-
 
 
 const StaffInformationTab = props => {
@@ -31,7 +28,7 @@ const StaffInformationTab = props => {
         <>
             {
                 !props.isEditing ?
-            <form className= 'ui form' >
+            // <form className='ui form' >
             <Grid columns='equal'>
 
             <Grid.Row>
@@ -113,7 +110,7 @@ const StaffInformationTab = props => {
                 </Grid.Row>
 
             </Grid>
-            </form>
+            // </form>
          : <StaffForm {...props} />
         }
         

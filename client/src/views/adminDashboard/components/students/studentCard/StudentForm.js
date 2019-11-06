@@ -4,7 +4,6 @@ import { Grid, Segment, Input, Icon } from 'semantic-ui-react'
 import { editStudentById, toggleEditComponent } from '../../../../../actions';
 import { withRouter, Link } from 'react-router-dom';
 
-//might need status 
 const StudentForm = (props) => {
     console.log("props from student form", props.studentById)
     
@@ -14,6 +13,7 @@ const StudentForm = (props) => {
     let registration_date = new Date(props.studentById.registration_date).toISOString().split("T")[0];
 
     const [state, setState] = useState({
+        cpr:'6',
         first_name: props.studentById.first_name,
         additional_names: props.studentById.additional_names,
         gender: props.studentById.gender,
@@ -31,7 +31,8 @@ const StudentForm = (props) => {
         no_call: props.studentById.no_call,
         // delinquent_account: props.studentById.delinquent_account,
         expelled: props.studentById.expelled,
-        notes: props.studentById.notes
+        notes: props.studentById.notes,
+        family_id: '1'
     })
     
     const handleChange = e => {

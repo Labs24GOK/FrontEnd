@@ -186,16 +186,15 @@ const StaffForm = props => {
                 </Grid.Column>
             </Grid.Row>
 
-            <Grid.RowRight>
+            {/* <Grid.RowRight>
                 <button type='submit'>Save</button>
                 <button type='button' onClick={ () => props.toggleStaffEditComponent()} >Cancel</button>
-             </Grid.RowRight>
+             </Grid.RowRight> */}
                 </form>
             </Grid>
         </div>
     )
 }
-
 
 
 export default withRouter(
