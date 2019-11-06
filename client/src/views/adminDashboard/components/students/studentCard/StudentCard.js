@@ -7,10 +7,6 @@ import { Tab } from 'semantic-ui-react';
 import { Header, Image, Icon } from 'semantic-ui-react'
 
 import 'antd/dist/antd.css';
-import './StudentCard.css';
-import './StudentInformationTab.css';
-
-
 
 const StudentCard = props => {
     useEffect(() => {
@@ -27,7 +23,7 @@ const StudentCard = props => {
             render: () => <Tab.Pane attached={false}>Tab 2 Content</Tab.Pane>,
         },
         {
-            menuItem: 'ATTENDANCE',
+            menuItem: 'PROGRESS',
             render: () => <Tab.Pane attached={false}>Tab 3 Content</Tab.Pane>,
         },
         {
@@ -40,7 +36,7 @@ const StudentCard = props => {
         if (props.studentView === 'studentCardView') {
             props.setStudentView('studentTableView')
         }
-        if(props.isEditing){
+        if (props.isEditing) {
             props.toggleEditComponent()
             props.setStudentView('studentCardView')
         }
@@ -59,7 +55,7 @@ const StudentCard = props => {
 
                     <Header as='h2'>
                         {props.studentById.first_name, props.studentById.additional_names}
-                    <div className="headerDiv">
+                        <div className="headerDiv">
                             <div>
                                 <div className="headerSeparateDiv">CPR # {props.studentById.cpr}</div>
                                 <div className="headerSeparateDiv">STUDENT ID {props.studentById.id}</div>

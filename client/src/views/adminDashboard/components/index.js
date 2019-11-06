@@ -2,7 +2,7 @@ import React from 'react';
 import NavBar from './header/NavBar';
 import Dashboard from './main/Dashboard';
 
-import './components.scss';
+import './mainStyle/components.scss';
 
 function Index() {
 

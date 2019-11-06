@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Grid, Segment, Form, Icon, Button } from 'semantic-ui-react'
+import { Grid, Segment, Form, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { getStudentById, toggleEditComponent } from '../../../../../actions';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import StudentForm from './StudentForm';
-import './StudentInformationTab.css'
-
-
 
 const StudentInformationTab = props => {
-    console.log('props from studnet information tab', props)
+
     useEffect(() => {
         props.getStudentById(props.studentID)
     }, [])
@@ -103,8 +100,6 @@ const StudentInformationTab = props => {
                     </Grid>
                     : <StudentForm {...props} />
             }
-
-
         </>
     )
 }

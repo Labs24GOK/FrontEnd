@@ -4,46 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faCaretDown, faCalendar, faTimes } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
-import './StudentTable.css';
+import '../mainStyle/mainTable.scss';
 import Calendar from 'react-calendar';
-// import Calendar from 'react-calendar/dist/entry.nostyle';
-import { Icon } from 'semantic-ui-react';
 
-const FormWrap = styled.form`
-  // background: #EDEEEF;
-  border: 0px transparant;
-  border-radius: 3px;
-  font-size: 12px;
-  display: flex;
-  flex-direction: column;
-  transition: all 200ms ease;
-`
+import {FormWrap, Input, Button, DropdownContent} from '../mainStyle/styledComponent.js';
 
-const Input = styled.input`
-  outline: none;
-  border-radius: 3px;
-  border: 1px solid transparent;
-  background: white;
-  width: 100%;
-  height: 26px;
-`
-
-const Button = styled.button`
-  width: 120px;
-  height: 25px;
-  border-radius: 3px;
-  margin: 10px;
-  background: #EDEEEF;
-  text-align: left;
-`
-
-const DropdownContent =  styled.div`
-  display: block;
-  position: absolute;
-  width: 40px;
-  background: red;
-  z-index: 1;
-`
 
 function StudentRegistrationForm({ handleCancelButtonOnForm }) {
   const [student, setStudent] = useState({cpr: '', registrationDate: '', firstName: '', additionalNames: '', 

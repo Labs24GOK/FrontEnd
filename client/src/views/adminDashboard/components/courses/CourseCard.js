@@ -6,10 +6,6 @@ import { withRouter, Link } from 'react-router-dom';
 import { Tab, Image, Header, Icon } from 'semantic-ui-react';
 import 'antd/dist/antd.css';
 import 'semantic-ui-css/semantic.min.css'
-import './course.scss';
-// import './StudentInformationTab.css';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 const CourseCard = props => {
@@ -38,13 +34,12 @@ const CourseCard = props => {
 
     return (
         <div>
-            <div className="student-card">
                 <div className="back-button" onClick={goBack} style={{cursor:"pointer", width:"10%"}}>   
                     <Icon name='angle left'/>
                     Back
                     </div>
                 <div className='student-title'>
-                    
+                
                 <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' circular size='small' />
                     
                     <Header as='h2'>
@@ -60,7 +55,6 @@ const CourseCard = props => {
                     </Header>
                 </div>
              <Tab menu={{ secondary: true, pointing: true }} panes={panes}  />
-            </div>
         </div>
         
     )

@@ -7,6 +7,8 @@ import 'antd/dist/antd.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
+import '../mainStyle/mainCard.scss'
+
 const StudentTable = props => {
   const [search, setSearch] = useState('');
   const [form, setForm] = useState(false);
@@ -86,13 +88,8 @@ const StudentTable = props => {
         </div>
       </div>
 
-      {/* {form ? (
-              <StudentRegistrationForm handleCancelButtonOnForm={handleCancelButtonOnForm}/>
-            ) : null} */}
-
-
       {props.isLoading ? (
-        <Spin style={{ marginTop: '20px' }} size="large" />
+        <Spin style={{ marginTop: '150px' }} size="large" />
       ) : (
           <Table
             className="rowHover"
@@ -103,22 +100,16 @@ const StudentTable = props => {
             onRow={(record, rowIndex) => {
               return {
                 onClick: event => {
-                //   props.history.push(`/students/${record.id}`);
-                    // console.log('event',event)
-                    // props.setClickedTab('event',event)
-                    props.setCourseView('courseCardView')
-                    props.setCourseID(record.id)
+                  props.setCourseView('courseCardView')
+                  props.setCourseID(record.id)
                 }
               };
             }}
           />
         )}
-
-
     </div>
   )
 }
-
 
 const mapStateToProps = state => {
   return {

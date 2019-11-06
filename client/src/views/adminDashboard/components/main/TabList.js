@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import Tab from './Tab';
 import { Link } from 'react-router-dom';
+import {TabsWrapColumn} from '../mainStyle/styledComponent.js';
 
-const TabsWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  // overflow: scroll;
-  // padding-top: 25px;
-`
+
 
 function TabList({tabs, navigation, setNavigation, tabColor, setTabColor}) {
   const [selected, setSelected] = useState(navigation);
@@ -17,11 +12,11 @@ function TabList({tabs, navigation, setNavigation, tabColor, setTabColor}) {
   }, [selected])
 
   return (
-      <TabsWrap>
+      <TabsWrapColumn>
         {tabs.map((tab, index) => {
           return <Link to='/dashboard' key={index} style={{textDecoration: 'none', color: 'black'}} ><Tab tab={tab}  selected={selected} setSelected={setSelected} tabColor={tabColor} navigation={navigation} setTabColor={setTabColor} setNavigation={setNavigation} /></Link>
         })}
-      </TabsWrap>
+      </TabsWrapColumn>
   )
 }
 
