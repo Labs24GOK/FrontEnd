@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import StaffTable from './StaffTable';
 import StaffCard from './staffCard/StaffCard';
 
-const Staff = (props) => {
+const Staff = props => {
   const [staffView, setStaffView] = useState("staffTableView");
   const [staffID, setStaffID] = useState('')
   
@@ -17,6 +17,7 @@ const Staff = (props) => {
         :staffView === "staffCardView" ? <StaffCard 
               setStaffView={setStaffView} 
               staffID={staffID}
+              staffView={staffView}
               
                  /> : null}
     </>

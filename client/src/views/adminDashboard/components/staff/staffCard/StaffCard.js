@@ -3,10 +3,9 @@ import { connect } from 'react-redux';
 import { getStaffById, toggleEditComponent } from '../../../../../actions';
 import { withRouter, Link } from 'react-router-dom';
 import StaffInformationTab from './StaffInformationTab';
-import { CardWrapper, BackButton, BigTitle, SmallTitle, HeaderWrapper } from '../../../../../styles/styledComponents'
-import { Tab } from 'semantic-ui-react';
+import { Header, Image, Icon, Tab } from 'semantic-ui-react'
 import 'antd/dist/antd.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '../../mainStyle/mainCard.scss';
 
 
 const StaffCard = props => {
@@ -40,19 +39,28 @@ const StaffCard = props => {
 
     return (
         <div>
-            <CardWrapper>
-                <BackButton onClick={goBack} style={{cursor:"pointer"}}>
-                    <FontAwesomeIcon icon='angle-left' size='lg' color='gray'/> {''}
+            <div className ="card">
+                <div className="back-button" onClick={goBack} style={{cursor:"pointer", width:"10%"}}>
+                    <Icon name="angle-left" /> 
                     Back
-                    </BackButton>
-                <HeaderWrapper>
-                    <BigTitle>{props.staffById.name}</BigTitle>
-                    <SmallTitle>CPR: {props.staffById.cpr}</SmallTitle>
-                    <SmallTitle>Staff ID: {props.staffById.id}</SmallTitle>
-                </HeaderWrapper>
+                    </div>
+                <div className="card-title">
+
+                    <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' circular size='small' />
+
+                    <Header as="h2">
+                    {props.staffById.name}
+                      <div className="headerDiv">
+                          <div>
+                    <div className="headerSeparateDiv">CPR # {props.staffById.cpr}</div>
+                    <div className="headerSeparateDiv">Staff ID {props.staffById.id}</div>
+                        </div>
+                    </div>
+                    </Header>
+                </div>
              <Tab menu={{ secondary: true, pointing: true }} panes={panes}  />
-        </CardWrapper>
         </div>
+     </div>
  )
 }
 

@@ -1,26 +1,25 @@
 import React, {useState } from 'react';
 import ParentCard from './ParentCard';
-import ParentList from './ParentList';
+import ParentTable from './ParentTable';
 
 
 function Parents() {
-  const [parentView, setParentView] = useState("parents");
+  const [parentView, setParentView] = useState("parentsTable");
   const [parentId, setParentId] = useState('');
 
   return (
-    <div>
-      {parentView === "parents" ?
-        <ParentList 
+    <div> 
+      {parentView === "parentsTable" ?
+        <ParentTable
           parentView={parentView} 
           setParentView={setParentView} 
           parentId={parentId}
           setParentId={setParentId}
           /> 
-      : parentView  === "parentInfo" ?
+      : parentView  === "parentCard" ?
           <ParentCard
           parentId={parentId}
           setParentView={setParentView}
-
           /> 
       : null }
     </div>

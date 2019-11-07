@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
-import { getStudentTable } from '../../../../actions';
+import { withRouter } from 'react-router-dom';
+import { getStudentTable } from '../../../../../actions';
 import { Table, Spin } from 'antd';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
-import StudentRegistrationForm from './StudentRegistrationForm';
 
 import 'antd/dist/antd.css';
-import '../mainStyle/mainTable.scss';
+import '../../mainStyle/mainCard.scss'
 
-const StudentTable = props => {
+const CoursesTab = props => {
   const [search, setSearch] = useState('');
   const [form, setForm] = useState(false);
 
@@ -34,32 +34,42 @@ const StudentTable = props => {
 
   const columns = [
     {
-      title: 'Student ID',
+      title: 'Term',
       dataIndex: 'id',
       key: 1,
     },
     {
-      title: 'CPR',
+      title: 'Days',
       dataIndex: 'cpr',
       key: 2,
     },
     {
-      title: 'First Name',
+      title: 'Type',
       dataIndex: 'first_name',
       key: 4,
     },
     {
-      title: 'Additional Name',
+      title: 'Group',
       dataIndex: 'additional_names',
       key: 5,
     },
     {
-      title: 'Gender',
+      title: 'Level',
       dataIndex: 'gender',
       key: 6,
     },
     {
-      title: 'Phone Number',
+      title: 'Section',
+      dataIndex: 'mobile_telephone',
+      key: 7,
+    },
+    {
+      title: 'Subsection',
+      dataIndex: 'mobile_telephone',
+      key: 7,
+    },
+    {
+      title: 'Status',
       dataIndex: 'mobile_telephone',
       key: 7,
     },
@@ -83,16 +93,11 @@ const StudentTable = props => {
             onChange={handleSearchInput}
           />
         </div>
-        <div className="create-new-entry">
-          <div style={{ marginRight: '10px' }}>Create new entry</div>
-          <div><FontAwesomeIcon onClick={handleAddButton} style={{ width: '25px', height: '25px', cursor: 'pointer' }} icon={faPlusCircle} size='lg' /></div>
+        <div className="create-new-entry" style={{ cursor: 'pointer', color: '#26ABBD' }}>
+          <div style={{ marginRight: '10px' }}>Add Course</div>
+          <div><FontAwesomeIcon onClick={handleAddButton} style={{ width: '18px', height: '21px' }} icon={faPlusCircle} size='lg' /></div>
         </div>
       </div>
-
-      {form ? (
-        <StudentRegistrationForm handleCancelButtonOnForm={handleCancelButtonOnForm} />
-      ) : null}
-
 
       {props.isLoading ? (
         <Spin style={{ marginTop: '150px' }} size="large" />
@@ -106,8 +111,8 @@ const StudentTable = props => {
             onRow={(record, rowIndex) => {
               return {
                 onClick: event => {
-                  props.setStudentView('studentCardView');
-                  props.setStudentID(record.id)
+                  props.setCourseView('courseCardView')
+                  props.setCourseID(record.id)
                 }
               };
             }}
@@ -129,5 +134,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     { getStudentTable }
-  )(StudentTable)
+  )(CoursesTab)
 )

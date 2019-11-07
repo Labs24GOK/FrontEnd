@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux'
-import { Row, RowRight, Column4, H4, P} from '../../../../styles/styledComponents'
-import { addStaff  } from '../../../../actions';
+import { Grid, Segment, Input, Icon, Form } from 'semantic-ui-react'
+// import { addStaff  } from '../../../../actions';
 import { withRouter, Link } from 'react-router-dom';
 
 
@@ -41,13 +41,13 @@ const formSubmit = e => {
 
   return(
     <div>
-      <form onSubmit={formSubmit}>
-            <RowRight>
+      <Form onSubmit={formSubmit}>
+            {/* <RowRight>
                 <button>X</button>
-            </RowRight>
-            <Row>
-                <Column4>
-                    <H4>Staff ID</H4>
+            </RowRight> */}
+            <Grid.Row>
+                <Grid.Column>
+                    <Segment>Staff ID</Segment>
                     <input 
                         type='text'
                         name='id'
@@ -55,9 +55,9 @@ const formSubmit = e => {
                         onChange={handleChange}
                         value={state.id}
                     />
-                </Column4>
-                <Column4>
-                    <H4>Name</H4>
+                </Grid.Column>
+                <Grid.Column>
+                    <Segment>Name</Segment>
                     <input 
                         type='text'
                         name='name'
@@ -65,11 +65,11 @@ const formSubmit = e => {
                         onChange={handleChange}
                         value={state.name}
                     />
-                </Column4>
+                </Grid.Column>
 
 
-                <Column4>
-                    <H4>Short Name</H4>
+                <Grid.Column>
+                    <Segment>Short Name</Segment>
                     <input 
                         type='text'
                         name='short_name'
@@ -77,9 +77,9 @@ const formSubmit = e => {
                         onChange={handleChange}
                         value={state.short_name}
                     />
-                </Column4>
-                <Column4>
-                <H4>CPR</H4>
+                </Grid.Column>
+                <Grid.Column>
+                <Segment>CPR</Segment>
                     <input 
                         type='text'
                         name='cpr'
@@ -87,12 +87,12 @@ const formSubmit = e => {
                         onChange={handleChange}
                         value={state.cpr}
                     />
-                </Column4>
-                </Row>
+                </Grid.Column>
+                </Grid.Row>
 
-                <Row>
-                <Column4>
-                    <H4>Mobile Number</H4>
+                <Grid.Row>
+                <Grid.Column>
+                    <Segment>Mobile Number</Segment>
                     <input 
                         type='text' //use date for calendar
                         name='mobile_number'
@@ -100,10 +100,10 @@ const formSubmit = e => {
                         onChange={handleChange}
                         value={state.mobile_number}
                     />
-                </Column4>
+                </Grid.Column>
     
-                <Column4>
-                    <H4>Accent</H4>
+                <Grid.Column>
+                    <Segment>Accent</Segment>
                     <input 
                         type='text'
                         name='accent'
@@ -111,9 +111,9 @@ const formSubmit = e => {
                         onChange={handleChange}
                         value={state.accent}
                     />
-                </Column4>
-                <Column4>
-                    <H4>Gender</H4>
+                </Grid.Column>
+                <Grid.Column>
+                    <Segment>Gender</Segment>
                     <input 
                         type='text'
                         name='gender'
@@ -121,9 +121,9 @@ const formSubmit = e => {
                         onChange={handleChange}
                         value={state.gender}
                     />
-                </Column4>
-                <Column4>
-                    <H4>Birthdate</H4>
+                </Grid.Column>
+                <Grid.Column>
+                    <Segment>Birthdate</Segment>
                     <input 
                         type='date'
                         name='birthdate'
@@ -131,11 +131,11 @@ const formSubmit = e => {
                         onChange={handleChange}
                         value={state.birthdate}
                     />
-                </Column4>
-                </Row>
-                <Row>
-                <Column4>
-                    <H4>Teaching Rate</H4>
+                </Grid.Column>
+                </Grid.Row>
+                <Grid.Row>
+                <Grid.Column>
+                    <Segment>Teaching Rate</Segment>
                     <input 
                         type='text'
                         name='teaching_rate'
@@ -143,10 +143,10 @@ const formSubmit = e => {
                         onChange={handleChange}
                         value={state.teaching_rate}
                     />
-                </Column4>
+                </Grid.Column>
               
-                <Column4>
-                    <H4>Admin</H4>
+                <Grid.Column>
+                    <Segment>Admin</Segment>
                     <input 
                         type='text'
                         name='admin'
@@ -154,9 +154,9 @@ const formSubmit = e => {
                         onChange={handleChange}
                         value={state.admin}
                     />
-                </Column4>
-                <Column4>
-                    <H4>Active</H4>
+                </Grid.Column>
+                <Grid.Column>
+                    <Segment>Active</Segment>
                     <input 
                         type='text'
                         name='active'
@@ -164,9 +164,9 @@ const formSubmit = e => {
                         onChange={handleChange}
                         value={state.active}
                     />
-                </Column4>
-                <Column4>
-                    <H4>User Id</H4>
+                </Grid.Column>
+                <Grid.Column>
+                    <Segment>User Id</Segment>
                     <input 
                         type='text'
                         name='user_id'
@@ -174,14 +174,14 @@ const formSubmit = e => {
                         onChange={handleChange}
                         value={state.user_id}
                     />
-                </Column4>
-            </Row>
+                </Grid.Column>
+            </Grid.Row>
 
-            <RowRight>
+            {/* <RowRight> */}
                 <button type='submit'>Save</button>
                 <button type='button' onClick={ () => props.toggleStaffEditComponent()} >Cancel</button>
-            </RowRight>
-            </form>
+            {/* </RowRight> */}
+            </Form>
     </div>
   )
 }
@@ -201,7 +201,7 @@ const mapStateToProps = state => {
 export default withRouter(
   connect(
     mapStateToProps,
-    { addStaff}
+    // { addStaff}
 )(StaffRegistrationForm)
 )
 

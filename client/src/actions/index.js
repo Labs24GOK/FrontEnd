@@ -49,20 +49,13 @@ export {
   FETCH_PARENTBYID_START,
   FETCH_PARENTBYID_SUCCESS,
   FETCH_PARENTBYID_FAILURE,
+
+  toggleEditParent,
+  editParentById,
+  EDIT_PARENTBYID_START,
+  EDIT_PARENTBYID_SUCCESS,
+  EDIT_PARENTBYID_FAILURE,
 } from './adminDashboardActions/parentAction.js'
-
-export {
-  getPlacementTests,
-  FETCH_PLACEMENTTESTS_START,
-  FETCH_PLACEMENTTESTS_SUCCESS,
-  FETCH_PLACEMENTTESTS_FAILURE,
-
-  getPlacementTestById,
-  FETCH_PLACEMENTTESTTBYID_START,
-  FETCH_PLACEMENTTESTTBYID_SUCCESS,
-  FETCH_PLACEMENTTESTTBYID_FAILURE
-} from './adminDashboardActions/placementTestAction.js'
-
 
 export {
   getStaffTable,
@@ -85,4 +78,4 @@ export {
   ADD_STAFF_START,
   ADD_STAFF_SUCCESS,
   ADD_STAFF_FAILURE
-} from './adminDashboardActions/staffAction.js';
+} from './adminDashboardActions/staffActions.js';

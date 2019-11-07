@@ -1,15 +1,13 @@
 import React, {useState, useEffect } from 'react'
+import { Grid, Segment, Form, Icon, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { getStaffById, toggleStaffEditComponent } from '../../../../../actions';
-import { withRouter, Link } from 'react-router-dom';
+import{ withRouter } from 'react-router-dom';
 import StaffForm from './StaffForm';
-import { Row, RowRight, Column2, H4, P} from './../../../../../styles/styledComponents'
-
-
 
 
 const StaffInformationTab = props => {
-    console.log('staff info', props)
+    // console.log('staff info', )
     useEffect(() => {
         props.getStaffById(props.staffID)
     }, [])
@@ -18,7 +16,7 @@ const StaffInformationTab = props => {
 
     let options = { year: 'numeric', month: 'numeric', day: 'numeric' }; //'long'
     let birthdate = new Date(props.staffById.birthdate).toLocaleDateString('en-US', options) 
-    // let registration_date = new Date(props.staffById.registration_date).toLocaleDateString('en-US', options)
+    
     
     const editStaffInfo = e => {
         console.log(editStaffInfo)
@@ -26,77 +24,97 @@ const StaffInformationTab = props => {
         props.toggleStaffEditComponent();
    }
 
-    return (
+    return(
         <>
             {
                 !props.isEditing ?
-            <>
-            <RowRight className='button-container'>
-                <button  onClick={editStaffInfo}>Edit</button>
-            </RowRight>
-                <Row>
-                 <Column2>
-                    <H4>Staff ID</H4>
-                    <P>{props.staffById.id}</P>
-                </Column2>
-                <Column2>
-                    <H4>Name</H4>
-                    <P>{props.staffById.name}</P>
-                </Column2>
-            <Column2>
-                <H4>Short Name</H4>
-                <P>{props.staffById.short_name}</P>
-                </Column2>
-            <Column2>
-                <H4>CPR</H4>
-                <P>{props.staffById.cPr}</P>
-                </Column2>
-                </Row>
+            // <form className='ui form' >
+            <Grid columns='equal'>
 
-                <Row>
-                <Column2>
-                <H4>Mobile Number</H4>
-                <P>{props.staffById.mobile_number}</P>
-            </Column2>
-            <Column2>
-                <H4>Accent</H4>
-                <P>{props.staffById.accent}</P>
-            </Column2>
+            <Grid.Row>
+                 <Grid.Column>
+                    <Segment>Staff ID</Segment>
+                    <Segment>{props.staffById.id}</Segment>
+                </Grid.Column>
 
-            <Column2>
-                <H4>Gender</H4>
-                <P>{props.staffById.gender}</P>
-            </Column2>
+                <Grid.Column>
+                    <Segment>Name</Segment>
+                    <Segment>{props.staffById.name}</Segment>
+                </Grid.Column>
 
-                <Column2 className='row3'>
-                <H4>Birth date</H4>
-                <P>{birthdate}</P>
-                </Column2>
-                </Row>
+                <Grid.Column>
+                    <Segment>Short Name</Segment>
+                    <Segment>{props.staffById.short_name}</Segment>
+                </Grid.Column>
 
-                <Row>
-            <Column2 className='row3'>
-                <H4>Teaching Rate</H4>
-                <P>{props.staffById.teaching_rate}</P>
-                </Column2>
-            <Column2 className='row3'>
-                <H4>Admin</H4>
-                <P>{props.staffById.admin}</P>
-                </Column2>
-            <Column2 className='row3'>
-                <H4>Active</H4>
-                <P>{props.staffById.active}</P>
-                </Column2>
-                <Column2 className='row3'>
-                <H4>User ID</H4>
-                <P>{props.staffById.user_id}</P>
-                </Column2>
-                </Row>
-         
-        </> : <StaffForm {...props} />
+                <Grid.Column>
+                    <Segment>CPR</Segment>
+                    <Segment>{props.staffById.cpr}</Segment>
+                </Grid.Column>
+
+                <Grid.Column>
+                    <Segment style={{color: "#26ABBD", cursor:"pointer", width:"fit-content"}} onClick={editStaffInfo}> 
+                    <Icon name="edit" style = {{color:"#26ABBD",cursor:"pointer"}}/> Edit 
+                    </Segment>
+                </Grid.Column>
+            </Grid.Row>
+
+
+            <Grid.Row>
+                <Grid.Column>
+                    <Segment>Mobile Number</Segment>
+                    <Segment>{props.staffById.mobile_number}</Segment>
+                </Grid.Column>
+
+                <Grid.Column>
+                    <Segment>Accent</Segment>
+                    <Segment>{props.staffById.accent}</Segment>
+                </Grid.Column>
+
+                 <Grid.Column>
+                    <Segment>Gender</Segment>
+                    <Segment>{props.staffById.gender}</Segment>
+                </Grid.Column>
+
+                <Grid.Column>
+                    <Segment>Birth date</Segment>
+                    <Segment>{birthdate}</Segment>
+                </Grid.Column>
+
+                <Grid.Column>
+                </Grid.Column>
+            </Grid.Row>
+
+            <Grid.Row>
+                <Grid.Column>
+                    <Segment>Teaching Rate</Segment>
+                    <Segment>{props.staffById.teaching_rate}</Segment>
+                </Grid.Column>
+                <Grid.Column>
+                    <Segment>Admin</Segment>
+                    <Segment>{props.staffById.admin}</Segment>
+                </Grid.Column>
+                <Grid.Column>
+                    <Segment>Active</Segment>
+                    <Segment>{props.staffById.active}</Segment>
+                </Grid.Column>
+                <Grid.Column>
+                    <Segment>User ID</Segment>
+                    <Segment>{props.staffById.user_id}</Segment>
+                </Grid.Column>
+
+                <Grid.Column>
+
+                </Grid.Column> 
+
+                </Grid.Row>
+
+            </Grid>
+            // </form>
+         : <StaffForm {...props} />
         }
-               
-        </>
+        
+    </>
     )
 }
 
@@ -113,7 +131,7 @@ const mapStateToProps = state => {
   
   export default withRouter(
     connect(
-      mapStateToProps,
+        mapStateToProps,
       { getStaffById, toggleStaffEditComponent}
   )(StaffInformationTab)
   )

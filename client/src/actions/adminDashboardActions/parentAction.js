@@ -25,7 +25,7 @@ export const getParentById = id => dispatch => {
     dispatch({ type: FETCH_PARENTBYID_START })
     axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=family&where=id=${id}`)
     .then(res => {
-        console.log('getParentById', res.data.tableData[0])
+        console.log('getParentById', res.data)
         dispatch({
             type: FETCH_PARENTBYID_SUCCESS,
             payload: res.data.tableData[0]
@@ -34,6 +34,33 @@ export const getParentById = id => dispatch => {
     .catch(err => {
        dispatch({
         type: FETCH_PARENTBYID_FAILURE,
+        payload: err.data
+       }) 
+    })
+}
+
+
+export const EDIT_PARENTBYID_START = 'EDIT_PARENTBYID_START';
+export const EDIT_PARENTBYID_SUCCESS = 'EDIT_PARENTBYID_SUCCESS';
+export const EDIT_PARENTBYID_FAILURE = 'EDIT_PARENTBYID_FAILURE';
+
+export const toggleEditParent = () => dispatch => {
+    dispatch({ type: EDIT_PARENTBYID_START })
+}
+
+
+export const editParentById = (id, state) => dispatch => {
+    axios.put(`https://speak-out-be-staging.herokuapp.com/api/?table=family&where=id=${id}`, state)
+    .then(res => {
+        console.log("res for editParentById", res)
+        dispatch({
+            type: EDIT_PARENTBYID_SUCCESS,
+            payload: res.data
+        })
+    })
+    .catch(err => {
+       dispatch({
+        type: EDIT_PARENTBYID_FAILURE,
         payload: err.data
        }) 
     })

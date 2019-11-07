@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { getStudentById, toggleEditComponent } from '../../../../actions';
 import CourseInformationTab from './courseCardTabs/CourseInformationTab.js';
-import { withRouter, Link } from 'react-router-dom';
-import { Tab } from 'semantic-ui-react';
-import 'antd/dist/antd.css';
-import 'semantic-ui-css/semantic.min.css'
-import './course.scss';
-// import './StudentInformationTab.css';
+import CoursesTab from './courseCardTabs/CoursesTab.js';
+import { Tab, Image, Header, Icon } from 'semantic-ui-react';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '../mainStyle/mainCard.scss';
+import 'antd/dist/antd.css';
+import 'semantic-ui-css/semantic.min.css';
 
 
 const CourseCard = props => {
 
     useEffect(() => {
-      console.log('STUDENT CARD props: ', props)
+        console.log('props from CourseCard.js', props)
         props.getStudentById(props.match.params.id)
     }, [])
 
@@ -26,7 +25,7 @@ const CourseCard = props => {
         },
         {
             menuItem: 'ENROLLED STUDENTS',
-            render: () => <Tab.Pane attached={false}>Tab 2 Content</Tab.Pane>,
+            render: () => <Tab.Pane attached={false}>{<CoursesTab />}</Tab.Pane>,
         },
     ]
 
@@ -38,19 +37,27 @@ const CourseCard = props => {
 
     return (
         <div>
-            <div className="student-card">
-                <div className="back-button" onClick={goBack} style={{cursor:"pointer"}}
->
-                    <FontAwesomeIcon icon='angle-left' size='lg' color='gray'/> {''}
+                <div className="back-button" onClick={goBack} style={{cursor:"pointer", width:"10%"}}>   
+                    <Icon name='angle left'/>
                     Back
                     </div>
-                <div className='student-title'>
-                    <h2>{props.studentById.first_name}</h2>
-                    <p>CPR: {props.studentById.cpr}</p>
-                    <p>Student ID: {props.studentById.id}</p>
+                <div className='card-title'>
+                
+                <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' circular size='small' />
+                    
+                    <Header as='h2'>
+                    BEGINNER'S ENGLISH
+                    <div className="headerDiv">
+                        <div>
+                    <div className="headerSeparateDiv">Fall 2018</div>
+                    <div className="headerSeparateDiv">MS.PARKER</div>
+                    </div>
+                    <div className="headerSeparateDiv">MON-THURS</div>
+                    </div>
+                    
+                    </Header>
                 </div>
              <Tab menu={{ secondary: true, pointing: true }} panes={panes}  />
-            </div>
         </div>
         
     )

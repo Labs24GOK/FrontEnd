@@ -1,39 +1,40 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
+import { Grid, Segment, Input, Icon } from 'semantic-ui-react'
 import { editStudentById, toggleEditComponent } from '../../../../../actions';
 import { withRouter, Link } from 'react-router-dom';
-import './StudentForm.css'
-import './StudentInformationTab.css'
-import { Row, RowRight, Column4, H4, P} from '../../../../../styles/styledComponents'
-
-
-//might need status 
 const StudentForm = (props) => {
-    const {studentID} = props;
+    console.log("props from student form", props.studentById)
+    
+    const { studentID } = props;
+
+    let birthdate = new Date(props.studentById.birthdate).toISOString().split("T")[0];
+    let registration_date = new Date(props.studentById.registration_date).toISOString().split("T")[0];
 
     const [state, setState] = useState({
+        cpr:'6',
         first_name: props.studentById.first_name,
         additional_names: props.studentById.additional_names,
         gender: props.studentById.gender,
-        birthdate: props.studentById.birthdate,
+        birthdate: birthdate,
         home_telephone: props.studentById.home_telephone,
         mobile_telephone: props.studentById.mobile_telephone,
         email: props.studentById.email,
-        preferred_contact_method: props.studentById.preferred_contact_method,
-        location_id: props.studentById.location_id,
-        registration_date: props.studentById.registration_date,
-        block: props.studentById.block,
+        preferred_contact_type_id: props.studentById.preferred_contact_method,
+        location_id: props.studentById.location,
+        registration_date: registration_date,
+        // block: props.studentById.block,
         road: props.studentById.road,
         flat: props.studentById.flat,
         building: props.studentById.building,
         no_call: props.studentById.no_call,
-        delinquent_account: props.studentById.delinquent_account,
+        // delinquent_account: props.studentById.delinquent_account,
         expelled: props.studentById.expelled,
-        notes: props.studentById.notes
+        notes: props.studentById.notes,
+        family_id: '1'
     })
-
+    
     const handleChange = e => {
-        console.log('e', e)
         setState({
             ...state,
             [e.target.name]: e.target.value
@@ -41,216 +42,182 @@ const StudentForm = (props) => {
     }
 
     const handleSubmit = e => {
+        console.log('state we are sending', state)
         e.preventDefault();
         props.editStudentById(studentID, state)
     }
 
+    const handleCancel = e => {
+        e.preventDefault();
+        props.toggleEditComponent();
+    }
+
     return (
-        <div>
-           <form onSubmit={handleSubmit}>
-            <RowRight>
-                <button onClick={ () => props.toggleEditComponent()}>X</button>
-            </RowRight>
-            <Row>
-            <Column4>
-                    <H4>First Name</H4>
-                    <input 
-                        type='text'
-                        name='first_name'
-                        placeholder='First Name'
-                        onChange={handleChange}
-                        value={state.first_name}
-                    />
-                </Column4>
-                <Column4>
-                    <H4>Additional Names</H4>
-                    <input 
-                        type='text'
-                        name='additional_names'
-                        placeholder='Additional Names'
-                        onChange={handleChange}
-                        value={state.additional_names}
-                    />
-                </Column4>
-                <Column4>
-                <H4>Gender</H4>
-                    <input 
-                        type='text'
-                        name='gender'
-                        placeholder='Gender'
-                        onChange={handleChange}
-                        value={state.gender}
-                    />
-                </Column4>
-                <Column4>
-                    <H4>Birth Date</H4>
-                    <input 
-                        type='date'
-                        name='birthdate'
-                        placeholder='Gender'
-                        onChange={handleChange}
-                        value={state.birthdate}
-                    />
-                </Column4>
-            </Row>
-            <Row>
-                <Column4>            
-                    <H4>Home Telephone</H4>
-                    <input 
-                        type='text'
-                        name='home_telephone'
-                        placeholder='Home Telephone'
-                        onChange={handleChange}
-                        value={state.home_telephone}
-                    />
-                </Column4>
-                <Column4>
-                    <H4>Mobile Telephone</H4>
-                    <input 
-                        type='text'
-                        name='mobile_telephone'
-                        placeholder='Mobile Telephone'
-                        onChange={handleChange}
-                        value={state.mobile_telephone}
-                    />
-                </Column4>
-                <Column4>
-                    <H4>Email</H4>
-                    <input 
-                        type='text'
-                        name='email'
-                        placeholder='Email'
-                        onChange={handleChange}
-                        value={state.email}
-                    />
-                </Column4>
-                <Column4>
-                    <H4>Preferred Contact Method</H4>
-                    <input 
-                        type='text'
-                        name='preferred_contact_method'
-                        placeholder='Preferred Contact Method'
-                        onChange={handleChange}
-                        value={state.preferred_contact_method}
-                    />
-                </Column4>
-            </Row>
-            <Row>
-                <Column4>
-                    <H4>Location</H4>
-                    <input 
-                        type='text'
-                        name='location'
-                        placeholder='Location'
-                        onChange={handleChange}
-                        value={state.location_id}
-                    />
-                </Column4>
-                <Column4>
-                    <H4>Registration Date</H4>
-                    <input 
-                        type='date'
-                        name='registration'
-                        placeholder='registration'
-                        onChange={handleChange}
-                        value={state.registration_date}
-                    />
-                </Column4>
-                <Column4>
-                    <H4>Block</H4>
-                    <input 
-                        type='text'
-                        name='block'
-                        placeholder='block'
-                        onChange={handleChange}
-                        value={state.block}
-                    />
-                </Column4>
-                <Column4>
-                    <H4>Road</H4>
-                    <input 
-                        type='text'
-                        name='road'
-                        placeholder='road'
-                        onChange={handleChange}
-                        value={state.road}
-                    />
-                </Column4>
-            </Row>
-            <Row>
-                <Column4>
-                    <H4>Flat</H4>
-                    <input 
-                        type='text'
-                        name='flat'
-                        placeholder='flat'
-                        onChange={handleChange}
-                        value={state.flat}
-                    />
-                </Column4>
-                <Column4>
-                    <H4>Building</H4>
-                    <input 
-                        type='text'
-                        name='building'
-                        placeholder='building'
-                        onChange={handleChange}
-                        value={state.building}
-                    />
-                </Column4>
-                <Column4>
-                <H4 >No Call</H4>
-                    <input 
-                        type='text'
-                        name='no_call'
-                        placeholder='No Call'
-                        onChange={handleChange}
-                        value={state.no_call}
-                    />
-                </Column4>
-                <Column4>
-                    <H4>Delinquent Account</H4>
-                    <input 
-                        type='text'
-                        name='delinquent_account'
-                        placeholder='Delinquent Account'
-                        onChange={handleChange}
-                        value={state.delinquent_account}
-                    />
-                </Column4>
-                </Row>
-                <Row>
-                <Column4>
-                    <H4>Expelled</H4>
-                    <input 
-                        type='text'
-                        name='expelled'
-                        placeholder='Expelled'
-                        onChange={handleChange}
-                        value={state.expelled}
-                    />
-                </Column4>
-                <Column4>
-                    <H4>Notes</H4>
-                <input 
-                    type='text'
-                    name='notes'
-                    placeholder='Notes'
-                    onChange={handleChange}
-                    value={state.notes}
-                    />
-                </Column4>
-                <Column4><div></div></Column4>
-                <Column4><div></div></Column4>
-            </Row>
-            <RowRight>
-                <button type='submit'>Save</button>
-                <button type='button' onClick={ () => props.toggleEditComponent()} >Cancel</button>
-            </RowRight>
-            
-           </form>
-           
-        </div>
+
+        <>
+            <div className="ui segment active tab editForm">
+                <form onSubmit={handleSubmit}>
+                <Grid columns='equal'>
+                    
+                    <Grid.Row>
+                        <Grid.Column>
+                            <Segment>
+                                First name
+                        </Segment>
+                            <Input
+                                type='text'
+                                name='first_name'
+                                placeholder='First Name'
+                                onChange={handleChange}
+                                value={state.first_name}
+                            />
+                        </Grid.Column>
+                        <Grid.Column>
+                            <Segment>Additional names</Segment>
+                            <Input
+                                type='text'
+                                name='additional_names'
+                                placeholder='Additional Names'
+                                onChange={handleChange}
+                                value={state.additional_names}
+                            />
+                        </Grid.Column>
+                        <Grid.Column>
+                            <Segment>Gender</Segment>
+                            <Input
+                                type='text'
+                                name='gender'
+                                placeholder='Gender'
+                                onChange={handleChange}
+                                value={state.gender}
+                            />
+                        </Grid.Column>
+                        <Grid.Column>
+                            <Segment>Birthdate</Segment>
+                            <Input
+                                type='date'
+                                name='birthdate'
+                                placeholder='Gender'
+                                onChange={handleChange}
+                                value={state.birthdate}
+                            />
+                        </Grid.Column>
+                        <Grid.Column >
+                            <Segment.Group horizontal style={{ background: "#E0EBF0", "box-shadow":"none", border:"none" }}>
+                                <Segment.Inline onClick={handleSubmit} style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" ,margin: 0}}>
+                                    <Icon name="save" style={{ color: "#26ABBD", cursor: "pointer" }} /> Save
+                            </Segment.Inline>
+                                <Segment.Inline onClick={handleCancel} style={{ color: "#C73642", cursor: "pointer", width: "fit-content", "margin-left": "10px" }}>
+                                    <Icon name="cancel" style={{ color: "#C73642", cursor: "pointer" }} /> Cancel
+                            </Segment.Inline>
+                            </Segment.Group>
+                        </Grid.Column>
+                    </Grid.Row>
+
+
+                    <Grid.Row>
+                        <Grid.Column>
+                            <Segment>Home Phone</Segment>
+                            <Input
+                                type='text'
+                                name='home_telephone'
+                                placeholder='Home Telephone'
+                                onChange={handleChange}
+                                value={state.home_telephone}
+                            />
+                        </Grid.Column>
+                        <Grid.Column>
+                            <Segment>Mobile</Segment>
+                            <Input
+                                type='text'
+                                name='mobile_telephone'
+                                placeholder='Mobile Telephone'
+                                onChange={handleChange}
+                                value={state.mobile_telephone}
+                            />
+                        </Grid.Column>
+                        <Grid.Column>
+                            <Segment>Email</Segment>
+                            <Input
+                                type='text'
+                                name='gender'
+                                placeholder='Gender'
+                                onChange={handleChange}
+                                value={state.gender}
+                            />
+                        </Grid.Column>
+                        <Grid.Column>
+                            <Segment>Contact Method</Segment>
+                            <Input
+                                type='text'
+                                name='preferred_contact_type_id'
+                                placeholder='Preferred Contact Method'
+                                onChange={handleChange}
+                                value={state.preferred_contact_method}
+                            />
+                        </Grid.Column>
+                        <Grid.Column>
+                        </Grid.Column>
+                    </Grid.Row>
+
+
+                    <Grid.Row>
+                        <Grid.Column>
+                            <Segment>Location</Segment>
+                            <Input
+                                type='text'
+                                name='location_id'
+                                placeholder='Location'
+                                onChange={handleChange}
+                                value={state.location}
+                            />
+                        </Grid.Column>
+                        <Grid.Column>
+                            <Segment>Registration Date</Segment>
+                            <Input
+                                type='date'
+                                name='registration_date'
+                                placeholder='registration'
+                                onChange={handleChange}
+                                value={state.registration_date}
+                            />
+                        </Grid.Column>
+                        <Grid.Column>
+                            <Segment>Road</Segment>
+                            <Input
+                                type='text'
+                                name='road'
+                                placeholder='road'
+                                onChange={handleChange}
+                                value={state.road}
+                            />
+                        </Grid.Column>
+                        <Grid.Column>
+                            <Segment>Flat</Segment>
+                            <Input
+                                type='text'
+                                name='flat'
+                                placeholder='flat'
+                                onChange={handleChange}
+                                value={state.flat}
+                            />
+                        </Grid.Column>
+                        <Grid.Column>
+                            <Segment>Building</Segment>
+                            <Input
+                                type='text'
+                                name='building'
+                                placeholder='building'
+                                onChange={handleChange}
+                                value={state.building}
+                            />
+                        </Grid.Column>
+                    </Grid.Row>
+                   
+                </Grid>
+               </form>
+            </div>
+        </>
     )
 }
 
@@ -259,6 +226,6 @@ const StudentForm = (props) => {
 export default withRouter(
     connect(
         null,
-        { editStudentById, toggleEditComponent}
+        { editStudentById, toggleEditComponent }
     )(StudentForm)
 )

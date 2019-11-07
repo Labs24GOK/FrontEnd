@@ -4,7 +4,7 @@ import { withRouter, Link } from 'react-router-dom';
 import { getStaffTable } from '../../../../actions';
 import { Table, Spin } from 'antd';
 import 'antd/dist/antd.css';
-import '../students/studentCard/StudentCard.css';
+import '../mainStyle/mainTable.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import StaffRegistrationForm from './StaffRegistrationForm';
@@ -121,7 +121,7 @@ console.log('staff table props', props)
           
           
           {props.isLoading ? (
-            <Spin style={{marginTop: '20px'}}size="large" />
+            <Spin style={{marginTop: '150px'}}size="large" />
           ) : (
           <Table
             className="rowHover"
@@ -133,9 +133,7 @@ console.log('staff table props', props)
               return {
                 onClick: () => {
                   props.setStaffID(record.id);
-                  props.setStaffView('staffCardView');
-                  // console.log('hey hey', props.setStaffView)
-                  
+                  props.setStaffView('staffCardView');  
                 }
               };
             }}
