@@ -17,7 +17,7 @@ const initialState = {
   fetching: false,
   error: null,
   isEditing: false,
-  isEditted: false,
+  isEdited: false,
 };
 
 export const studentByIdReducer = (state = initialState, action) => {
@@ -46,7 +46,7 @@ export const studentByIdReducer = (state = initialState, action) => {
       case EDIT_STUDENTBYID_START:
               return {
                   ...state,
-                  isEditing: true,
+                  isEditing: !state.isEditing,
                   error: null,
               }
           case  EDIT_STUDENTBYID_SUCCESS:

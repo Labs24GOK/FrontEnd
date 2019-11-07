@@ -46,22 +46,22 @@ const StudentTable = props => {
     {
       title: 'First Name',
       dataIndex: 'first_name',
-      key: 4,
+      key: 3,
     },
     {
       title: 'Additional Name',
       dataIndex: 'additional_names',
-      key: 5,
+      key: 4,
     },
     {
       title: 'Gender',
       dataIndex: 'gender',
-      key: 6,
+      key: 5,
     },
     {
       title: 'Phone Number',
       dataIndex: 'mobile_telephone',
-      key: 7,
+      key: 6,
     },
   ];
 
