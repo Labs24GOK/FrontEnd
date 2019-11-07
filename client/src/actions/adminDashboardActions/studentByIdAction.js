@@ -8,7 +8,7 @@ export const getStudentById = id => dispatch => {
     dispatch({ type: FETCH_STUDENTBYID_START })
     axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=student&where=id=${id}`)
     .then(res => {
-        console.log('getById', res.data)
+        // console.log('getById', res.data)
         dispatch({
             type: FETCH_STUDENTBYID_SUCCESS,
             payload: res.data.tableData[0]
@@ -36,7 +36,7 @@ export const editStudentById = (id, state) => dispatch => {
     let state1 = {...state, ...obj1 }
     axios.put(`https://speak-out-be-staging.herokuapp.com/api/?table=student&where=id=${id}`, state1)
     .then(res => {
-        console.log("res for editStudentById", res.data)
+        // console.log("res for editStudentById", res.data)
         dispatch({
             type: EDIT_STUDENTBYID_SUCCESS,
             payload: res.data

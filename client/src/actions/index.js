@@ -79,3 +79,11 @@ export {
   ADD_STAFF_SUCCESS,
   ADD_STAFF_FAILURE
 } from './adminDashboardActions/staffActions.js';
+
+
+export {
+  getStudentProgress,
+  FETCH_STUDENTPROGESS_START,
+  FETCH_STUDENTPROGESS_SUCCESS,
+  FETCH_STUDENTPROGESS_FAILURE
+} from './adminDashboardActions/studentProgressActions.js'

@@ -8,6 +8,7 @@ function Parents() {
   const [parentId, setParentId] = useState('');
 
   return (
+    
     <div> 
       {parentView === "parentsTable" ?
         <ParentTable
