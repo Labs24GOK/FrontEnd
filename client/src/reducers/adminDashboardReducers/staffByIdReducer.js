@@ -13,8 +13,8 @@ const initialState = {
     isLoading: false,
     error: null,
     fetching: false,
-    isEditting: false,
-    isEditted: false,
+    isEditing: false,
+    isEdited: false,
 }
 
 export const staffByIdReducer = (state = initialState, action) => {

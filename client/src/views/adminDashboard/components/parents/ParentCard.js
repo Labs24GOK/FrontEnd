@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 import { getParentById } from '../../../../actions';
 import ParentInfomation from './ParentInfomation'
+import StudentInfo from './StudentInfo';
 import { Tab, Header, Image, Icon } from 'semantic-ui-react';
 import { Spin } from 'antd';
 import '../mainStyle/mainCard.scss'
@@ -10,6 +11,7 @@ import 'antd/dist/antd.css';
 
 
 const ParentCard = props => {
+    console.log('props', props)
     useEffect(() => {
         props.getParentById(props.parentId);
     },[])
@@ -21,18 +23,26 @@ const ParentCard = props => {
       },
       {
         menuItem: 'STUDENT INFORMATION',
-        render: () => <Tab.Pane attached={false}><ParentInfomation parentId={props.parentId}/></Tab.Pane>,
+        render: () => <Tab.Pane attached={false}><StudentInfo parentId={props.parentId}/></Tab.Pane>,
     },
   ]
 
-  const backToParentTable = (history) => {
-    console.log('working')
+  const backToParentTable = () => {
+    console.log('working', props)
+
+    if (props.parentView === 'parentCard') {
+        props.setParentView('parentsTable')
+    }
+    if (props.isEditing) {
+        props.toggleEditParent()
+        props.setParentView('parentCard')
+    }
 }
     return(
         <>
         
         <div>
-                <div className="back-button" on style={{ cursor: "pointer", width: "10%" }}>
+                <div className="back-button" onClick={backToParentTable} style={{ cursor: "pointer", width: "10%" }}>
                     <Icon name='angle left' />
                     Back
                     </div>
