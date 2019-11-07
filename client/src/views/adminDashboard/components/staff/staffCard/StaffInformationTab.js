@@ -25,7 +25,7 @@ const StaffInformationTab = props => {
    }
 
     return(
-        <>
+        <div className="gridView">
             {
                 !props.isEditing ?
             // <form className='ui form' >
@@ -114,7 +114,7 @@ const StaffInformationTab = props => {
          : <StaffForm {...props} />
         }
         
-    </>
+    </div>
     )
 }
 
