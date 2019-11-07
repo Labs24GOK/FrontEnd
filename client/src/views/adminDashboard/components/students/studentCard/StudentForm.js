@@ -22,7 +22,7 @@ const StudentForm = (props) => {
         mobile_telephone: props.studentById.mobile_telephone,
         email: props.studentById.email,
         preferred_contact_type_id: props.studentById.preferred_contact_method,
-        location_id: props.studentById.location,
+        location_id: props.studentById.location_id,
         registration_date: registration_date,
         // block: props.studentById.block,
         road: props.studentById.road,
@@ -49,7 +49,6 @@ const StudentForm = (props) => {
     }
 
     const handleCancel = e => {
-        e.preventDefault();
         props.toggleEditComponent();
     }
 
@@ -57,9 +56,8 @@ const StudentForm = (props) => {
 
         <>
             <div className="ui segment active tab editForm">
-                <form onSubmit={handleSubmit}>
+                {/* <form onSubmit={handleSubmit}> */}
                 <Grid columns='equal'>
-                    
                     <Grid.Row>
                         <Grid.Column>
                             <Segment>
@@ -216,7 +214,7 @@ const StudentForm = (props) => {
                     </Grid.Row>
                    
                 </Grid>
-               </form>
+               {/* </form> */}
             </div>
         </>
     )

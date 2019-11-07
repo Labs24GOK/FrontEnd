@@ -64,7 +64,7 @@ const StudentInformationTab = props => {
                             </Grid.Column>
                             <Grid.Column>
                                 <Segment>Contact Method</Segment>
-                                <Segment>{props.studentById.preferred_contact_method}</Segment>
+                                <Segment>{props.studentById.preferred_contact_type_id}</Segment>
                             </Grid.Column>
                             <Grid.Column>
                             </Grid.Column>
@@ -72,7 +72,7 @@ const StudentInformationTab = props => {
                         <Grid.Row>
                             <Grid.Column>
                                 <Segment>Location</Segment>
-                                <Segment>{props.studentById.location}</Segment>
+                                <Segment>{props.studentById.location_id}</Segment>
                             </Grid.Column>
                             <Grid.Column>
                                 <Segment>Registration Date</Segment>
@@ -109,7 +109,7 @@ const mapStateToProps = state => {
     return {
         isLoading: state.studentByIdReducer.isLoading,
         studentById: state.studentByIdReducer.studentById,
-        isEditing: state.studentByIdReducer.isEditting,
+        isEditing: state.studentByIdReducer.isEditing,
     };
 };
 
