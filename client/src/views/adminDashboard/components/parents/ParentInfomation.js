@@ -10,10 +10,6 @@ const ParentInfomation = props => {
         props.getParentById(props.parentId)
     }, [])
 
-    let options = { year: 'numeric', month: 'numeric', day: 'numeric' }; //'long'
-    let created_at = new Date(props.parentById.created_at).toLocaleDateString('en-US', options) 
-    let updated_at = new Date(props.parentById.updated_at).toLocaleDateString('en-US', options)
-    
     const editParentInfo = e => {
         e.preventDefault();
         props.toggleEditParent();
@@ -22,7 +18,6 @@ const ParentInfomation = props => {
     return (
         <>
         {!props.isEditing ? 
-        <>
             <Grid columns='equal'>
                 <Grid.Row>
                     <Grid.Column>
@@ -69,7 +64,7 @@ const ParentInfomation = props => {
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
-            </> : <ParentForm {...props}/>}
+             : <ParentForm {...props}/>}
         </>
     )
 }

@@ -16,7 +16,7 @@ import {
         parentList: [],
         parentById: [],
         isEditing: false,
-        isEditted: false,
+        isEdited: false,
   }
   
   export const parentReducer = (state = initialState, action) => {
@@ -72,7 +72,7 @@ import {
             return {
                 ...state,
                 isEditing: false,
-                isEditted: true,
+                isEdited: true,
                 parentById: action.payload
             }
         case EDIT_PARENTBYID_FAILURE:

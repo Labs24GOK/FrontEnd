@@ -20,6 +20,7 @@ function Parents() {
           <ParentCard
           parentId={parentId}
           setParentView={setParentView}
+          parentView={parentView}
           /> 
       : null }
     </div>

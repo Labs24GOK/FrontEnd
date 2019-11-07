@@ -14,7 +14,7 @@ const initialState = {
     error: null,
     fetching: false,
     isEditing: false,
-    isEditted: false,
+    isEdited: false,
 }
 
 export const staffByIdReducer = (state = initialState, action) => {
