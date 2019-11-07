@@ -1,8 +1,10 @@
 .coursesTable .ant-table-thead > tr:first-child th{
     border-left: 15px solid white;
+    background: #26ABBD;
+    color: white;
 }
 
-.coursesTable .ant-table-column-sorters:hover::before {
+.coursesTable .ant-table-column-sorters::before {
     background:#26ABBD !important;
 }
 

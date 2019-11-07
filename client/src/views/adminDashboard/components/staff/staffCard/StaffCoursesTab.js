@@ -20,7 +20,7 @@ const StaffCoursesTab = props => {
       dataIndex: 'cpr',
       key: 2,
       sorter: (a, b) => b.cpr - a.cpr,
-      sortDirections: ['descend']
+      sortDirections: ['descend'],
     },
     {
     title: 'Type',
