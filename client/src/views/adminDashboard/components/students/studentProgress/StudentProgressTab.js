@@ -1,91 +1,160 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import { connect } from 'react-redux';
+import { getStudentProgress } from '../../../../../actions';
+import{ withRouter } from 'react-router-dom';
 import { Progress } from 'antd';
 import { Grid, Segment } from 'semantic-ui-react'
 
 
 
 
-
-const StudentProgressTab = () => {
+//pass in props
+const StudentProgressTab = props => {
+ 
+        useEffect(() => {
+            props.getStudentProgress(props.studentID)
+               
+        }, [])
+        console.log('STUDENT PROGRESS TAB PROPS', props.progressByStudentId)
 
     return(
         <div>
-            <h3 style={{display: "flex", justifyContent: "flex-start", paddingTop: "12px", border: "1px solid rgba(189, 225, 230, 0.2)", height: "54px",  backgroundColor: "rgba(189, 225, 230, 0.2)"}}>Course #814 Results </h3>
+            <h3 style={{display: "flex", justifyContent: "flex-start", paddingTop: "12px", border: "1px solid rgba(189, 225, 230, 0.2)", height: "54px",  backgroundColor: "rgba(189, 225, 230, 0.2)"}}>Course #:</h3>
         <Grid  columns='equal'>
-            <Grid.Row>
+<Grid.Row>
         {/* row 1 start */}
     <Grid.Column>
-    <Segment>Speaking Fluency</Segment>
-    <Progress type="circle" percent={9} width={80} strokeColor='green' format={percent => `${percent} `} />
+        <Segment>Speaking Fluency</Segment>
+            <Progress 
+            type="circle" 
+            percent={props.progressByStudentId.speaking_fluency * 10} 
+            width={80} 
+            strokeColor='green' 
+             />
     </Grid.Column>
 
     <Grid.Column>
-    <Segment>Speaking Accuracy</Segment>
-    <Progress type="circle" percent={9} width={80} strokeColor='green' format={percent => `${percent} `} />
+        <Segment>Speaking Accuracy</Segment>
+            <Progress 
+            type="circle" 
+            percent={props.progressByStudentId.speaking_fluency * 10} 
+            width={80} 
+            strokeColor='green' 
+           
+            />
     </Grid.Column>
 
     <Grid.Column>
-    <Segment>Vocabulary</Segment>
-    <Progress type="circle" percent={5} width={80} strokeColor='yellow' format={percent => `${percent} `} />  
+        <Segment>Vocabulary</Segment>
+            <Progress 
+            type="circle" 
+            percent={props.progressByStudentId.speaking_fluency * 10} 
+            width={80} 
+            strokeColor='yellow' 
+            />  
     </Grid.Column>
 
     <Grid.Column>
-    <Segment>Pronunciation</Segment>    
-    <Progress type="circle" percent={2} width={80} strokeColor='red' format={percent => `${percent} `} />
+        <Segment>Pronunciation</Segment>    
+            <Progress 
+            type="circle" 
+            percent={props.progressByStudentId.speaking_fluency * 10} 
+            width={80} 
+            strokeColor='red' 
+            />
     </Grid.Column>
 
     <Grid.Column>
-    <Segment>Grammar</Segment>  
-    <Progress type="circle" percent={8} width={80} strokeColor='green' format={percent => `${percent} `} />
+        <Segment>Grammar</Segment>  
+            <Progress 
+            type="circle" 
+            percent={props.progressByStudentId.speaking_fluency * 10} 
+            width={80} 
+            strokeColor='green' 
+            />
     </Grid.Column>
-        {/* row 1 end */}
-            </Grid.Row>
-
+        
+</Grid.Row>
+    {/* row 1 end */}
 
         {/* row 2 start */}
-    <Grid.Row>
+<Grid.Row>
     <Grid.Column>
-    <Segment>Listening</Segment>  
-    <Progress type="circle" percent={10} width={80} strokeColor='green' format={percent => `${percent} `} />
+        <Segment>Listening</Segment>  
+            <Progress 
+            type="circle" 
+            percent={props.progressByStudentId.speaking_fluency * 10} 
+            width={80} 
+            strokeColor='green' 
+            />
     </Grid.Column>
 
     <Grid.Column>
-    <Segment>Writing</Segment>  
-    <Progress type="circle" percent={4} width={80} strokeColor='yellow' format={percent => `${percent} `} />
+        <Segment>Writing</Segment>  
+            <Progress 
+            type="circle" 
+            percent={props.progressByStudentId.speaking_fluency * 10} 
+            width={80} 
+            strokeColor='yellow' 
+            />
     </Grid.Column>
 
     <Grid.Column>
-    <Segment>Reading</Segment>  
-    <Progress type="circle" percent={1} width={80} strokeColor='red' format={percent => `${percent} `} />  
+        <Segment>Reading</Segment>  
+            <Progress 
+            type="circle" 
+            percent={props.progressByStudentId.speaking_fluency * 10} 
+            width={80} 
+            strokeColor='red' 
+            />  
     </Grid.Column>
 
     <Grid.Column>
-    <Segment>Interest</Segment>  
-    <Progress type="circle" percent={7} width={80} strokeColor='green' format={percent => `${percent} `} />
+        <Segment>Interest</Segment>  
+            <Progress 
+            type="circle" 
+            percent={props.progressByStudentId.speaking_fluency * 10} 
+            width={80} 
+            strokeColor='green' 
+            />
     </Grid.Column>
    
     <Grid.Column>
     </Grid.Column>
 
-    </Grid.Row>
+</Grid.Row>
         {/* row 2 end */}
         
-
-        <Grid.Row>
-        {/* row 3 start */}
-        <Grid.Column>
-    <Segment>Participation</Segment>  
-    <Progress type="circle" percent={10} width={80} strokeColor='green' format={percent => `${percent} `} />
+ {/* row 3 start */}
+<Grid.Row>
+    <Grid.Column>
+        <Segment>Participation</Segment>  
+            <Progress 
+            type="circle" 
+            percent={props.progressByStudentId.speaking_fluency * 10} 
+            width={80} 
+            strokeColor='green' 
+            />
     </Grid.Column>
 
     <Grid.Column>
-    <Segment>Submitting Homework</Segment> 
-    <Progress type="circle" percent={10} width={80} strokeColor='green' format={percent => `${percent} `} />
+        <Segment>Submitting Homework</Segment> 
+            <Progress 
+            type="circle" 
+            percent={props.progressByStudentId.speaking_fluency * 10} 
+            width={80} 
+            strokeColor='green' 
+            />
     </Grid.Column>
 
     <Grid.Column>
-    <Segment>Homework Effort</Segment> 
-    <Progress type="circle" percent={6} width={80} strokeColor='yellow' format={percent => `${percent} `} />   
+        <Segment>Homework Effort</Segment> 
+            <Progress 
+            type="circle" 
+            percent={props.progressByStudentId.speaking_fluency * 10}  
+            width={80} 
+            strokeColor='yellow' 
+            />   
     </Grid.Column>
   
     <Grid.Column>
@@ -94,36 +163,39 @@ const StudentProgressTab = () => {
     <Grid.Column>
     </Grid.Column>
 
-    </Grid.Row>
+</Grid.Row>
         {/* row 3 end */}
         
    {/* row 4 start */}
-
-
-        <Grid.Row>
-
+   <Grid.Row>
     <Grid.Column>
+        <Segment>Notes</Segment>
+        <Segment>{props.progressByStudentId.notes}</Segment>
     </Grid.Column>
-
-
-    <Grid.Column>
-    </Grid.Column>
-
-
-        <Grid.Column>
-        <Segment>Overall</Segment>        
-    <Progress type="circle" percent={7} strokeColor='blue' format={percent => `${percent} `} width="215px" height="200px"/>
-    </Grid.Column>
-    </Grid.Row>
+</Grid.Row>
         {/* row 4 end */}
        
         {/* row 5 start */}
         <Grid.Row>
-            <Grid.Column marginTop='5%'>
-        <Segment>Notes</Segment>
-        <Segment>Amir is showing great progress!</Segment>
-        </Grid.Column>
-        </Grid.Row>
+
+<Grid.Column>
+</Grid.Column>
+ 
+
+ <Grid.Column>
+</Grid.Column> 
+
+
+<Grid.Column>
+    <label>
+    <Segment>Overall</Segment></label>       
+        <Progress 
+        type="circle" 
+        percent={props.progressByStudentId.speaking_fluency * 10} 
+        strokeColor='blue' 
+        />
+</Grid.Column>
+</Grid.Row>
         {/* row 5 end */}
 
             </Grid>
@@ -131,8 +203,24 @@ const StudentProgressTab = () => {
     )
 }
 
+const mapStateToProps = state => {
+    return {
+        isLoading: state.studentProgressReducer.isLoading,
+        progressByStudentId: state.studentProgressReducer.progressByStudentId,
+        error: state.studentProgressReducer.error,
+    };
+};
+
+export default withRouter(
+    connect(
+        mapStateToProps,
+        { getStudentProgress}
+    )(StudentProgressTab)
+)
 
 
 
 
-export default StudentProgressTab;
+
+
+

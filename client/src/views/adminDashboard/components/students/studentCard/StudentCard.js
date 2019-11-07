@@ -27,7 +27,7 @@ const StudentCard = props => {
         },
         {
             menuItem: 'PROGRESS',
-            render: () => <Tab.Pane attached={false}><StudentProgressTab />}</Tab.Pane>,
+            render: () => <Tab.Pane attached={false}><StudentProgressTab studentID={props.studentID}  />}</Tab.Pane>,
         },
         {
             menuItem: 'BILLING',

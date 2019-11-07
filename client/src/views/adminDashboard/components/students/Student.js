@@ -10,9 +10,13 @@ const Student = () => {
     <>
         {studentView === 'studentTableView' ? < StudentTable setStudentView={setStudentView} 
                 setStudentID = {setStudentID}/> 
-        :studentView === 'studentCardView' ? <StudentCard studentID={studentID} 
-                setStudentView={setStudentView}
-        studentView={studentView}/> : null}
+        :studentView === 'studentCardView' ? <StudentCard 
+        studentID={studentID} 
+        setStudentView={setStudentView}
+        studentView={studentView}
+
+        />
+        : null}
     </>
   )
 };
