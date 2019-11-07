@@ -39,7 +39,7 @@ const mapStateToProps = state => {
     return {
         isLoading: state.parentReducer.isLoading,
         parentById: state.parentReducer.parentById,
-        isEditing: state.parentReducer.isEditting,
+        isEditing: state.parentReducer.isEditing,
     };
   };
 export default withRouter(

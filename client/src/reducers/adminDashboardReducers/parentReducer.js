@@ -15,7 +15,7 @@ import {
         error: null,
         parentList: [],
         parentById: [],
-        isEditting: false,
+        isEditing: false,
         isEditted: false,
   }
   
@@ -65,13 +65,13 @@ import {
         case EDIT_PARENTBYID_START:
             return {
                 ...state,
-                isEditting: true,
+                isEditing: true,
                 error: null,
             }
         case  EDIT_PARENTBYID_SUCCESS:
             return {
                 ...state,
-                isEditting: false,
+                isEditing: false,
                 isEditted: true,
                 parentById: action.payload
             }

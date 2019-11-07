@@ -77,7 +77,7 @@ const mapStateToProps = state => {
     return {
         isLoading: state.studentByIdReducer.isLoading,
         studentById: state.studentByIdReducer.studentById,
-        isEditing: state.studentByIdReducer.isEditting,
+        isEditing: state.studentByIdReducer.isEditing,
     };
 };
 

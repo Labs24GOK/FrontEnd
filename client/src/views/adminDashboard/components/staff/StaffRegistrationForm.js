@@ -192,7 +192,7 @@ const mapStateToProps = state => {
   return {
       isLoading: state.addStaffReducer.isLoading,
       staffList: state.addStaffReducer.staff,
-      // isEditing: state.staffByIdReducer.isEditting,
+      // isEditing: state.staffByIdReducer.isEditing,
   };
 };
 

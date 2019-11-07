@@ -21,7 +21,7 @@ const ParentInfomation = props => {
     
     return (
         <>
-        {!props.isEditting ? 
+        {!props.isEditing ? 
         <>
             <Grid columns='equal'>
                 <Grid.Row>
@@ -78,7 +78,7 @@ const mapStateToProps = state => {
     return {
         isLoading: state.parentReducer.isLoading,
         parentById: state.parentReducer.parentById,
-        isEditing: state.parentReducer.isEditting,
+        isEditing: state.parentReducer.isEditing,
     };
   };
   

@@ -46,7 +46,6 @@ const StaffForm = props => {
         <div className="ui segment active tab editForm">
             <Grid columns='equal'>
            {/* {console.log(state) } */}
-                {/* <button onClick={ () => props.toggleStaffEditComponent()}>X</button> */}
                     <Grid.Row>
                         <Grid.Column>
                             <Segment>Staff ID</Segment>
@@ -189,7 +188,6 @@ const StaffForm = props => {
                     />
                 </Grid.Column>
             </Grid.Row>
-                {/* </form> */}
             </Grid>
         </div>
     )

@@ -13,7 +13,7 @@ const initialState = {
     isLoading: false,
     error: null,
     fetching: false,
-    isEditting: false,
+    isEditing: false,
     isEditted: false,
 }
 
@@ -41,13 +41,13 @@ export const staffByIdReducer = (state = initialState, action) => {
             case EDIT_STAFFBYID_START:
                 return {
                     ...state,
-                    isEditting: true,
+                    isEditing: true,
                     error: null
                 };
             case EDIT_STAFFBYID_SUCCESS:
                 return {
                     ...state,
-                    isEditting: false,
+                    isEditing: false,
                     isEditted: true,
                     staffById: action.payload
                 };
