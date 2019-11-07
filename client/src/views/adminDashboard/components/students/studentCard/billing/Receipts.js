@@ -3,7 +3,6 @@ import { Row, Col } from 'antd';
 
 const Receipts = props => {
     
-  
     
     return (
         <>

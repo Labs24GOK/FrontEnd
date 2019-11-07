@@ -47,8 +47,6 @@ const Invoices = props => {
         },
         
       ]
-    //   const 
-
     return (
         <>
             {data.map(item => (
