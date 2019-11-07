@@ -15,7 +15,7 @@ const StudentProgressTab = props => {
             props.getStudentProgress(props.studentID)
                
         }, [])
-        console.log('STUDENT PROGRESS TAB PROPS', props.progressByStudentId)
+        // console.log('STUDENT PROGRESS TAB PROPS', props.progressByStudentId)
 
     return(
         <div>
@@ -40,7 +40,6 @@ const StudentProgressTab = props => {
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
             strokeColor='green' 
-           
             />
     </Grid.Column>
 
