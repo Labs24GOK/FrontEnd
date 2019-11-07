@@ -3,6 +3,22 @@
 }
 
 .billing-tab div.ui.pointing.secondary.menu{
-    justify-content: center;
+    justify-content: space-evenly;
+}
+
+
+.invoice-top-row{
+    background: #dff2f4;
+    padding: 5px;
+    margin-bottom: 2px;
+}
+.invoice-amount-row{
+    margin-top: 5px;
+}
+
+.invoice-bottom-row{
+    border-bottom: 1px solid #a6a6a6;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
 }
 
