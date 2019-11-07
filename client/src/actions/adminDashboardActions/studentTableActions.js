@@ -8,10 +8,10 @@ export const getStudentTable = () => dispatch => {
     dispatch({type: FETCH_STUDENTS_START})
     axios.get('https://speak-out-be-staging.herokuapp.com/api?table=student')
         .then(res => {
-            console.log('student table', res)
+            // console.log('student table', res)
            dispatch({type: FETCH_STUDENTS_SUCCESS, payload:res.data.tableData})
         }).catch(err=> {
-            console.log('err',err)
+            // console.log('err',err)
             dispatch({type: FETCH_STUDENTS_FAILURE, payload: err.payload})
         });
 };

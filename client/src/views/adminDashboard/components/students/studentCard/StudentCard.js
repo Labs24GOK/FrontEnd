@@ -7,6 +7,7 @@ import StudentCoursesTab from './StudentCoursesTab';
 import Billing from './billing/Billing'
 import { Tab } from 'semantic-ui-react';
 import { Header, Image, Icon } from 'semantic-ui-react'
+import StudentProgressTab from '../studentProgress/StudentProgressTab';
 
 import 'antd/dist/antd.css';
 import '../../mainStyle/mainCard.scss'
@@ -27,7 +28,7 @@ const StudentCard = props => {
         },
         {
             menuItem: 'PROGRESS',
-            render: () => <Tab.Pane attached={false}>Tab 3 Content</Tab.Pane>,
+            render: () => <Tab.Pane attached={false}><StudentProgressTab studentID={props.studentID}  />}</Tab.Pane>,
         },
         {
             menuItem: 'BILLING',
