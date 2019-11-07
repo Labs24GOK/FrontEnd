@@ -53,8 +53,8 @@ const ParentCard = props => {
                         {props.parentById.father_name}
                         <div className="headerDiv">
                             <div>
-                                <div className="headerSeparateDiv">CPR # </div>
-                                <div className="headerSeparateDiv">STUDENT ID </div>
+                                <div className="headerSeparateDiv">Telephone {props.parentById.primary_telephone} </div>
+                                <div className="headerSeparateDiv">Telephone {props.parentById.secondary_telephone} </div>
                             </div>
                         </div>
                     </Header>
