@@ -1,12 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
-import { getStudentTable } from '../../../../../actions';
-import { Table } from 'antd';
+import { getStudentTable, } from '../../../../../actions';
+import { Table, Button, Modal } from 'antd';
 
 import '../../students/studentCard/studentTable.scss'
 
 const StaffCoursesTab = props => {
+    const [modalVisible, setModalVisible] = useState({
+        visible: false,
+        loading: false,
+    })
+
+    const attendanceColumns = [
+        {
+            title: 'ID',
+        dataIndex: 'id',
+        key: 1,
+        },
+        {
+            title: 'Name',
+    dataIndex: 'first_name',
+    key: 3,
+        }
+    ]
+
   const columns = [
     {
       title: 'Term',
@@ -58,14 +76,48 @@ const StaffCoursesTab = props => {
     },
     {
         title: 'Attendance',
-        dataIndex: 'mobile_telephone',
-        key: 9,
+        render: (text, record) => {
+            return(
+                <Button onClick={()=>setModalVisible({visible:true})}>Take Attendance</Button>
+            )
+        }
+        
       },
   ];
 
+  const handleOk = () => {
+    setModalVisible({ loading: true });
+    setTimeout(() => {
+      setModalVisible({ loading: false, visible: false });
+    }, 3000);
+  };
+
+  const handleCancel = () => {
+    setModalVisible({ visible: false });
+  };
+
   return (
     <>
-      <Table dataSource={props.studentList} className="coursesTable" columns={columns} pagination={false} />
+        <Table dataSource={props.studentList} className="coursesTable" columns={columns} pagination={false} />
+    <Modal
+    title="Student List"
+    visible={modalVisible.visible}
+    onOk={handleOk}
+    onCancel={handleCancel}
+    footer={[
+      <Button key="back" onClick={handleCancel}>
+        Return
+      </Button>,
+      <Button key="submit" type="primary"  onClick={handleOk}>
+        Submit
+      </Button>,
+    ]}
+  >
+    <Table dataSource={props.studentList} columns={attendanceColumns} pagination={false}/>
+
+  </Modal>
+    }
+    
     </>
   )
 }
