@@ -68,6 +68,7 @@ const StudentCard = props => {
                     </Header>
                 </div>
                 <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
+                
         </div>
 
     )

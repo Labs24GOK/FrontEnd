@@ -22,7 +22,7 @@ const StudentInformationTab = props => {
     }
 
     return (
-        <>
+        <div className='gridView'>
             {
                 !props.isEditing ?
                     <Grid columns='equal'>
@@ -100,7 +100,7 @@ const StudentInformationTab = props => {
                     </Grid>
                     : <StudentForm {...props} />
             }
-        </>
+        </div>
     )
 }
 

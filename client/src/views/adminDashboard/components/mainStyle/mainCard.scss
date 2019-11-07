@@ -1,4 +1,4 @@
-div.ui.pointing.secondary.menu a.active.item{
+.ui.pointing.secondary.menu a.active.item {
     color: #26ABBD;
     border-color: #26ABBD;
 }
@@ -13,14 +13,14 @@ div.ui.secondary.pointing.menu a.active.item:hover{
 div.ui.pointing.secondary.menu{
     border: none;
 }
-div.ui.segment :first-child{
+.ui.segment.active.tab .gridView :first-child{
     margin-bottom:0;
     border:none;
     box-shadow: none;
     color: rgb(146, 118, 118);
     padding-bottom: 5px;
 }
-.ui.segment :last-child{
+.ui.segment.active.tab .gridView :last-child{
     margin-top:0;
     border:none;
     box-shadow: none;
@@ -97,5 +97,3 @@ div.ui.segment.active.tab {
 //     padding-left: 0;
 //     text-align: left;
 // }
-
-
