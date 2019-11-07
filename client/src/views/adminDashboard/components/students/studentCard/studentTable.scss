@@ -1,0 +1,13 @@
+.coursesTable .ant-table-thead > tr:first-child th{
+    background: #26ABBD;
+    border-left: 15px solid white;
+}
+.coursesTable .ant-table-thead > tr:first-child > th:last-child{
+    border-radius: 0;
+}
+// .coursesTable .ant-table table{
+//     text-align: left;
+// }
+.coursesTable .ant-table table td{
+    padding-left: 18px;
+}
