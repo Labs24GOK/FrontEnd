@@ -18,7 +18,7 @@ const StudentProgressTab = props => {
         console.log('STUDENT PROGRESS TAB PROPS', props.progressByStudentId)
 
     return(
-        <div>
+        <div className="gridView">
             <h3 style={{display: "flex", justifyContent: "flex-start", paddingTop: "12px", border: "1px solid rgba(189, 225, 230, 0.2)", height: "54px",  backgroundColor: "rgba(189, 225, 230, 0.2)"}}>Course #:</h3>
         <Grid  columns='equal'>
 <Grid.Row>
