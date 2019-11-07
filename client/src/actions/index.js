@@ -87,3 +87,12 @@ export {
   FETCH_STUDENTPROGESS_SUCCESS,
   FETCH_STUDENTPROGESS_FAILURE
 } from './adminDashboardActions/studentProgressActions.js'
+
+
+
+export {
+  getStudentCourses,
+  FETCH_STUDENTCOURSES_START,
+  FETCH_STUDENTCOURSES_SUCCESS,
+  FETCH_STUDENTCOURSES_FAILURE
+} from './adminDashboardActions/studentCourseActions.js';
