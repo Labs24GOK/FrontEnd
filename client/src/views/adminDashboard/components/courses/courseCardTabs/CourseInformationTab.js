@@ -2,6 +2,7 @@ import React from 'react'
 import { Grid, Segment, Form } from 'semantic-ui-react'
 
 const CourseInformationTab = props => (
+  <div className="gridView">
   <Grid columns='equal'>
     <Grid.Row>
       <Grid.Column>
@@ -52,6 +53,7 @@ const CourseInformationTab = props => (
       </Grid.Column>
     </Grid.Row>
   </Grid>
+  </div>
 )
 
 export default CourseInformationTab
