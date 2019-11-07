@@ -4,6 +4,7 @@ import { getStudentById, toggleEditComponent } from '../../../../../actions';
 import { withRouter, Link } from 'react-router-dom';
 import StudentInformationTab from './StudentInformationTab';
 import StudentCoursesTab from './StudentCoursesTab';
+import Billing from './billing/Billing'
 import { Tab } from 'semantic-ui-react';
 import { Header, Image, Icon } from 'semantic-ui-react'
 
@@ -30,7 +31,7 @@ const StudentCard = props => {
         },
         {
             menuItem: 'BILLING',
-            render: () => <Tab.Pane attached={false}>Tab 4 Content</Tab.Pane>,
+            render: () => <Tab.Pane attached={false}>{<Billing studentID={props.studentID} />}</Tab.Pane>,
         },
     ]
 
