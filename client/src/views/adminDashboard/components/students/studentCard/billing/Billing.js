@@ -2,6 +2,7 @@ import React from 'react';
 import Invoices from './Invoices';
 import Receipts from './Receipts'
 import { Tab } from 'semantic-ui-react';
+import './billing.scss'
 
 const Billing = props => {
     
@@ -17,7 +18,7 @@ const Billing = props => {
     ]
     return (
         <>
-            <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
+            <Tab className="billing-tab" menu={{ secondary: true, pointing: true }} panes={panes} />
         </>
     )
 }
