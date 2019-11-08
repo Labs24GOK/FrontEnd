@@ -178,7 +178,7 @@ if (!props.progressByStudentId) {
         {/* row 3 end */}
         
    {/* row 4 start */}
-   <Grid.Row style={{border: '1px solid red'}}>
+   <Grid.Row>
     <Grid.Column>
         <Segment>Notes</Segment>
         <Segment>{props.progressByStudentId.notes}</Segment>
