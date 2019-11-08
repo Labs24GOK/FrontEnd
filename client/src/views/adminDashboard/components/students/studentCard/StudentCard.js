@@ -24,7 +24,7 @@ const StudentCard = props => {
         },
         {
             menuItem: 'COURSES',
-            render: () => <Tab.Pane attached={false}>{<StudentCoursesTab />}</Tab.Pane>,
+            render: () => <Tab.Pane attached={false}>{<StudentCoursesTab studentID={props.studentID} />}</Tab.Pane>,
         },
         {
             menuItem: 'PROGRESS',
