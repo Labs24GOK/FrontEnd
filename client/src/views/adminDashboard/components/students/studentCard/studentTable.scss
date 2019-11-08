@@ -1,13 +1,15 @@
 .coursesTable .ant-table-thead > tr:first-child th{
-    background: #26ABBD;
     border-left: 15px solid white;
+    background: #26ABBD;
+    color: white;
 }
+
+.coursesTable .ant-table-column-sorters::before {
+    background:#26ABBD !important;
+}
+
 .coursesTable .ant-table-thead > tr:first-child > th:last-child{
     border-radius: 0;
 }
-// .coursesTable .ant-table table{
-//     text-align: left;
-// }
-.coursesTable .ant-table table td{
-    padding-left: 18px;
-}
+
+
