@@ -4,6 +4,10 @@
     color: white;
 }
 
+.coursesTable .ant-table-thead > tr:first-child th:last-child{
+    background: white;
+}
+
 .coursesTable .ant-table-column-sorters::before {
     background:#26ABBD !important;
 }
