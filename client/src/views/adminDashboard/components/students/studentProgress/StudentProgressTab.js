@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 import { getStudentProgress } from '../../../../../actions';
 import{ withRouter } from 'react-router-dom';
@@ -10,12 +10,22 @@ import { Grid, Segment } from 'semantic-ui-react'
 
 //pass in props
 const StudentProgressTab = props => {
- 
+    console.log('Student Progress', props)
+   
+
         useEffect(() => {
             props.getStudentProgress(props.studentID)
                
         }, [])
         // console.log('STUDENT PROGRESS TAB PROPS', props.progressByStudentId)
+
+
+
+if (!props.progressByStudentId) {
+    return <div>Please upload the students progress report.</div>
+} 
+
+
 
     return(
         <div className="gridView">
@@ -29,7 +39,7 @@ const StudentProgressTab = props => {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor='green' 
+            strokeColor={'green'}
              />
     </Grid.Column>
 
@@ -39,7 +49,7 @@ const StudentProgressTab = props => {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor='green' 
+            strokeColor={'green'}
             />
     </Grid.Column>
 
@@ -49,7 +59,7 @@ const StudentProgressTab = props => {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor='yellow' 
+            strokeColor={'green' }
             />  
     </Grid.Column>
 
@@ -59,7 +69,7 @@ const StudentProgressTab = props => {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor='red' 
+            strokeColor={'green' }
             />
     </Grid.Column>
 
