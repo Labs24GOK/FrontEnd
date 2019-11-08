@@ -96,3 +96,21 @@ export {
   FETCH_STUDENTCOURSES_SUCCESS,
   FETCH_STUDENTCOURSES_FAILURE
 } from './adminDashboardActions/studentCourseActions.js';
+
+export {
+  getCourseTable,
+  FETCH_COURSES_START,
+  FETCH_COURSES_SUCCESS,
+  FETCH_COURSES_FAILURE,
+
+  getCourseById,
+  FETCH_COURSEBYID_START,
+  FETCH_COURSEBYID_SUCCESS,
+  FETCH_COURSEBYID_FAILURE,
+
+  toggleEditCourse,
+  editCouseById,
+  EDIT_COURSEBYID_START,
+  EDIT_COURSEBYID_SUCCESS,
+  EDIT_COURSEBYID_FAILURE,
+} from './adminDashboardActions/courseAction';
