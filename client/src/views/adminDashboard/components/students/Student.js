@@ -9,12 +9,11 @@ const Student = () => {
   return (
     <>
         {studentView === 'studentTableView' ? < StudentTable setStudentView={setStudentView} 
-                setStudentID = {setStudentID}/> 
+        setStudentID = {setStudentID}/> 
         :studentView === 'studentCardView' ? <StudentCard 
         studentID={studentID} 
         setStudentView={setStudentView}
         studentView={studentView}
-
         />
         : null}
     </>
