@@ -7,6 +7,7 @@ import { Table, Button, Modal } from 'antd';
 import '../../students/studentCard/studentTable.scss'
 
 const StaffCoursesTab = props => {
+    
     useEffect(()=>{
         props.getStudentTable()
     },[])
@@ -32,21 +33,21 @@ const StaffCoursesTab = props => {
     const columns = [
         {
             title: 'Term',
-            dataIndex: 'id',
+            dataIndex: 'term',
             key: 1,
             sorter: (a, b) => a.id - b.id,
             sortDirections: ['ascend']
         },
         {
             title: 'Days',
-            dataIndex: 'cpr',
+            dataIndex: 'term',
             key: 2,
             sorter: (a, b) => b.cpr - a.cpr,
             sortDirections: ['descend'],
         },
         {
             title: 'Type',
-            dataIndex: 'first_name',
+            dataIndex: 'course_type',
             key: 3,
             sorter: (a, b) => {
                 return (b.first_name === null) - (a.first_name === null) || +(a.first_name > b.first_name) || -(a.first_name < b.first_name);
@@ -54,28 +55,28 @@ const StaffCoursesTab = props => {
             sortDirections: ['descend']
         },
         {
-            title: 'Group',
-            dataIndex: 'additional_names',
+            title: 'Group Type',
+            dataIndex: 'group_type',
             key: 4,
         },
         {
             title: 'Level',
-            dataIndex: 'gender',
+            dataIndex: 'level',
             key: 5,
         },
         {
             title: 'Section',
-            dataIndex: 'mobile_telephone',
+            dataIndex: 'section',
             key: 6,
         },
         {
             title: 'Subsection',
-            dataIndex: 'mobile_telephone',
+            dataIndex: 'subsection',
             key: 7,
         },
         {
             title: 'Status',
-            dataIndex: 'mobile_telephone',
+            dataIndex: 'status',
             key: 8,
         },
         {

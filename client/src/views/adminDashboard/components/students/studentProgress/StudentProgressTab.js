@@ -29,7 +29,7 @@ if (!props.progressByStudentId) {
 
     return(
         <div className="gridView">
-            <h3 style={{display: "flex", justifyContent: "flex-start", paddingTop: "12px", border: "1px solid rgba(189, 225, 230, 0.2)", height: "54px",  backgroundColor: "rgba(189, 225, 230, 0.2)"}}>Course #:</h3>
+            <Segment style={{display: "flex", justifyContent: "flex-start", paddingTop: "12px", border: "1px solid rgba(189, 225, 230, 0.2)", height: "54px",  backgroundColor: "rgba(189, 225, 230, 0.2)"}}>Course #:</Segment>
         <Grid  columns='equal'>
 <Grid.Row>
         {/* row 1 start */}
@@ -38,7 +38,7 @@ if (!props.progressByStudentId) {
             <Progress 
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
-            width={80} 
+            width={80}
             strokeColor={'green'}
              />
     </Grid.Column>
@@ -50,7 +50,7 @@ if (!props.progressByStudentId) {
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
             strokeColor={'green'}
-            />
+             />
     </Grid.Column>
 
     <Grid.Column>
@@ -59,7 +59,9 @@ if (!props.progressByStudentId) {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor={'green' }
+            // strokeColor={'green' }
+            strokeColor={'green'}
+             />
             />  
     </Grid.Column>
 
@@ -201,7 +203,7 @@ if (!props.progressByStudentId) {
         <Progress 
         type="circle" 
         percent={props.progressByStudentId.speaking_fluency * 10} 
-        strokeColor='blue' 
+        strokeColor='#269FB0' 
         />
 </Grid.Column>
 </Grid.Row>
