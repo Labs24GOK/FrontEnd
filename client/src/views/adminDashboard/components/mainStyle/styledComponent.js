@@ -50,10 +50,10 @@ export const TabsWrap = styled.div`
   background: #269FB0;
 `
 export const DisplayWrap = styled.div`
-  width: 80%;
+  width: 85%;
   height: 100vh;
   position: relative;
-  top:100px;
+  top: 120px;
   left: 200px;
   // overflow-x: hidden;
 `
