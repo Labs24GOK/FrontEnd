@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
-import { getStudentTable } from '../../../../actions';
+import { getCourseTable} from '../../../../actions';
 import { Table, Spin } from 'antd';
 import 'antd/dist/antd.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,13 +9,13 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 import '../mainStyle/mainCard.scss'
 
-const StudentTable = props => {
+const CourseTable = props => {
   const [search, setSearch] = useState('');
   const [form, setForm] = useState(false);
 
 
   useEffect(() => {
-    props.getStudentTable();
+    props.getCourseTable();
   }, [])
 
   const handleCancelButtonOnForm = () => {
@@ -38,36 +38,45 @@ const StudentTable = props => {
       key: 1,
     },
     {
-      title: 'Course Type',
-      dataIndex: 'cpr',
+      title: 'Term',
+      dataIndex: 'term',
       key: 2,
     },
     {
-      title: 'Group Type',
-      dataIndex: 'first_name',
+      title: 'Course Type',
+      dataIndex: 'course_type',
       key: 4,
     },
     {
-      title: 'Grade',
-      dataIndex: 'additional_names',
+      title: 'Group Type',
+      dataIndex: 'group_type',
       key: 5,
     },
     {
-      title: 'Level',
-      dataIndex: 'gender',
+      title: 'School Grade',
+      dataIndex: 'school_grade',
       key: 6,
     },
     {
-      title: 'Days',
-      dataIndex: 'mobile_telephone',
+      title: 'Level',
+      dataIndex: 'level',
+      key: 7,
+    },
+    {
+      title: 'Course Schedule',
+      dataIndex: 'course_schedule',
+      key: 7,
+    },{
+      title: 'Teacher',
+      dataIndex: 'teacher',
       key: 7,
     },
   ];
 
-  const studentData = props.studentList.sort((a, b) => {
-    return b.id - a.id
-  }
-  )
+  // const studentData = props.studentList.sort((a, b) => {
+  //   return b.id - a.id
+  // }
+  // )
 
   return (
     <div>
@@ -93,7 +102,7 @@ const StudentTable = props => {
       ) : (
           <Table
             className="rowHover"
-            dataSource={studentData}
+            dataSource={props.courseList}
             columns={columns}
             pagination={{ pageSize: 15 }}
             rowKey='id'
@@ -113,15 +122,15 @@ const StudentTable = props => {
 
 const mapStateToProps = state => {
   return {
-    isLoading: state.studentTableReducer.isLoading,
-    studentList: state.studentTableReducer.studentList,
-    error: state.studentTableReducer.error,
+    isLoading: state.coursesTableReducer.isLoading,
+    courseList: state.coursesTableReducer.courseList,
+    error: state.coursesTableReducer.error,
   };
 };
 
 export default withRouter(
   connect(
     mapStateToProps,
-    { getStudentTable }
-  )(StudentTable)
+    { getCourseTable }
+  )(CourseTable)
 )

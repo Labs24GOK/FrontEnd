@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { getStudentById, toggleEditComponent } from '../../../../actions';
+import { getCourseById, toggleEditCourse } from '../../../../actions';
 import CourseInformationTab from './courseCardTabs/CourseInformationTab.js';
 import CoursesTab from './courseCardTabs/CoursesTab.js';
 import { Tab, Image, Header, Icon } from 'semantic-ui-react';
@@ -15,17 +15,17 @@ const CourseCard = props => {
 
     useEffect(() => {
         console.log('props from CourseCard.js', props)
-        props.getStudentById(props.match.params.id)
+        props.getCourseById(props.courseId)
     }, [])
 
     const panes = [
         {
             menuItem: 'COURSE INFORMATION',
-            render: () => <Tab.Pane attached={false}>{<CourseInformationTab/>}</Tab.Pane>,
+            render: () => <Tab.Pane attached={false}>{<CourseInformationTab courseId = {props.courseID}/>}</Tab.Pane>,
         },
         {
             menuItem: 'ENROLLED STUDENTS',
-            render: () => <Tab.Pane attached={false}>{<CoursesTab />}</Tab.Pane>,
+            render: () => <Tab.Pane attached={false}>{<CoursesTab courseId = {props.courseID} />}</Tab.Pane>,
         },
     ]
 
@@ -46,13 +46,13 @@ const CourseCard = props => {
                 <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' circular size='small' />
                     
                     <Header as='h2'>
-                    BEGINNER'S ENGLISH
+                    {props.courseById.course_type}
                     <div className="headerDiv">
                         <div>
-                    <div className="headerSeparateDiv">Fall 2018</div>
-                    <div className="headerSeparateDiv">MS.PARKER</div>
+                    <div className="headerSeparateDiv">{props.courseById.term}</div>
+                    <div className="headerSeparateDiv">{props.courseById.teacher}</div>
                     </div>
-                    <div className="headerSeparateDiv">MON-THURS</div>
+                    <div className="headerSeparateDiv">{props.courseById.course_schedule}</div>
                     </div>
                     
                     </Header>
@@ -66,15 +66,15 @@ const CourseCard = props => {
 
 const mapStateToProps = state => {
     return {
-        isLoading: state.studentByIdReducer.isLoading,
-        studentById: state.studentByIdReducer.studentById,
-        isEditing: state.studentByIdReducer.isEditing,
+        isLoading: state.coursesTableReducer.isLoading,
+        courseById: state.coursesTableReducer.courseById,
+        error: state.coursesTableReducer.error,
     };
 };
 
 export default withRouter(
     connect(
         mapStateToProps,
-        { getStudentById, toggleEditComponent }
+        { getCourseById, toggleEditCourse }
     )(CourseCard)
 )

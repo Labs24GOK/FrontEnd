@@ -6,6 +6,9 @@ import { parentReducer } from './adminDashboardReducers/parentReducer';
 import { staffTableReducer } from './adminDashboardReducers/staffTableReducer';
 import { staffByIdReducer } from './adminDashboardReducers/staffByIdReducer';
 import { studentProgressReducer } from './adminDashboardReducers/studentProgressReducer';
+import { coursesTableReducer } from './adminDashboardReducers/coursesReducer';
+
+
 
 export const reducer = combineReducers({
   authenticationReducer,
@@ -14,6 +17,7 @@ export const reducer = combineReducers({
   parentReducer,
   staffTableReducer,
   staffByIdReducer,
-  studentProgressReducer
+  studentProgressReducer,
+  coursesTableReducer,
 });
 
