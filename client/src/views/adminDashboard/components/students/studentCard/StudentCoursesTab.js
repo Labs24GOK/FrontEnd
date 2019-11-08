@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
-import { getStudentTable } from '../../../../../actions';
+import { getStudentCourses } from '../../../../../actions';
 import { Table } from 'antd';
 
 import './studentTable.scss'
 
 const StudentCoursesTab = props => {
+
+  useEffect(() => {
+    props.getStudentCourses(props.studentID)
+  }, [])
+
   const columns = [
     {
       title: 'Term',
@@ -60,22 +65,22 @@ const StudentCoursesTab = props => {
 
   return (
     <>
-      <Table dataSource={props.studentList} className="coursesTable" columns={columns} pagination={false} />
+      <Table dataSource={props.courseByStudentId} className="coursesTable" columns={columns} pagination={false} />
     </>
   )
 }
 
 const mapStateToProps = state => {
   return {
-    isLoading: state.studentTableReducer.isLoading,
-    studentList: state.studentTableReducer.studentList,
-    error: state.studentTableReducer.error,
+    isLoading: state.studentCourseReducer.isLoading,
+    courseByStudentId: state.studentCourseReducer.courseByStudentId,
+    error: state.studentCourseReducer.error,
   };
 };
 
 export default withRouter(
   connect(
     mapStateToProps,
-    { getStudentTable }
+    { getStudentCourses }
   )(StudentCoursesTab)
 )

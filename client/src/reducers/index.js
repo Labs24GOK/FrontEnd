@@ -7,7 +7,7 @@ import { staffTableReducer } from './adminDashboardReducers/staffTableReducer';
 import { staffByIdReducer } from './adminDashboardReducers/staffByIdReducer';
 import { studentProgressReducer } from './adminDashboardReducers/studentProgressReducer';
 import { coursesTableReducer } from './adminDashboardReducers/coursesReducer';
-
+import { studentCourseReducer } from './adminDashboardReducers/studentCourseReducer'
 
 
 export const reducer = combineReducers({
@@ -19,5 +19,6 @@ export const reducer = combineReducers({
   staffByIdReducer,
   studentProgressReducer,
   coursesTableReducer,
+  studentCourseReducer,
 });
 
