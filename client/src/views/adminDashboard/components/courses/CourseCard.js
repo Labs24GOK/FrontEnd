@@ -18,10 +18,12 @@ const CourseCard = props => {
         props.getCourseById(props.courseId)
     }, [])
 
+
+
     const panes = [
         {
             menuItem: 'COURSE INFORMATION',
-            render: () => <Tab.Pane attached={false}>{<CourseInformationTab courseId = {props.courseID}/>}</Tab.Pane>,
+            render: () => <Tab.Pane attached={false}>{<CourseInformationTab courseId ={props.courseID}/>}</Tab.Pane>,
         },
         {
             menuItem: 'ENROLLED STUDENTS',

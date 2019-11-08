@@ -91,10 +91,14 @@ console.log('staff table props', props)
          },
       ];
       
-    const staffData = props.staffList.sort((a,b) => { 
-        return b.id - a.id }
-    )
-
+    const staffData = props.staffList
+    .sort((a,b) => { return b.id - a.id })
+    .map(item => { 
+      let options = { year: 'numeric', month: 'numeric', day: 'numeric' }
+       item.birthdate = new Date(item.birthdate).toLocaleDateString('en-US', options)
+      return item
+    })
+    
 
     return (
       <div>

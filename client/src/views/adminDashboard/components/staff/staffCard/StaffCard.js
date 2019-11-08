@@ -23,7 +23,7 @@ const StaffCard = props => {
         },
         {
             menuItem: 'COURSES',
-            render: () => <Tab.Pane attached={false}>{<StaffCoursesTab />}</Tab.Pane>,
+            render: () => <Tab.Pane attached={false}>{<StaffCoursesTab staffID={props.staffID}/>}</Tab.Pane>,
         },
         {
             menuItem: 'WORKLOG',
