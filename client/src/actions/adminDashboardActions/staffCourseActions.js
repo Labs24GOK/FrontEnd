@@ -26,16 +26,16 @@ export const getStaffCourses = teacher_id => dispatch => {
     })
 }
 
-export const staffGetStudentsByCourseID = course_id => dispatch => {
+export const getStudentsByCourseID = course_id => dispatch => {
     console.log('course id from staffCourseActions.js', course_id)
     dispatch({ type: FETCH_STUDENTSBYCOURSEID_START })
-    axios.put(`https://speak-out-be-staging.herokuapp.com/api/?table=course_enrollment_view&where=course_id=${course_id}`)
+    axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=course_enrollment_view&where=course_id=${course_id}`)
     .then(res => {
         console.log('staff students by courseid', res) 
-        // dispatch({
-        //     type: FETCH_STUDENTSBYCOURSEID_SUCCESS,
-        //     payload: res.data.tableData
-        // })
+        dispatch({
+            type: FETCH_STUDENTSBYCOURSEID_SUCCESS,
+            payload: res.data.tableData
+        })
     })
     .catch(err => {
        dispatch({

@@ -72,22 +72,22 @@ console.log('staff table props', props)
           {
               title: 'BirthDate',
               dataIndex: 'birthdate',
-              key: 9,
+              key: 8,
           },
           {
               title: 'Teaching Rate',
               dataIndex: 'teaching_rate',
-              key: 10,
+              key: 9,
           },
           {
               title: 'Admin',
               ataIndex: 'admin ',
-              key: 12,
+              key: 10,
         },
         {
             title: 'Active',
             dataIndex: 'active',
-            key: 13,
+            key: 11,
          },
       ];
       
