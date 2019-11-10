@@ -62,7 +62,6 @@ if (!props.progressByStudentId) {
             // strokeColor={'green' }
             strokeColor={'green'}
              />
-            />  
     </Grid.Column>
 
     <Grid.Column>
