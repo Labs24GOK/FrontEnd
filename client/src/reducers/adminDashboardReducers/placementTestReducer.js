@@ -57,6 +57,5 @@ import {
                 error: action.payload
             }
         default: return state;
-  
     }
   }
