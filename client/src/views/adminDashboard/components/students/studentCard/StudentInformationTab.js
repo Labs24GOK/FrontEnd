@@ -30,7 +30,7 @@ const StudentInformationTab = props => {
     
     const editStudentInfo = e => {
         e.preventDefault();
-        props.toggleEditComponent();
+        props.toggleEditComponent('true');
     }
 
     return (

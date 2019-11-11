@@ -6,13 +6,13 @@ import { withRouter, Link } from 'react-router-dom';
 
 
 const StudentForm = (props) => {
-    
+
     const { studentID } = props;
 
     let birthdate = new Date(props.studentById.birthdate).toISOString().split("T")[0];
 
     const [state, setState] = useState({
-        cpr:props.studentById.cpr,
+        cpr: props.studentById.cpr,
         id: studentID,
         first_name: props.studentById.first_name,
         additional_names: props.studentById.additional_names,
@@ -33,7 +33,7 @@ const StudentForm = (props) => {
         notes: props.studentById.notes,
         family_id: props.studentById.family_id
     })
-    
+
     const handleChange = e => {
         setState({
             ...state,
@@ -44,20 +44,31 @@ const StudentForm = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         props.editStudentById(studentID, state)
+        props.toggleEditComponent('false', 'true')
     }
 
     const handleCancel = e => {
-        props.toggleEditComponent();
+        props.toggleEditComponent('false', 'false');
     }
 
     const genderOptions = [
-        { key: 'M', text: 'M', value: state.gender},
-        { key: 'F', text: 'F', value: state.gender}
+        { key: 'M', text: 'M', value: state.gender },
+        { key: 'F', text: 'F', value: state.gender }
     ]
 
+    const blockCode = [
+        {key: , integer: 363, value: state.block_code},
+        {key: , integer: 431, value: state.block_code},
+        {key: 432, integer: 433, value: state.block_code},
+        {key: 432, integer: 435, value: state.block_code},
+        {key: 432, integer: 439, value: state.block_code},
+        {key: 432, integer: 441, value: state.block_code},
+    ]
+    
     return (
         <>
             <div className="ui segment active tab editForm">
+                {!props.isEdited ? <h3 style={{color: 'red'}}>{props.error}</h3> : null}
                 <Grid columns='equal'>
                     <Grid.Row>
                         {/* row 1 */}
@@ -92,7 +103,7 @@ const StudentForm = (props) => {
                                 onChange={handleChange}
                                 value={state.gender}
                             /> */}
-                             <Dropdown placeholder='Gender' search selection options={genderOptions} />
+                            <Dropdown placeholder='Gender' search selection options={genderOptions} />
                         </Grid.Column>
                         <Grid.Column>
                             <Segment>Birthdate</Segment>
@@ -105,8 +116,8 @@ const StudentForm = (props) => {
                             />
                         </Grid.Column>
                         <Grid.Column >
-                            <Segment.Group horizontal style={{ background: "#E0EBF0", "box-shadow":"none", border:"none" }}>
-                                <Segment.Inline onClick={handleSubmit} style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" ,margin: 0}}>
+                            <Segment.Group horizontal style={{ background: "#E0EBF0", "box-shadow": "none", border: "none" }}>
+                                <Segment.Inline onClick={handleSubmit} style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content", margin: 0 }}>
                                     <Icon name="save" style={{ color: "#26ABBD", cursor: "pointer" }} /> Save
                             </Segment.Inline>
                                 <Segment.Inline onClick={handleCancel} style={{ color: "#C73642", cursor: "pointer", width: "fit-content", "margin-left": "10px" }}>
@@ -115,7 +126,7 @@ const StudentForm = (props) => {
                             </Segment.Group>
                         </Grid.Column>
                     </Grid.Row>
-                     {/* row 2 */}
+                    {/* row 2 */}
 
                     <Grid.Row>
                         <Grid.Column>
@@ -203,13 +214,17 @@ const StudentForm = (props) => {
                         </Grid.Column>
                         <Grid.Column>
                             <Segment>Block Code</Segment>
-                            <Input
+                            <Dropdown 
+                            placeholder='Block Code' 
+                            search selection options={block_code}
+                            />
+                            {/* <Input
                                 type='text'
                                 name='block_code'
                                 placeholder='Block Code'
                                 onChange={handleChange}
                                 value={state.block_code}
-                            /> 
+                            /> */}
                         </Grid.Column>
                     </Grid.Row>
 
@@ -218,22 +233,22 @@ const StudentForm = (props) => {
                         <Grid.Column>
                             <Segment>Delinquent</Segment>
                             <Input
-                                type='text'
+                                type='boolean'
                                 name='delinquent'
                                 placeholder='Delinquent'
                                 onChange={handleChange}
                                 value={state.delinquent}
-                            /> 
+                            />
                         </Grid.Column>
                         <Grid.Column>
-                        <Segment>CPR</Segment>
+                            <Segment>CPR</Segment>
                             <Input
                                 type='text'
                                 name='cpr'
                                 placeholder='CPR'
                                 onChange={handleChange}
                                 value={state.cpr}
-                            /> 
+                            />
                         </Grid.Column>
                         <Grid.Column>
                             <Segment>ID</Segment>
@@ -243,7 +258,7 @@ const StudentForm = (props) => {
                                 placeholder='ID'
                                 onChange={handleChange}
                                 value={state.id}
-                            /> 
+                            />
                         </Grid.Column>
                         <Grid.Column>
                             <Segment>School Name</Segment>
@@ -253,7 +268,7 @@ const StudentForm = (props) => {
                                 placeholder='School Name'
                                 onChange={handleChange}
                                 value={state.school_name}
-                            /> 
+                            />
                         </Grid.Column>
                         <Grid.Column>
                             <Segment>School Grade ID</Segment>
@@ -263,7 +278,7 @@ const StudentForm = (props) => {
                                 placeholder='School Grade ID'
                                 onChange={handleChange}
                                 value={state.school_grade_id}
-                            /> 
+                            />
                         </Grid.Column>
 
                         {/* row 5 */}
@@ -275,7 +290,7 @@ const StudentForm = (props) => {
                                 placeholder='Grade Updated'
                                 onChange={handleChange}
                                 value={state.grade_updated}
-                            /> 
+                            />
                         </Grid.Column>
                         <Grid.Column>
                             <Segment>Family ID</Segment>
@@ -285,20 +300,20 @@ const StudentForm = (props) => {
                                 placeholder='Family ID'
                                 onChange={handleChange}
                                 value={state.family_id}
-                            /> 
+                            />
                         </Grid.Column>
 
-                        </Grid.Row>
+                    </Grid.Row>
                     {/* row 6 */}
-                        <Grid.Column>
+                    <Grid.Column>
                         <Segment>Notes</Segment>
-                            <Input
-                                type='text'
-                                name='notes'
-                                placeholder='Notes'
-                                onChange={handleChange}
-                                value={state.notes}
-                            /> 
+                        <Input
+                            type='text'
+                            name='notes'
+                            placeholder='Notes'
+                            onChange={handleChange}
+                            value={state.notes}
+                        />
 
                     </Grid.Column>
                 </Grid>
@@ -307,11 +322,20 @@ const StudentForm = (props) => {
     )
 }
 
+const mapStateToProps = state => {
+    return {
+        isLoading: state.studentByIdReducer.isLoading,
+        studentById: state.studentByIdReducer.studentById,
+        isEdited: state.studentByIdReducer.isEdited,
+        isEditing: state.studentByIdReducer.isEditing,
+        error: state.studentByIdReducer.error
+    };
+};
 
 
 export default withRouter(
     connect(
-        null,
+        mapStateToProps,
         { editStudentById, toggleEditComponent }
     )(StudentForm)
 )
