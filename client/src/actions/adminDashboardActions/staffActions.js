@@ -75,10 +75,6 @@ export const toggleAddStaffComponent = () => dispatch => {
 export const addStaff = staff => dispatch => {
     axios.post('https://speak-out-be-staging.herokuapp.com/api?table=staff', staff)
         .then(res => {
-<<<<<<< HEAD
-            console.log('add staff action', res.data)
-=======
->>>>>>> 23027271c4929c4c875d448b56e40c53b2a99568
            dispatch({type: ADD_STAFF_SUCCESS, payload:res.data})
         }).catch(err=> {
             console.log('err',err)

@@ -1,12 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import { Grid, Segment, Form, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux';
-import { getStudentById, toggleEditComponent } from '../../../../../actions';
+import { getStudentById, toggleEditComponent, toggleEditPlacement } from '../../../../../actions';
 import { withRouter } from 'react-router-dom';
 import StudentForm from './StudentForm';
+import PlacementTest from '../placementTest/placementTest'
+import PlacementForm from '../placementTest/placementForm'
+import { Modal } from 'antd';
+import { RedButton } from '../../mainStyle/styledComponent'
 
 const StudentInformationTab = props => {
+    const [modalState, setModalState]= useState(false)
 
+    const openModal = () => {
+        setModalState(true)
+    }
+    const cancelModal = () => {
+        setModalState(false)
+    }
+ 
     useEffect(() => {
         props.getStudentById(props.studentID)
     }, [])
@@ -145,10 +157,27 @@ const StudentInformationTab = props => {
                                 <Segment>Notes</Segment>
                                 <Segment>{props.studentById.notes}</Segment>
                             </Grid.Column>
+                            <Grid.Column>
+                                <RedButton onClick={openModal}>Placement Exam</RedButton>
+                            </Grid.Column>
                         </Grid.Row>
                     </Grid>
                     : <StudentForm {...props} />
             }
+
+            <Modal
+            title="Placement Exam"
+            width="60%"
+            visible={modalState}
+            onCancel={cancelModal}
+            footer={null}
+            >
+                {!props.isTestEditing
+                ? 
+                <PlacementTest {...props} />
+                 : <PlacementForm {...props} />
+             }
+            </Modal>
         </div>
     )
 }
@@ -159,12 +188,13 @@ const mapStateToProps = state => {
         isLoading: state.studentByIdReducer.isLoading,
         studentById: state.studentByIdReducer.studentById,
         isEditing: state.studentByIdReducer.isEditing,
+        isTestEditing: state.placementTestReducer.isTestEditing,
     };
 };
 
 export default withRouter(
     connect(
         mapStateToProps,
-        { getStudentById, toggleEditComponent }
+        { getStudentById, toggleEditComponent, toggleEditPlacement }
     )(StudentInformationTab)
 )

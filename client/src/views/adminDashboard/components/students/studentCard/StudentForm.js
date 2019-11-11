@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
-import { Grid, Segment, Input, Icon } from 'semantic-ui-react'
+import { Grid, Segment, Input, Icon, Dropdown } from 'semantic-ui-react'
 import { editStudentById, toggleEditComponent } from '../../../../../actions';
 import { withRouter, Link } from 'react-router-dom';
 
@@ -50,6 +50,10 @@ const StudentForm = (props) => {
         props.toggleEditComponent();
     }
 
+    const genderOptions = [
+        { key: 'M', text: 'M', value: state.gender},
+        { key: 'F', text: 'F', value: state.gender}
+    ]
 
     return (
         <>
@@ -81,13 +85,14 @@ const StudentForm = (props) => {
                         </Grid.Column>
                         <Grid.Column>
                             <Segment>Gender</Segment>
-                            <Input
+                            {/* <Input
                                 type='text'
                                 name='gender'
                                 placeholder='Gender'
                                 onChange={handleChange}
                                 value={state.gender}
-                            />
+                            /> */}
+                             <Dropdown placeholder='Gender' search selection options={genderOptions} />
                         </Grid.Column>
                         <Grid.Column>
                             <Segment>Birthdate</Segment>

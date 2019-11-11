@@ -114,7 +114,23 @@ export {
   EDIT_COURSEBYID_START,
   EDIT_COURSEBYID_SUCCESS,
   EDIT_COURSEBYID_FAILURE,
-} from './adminDashboardActions/courseAction.js';
+} from './adminDashboardActions/courseAction';
+
+export {
+  getPlacementTests,
+  getPlacementTestById,
+  toggleEditPlacement,
+  editPlacementTestById,
+  FETCH_PLACEMENTTESTS_START,
+  FETCH_PLACEMENTTESTS_SUCCESS,
+  FETCH_PLACEMENTTESTS_FAILURE,
+  FETCH_PLACEMENTTESTTBYID_START,
+  FETCH_PLACEMENTTESTTBYID_SUCCESS,
+  FETCH_PLACEMENTTESTTBYID_FAILURE,
+  EDIT_PLACEMENTTESTTBYID_START,
+  EDIT_PLACEMENTTESTTBYID_SUCCESS,
+  EDIT_PLACEMENTTESTTBYID_FAILURE,
+} from './adminDashboardActions/placementTestAction'
 
 
 export {
