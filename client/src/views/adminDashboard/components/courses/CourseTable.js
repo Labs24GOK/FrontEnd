@@ -65,11 +65,11 @@ const CourseTable = props => {
     {
       title: 'Course Schedule',
       dataIndex: 'course_schedule',
-      key: 7,
+      key: 8,
     },{
       title: 'Teacher',
       dataIndex: 'teacher',
-      key: 7,
+      key: 9,
     },
   ];
 

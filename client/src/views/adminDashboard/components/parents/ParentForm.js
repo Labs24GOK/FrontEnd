@@ -28,7 +28,6 @@ const ParentForm = props => {
         props.editParentById(props.parentId, state)
     }
     const handleCancel = e => {
-        e.preventDefault();
         props.toggleEditParent();
     }
     return(

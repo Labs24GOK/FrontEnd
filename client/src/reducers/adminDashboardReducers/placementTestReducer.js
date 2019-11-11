@@ -5,13 +5,18 @@ import {
     FETCH_PLACEMENTTESTTBYID_START,
     FETCH_PLACEMENTTESTTBYID_SUCCESS,
     FETCH_PLACEMENTTESTTBYID_FAILURE,
+    EDIT_PLACEMENTTESTTBYID_START,
+    EDIT_PLACEMENTTESTTBYID_SUCCESS,
+    EDIT_PLACEMENTTESTTBYID_FAILURE,
   } from '../../actions';
   
   const initialState = {
         isLoading: false,
         error: null,
         placementTest: [],
-        placementTestById: []
+        placementTestById: [],
+        isTestEditing: false,
+        isTestEditted: false,
   }
   
   export const placementTestReducer = (state = initialState, action) => {
@@ -55,6 +60,26 @@ import {
                 ...state,
                 isLoading: false,
                 error: action.payload
+            }
+        // Edit by ID
+        case EDIT_PLACEMENTTESTTBYID_START:
+            return {
+                ...state,
+                isTestEditing: !state.isTestEditing,
+                error: null,
+            }
+        case  EDIT_PLACEMENTTESTTBYID_SUCCESS:
+            return {
+                ...state,
+                isTestEditing: false,
+                isTestEditted: true,
+                studentById: action.payload
+            }
+        case EDIT_PLACEMENTTESTTBYID_FAILURE:
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload,
             }
         default: return state;
     }

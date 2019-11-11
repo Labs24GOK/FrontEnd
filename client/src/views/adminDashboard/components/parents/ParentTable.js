@@ -37,7 +37,7 @@ function ParentList(props) {
       {
         title: 'Secondary Telephone',
         dataIndex: 'secondary_telephone',
-        key: 4,
+        key: 5,
     },
   ];
   

@@ -1,33 +1,26 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getStudentProgress } from '../../../../../actions';
-import{ withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { Progress } from 'antd';
 import { Grid, Segment } from 'semantic-ui-react'
-
-
 
 
 //pass in props
 const StudentProgressTab = props => {
     console.log('Student Progress', props)
-   
 
-        useEffect(() => {
-            props.getStudentProgress(props.studentID)
-               
-        }, [])
-        // console.log('STUDENT PROGRESS TAB PROPS', props.progressByStudentId)
+    useEffect(() => {
+        props.getStudentProgress(props.studentID)
 
+    }, [])
 
-
-if (!props.progressByStudentId) {
-    return <div>Please upload the students progress report.</div>
-} 
+    if (!props.progressByStudentId) {
+        return <div>Please upload the students progress report.</div>
+    }
 
 
-
-    return(
+    return (
         <div className="gridView">
             <Segment style={{display: "flex", justifyContent: "flex-start", paddingTop: "12px", border: "1px solid rgba(189, 225, 230, 0.2)", height: "54px",  backgroundColor: "rgba(189, 225, 230, 0.2)"}}>Course #:</Segment>
         <Grid  columns='equal'>
@@ -224,7 +217,7 @@ const mapStateToProps = state => {
 export default withRouter(
     connect(
         mapStateToProps,
-        { getStudentProgress}
+        { getStudentProgress }
     )(StudentProgressTab)
 )
 

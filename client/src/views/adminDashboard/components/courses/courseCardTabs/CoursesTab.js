@@ -36,42 +36,42 @@ const CoursesTab = props => {
     {
       title: 'Term',
       dataIndex: 'id',
-      key: 1,
+      key: 10,
     },
     {
       title: 'Days',
       dataIndex: 'cpr',
-      key: 2,
+      key: 11,
     },
     {
       title: 'Type',
       dataIndex: 'first_name',
-      key: 4,
+      key: 12,
     },
     {
       title: 'Group',
       dataIndex: 'additional_names',
-      key: 5,
+      key: 13,
     },
     {
       title: 'Level',
       dataIndex: 'gender',
-      key: 6,
+      key: 14,
     },
     {
       title: 'Section',
       dataIndex: 'mobile_telephone',
-      key: 7,
+      key: 15,
     },
     {
       title: 'Subsection',
       dataIndex: 'mobile_telephone',
-      key: 7,
+      key: 16,
     },
     {
       title: 'Status',
       dataIndex: 'mobile_telephone',
-      key: 7,
+      key: 17,
     },
   ];
 

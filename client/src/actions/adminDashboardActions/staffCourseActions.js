@@ -4,14 +4,15 @@ export const FETCH_STAFFCOURSES_START = 'FETCH_STAFFCOURSES_START';
 export const FETCH_STAFFCOURSES_SUCCESS = 'FETCH_STAFFCOURSES_SUCCESS';
 export const FETCH_STAFFCOURSES_FAILURE = 'FETCH_STAFFCOURSES_FAILURE';
 
-export const getStaffCourses = () => dispatch => {
+export const FETCH_STUDENTSBYCOURSEID_START = 'FETCH_STUDENTSBYCOURSEID_START';
+export const FETCH_STUDENTSBYCOURSEID_SUCCESS = 'FETCH_STUDENTSBYCOURSEID_SUCCESS';
+export const FETCH_STUDENTSBYCOURSEID_FAILURE = 'FETCH_STUDENTSBYCOURSEID_FAILURE';
 
-    let staff_id = 1
-    console.log('STUDENT COURSE ID', staff_id)
+export const getStaffCourses = teacher_id => dispatch => {
+    console.log('student course action', teacher_id)
     dispatch({ type: FETCH_STAFFCOURSES_START })
-    axios.put(`https://speak-out-be-staging.herokuapp.com/api/?table=course_result_view&where=staff_id=${staff_id}`)
+    axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=course_view&where=teacher_id=${teacher_id}`)
     .then(res => {
-        console.log('Student Course Action', res) 
         dispatch({
             type: FETCH_STAFFCOURSES_SUCCESS,
             payload: res.data.tableData
@@ -24,3 +25,25 @@ export const getStaffCourses = () => dispatch => {
        }) 
     })
 }
+
+export const getStudentsByCourseID = course_id => dispatch => {
+    console.log('course id from staffCourseActions.js', course_id)
+    dispatch({ type: FETCH_STUDENTSBYCOURSEID_START })
+    axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=course_enrollment_view&where=course_id=${course_id}`)
+    .then(res => {
+        console.log('staff students by courseid', res) 
+        dispatch({
+            type: FETCH_STUDENTSBYCOURSEID_SUCCESS,
+            payload: res.data.tableData
+        })
+    })
+    .catch(err => {
+       dispatch({
+        type: FETCH_STUDENTSBYCOURSEID_FAILURE,
+        payload: err.data
+       }) 
+    })
+}
+
+
+
