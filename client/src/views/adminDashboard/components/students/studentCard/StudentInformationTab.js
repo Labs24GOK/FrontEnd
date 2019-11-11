@@ -24,9 +24,9 @@ const StudentInformationTab = props => {
     }, [])
 
     let options = { year: 'numeric', month: 'numeric', day: 'numeric' }; //'long'
-    let birthdate = new Date(props.studentById.birthdate).toLocaleDateString('en-US', options)
-    let registration_date = new Date(props.studentById.registration_date).toLocaleDateString('en-US', options)
-    let grade_updated = new Date(props.studentById.grade_updated).toLocaleDateString('en-US', options)
+    let birthdate = new Date(props.studentById.birthdate).toLocaleDateString('en-GB', options)
+    let registration_date = new Date(props.studentById.registration_date).toLocaleDateString('en-GB', options)
+    let grade_updated = new Date(props.studentById.grade_updated).toLocaleDateString('en-GB', options)
     
     const editStudentInfo = e => {
         e.preventDefault();

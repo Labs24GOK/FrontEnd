@@ -13,7 +13,7 @@ const StaffInformationTab = props => {
     }, [])
 
     let options = { year: 'numeric', month: 'numeric', day: 'numeric' }; //'long'
-    let birthdate = new Date(props.staffById.birthdate).toLocaleDateString('en-US', options)
+    let birthdate = new Date(props.staffById.birthdate).toLocaleDateString('en-GB', options)
 
 
     const editStaffInfo = e => {

@@ -58,7 +58,7 @@ const StudentCard = props => {
                     <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' circular size='small' />
 
                     <Header as='h2'>
-                        {props.studentById.first_name, props.studentById.additional_names}
+                        {props.studentById.first_name} {props.studentById.additional_names}
                         <div className="headerDiv">
                             <div>
                                 <div className="headerSeparateDiv">CPR # {props.studentById.cpr}</div>

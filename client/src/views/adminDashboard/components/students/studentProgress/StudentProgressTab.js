@@ -31,7 +31,6 @@ const StudentProgressTab = props => {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80}
-            strokeColor={'green'}
              />
     </Grid.Column>
 
@@ -39,9 +38,8 @@ const StudentProgressTab = props => {
         <Segment>Speaking Accuracy</Segment>
             <Progress 
             type="circle" 
-            percent={props.progressByStudentId.speaking_fluency * 10} 
+            percent={props.progressByStudentId.speaking_fluency * 10}
             width={80} 
-            strokeColor={'green'}
              />
     </Grid.Column>
 
@@ -51,8 +49,6 @@ const StudentProgressTab = props => {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            // strokeColor={'green' }
-            strokeColor={'green'}
              />
     </Grid.Column>
 
@@ -62,7 +58,6 @@ const StudentProgressTab = props => {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor={'green' }
             />
     </Grid.Column>
 
@@ -72,7 +67,6 @@ const StudentProgressTab = props => {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor='green' 
             />
     </Grid.Column>
         
@@ -87,7 +81,6 @@ const StudentProgressTab = props => {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor='green' 
             />
     </Grid.Column>
 
@@ -97,7 +90,6 @@ const StudentProgressTab = props => {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor='yellow' 
             />
     </Grid.Column>
 
@@ -107,7 +99,6 @@ const StudentProgressTab = props => {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor='red' 
             />  
     </Grid.Column>
 
@@ -117,7 +108,6 @@ const StudentProgressTab = props => {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor='green' 
             />
     </Grid.Column>
    
@@ -135,7 +125,6 @@ const StudentProgressTab = props => {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor='green' 
             />
     </Grid.Column>
 
@@ -145,7 +134,6 @@ const StudentProgressTab = props => {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor='green' 
             />
     </Grid.Column>
 
@@ -155,7 +143,6 @@ const StudentProgressTab = props => {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10}  
             width={80} 
-            strokeColor='yellow' 
             />   
     </Grid.Column>
   
@@ -194,7 +181,7 @@ const StudentProgressTab = props => {
         <Progress 
         type="circle" 
         percent={props.progressByStudentId.speaking_fluency * 10} 
-        strokeColor='#269FB0' 
+        strokeColor='green' 
         />
 </Grid.Column>
 </Grid.Row>

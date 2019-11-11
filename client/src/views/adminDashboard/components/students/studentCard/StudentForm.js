@@ -4,7 +4,6 @@ import { Grid, Segment, Input, Icon, Dropdown, Form, Button } from 'semantic-ui-
 import { editStudentById, toggleEditComponent } from '../../../../../actions';
 import { withRouter } from 'react-router-dom';
 
-
 const StudentForm = (props) => {
 
     const { studentID } = props;
@@ -93,7 +92,7 @@ const StudentForm = (props) => {
                         {/* row 1 */}
                         <Grid.Column>
                             <Segment>
-                                First name
+                                First nam
                         </Segment>
                         {!error.first_name ? <Form.Input 
                                 type='text'
