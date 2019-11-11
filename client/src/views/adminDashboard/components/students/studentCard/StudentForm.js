@@ -4,7 +4,6 @@ import { Grid, Segment, Input, Icon, Dropdown } from 'semantic-ui-react'
 import { editStudentById, toggleEditComponent } from '../../../../../actions';
 import { withRouter, Link } from 'react-router-dom';
 
-
 const StudentForm = (props) => {
 
     const { studentID } = props;
@@ -52,18 +51,18 @@ const StudentForm = (props) => {
     }
 
     const genderOptions = [
-        { key: 'M', text: 'M', value: state.gender },
-        { key: 'F', text: 'F', value: state.gender }
+        { key: 'M', text: 'M', value: 'M' },
+        { key: 'F', text: 'F', value: 'F' }
     ]
 
-    // const blockCode = [
-    //     {key: , integer: 363, value: state.block_code},
-    //     {key: , integer: 431, value: state.block_code},
-    //     {key: 432, integer: 433, value: state.block_code},
-    //     {key: 432, integer: 435, value: state.block_code},
-    //     {key: 432, integer: 439, value: state.block_code},
-    //     {key: 432, integer: 441, value: state.block_code},
-    // ]
+    const blockCode = [
+        {key: 363, text: '363', value: state.block_code},
+        {key: 364, text: '431', value: state.block_code},
+        {key: 365, text: '433', value: state.block_code},
+        {key: 366, text: '435', value: state.block_code},
+        {key: 367, text: '439', value: state.block_code},
+        {key: 368, text: '441', value: state.block_code},
+    ]
     
     return (
         <>
@@ -74,7 +73,7 @@ const StudentForm = (props) => {
                         {/* row 1 */}
                         <Grid.Column>
                             <Segment>
-                                First name
+                                First nam
                         </Segment>
                             <Input
                                 type='text'
@@ -214,10 +213,10 @@ const StudentForm = (props) => {
                         </Grid.Column>
                         <Grid.Column>
                             <Segment>Block Code</Segment>
-                            {/* <Dropdown 
+                            <Dropdown 
                             placeholder='Block Code' 
-                            search selection options={block_code}
-                            /> */}
+                            search selection options={blockCode}
+                            />
                             {/* <Input
                                 type='text'
                                 name='block_code'
