@@ -10,6 +10,10 @@ import { Grid, Segment } from 'semantic-ui-react'
 
 //pass in props
 const StudentProgressTab = props => {
+
+    const [color, setColor] = useState()
+        
+
     console.log('Student Progress', props)
    
 
@@ -27,6 +31,20 @@ if (!props.progressByStudentId) {
 
 
 
+let change = (testProps) => {
+
+    testProps = props.progressByStudentId
+
+    if (testProps >= 80) {
+        return setColor('green')
+    } else if (testProps <= 50) {
+        return setColor('red')
+    } else {
+        return setColor('yellow')
+    }
+}
+
+
     return(
         <div className="gridView">
             <Segment style={{display: "flex", justifyContent: "flex-start", paddingTop: "12px", border: "1px solid rgba(189, 225, 230, 0.2)", height: "54px",  backgroundColor: "rgba(189, 225, 230, 0.2)"}}>Course #:</Segment>
@@ -39,7 +57,7 @@ if (!props.progressByStudentId) {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80}
-            strokeColor={'green'}
+            strokeColor={change}
              />
     </Grid.Column>
 
@@ -49,7 +67,8 @@ if (!props.progressByStudentId) {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor={'green'}
+            strokeColor={change}
+            // strokeColor={'green'}
              />
     </Grid.Column>
 
@@ -59,8 +78,8 @@ if (!props.progressByStudentId) {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            // strokeColor={'green' }
-            strokeColor={'green'}
+            strokeColor={change}
+            // strokeColor={'green'}
              />
     </Grid.Column>
 
@@ -70,7 +89,8 @@ if (!props.progressByStudentId) {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor={'green' }
+            strokeColor={change}
+            // strokeColor={'green' }
             />
     </Grid.Column>
 
@@ -80,7 +100,8 @@ if (!props.progressByStudentId) {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor='green' 
+            strokeColor={change}
+            // strokeColor='green' 
             />
     </Grid.Column>
         
@@ -95,7 +116,8 @@ if (!props.progressByStudentId) {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor='green' 
+            strokeColor={change}
+            // strokeColor='green' 
             />
     </Grid.Column>
 
@@ -105,7 +127,8 @@ if (!props.progressByStudentId) {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor='yellow' 
+            strokeColor={change}
+            // strokeColor='yellow' 
             />
     </Grid.Column>
 
@@ -115,7 +138,8 @@ if (!props.progressByStudentId) {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor='red' 
+            strokeColor={change}
+            // strokeColor='red' 
             />  
     </Grid.Column>
 
@@ -125,7 +149,8 @@ if (!props.progressByStudentId) {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor='green' 
+            strokeColor={change}
+            // strokeColor='green' 
             />
     </Grid.Column>
    
@@ -143,7 +168,8 @@ if (!props.progressByStudentId) {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor='green' 
+            strokeColor={change}
+            // strokeColor='green' 
             />
     </Grid.Column>
 
@@ -153,7 +179,8 @@ if (!props.progressByStudentId) {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor='green' 
+            strokeColor={change}
+            // strokeColor='green' 
             />
     </Grid.Column>
 
@@ -163,7 +190,8 @@ if (!props.progressByStudentId) {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10}  
             width={80} 
-            strokeColor='yellow' 
+            strokeColor={change}
+            // strokeColor='yellow' 
             />   
     </Grid.Column>
   

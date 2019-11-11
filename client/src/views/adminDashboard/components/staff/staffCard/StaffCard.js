@@ -43,7 +43,7 @@ const StaffCard = props => {
         <div>
             <div className ="card">
                 <div className="back-button" onClick={goBack} style={{cursor:"pointer", width:"10%"}}>
-                    <Icon name="angle-left" /> 
+                    <Icon name="angle left" /> 
                     Back
                     </div>
                 <div className="card-title">

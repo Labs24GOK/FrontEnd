@@ -75,6 +75,7 @@ export {
   EDIT_STAFFBYID_FAILURE,
 
   addStaff,
+  toggleAddStaffComponent,
   ADD_STAFF_START,
   ADD_STAFF_SUCCESS,
   ADD_STAFF_FAILURE

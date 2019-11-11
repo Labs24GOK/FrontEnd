@@ -24,7 +24,7 @@ const CoursesTab = props => {
   }
 
   const handleSearchInput = () => {
-
+    
   }
 
   const handleAddButton = () => {

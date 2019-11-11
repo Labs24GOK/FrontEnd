@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import { connect } from 'react-redux'
 import { Grid, Segment, Input, Icon, Form } from 'semantic-ui-react'
-// import { addStaff  } from '../../../../actions';
+// import { addStaff, toggleAddStaffComponent } from '../../../../actions';
 import { withRouter, Link } from 'react-router-dom';
 
 
 
 
 const StaffRegistrationForm = (props) => {
+console.log ( 'staff registry props', props)
 
   const [state, setState] = useState({
     id: '',
@@ -17,13 +18,15 @@ const StaffRegistrationForm = (props) => {
     mobile_number: '',
     gender: '',
     accent: '',
-    gender: '',
+    birthdate: '',
     mobile_number: '',
     teaching_rate: '',
     admin: '',
     active: '',
     user_id: ''
   })
+
+  
 
 
   const handleChange = e => {
@@ -35,20 +38,26 @@ const StaffRegistrationForm = (props) => {
 
 
 const formSubmit = e => {
+    console.log('state sent', state)
   e.preventDefault();
   props.addStaff(state)
 }
 
+const cancelBtn = e => {
+    // e.preventDefault()
+    props.toggleAddStaffComponent()
+}
+
+
   return(
-    <div>
-      <Form onSubmit={formSubmit}>
-            {/* <RowRight>
-                <button>X</button>
-            </RowRight> */}
+    <div className="ui segment active tab editForm">
+    <Grid columns='equal'>
+      
+            {/* row 1 */}
             <Grid.Row>
                 <Grid.Column>
                     <Segment>Staff ID</Segment>
-                    <input 
+                    <Input 
                         type='text'
                         name='id'
                         placeholder='Staff Id'
@@ -58,7 +67,7 @@ const formSubmit = e => {
                 </Grid.Column>
                 <Grid.Column>
                     <Segment>Name</Segment>
-                    <input 
+                    <Input 
                         type='text'
                         name='name'
                         placeholder='Name'
@@ -70,7 +79,7 @@ const formSubmit = e => {
 
                 <Grid.Column>
                     <Segment>Short Name</Segment>
-                    <input 
+                    <Input 
                         type='text'
                         name='short_name'
                         placeholder='Short Name'
@@ -80,7 +89,7 @@ const formSubmit = e => {
                 </Grid.Column>
                 <Grid.Column>
                 <Segment>CPR</Segment>
-                    <input 
+                    <Input 
                         type='text'
                         name='cpr'
                         placeholder='CPR'
@@ -88,12 +97,26 @@ const formSubmit = e => {
                         value={state.cpr}
                     />
                 </Grid.Column>
-                </Grid.Row>
 
+
+
+                <Grid.Column >
+                    <Segment.Group horizontal style={{ background: "#E0EBF0" }}>
+                        <Segment.Inline onClick={formSubmit} style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" ,margin: 0}}>
+                        <Icon name="save" type='submit' style={{ color: "#26ABBD", cursor: "pointer" }} /> Save
+                        </Segment.Inline>
+                        <Segment.Inline onClick={cancelBtn} style={{ color: "#C73642", cursor: "pointer", width: "fit-content", "margin-left": "10px" }}>
+                        <Icon name="cancel" style={{ color: "#C73642", cursor: "pointer" }}  /> Cancel
+                        </Segment.Inline>
+                        </Segment.Group>
+                </Grid.Column>
+                </Grid.Row>
+                
+                {/* row 2 */}
                 <Grid.Row>
                 <Grid.Column>
                     <Segment>Mobile Number</Segment>
-                    <input 
+                    <Input 
                         type='text' //use date for calendar
                         name='mobile_number'
                         placeholder='Mobile Number'
@@ -104,7 +127,7 @@ const formSubmit = e => {
     
                 <Grid.Column>
                     <Segment>Accent</Segment>
-                    <input 
+                    <Input 
                         type='text'
                         name='accent'
                         placeholder='Accent'
@@ -114,7 +137,7 @@ const formSubmit = e => {
                 </Grid.Column>
                 <Grid.Column>
                     <Segment>Gender</Segment>
-                    <input 
+                    <Input 
                         type='text'
                         name='gender'
                         placeholder='Gender'
@@ -124,7 +147,7 @@ const formSubmit = e => {
                 </Grid.Column>
                 <Grid.Column>
                     <Segment>Birthdate</Segment>
-                    <input 
+                    <Input 
                         type='date'
                         name='birthdate'
                         placeholder='birthdate'
@@ -136,7 +159,7 @@ const formSubmit = e => {
                 <Grid.Row>
                 <Grid.Column>
                     <Segment>Teaching Rate</Segment>
-                    <input 
+                    <Input 
                         type='text'
                         name='teaching_rate'
                         placeholder='Teaching Rate'
@@ -145,9 +168,10 @@ const formSubmit = e => {
                     />
                 </Grid.Column>
               
+              {/* row3 */}
                 <Grid.Column>
                     <Segment>Admin</Segment>
-                    <input 
+                    <Input 
                         type='text'
                         name='admin'
                         placeholder='Admin'
@@ -157,7 +181,7 @@ const formSubmit = e => {
                 </Grid.Column>
                 <Grid.Column>
                     <Segment>Active</Segment>
-                    <input 
+                    <Input 
                         type='text'
                         name='active'
                         placeholder='active'
@@ -167,7 +191,7 @@ const formSubmit = e => {
                 </Grid.Column>
                 <Grid.Column>
                     <Segment>User Id</Segment>
-                    <input 
+                    <Input 
                         type='text'
                         name='user_id'
                         placeholder='User Id'
@@ -176,12 +200,7 @@ const formSubmit = e => {
                     />
                 </Grid.Column>
             </Grid.Row>
-
-            {/* <RowRight> */}
-                <button type='submit'>Save</button>
-                <button type='button' onClick={ () => props.toggleStaffEditComponent()} >Cancel</button>
-            {/* </RowRight> */}
-            </Form>
+           </Grid>
     </div>
   )
 }
@@ -201,7 +220,7 @@ const mapStateToProps = state => {
 export default withRouter(
   connect(
     mapStateToProps,
-    // { addStaff}
+    // { addStaff, toggleAddStaffComponent}
 )(StaffRegistrationForm)
 )
 

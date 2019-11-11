@@ -18,7 +18,6 @@ export const reducer = combineReducers({
   staffTableReducer,
   staffByIdReducer,
   studentProgressReducer,
-  coursesTableReducer,
-  studentCourseReducer,
+  coursesTableReducer
 });
 

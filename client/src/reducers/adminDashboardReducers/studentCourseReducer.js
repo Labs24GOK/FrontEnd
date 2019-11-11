@@ -24,7 +24,7 @@ export const studentCourseReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                // error: null,
+                error: null,
                 courseByStudentId: action.payload
             };
         case FETCH_STUDENTCOURSES_FAILURE:
