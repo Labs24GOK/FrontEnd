@@ -35,9 +35,6 @@ const StudentCoursesTab = props => {
   // term: "Fall 2014"
   // updated_at: "2019-11-06T18:48:23.360Z"
 
-
-  console.log('STUDENT COURSES PROPS', props.courseByStudentId)
-
   const columns = [
     {
       title: 'Term',

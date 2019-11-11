@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getStudentById, toggleEditComponent } from '../../../../../actions';
@@ -37,7 +38,6 @@ const StudentCard = props => {
     ]
 
     const goBack = () => {
-        console.log('student back button', props)
         if (props.studentView === 'studentCardView') {
             props.setStudentView('studentTableView')
         }

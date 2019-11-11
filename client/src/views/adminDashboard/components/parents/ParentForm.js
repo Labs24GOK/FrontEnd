@@ -4,7 +4,6 @@ import { editParentById, toggleEditParent } from '../../../../actions';
 import { withRouter } from 'react-router-dom';
 import { Grid, Segment, Input, Icon } from 'semantic-ui-react'
 const ParentForm = props => {
-    console.log('props.parentById.id',props.parentById.id)
     
     const [state, setState] = useState({
         id: props.parentById.id,
@@ -28,7 +27,6 @@ const ParentForm = props => {
         props.editParentById(props.parentId, state)
     }
     const handleCancel = e => {
-        e.preventDefault();
         props.toggleEditParent();
     }
     return(

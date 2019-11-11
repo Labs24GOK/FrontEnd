@@ -43,7 +43,6 @@ export const logIn = (user, history) => {
       .post('https://speak-out-be-staging.herokuapp.com/login', user)
       .then(res => {
         dispatch({ type: LOGIN_SUCCESS, payload: res.data })
-        console.log('LOGIN SUCCESS: ', res)
         history.push('/dashboard');
       })
       .catch(err => {

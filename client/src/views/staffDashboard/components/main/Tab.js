@@ -20,7 +20,6 @@ function Tab({ tab, navigation, setNavigation, tabColor, setTabColor, selected, 
   // }, [selected])
 
   const handleClick = (tab) => {
-    console.log("click")
     setSelected(tab.toLowerCase())
     setNavigation(tab.toLowerCase())
   }

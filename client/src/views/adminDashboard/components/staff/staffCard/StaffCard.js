@@ -12,7 +12,6 @@ import '../../mainStyle/mainCard.scss';
 
 const StaffCard = props => {
     useEffect(() => {
-      console.log('STAFF CARD props:', props)
         props.getStaffById(props.staffID)
     }, [])
 
@@ -23,7 +22,7 @@ const StaffCard = props => {
         },
         {
             menuItem: 'COURSES',
-            render: () => <Tab.Pane attached={false}>{<StaffCoursesTab />}</Tab.Pane>,
+            render: () => <Tab.Pane attached={false}>{<StaffCoursesTab staffID={props.staffID}/>}</Tab.Pane>,
         },
         {
             menuItem: 'WORKLOG',
@@ -32,7 +31,6 @@ const StaffCard = props => {
     ]
 
     const goBack = () => {
-        console.log("go back button", props)
        if(props.staffView === 'staffCardView') {
            props.setStaffView('staffTableView')
        }

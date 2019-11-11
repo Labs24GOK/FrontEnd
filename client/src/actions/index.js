@@ -114,4 +114,17 @@ export {
   EDIT_COURSEBYID_START,
   EDIT_COURSEBYID_SUCCESS,
   EDIT_COURSEBYID_FAILURE,
-} from './adminDashboardActions/courseAction';
+} from './adminDashboardActions/courseAction.js';
+
+
+export {
+  getStaffCourses,
+  FETCH_STAFFCOURSES_START,
+  FETCH_STAFFCOURSES_SUCCESS,
+  FETCH_STAFFCOURSES_FAILURE,
+
+  getStudentsByCourseID,
+  FETCH_STUDENTSBYCOURSEID_START,
+  FETCH_STUDENTSBYCOURSEID_SUCCESS,
+  FETCH_STUDENTSBYCOURSEID_FAILURE
+} from './adminDashboardActions/staffCourseActions.js';

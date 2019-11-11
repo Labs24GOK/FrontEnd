@@ -8,10 +8,8 @@ function NavBar(props) {
   const [selected, setSelected] = useState(false);
   // const [textDecoration, setTextDecoration] = useState('none');
   // const [textDecorationColor, setTextDecorationColor] = useState('transparent');
-console.log('HEREEEE props: ', props)
 
 useEffect(() => {
-  console.log('NAVBAR HERE: ', selected)
 }, [selected])
 
   const handleLogo = () => {
@@ -20,7 +18,6 @@ useEffect(() => {
   }
 
   const signIn = () => {
-    console.log(props.history)
     props.history.push('/login');
   }
 

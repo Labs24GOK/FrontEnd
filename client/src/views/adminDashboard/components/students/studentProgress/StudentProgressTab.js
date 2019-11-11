@@ -1,51 +1,25 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getStudentProgress } from '../../../../../actions';
-import{ withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { Progress } from 'antd';
 import { Grid, Segment } from 'semantic-ui-react'
-
-
 
 
 //pass in props
 const StudentProgressTab = props => {
 
-    const [color, setColor] = useState()
-        
+    useEffect(() => {
+        props.getStudentProgress(props.studentID)
 
-    console.log('Student Progress', props)
-   
+    }, [])
 
-        useEffect(() => {
-            props.getStudentProgress(props.studentID)
-               
-        }, [])
-        // console.log('STUDENT PROGRESS TAB PROPS', props.progressByStudentId)
-
-
-
-if (!props.progressByStudentId) {
-    return <div>Please upload the students progress report.</div>
-} 
-
-
-
-let change = (testProps) => {
-
-    testProps = props.progressByStudentId
-
-    if (testProps >= 80) {
-        return setColor('green')
-    } else if (testProps <= 50) {
-        return setColor('red')
-    } else {
-        return setColor('yellow')
+    if (!props.progressByStudentId) {
+        return <div>Please upload the students progress report.</div>
     }
-}
 
 
-    return(
+    return (
         <div className="gridView">
             <Segment style={{display: "flex", justifyContent: "flex-start", paddingTop: "12px", border: "1px solid rgba(189, 225, 230, 0.2)", height: "54px",  backgroundColor: "rgba(189, 225, 230, 0.2)"}}>Course #:</Segment>
         <Grid  columns='equal'>
@@ -57,7 +31,7 @@ let change = (testProps) => {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80}
-            strokeColor={change}
+            strokeColor={'green'}
              />
     </Grid.Column>
 
@@ -67,8 +41,7 @@ let change = (testProps) => {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor={change}
-            // strokeColor={'green'}
+            strokeColor={'green'}
              />
     </Grid.Column>
 
@@ -78,8 +51,7 @@ let change = (testProps) => {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor={change}
-            // strokeColor={'green'}
+            strokeColor={'green'}
              />
     </Grid.Column>
 
@@ -89,8 +61,7 @@ let change = (testProps) => {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor={change}
-            // strokeColor={'green' }
+            strokeColor={'green' }
             />
     </Grid.Column>
 
@@ -100,8 +71,7 @@ let change = (testProps) => {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor={change}
-            // strokeColor='green' 
+            strokeColor='green' 
             />
     </Grid.Column>
         
@@ -116,8 +86,7 @@ let change = (testProps) => {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor={change}
-            // strokeColor='green' 
+            strokeColor='green' 
             />
     </Grid.Column>
 
@@ -127,8 +96,7 @@ let change = (testProps) => {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor={change}
-            // strokeColor='yellow' 
+            strokeColor='yellow' 
             />
     </Grid.Column>
 
@@ -138,8 +106,7 @@ let change = (testProps) => {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor={change}
-            // strokeColor='red' 
+            strokeColor='red' 
             />  
     </Grid.Column>
 
@@ -149,8 +116,7 @@ let change = (testProps) => {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor={change}
-            // strokeColor='green' 
+            strokeColor='green' 
             />
     </Grid.Column>
    
@@ -168,8 +134,7 @@ let change = (testProps) => {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor={change}
-            // strokeColor='green' 
+            strokeColor='green' 
             />
     </Grid.Column>
 
@@ -179,8 +144,7 @@ let change = (testProps) => {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10} 
             width={80} 
-            strokeColor={change}
-            // strokeColor='green' 
+            strokeColor='green' 
             />
     </Grid.Column>
 
@@ -190,8 +154,7 @@ let change = (testProps) => {
             type="circle" 
             percent={props.progressByStudentId.speaking_fluency * 10}  
             width={80} 
-            strokeColor={change}
-            // strokeColor='yellow' 
+            strokeColor='yellow' 
             />   
     </Grid.Column>
   
@@ -252,7 +215,7 @@ const mapStateToProps = state => {
 export default withRouter(
     connect(
         mapStateToProps,
-        { getStudentProgress}
+        { getStudentProgress }
     )(StudentProgressTab)
 )
 

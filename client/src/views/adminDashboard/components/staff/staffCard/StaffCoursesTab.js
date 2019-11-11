@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
-import { getStudentTable } from '../../../../../actions';
-import { Table, Button, Modal } from 'antd';
+import { withRouter } from 'react-router-dom';
+import { getStaffCourses, getStudentsByCourseID } from '../../../../../actions';
+import { Table, Button, Modal, Spin } from 'antd';
 
 import '../../students/studentCard/studentTable.scss'
 
 const StaffCoursesTab = props => {
-    
-    useEffect(()=>{
-        props.getStudentTable()
-    },[])
+
+    useEffect(() => {
+        props.getStaffCourses(props.staffID)
+    }, [])
+
     const [modalVisible, setModalVisible] = useState({
         visible: false,
         loading: false,
@@ -19,36 +20,38 @@ const StaffCoursesTab = props => {
 
     const attendanceColumns = [
         {
-            title: 'ID',
-            dataIndex: 'id',
+            title: 'Student ID',
+            dataIndex: 'student_id',
             key: 1,
         },
         {
             title: 'Name',
             dataIndex: 'first_name',
-            key: 3,
-        }
+            dataIndex: 'additional_names',
+            key: 2,
+        },
+
     ]
 
-    const columns = [
+    const courseColumns = [
         {
             title: 'Term',
             dataIndex: 'term',
-            key: 1,
+            key: 3,
             sorter: (a, b) => a.id - b.id,
             sortDirections: ['ascend']
         },
         {
             title: 'Days',
             dataIndex: 'term',
-            key: 2,
+            key: 4,
             sorter: (a, b) => b.cpr - a.cpr,
             sortDirections: ['descend'],
         },
         {
             title: 'Type',
             dataIndex: 'course_type',
-            key: 3,
+            key: 5,
             sorter: (a, b) => {
                 return (b.first_name === null) - (a.first_name === null) || +(a.first_name > b.first_name) || -(a.first_name < b.first_name);
             },
@@ -57,32 +60,41 @@ const StaffCoursesTab = props => {
         {
             title: 'Group Type',
             dataIndex: 'group_type',
-            key: 4,
+            key: 6,
         },
         {
             title: 'Level',
             dataIndex: 'level',
-            key: 5,
+            key: 7,
         },
         {
             title: 'Section',
             dataIndex: 'section',
-            key: 6,
+            key: 8,
         },
         {
             title: 'Subsection',
             dataIndex: 'subsection',
-            key: 7,
+            key: 9,
         },
         {
             title: 'Status',
             dataIndex: 'status',
-            key: 8,
+            key: 10,
         },
         {
+            title: 'ID',
+            dataIndex: 'id',
+            key: 11,
+        },
+        {
+            title: 'Attendance',
             render: (text, record) => {
                 return (
-                    <Button onClick={() => setModalVisible({ visible: true })}>Take Attendance</Button>
+                    <Button onClick={() => {
+                        props.getStudentsByCourseID(record.id);
+                        setModalVisible({ visible: true })
+                    }}>Take Attendance</Button>
                 )
             }
 
@@ -113,42 +125,47 @@ const StaffCoursesTab = props => {
 
     return (
         <>
-            <Table dataSource={props.studentList} className="coursesTable" columns={columns} pagination={false} />
-            <Modal
-                title="Student List"
-                visible={modalVisible.visible}
-                onOk={handleOk}
-                onCancel={handleCancel}
-                footer={[
-                    <Button key="back" onClick={handleCancel}>
-                        Return
-      </Button>,
-                    <Button key="submit" type="primary" onClick={handleOk}>
-                        Submit
-      </Button>,
-                ]}>
-                <span style={{ marginLeft: 8 }}>
-                    {hasSelected ? `Selected ${selectedRowKeys.length} students` : ''}
-                </span>
-                <Table dataSource={props.studentList} columns={attendanceColumns} pagination={false} rowSelection={rowSelection} />
-
-            </Modal>
+            {props.isLoading ? <Spin style={{ marginTop: '150px' }} size="large" />
+                :
+                <>
+                    <Table dataSource={props.coursesByStaffId} className="coursesTable" columns={courseColumns} pagination={false} />
+                    <Modal
+                        title="Student List"
+                        visible={modalVisible.visible}
+                        onOk={handleOk}
+                        onCancel={handleCancel}
+                        footer={[
+                            <Button key="back" onClick={handleCancel}>
+                                Return
+                     </Button>,
+                            <Button key="submit" type="primary" onClick={handleOk}>
+                                Submit
+                     </Button>,
+                        ]}
+                    >
+                        <span style={{ marginLeft: 8 }}>
+                            {hasSelected ? `Selected ${selectedRowKeys.length} students` : ''}
+                        </span>
+                        <Table dataSource={props.studentList} columns={attendanceColumns} pagination={false} rowSelection={rowSelection} />
+                    </Modal>
+                </>
             }
-    </>
+
+        </>
     )
 }
 
 const mapStateToProps = state => {
     return {
-        isLoading: state.studentTableReducer.isLoading,
-        studentList: state.studentTableReducer.studentList,
-        error: state.studentTableReducer.error,
+        isLoading: state.staffCourseReducer.isLoading,
+        coursesByStaffId: state.staffCourseReducer.coursesByStaffId,
+        studentList: state.studentsByCourseIDReducer.studentByCourseId
     };
 };
 
 export default withRouter(
     connect(
         mapStateToProps,
-        { getStudentTable }
+        { getStaffCourses, getStudentsByCourseID }
     )(StaffCoursesTab)
 )

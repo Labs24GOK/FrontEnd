@@ -10,7 +10,7 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import StaffRegistrationForm from './StaffRegistrationForm';
 
 const StaffTable = props => {
-console.log('staff table props', props)
+
   const [search, setSearch] = useState('');
   const [form, setForm] = useState(false);
 
@@ -29,7 +29,6 @@ console.log('staff table props', props)
     }
 
     const handleAddButton = () => {
-      console.log('Click');
       setForm(!form);
     }
 
@@ -72,29 +71,33 @@ console.log('staff table props', props)
           {
               title: 'BirthDate',
               dataIndex: 'birthdate',
-              key: 9,
+              key: 8,
           },
           {
               title: 'Teaching Rate',
               dataIndex: 'teaching_rate',
-              key: 10,
+              key: 9,
           },
           {
               title: 'Admin',
               ataIndex: 'admin ',
-              key: 12,
+              key: 10,
         },
         {
             title: 'Active',
             dataIndex: 'active',
-            key: 13,
+            key: 11,
          },
       ];
       
-    const staffData = props.staffList.sort((a,b) => { 
-        return b.id - a.id }
-    )
-
+    const staffData = props.staffList
+    .sort((a,b) => { return b.id - a.id })
+    .map(item => { 
+      let options = { year: 'numeric', month: 'numeric', day: 'numeric' }
+       item.birthdate = new Date(item.birthdate).toLocaleDateString('en-US', options)
+      return item
+    })
+    
 
     return (
       <div>

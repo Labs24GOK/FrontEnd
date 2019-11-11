@@ -16,11 +16,6 @@ function Login(props) {
 
   const [email, setEmail] = useState('');
 
-
-  useEffect(() => {
-    console.log('LOGIN props: ', props)
-  }, [])
-
   const handleChange = e => {
     setUser({
       ...user, [e.target.name]: e.target.value,
