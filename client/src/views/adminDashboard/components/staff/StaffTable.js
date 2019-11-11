@@ -32,7 +32,7 @@ const StaffTable = props => {
       setForm(!form);
     }
 
-    const columns = [
+    const staffColumns = [
           {
               title: 'Staff ID',
               dataIndex: 'id',
@@ -94,7 +94,7 @@ const StaffTable = props => {
     .sort((a,b) => { return b.id - a.id })
     .map(item => { 
       let options = { year: 'numeric', month: 'numeric', day: 'numeric' }
-       item.birthdate = new Date(item.birthdate).toLocaleDateString('en-US', options)
+       item.birthdate = new Date(item.birthdate).toLocaleDateString('en-GB', options)
       return item
     })
 
@@ -128,7 +128,7 @@ const StaffTable = props => {
           <Table
             className="rowHover"
             dataSource={staffData} 
-            columns={columns} 
+            columns={staffColumns}   
             pagination={{ pageSize: 15 }} 
             rowKey='id'
             onRow={(record) => {

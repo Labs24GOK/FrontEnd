@@ -19,7 +19,7 @@ const editModal = e => {
   }
 
     let options = { year: 'numeric', month: 'numeric', day: 'numeric' }; //'long'
-    let test_date = new Date(props.placementTestById.test_date).toLocaleDateString('en-US', options) 
+    let test_date = new Date(props.placementTestById.test_date).toLocaleDateString('en-GB', options) 
     return(
         <>
          <div>       
