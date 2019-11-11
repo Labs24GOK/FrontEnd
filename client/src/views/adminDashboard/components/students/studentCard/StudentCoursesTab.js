@@ -40,8 +40,6 @@ const StudentCoursesTab = props => {
       title: 'Term',
       dataIndex: 'term',
       key: 1,
-      // sorter: (a, b) => a.id - b.id,
-      // sortDirections: ['ascend']
     },
     {
       title: 'Days',
