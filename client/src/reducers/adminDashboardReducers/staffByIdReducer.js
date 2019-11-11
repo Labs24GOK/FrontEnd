@@ -47,7 +47,7 @@ export const staffByIdReducer = (state = initialState, action) => {
             case EDIT_STAFFBYID_SUCCESS:
                 return {
                     ...state,
-                    isEditing: false,
+                    isEditing: !state.isEditing,
                     isEditted: true,
                     staffById: action.payload
                 };

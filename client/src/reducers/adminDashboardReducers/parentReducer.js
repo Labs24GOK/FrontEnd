@@ -71,7 +71,7 @@ import {
         case  EDIT_PARENTBYID_SUCCESS:
             return {
                 ...state,
-                isEditing: false,
+                isEditing: !state.isEditing,
                 isEdited: true,
                 parentById: action.payload
             }
