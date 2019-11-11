@@ -11,7 +11,6 @@ import 'antd/dist/antd.css';
 
 
 const ParentCard = props => {
-    console.log('props', props)
     useEffect(() => {
         props.getParentById(props.parentId);
     },[])
@@ -28,8 +27,6 @@ const ParentCard = props => {
   ]
 
   const backToParentTable = () => {
-    console.log('working', props)
-
     if (props.parentView === 'parentCard') {
         props.setParentView('parentsTable')
     }

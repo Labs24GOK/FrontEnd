@@ -45,7 +45,6 @@ const StaffForm = props => {
     return(
         <div className="ui segment active tab editForm">
             <Grid columns='equal'>
-           {/* {console.log(state) } */}
                     <Grid.Row>
                         <Grid.Column>
                             <Segment>Staff ID</Segment>

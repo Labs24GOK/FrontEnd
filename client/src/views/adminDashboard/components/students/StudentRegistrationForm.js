@@ -43,7 +43,6 @@ function StudentRegistrationForm({ handleCancelButtonOnForm }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log('STUDENT: ', student)
   }
 
   function handleCancel(event) {
@@ -60,14 +59,11 @@ function StudentRegistrationForm({ handleCancelButtonOnForm }) {
   }
 
   function calendarInput(date) {
-    // console.log('DATE: ', {date}, new Date())
-    console.log('DATE: ',  new Date(date))
     setStudent({...student, registrationDate: date})
     setDisplay('none');
   }
 
   function handleGenderDropdown(e) {
-    console.log('Gender click ', e)
   }
   
   function handleLocationDropdown(e) {

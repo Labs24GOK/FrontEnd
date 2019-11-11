@@ -17,7 +17,6 @@ const StaffInformationTab = props => {
 
 
     const editStaffInfo = e => {
-        console.log(editStaffInfo)
         e.preventDefault();
         props.toggleStaffEditComponent();
     }

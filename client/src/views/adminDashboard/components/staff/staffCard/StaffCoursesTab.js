@@ -12,7 +12,6 @@ const StaffCoursesTab = props => {
         props.getStaffCourses(props.staffID)
     }, [])
 
-    console.log('props from StaffCoursesTab.js', props.course)
     const [modalVisible, setModalVisible] = useState({
         visible: false,
         loading: false,
@@ -28,7 +27,7 @@ const StaffCoursesTab = props => {
         {
             title: 'Name',
             dataIndex: 'first_name',
-            dataIndex:'additional_names',
+            dataIndex: 'additional_names',
             key: 2,
         },
 
@@ -126,33 +125,33 @@ const StaffCoursesTab = props => {
 
     return (
         <>
-        {props.isLoading ?  <Spin style={{marginTop: '150px'}} size="large" />  
-        : 
-        <>
-        <Table dataSource={props.coursesByStaffId} className="coursesTable" columns={courseColumns} pagination={false} /> 
-             <Modal
-                 title="Student List"
-                 visible={modalVisible.visible}
-                 onOk={handleOk}
-                 onCancel={handleCancel}
-                 footer={[
-                     <Button key="back" onClick={handleCancel}>
-                         Return
+            {props.isLoading ? <Spin style={{ marginTop: '150px' }} size="large" />
+                :
+                <>
+                    <Table dataSource={props.coursesByStaffId} className="coursesTable" columns={courseColumns} pagination={false} />
+                    <Modal
+                        title="Student List"
+                        visible={modalVisible.visible}
+                        onOk={handleOk}
+                        onCancel={handleCancel}
+                        footer={[
+                            <Button key="back" onClick={handleCancel}>
+                                Return
                      </Button>,
-                     <Button key="submit" type="primary" onClick={handleOk}>
-                         Submit
+                            <Button key="submit" type="primary" onClick={handleOk}>
+                                Submit
                      </Button>,
-                 ]}
-             >
-                 <span style={{ marginLeft: 8 }}>
-                     {hasSelected ? `Selected ${selectedRowKeys.length} students` : ''}
-                 </span>
-                 <Table dataSource={props.studentList} columns={attendanceColumns} pagination={false} rowSelection={rowSelection} />
-             </Modal>
-             </>
-        }
-           
-    </>
+                        ]}
+                    >
+                        <span style={{ marginLeft: 8 }}>
+                            {hasSelected ? `Selected ${selectedRowKeys.length} students` : ''}
+                        </span>
+                        <Table dataSource={props.studentList} columns={attendanceColumns} pagination={false} rowSelection={rowSelection} />
+                    </Modal>
+                </>
+            }
+
+        </>
     )
 }
 

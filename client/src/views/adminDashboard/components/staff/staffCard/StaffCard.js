@@ -12,7 +12,6 @@ import '../../mainStyle/mainCard.scss';
 
 const StaffCard = props => {
     useEffect(() => {
-      console.log('STAFF CARD props:', props)
         props.getStaffById(props.staffID)
     }, [])
 
@@ -32,7 +31,6 @@ const StaffCard = props => {
     ]
 
     const goBack = () => {
-        console.log("go back button", props)
        if(props.staffView === 'staffCardView') {
            props.setStaffView('staffTableView')
        }

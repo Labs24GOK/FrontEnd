@@ -10,7 +10,7 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import StaffRegistrationForm from './StaffRegistrationForm';
 
 const StaffTable = props => {
-console.log('staff table props', props)
+
   const [search, setSearch] = useState('');
   const [form, setForm] = useState(false);
 
@@ -29,7 +29,6 @@ console.log('staff table props', props)
     }
 
     const handleAddButton = () => {
-      console.log('Click');
       setForm(!form);
     }
 

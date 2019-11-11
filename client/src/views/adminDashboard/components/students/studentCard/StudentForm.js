@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { Grid, Segment, Input, Icon } from 'semantic-ui-react'
 import { editStudentById, toggleEditComponent } from '../../../../../actions';
 import { withRouter, Link } from 'react-router-dom';
+
+
 const StudentForm = (props) => {
-    console.log("props from student form", props.studentById)
     
     const { studentID } = props;
 
@@ -41,7 +42,6 @@ const StudentForm = (props) => {
     }
 
     const handleSubmit = e => {
-        console.log('state we are sending', state)
         e.preventDefault();
         props.editStudentById(studentID, state)
     }

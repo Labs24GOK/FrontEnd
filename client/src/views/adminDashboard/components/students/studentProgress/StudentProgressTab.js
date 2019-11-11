@@ -8,7 +8,6 @@ import { Grid, Segment } from 'semantic-ui-react'
 
 //pass in props
 const StudentProgressTab = props => {
-    console.log('Student Progress', props)
 
     useEffect(() => {
         props.getStudentProgress(props.studentID)

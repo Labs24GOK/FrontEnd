@@ -188,7 +188,6 @@ const formSubmit = e => {
 
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
       isLoading: state.addStaffReducer.isLoading,
       staffList: state.addStaffReducer.staff,

@@ -28,7 +28,6 @@ const CoursesTab = props => {
   }
 
   const handleAddButton = () => {
-    console.log('Click');
     setForm(!form);
   }
 

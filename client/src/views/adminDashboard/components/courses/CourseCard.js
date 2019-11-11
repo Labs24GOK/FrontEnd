@@ -14,7 +14,6 @@ import 'semantic-ui-css/semantic.min.css';
 const CourseCard = props => {
 
     useEffect(() => {
-        console.log('props from CourseCard.js', props)
         props.getCourseById(props.courseId)
     }, [])
 

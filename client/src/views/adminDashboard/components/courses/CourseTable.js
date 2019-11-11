@@ -27,7 +27,6 @@ const CourseTable = props => {
   }
 
   const handleAddButton = () => {
-    console.log('Click');
     setForm(!form);
   }
 

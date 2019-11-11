@@ -22,7 +22,6 @@ export const getCourseById = id => dispatch => {
     dispatch({ type: FETCH_COURSEBYID_START })
     axios.get(`https://speak-out-be-staging.herokuapp.com/api?table=course_view&where=id=${id}`)
     .then(res => {
-        console.log('getcouseById', res.data)
         dispatch({
             type: FETCH_COURSEBYID_SUCCESS,
             payload: res.data.tableData[0]
@@ -50,7 +49,6 @@ export const editCouseById = (id, state) => dispatch => {
     let state1 = {...state, ...obj1 }
     axios.put(`https://speak-out-be-staging.herokuapp.com/api?table=course_view&where=id=${id}`, state1)
     .then(res => {
-        // console.log("res for editStudentById", res.data)
         dispatch({
             type: EDIT_COURSEBYID_SUCCESS,
             payload: res.data
