@@ -31,46 +31,46 @@ const CoursesTab = props => {
     setForm(!form);
   }
 
-  const columns = [
+  const courseColumns = [
     {
       title: 'Term',
       dataIndex: 'id',
-      key: 10,
+      key: 1,
     },
     {
       title: 'Days',
       dataIndex: 'cpr',
-      key: 11,
+      key: 2,
     },
     {
       title: 'Type',
       dataIndex: 'first_name',
-      key: 12,
+      key: 3,
     },
     {
       title: 'Group',
       dataIndex: 'additional_names',
-      key: 13,
+      key: 4,
     },
     {
       title: 'Level',
       dataIndex: 'gender',
-      key: 14,
+      key: 5,
     },
     {
       title: 'Section',
       dataIndex: 'mobile_telephone',
-      key: 15,
+      key: 6,
     },
     {
       title: 'Subsection',
       dataIndex: 'mobile_telephone',
-      key: 16,
+      key: 7,
     },
     {
       title: 'Status',
       dataIndex: 'mobile_telephone',
-      key: 17,
+      key: 8,
     },
   ];
 
@@ -104,7 +104,7 @@ const CoursesTab = props => {
           <Table
             className="rowHover"
             dataSource={studentData}
-            columns={columns}
+            columns={courseColumns}
             pagination={{ pageSize: 15 }}
             rowKey='id'
             onRow={(record, rowIndex) => {
