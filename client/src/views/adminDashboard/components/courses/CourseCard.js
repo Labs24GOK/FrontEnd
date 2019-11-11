@@ -36,6 +36,12 @@ const CourseCard = props => {
         }
     }
 
+//working
+//had to add empy string b/c it was returning empty string and undefined
+let  courseProps = props.courseById.course_type || ''
+let course_type =  courseProps.charAt(0).toUpperCase() + courseProps.slice(1)
+
+
     return (
         <div>
                 <div className="back-button" onClick={goBack} style={{cursor:"pointer", width:"10%"}}>   
@@ -46,8 +52,8 @@ const CourseCard = props => {
                 
                 <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' circular size='small' />
                     
-                    <Header as='h2'>
-                    {props.courseById.course_type}
+                    <Header as='h2'> 
+                    {course_type}
                     <div className="headerDiv">
                         <div>
                     <div className="headerSeparateDiv">{props.courseById.term}</div>

@@ -54,7 +54,6 @@ const StudentProgressTab = props => {
             // strokeColor={'green' }
             strokeColor={'green'}
              />
-            />  
     </Grid.Column>
 
     <Grid.Column>
