@@ -56,14 +56,14 @@ const StudentForm = (props) => {
         { key: 'F', text: 'F', value: state.gender }
     ]
 
-    const blockCode = [
-        {key: , integer: 363, value: state.block_code},
-        {key: , integer: 431, value: state.block_code},
-        {key: 432, integer: 433, value: state.block_code},
-        {key: 432, integer: 435, value: state.block_code},
-        {key: 432, integer: 439, value: state.block_code},
-        {key: 432, integer: 441, value: state.block_code},
-    ]
+    // const blockCode = [
+    //     {key: , integer: 363, value: state.block_code},
+    //     {key: , integer: 431, value: state.block_code},
+    //     {key: 432, integer: 433, value: state.block_code},
+    //     {key: 432, integer: 435, value: state.block_code},
+    //     {key: 432, integer: 439, value: state.block_code},
+    //     {key: 432, integer: 441, value: state.block_code},
+    // ]
     
     return (
         <>
@@ -214,10 +214,10 @@ const StudentForm = (props) => {
                         </Grid.Column>
                         <Grid.Column>
                             <Segment>Block Code</Segment>
-                            <Dropdown 
+                            {/* <Dropdown 
                             placeholder='Block Code' 
                             search selection options={block_code}
-                            />
+                            /> */}
                             {/* <Input
                                 type='text'
                                 name='block_code'

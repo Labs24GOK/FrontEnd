@@ -65,7 +65,7 @@ import {
         case EDIT_PARENTBYID_START:
             return {
                 ...state,
-                isEditing: true,
+                isEditing: !state.isEditing,
                 error: null,
             }
         case  EDIT_PARENTBYID_SUCCESS:

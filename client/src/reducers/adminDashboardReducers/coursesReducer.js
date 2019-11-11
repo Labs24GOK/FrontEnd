@@ -64,7 +64,7 @@ import {
         case EDIT_COURSEBYID_START:
             return {
                 ...state,
-                isEditing: true,
+                isEditing: !state.isEditing,
                 error: null,
             }
         case  EDIT_COURSEBYID_SUCCESS:
