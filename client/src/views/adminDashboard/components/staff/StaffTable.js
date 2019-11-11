@@ -32,7 +32,7 @@ const StaffTable = props => {
       setForm(!form);
     }
 
-    const columns = [
+    const staffColumns = [
           {
               title: 'Staff ID',
               dataIndex: 'id',
@@ -128,7 +128,7 @@ const StaffTable = props => {
           <Table
             className="rowHover"
             dataSource={staffData} 
-            columns={columns} 
+            columns={staffColumns}   
             pagination={{ pageSize: 15 }} 
             rowKey='id'
             onRow={(record) => {

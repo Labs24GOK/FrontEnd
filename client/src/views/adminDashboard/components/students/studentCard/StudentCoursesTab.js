@@ -35,7 +35,7 @@ const StudentCoursesTab = props => {
   // term: "Fall 2014"
   // updated_at: "2019-11-06T18:48:23.360Z"
 
-  const columns = [
+  const studentCourseColumns = [
     {
       title: 'Term',
       dataIndex: 'term',
@@ -86,7 +86,7 @@ const StudentCoursesTab = props => {
 
   return (
     <>
-      <Table dataSource={props.courseByStudentId} className="coursesTable" columns={columns} pagination={false} />
+      <Table dataSource={props.courseByStudentId} className="coursesTable" columns={studentCourseColumns} pagination={false} />
     </>
   )
 }
