@@ -52,7 +52,7 @@ export const studentByIdReducer = (state = initialState, action) => {
           case  EDIT_STUDENTBYID_SUCCESS:
               return {
                   ...state,
-                  isEditing: false,
+                  isEditing: !state.isEditing,
                   isEditted: true,
                   studentById: action.payload
               }

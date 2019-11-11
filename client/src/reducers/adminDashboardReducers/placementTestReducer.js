@@ -71,7 +71,7 @@ import {
         case  EDIT_PLACEMENTTESTTBYID_SUCCESS:
             return {
                 ...state,
-                isTestEditing: false,
+                isTestEditing: !state.isTestEditing,
                 isTestEditted: true,
                 studentById: action.payload
             }

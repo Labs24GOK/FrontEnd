@@ -70,7 +70,7 @@ import {
         case  EDIT_COURSEBYID_SUCCESS:
             return {
                 ...state,
-                isEditing: false,
+                isEditing: !state.isEditing,
                 isEdited: true,
                 courseById: action.payload
             }

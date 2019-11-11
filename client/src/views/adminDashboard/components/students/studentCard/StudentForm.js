@@ -50,6 +50,10 @@ const StudentForm = (props) => {
         props.toggleEditComponent();
     }
 
+    const genderOptions = [
+        { key: 'M', text: 'M', value: state.gender},
+        { key: 'F', text: 'F', value: state.gender}
+    ]
 
     return (
         <>
@@ -81,13 +85,14 @@ const StudentForm = (props) => {
                         </Grid.Column>
                         <Grid.Column>
                             <Segment>Gender</Segment>
-                            <Input
+                            {/* <Input
                                 type='text'
                                 name='gender'
                                 placeholder='Gender'
                                 onChange={handleChange}
                                 value={state.gender}
-                            />
+                            /> */}
+                             <Dropdown placeholder='Gender' search selection options={genderOptions} />
                         </Grid.Column>
                         <Grid.Column>
                             <Segment>Birthdate</Segment>
