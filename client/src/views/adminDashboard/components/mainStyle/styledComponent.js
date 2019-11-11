@@ -71,3 +71,9 @@ export const TabsWrapColumn = styled.div`
   // overflow: scroll;
   // padding-top: 25px;
 `
+
+export const RedButton = styled.button`
+  background-color: #FFC8C8;
+  padding: 12px 28px;
+  border-radius: 4px;
+`;

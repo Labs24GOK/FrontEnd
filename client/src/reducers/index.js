@@ -8,6 +8,8 @@ import { staffByIdReducer } from './adminDashboardReducers/staffByIdReducer';
 import { studentProgressReducer } from './adminDashboardReducers/studentProgressReducer';
 import { coursesTableReducer } from './adminDashboardReducers/coursesReducer';
 import { studentCourseReducer } from './adminDashboardReducers/studentCourseReducer'
+import { placementTestReducer } from './adminDashboardReducers/placementTestReducer'
+
 import { staffCourseReducer } from './adminDashboardReducers/staffCourseReducer';
 import { studentsByCourseIDReducer } from './adminDashboardReducers/studentByCourseId';
 export const reducer = combineReducers({
@@ -20,6 +22,7 @@ export const reducer = combineReducers({
   studentProgressReducer,
   coursesTableReducer,
   studentCourseReducer,
+  placementTestReducer,
   staffCourseReducer,
   studentsByCourseIDReducer
 });

@@ -97,7 +97,6 @@ const StaffTable = props => {
        item.birthdate = new Date(item.birthdate).toLocaleDateString('en-US', options)
       return item
     })
-    
 
     return (
       <div>
