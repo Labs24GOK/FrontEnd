@@ -10,7 +10,6 @@ export const getStudentCourses = () => dispatch => {
     dispatch({ type: FETCH_STUDENTCOURSES_START })
     axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=course_result_view&where=student_id=${student_id}`)
     .then(res => {
-        console.log('Student Course Action', res)
         dispatch({
             type: FETCH_STUDENTCOURSES_SUCCESS,
             payload: res.data.tableData

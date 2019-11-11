@@ -5,6 +5,7 @@ import {
   FETCH_STUDENTBYID_FAILURE,
   EDIT_STUDENTBYID_START,
   EDIT_STUDENTBYID_SUCCESS,
+  EDIT_STUDENTBYID_CANCELLED,
   EDIT_STUDENTBYID_FAILURE,
   DELETE_STUDENTBYID_START,
   DELETE_STUDENTBYID_SUCCESS,
@@ -14,10 +15,9 @@ import {
 const initialState = {
   studentById: [],
   isLoading: false,
-  fetching: false,
   error: null,
   isEditing: false,
-  isEdited: false,
+  isEdited: true,
 };
 
 export const studentByIdReducer = (state = initialState, action) => {
@@ -46,20 +46,28 @@ export const studentByIdReducer = (state = initialState, action) => {
       case EDIT_STUDENTBYID_START:
               return {
                   ...state,
-                  isEditing: !state.isEditing,
+                  isEditing: true,
                   error: null,
+              }
+              case EDIT_STUDENTBYID_CANCELLED: 
+              return {
+                  ...state,
+                  isEditing:false,
+                  isEdited:false
               }
           case  EDIT_STUDENTBYID_SUCCESS:
               return {
                   ...state,
-                  isEditing: !state.isEditing,
-                  isEditted: true,
+                  isEditing: false,
+                  isEdited: true,
                   studentById: action.payload
               }
           case EDIT_STUDENTBYID_FAILURE:
               return {
                   ...state,
                   isLoading: false,
+                  isEditing: true,
+                  isEdited: false,
                   error: action.payload,
               }
           
@@ -75,7 +83,6 @@ export const studentByIdReducer = (state = initialState, action) => {
               return {
                   ...state,
                   isLoading: false,
-                  fetching: true,
                   studentById: action.payload
               }
           case DELETE_STUDENTBYID_FAILURE:

@@ -23,17 +23,29 @@ export const getStudentById = id => dispatch => {
 
 
 export const EDIT_STUDENTBYID_START = 'EDIT_STUDENTBYID_START';
+export const EDIT_STUDENTBYID_CANCELLED = 'EDIT_STUDENTBYID_CANCELLED';
 export const EDIT_STUDENTBYID_SUCCESS = 'EDIT_STUDENTBYID_SUCCESS';
 export const EDIT_STUDENTBYID_FAILURE = 'EDIT_STUDENTBYID_FAILURE';
 
-export const toggleEditComponent = () => dispatch => {
-    dispatch({ type: EDIT_STUDENTBYID_START })
+export const toggleEditComponent = (isEditing, isEdited) => dispatch => {
+    if(isEditing==='true') {
+        return dispatch({ type: EDIT_STUDENTBYID_START })
+    } 
+    if(isEditing==='false' && isEdited==='false') {
+        return dispatch({type: EDIT_STUDENTBYID_CANCELLED})
+    } 
+    // if(isEditing==='false' && isEdited === 'true' ) {
+    //     return dispatch({type: EDIT_STUDENTBYID_SUCCESS})
+    // } 
+    // if(isEditing === 'true' && isEdited ==='false') {
+    //     return dispatch({type: EDIT_STUDENTBYID_FAILURE})
+    // }
 }
 
-export const editStudentById = (id) => dispatch => {
+export const editStudentById = (student_id, state ) => dispatch => {
     // let obj1 = {id:id, block_code:"431", delinquent:true} //will fix later 
     // let state1 = {...state, ...obj1 }
-    axios.put(`https://speak-out-be-staging.herokuapp.com/api/?table=student&where=id=${id}`)
+    axios.put(`https://speak-out-be-staging.herokuapp.com/api/?table=student&where=id=${student_id}`, state)
     .then(res => {
         dispatch({
             type: EDIT_STUDENTBYID_SUCCESS,
@@ -43,7 +55,7 @@ export const editStudentById = (id) => dispatch => {
     .catch(err => {
        dispatch({
         type: EDIT_STUDENTBYID_FAILURE,
-        payload: err.data
+        payload: 'Error saving changed student information'
        }) 
     })
 }

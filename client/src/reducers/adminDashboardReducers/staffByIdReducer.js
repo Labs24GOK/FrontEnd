@@ -12,7 +12,6 @@ const initialState = {
     staffById: [],
     isLoading: false,
     error: null,
-    fetching: false,
     isEditing: false,
     isEdited: false,
 }
@@ -29,7 +28,6 @@ export const staffByIdReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                fetching: true,
                 staffById: action.payload
             };
         case FETCH_STAFFBYID_FAILURE:
@@ -48,7 +46,7 @@ export const staffByIdReducer = (state = initialState, action) => {
                 return {
                     ...state,
                     isEditing: !state.isEditing,
-                    isEditted: true,
+                    isEdited: true,
                     staffById: action.payload
                 };
             case EDIT_STAFFBYID_FAILURE:
