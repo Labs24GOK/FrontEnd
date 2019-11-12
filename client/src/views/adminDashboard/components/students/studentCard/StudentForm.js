@@ -75,12 +75,12 @@ const StudentForm = (props) => {
     ]
 
     const blockCode = [
-        {key: 363, text: 363, value: state.block_code},
-        {key: 431, text: 431, value: state.block_code},
-        {key: 433, text: 433, value: state.block_code},
-        {key: 435, text: 435, value: state.block_code},
-        {key: 439, text: 439, value: state.block_code},
-        {key: 441, text: 441, value: state.block_code},
+        {key: 363, text: 363, value: 363},
+        {key: 431, text: 431, value: 431},
+        {key: 433, text: 433, value: 433},
+        {key: 435, text: 435, value: 435},
+        {key: 439, text: 439, value: 439},
+        {key: 441, text: 441, value: 441},
     ]
     
     return (
@@ -132,7 +132,12 @@ const StudentForm = (props) => {
                         <Grid.Column>
                             <Segment>Gender</Segment>
                             <Segment>
-                            <Dropdown name='gender' value={state.gender} onChange={handleChange} options={genderOptions} style={{text:'black'}} />
+                            <Dropdown name='gender'
+                            name='gender'
+                             value={state.gender} 
+                             onChange={handleChange}
+                              options={genderOptions} 
+                              />
                            </Segment>
                         </Grid.Column>
                         <Grid.Column>
@@ -248,21 +253,15 @@ const StudentForm = (props) => {
                         </Grid.Column>
                         <Grid.Column>
                             <Segment>Block Code</Segment>
+                            <Segment>
                             <Dropdown 
-                            placeholder='Block Code' 
-                            search 
-                            selection 
-                            inline
+                            name='block_code'
+                            placeholder='Block Code'
                             options={blockCode}
+                            onChange={handleChange}
                             value={state.block_code}
                             />
-                            {/* <Input
-                                type='text'
-                                name='block_code'
-                                placeholder='Block Code'
-                                onChange={handleChange}
-                                value={state.block_code}
-                            /> */}
+                            </Segment>
                         </Grid.Column>
                         <Grid.Column>
                             <Segment>Delinquent</Segment>
@@ -346,12 +345,21 @@ const StudentForm = (props) => {
                                 value={state.family_id}
                             />
                         </Grid.Column>
+                        <Grid.Column>
+                        </Grid.Column>
+                        <Grid.Column>
+                        </Grid.Column>
+                        <Grid.Column>
+                        </Grid.Column>
+                        <Grid.Column>
+                        </Grid.Column>
                         </Grid.Row>
                     
                     <Grid.Row>
                     <Grid.Column>
                         <Segment>Notes</Segment>
                         <Input
+                            style={{height: '100px'}}
                             type='text'
                             name='notes'
                             placeholder='Notes'
