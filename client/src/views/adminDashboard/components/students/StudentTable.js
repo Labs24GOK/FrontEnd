@@ -1,30 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
-import { getStudentTable } from '../../../../actions';
+import { getStudentTable, filterStudentTable } from '../../../../actions';
 import { Table, Spin } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import StudentRegistrationForm from './StudentRegistrationForm';
 
 import 'antd/dist/antd.css';
-import '../mainStyle/mainTable.scss';
+import '../mainStyle/mainTable.scss'; 
 
 const StudentTable = props => {
-  const [search, setSearch] = useState('');
   const [form, setForm] = useState(false);
-
 
   useEffect(() => {
     props.getStudentTable();
   }, [])
 
+
   const handleCancelButtonOnForm = () => {
     setForm(false);
   }
 
-  const handleSearchInput = () => {
-
+  const handleSearchInput = (e) => {
+    const searchTerm = e.target.value;
+    props.filterStudentTable(searchTerm)
   }
 
   const handleAddButton = () => {
@@ -66,20 +66,18 @@ const StudentTable = props => {
 
   const studentData = props.studentList.sort((a, b) => {
     return b.id - a.id
-  }
-  )
-
+  })
   return (
     <div>
       <div className="row-above">
         <div>
           <input
-            className="row-above-input"
-            type="text"
-            name="Search"
-            placeholder="Search by registration date, name, cpr, etc..."
-            value={search}
-            onChange={handleSearchInput}
+              className="row-above-input"
+              type="text"
+              name="Search"
+              placeholder="Search by registration date, name, cpr, etc..."
+              value={props.searchTerm}
+              onChange={handleSearchInput}
           />
         </div>
         <div className="create-new-entry">
@@ -121,12 +119,13 @@ const mapStateToProps = state => {
     isLoading: state.studentTableReducer.isLoading,
     studentList: state.studentTableReducer.studentList,
     error: state.studentTableReducer.error,
+    searchTerm: state.studentTableReducer.searchTerm
   };
 };
 
 export default withRouter(
   connect(
     mapStateToProps,
-    { getStudentTable }
+    { getStudentTable, filterStudentTable }
   )(StudentTable)
 )

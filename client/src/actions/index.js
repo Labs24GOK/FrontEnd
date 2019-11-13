@@ -16,6 +16,8 @@ export {
 
 export {
   getStudentTable,
+  filterStudentTable,
+  SET_FILTER,
   FETCH_STUDENTS_START,
   FETCH_STUDENTS_SUCCESS,
   FETCH_STUDENTS_FAILURE
