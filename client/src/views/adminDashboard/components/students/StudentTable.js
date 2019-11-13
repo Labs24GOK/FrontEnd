@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
-import { getStudentTable, filterStudentTable } from '../../../../actions';
+import { getStudentTable } from '../../../../actions';
 import { Table, Spin } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import StudentRegistrationForm from './StudentRegistrationForm';
-
+import SearchStundentTable from './SearchStudentTable'
 import 'antd/dist/antd.css';
 import '../mainStyle/mainTable.scss'; 
 
@@ -22,10 +22,7 @@ const StudentTable = props => {
     setForm(false);
   }
 
-  const handleSearchInput = (e) => {
-    const searchTerm = e.target.value;
-    props.filterStudentTable(searchTerm)
-  }
+
 
   const handleAddButton = () => {
     setForm(!form);
@@ -71,14 +68,7 @@ const StudentTable = props => {
     <div>
       <div className="row-above">
         <div>
-          <input
-              className="row-above-input"
-              type="text"
-              name="Search"
-              placeholder="Search by registration date, name, cpr, etc..."
-              value={props.searchTerm}
-              onChange={handleSearchInput}
-          />
+          <SearchStundentTable />
         </div>
         <div className="create-new-entry">
           <div style={{ marginRight: '10px' }}>Create new entry</div>
@@ -119,13 +109,12 @@ const mapStateToProps = state => {
     isLoading: state.studentTableReducer.isLoading,
     studentList: state.studentTableReducer.studentList,
     error: state.studentTableReducer.error,
-    searchTerm: state.studentTableReducer.searchTerm
   };
 };
 
 export default withRouter(
   connect(
     mapStateToProps,
-    { getStudentTable, filterStudentTable }
+    { getStudentTable }
   )(StudentTable)
 )

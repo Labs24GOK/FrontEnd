@@ -35,10 +35,10 @@ export const filterStudentTable = (searchTerm) => dispatch => {
                 if (student.cpr && student.cpr.toString().match(searchTerm)) {
                     return true;
                 }
-                if (student.additional_names && student.additional_names.toString().match(searchTerm)) {
+                if (student.additional_names && student.additional_names.toLowerCase().match(searchTerm)) {
                     return true;
                 }
-                if (student.mobile_telephone && student.mobile_telephone.toString().match(searchTerm)) {
+                if (student.mobile_telephone && student.mobile_telephone.toLowerCase().match(searchTerm)) {
                     return true;
                 }
                 return false
