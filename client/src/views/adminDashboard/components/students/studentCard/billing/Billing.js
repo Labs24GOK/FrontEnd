@@ -6,7 +6,7 @@ import './billing.scss'
 
 const Billing = props => {
     
-    const panes = [
+    const billingPanes = [
         {
             menuItem: 'Invoices',
             render: () => <Tab.Pane attached={false}>{<Invoices />}</Tab.Pane>,
@@ -18,7 +18,7 @@ const Billing = props => {
     ]
     return (
         <>
-            <Tab className="billing-tab" menu={{ secondary: true, pointing: true }} panes={panes} />
+            <Tab className="billing-tab" menu={{ secondary: true, pointing: true }} panes={billingPanes} />
         </>
     )
 }

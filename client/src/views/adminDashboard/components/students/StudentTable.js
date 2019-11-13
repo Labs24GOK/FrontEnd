@@ -31,7 +31,7 @@ const StudentTable = props => {
     setForm(!form);
   }
 
-  const columns = [
+  const studentTableColumns = [
     {
       title: 'Student ID',
       dataIndex: 'id',
@@ -99,7 +99,7 @@ const StudentTable = props => {
           <Table
             className="rowHover"
             dataSource={studentData}
-            columns={columns}
+            columns={studentTableColumns}
             pagination={{ pageSize: 15 }}
             rowKey='id'
             onRow={(record, rowIndex) => {

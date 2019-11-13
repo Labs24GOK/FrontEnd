@@ -49,33 +49,33 @@ const Invoices = props => {
       ]
     return (
         <>
-            {data.map(item => (
+            {data.map((item, index) => (
                 <div>
-            <Row  className="invoice-top-row" type="flex" justify="start">
+            <Row  className="invoice-top-row" type="flex" justify="start" key={index}>
                     <Col span={3}><h4>Course ID</h4></Col>
                     <Col span={3}><h4>Item ID</h4></Col>
                     <Col span={3}><h4>Quantity</h4></Col>
                     <Col span={3}><h4>Invoice number</h4></Col>
                 </Row>
-                <Row type="flex" justify="start">
+                <Row type="flex" justify="start" key={index}>
                     <Col span={3}>{item.invoice[0].course_id}</Col>
                     <Col span={3}>{item.invoice[0].item_id}</Col>
                     <Col span={3}>{item.invoice[0].quantity}</Col>
                     <Col span={3}>{item.invoice[0].invoice_number}</Col>
                 </Row>
-                <Row type="flex" justify="end">
+                <Row type="flex" justify="end" key={index}>
                     <Col span={3}><h4>Payment Due</h4></Col>
                 </Row>
-                <Row type="flex" justify="end">
+                <Row type="flex" justify="end" key={index}>
                     <Col span={3}>{item.invoice[0].payment_due}</Col>
                 </Row>
-                <Row className="invoice-amount-row"type="flex" justify="space-between">
+                <Row className="invoice-amount-row"type="flex" justify="space-between" key={index}>
                     <Col span={3}><h4>Note</h4></Col>
                     <Col span={3}></Col>
                     <Col span={3}></Col>
                     <Col span={3}><h4>Amount</h4></Col>
                 </Row>
-                <Row className="invoice-bottom-row" type="flex" justify="space-between">
+                <Row className="invoice-bottom-row" type="flex" justify="space-between" key={index}>
                     <Col span={3}>{item.invoice[0].notes}</Col>
                     <Col span={3}></Col>
                     <Col span={3}></Col>

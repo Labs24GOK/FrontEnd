@@ -7,11 +7,12 @@ import { staffTableReducer } from './adminDashboardReducers/staffTableReducer';
 import { staffByIdReducer } from './adminDashboardReducers/staffByIdReducer';
 import { studentProgressReducer } from './adminDashboardReducers/studentProgressReducer';
 import { coursesTableReducer } from './adminDashboardReducers/coursesReducer';
-import { studentCourseReducer } from './adminDashboardReducers/studentCourseReducer'
-import { placementTestReducer } from './adminDashboardReducers/placementTestReducer'
-
+import { studentCourseReducer } from './adminDashboardReducers/studentCourseReducer';
+import { placementTestReducer } from './adminDashboardReducers/placementTestReducer';
 import { staffCourseReducer } from './adminDashboardReducers/staffCourseReducer';
 import { studentsByCourseIDReducer } from './adminDashboardReducers/studentByCourseId';
+import { attendanceReducer } from './adminDashboardReducers/attendanceReducer';
+
 export const reducer = combineReducers({
   authenticationReducer,
   studentTableReducer,
@@ -24,6 +25,7 @@ export const reducer = combineReducers({
   studentCourseReducer,
   placementTestReducer,
   staffCourseReducer,
-  studentsByCourseIDReducer
+  studentsByCourseIDReducer,
+  attendanceReducer
 });
 
