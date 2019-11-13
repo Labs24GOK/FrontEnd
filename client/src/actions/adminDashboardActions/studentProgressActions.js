@@ -20,3 +20,31 @@ export const getStudentProgress = student_id => dispatch => {
        }) 
     })
 }
+
+
+export const CREATE_STUDENTPROGRESS_START = 'CREATE_STUDENTPROGRESS_START';
+export const CREATE_STUDENTPROGRESS_SUCCESS = 'CREATE_STUDENTPROGRESS_SUCCESS';
+export const  CREATE_STUDENTPROGRESS_FAILURE = 'CREATE_STUDENTPROGRESS_FAILURE';
+
+export const togglePostComponent = () => dispatch => {
+    dispatch({ type: CREATE_STUDENTPROGRESS_START })
+}
+
+
+export const postStudentProgress = student => dispatch => {
+    axios.post('https://speak-out-be-staging.herokuapp.com/api/?table=progress_report', student)
+    .then(res => { 
+        console.log('POST ACTION:', res.data)
+        dispatch({
+            type: CREATE_STUDENTPROGRESS_SUCCESS,
+            payload: res.data.tableData
+        })
+    })
+    .catch(err => {
+       dispatch({
+        type: CREATE_STUDENTPROGRESS_FAILURE,
+        payload: err.data
+       }) 
+    })
+}
+

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getStudentProgress } from '../../../../../actions';
+import { getStudentProgress, togglePostComponent} from '../../../../../actions';
 import { withRouter } from 'react-router-dom';
 import { Progress } from 'antd';
-import { Grid, Segment } from 'semantic-ui-react'
+import { Grid, Segment, Icon } from 'semantic-ui-react';
+import StudentProgressForm from './StudentProgressForm';
 
 
-//pass in props
+
 const StudentProgressTab = props => {
 
     useEffect(() => {
@@ -14,14 +15,15 @@ const StudentProgressTab = props => {
 
     }, [])
 
-    if (!props.progressByStudentId) {
-        return <div>Please upload the students progress report.</div>
-    }
+    // if (!props.progressByStudentId) {
+    //     return <div>Please upload the students progress report.</div>
+    // }
 
 
     return (
         <div className="gridView">
             <Segment style={{display: "flex", justifyContent: "flex-start", paddingTop: "12px", border: "1px solid rgba(189, 225, 230, 0.2)", height: "54px",  backgroundColor: "rgba(189, 225, 230, 0.2)"}}>Course #:</Segment>
+            { props.progressByStudentId ?
         <Grid  columns='equal'>
 <Grid.Row>
         {/* row 1 start */}
@@ -38,7 +40,7 @@ const StudentProgressTab = props => {
         <Segment>Speaking Accuracy</Segment>
             <Progress 
             type="circle" 
-            percent={props.progressByStudentId.speaking_fluency * 10}
+            percent={props.progressByStudentId.speaking_accuracy * 10}
             width={80} 
              />
     </Grid.Column>
@@ -47,12 +49,8 @@ const StudentProgressTab = props => {
         <Segment>Vocabulary</Segment>
             <Progress 
             type="circle" 
-            percent={props.progressByStudentId.speaking_fluency * 10} 
+            percent={props.progressByStudentId.vocabulary * 10} 
             width={80} 
-<<<<<<< HEAD
-            strokeColor={'green'}
-=======
->>>>>>> 1d80f524b48c4f9d217baf8c917cb415ebe767c1
              />
     </Grid.Column>
 
@@ -60,7 +58,7 @@ const StudentProgressTab = props => {
         <Segment>Pronunciation</Segment>    
             <Progress 
             type="circle" 
-            percent={props.progressByStudentId.speaking_fluency * 10} 
+            percent={props.progressByStudentId.pronunciation * 10} 
             width={80} 
             />
     </Grid.Column>
@@ -69,7 +67,7 @@ const StudentProgressTab = props => {
         <Segment>Grammar</Segment>  
             <Progress 
             type="circle" 
-            percent={props.progressByStudentId.speaking_fluency * 10} 
+            percent={props.progressByStudentId.grammar * 10} 
             width={80} 
             />
     </Grid.Column>
@@ -83,7 +81,7 @@ const StudentProgressTab = props => {
         <Segment>Listening</Segment>  
             <Progress 
             type="circle" 
-            percent={props.progressByStudentId.speaking_fluency * 10} 
+            percent={props.progressByStudentId.listening * 10} 
             width={80} 
             />
     </Grid.Column>
@@ -92,7 +90,7 @@ const StudentProgressTab = props => {
         <Segment>Writing</Segment>  
             <Progress 
             type="circle" 
-            percent={props.progressByStudentId.speaking_fluency * 10} 
+            percent={props.progressByStudentId.writing * 10} 
             width={80} 
             />
     </Grid.Column>
@@ -101,7 +99,7 @@ const StudentProgressTab = props => {
         <Segment>Reading</Segment>  
             <Progress 
             type="circle" 
-            percent={props.progressByStudentId.speaking_fluency * 10} 
+            percent={props.progressByStudentId.reading * 10} 
             width={80} 
             />  
     </Grid.Column>
@@ -110,7 +108,7 @@ const StudentProgressTab = props => {
         <Segment>Interest</Segment>  
             <Progress 
             type="circle" 
-            percent={props.progressByStudentId.speaking_fluency * 10} 
+            percent={props.progressByStudentId.interest * 10} 
             width={80} 
             />
     </Grid.Column>
@@ -127,7 +125,7 @@ const StudentProgressTab = props => {
         <Segment>Participation</Segment>  
             <Progress 
             type="circle" 
-            percent={props.progressByStudentId.speaking_fluency * 10} 
+            percent={props.progressByStudentId.participation * 10} 
             width={80} 
             />
     </Grid.Column>
@@ -136,7 +134,7 @@ const StudentProgressTab = props => {
         <Segment>Submitting Homework</Segment> 
             <Progress 
             type="circle" 
-            percent={props.progressByStudentId.speaking_fluency * 10} 
+            percent={props.progressByStudentId.submitting_homework * 10} 
             width={80} 
             />
     </Grid.Column>
@@ -145,7 +143,7 @@ const StudentProgressTab = props => {
         <Segment>Homework Effort</Segment> 
             <Progress 
             type="circle" 
-            percent={props.progressByStudentId.speaking_fluency * 10}  
+            percent={props.progressByStudentId.homework_effort * 10}  
             width={80} 
             />   
     </Grid.Column>
@@ -190,8 +188,10 @@ const StudentProgressTab = props => {
 </Grid.Column>
 </Grid.Row>
         {/* row 5 end */}
-
-            </Grid>
+    </Grid>
+    : <StudentProgressForm {...props} />
+    
+}
         </div>
     )
 }
@@ -201,13 +201,15 @@ const mapStateToProps = state => {
         isLoading: state.studentProgressReducer.isLoading,
         progressByStudentId: state.studentProgressReducer.progressByStudentId,
         error: state.studentProgressReducer.error,
+        isPosted: state.studentProgressReducer.isPosted,
+        isPosting: state.studentProgressReducer.isPosting,
     };
 };
 
 export default withRouter(
     connect(
         mapStateToProps,
-        { getStudentProgress }
+        { getStudentProgress, togglePostComponent}
     )(StudentProgressTab)
 )
 
