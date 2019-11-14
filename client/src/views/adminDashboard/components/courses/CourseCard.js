@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { getCourseById, toggleEditCourse } from '../../../../actions';
 import CourseInformationTab from './courseCardTabs/CourseInformationTab.js';
-import CoursesTab from './courseCardTabs/CoursesTab.js';
+import EnrolledStudentsTab from './courseCardTabs/EnrolledStudentsTab.js';
 import { Tab, Image, Header, Icon } from 'semantic-ui-react';
 
 import '../mainStyle/mainCard.scss';
@@ -13,8 +13,10 @@ import 'semantic-ui-css/semantic.min.css';
 
 const CourseCard = props => {
 
+    const { courseId } = props
+
     useEffect(() => {
-        props.getCourseById(props.courseId)
+        props.getCourseById(courseId)
     }, [])
 
 
@@ -22,11 +24,11 @@ const CourseCard = props => {
     const panes = [
         {
             menuItem: 'COURSE INFORMATION',
-            render: () => <Tab.Pane attached={false}>{<CourseInformationTab courseId ={props.courseID}/>}</Tab.Pane>,
+            render: () => <Tab.Pane attached={false}>{<CourseInformationTab courseId ={courseId}/>}</Tab.Pane>,
         },
         {
             menuItem: 'ENROLLED STUDENTS',
-            render: () => <Tab.Pane attached={false}>{<CoursesTab courseId = {props.courseID} />}</Tab.Pane>,
+            render: () => <Tab.Pane attached={false}>{<EnrolledStudentsTab courseId = {courseId} />}</Tab.Pane>,
         },
     ]
 

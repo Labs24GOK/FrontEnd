@@ -24,10 +24,6 @@ const StaffCard = props => {
             menuItem: 'COURSES',
             render: () => <Tab.Pane attached={false}>{<StaffCoursesTab staffID={props.staffID} teacher={props.staffById.name}/>}</Tab.Pane>,
         },
-        {
-            menuItem: 'WORKLOG',
-            render: () => <Tab.Pane attached={false}>Tab 3 Content</Tab.Pane>,
-        },
     ]
 
     const goBack = () => {

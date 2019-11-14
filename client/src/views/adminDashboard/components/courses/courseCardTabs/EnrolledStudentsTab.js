@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { getStudentTable } from '../../../../../actions';
+import { getStudentTableByCourseID } from '../../../../../actions';
 import { Table, Spin } from 'antd';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,13 +10,13 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import 'antd/dist/antd.css';
 import '../../mainStyle/mainCard.scss'
 
-const CoursesTab = props => {
+const EnrolledStudentsTab = props => {
   const [search, setSearch] = useState('');
   const [form, setForm] = useState(false);
 
 
   useEffect(() => {
-    props.getStudentTable();
+    props.getStudentTableByCourseID(props.courseId);
   }, [])
 
   const handleCancelButtonOnForm = () => {
@@ -31,53 +31,65 @@ const CoursesTab = props => {
     setForm(!form);
   }
 
+
+
   const courseColumns = [
     {
-      title: 'Term',
-      dataIndex: 'id',
+      title: 'Course ID',
+      dataIndex: 'course_id',
       key: 1,
     },
     {
-      title: 'Days',
-      dataIndex: 'cpr',
+      title: 'Student ID',
+      dataIndex: 'student_id',
       key: 2,
     },
     {
-      title: 'Type',
+      title: 'First Name',
       dataIndex: 'first_name',
       key: 3,
     },
     {
-      title: 'Group',
+      title: 'Additional Names',
       dataIndex: 'additional_names',
       key: 4,
     },
     {
-      title: 'Level',
-      dataIndex: 'gender',
+      title: 'Grade',
+      dataIndex: 'grade',
       key: 5,
     },
     {
-      title: 'Section',
-      dataIndex: 'mobile_telephone',
+      title: 'First Day',
+      dataIndex: 'first_day',
       key: 6,
     },
     {
-      title: 'Subsection',
-      dataIndex: 'mobile_telephone',
+      title: 'last Day',
+      dataIndex: 'last_day',
       key: 7,
     },
     {
-      title: 'Status',
-      dataIndex: 'mobile_telephone',
+      title: 'Result',
+      dataIndex: 'result',
       key: 8,
     },
   ];
 
-  const studentData = props.studentList.sort((a, b) => {
-    return b.id - a.id
-  }
-  )
+
+  const studentData = props.enrolledStudents.map(each=> {
+    let options = { year: 'numeric', month: 'numeric', day: 'numeric' }; //'long'
+    let firstDay = new Date(each.first_day).toLocaleDateString('en-GB', options)
+    let lastDay = new Date(each.last_day).toLocaleDateString('en-GB', options)
+    each.first_day = firstDay;
+    each.last_day = lastDay;
+    return each;
+    }
+  ).sort((a,b)=> {
+    return a.student_id - b.student_id;
+  })
+
+  
 
   return (
     <div>
@@ -123,15 +135,15 @@ const CoursesTab = props => {
 
 const mapStateToProps = state => {
   return {
-    isLoading: state.studentTableReducer.isLoading,
-    studentList: state.studentTableReducer.studentList,
-    error: state.studentTableReducer.error,
+    isLoading: state.coursesTableReducer.isLoading,
+    enrolledStudents: state.coursesTableReducer.studentsById,
+    error: state.coursesTableReducer.error,
   };
 };
 
 export default withRouter(
   connect(
     mapStateToProps,
-    { getStudentTable }
-  )(CoursesTab)
+    { getStudentTableByCourseID }
+  )(EnrolledStudentsTab)
 )

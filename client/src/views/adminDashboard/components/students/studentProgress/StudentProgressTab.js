@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { getStudentProgress, togglePostComponent } from '../../../../../actions';
 import { withRouter } from 'react-router-dom';
 import { Progress } from 'antd';
-import { Grid, Segment, Icon } from 'semantic-ui-react';
+import { Grid, Segment, Icon, Input } from 'semantic-ui-react';
 import AddStudentProgressForm from './AddStudentProgressForm';
 import EditStudentProgressForm from './EditStudentProgressForm'
 
 
 const StudentProgressTab = props => {
-
+    console.log('props in student progress tab',props)
     useEffect(() => {
         props.getStudentProgress(props.studentID)
 
@@ -23,12 +23,17 @@ const StudentProgressTab = props => {
 
     return (
         <div className="gridView">
-            <Segment style={{
-                        display: "flex", justifyContent: "flex-start", paddingTop: "12px",
-                        border: "1px solid rgba(189, 225, 230, 0.2)",
-                        height: "54px", backgroundColor: "rgba(189, 225, 230, 0.2)"
-                    }}>Course #:
-            </Segment>
+            {
+                props.progressByStudentId ? 
+                <Segment style={{
+                    display: "flex", justifyContent: "flex-start", paddingTop: "12px",
+                    border: "1px solid rgba(189, 225, 230, 0.2)",
+                    height: "54px", backgroundColor: "rgba(189, 225, 230, 0.2)"
+                    }}>Course #: {props.progressByStudentId.course_id}
+                </Segment>
+                : null
+            }
+           
             {
                 edit ? < EditStudentProgressForm {...props} setEdit={setEdit} edit={edit}/> 
                 : (props.progressByStudentId ? 
