@@ -84,7 +84,10 @@ export {
   toggleAddStaffComponent,
   ADD_STAFF_START,
   ADD_STAFF_SUCCESS,
-  ADD_STAFF_FAILURE
+  ADD_STAFF_FAILURE,
+
+  filterStaffTable,
+  SET_FILTER_STAFF,
 } from './adminDashboardActions/staffActions.js';
 
 

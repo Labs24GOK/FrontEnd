@@ -8,24 +8,17 @@ import '../mainStyle/mainTable.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import StaffRegistrationForm from './StaffRegistrationForm';
+import SearchStaffTable from './SearchStaffTable';
+
 
 const StaffTable = props => {
-
-  const [search, setSearch] = useState('');
   const [form, setForm] = useState(false);
-
- 
-    
     useEffect(() => {
         props.getStaffTable();
     }, [])
 
     const handleCancelButtonOnForm = () => {
       setForm(false);
-    }
-
-    const handleSearchInput = () => {
-
     }
 
     const handleAddButton = () => {
@@ -102,14 +95,7 @@ const StaffTable = props => {
       <div>
           <div className="row-above">
             <div>
-              <input
-                className="row-above-input"
-                type="text"
-                name="Search"
-                placeholder="Search by registration date, name, cpr, etc..."
-                value={search}
-                onChange={handleSearchInput}
-              />
+             <SearchStaffTable />
             </div>
             <div className="create-new-entry">
               <div style={{marginRight: '10px'}}>Create new entry</div>

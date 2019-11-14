@@ -47,7 +47,7 @@ function ParentList(props) {
 )
   return (
     <div>
-      <div>
+      <div className="row-above">
         <SearchParentTable />
       </div>
       {props.isLoading ? (
