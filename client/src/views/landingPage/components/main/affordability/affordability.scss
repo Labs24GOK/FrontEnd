@@ -1,0 +1,98 @@
+@import "../../../../../styles/_variables.scss";
+@import "../../../../../styles/_mixins.scss";
+
+section.affordability {
+    background: url('../../../../../assets/plant-growing-from-jar-of-coins.jpg');
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 4% 0;
+
+    @media #{$tablet-small} {
+        padding: 8% 0;
+    }
+
+    .flex {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+
+        @media #{$tablet} {
+            justify-content: space-around;
+        }
+
+        @media #{$tablet-small} {
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        > div {
+            max-width: 500px;
+            width: 50%;
+
+            @media #{$tablet-small} {
+                width: 60%;
+            }
+        }
+    }
+
+    .wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+
+        @media #{$tablet} {
+            padding: 0 2%;
+        }
+    }
+
+    h2 {
+        font-family: $font-family;
+        color: $medium-blue;
+        font-weight: 500;
+        font-size: 4.55rem;
+
+        @media #{$tablet} {
+            font-size: 3.55rem;
+        }
+
+        @media #{$tablet-small} {
+            font-size: 3rem;
+        }
+    }
+
+    p {
+        font-family: $font-family;
+        color: $medium-blue;
+        font-size: 2.55rem;
+        margin: 0 0 0.8em;
+
+        @media #{$tablet} {
+            font-size: 2rem;
+        }
+
+        @media #{$tablet-small} {
+            font-size: 1.5rem;
+        }
+    }
+
+    button {
+        font-family: $font-family;
+        font-size: 1.3rem;
+        font-weight: 600;
+        border: none;
+        color: white;
+        background-color: #C73642;
+        padding: 18px;
+        margin-right: 20px;
+        border-radius: 7px;
+        display: block;
+        max-width: 350px;
+        width: 85%;
+        margin: 0 auto;
+
+        @media #{$tablet-small} {
+            padding: 11px;
+            width: 75%;
+        }
+    }
+}

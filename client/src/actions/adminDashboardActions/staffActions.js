@@ -82,4 +82,48 @@ export const addStaff = staff => dispatch => {
         });
 };
 
+export const SET_FILTER_STAFF = 'SET_FILTER_STAFF';
+export const filterStaffTable = (searchTerm) => dispatch => {
+    dispatch({type: SET_FILTER_STAFF, payload: searchTerm})
+    dispatch({type: FETCH_STAFF_START});
+    axios.get(`https://speak-out-be-staging.herokuapp.com/api?table=staff`)
+        .then(res => {
+            searchTerm = searchTerm.toLowerCase();
+            let staffList = res.data.tableData;
+            staffList = staffList.filter(staff => {
+                if (staff.name && staff.name.toLowerCase().match(searchTerm)) {
+                    return true;
+                }
+                if (staff.short_name && staff.short_name.toLowerCase().match(searchTerm)) {
+                    return true;
+                }
+                if (staff.id && staff.id.toString().match(searchTerm)) {
+                    return true;
+                }
+                if (staff.cpr && staff.cpr.toString().match(searchTerm)) {
+                    return true;
+                }
+                if (staff.mobile_number && staff.mobile_number.toString().match(searchTerm)) {
+                    return true;
+                }
+                if (staff.accent && staff.accent.toLowerCase().match(searchTerm)) {
+                    return true;
+                }
+                if (staff.teaching_rate && staff.teaching_rate.toLowerCase().match(searchTerm)) {
+                    return true;
+                }
+                if (staff.gender && staff.gender.toLowerCase().match(searchTerm)) {
+                    return true;
+                }
+                if (staff.birthdate && staff.birthdate.toLowerCase().match(searchTerm)) {
+                    return true;
+                }
+                return false
+            });
+           dispatch({type: FETCH_STAFF_SUCCESS, payload: staffList})
+        }).catch(err=> {
+            console.log('err',err)
+            dispatch({type: FETCH_STAFF_FAILURE, payload: err.payload})
+        });
+}
 

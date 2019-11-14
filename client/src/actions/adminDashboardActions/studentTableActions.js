@@ -16,9 +16,9 @@ export const getStudentTable = () => dispatch => {
 };
 
 
-export const SET_FILTER = 'SET_FILTER';
+export const SET_FILTER_STUDENT = 'SET_FILTER_STUDENT';
 export const filterStudentTable = (searchTerm) => dispatch => {
-    dispatch({type: SET_FILTER, payload: searchTerm})
+    dispatch({type: SET_FILTER_STUDENT, payload: searchTerm})
     dispatch({type: FETCH_STUDENTS_START});
     axios.get(`https://speak-out-be-staging.herokuapp.com/api?table=student`)
         .then(res => {
@@ -38,7 +38,7 @@ export const filterStudentTable = (searchTerm) => dispatch => {
                 if (student.additional_names && student.additional_names.toLowerCase().match(searchTerm)) {
                     return true;
                 }
-                if (student.mobile_telephone && student.mobile_telephone.toLowerCase().match(searchTerm)) {
+                if (student.mobile_telephone && student.mobile_telephone.toString().match(searchTerm)) {
                     return true;
                 }
                 return false

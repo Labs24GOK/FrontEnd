@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import NavBar from '../header/NavBar';
+import Special from './special/Special';
+import Affordability from './affordability/Affordability';
+import AgeGroups from './ageGroups/AgeGroups';
+import Carousel from './carousel/Carousel';
+import RegistrationInformation from './registrationInformation/RegistrationInformation';
 
-function Index() {
+function LandingPage() {
 
   return (
-    <div style={{marginTop: '30px', fontSize: '30px'}}>
-      LANDING PAGE
-    </div>
+    <>
+      <NavBar />
+      <Special />
+      <Affordability />
+      <AgeGroups />
+      <Carousel />
+      <RegistrationInformation />
+    </>
   )
 }
 
-export default Index;
+export default LandingPage;

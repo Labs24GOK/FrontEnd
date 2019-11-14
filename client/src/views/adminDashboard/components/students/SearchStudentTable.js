@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
-import { getStudentTable, filterStudentTable } from '../../../../actions';
+import { withRouter} from 'react-router-dom';
+import { filterStudentTable } from '../../../../actions';
 
 const SearchStundentTable = props => {
     const handleSearchInput = (e) => {
@@ -32,6 +32,6 @@ const mapStateToProps = state => {
   export default withRouter(
     connect(
       mapStateToProps,
-      { getStudentTable, filterStudentTable }
+      { filterStudentTable }
     )(SearchStundentTable)
   )

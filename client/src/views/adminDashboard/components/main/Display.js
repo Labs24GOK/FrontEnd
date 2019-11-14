@@ -18,7 +18,8 @@ function Display({ navigation }) {
       return (
         <MainUserPage />
       )
-    } else if (navigation === 'students') {
+    }
+     if (navigation === 'students') {
       return (
         <div>
           <Student /> 

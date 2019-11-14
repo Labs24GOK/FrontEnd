@@ -1,0 +1,127 @@
+@import "../../../../styles/_variables";
+
+.about-us {
+  // position: absolute;
+  top: 120px;
+  width: 100%;
+  font-family: "Mada", sans-serif;
+  font-style: normal;
+
+  header {
+    border-bottom: 4px solid #1d8695;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 62px;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+
+    h1 {
+      font-weight: normal;
+      font-size: 48px;
+      line-height: 62px;
+      color: #2b2b2b;
+      margin-bottom: 0;
+    }
+
+    // .link-container {
+    //   .link {
+    //     font-weight: 500;
+    //     font-size: 21px;
+    //     line-height: 80px;
+    //     vertical-align: baseline;
+    //     color: #2b2b2b;
+    //     text-decoration: none;
+    //     margin-left: 40px;
+    //   }
+
+    //   .red {
+    //     color: #e71829;
+    //   }
+    // }
+  }
+
+  .body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    margin-top: 10px;
+    padding-left: 5%;
+    padding-right: 5%;
+
+    .img-container {
+      padding-left: 10%;
+    }
+
+    img {
+      width: 478px;
+      height: 368px;
+      margin-left: 10%;
+    }
+
+    .contact-container {
+      display: flex;
+      flex-direction: row;
+      //   justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+
+      p {
+        font-size: 36px;
+        line-height: 47px;
+      }
+
+      img {
+        width: 41px;
+        height: 47px;
+        // margin-left: 0;
+      }
+    }
+
+    h2 {
+      font-size: 40px;
+      font-weight: normal;
+      margin-top: 20px;
+      color: #2b2b2b;
+    }
+
+    p {
+      font-weight: normal;
+      font-size: 21px;
+      line-height: 27px;
+      margin-left: 4%;
+      color: #2b2b2b;
+    }
+
+    .body-left {
+      width: 44%;
+      margin-left: 3%;
+    }
+
+    .body-right {
+      width: 44%;
+      margin-left: 3%;
+      margin-bottom: 50px;
+
+      h2 {
+        margin-left: 15%;
+        line-height: 52px;
+      }
+
+      img {
+        width: 42px;
+        height: 43px;
+        // margin-left: 0;
+      }
+
+      .contact-container {
+        margin-left: 0;
+      }
+    }
+  }
+}

@@ -17,7 +17,7 @@ export {
 export {
   getStudentTable,
   filterStudentTable,
-  SET_FILTER,
+  SET_FILTER_STUDENT,
   FETCH_STUDENTS_START,
   FETCH_STUDENTS_SUCCESS,
   FETCH_STUDENTS_FAILURE
@@ -69,6 +69,8 @@ export {
   ADD_PARENT_START,
   ADD_PARENT_SUCCESS,
   ADD_PARENT_FAILURE,
+  filterParentTable,
+  SET_FILTER_PARENT,
 } from './adminDashboardActions/parentAction.js'
 
 export {
@@ -92,7 +94,10 @@ export {
   toggleAddStaffComponent,
   ADD_STAFF_START,
   ADD_STAFF_SUCCESS,
-  ADD_STAFF_FAILURE
+  ADD_STAFF_FAILURE,
+
+  filterStaffTable,
+  SET_FILTER_STAFF,
 } from './adminDashboardActions/staffActions.js';
 
 
@@ -149,6 +154,8 @@ export {
   ADD_COURSE_START,
   ADD_COURSE_SUCCESS,
   ADD_COURSE_FAILURE,
+  filterCourseTable,
+  SET_FILTER_COURSES,
 } from './adminDashboardActions/courseAction';
 
 export {

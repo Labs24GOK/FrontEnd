@@ -1,5 +1,5 @@
 import {
-  SET_FILTER,
+  SET_FILTER_STUDENT,
   FETCH_STUDENTS_START,
   FETCH_STUDENTS_SUCCESS,
   FETCH_STUDENTS_FAILURE
@@ -34,7 +34,7 @@ export const studentTableReducer = (state = initialState, action) => {
               error: action.payload,
           }
        
-        case SET_FILTER:
+        case SET_FILTER_STUDENT:
             return {
                 ...state,
                 searchTerm: action.payload
