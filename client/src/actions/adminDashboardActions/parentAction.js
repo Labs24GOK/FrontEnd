@@ -62,3 +62,38 @@ export const editParentById = (id, state) => dispatch => {
        }) 
     })
 }
+
+
+export const SET_FILTER_PARENT = 'SET_FILTER_PARENT';
+export const filterParentTable = (searchTerm) => dispatch => {
+    dispatch({type: SET_FILTER_PARENT, payload: searchTerm})
+    dispatch({type: FETCH_PARENTS_START});
+    axios.get(`https://speak-out-be-staging.herokuapp.com/api?table=family`)
+        .then(res => {
+            searchTerm = searchTerm.toLowerCase();
+            let parentList = res.data.tableData;
+            parentList = parentList.filter(parent => {
+                if (parent.mother_name && parent.mother_name.toLowerCase().match(searchTerm)) {
+                    return true;
+                }
+                if (parent.father_name && parent.father_name.toLowerCase().match(searchTerm)) {
+                    return true;
+                }
+                if (parent.id && parent.id.toString().match(searchTerm)) {
+                    return true;
+                }
+                if (parent.primary_telephone && parent.primary_telephone.toString().match(searchTerm)) {
+                    return true;
+                }
+               
+                if (parent.secondary_telephone && parent.secondary_telephone.toString().match(searchTerm)) {
+                    return true;
+                }
+                return false
+            });
+           dispatch({type: FETCH_PARENTS_SUCCESS, payload: parentList})
+        }).catch(err=> {
+            console.log('err',err)
+            dispatch({type: FETCH_PARENTS_FAILURE, payload: err.payload})
+        });
+}

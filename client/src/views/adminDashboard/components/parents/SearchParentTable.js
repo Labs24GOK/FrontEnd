@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter} from 'react-router-dom';
-import { filterStudentTable } from '../../../../actions';
+import { withRouter } from 'react-router-dom';
+import { filterParentTable } from '../../../../actions';
 
-const SearchStundentTable = props => {
+const SearchParentTable = props => {
     const handleSearchInput = (e) => {
         const searchTerm = e.target.value;
-        props.filterStudentTable(searchTerm)
+        props.filterParentTable(searchTerm)
       
       }
     return (
@@ -15,7 +15,7 @@ const SearchStundentTable = props => {
               className="row-above-input"
               type="text"
               name="Search"
-              placeholder="Search by ID, name, cpr, etc..."
+              placeholder="Search by ID, Parent name, Phone number etc..."
               value={props.searchTerm}
               onChange={handleSearchInput}
           />
@@ -25,13 +25,13 @@ const SearchStundentTable = props => {
 
 const mapStateToProps = state => {
     return {
-      searchTerm: state.studentTableReducer.searchTerm
+      searchTerm: state.parentReducer.searchTerm
     };
   };
   
   export default withRouter(
     connect(
       mapStateToProps,
-      { filterStudentTable }
-    )(SearchStundentTable)
+      { filterParentTable }
+    )(SearchParentTable)
   )

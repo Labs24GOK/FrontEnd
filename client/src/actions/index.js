@@ -17,7 +17,7 @@ export {
 export {
   getStudentTable,
   filterStudentTable,
-  SET_FILTER,
+  SET_FILTER_STUDENT,
   FETCH_STUDENTS_START,
   FETCH_STUDENTS_SUCCESS,
   FETCH_STUDENTS_FAILURE
@@ -58,6 +58,9 @@ export {
   EDIT_PARENTBYID_START,
   EDIT_PARENTBYID_SUCCESS,
   EDIT_PARENTBYID_FAILURE,
+
+  filterParentTable,
+  SET_FILTER_PARENT,
 } from './adminDashboardActions/parentAction.js'
 
 export {

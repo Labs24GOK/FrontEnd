@@ -8,6 +8,7 @@ import {
     EDIT_PARENTBYID_START,
     EDIT_PARENTBYID_SUCCESS,
     EDIT_PARENTBYID_FAILURE,
+    SET_FILTER_PARENT,
   } from '../../actions';
   
   const initialState = {
@@ -17,6 +18,7 @@ import {
         parentById: [],
         isEditing: false,
         isEdited: false,
+        searchTerm:""
   }
   
   export const parentReducer = (state = initialState, action) => {
@@ -81,7 +83,12 @@ import {
                 isLoading: false,
                 error: action.payload,
             }
-            
+        // search 
+        case SET_FILTER_PARENT:
+        return {
+            ...state,
+            searchTerm: action.payload
+        }
         default: return state;
   
     }

@@ -1,7 +1,8 @@
-import React, {useState, useEffect } from 'react';
+import React, {useEffect } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { getParentTable } from '../../../../actions';
+import SearchParentTable from './SearchParentTable';
 import { Table, Spin } from 'antd';
 import 'antd/dist/antd.css';
 
@@ -46,6 +47,9 @@ function ParentList(props) {
 )
   return (
     <div>
+      <div>
+        <SearchParentTable />
+      </div>
       {props.isLoading ? (
               <Spin style={{marginTop: '150px'}}size="large" />
             ) : (
