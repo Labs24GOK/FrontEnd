@@ -103,7 +103,6 @@ export const filterStaffTable = (searchTerm) => dispatch => {
                 if (staff.cpr && staff.cpr.toString().match(searchTerm)) {
                     return true;
                 }
-               
                 if (staff.mobile_number && staff.mobile_number.toString().match(searchTerm)) {
                     return true;
                 }
@@ -116,7 +115,7 @@ export const filterStaffTable = (searchTerm) => dispatch => {
                 if (staff.gender && staff.gender.toLowerCase().match(searchTerm)) {
                     return true;
                 }
-                if (staff.birthdate && staff.birthdate.toString().match(searchTerm)) {
+                if (staff.birthdate && staff.birthdate.toLowerCase().match(searchTerm)) {
                     return true;
                 }
                 return false

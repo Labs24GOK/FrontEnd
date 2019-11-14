@@ -13,7 +13,9 @@ import {
 
     DISPLAY_STUDENTSBYCOURSEID_START,
     DISPLAY_STUDENTSBYCOURSEID_SUCCESS,
-    DISPLAY_STUDENTSBYCOURSEID_FAILURE
+    DISPLAY_STUDENTSBYCOURSEID_FAILURE,
+
+    SET_FILTER_COURSES,
   } from '../../actions';
   
   const initialState = {
@@ -24,6 +26,7 @@ import {
         studentsById: [],
         isEdited: false,
         isEditing: false,
+        searchTerm: "",
   }
   
   export const coursesTableReducer = (state = initialState, action) => {
@@ -106,6 +109,12 @@ import {
                     ...state,
                     isLoading: false,
                     error: action.payload,
+                }
+            // search 
+            case SET_FILTER_COURSES:
+                    return {
+                        ...state,
+                        searchTerm: action.payload
                 }
         default: return state;
   

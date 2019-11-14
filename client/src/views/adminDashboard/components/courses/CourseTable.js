@@ -6,11 +6,10 @@ import { Table, Spin } from 'antd';
 import 'antd/dist/antd.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
-
+import SearchCourseTable from './SearchCourseTable';
 import '../mainStyle/mainCard.scss'
 
 const CourseTable = props => {
-  const [search, setSearch] = useState('');
   const [form, setForm] = useState(false);
 
 
@@ -20,10 +19,6 @@ const CourseTable = props => {
 
   const handleCancelButtonOnForm = () => {
     setForm(false);
-  }
-
-  const handleSearchInput = () => {
-
   }
 
   const handleAddButton = () => {
@@ -72,23 +67,12 @@ const CourseTable = props => {
     },
   ];
 
-  // const studentData = props.studentList.sort((a, b) => {
-  //   return b.id - a.id
-  // }
-  // )
 
   return (
     <div>
       <div className="row-above">
         <div>
-          <input
-            className="row-above-input"
-            type="text"
-            name="Search"
-            placeholder="Search by registration date, name, cpr, etc..."
-            value={search}
-            onChange={handleSearchInput}
-          />
+          <SearchCourseTable />
         </div>
         <div className="create-new-entry" style={{ cursor: 'pointer', color: '#26ABBD' }}>
           <div style={{ marginRight: '10px' }}>Add Course</div>

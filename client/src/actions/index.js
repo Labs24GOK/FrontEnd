@@ -138,6 +138,9 @@ export {
   DISPLAY_STUDENTSBYCOURSEID_START,
   DISPLAY_STUDENTSBYCOURSEID_SUCCESS,
   DISPLAY_STUDENTSBYCOURSEID_FAILURE,
+
+  filterCourseTable,
+  SET_FILTER_COURSES,
 } from './adminDashboardActions/courseAction';
 
 export {

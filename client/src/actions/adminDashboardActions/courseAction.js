@@ -78,3 +78,45 @@ export const getStudentTableByCourseID = course_id => dispatch => {
         });
 };
 
+export const SET_FILTER_COURSES = 'SET_FILTER_COURSES';
+export const filterCourseTable = (searchTerm) => dispatch => {
+    dispatch({type: SET_FILTER_COURSES, payload: searchTerm})
+    dispatch({type: FETCH_COURSES_START});
+    axios.get(`https://speak-out-be-staging.herokuapp.com/api?table=course_view`)
+        .then(res => {
+            searchTerm = searchTerm.toLowerCase();
+            let courseList = res.data.tableData;
+            courseList = courseList.filter(course => {
+                if (course.id && course.id.toString().match(searchTerm)) {
+                    return true;
+                }
+                if (course.term && course.term.toLowerCase().match(searchTerm)) {
+                    return true;
+                }
+                if (course.course_type && course.course_type.toLowerCase().match(searchTerm)) {
+                    return true;
+                }
+                if (course.group_type && course.group_type.toLowerCase().match(searchTerm)) {
+                    return true;
+                }
+                if (course.school_grade && course.school_grade.toLowerCase().match(searchTerm)) {
+                    return true;
+                }
+                if (course.level && course.level.toLowerCase().match(searchTerm)) {
+                    return true;
+                }
+                if (course.course_schedule && course.course_schedule.toLowerCase().match(searchTerm)) {
+                    return true;
+                }
+                if (course.teacher && course.teacher.toLowerCase().match(searchTerm)) {
+                    return true;
+                }
+                return false
+            });
+           dispatch({type: FETCH_COURSES_SUCCESS, payload: courseList})
+        }).catch(err=> {
+            console.log('err',err)
+            dispatch({type: FETCH_COURSES_FAILURE, payload: err.payload})
+        });
+}
+
