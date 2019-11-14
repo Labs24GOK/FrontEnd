@@ -25,7 +25,7 @@ export const getStudentProgress = student_id => dispatch => {
 export const CREATE_STUDENTPROGRESS_START = 'CREATE_STUDENTPROGRESS_START';
 export const CREATE_STUDENTPROGRESS_SUCCESS = 'CREATE_STUDENTPROGRESS_SUCCESS';
 export const  CREATE_STUDENTPROGRESS_FAILURE = 'CREATE_STUDENTPROGRESS_FAILURE';
-
+//fix this later 
 export const togglePostComponent = () => dispatch => {
     dispatch({ type: CREATE_STUDENTPROGRESS_START })
 }
@@ -48,6 +48,30 @@ export const postStudentProgress = student => dispatch => {
     })
 }
 
-export const CREATE_STUDENTPROGRESS_START = 'CREATE_STUDENTPROGRESS_START';
-export const CREATE_STUDENTPROGRESS_SUCCESS = 'CREATE_STUDENTPROGRESS_SUCCESS';
-export const  CREATE_STUDENTPROGRESS_FAILURE = 'CREATE_STUDENTPROGRESS_FAILURE';
+export const EDIT_STUDENTPROGRESS_START = 'EDIT_STUDENTPROGRESS_START';
+export const EDIT_STUDENTPROGRESS_SUCCESS = 'EDIT_STUDENTPROGRESS_SUCCESS';
+export const  EDIT_STUDENTPROGRESS_FAILURE = 'EDIT_STUDENTPROGRESS_FAILURE';
+
+export const toggleEditProgressComponent = () => dispatch => {
+    dispatch({ type: EDIT_STUDENTPROGRESS_START })
+}
+
+
+export const editStudentProgress = (student_id, state) => dispatch => {
+    console.log('student_id',student_id)
+    console.log('state',state)
+    axios.put(`https://speak-out-be-staging.herokuapp.com/api/?table=progress_report&where=student_id=${student_id}`, state)
+    .then(res => { 
+        console.log('EDIT ACTION:', res)
+        dispatch({
+            type: EDIT_STUDENTPROGRESS_SUCCESS,
+            payload: res.data
+        })
+    })
+    .catch(err => {
+       dispatch({
+        type: EDIT_STUDENTPROGRESS_FAILURE,
+        payload: err.data
+       }) 
+    })
+}

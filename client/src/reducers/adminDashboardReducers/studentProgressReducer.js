@@ -7,6 +7,9 @@ import {
   CREATE_STUDENTPROGRESS_SUCCESS,
   CREATE_STUDENTPROGRESS_FAILURE,
 
+  EDIT_STUDENTPROGRESS_START,
+  EDIT_STUDENTPROGRESS_SUCCESS,
+  EDIT_STUDENTPROGRESS_FAILURE
 } from '../../actions';
 
 
@@ -16,7 +19,9 @@ const initialState = {
     isLoading: false,
     error: null,
     isPosting: false,
-    isPosted: false
+    isPosted: false,
+    isEditing: false,
+    isEdited: true,
 }
 
 
@@ -65,14 +70,26 @@ export const studentProgressReducer = (state = initialState, action) => {
                     isLoading: false,
                     error: action.payload
                 }
-    
-
-
-
-
-
-
+                /// edit by ID
+            case EDIT_STUDENTPROGRESS_START:
+                    return {
+                        ...state,
+                        isEditing: !state.isEditing,
+                        error: null
+                    };
+            case EDIT_STUDENTPROGRESS_SUCCESS:
+                return {
+                    ...state,
+                    isEditing: !state.isEditing,
+                    isEdited: true,
+                    progressByStudentId: action.payload
+                };
+            case EDIT_STUDENTPROGRESS_FAILURE:
+                return {
+                    ...state,
+                    isLoading: false,
+                    error: action.payload
+                }
             default: return state;
-
         }
     }

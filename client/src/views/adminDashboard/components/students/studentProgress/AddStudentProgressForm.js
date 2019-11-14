@@ -27,7 +27,8 @@ const StudentProgressForm = props => {
         course_id: '',
         student_id: '',
         teacher_id: '',
-        report_date: ''
+        report_date: '',
+        id: props.id,    
     })
 
 
@@ -39,7 +40,7 @@ const handleChange = e => {
 
 
 const formSubmit = e => {
-    // e.preventDefault()
+    e.preventDefault()
     props.postStudentProgress(state)
 }
 
@@ -103,8 +104,8 @@ const formSubmit = e => {
 
 
         <Grid.Column>
-        <Segment style={{color: "#26ABBD", cursor:"pointer", width:"fit-content"}} onClick={formSubmit}>
-        <Icon name="save" style = {{color:"#26ABBD",cursor:"pointer"}}/> Add Report
+        <Segment style={{color: "#26ABBD", cursor:"pointer", width:"fit-content"}} >
+        <Icon name="save"onClick={formSubmit} style = {{color:"#26ABBD",cursor:"pointer"}}/> Add Report
         </Segment>
         </Grid.Column>
     </Grid.Row>
