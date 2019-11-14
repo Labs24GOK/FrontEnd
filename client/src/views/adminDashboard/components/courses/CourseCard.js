@@ -37,7 +37,7 @@ const CourseCard = props => {
     }
 
 //working
-//had to add empy string b/c it was returning empty string and undefined
+//had to add empy string b/c it was returning empty string and toUpperCase undefined 
 let  courseProps = props.courseById.course_type || ''
 let course_type =  courseProps.charAt(0).toUpperCase() + courseProps.slice(1)
 

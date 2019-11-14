@@ -1,4 +1,5 @@
 import {
+  SET_FILTER,
   FETCH_STUDENTS_START,
   FETCH_STUDENTS_SUCCESS,
   FETCH_STUDENTS_FAILURE
@@ -7,7 +8,8 @@ import {
 const initialState = {
       isLoading: false,
       error: null,
-      studentList: []
+      studentList: [],
+      searchTerm: ""
 }
 
 export const studentTableReducer = (state = initialState, action) => {
@@ -16,21 +18,27 @@ export const studentTableReducer = (state = initialState, action) => {
           return {
               ...state,
               isLoading: true,
-              error: null
+              error: null,
           };
       case FETCH_STUDENTS_SUCCESS:
           return {
               ...state,
               isLoading: false,
               error: null,
-              studentList: action.payload
+              studentList: action.payload,
           };
       case FETCH_STUDENTS_FAILURE:
           return {
               ...state,
               isLoading: false,
-              error: action.payload
+              error: action.payload,
           }
+       
+        case SET_FILTER:
+            return {
+                ...state,
+                searchTerm: action.payload
+            }
       default: return state;
 
   }

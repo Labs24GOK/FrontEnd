@@ -16,6 +16,8 @@ export {
 
 export {
   getStudentTable,
+  filterStudentTable,
+  SET_FILTER,
   FETCH_STUDENTS_START,
   FETCH_STUDENTS_SUCCESS,
   FETCH_STUDENTS_FAILURE
@@ -76,6 +78,7 @@ export {
   EDIT_STAFFBYID_FAILURE,
 
   addStaff,
+  toggleAddStaffComponent,
   ADD_STAFF_START,
   ADD_STAFF_SUCCESS,
   ADD_STAFF_FAILURE
@@ -86,10 +89,20 @@ export {
   getStudentProgress,
   FETCH_STUDENTPROGESS_START,
   FETCH_STUDENTPROGESS_SUCCESS,
-  FETCH_STUDENTPROGESS_FAILURE
+  FETCH_STUDENTPROGESS_FAILURE,
+
+  postStudentProgress,
+  togglePostComponent,
+  CREATE_STUDENTPROGRESS_START,
+  CREATE_STUDENTPROGRESS_SUCCESS,
+  CREATE_STUDENTPROGRESS_FAILURE,
+
+  editStudentProgress,
+  toggleEditProgressComponent,
+  EDIT_STUDENTPROGRESS_START,
+  EDIT_STUDENTPROGRESS_SUCCESS,
+  EDIT_STUDENTPROGRESS_FAILURE,
 } from './adminDashboardActions/studentProgressActions.js'
-
-
 
 export {
   getStudentCourses,
