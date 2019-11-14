@@ -1,3 +1,4 @@
+
 export const adminDashboardTabs = [
   {key: "Main"},
   {key: "Students"},
@@ -10,8 +11,8 @@ export const adminDashboardTabs = [
   // {key: "Tables"},
   // {key: "Queries"},
   // {key: "Documents"},
-
 ]
+
 
 export const parentDashboardTabs = [
   {key: "Main"},

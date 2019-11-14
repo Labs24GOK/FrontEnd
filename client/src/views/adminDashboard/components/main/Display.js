@@ -11,6 +11,7 @@ import Parents from '../parents/Parents';
 import Courses from '../courses/Courses';
 import Staff from '../staff/Staff';
 
+
 function Display({ navigation }) {
   {
     if (navigation === 'main') {
@@ -20,7 +21,7 @@ function Display({ navigation }) {
     } else if (navigation === 'students') {
       return (
         <div>
-          <Student />
+          <Student /> 
         </div>
       )
     } else if (navigation === 'parents') {
