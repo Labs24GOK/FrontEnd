@@ -61,3 +61,20 @@ export const editCouseById = (id, state) => dispatch => {
        }) 
     })
 }
+
+export const DISPLAY_STUDENTSBYCOURSEID_START = 'DISPLAY_STUDENTSBYCOURSEID_START';
+export const DISPLAY_STUDENTSBYCOURSEID_SUCCESS = 'DISPLAY_STUDENTSBYCOURSEID_SUCCESS';
+export const DISPLAY_STUDENTSBYCOURSEID_FAILURE = 'DISPLAY_STUDENTSBYCOURSEID_FAILURE';
+
+export const getStudentTableByCourseID = course_id => dispatch => {
+    console.log('course_id in courseAction.js', course_id)
+    dispatch({type: DISPLAY_STUDENTSBYCOURSEID_START})
+    axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=course_enrollment_view&where=course_id=${course_id}`)
+        .then(res => {
+            console.log('res in courseAction.js',res)
+           dispatch({type: DISPLAY_STUDENTSBYCOURSEID_SUCCESS, payload:res.data.tableData})
+        }).catch(err=> {
+            dispatch({type: DISPLAY_STUDENTSBYCOURSEID_FAILURE, payload: err.payload})
+        });
+};
+

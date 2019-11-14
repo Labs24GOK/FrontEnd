@@ -2,12 +2,18 @@ import {
     FETCH_COURSES_START,
     FETCH_COURSES_SUCCESS,
     FETCH_COURSES_FAILURE,
+
     FETCH_COURSEBYID_START,
     FETCH_COURSEBYID_SUCCESS,
     FETCH_COURSEBYID_FAILURE,
+
     EDIT_COURSEBYID_START,
     EDIT_COURSEBYID_SUCCESS,
     EDIT_COURSEBYID_FAILURE,
+
+    DISPLAY_STUDENTSBYCOURSEID_START,
+    DISPLAY_STUDENTSBYCOURSEID_SUCCESS,
+    DISPLAY_STUDENTSBYCOURSEID_FAILURE
   } from '../../actions';
   
   const initialState = {
@@ -15,6 +21,7 @@ import {
         error: null,
         courseList: [],
         courseById: [],
+        studentsById: [],
         isEdited: false,
         isEditing: false,
   }
@@ -80,6 +87,26 @@ import {
                 isLoading: false,
                 error: action.payload,
             }
+            //get coursebyId
+            case DISPLAY_STUDENTSBYCOURSEID_START:
+                return {
+                    ...state,
+                    isLoading: true,
+                    error: null,
+                }
+            case  DISPLAY_STUDENTSBYCOURSEID_SUCCESS:
+                return {
+                    ...state,
+                    studentsById: action.payload,
+                    isLoading: false,
+                    error: null
+                }
+            case DISPLAY_STUDENTSBYCOURSEID_FAILURE:
+                return {
+                    ...state,
+                    isLoading: false,
+                    error: action.payload,
+                }
         default: return state;
   
     }
