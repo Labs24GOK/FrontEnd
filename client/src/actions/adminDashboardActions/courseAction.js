@@ -62,6 +62,29 @@ export const editCouseById = (id, state) => dispatch => {
     })
 }
 
+
+export const ADD_COURSE_START = 'ADD_COURSE_START';
+export const ADD_COURSE_SUCCESS = 'ADD_COURSE_SUCCESS';
+export const ADD_COURSE_FAILURE = 'ADD_COURSE_FAILURE';
+
+export const toggleAddCourseComponent = () => dispatch => {
+    // console.log('hey')
+    dispatch({ type: ADD_COURSE_START })
+}
+
+export const addCourse = course => dispatch => {
+    axios.post('https://speak-out-be-staging.herokuapp.com/api?table=course_view', course)
+        .then(res => {
+            console.log('ADD COURSE ACTION', res.data)
+           dispatch({type: ADD_COURSE_SUCCESS, payload:res.data})
+        }).catch(err=> {
+            console.log('err',err)
+            dispatch({type: ADD_COURSE_FAILURE, payload: err.payload})
+        });
+};
+
+
+
 export const DISPLAY_STUDENTSBYCOURSEID_START = 'DISPLAY_STUDENTSBYCOURSEID_START';
 export const DISPLAY_STUDENTSBYCOURSEID_SUCCESS = 'DISPLAY_STUDENTSBYCOURSEID_SUCCESS';
 export const DISPLAY_STUDENTSBYCOURSEID_FAILURE = 'DISPLAY_STUDENTSBYCOURSEID_FAILURE';

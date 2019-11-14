@@ -4,13 +4,33 @@ import { withRouter, Link } from 'react-router-dom';
 import { getParentTable } from '../../../../actions';
 import { Table, Spin } from 'antd';
 import 'antd/dist/antd.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import ParentRegistrationForm from './ParentRegistrationForm';
 
 
 function ParentList(props) {
  
+  const [search, setSearch] = useState('');
+  const [form, setForm] = useState(false);
+
+
   useEffect(() => {
     props.getParentTable();
   }, [])
+
+
+  const handleCancelButtonOnForm = () => {
+    setForm(false);
+  }
+
+  const handleSearchInput = () => {
+
+  }
+
+  const handleAddButton = () => {
+    setForm(!form);
+  }
 
 
   const parentListColumns = [
@@ -46,6 +66,26 @@ function ParentList(props) {
 )
   return (
     <div>
+         <div className="row-above">
+            <div>
+              <input
+                className="row-above-input"
+                type="text"
+                name="Search"
+                placeholder="Search by registration date, name, cpr, etc..."
+                value={search}
+                onChange={handleSearchInput}
+              />
+            </div>
+            <div className="create-new-entry">
+              <div style={{marginRight: '10px'}}>Create new entry</div>
+              <div><FontAwesomeIcon onClick={handleAddButton} style={{width: '25px', height: '25px', cursor: 'pointer'}} icon={faPlusCircle} size='lg'/></div>
+            </div>
+          </div>
+
+          {form ? (
+            <ParentRegistrationForm handleCancelButtonOnForm={handleCancelButtonOnForm}/>
+          ) : null}
       {props.isLoading ? (
               <Spin style={{marginTop: '150px'}}size="large" />
             ) : (

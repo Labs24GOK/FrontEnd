@@ -11,6 +11,10 @@ import {
     EDIT_COURSEBYID_SUCCESS,
     EDIT_COURSEBYID_FAILURE,
 
+    ADD_COURSE_START,
+    ADD_COURSE_SUCCESS,
+    ADD_COURSE_FAILURE,
+
     DISPLAY_STUDENTSBYCOURSEID_START,
     DISPLAY_STUDENTSBYCOURSEID_SUCCESS,
     DISPLAY_STUDENTSBYCOURSEID_FAILURE
@@ -24,6 +28,8 @@ import {
         studentsById: [],
         isEdited: false,
         isEditing: false,
+        isPosting: false,
+        isPosting: false,
   }
   
   export const coursesTableReducer = (state = initialState, action) => {
@@ -87,6 +93,29 @@ import {
                 isLoading: false,
                 error: action.payload,
             }
+            //add course
+            case ADD_COURSE_START:
+                return {
+                    ...state,
+                    isLoading: true,
+                    isPosting: false,
+                    error: null
+                };
+            case ADD_COURSE_SUCCESS:
+                return {
+                    ...state,
+                    isLoading: false,
+                    error: null,
+                    isPosting: false,
+                    isPosting: true,
+                    staffById: action.payload
+                };
+            case ADD_COURSE_FAILURE:
+                return {
+                    ...state,
+                    isLoading: false,
+                    error: action.payload
+                }
             //get coursebyId
             case DISPLAY_STUDENTSBYCOURSEID_START:
                 return {

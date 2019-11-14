@@ -12,6 +12,7 @@ import { placementTestReducer } from './adminDashboardReducers/placementTestRedu
 import { staffCourseReducer } from './adminDashboardReducers/staffCourseReducer';
 import { studentsByCourseIDReducer } from './adminDashboardReducers/studentByCourseId';
 import { attendanceReducer } from './adminDashboardReducers/attendanceReducer';
+import { addStaffReducer } from './adminDashboardReducers/addStaffReducer';
 
 export const reducer = combineReducers({
   authenticationReducer,
@@ -26,6 +27,7 @@ export const reducer = combineReducers({
   placementTestReducer,
   staffCourseReducer,
   studentsByCourseIDReducer,
-  attendanceReducer
+  attendanceReducer,
+  addStaffReducer
 });
 

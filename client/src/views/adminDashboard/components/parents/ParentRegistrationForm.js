@@ -1,32 +1,29 @@
 import React, { useState} from 'react';
 import { connect } from 'react-redux'
 import { Grid, Segment, Input, Icon, Form } from 'semantic-ui-react'
-import { addStaff, toggleAddStaffComponent } from '../../../../actions';
+import { addParent, toggleAddParentComponent} from '../../../../actions';
 import { withRouter, Link } from 'react-router-dom';
 
 
 
 
-const StaffRegistrationForm = (props) => {
-console.log ( 'staff registry props', props)
+const ParentRegistrationForm = (props) => {
+console.log ( 'parent registry props', props)
 
   const [state, setState] = useState({
     id: '',
-    name: '',
-    short_name: '',
-    cpr: '',
-    mobile_number: '',
-    gender: '',
-    accent: '',
-    birthdate: '',
-    mobile_number: '',
-    teaching_rate: '',
-    admin: '',
-    active: '',
-    user_id: ''
+    mother_name: '',
+    father_name: '',
+    block_code: '',
+    road: '',
+    building: '',
+    flat: '',
+    primary_telephone: '',
+    secondary_telephone: '',
+    user_id: '',
+    // created_at: '',
+    // updated_at: ''
   })
-//admin and active ar booleans that need to be added for post to work 
-  
 
 
   const handleChange = e => {
@@ -38,14 +35,14 @@ console.log ( 'staff registry props', props)
 
 
 const formSubmit = e => {
-    console.log('state sent', state)
+    console.log('add parent state sent', state)
   e.preventDefault();
-  props.addStaff(state)
+  props.addParent(state)
 }
 
 const cancelBtn = e => {
     e.preventDefault()
-    props.toggleAddStaffComponent()
+    props.toggleAddParentComponent()
 }
 
 
@@ -56,45 +53,45 @@ const cancelBtn = e => {
             {/* row 1 */}
             <Grid.Row>
                 <Grid.Column>
-                    <Segment>Staff ID</Segment>
+                    <Segment> ID</Segment>
                     <Input 
                         type='text'
                         name='id'
-                        placeholder='Staff Id'
+                        placeholder=' ID'
                         onChange={handleChange}
                         value={state.id}
                     />
                 </Grid.Column>
                 <Grid.Column>
-                    <Segment>Name</Segment>
+                    <Segment>Mother Name</Segment>
                     <Input 
                         type='text'
-                        name='name'
-                        placeholder='Name'
+                        name='mother_name'
+                        placeholder='Mother Name'
                         onChange={handleChange}
-                        value={state.name}
+                        value={state.mother_name}
                     />
                 </Grid.Column>
 
 
                 <Grid.Column>
-                    <Segment>Short Name</Segment>
+                    <Segment>Father Name</Segment>
                     <Input 
                         type='text'
-                        name='short_name'
-                        placeholder='Short Name'
+                        name='father_name'
+                        placeholder='Father Name'
                         onChange={handleChange}
-                        value={state.short_name}
+                        value={state.father_name}
                     />
                 </Grid.Column>
                 <Grid.Column>
-                <Segment>CPR</Segment>
+                <Segment>Block Code</Segment>
                     <Input 
                         type='text'
-                        name='cpr'
-                        placeholder='CPR'
+                        name='block_code'
+                        placeholder='Block Code'
                         onChange={handleChange}
-                        value={state.cpr}
+                        value={state.block_code}
                     />
                 </Grid.Column>
 
@@ -115,80 +112,60 @@ const cancelBtn = e => {
                 {/* row 2 */}
                 <Grid.Row>
                 <Grid.Column>
-                    <Segment>Mobile Number</Segment>
+                    <Segment>Road</Segment>
                     <Input 
                         type='text' //use date for calendar
-                        name='mobile_number'
-                        placeholder='Mobile Number'
+                        name='road'
+                        placeholder='Road'
                         onChange={handleChange}
-                        value={state.mobile_number}
+                        value={state.road}
                     />
                 </Grid.Column>
     
                 <Grid.Column>
-                    <Segment>Accent</Segment>
+                    <Segment>Building</Segment>
                     <Input 
                         type='text'
-                        name='accent'
-                        placeholder='Accent'
+                        name='building'
+                        placeholder='Building'
                         onChange={handleChange}
-                        value={state.accent}
+                        value={state.building}
                     />
                 </Grid.Column>
                 <Grid.Column>
-                    <Segment>Gender</Segment>
+                    <Segment>Flat</Segment>
                     <Input 
                         type='text'
-                        name='gender'
-                        placeholder='Gender'
+                        name='flat'
+                        placeholder='Flat'
                         onChange={handleChange}
-                        value={state.gender}
+                        value={state.flat}
                     />
                 </Grid.Column>
                 <Grid.Column>
-                    <Segment>Birthdate</Segment>
+                    <Segment>Primary Telephone</Segment>
                     <Input 
-                        type='date'
-                        name='birthdate'
-                        placeholder='birthdate'
+                        type='text'
+                        name='primary_telephone'
+                        placeholder='Primary Telephone'
                         onChange={handleChange}
-                        value={state.birthdate}
+                        value={state.primary_telephone}
                     />
                 </Grid.Column>
                 </Grid.Row>
                 <Grid.Row>
                 <Grid.Column>
-                    <Segment>Teaching Rate</Segment>
+                    <Segment>Secondary Telephone</Segment>
                     <Input 
                         type='text'
-                        name='teaching_rate'
-                        placeholder='Teaching Rate'
+                        name='secondary_telephone'
+                        placeholder='Secondary Telephone'
                         onChange={handleChange}
-                        value={state.teaching_rate}
+                        value={state.secondary_telephone}
                     />
                 </Grid.Column>
               
               {/* row3 */}
-                <Grid.Column>
-                    <Segment>Admin</Segment>
-                    <Input 
-                        type='text'
-                        name='admin'
-                        placeholder='Admin'
-                        onChange={handleChange}
-                        value={state.admin}
-                    />
-                </Grid.Column>
-                <Grid.Column>
-                    <Segment>Active</Segment>
-                    <Input 
-                        type='text'
-                        name='active'
-                        placeholder='active'
-                        onChange={handleChange}
-                        value={state.active}
-                    />
-                </Grid.Column>
                 <Grid.Column>
                     <Segment>User Id</Segment>
                     <Input 
@@ -199,6 +176,13 @@ const cancelBtn = e => {
                         value={state.user_id}
                     />
                 </Grid.Column>
+
+
+                <Grid.Column>
+                </Grid.Column>
+
+                <Grid.Column>
+                </Grid.Column>
             </Grid.Row>
            </Grid>
     </div>
@@ -208,10 +192,10 @@ const cancelBtn = e => {
 
 const mapStateToProps = state => {
   return {
-      isLoading: state.addStaffReducer.isLoading,
-      staffList: state.addStaffReducer.staff,
-      isPosting: state.addStaffReducer.isPosting,
-      isPosted: state.addStaffReducer.isPosted
+      isLoading: state.parentReducer.isLoading,
+      parentById: state.parentReducer.parentById,
+      isPosting: state.parentReducer.isPosting,
+      isPosted: state.parentReducer.isPosted
   };
 };
 
@@ -220,8 +204,8 @@ const mapStateToProps = state => {
 export default withRouter(
   connect(
     mapStateToProps,
-    { addStaff, toggleAddStaffComponent}
-)(StaffRegistrationForm)
+    { addParent, toggleAddParentComponent}
+)(ParentRegistrationForm)
 )
 
 

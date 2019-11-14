@@ -6,7 +6,7 @@ import { Table, Spin } from 'antd';
 import 'antd/dist/antd.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
-
+import CourseRegistrationForm from './CourseRegistrationForm';
 import '../mainStyle/mainCard.scss'
 
 const CourseTable = props => {
@@ -95,6 +95,11 @@ const CourseTable = props => {
           <div><FontAwesomeIcon onClick={handleAddButton} style={{ width: '18px', height: '21px' }} icon={faPlusCircle} size='lg' /></div>
         </div>
       </div>
+
+      {form ? (
+            <CourseRegistrationForm handleCancelButtonOnForm={handleCancelButtonOnForm}/>
+          ) : null}
+          
 
       {props.isLoading ? (
         <Spin style={{ marginTop: '150px' }} size="large" />

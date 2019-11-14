@@ -58,6 +58,17 @@ export {
   EDIT_PARENTBYID_START,
   EDIT_PARENTBYID_SUCCESS,
   EDIT_PARENTBYID_FAILURE,
+
+  getStudentByFamilyId,
+  FETCH_STUDENTBYFAMILYID_START,
+  FETCH_STUDENTBYFAMILYID_SUCCESS,
+  FETCH_STUDENTBYFAMILYID_FAILURE,
+
+  toggleAddParentComponent,
+  addParent,
+  ADD_PARENT_START,
+  ADD_PARENT_SUCCESS,
+  ADD_PARENT_FAILURE,
 } from './adminDashboardActions/parentAction.js'
 
 export {
@@ -132,6 +143,12 @@ export {
   DISPLAY_STUDENTSBYCOURSEID_START,
   DISPLAY_STUDENTSBYCOURSEID_SUCCESS,
   DISPLAY_STUDENTSBYCOURSEID_FAILURE,
+
+  toggleAddCourseComponent,
+  addCourse,
+  ADD_COURSE_START,
+  ADD_COURSE_SUCCESS,
+  ADD_COURSE_FAILURE,
 } from './adminDashboardActions/courseAction';
 
 export {

@@ -2,12 +2,22 @@ import {
     FETCH_PARENTS_START,
     FETCH_PARENTS_SUCCESS,
     FETCH_PARENTS_FAILURE,
+
     FETCH_PARENTBYID_START,
     FETCH_PARENTBYID_SUCCESS,
     FETCH_PARENTBYID_FAILURE,
+
     EDIT_PARENTBYID_START,
     EDIT_PARENTBYID_SUCCESS,
     EDIT_PARENTBYID_FAILURE,
+
+    FETCH_STUDENTBYFAMILYID_START,
+    FETCH_STUDENTBYFAMILYID_SUCCESS,
+    FETCH_STUDENTBYFAMILYID_FAILURE,
+
+    ADD_PARENT_START,
+    ADD_PARENT_SUCCESS,
+    ADD_PARENT_FAILURE,
   } from '../../actions';
   
   const initialState = {
@@ -15,8 +25,11 @@ import {
         error: null,
         parentList: [],
         parentById: [],
+        studentByFamilyId: [],
         isEditing: false,
         isEdited: false,
+        isPosting: false,
+        isPosting: false,
   }
   
   export const parentReducer = (state = initialState, action) => {
@@ -81,7 +94,50 @@ import {
                 isLoading: false,
                 error: action.payload,
             }
-            
+            //get by familyId
+            case FETCH_STUDENTBYFAMILYID_START:
+            return {
+                ...state,
+                isLoading: true,
+                error: null
+            };
+        case FETCH_STUDENTBYFAMILYID_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                error: null,
+                studentByFamilyId: action.payload
+            };
+        case FETCH_STUDENTBYFAMILYID_FAILURE:
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
+            }
+            //add Parent
+            case ADD_PARENT_START:
+                return {
+                    ...state,
+                    isLoading: true,
+                    isPosting: false,
+                    error: null
+                };
+            case ADD_PARENT_SUCCESS:
+                return {
+                    ...state,
+                    isLoading: false,
+                    error: null,
+                    isPosting: false,
+                    isPosting: true,
+                    parentById: action.payload
+                };
+            case ADD_PARENT_FAILURE:
+                return {
+                    ...state,
+                    isLoading: false,
+                    error: action.payload
+                }
+
         default: return state;
   
     }
