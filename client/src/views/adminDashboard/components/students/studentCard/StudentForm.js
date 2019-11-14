@@ -39,14 +39,14 @@ const StudentForm = (props) => {
     })
 
     const handleChange = (e, result) => {
-        const { name, value } = result || e.target;
-        if (e.target.value === '') {
+        const {name, value}= result || e.target;
+        if(e.target.value === ''){
             setError({
-                ...error,
+                ...error,   
                 [name]: true
             })
         }
-        if (value.length !== 0) {
+        if(value.length !== 0){
             setError(false)
         }
         setState({
@@ -57,7 +57,7 @@ const StudentForm = (props) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        if (error) {
+        if(error) {
             props.toggleEditComponent('true', 'false')
         } else {
             props.toggleEditComponent('false', 'true')
@@ -70,23 +70,23 @@ const StudentForm = (props) => {
     }
 
     const genderOptions = [
-        { key: 'M', text: 'M', value: 'M' },
-        { key: 'F', text: 'F', value: 'F' }
+        { key: 'M', text: 'M', value:'M' },
+        { key: 'F', text: 'F', value:'F'  }
     ]
 
     const blockCode = [
-        { key: 363, text: 363, value: 363 },
-        { key: 431, text: 431, value: 431 },
-        { key: 433, text: 433, value: 433 },
-        { key: 435, text: 435, value: 435 },
-        { key: 439, text: 439, value: 439 },
-        { key: 441, text: 441, value: 441 },
+        {key: 363, text: 363, value: 363},
+        {key: 431, text: 431, value: 431},
+        {key: 433, text: 433, value: 433},
+        {key: 435, text: 435, value: 435},
+        {key: 439, text: 439, value: 439},
+        {key: 441, text: 441, value: 441},
     ]
-
+    
     return (
         <>
             <div className="ui segment active tab editForm">
-                {!props.isEdited ? <h3 style={{ color: 'red' }}>{props.error}</h3> : null}
+                {!props.isEdited ? <h3 style={{color: 'red'}}>{props.error}</h3> : null}
                 <Grid columns='equal'>
                     <Grid.Row>
                         {/* row 1 */}
@@ -94,21 +94,21 @@ const StudentForm = (props) => {
                             <Segment>
                                 First nam
                         </Segment>
-                            {!error.first_name ? <Form.Input
+                        {!error.first_name ? <Form.Input 
                                 type='text'
                                 name='first_name'
                                 placeholder='First Name'
                                 onChange={handleChange}
                                 value={state.first_name}
-                            /> : <Form.Input required
-                                type='text'
-                                name='first_name'
-                                placeholder='First Name'
-                                onChange={handleChange}
-                                value={state.first_name}
-                                error={{ content: 'First Name is required' }}
-                                />}
-
+                            /> :  <Form.Input required
+                            type='text'
+                            name='first_name'
+                            placeholder='First Name'
+                            onChange={handleChange}
+                            value={state.first_name}
+                            error={{content:'First Name is required'}}
+                        /> }
+                           
                         </Grid.Column>
                         <Grid.Column>
                             <Segment>Additional names</Segment>
@@ -119,25 +119,26 @@ const StudentForm = (props) => {
                                 onChange={handleChange}
                                 value={state.additional_names}
                             /> : <Form.Input
-                                    required
-                                    type='text'
-                                    name='additional_names'
-                                    placeholder='Additional Names'
-                                    onChange={handleChange}
-                                    value={state.additional_names}
-                                    error={{ content: 'Additional Names' }}
-                                />}
-
+                            required
+                            type='text'
+                            name='additional_names'
+                            placeholder='Additional Names'
+                            onChange={handleChange}
+                            value={state.additional_names}
+                            error={{content:'Additional Names'}}
+                        />}
+                            
                         </Grid.Column>
                         <Grid.Column>
                             <Segment>Gender</Segment>
                             <Segment>
-                                <Dropdown name='gender'
-                                    value={state.gender}
-                                    onChange={handleChange}
-                                    options={genderOptions}
-                                    style={{ text: 'black' }} />
-                            </Segment>
+                            <Dropdown name='gender'
+                            name='gender'
+                             value={state.gender} 
+                             onChange={handleChange}
+                              options={genderOptions} 
+                              />
+                           </Segment>
                         </Grid.Column>
                         <Grid.Column>
                             <Segment>Birthdate</Segment>
@@ -171,7 +172,7 @@ const StudentForm = (props) => {
                                 placeholder='Home Telephone'
                                 onChange={handleChange}
                                 value={state.home_telephone}
-                                error={{ content: 'Please enter home telephone.', pointing: 'above' }}
+                                error={{content: 'Please enter home telephone.', pointing: 'above'}}
                             />
                         </Grid.Column>
                         <Grid.Column>
@@ -182,7 +183,7 @@ const StudentForm = (props) => {
                                 placeholder='Mobile Telephone'
                                 onChange={handleChange}
                                 value={state.mobile_telephone}
-                                error={{ content: 'Please enter mobile telephone.', pointing: 'above' }}
+                                error={{content: 'Please enter mobile telephone.', pointing: 'above'}}
                             />
                         </Grid.Column>
                         <Grid.Column>
@@ -193,7 +194,7 @@ const StudentForm = (props) => {
                                 placeholder='email'
                                 onChange={handleChange}
                                 value={state.email}
-                                error={{ content: 'Please enter email', pointing: 'above' }}
+                                error={{content: 'Please enter email', pointing: 'above'}}
                             />
                         </Grid.Column>
                         <Grid.Column>
@@ -204,7 +205,7 @@ const StudentForm = (props) => {
                                 placeholder='Preferred Contact Method'
                                 onChange={handleChange}
                                 value={state.preferred_contact_method}
-                                error={{ content: 'Please enter preferred contact method.', pointing: 'above' }}
+                                error={{content: 'Please enter preferred contact method.', pointing: 'above'}}
                             />
                         </Grid.Column>
                         <Grid.Column>
@@ -253,14 +254,13 @@ const StudentForm = (props) => {
                         <Grid.Column>
                             <Segment>Block Code</Segment>
                             <Segment>
-                                <Dropdown
-                                    placeholder='Block Code'
-                                    options={blockCode}
-                                    name='block_code'
-                                    value={state.block_code}
-                                    onChange={handleChange}
-                                    options={blockCode}
-                                />
+                            <Dropdown 
+                            name='block_code'
+                            placeholder='Block Code'
+                            options={blockCode}
+                            onChange={handleChange}
+                            value={state.block_code}
+                            />
                             </Segment>
                         </Grid.Column>
                         <Grid.Column>
@@ -277,7 +277,7 @@ const StudentForm = (props) => {
 
                     {/* row 4 */}
                     <Grid.Row>
-
+                    
                         <Grid.Column>
                             <Segment>CPR</Segment>
                             <Input
@@ -319,7 +319,7 @@ const StudentForm = (props) => {
                             />
                         </Grid.Column>
 
-
+                      
                         <Grid.Column>
                             <Segment>Grade Updated</Segment>
                             <Input
@@ -330,7 +330,7 @@ const StudentForm = (props) => {
                                 value={state.grade_updated}
                             />
                         </Grid.Column>
-                    </Grid.Row>
+                        </Grid.Row>
 
 
                     {/* row 5 */}
@@ -345,20 +345,29 @@ const StudentForm = (props) => {
                                 value={state.family_id}
                             />
                         </Grid.Column>
-                    </Grid.Row>
-
-                    <Grid.Row>
                         <Grid.Column>
-                            <Segment>Notes</Segment>
-                            <Input
-                                type='text'
-                                name='notes'
-                                placeholder='Notes'
-                                onChange={handleChange}
-                                value={state.notes}
-                            />
-
                         </Grid.Column>
+                        <Grid.Column>
+                        </Grid.Column>
+                        <Grid.Column>
+                        </Grid.Column>
+                        <Grid.Column>
+                        </Grid.Column>
+                        </Grid.Row>
+                    
+                    <Grid.Row>
+                    <Grid.Column>
+                        <Segment>Notes</Segment>
+                        <Input
+                            style={{height: '100px'}}
+                            type='text'
+                            name='notes'
+                            placeholder='Notes'
+                            onChange={handleChange}
+                            value={state.notes}
+                        />
+
+                    </Grid.Column>
                     </Grid.Row>
                 </Grid>
             </div>

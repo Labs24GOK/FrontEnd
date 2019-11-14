@@ -30,7 +30,7 @@ const CourseTable = props => {
     setForm(!form);
   }
 
-  const columns = [
+  const tableColumns = [
     {
       title: 'Course ID',
       dataIndex: 'id',
@@ -102,7 +102,7 @@ const CourseTable = props => {
           <Table
             className="rowHover"
             dataSource={props.courseList}
-            columns={columns}
+            columns={tableColumns}
             pagination={{ pageSize: 15 }}
             rowKey='id'
             onRow={(record, rowIndex) => {

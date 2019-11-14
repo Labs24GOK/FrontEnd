@@ -13,7 +13,7 @@ function ParentList(props) {
   }, [])
 
 
-  const columns = [
+  const parentColumns = [
     {
           title: 'Parent ID',
           dataIndex: 'id',
@@ -47,7 +47,7 @@ function ParentList(props) {
             <Table
               className="rowHover"
               dataSource={parentData} 
-              columns={columns} 
+              columns={parentColumns} 
               pagination={{ pageSize: 15 }} 
               rowKey='id'
               onRow={(record, rowIndex) => {

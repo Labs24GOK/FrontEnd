@@ -157,3 +157,11 @@ export {
   FETCH_STUDENTSBYCOURSEID_SUCCESS,
   FETCH_STUDENTSBYCOURSEID_FAILURE
 } from './adminDashboardActions/staffCourseActions.js';
+
+
+export {  
+  postStudentAttendance,
+  CREATE_ATTENDANCE_START,
+  CREATE_ATTENDANCE_SUCCESS,
+  CREATE_ATTENDANCE_FAILURE,
+} from './adminDashboardActions/attendanceActions.js'

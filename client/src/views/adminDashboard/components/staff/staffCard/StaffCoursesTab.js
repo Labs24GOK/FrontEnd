@@ -2,38 +2,25 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { getStaffCourses, getStudentsByCourseID } from '../../../../../actions';
-import { Table, Button, Modal, Spin } from 'antd';
+import AttendanceModal from './AttendanceModal';
+import { Table, Button, Spin } from 'antd';
 
 import '../../students/studentCard/studentTable.scss'
 
 const StaffCoursesTab = props => {
 
+    
+    const {staffID, teacher} = props
     useEffect(() => {
-        props.getStaffCourses(props.staffID)
+        props.getStaffCourses(staffID)
     }, [])
-
+    
     const [modalVisible, setModalVisible] = useState({
         visible: false,
         loading: false,
     })
-    const [selectedRowKeys, setSelectedRowKeys] = useState([])
 
-    const attendanceColumns = [
-        {
-            title: 'Student ID',
-            dataIndex: 'student_id',
-            key: 1,
-        },
-        {
-            title: 'Name',
-            dataIndex: 'first_name',
-            dataIndex: 'additional_names',
-            key: 2,
-        },
-
-    ]
-
-    const courseColumns = [
+    const staffCourseColumns = [
         {
             title: 'Term',
             dataIndex: 'term',
@@ -101,53 +88,17 @@ const StaffCoursesTab = props => {
         },
     ];
 
-    const handleOk = () => {
-        setModalVisible({ loading: true });
-        setTimeout(() => {
-            setModalVisible({ loading: false, visible: false });
-        }, 3000);
-    };
-
-    const handleCancel = () => {
-        setModalVisible({ visible: false });
-    };
-
-    const onSelectChange = selectedRowKeys => {
-        setSelectedRowKeys(selectedRowKeys)
-    }
-
-    const rowSelection = {
-        selectedRowKeys,
-        onChange: onSelectChange
-    }
-
-    const hasSelected = selectedRowKeys.length > 0;
-
     return (
         <>
             {props.isLoading ? <Spin style={{ marginTop: '150px' }} size="large" />
                 :
                 <>
-                    <Table dataSource={props.coursesByStaffId} className="coursesTable" columns={courseColumns} pagination={false} />
-                    <Modal
-                        title="Student List"
-                        visible={modalVisible.visible}
-                        onOk={handleOk}
-                        onCancel={handleCancel}
-                        footer={[
-                            <Button key="back" onClick={handleCancel}>
-                                Return
-                     </Button>,
-                            <Button key="submit" type="primary" onClick={handleOk}>
-                                Submit
-                     </Button>,
-                        ]}
-                    >
-                        <span style={{ marginLeft: 8 }}>
-                            {hasSelected ? `Selected ${selectedRowKeys.length} students` : ''}
-                        </span>
-                        <Table dataSource={props.studentList} columns={attendanceColumns} pagination={false} rowSelection={rowSelection} />
-                    </Modal>
+                    <Table dataSource={props.coursesByStaffId} className="coursesTable" columns={staffCourseColumns} pagination={false} />
+                    <AttendanceModal modalVisible={modalVisible} 
+                    setModalVisible={setModalVisible} 
+                    staffID={staffID}
+                    teacher={teacher}
+                    />
                 </>
             }
 
