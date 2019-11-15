@@ -23,9 +23,10 @@ export const Button = styled.button`
   width: 120px;
   height: 25px;
   border-radius: 3px;
-  margin: 10px;
-  background: #EDEEEF;
-  text-align: left;
+  margin: 10px 5px 10px 10px;
+  background: #D1D9DA;
+  text-align: center;
+  color: white;
 `
 
 export const DropdownContent =  styled.div`

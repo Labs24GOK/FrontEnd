@@ -53,12 +53,6 @@ const StudentRegistrationForm = (props) => {
 
   // set arrays of foreign key values to use in the dropdown (except 'gender' array it's not a foreign key)
   const genderArr = ['F', 'M'];
-  const [gender, setGender] = useState()
-  const [locationArr, setLocationArr] = useState()
-  const [location, setLocation] = useState()
-  const [contact, setContact] = useState();
-  const [schoolGrade, setSchoolGrade] = useState();
-  const [block, setBlock] = useState();
 
   // handle required fields (make them all required for now)
   const [errorBorderCpr, setErrorBorderCpr] = useState('transparent'); //error #C73642
