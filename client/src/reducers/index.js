@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { authenticationReducer } from './authenticationReducer';
 import { studentTableReducer } from './adminDashboardReducers/studentTableReducer';
-// import { studentByIdReducer } from './adminDashboardReducers/studentByIdReducer';
+import { studentByIdReducer } from './adminDashboardReducers/studentByIdReducer';
 import { parentReducer } from './adminDashboardReducers/parentReducer';
 import { staffTableReducer } from './adminDashboardReducers/staffTableReducer';
 import { staffByIdReducer } from './adminDashboardReducers/staffByIdReducer';
@@ -17,7 +17,7 @@ import { addStaffReducer } from './adminDashboardReducers/addStaffReducer';
 export const reducer = combineReducers({
   authenticationReducer,
   studentTableReducer,
-  // studentByIdReducer,
+  studentByIdReducer,
   parentReducer,
   staffTableReducer,
   staffByIdReducer,

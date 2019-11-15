@@ -55,24 +55,32 @@ export const CREATE_NEW_STUDENT_START = 'CREATE_NEW_STUDENT_START';
 export const CREATE_NEW_STUDENT_SUCCESS = 'CREATE_NEW_STUDENT_SUCCESS';
 export const CREATE_NEW_STUDENT_FAILURE = 'CREATE_NEW_STUDENT_FAILURE';
 
-export const createNewStudent = (newStudent, setNewRecord, newRecord, displaySuccessMessageTimeout, setSavePrevState) => dispatch => {
-  dispatch({ type: CREATE_NEW_STUDENT_START })
-  axios.post(`https://speak-out-be-staging.herokuapp.com/api/?table=student`, newStudent)
-  .then(res => {
-    setSavePrevState(newRecord);
-    setNewRecord(!newRecord);
-    displaySuccessMessageTimeout();
-    dispatch({
-        type: CREATE_NEW_STUDENT_SUCCESS,
-        // payload: res
+export const createNewStudent = (student) => dispatch => {
+
+    let {block_code, preferred_contact_type_id, school_grade_id, location_id} = student
+    let newStudent = {
+        ...student, 
+        block_code: block_code.label, 
+        preferred_contact_type_id: preferred_contact_type_id.value,
+        school_grade_id: school_grade_id.value,
+        location_id: location_id.value,
+        }
+        console.log(newStudent)
+    dispatch({ type: CREATE_NEW_STUDENT_START })
+    axios.post(`https://speak-out-be-staging.herokuapp.com/api/?table=student`, newStudent)
+    .then(res => {
+        console.log('res from createNewStudent', res)
+        dispatch({
+            type: CREATE_NEW_STUDENT_SUCCESS, payload: res.data[0]
+        })
     })
-  })
-  .catch(err => {
-     dispatch({
-      type: CREATE_NEW_STUDENT_FAILURE,
-      payload: err.data
-     }) 
-  })
+    .catch(err => {
+        console.log('error from createNewStudent', err)
+        dispatch({
+        type: CREATE_NEW_STUDENT_FAILURE,
+        payload: err.data
+        }) 
+    })
 }
 
 export const FETCH_DROPDOWN_START = 'FETCH_DROPDOWN_START';

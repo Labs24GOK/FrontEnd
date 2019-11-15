@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux'
-import { withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { createNewStudent, getDropDown } from '../../../../actions';
+import { createNewStudent, getDropDown, getStudentTable } from '../../../../actions';
 import { faAngleDown, faCaretDown, faCalendar, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Spin } from 'antd';
 import moment from 'moment';
@@ -12,52 +12,53 @@ import 'react-dropdown/style.css'
 import '../mainStyle/mainTable.scss';
 import Calendar from 'react-calendar';
 
-import {FormWrap, Input, Button} from '../mainStyle/styledComponent.js';
+import { FormWrap, Input, Button } from '../mainStyle/styledComponent.js';
 
 
 const StudentRegistrationForm = (props) => {
   const [student, setStudent] = useState({
-    cpr: '', 
-    registrationDate: '', 
-    firstName: '', 
-    additionalNames: '', 
-    gender: '', 
-    birthdate: '', 
-    schoolGradeId: '', 
-    schoolName: '', 
-    gradeUpdated: '', 
-    homeTelephone: '', 
-    mobileTelephone: '', 
-    block: '', 
-    road: '', 
-    building: '', 
-    flat: '', 
-    email: '', 
-    notes: '', 
-    contactTypeId: '', 
-    noCall: false, 
+    cpr: '',
+    registration_date: moment(new Date()).format("YYYY-MM-DD"),
+    first_name: '',
+    additional_names: '',
+    gender: '',
+    birthdate: '',
+    school_grade_id: '',
+    school_name: '',
+    grade_updated: moment(new Date()).format("YYYY-MM-DD"),
+    home_telephone: '',
+    mobile_telephone: '',
+    block_code: '',
+    road: '',
+    building: '',
+    flat: '',
+    email: '',
+    notes: '',
+    preferred_contact_type_id: '',
+    no_call: false,
     delinquent: false,
-    expelled: false, 
-    locationId: ''
+    expelled: false,
+    location_id: '',
+    family_id: 1
   });
 
 
- useEffect(() => {
+  useEffect(() => {
     props.getDropDown();
- }, [])
+  }, [])
 
 
 
 
 
   // set arrays of foreign key values to use in the dropdown (except 'gender' array it's not a foreign key)
-  const genderArr = ['select', 'F', 'M'];
+  const genderArr = ['F', 'M'];
   const [gender, setGender] = useState()
-  const [locationArr, setLocationArr] = useState([])
+  const [locationArr, setLocationArr] = useState()
   const [location, setLocation] = useState()
   const [contact, setContact] = useState();
   const [schoolGrade, setSchoolGrade] = useState();
-  const [block, setBlock] = useState(); 
+  const [block, setBlock] = useState();
 
   // handle required fields (make them all required for now)
   const [errorBorderCpr, setErrorBorderCpr] = useState('transparent'); //error #C73642
@@ -78,12 +79,16 @@ const StudentRegistrationForm = (props) => {
   const [errorBorderContactType, setErrorBorderContactType] = useState('transparent'); //error #C73642
   const [errorBorderLocation, setErrorBorderLocation] = useState('transparent'); //error #C73642
 
-  
+
 
 
   function handleChange(event) {
-    setStudent({ ...student, [event.target.name]: event.target.value })
-  }                                        
+    setStudent({
+      ...student,
+      [event.target.name]: event.target.value
+    })
+  }
+
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -91,7 +96,7 @@ const StudentRegistrationForm = (props) => {
     // check for required fields
     if (student.cpr === '' || student.firstName === '' || 
         student.additionalNames === '' || student.gender === '' ||
-        student.birthdate === '' || student.schoolGradeId === '' || 
+        student.birthdate === '' || student.school_grade_id === '' || 
         student.schoolName === '' || student.homeTelephone === '' ||
         student.mobileTelephone === '' || student.block === '' || 
         student.road === '' || student.building === '' ||
@@ -115,7 +120,7 @@ const StudentRegistrationForm = (props) => {
         if (student.birthdate === '') {
           setErrorBorderBirthdate('#ef6570');
         }
-        if (student.schoolGradeId === '') {
+        if (student.school_grade_id === '') {
           setErrorBorderSchoolGrade('#ef6570');
         }
         if (student.schoolName === '') {
@@ -151,269 +156,232 @@ const StudentRegistrationForm = (props) => {
         if (student.locationId === '') {
           setErrorBorderLocation('#ef6570');
         }
-    
+
     } else {
 
-        const newDate = moment();
-        const newDateISOFormat = newDate.toISOString();
-        const birthdateDate = moment(student.birthdate).toDate();
-        const birthdateISO = birthdateDate.toISOString()
+    const birthdateDate = moment(student.birthdate).toDate();
+    const birthdateISO = birthdateDate.toISOString()
+    props.createNewStudent(student)
+    if(props.createNewStudentSuccessMessage === 'Student has been successfuly added')
+    setTimeout(()=>{
+      props.getStudentTable()
+    },1000)
 
-        const newStudent = {
-          "cpr": student.cpr.toString(),
-          "registration_date": newDateISOFormat,
-          "first_name": student.firstName,
-          "additional_names": student.additionalNames,
-          "gender": student.gender,
-          "birthdate": birthdateISO,
-          "school_grade_id": student.schoolGradeId,
-          "school_name": student.schoolName,
-          "home_telephone": student.homeTelephone.toString(),
-          "mobile_telephone": student.mobileTelephone.toString(),
-          "block_code": parseInt(student.block),
-          "road": student.road.toString(),
-          "building": student.building.toString(),
-          "flat": student.flat.toString(),
-          "email": student.email,
-          "notes": student.notes,
-          "preferred_contact_type_id": student.contactTypeId,
-          "no_call": false,
-          "delinquent": false,
-          "expelled": false,
-          "location_id": student.locationId,
-        }
-
-      }
-    }
-
-console.log(props.locationID)  
- 
-
-  const handleGenderDropdown = () => {
+    props.setForm(false)
 
   }
-
-  const handleLocationDropdown = () => {
-
-  }
-
-  const handleBlockDropdown = () => {
-
-  }
+}
 
   const handleCancel = () => {
 
   }
-
-  const handleContactMethodDropdown = () => {
-
-  }
-
-  const handleSchoolGradeDropdown = () => {
-
-  }
-
-
   // {if (props.createNewStudentIsLoading) {
   //   return <Spin style={{marginTop: '90px'}}size="large" />
   // } else {
-      return (
-        <FormWrap onSubmit={handleSubmit} style={{margin: '30px 10px 20px 10px'}}>
-          <fieldset style={{border: '1px solid transparent', margin: '10px 5px 0px 5px',  background: '#E0EBF0'}}>
-            <div style={{display: 'grid', textAlign: 'left', gridTemplateColumns: '1fr 1fr 1fr 1fr',
-                         gridGap: '15px', margin: '10px'}}>
-              <div >
-                <label>CPR</label>
-                <div style={{border: `1px solid ${errorBorderCpr}`, borderRadius: '3px'}}>
-                  <Input
-                    type="text"
-                    name="cpr"
-                    value={student.cpr}
-                    onChange={handleChange} />
-                </div>
-              </div>
-              <div>
-                <label>First Name</label>
-                <div style={{border: `1px solid ${errorBorderFirstName}`, borderRadius: '3px'}}>
-                  <Input
-                    type="text"
-                    name="firstName"
-                    value={student.firstName}
-                    onChange={handleChange} />
-                </div>
-              </div>
-              <div style={{gridColumn: 'span 2'}}>
-                <label>Additional names</label>
-                <div style={{border: `1px solid ${errorBorderAdditionalNames}`, borderRadius: '3px'}}>
-                  <Input 
-                    style={{width: '100%'}}
-                    type="text"
-                    name="additionalNames"
-                    value={student.additionalNames}
-                    onChange={handleChange} />
-                </div>
-              </div>
-              <div>
-                <label>Gender</label>
-                <div style={{border: `1px solid ${errorBorderGender}`, borderRadius: '3px'}}>
-                  <Dropdown 
-                    onChange={handleGenderDropdown} 
-                    controlClassName='myControlClassName' 
-                    className='dropdownRoot' 
-                    options={genderArr}   
-                    value={gender} />
-                </div>
-              </div>
-              <div>
-                <label>Email</label>
-                <div style={{border: `1px solid ${errorBorderEmail}`, borderRadius: '3px'}}>
-                  <Input
-                    type="email"
-                    name="email"
-                    value={student.email}
-                    onChange={handleChange} />
-                </div>
-              </div>
-              <div>
-                <label>School Name</label>
-                <div style={{border: `1px solid ${errorBorderSchoolName}`, borderRadius: '3px'}}>
-                  <Input
-                    type="text"
-                    name="schoolName"
-                    value={student.schoolName}
-                    onChange={handleChange} />
-                </div>
-              </div>
-              <div >
-                <label>Birth date</label>
-                <div style={{border: `1px solid ${errorBorderBirthdate}`, borderRadius: '3px'}}>
-                  <Input
-                    type="date"
-                    name="birthdate"
-                    value={student.birthdate}
-                    onChange={handleChange} />
-                </div>
-              </div>
-              <div>
-                <label>Location</label>
-                <div style={{border: `1px solid ${errorBorderLocation}`, borderRadius: '3px'}}>
-                  <Dropdown 
-                    onChange={handleLocationDropdown} 
-                    value={location} 
-                    controlClassName='myControlClassName' 
-                    className='dropdownRoot' 
-                    options={props.dropDownList1} />
-                </div>
-              </div>
-              <div>
-                <label>Home Telephone</label>
-                <div style={{border: `1px solid ${errorBorderHomeTelephone}`, borderRadius: '3px'}}>
-                  <Input
-                    type="text"
-                    name="homeTelephone"
-                    value={student.homeTelephone}
-                    onChange={handleChange} />
-                </div>
-              </div>
-              <div>
-                <label>Mobile Telephone</label>
-                <div style={{border: `1px solid ${errorBorderMobileTelephone}`, borderRadius: '3px'}}>
-                  <Input
-                    type="text"
-                    name="mobileTelephone"
-                    value={student.mobileTelephone}
-                    onChange={handleChange} />
-                </div>
-              </div>
-              <div>
-                <label>Preferred contact method</label>
-                <div style={{border: `1px solid ${errorBorderContactType}`, borderRadius: '3px'}}>
-                  <Dropdown 
-                    onChange={handleContactMethodDropdown} 
-                    value={contact} 
-                    controlClassName='myControlClassName' 
-                    className='dropdownRoot' 
-                    options={props.dropDownList2} />
-                </div>
-              </div>
-              <div>
-                <label>Block</label>
-                <div style={{border: `1px solid ${errorBorderBlock}`, borderRadius: '3px'}}>
-                  <Dropdown 
-                    onChange={handleBlockDropdown} 
-                    controlClassName='myControlClassName' 
-                    className='dropdownRoot' 
-                    options={props.dropDownList4}   
-                    value={block} />
-                </div>
-              </div>
-              <div>
-                <label>Road</label>
-                <div style={{border: `1px solid ${errorBorderRoad}`, borderRadius: '3px'}}>
-                  <Input
-                    type="text"
-                    name="road"
-                    value={student.road}
-                    onChange={handleChange} />
-                </div>
-              </div>
-              <div>
-                <label>Building</label>
-                <div style={{border: `1px solid ${errorBorderBuilding}`, borderRadius: '3px'}}>
-                  <Input
-                    type="text"
-                    name="building"
-                    value={student.building}
-                    onChange={handleChange} />
-                </div>
-              </div>
-              <div>
-                <label>Flat</label>
-                <div style={{border: `1px solid ${errorBorderFlat}`, borderRadius: '3px'}}>
-                  <Input
-                    type="text"
-                    name="flat"
-                    value={student.flat}
-                    onChange={handleChange} />
-                </div>
-              </div>
-              <div>
-                <label>School grade</label>
-                <div style={{border: `1px solid ${errorBorderSchoolGrade}`, borderRadius: '3px'}}>
-                  <Dropdown 
-                    onChange={handleSchoolGradeDropdown} 
-                    value={schoolGrade} 
-                    controlClassName='myControlClassName' 
-                    className='dropdownRoot' 
-                    options={props.dropDownList3} />
-                </div>
-              </div>
-              <div style={{gridColumn: 'span 4'}}>
-                <label>Notes</label>
-                <div style={{border: `1px solid ${errorBorderNotes}`, borderRadius: '3px'}}>
-                  <textarea 
-                    style={{width: '100%', height: '80px', outline: 'none', 
-                            border: '1px solid transparent', borderRadius: '3px'}}
-                    type="text"
-                    name="notes"
-                    value={student.notes}
-                    onChange={handleChange} />
-                </div>
-              </div>
-            </div>
-          </fieldset>
-          <div style={{alignSelf: 'flex-end'}}>
-            <Button onClick={handleCancel} style={{background: '#C73642', width: '80px'}}>
-              Cancel
-            </Button>
-            <Button type="submit">
-              Add student
-            </Button>
-          </div>
-        </FormWrap>
-      )
 
-    // }
+  return (
+    <FormWrap onSubmit={handleSubmit} style={{ margin: '30px 10px 20px 10px' }}>
+      <fieldset style={{ border: '1px solid transparent', margin: '10px 5px 0px 5px', background: '#E0EBF0' }}>
+        <div style={{
+          display: 'grid', textAlign: 'left', gridTemplateColumns: '1fr 1fr 1fr 1fr',
+          gridGap: '15px', margin: '10px'
+        }}>
+          <div >
+            <label>CPR</label>
+            <div style={{ border: `1px solid ${errorBorderCpr}`, borderRadius: '3px' }}>
+              <Input
+                type="text"
+                name="cpr"
+                value={student.cpr}
+                onChange={handleChange} />
+            </div>
+          </div>
+          <div>
+            <label>First Name</label>
+            <div style={{ border: `1px solid ${errorBorderFirstName}`, borderRadius: '3px' }}>
+              <Input
+                type="text"
+                name="first_name"
+                value={student.first_name}
+                onChange={handleChange} />
+            </div>
+          </div>
+          <div style={{ gridColumn: 'span 2' }}>
+            <label>Additional names</label>
+            <div style={{ border: `1px solid ${errorBorderAdditionalNames}`, borderRadius: '3px' }}>
+              <Input
+                style={{ width: '100%' }}
+                type="text"
+                name="additional_names"
+                value={student.additional_names}
+                onChange={handleChange} />
+            </div>
+          </div>
+          <div>
+            <label>Gender</label>
+            <div style={{ border: `1px solid ${errorBorderGender}`, borderRadius: '3px' }}>
+              <Dropdown
+                value={student.gender}
+                onChange={(e) => setStudent({ ...student, gender: e.value })}
+                controlClassName='myControlClassName'
+                className='dropdownRoot'
+                options={genderArr}
+
+              />
+            </div>
+          </div>
+          <div>
+            <label>Email</label>
+            <div style={{ border: `1px solid ${errorBorderEmail}`, borderRadius: '3px' }}>
+              <Input
+                type="email"
+                name="email"
+                value={student.email}
+                onChange={handleChange} />
+            </div>
+          </div>
+          <div>
+            <label>School Name</label>
+            <div style={{ border: `1px solid ${errorBorderSchoolName}`, borderRadius: '3px' }}>
+              <Input
+                type="text"
+                name="school_name"
+                value={student.school_name}
+                onChange={handleChange} />
+            </div>
+          </div>
+          <div >
+            <label>Birth date</label>
+            <div style={{ border: `1px solid ${errorBorderBirthdate}`, borderRadius: '3px' }}>
+              <Input
+                type="date"
+                name="birthdate"
+                value={student.birthdate}
+                onChange={handleChange} />
+            </div>
+          </div>
+          <div>
+            <label>Location</label>
+            <div style={{ border: `1px solid ${errorBorderLocation}`, borderRadius: '3px' }}>
+              <Dropdown
+                value={student.location_id}
+                onChange={(e) => setStudent({ ...student, location_id: e })}
+                controlClassName='myControlClassName'
+                className='dropdownRoot'
+                options={props.dropDownList1} />
+            </div>
+          </div>
+          <div>
+            <label>Home Telephone</label>
+            <div style={{ border: `1px solid ${errorBorderHomeTelephone}`, borderRadius: '3px' }}>
+              <Input
+                type="text"
+                name="home_telephone"
+                value={student.home_telephone}
+                onChange={handleChange} />
+            </div>
+          </div>
+          <div>
+            <label>Mobile Telephone</label>
+            <div style={{ border: `1px solid ${errorBorderMobileTelephone}`, borderRadius: '3px' }}>
+              <Input
+                type="text"
+                name="mobile_telephone"
+                value={student.mobile_telephone}
+                onChange={handleChange} />
+            </div>
+          </div>
+          <div>
+            <label>Preferred contact method</label>
+            <div style={{ border: `1px solid ${errorBorderContactType}`, borderRadius: '3px' }}>
+              <Dropdown
+                onChange={(e) => setStudent({ ...student, preferred_contact_type_id: e })}
+                value={student.preferred_contact_type_id}
+                controlClassName='myControlClassName'
+                className='dropdownRoot'
+                options={props.dropDownList2} />
+            </div>
+          </div>
+          <div>
+            <label>Block</label>
+            <div style={{ border: `1px solid ${errorBorderBlock}`, borderRadius: '3px' }}>
+              <Dropdown
+                onChange={(e) => { setStudent({ ...student, block_code: e }) }}
+                controlClassName='myControlClassName'
+                className='dropdownRoot'
+                options={props.dropDownList4}
+                value={student.block_code} />
+            </div>
+          </div>
+          <div>
+            <label>Road</label>
+            <div style={{ border: `1px solid ${errorBorderRoad}`, borderRadius: '3px' }}>
+              <Input
+                type="text"
+                name="road"
+                value={student.road}
+                onChange={handleChange} />
+            </div>
+          </div>
+          <div>
+            <label>Building</label>
+            <div style={{ border: `1px solid ${errorBorderBuilding}`, borderRadius: '3px' }}>
+              <Input
+                type="text"
+                name="building"
+                value={student.building}
+                onChange={handleChange} />
+            </div>
+          </div>
+          <div>
+            <label>Flat</label>
+            <div style={{ border: `1px solid ${errorBorderFlat}`, borderRadius: '3px' }}>
+              <Input
+                type="text"
+                name="flat"
+                value={student.flat}
+                onChange={handleChange} />
+            </div>
+          </div>
+          <div>
+            <label>School grade</label>
+            <div style={{ border: `1px solid ${errorBorderSchoolGrade}`, borderRadius: '3px' }}>
+              <Dropdown
+                onChange={(e) => { setStudent({ ...student, school_grade_id: e }) }}
+                value={student.school_grade_id}
+                controlClassName='myControlClassName'
+                className='dropdownRoot'
+                options={props.dropDownList3} />
+            </div>
+          </div>
+          <div style={{ gridColumn: 'span 4' }}>
+            <label>Notes</label>
+            <div style={{ border: `1px solid ${errorBorderNotes}`, borderRadius: '3px' }}>
+              <textarea
+                style={{
+                  width: '100%', height: '80px', outline: 'none',
+                  border: '1px solid transparent', borderRadius: '3px'
+                }}
+                type="text"
+                name="notes"
+                value={student.notes}
+                onChange={handleChange} />
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <div style={{ alignSelf: 'flex-end' }}>
+        <Button onClick={handleCancel} style={{ background: '#C73642', width: '80px' }}>
+          Cancel
+            </Button>
+        <Button type="submit">
+          Add student
+            </Button>
+      </div>
+    </FormWrap>
+  )
+
+  // }
   // }
 }
 
@@ -426,13 +394,14 @@ const mapStateToProps = state => {
     dropDownList2: state.studentTableReducer.dropDownList2,
     dropDownList3: state.studentTableReducer.dropDownList3,
     dropDownList4: state.studentTableReducer.dropDownList4,
-    locationID: state.studentTableReducer.locationID
+    createNewStudentSuccessMessage: state.studentTableReducer.createNewStudentSuccessMessage
+
   };
 };
 
 export default withRouter(
   connect(
     mapStateToProps,
-    { createNewStudent, getDropDown}
-)(StudentRegistrationForm)
+    { createNewStudent, getDropDown, getStudentTable }
+  )(StudentRegistrationForm)
 );

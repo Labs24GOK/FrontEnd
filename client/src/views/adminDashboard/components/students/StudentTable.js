@@ -70,10 +70,9 @@ const StudentTable = props => {
         <div>
           <SearchStundentTable />
         </div>
-        <div className="create-new-entry">
+        <div className="create-new-entry"  onClick={handleAddButton} style={{cursor: "pointer"}}>
           <div style={{ marginRight: '10px' }}>Create new entry</div>
-          <div><FontAwesomeIcon 
-            onClick={handleAddButton} 
+          <div><FontAwesomeIcon  
             style={{ width: '25px', height: '25px', cursor: 'pointer' }} 
             icon={faPlusCircle} size='lg' />
           </div>
@@ -81,7 +80,7 @@ const StudentTable = props => {
       </div>
 
       {form ? (
-        <StudentRegistrationForm handleCancelButtonOnForm={handleCancelButtonOnForm} />
+        <StudentRegistrationForm handleCancelButtonOnForm={handleCancelButtonOnForm} setForm={setForm} />
       ) : null}
 
 
