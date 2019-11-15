@@ -2,16 +2,16 @@ import React, { useState} from 'react';
 import { connect } from 'react-redux'
 import { Grid, Segment, Input, Icon, Form } from 'semantic-ui-react'
 import { addParent, toggleAddParentComponent} from '../../../../actions';
-import { withRouter, Link } from 'react-router-dom';
-
+import { withRouter } from 'react-router-dom';
+import '../mainStyle/mainTable.scss'
 
 
 
 const ParentRegistrationForm = (props) => {
-console.log ( 'parent registry props', props)
+// console.log ( 'parent registry props', props)
 
   const [state, setState] = useState({
-    id: '',
+    id: props.parentList.id,
     mother_name: '',
     father_name: '',
     block_code: '',
@@ -35,7 +35,7 @@ console.log ( 'parent registry props', props)
 
 
 const formSubmit = e => {
-    console.log('add parent state sent', state)
+    // console.log('add parent state sent', state)
   e.preventDefault();
   props.addParent(state)
 }
@@ -52,7 +52,7 @@ const cancelBtn = e => {
       
             {/* row 1 */}
             <Grid.Row>
-                <Grid.Column>
+                {/* <Grid.Column>
                     <Segment> ID</Segment>
                     <Input 
                         type='text'
@@ -61,7 +61,7 @@ const cancelBtn = e => {
                         onChange={handleChange}
                         value={state.id}
                     />
-                </Grid.Column>
+                </Grid.Column> */}
                 <Grid.Column>
                     <Segment>Mother Name</Segment>
                     <Input 
@@ -193,7 +193,7 @@ const cancelBtn = e => {
 const mapStateToProps = state => {
   return {
       isLoading: state.parentReducer.isLoading,
-      parentById: state.parentReducer.parentById,
+      parentList: state.parentReducer.parentList,
       isPosting: state.parentReducer.isPosting,
       isPosted: state.parentReducer.isPosted
   };

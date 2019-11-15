@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getCourseById, toggleEditCourse } from '../../../../../actions';
-
-import { Grid, Segment, Form } from 'semantic-ui-react'
+import CourseEditForm from './CourseEditForm'
+import { Grid, Segment, Icon } from 'semantic-ui-react'
 
 const CourseInformationTab = props => {
 
   useEffect(() => {
-    props.getCourseById(props.parentId)
+    props.getCourseById(props.courseId)
   }, [])
 
   const editCourseInfo = e => {
@@ -20,6 +20,7 @@ const CourseInformationTab = props => {
   return (
     <>
     <div className="gridView">
+    {!props.isEditing ?
       <Grid columns='equal'>
         <Grid.Row>
           <Grid.Column>
@@ -39,6 +40,9 @@ const CourseInformationTab = props => {
             <Segment>{props.courseById.level}</Segment>
           </Grid.Column>
           <Grid.Column>
+            <Segment style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" }} onClick={editCourseInfo}>
+              <Icon name="edit" style={{ color: "#26ABBD", cursor: "pointer" }} /> Edit
+            </Segment>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
@@ -70,6 +74,7 @@ const CourseInformationTab = props => {
           </Grid.Column>
         </Grid.Row>
       </Grid>
+       : <CourseEditForm {...props} />}
       </div>
     </>
   )
