@@ -60,6 +60,12 @@ export const studentTableReducer = (state = initialState, action) => {
             listIsLoading: false,
             listError: action.payload
         }
+    // search 
+    case SET_FILTER_STUDENT:
+        return {
+            ...state,
+            searchTerm: action.payload
+        }
           //add student
     case CREATE_NEW_STUDENT_START: 
         return {

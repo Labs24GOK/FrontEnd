@@ -45,9 +45,7 @@ export const toggleEditCourse = () => dispatch => {
 }
 
 export const editCouseById = (id, state) => dispatch => {
-    let obj1 = {id:id, block_code:"431", delinquent:true} //will fix later 
-    let state1 = {...state, ...obj1 }
-    axios.put(`https://speak-out-be-staging.herokuapp.com/api?table=course_view&where=id=${id}`, state1)
+    axios.put(`https://speak-out-be-staging.herokuapp.com/api?table=course_view&where=id=${id}`, state)
     .then(res => {
         dispatch({
             type: EDIT_COURSEBYID_SUCCESS,

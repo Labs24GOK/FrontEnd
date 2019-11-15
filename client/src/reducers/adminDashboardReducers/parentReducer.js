@@ -130,8 +130,8 @@ import {
                     isLoading: false,
                     error: null,
                     isPosting: false,
-                    isPosting: true,
-                    parentById: action.payload
+                    isPosted: true,
+                    parentList: [...state.parentList, action.payload]
                 };
             case ADD_PARENT_FAILURE:
                 return {

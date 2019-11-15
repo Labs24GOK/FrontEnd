@@ -12,7 +12,6 @@ import ParentRegistrationForm from './ParentRegistrationForm';
 
 function ParentList(props) {
  
-  const [search, setSearch] = useState('');
   const [form, setForm] = useState(false);
 
 
@@ -25,9 +24,6 @@ function ParentList(props) {
     setForm(false);
   }
 
-  const handleSearchInput = () => {
-
-  }
 
   const handleAddButton = () => {
     setForm(!form);
@@ -68,8 +64,9 @@ function ParentList(props) {
   return (
     <div>
       <div className="row-above">
-        <SearchParentTable />
+          <SearchParentTable />
       </div>
+
       {props.isLoading ? (
               <Spin style={{marginTop: '150px'}}size="large" />
             ) : (

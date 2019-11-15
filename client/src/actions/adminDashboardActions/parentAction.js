@@ -98,10 +98,11 @@ export const toggleAddParentComponent = () => dispatch => {
 }
 
 export const addParent = parent => dispatch => {
+    console.log('parent action', parent)
     axios.post('https://speak-out-be-staging.herokuapp.com/api?table=family', parent)
         .then(res => {
             console.log('ADD PARENT ACTION', res.data)
-           dispatch({type: ADD_PARENT_SUCCESS, payload:res.data})
+           dispatch({type: ADD_PARENT_SUCCESS })
         }).catch(err=> {
             console.log('err',err)
             dispatch({type: ADD_PARENT_FAILURE, payload: err.payload})
