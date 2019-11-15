@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 import "./contactUs.scss";
@@ -9,8 +9,15 @@ import Instagram from "../../../../assets/Instagram.png";
 import Facebook from "../../../../assets/Facebook.png";
 import Twitter from "../../../../assets/Twitter.png";
 import Map from "../../../../assets/SchoolMap.png";
+import { toggle } from "../../../../actions/landingPageActions/landingPageActions";
+import { connect } from 'react-redux';
 
 function ContactUs(props) {
+
+  useEffect(() => {
+    props.toggle();
+
+  }, [])
   return (
     <div className="about-us">
       <header>
@@ -68,6 +75,15 @@ function ContactUs(props) {
   );
 }
 
-const ContactUsWithRouter = withRouter(ContactUs);
+const mapStateToProps = state => {
+  return {
+    reset: state.landingPageReducer.reset,
+  };
+};
 
-export default ContactUsWithRouter;
+export default withRouter(
+  connect(
+      mapStateToProps,
+      { toggle }
+  )(ContactUs)
+)

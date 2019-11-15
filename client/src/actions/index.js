@@ -1,3 +1,5 @@
+import { from } from 'rxjs';
+
 export {
   logIn,
   LOGIN_START,
@@ -209,3 +211,9 @@ export {
   CREATE_ATTENDANCE_SUCCESS,
   CREATE_ATTENDANCE_FAILURE,
 } from './adminDashboardActions/attendanceActions.js'
+
+export {
+  FAMILY_REGISTER_START,
+  FAMILY_REGISTER_SUCCESS,
+  FAMILY_REGISTER_FAILURE
+} from './registrationActions'

@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
+import {Link} from "react-router-dom";
 import "./kindergarten.scss";
 import KindergartenPic from "../../../../assets/Kindergarten.jpg";
+import { toggle } from "../../../../actions/landingPageActions/landingPageActions";
+import { connect } from 'react-redux';
+import { withRouter } from "react-router";
 
-function Kindergarten() {
+function Kindergarten(props) {
+
+  useEffect(() => {
+    props.toggle();
+  }, [])
+
   return (
     <>
       <div className="kindergarten-course-structure">
@@ -35,7 +44,7 @@ function Kindergarten() {
               Perfect for children going into school or those who are struggling
               with their English literacy.
             </p>
-            <button>Register Now</button>
+            <Link to="/register" className="button">Register Now</Link>
           </div>
         </div>
       </div>
@@ -43,4 +52,16 @@ function Kindergarten() {
   );
 }
 
-export default Kindergarten;
+const mapStateToProps = state => {
+  return {
+    reset: state.landingPageReducer.reset,
+    toggle: state.landingPageReducer.toggle
+  };
+};
+
+export default withRouter(
+  connect(
+      mapStateToProps,
+      { toggle }
+  )(Kindergarten)
+)

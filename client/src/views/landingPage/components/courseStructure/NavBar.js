@@ -10,8 +10,20 @@ function NavBar(props) {
   const [header, setHeader] = useState('Course Structure');
 
   useEffect(() => {
+    if (props.location.pathname === "/course-structure") {
+      setSelected(false);
+    }
+    if (props.location.pathname === "/course-structure/kindergarten") {
+      setSelected('kindergarten');
+    }
+    if (props.location.pathname === "/course-structure/primary") {
+      setSelected('primary')
+    }
+    if (props.location.pathname === "/course-structure/middle-and-secondary") {
+      setSelected('middle-and-secondary')
+    }
 
-  }, [selected])
+  }, [selected, props.toggle])
 
   const handleKindergarten = () => {
     setSelected('kindergarten');
@@ -52,7 +64,8 @@ function NavBar(props) {
 
 const mapStateToProps = state => {
   return {
-    reset: state.landingPageReducer.reset
+    reset: state.landingPageReducer.reset,
+    toggle: state.landingPageReducer.toggle
   };
 };
 

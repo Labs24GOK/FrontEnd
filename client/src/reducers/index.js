@@ -13,6 +13,8 @@ import { staffCourseReducer } from './adminDashboardReducers/staffCourseReducer'
 import { studentsByCourseIDReducer } from './adminDashboardReducers/studentByCourseId';
 import { attendanceReducer } from './adminDashboardReducers/attendanceReducer';
 import { addStaffReducer } from './adminDashboardReducers/addStaffReducer';
+import { registrationReducer } from './registrationReducer';
+import { landingPageReducer } from './landingPageReducers/landingPageReducers';
 
 export const reducer = combineReducers({
   authenticationReducer,
@@ -28,6 +30,8 @@ export const reducer = combineReducers({
   staffCourseReducer,
   studentsByCourseIDReducer,
   attendanceReducer,
-  addStaffReducer
+  addStaffReducer,
+  registrationReducer,
+  landingPageReducer,
 });
 

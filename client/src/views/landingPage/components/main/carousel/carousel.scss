@@ -24,16 +24,7 @@ section.carousel {
 
         .slick-slide {
             img {
-                transform: scale(0.9);
-                transition: transform 0.7s linear;
                 width: 100%;
-            }
-            
-        }
-
-        .slick-slide.slick-active {
-            img {
-                transform: scale(1);
                 padding: 0 2%;
             }
             

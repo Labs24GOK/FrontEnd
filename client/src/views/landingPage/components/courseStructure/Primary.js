@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 import "./primary.scss";
 import Victoria from "../../../../assets/Victoria_teaching.jpg";
+import { connect } from 'react-redux';
+import { toggle } from "../../../../actions/landingPageActions/landingPageActions";
 
-function Primary(props) {
+function Primary(props) { 
+
+  useEffect(() => {
+    props.toggle();
+  },[])
+  
   return (
     <div className="primary-info">
       <div className="body">
@@ -53,13 +60,24 @@ function Primary(props) {
             Perfect for children going into school or those who are struggling
             with their English literacy.
           </p>
-          <button>Register Now</button>
+          <Link to="/register" className="button">Register Now</Link>
         </div>
       </div>
     </div>
   );
 }
 
-const PrimaryWithRouter = withRouter(Primary);
 
-export default PrimaryWithRouter;
+const mapStateToProps = state => {
+  return {
+    reset: state.landingPageReducer.reset,
+    toggle: state.landingPageReducer.toggle
+  };
+};
+
+export default withRouter(
+  connect(
+      mapStateToProps,
+      { toggle }
+  )(Primary)
+)

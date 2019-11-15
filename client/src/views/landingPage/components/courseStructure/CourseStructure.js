@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./courseStructure.scss";
+import { toggle } from "../../../../actions/landingPageActions/landingPageActions";
+import { connect } from 'react-redux';
+import { withRouter } from "react-router";
 
 
-function CourseStructure() {
+function CourseStructure(props) {
+
+  useEffect(() => {
+    props.toggle();
+  }, [])
 
   return (
     <>
@@ -94,4 +101,15 @@ function CourseStructure() {
   );
 }
 
-export default CourseStructure;
+const mapStateToProps = state => {
+  return {
+    reset: state.landingPageReducer.reset,
+  };
+};
+
+export default withRouter(
+  connect(
+      mapStateToProps,
+      { toggle }
+  )(CourseStructure)
+)

@@ -89,9 +89,9 @@
         line-height: 47px;
       }
 
-      button {
-        width: 244px;
-        height: 40px;
+      .button {
+        // width: 244px;
+        // height: 40px;
         background: #b91321;
         border: none;
         border-radius: 7px;
@@ -99,6 +99,8 @@
         font-weight: bold;
         margin-left: 20%;
         margin-top: 20px;
+        padding: 12px 80px 12px 80px;
+        display: inline-block;
       }
     }
   }

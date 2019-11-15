@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import './affordability.scss';
 
 function Affordability() {
@@ -11,7 +12,7 @@ function Affordability() {
           <div>
             <h2>Affordability</h2>
             <p>In association with the Bani Jamra Charity, Speak Out brings quality, affordable language learning to the community.</p>
-            <button>Learn More</button>
+            <Link to="/registration-information" className="button">Learn More</Link>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 @import "../../../../styles/_variables";
 
-.about-us {
+.registration-information {
   // position: absolute;
   top: 120px;
   width: 100%;
@@ -16,7 +16,6 @@
     margin-left: 5%;
     margin-right: 5%;
     margin-top: 40px;
-    margin-bottom: 30px;
 
     h1 {
       font-weight: normal;
@@ -26,21 +25,21 @@
       margin-bottom: 0;
     }
 
-    // .link-container {
-    //   .link {
-    //     font-weight: 500;
-    //     font-size: 21px;
-    //     line-height: 80px;
-    //     vertical-align: baseline;
-    //     color: #2b2b2b;
-    //     text-decoration: none;
-    //     margin-left: 40px;
-    //   }
+    .link-container {
+      .link {
+        font-weight: 500;
+        font-size: 21px;
+        line-height: 80px;
+        vertical-align: baseline;
+        color: #2b2b2b;
+        text-decoration: none;
+        margin-left: 40px;
+      }
 
-    //   .red {
-    //     color: #e71829;
-    //   }
-    // }
+      .red {
+        color: #e71829;
+      }
+    }
   }
 
   .body {
@@ -51,37 +50,6 @@
     margin-top: 10px;
     padding-left: 5%;
     padding-right: 5%;
-
-    .img-container {
-      padding-left: 10%;
-    }
-
-    img {
-      width: 478px;
-      height: 368px;
-      margin-left: 10%;
-    }
-
-    .contact-container {
-      display: flex;
-      flex-direction: row;
-      //   justify-content: space-between;
-      align-items: center;
-      margin-top: 10px;
-      margin-bottom: 10px;
-      padding-bottom: 10px;
-
-      p {
-        font-size: 36px;
-        line-height: 47px;
-      }
-
-      img {
-        width: 41px;
-        height: 47px;
-        // margin-left: 0;
-      }
-    }
 
     h2 {
       font-size: 40px;
@@ -98,6 +66,13 @@
       color: #2b2b2b;
     }
 
+    img {
+      height: 305px;
+      width: 517px;
+      margin-left: 4%;
+      margin-top: 10px;
+    }
+
     .body-left {
       width: 44%;
       margin-left: 3%;
@@ -109,18 +84,34 @@
       margin-bottom: 50px;
 
       h2 {
-        margin-left: 15%;
-        line-height: 52px;
+        font-size: 36px;
+        line-height: 47px;
       }
 
-      img {
-        width: 42px;
-        height: 43px;
-        // margin-left: 0;
+      h3 {
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 39px;
+        color: #2b2b2b;
+        margin-left: 5%;
       }
 
-      .contact-container {
-        margin-left: 0;
+      p {
+        margin-left: 10%;
+      }
+
+      .button {
+        // width: 244px;
+        // height: 40px;
+        background: #b91321;
+        border: none;
+        border-radius: 7px;
+        color: white;
+        font-weight: bold;
+        margin-left: 20%;
+        margin-top: 20px;
+        padding: 12px 80px 12px 80px;
+        display: inline-block;
       }
     }
   }

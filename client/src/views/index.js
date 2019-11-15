@@ -19,8 +19,10 @@ function Index(props) {
       return (
         <StaffDashboard />
       )
+    } else {
+      return 
     }
-  }
+  } 
 }
 
 const mapStateToProps = state => {

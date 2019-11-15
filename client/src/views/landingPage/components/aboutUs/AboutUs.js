@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
+import { resetNav, toggle } from '../../../../actions/landingPageActions/landingPageActions';
+import { connect } from 'react-redux';
 import "./aboutUs.scss";
 import Garden from "../../../../assets/Garden.png";
 
 function AboutUs(props) {
+  useEffect(() => {
+    props.toggle()
+    console.log('ABOUT US', props)
+  }, [])
+
   return (
     <div className="about-us">
       <header>
@@ -49,13 +56,21 @@ function AboutUs(props) {
             and what you can expect as our student. If there are any further
             questions, please do not hesitate to get in touch.
           </p>
-          <button>Contact Us</button>
+          <Link to="/contact-us" className="button">Contact Us</Link>
         </div>
       </div>
     </div>
   );
 }
+const mapStateToProps = state => {
+  return {
+    reset: state.landingPageReducer.reset,
+  };
+};
 
-const AboutUsWithRouter = withRouter(AboutUs);
-
-export default AboutUsWithRouter;
+export default withRouter(
+  connect(
+      mapStateToProps,
+      { resetNav, toggle }
+  )(AboutUs)
+)

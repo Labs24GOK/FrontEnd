@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 import "./middleSecondary.scss";
-import Picnic from "../../../../assets/girls_picnicplay.jpg"
+import Picnic from "../../../../assets/girls_picnicplay.jpg";
+import { toggle } from "../../../../actions/landingPageActions/landingPageActions";
+import { connect } from 'react-redux';
+
 
 function MiddleSecondary(props) {
+
+  useEffect(() => {
+    props.toggle();
+  }, [])
+
   return (
     <div className="middle-secondary">
       <div className="body">
@@ -37,13 +45,23 @@ function MiddleSecondary(props) {
             In these courses, children bring their textbooks used in public
             schools to review lessons with our teachers.
           </p>
-          <button>Register Now</button>
+          <Link to="/register" className="button">Register Now</Link>
         </div>
       </div>
     </div>
   );
 }
 
-const MiddleSecondaryWithRouter = withRouter(MiddleSecondary);
+const mapStateToProps = state => {
+  return {
+    reset: state.landingPageReducer.reset,
+    toggle: state.landingPageReducer.toggle
+  };
+};
 
-export default MiddleSecondaryWithRouter;
+export default withRouter(
+  connect(
+      mapStateToProps,
+      { toggle }
+  )(MiddleSecondary)
+)

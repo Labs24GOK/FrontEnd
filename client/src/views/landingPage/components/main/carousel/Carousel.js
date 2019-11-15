@@ -53,7 +53,6 @@ function Carousel() {
         <section className="carousel">
             <div className="wrap">
                 <h2>Gallery</h2>
-                <img className="placeholder" src={gallery} />
                 <Slider {...settings}>
                     <div>
                         <img src={boysOutside} />
