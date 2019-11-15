@@ -61,4 +61,59 @@ export const P = styled.p`
 `;
 
 
+const CardWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+`
 
+const ButtonWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-self: flex-start;
+`
+
+
+const TitleWrap = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 40px;
+  margin-bottom: 60px;
+`
+
+const TabsWrap = styled.div`
+  display: flex;
+  flex-direction: flex-start;
+`
+
+const DisplayWrap = styled.div`
+  display: flex;
+`
+const FormWrap = styled.form`
+  // background: #EDEEEF;
+  border: 0px transparant;
+  border-radius: 3px;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  transition: all 200ms ease;
+`
+
+const Input = styled.input`
+  outline: none;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  background: white;
+  width: 100%;
+  height: 26px;
+`
+
+const Button = styled.button`
+  width: 120px;
+  height: 25px;
+  border-radius: 3px;
+  margin: 10px 5px 10px 10px;
+  background: #D1D9DA;
+  text-align: center;
+  color: white;
+`
