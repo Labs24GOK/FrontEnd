@@ -6,7 +6,7 @@
 section.hero {
     // margin-top: 100px;
     height: calc(100vh - 100px);
-    background: linear-gradient(rgba(8, 46, 62, 0.75) 10%, transparent 30%), url('../../../../../assets/hero-image.jpg');
+    background: linear-gradient(rgba(14, 84, 114, 0.75) 10%, transparent 30%), url('../../../../../assets/hero-image.jpg');
     background-position: 50% 50%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -17,6 +17,7 @@ section.hero {
     }
 
     .wrap {
+        // margin-top: 200px;
         width: 90%;
         height: 100%;
         margin: 0 auto;
@@ -47,7 +48,7 @@ section.hero {
         font-weight: 500;;
         text-align: left;
         position: absolute;
-        top: 10%;
+        top: 15%;
 
         @media #{$tablet} {
             font-size: 4.4rem;
