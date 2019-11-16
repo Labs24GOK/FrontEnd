@@ -25,7 +25,7 @@ function Display({ navigation }) {
           <Student /> 
         </div>
       )
-    } else if (navigation === 'parents') {
+    } else if (navigation === 'family') {
       return (
         <Parents />
       )

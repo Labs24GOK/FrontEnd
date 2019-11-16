@@ -58,8 +58,7 @@ export const DisplayWrap = styled.div`
 `
 export const TabWrap = styled.div`
   width: 100%;
-  height: 60px;
-  line-height: 60px;
+  padding: 20px 20px 20px 30px;
   color: white;
 `
 export const TabsWrapColumn = styled.div`

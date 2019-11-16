@@ -25,12 +25,16 @@ function Tab(props) {
     props.setNavigation(tab.toLowerCase())
     props.resetForm();
   }
+
   return (
-    <a className="sidebarLink" onClick={() => handleClick(props.tab.key)}>
-    <TabWrap>
-      <FontAwesomeIcon icon={icon} size='lg' color='#ffffff' style={{marginRight: '10px', 
-                       color: `${props.tab.key.toLowerCase() === props.selected ? "#ffffff" : "#ffffff"}`,
-                       height: '15px', width: '15px'}}/>
+    <a  onClick={() => handleClick(props.tab.key)}>
+    <TabWrap className={`sidebarLink ${props.tab.key.toLowerCase() === props.selected ? 'active-tab': ''}`}>
+      <FontAwesomeIcon 
+          icon={icon} 
+          size='lg' 
+          color='#ffffff' 
+          style={{marginRight: '10px', width: '15px'}}
+      />
       {props.tab.key}
     </TabWrap>
     </a>

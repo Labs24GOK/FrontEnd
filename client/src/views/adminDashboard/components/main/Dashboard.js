@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import { adminDashboardTabs } from '../../../../data';
 import TabList from './TabList';
 import Display from './Display';
 import {DashboardWrap, TabsWrap, DisplayWrap} from '../mainStyle/styledComponent.js';
 
 function Dashboard() {
-const [navigation, setNavigation] = useState("parents");
+const [navigation, setNavigation] = useState("family");
 const [tabColor, setTabColor] = useState("transparent");
 
 
