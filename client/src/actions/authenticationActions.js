@@ -13,16 +13,17 @@ export const LOGOUT_START = 'LOGOUT_START';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
 
-export const loggedIn = (history) => {
+export const loggedIn = (history, location) => {
   return dispatch => {
     dispatch({ type: LOGGEDIN_START });
     
     axios 
       .get('https://speak-out-be-staging.herokuapp.com/user')
       .then(res => {
-        dispatch({ type: LOGGEDIN_SUCCESS, payload: res.data })
-        if (!res.data.authenticated) {
-          history.push('/')
+        console.log(res.data)
+        dispatch({ type: LOGGEDIN_SUCCESS, payload: res.data})
+        if (!res.data.authenticated && location.pathname === "/dashboard") {
+          history.push('/login')
         } else {
           history.push('/dashboard')
         }

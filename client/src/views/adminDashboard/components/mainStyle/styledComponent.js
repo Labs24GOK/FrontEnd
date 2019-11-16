@@ -56,11 +56,8 @@ export const DisplayWrap = styled.div`
   top: 30px;
   left: 200px;
 `
-export const TabWrap = styled.div`
-  width: 100%;
-  padding: 20px 20px 20px 30px;
-  color: white;
-`
+export const TabWrap = styled.div``
+
 export const TabsWrapColumn = styled.div`
   display: flex;
   flex-direction: column;
