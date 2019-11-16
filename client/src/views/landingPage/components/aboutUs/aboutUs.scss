@@ -1,7 +1,6 @@
 @import "../../../../styles/_variables";
 
 .about-us {
-  // position: absolute;
   top: 120px;
   margin-bottom: 100px;
   width: 100%;
@@ -26,21 +25,6 @@
       margin-bottom: 0;
     }
 
-    // .link-container {
-    //   .link {
-    //     font-weight: 500;
-    //     font-size: 21px;
-    //     line-height: 80px;
-    //     vertical-align: baseline;
-    //     color: #2b2b2b;
-    //     text-decoration: none;
-    //     margin-left: 40px;
-    //   }
-
-    //   .red {
-    //     color: #e71829;
-    //   }
-    // }
   }
 
   .body {
@@ -68,10 +52,8 @@
     }
 
     img {
-      height: 365px;
-      width: 329px;
-      margin-left: 14%;
-      margin-top: 10px;
+      width: 80%;
+      padding: 30px;
     }
 
     .body-left {

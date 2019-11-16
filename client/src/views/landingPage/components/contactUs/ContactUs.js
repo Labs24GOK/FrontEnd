@@ -19,20 +19,9 @@ function ContactUs(props) {
 
   }, [])
   return (
-    <div className="about-us">
+    <div className="contact-us">
       <header>
         <h1>Contact Us</h1>
-        {/* <div className="link-container">
-            <Link className="link" to="/kindergarten">
-              Kindergarten
-            </Link>
-            <Link className="link" to="/primary">
-              Primary
-            </Link>
-            <Link className="link red" to="#">
-              Middle and Secondary
-            </Link>
-          </div> */}
       </header>
       <div className="body">
         <div className="body-left">
@@ -51,9 +40,6 @@ function ContactUs(props) {
               Bani Jamra, Bahrain
             </p>
           </div>
-          <div className="img-container">
-            <img src={Map} />
-          </div>
         </div>
         <div className="body-right">
           <h2>Social Media</h2>
@@ -70,7 +56,11 @@ function ContactUs(props) {
             <p>speakoutbh</p>
           </div>
         </div>
+        
       </div>
+      <div className="img-container">
+            <img src={Map} />
+          </div>
     </div>
   );
 }
