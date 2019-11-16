@@ -70,8 +70,8 @@ const StudentTable = props => {
         <div>
           <SearchStundentTable />
         </div>
-        <div className="create-new-entry"  onClick={handleAddButton} style={{cursor: "pointer"}}>
-          <div style={{ marginRight: '10px' }}>Create new entry</div>
+        <div className="create-new-entry"  onClick={handleAddButton} style={{cursor: "pointer", color: '#26ABBD'}}>
+          <div style={{ marginRight: '10px' }}>Create New Student</div>
           <div><FontAwesomeIcon  
             style={{ width: '25px', height: '25px', cursor: 'pointer' }} 
             icon={faPlusCircle} size='lg' />
