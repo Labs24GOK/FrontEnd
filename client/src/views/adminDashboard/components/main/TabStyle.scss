@@ -1,0 +1,9 @@
+.sidebarLink {
+    transition: all .2s ease-in-out;
+}
+.sidebarLink.active {
+    background-color: #EC404E;
+}
+.sidebarLink:hover {
+    background-color: #EC404E;
+}

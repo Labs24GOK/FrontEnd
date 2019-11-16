@@ -6,7 +6,7 @@ import Display from './Display';
 import {DashboardWrap, TabsWrap, DisplayWrap} from '../mainStyle/styledComponent.js';
 
 function Dashboard() {
-const [navigation, setNavigation] = useState("students");
+const [navigation, setNavigation] = useState("parents");
 const [tabColor, setTabColor] = useState("transparent");
 
 

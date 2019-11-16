@@ -1,21 +1,49 @@
-import React from 'react';
-import { TabWrap } from '../mainStyle/styledComponent.js';
+import React, { useEffect, useState } from 'react';
+import { resetForm } from '../../../../actions/adminDashboardActions/studentTableActions';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserGraduate, faMap, faUserFriends} from '@fortawesome/free-solid-svg-icons';
+import { TabWrap } from '../mainStyle/styledComponent';
 
 
-function Tab({ tab, navigation, setNavigation, tabColor, setTabColor, selected, setSelected }) {
-
+function Tab(props) {
+  const [icon, setIcon] = useState();
+  useEffect(() => {
+    if (props.tab.key === 'Students') {
+      setIcon(faUserGraduate);
+    } else if (props.tab.key === 'Courses') {
+      setIcon(faMap);
+    } else if (props.tab.key === 'Staff') {
+      setIcon(faUserFriends);
+    } else if (props.tab.key === 'Family') {
+      setIcon(faUserFriends);
+    }
+  }, [])
   const handleClick = (tab) => {
-    setSelected(tab.toLowerCase())
-    setNavigation(tab.toLowerCase())
+    props.setSelected(tab.toLowerCase())
+    props.setNavigation(tab.toLowerCase())
+    props.resetForm();
   }
   return (
-    <a style={{cursor: "pointer"}} onClick={() => handleClick(tab.key)}>
-    <TabWrap style={{backgroundColor: `${tab.key.toLowerCase() === selected ? "#DD3B58" : "transparent"}`}}>
-      {tab.key}
+    <a className="sidebarLink" onClick={() => handleClick(props.tab.key)}>
+    <TabWrap>
+      <FontAwesomeIcon icon={icon} size='lg' color='#ffffff' style={{marginRight: '10px', 
+                       color: `${props.tab.key.toLowerCase() === props.selected ? "#ffffff" : "#ffffff"}`,
+                       height: '15px', width: '15px'}}/>
+      {props.tab.key}
     </TabWrap>
     </a>
   )
 }
-
-
-export default Tab;
+const mapStateToProps = state => {
+  return {
+      state: state
+  };
+};
+export default withRouter(
+  connect(
+      mapStateToProps,
+      { resetForm }
+  )(Tab)
+)
