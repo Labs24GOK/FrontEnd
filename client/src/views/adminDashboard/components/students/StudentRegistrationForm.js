@@ -218,9 +218,8 @@ const StudentRegistrationForm = (props) => {
                 value={student.gender}
                 onChange={(e) => setStudent({ ...student, gender: e.value })}
                 controlClassName='myControlClassName'
-                className='dropdownRoot'
                 options={genderArr}
-
+                className='dropdown'
               />
             </div>
           </div>
@@ -261,8 +260,8 @@ const StudentRegistrationForm = (props) => {
                 value={student.location_id}
                 onChange={(e) => setStudent({ ...student, location_id: e })}
                 controlClassName='myControlClassName'
-                className='dropdownRoot'
-                options={props.dropDownList1} />
+                options={props.dropDownList1}
+                className='dropdown' />
             </div>
           </div>
           <div>
@@ -292,8 +291,9 @@ const StudentRegistrationForm = (props) => {
                 onChange={(e) => setStudent({ ...student, preferred_contact_type_id: e })}
                 value={student.preferred_contact_type_id}
                 controlClassName='myControlClassName'
-                className='dropdownRoot'
-                options={props.dropDownList2} />
+                options={props.dropDownList2}
+                className='dropdown'
+                 />
             </div>
           </div>
           <div>
@@ -302,9 +302,10 @@ const StudentRegistrationForm = (props) => {
               <Dropdown
                 onChange={(e) => { setStudent({ ...student, block_code: e }) }}
                 controlClassName='myControlClassName'
-                className='dropdownRoot'
                 options={props.dropDownList4}
-                value={student.block_code} />
+                value={student.block_code} 
+                className='dropdown'
+                />
             </div>
           </div>
           <div>
@@ -345,7 +346,8 @@ const StudentRegistrationForm = (props) => {
                 value={student.school_grade_id}
                 controlClassName='myControlClassName'
                 className='dropdownRoot'
-                options={props.dropDownList3} />
+                options={props.dropDownList3}
+                className='dropdown' />
             </div>
           </div>
           <div style={{ gridColumn: 'span 4' }}>
