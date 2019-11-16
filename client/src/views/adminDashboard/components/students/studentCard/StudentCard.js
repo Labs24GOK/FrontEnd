@@ -32,10 +32,6 @@ const StudentCard = props => {
             menuItem: 'PROGRESS',
             render: () => <Tab.Pane attached={false}><StudentProgressTab studentID={props.studentID} /></Tab.Pane>,
         },
-        {
-            menuItem: 'BILLING',
-            render: () => <Tab.Pane attached={false}>{<Billing studentID={props.studentID} />}</Tab.Pane>,
-        },
     ]
 
     const goBack = () => {

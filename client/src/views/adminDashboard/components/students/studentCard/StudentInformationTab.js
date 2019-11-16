@@ -8,6 +8,9 @@ import PlacementTest from '../placementTest/placementTest'
 import PlacementForm from '../placementTest/placementForm'
 import { Modal } from 'antd';
 import { RedButton } from '../../mainStyle/styledComponent'
+import Dropdown from 'react-dropdown'
+
+
 
 const StudentInformationTab = props => {
     const [modalState, setModalState]= useState(false)

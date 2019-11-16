@@ -62,7 +62,7 @@ export const TabWrap = styled.div`
   width: 100%;
   height: 60px;
   line-height: 60px;
-  vertical-alignment: center; 
+  /* vertical-alignment: center;  */
   color: white;
   // margin: 0 0 30px 0;
 `
@@ -78,3 +78,33 @@ export const RedButton = styled.button`
   padding: 12px 28px;
   border-radius: 4px;
 `;
+
+//student form and info tab styles
+export const StudentFormWrap = styled.form`
+border: 0px transparant;
+border-radius: 3px;
+font-size: 12px;
+display: flex;
+flex-direction: column;
+transition: all 200ms ease;
+`
+
+export const Label = styled.label`
+color: #89878a;
+`
+
+export const StudentData = styled.div`
+color: black;
+font-weight: 450;
+`
+
+export const StudentInput = styled.input`
+outline: none;
+border-radius: 3px;
+background: white;
+width: 100%;
+height: 31px;
+font-size: 14px;
+font-weight: 400;
+margin-left: -2px;
+`
