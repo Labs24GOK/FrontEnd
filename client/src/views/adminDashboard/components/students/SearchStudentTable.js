@@ -4,6 +4,7 @@ import { withRouter} from 'react-router-dom';
 import { filterStudentTable } from '../../../../actions';
 
 const SearchStundentTable = props => {
+  
     const handleSearchInput = (e) => {
         const searchTerm = e.target.value;
         props.filterStudentTable(searchTerm)

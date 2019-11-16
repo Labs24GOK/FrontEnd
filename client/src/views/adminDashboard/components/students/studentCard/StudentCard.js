@@ -5,7 +5,6 @@ import { getStudentById, toggleEditComponent } from '../../../../../actions';
 import { withRouter, Link } from 'react-router-dom';
 import StudentInformationTab from './StudentInformationTab';
 import StudentCoursesTab from './StudentCoursesTab';
-import Billing from './billing/Billing'
 import { Tab } from 'semantic-ui-react';
 import { Header, Image, Icon } from 'semantic-ui-react'
 import StudentProgressTab from '../studentProgress/StudentProgressTab';

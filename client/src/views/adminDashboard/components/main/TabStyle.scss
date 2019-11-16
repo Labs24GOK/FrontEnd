@@ -1,0 +1,25 @@
+$blue: #269FB0;
+$pink: #EC404E;
+
+.sidebarLink {
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    padding: 20px 20px 20px 30px;
+    color: white;
+}
+.sidebarLink.active-tab {
+    background-color: $pink;
+}
+.sidebarLink.active-tab:hover {
+    background-color: $pink;
+    cursor: normal;
+}
+.sidebarLink:hover {
+    background-color: lighten($blue, 10%);
+}
+
+.sidebarLink:active {
+    background-color: lighten($blue, 20%);
+}

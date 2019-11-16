@@ -1,10 +1,11 @@
 import React, { useState} from 'react';
 import { connect } from 'react-redux'
-import { Grid, Segment, Input, Icon, Form } from 'semantic-ui-react'
+import { Icon, Segment } from 'semantic-ui-react'
 import { addStaff, toggleAddStaffComponent } from '../../../../actions';
 import { withRouter, Link } from 'react-router-dom';
-
-
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css'
+import { FormWrap, Input, Button} from '../mainStyle/styledComponent.js';
 
 
 const StaffRegistrationForm = (props) => {
@@ -50,12 +51,14 @@ const cancelBtn = e => {
 
 
   return(
-    <div className="ui segment active tab editForm">
-    <Grid columns='equal'>
-      
+    <FormWrap onSubmit={formSubmit} style={{ margin: '30px 10px 20px 10px' }}>
+        <fieldset style={{ border: '1px solid transparent', margin: '10px 5px 0px 5px', background: '#E0EBF0' }}>
+        <div style={{
+          display: 'grid', textAlign: 'left', gridTemplateColumns: '1fr 1fr 1fr 1fr',
+          gridGap: '15px', margin: '10px'
+        }}>
             {/* row 1 */}
-            <Grid.Row>
-                <Grid.Column>
+            <div>
                     <Segment>Staff ID</Segment>
                     <Input 
                         type='text'
@@ -64,8 +67,8 @@ const cancelBtn = e => {
                         onChange={handleChange}
                         value={state.id}
                     />
-                </Grid.Column>
-                <Grid.Column>
+                
+            
                     <Segment>Name</Segment>
                     <Input 
                         type='text'
@@ -74,10 +77,10 @@ const cancelBtn = e => {
                         onChange={handleChange}
                         value={state.name}
                     />
-                </Grid.Column>
+                
 
 
-                <Grid.Column>
+                <div style={{ gridColumn: 'span 2' }}>
                     <Segment>Short Name</Segment>
                     <Input 
                         type='text'
@@ -86,8 +89,8 @@ const cancelBtn = e => {
                         onChange={handleChange}
                         value={state.short_name}
                     />
-                </Grid.Column>
-                <Grid.Column>
+                    </div>
+            
                 <Segment>CPR</Segment>
                     <Input 
                         type='text'
@@ -96,11 +99,11 @@ const cancelBtn = e => {
                         onChange={handleChange}
                         value={state.cpr}
                     />
-                </Grid.Column>
+                
 
 
 
-                <Grid.Column >
+            
                     <Segment.Group horizontal style={{ background: "#E0EBF0" }}>
                         <Segment.Inline onClick={formSubmit} style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" ,margin: 0}}>
                         <Icon name="save" type='submit' style={{ color: "#26ABBD", cursor: "pointer" }} /> Save
@@ -109,12 +112,12 @@ const cancelBtn = e => {
                         <Icon name="cancel" style={{ color: "#C73642", cursor: "pointer" }}  /> Cancel
                         </Segment.Inline>
                         </Segment.Group>
-                </Grid.Column>
-                </Grid.Row>
+                
+                </div>
                 
                 {/* row 2 */}
-                <Grid.Row>
-                <Grid.Column>
+                <div>
+            
                     <Segment>Mobile Number</Segment>
                     <Input 
                         type='text' //use date for calendar
@@ -123,29 +126,31 @@ const cancelBtn = e => {
                         onChange={handleChange}
                         value={state.mobile_number}
                     />
-                </Grid.Column>
+                
     
-                <Grid.Column>
+                    {/* needs to be dropdown */}
                     <Segment>Accent</Segment>
-                    <Input 
-                        type='text'
+                    <Input
                         name='accent'
                         placeholder='Accent'
                         onChange={handleChange}
                         value={state.accent}
+                        className='dropdown'
+                        controlClassName='myControlClassName'
                     />
-                </Grid.Column>
-                <Grid.Column>
+                
+                    {/* needs to be dropdown */}
                     <Segment>Gender</Segment>
-                    <Input 
-                        type='text'
+                    <Input
                         name='gender'
                         placeholder='Gender'
                         onChange={handleChange}
                         value={state.gender}
+                        className='dropdown'
+                        controlClassName='myControlClassName'
                     />
-                </Grid.Column>
-                <Grid.Column>
+                
+            
                     <Segment>Birthdate</Segment>
                     <Input 
                         type='date'
@@ -154,10 +159,10 @@ const cancelBtn = e => {
                         onChange={handleChange}
                         value={state.birthdate}
                     />
-                </Grid.Column>
-                </Grid.Row>
-                <Grid.Row>
-                <Grid.Column>
+                
+                </div>
+                <div>
+            
                     <Segment>Teaching Rate</Segment>
                     <Input 
                         type='text'
@@ -166,10 +171,10 @@ const cancelBtn = e => {
                         onChange={handleChange}
                         value={state.teaching_rate}
                     />
-                </Grid.Column>
+                
               
               {/* row3 */}
-                <Grid.Column>
+            
                     <Segment>Admin</Segment>
                     <Input 
                         type='text'
@@ -178,8 +183,8 @@ const cancelBtn = e => {
                         onChange={handleChange}
                         value={state.admin}
                     />
-                </Grid.Column>
-                <Grid.Column>
+                
+            
                     <Segment>Active</Segment>
                     <Input 
                         type='text'
@@ -188,8 +193,8 @@ const cancelBtn = e => {
                         onChange={handleChange}
                         value={state.active}
                     />
-                </Grid.Column>
-                <Grid.Column>
+                
+            
                     <Segment>User Id</Segment>
                     <Input 
                         type='text'
@@ -198,10 +203,11 @@ const cancelBtn = e => {
                         onChange={handleChange}
                         value={state.user_id}
                     />
-                </Grid.Column>
-            </Grid.Row>
-           </Grid>
-    </div>
+                
+            </div>
+                </div>
+            </fieldset>
+        </FormWrap>
   )
 }
 

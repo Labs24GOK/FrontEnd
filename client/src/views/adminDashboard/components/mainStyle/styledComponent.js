@@ -47,30 +47,21 @@ export const TabsWrap = styled.div`
   height: 100vh;
   position: fixed;
   top: 100px;
-  // overflow-x: hidden;
   background: #269FB0;
 `
 export const DisplayWrap = styled.div`
   width: 85%;
   height: 100vh;
   position: relative;
-  top: 120px;
+  top: 30px;
   left: 200px;
-  // overflow-x: hidden;
 `
-export const TabWrap = styled.div`
-  width: 100%;
-  height: 60px;
-  line-height: 60px;
-  /* vertical-alignment: center;  */
-  color: white;
-  // margin: 0 0 30px 0;
-`
+export const TabWrap = styled.div``
+
 export const TabsWrapColumn = styled.div`
   display: flex;
   flex-direction: column;
-  // overflow: scroll;
-  // padding-top: 25px;
+  padding-top: 145px;
 `
 
 export const RedButton = styled.button`
@@ -89,7 +80,7 @@ flex-direction: column;
 transition: all 200ms ease;
 `
 
-export const Label = styled.label`
+export const label = styled.label`
 color: #89878a;
 `
 

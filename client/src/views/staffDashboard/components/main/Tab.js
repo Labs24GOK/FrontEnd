@@ -30,7 +30,7 @@ function Tab(props) {
       setIcon(faMap);
     } else if (props.tab.key === 'Staff') {
       setIcon(faUserFriends);
-    }  else if (props.tab.key === 'Parents') {
+    }  else if (props.tab.key === 'family') {
       setIcon(faUserAlt)
     }
   }, [])

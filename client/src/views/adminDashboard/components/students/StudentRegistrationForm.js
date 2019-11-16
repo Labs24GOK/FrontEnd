@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createNewStudent, getDropDown, getStudentTable } from '../../../../actions';
-import { faAngleDown, faCaretDown, faCalendar, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Spin } from 'antd';
 import moment from 'moment';
 import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
 import '../mainStyle/mainTable.scss';
-import Calendar from 'react-calendar';
+
 
 import { FormWrap, Input, Button } from '../mainStyle/styledComponent.js';
 
