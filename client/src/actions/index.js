@@ -38,6 +38,7 @@ export {
   FETCH_DROPDOWN_SUCCESSTABLE3,
   FETCH_DROPDOWN_SUCCESSTABLE4,
   FETCH_DROPDOWN_FAILURE,
+  resetForm,
 } from './adminDashboardActions/studentTableActions.js';
 
   export {

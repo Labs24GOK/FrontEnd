@@ -220,6 +220,7 @@ const StudentRegistrationForm = (props) => {
                 controlClassName='myControlClassName'
                 className='dropdownRoot'
                 options={genderArr}
+                className='myClassName'
 
               />
             </div>
@@ -262,7 +263,8 @@ const StudentRegistrationForm = (props) => {
                 onChange={(e) => setStudent({ ...student, location_id: e })}
                 controlClassName='myControlClassName'
                 className='dropdownRoot'
-                options={props.dropDownList1} />
+                options={props.dropDownList1}
+                className='myClassName' />
             </div>
           </div>
           <div>
@@ -293,7 +295,9 @@ const StudentRegistrationForm = (props) => {
                 value={student.preferred_contact_type_id}
                 controlClassName='myControlClassName'
                 className='dropdownRoot'
-                options={props.dropDownList2} />
+                options={props.dropDownList2}
+                className='myClassName'
+                 />
             </div>
           </div>
           <div>
@@ -304,7 +308,9 @@ const StudentRegistrationForm = (props) => {
                 controlClassName='myControlClassName'
                 className='dropdownRoot'
                 options={props.dropDownList4}
-                value={student.block_code} />
+                value={student.block_code} 
+                className='myClassName'
+                />
             </div>
           </div>
           <div>
@@ -345,7 +351,8 @@ const StudentRegistrationForm = (props) => {
                 value={student.school_grade_id}
                 controlClassName='myControlClassName'
                 className='dropdownRoot'
-                options={props.dropDownList3} />
+                options={props.dropDownList3}
+                className='myClassName' />
             </div>
           </div>
           <div style={{ gridColumn: 'span 4' }}>

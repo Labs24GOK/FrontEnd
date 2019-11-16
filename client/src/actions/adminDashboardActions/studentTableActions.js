@@ -122,3 +122,8 @@ export const getDropDown = () => dispatch => {
 
 
 
+//helper
+export const resetForm = () => {
+    return { type: 'RESET_FORM' }
+  };
+  

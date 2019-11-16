@@ -86,6 +86,11 @@ export const studentTableReducer = (state = initialState, action) => {
                 ...state,
                 createNewStudentError: 'Something went wrong'
             }
+            case 'RESET_FORM':
+                return {
+                  ...state,
+                  studentById: []
+                }
         //dropdown
         case FETCH_DROPDOWN_START:
             return {
