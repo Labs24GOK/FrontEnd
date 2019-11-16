@@ -5,14 +5,14 @@
 
 section.hero {
     // margin-top: 100px;
-    height: calc(100vh - 100px);
-    background: linear-gradient(rgba(14, 84, 114, 0.75) 10%, transparent 30%), url('../../../../../assets/hero-image.jpg');
-    background-position: 50% 50%;
+    height: calc(100vh);
+    background: linear-gradient(rgba(14, 115, 159, 0.75) 10%, transparent 50%), url('../../../../../assets/hero-image.jpg');
+    background-position: 50% 40%;
     background-repeat: no-repeat;
     background-size: cover;
 
     @media #{$tablet-small} {
-        background: linear-gradient(rgba(8, 46, 62, 0.75) 10%, rgba(8, 46, 62, 0.3) 30%), url('../../../../../assets/hero-image.jpg');
+        background: linear-gradient(rgba(8, 46, 62, 0.75) 10%, rgba(11, 71, 97, 0.3) 30%), url('../../../../../assets/hero-image.jpg');
         background-position: 75% 50%;
     }
 
