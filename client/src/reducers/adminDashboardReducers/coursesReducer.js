@@ -20,6 +20,17 @@ import {
     DISPLAY_STUDENTSBYCOURSEID_FAILURE,
 
     SET_FILTER_COURSES,
+
+    FETCH_DROPDOWNCOURSES_START,
+    FETCH_DROPDOWN_TABLETERM,
+    FETCH_DROPDOWN_TABLECOURSETYPE,
+    FETCH_DROPDOWN_TABLEGROUPTYPE,
+    FETCH_DROPDOWN_TABLESCHOOLGRADE,
+    FETCH_DROPDOWN_TABLELEVEL,
+    FETCH_DROPDOWN_TABLECOURSESCHEDULE,
+    FETCH_DROPDOWN_TABLEROOM,
+    FETCH_DROPDOWN_TABLETEACHER,
+    FETCH_DROPDOWNCOURSES_FAILURE
   } from '../../actions';
   
   const initialState = {
@@ -28,6 +39,14 @@ import {
         courseList: [],
         courseById: [],
         studentsById: [],
+        termTable: [],
+        courseTypeTable: [],
+        groupTypeTable: [],
+        schoolGradeTable: [],
+        levelTable: [],
+        courseScheduleTable: [],
+        roomTable: [],
+        teacherTable: [],
         isEdited: false,
         isEditing: false,
         isPosting: false,
@@ -109,9 +128,8 @@ import {
                     ...state,
                     isLoading: false,
                     error: null,
-                    isPosting: false,
                     isPosting: true,
-                    staffById: action.payload
+                    courseList: action.payload
                 };
             case ADD_COURSE_FAILURE:
                 return {
@@ -144,6 +162,107 @@ import {
                     return {
                         ...state,
                         searchTerm: action.payload
+                }
+            // get dropdowns from back-end for add course
+            case FETCH_DROPDOWNCOURSES_START:
+                return {
+                    ...state,
+                    isLoading: true,
+                    error: null
+                }
+            case FETCH_DROPDOWN_TABLETERM:
+                let term = action.payload.map(each => {
+                    let obj = {value: each.id, label: each.name}
+                    return obj;
+                })
+                return {
+                    ...state,
+                    isLoading: false,
+                    termTable: term,
+                    error: null
+                }
+            case FETCH_DROPDOWN_TABLECOURSETYPE:
+                    let courseType = action.payload.map(each => {
+                        let obj = {value: each.id, label: each.description}
+                        return obj;
+                    })
+                return {
+                    ...state,
+                    isLoading: false,
+                    courseTypeTable: courseType,
+                    error: null
+                }
+            case FETCH_DROPDOWN_TABLEGROUPTYPE:
+                    let groupType = action.payload.map(each => {
+                        let obj = {value: each.id, label: each.long_description}
+                        return obj;
+                    })
+                return {
+                    ...state,
+                    isLoading: false,
+                    groupTypeTable: groupType,
+                    error: null
+                }
+            case FETCH_DROPDOWN_TABLESCHOOLGRADE:
+                    let schoolGrade = action.payload.map(each => {
+                        let obj = {value: each.id, label: each.name}
+                        return obj;
+                    })
+                return {
+                    ...state,
+                    isLoading: false,
+                    schoolGradeTable: schoolGrade,
+                    error: null
+                }
+            case FETCH_DROPDOWN_TABLELEVEL:
+                    let level = action.payload.map(each => {
+                        let obj = {value: each.id, label: each.description}
+                        return obj;
+                    })
+                return {
+                    ...state,
+                    isLoading: false,
+                    levelTable: level,
+                    error: null
+                }
+            case FETCH_DROPDOWN_TABLECOURSESCHEDULE:
+                    let courseSchedule = action.payload.map(each => {
+                        let obj = {value: each.id, label: each.short_description}
+                        return obj;
+                    })
+                return {
+                    ...state,
+                    isLoading: false,
+                    courseScheduleTable: courseSchedule,
+                    error: null
+                }
+            case FETCH_DROPDOWN_TABLEROOM:
+                    let room = action.payload.map(each => {
+                        let obj = {value: each.id, label: each.id}
+                        return obj;
+                    })
+                return {
+                    ...state,
+                    isLoading: false,
+                    roomTable: room,    
+                    error: null
+                }
+            case FETCH_DROPDOWN_TABLETEACHER:
+                    let teacher = action.payload.map(each => {
+                        let obj = {value: each.id, label: each.name}
+                        return obj;
+                    })
+                return {
+                    ...state,
+                    isLoading: false,
+                    teacherTable: teacher,    
+                    error: null
+                }
+            case FETCH_DROPDOWNCOURSES_FAILURE:
+                return {
+                    ...state,
+                    isLoading:false,
+                    error: action.payload
                 }
         default: return state;
   
