@@ -12,8 +12,6 @@ const EditStudentProgressForm = props => {
 
     let reportDate = new Date(props.progressByStudentId.report_date).toISOString().split("T")[0];
 
-    console.log(' EDIT STUDENT FORM PROPS:', props)
-
     const [state, setState] = useState({
         id: props.progressByStudentId.id,
         speaking_fluency: props.progressByStudentId.speaking_fluency,
