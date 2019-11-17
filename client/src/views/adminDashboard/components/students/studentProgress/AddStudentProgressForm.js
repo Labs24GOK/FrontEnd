@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
-import { Grid, Segment, Input, Icon} from 'semantic-ui-react';
+import {  Icon} from 'semantic-ui-react';
 import { postStudentProgress, togglePostComponent } from '../../../../../actions';
 import { Table, Spin } from 'antd';
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
+import { FormWrap, Input, Button} from '../../mainStyle/styledComponent';
 
 
 
@@ -51,234 +54,272 @@ const formSubmit = e => {
 // }
 
     return(
-        <div className="gridView">
-             {props.isLoading ? (
+        <FormWrap onSubmit={formSubmit} style={{ margin: '3%' }}>
+              {props.isLoading ? (
             <Spin style={{marginTop: '150px'}}size="large" />
           ) : (
-            <Grid  columns='equal'>
-     <Grid.Row>
-         {/* row 1 */}
-         <Grid.Column>
-        <Segment>Speaking Fluency</Segment>
-            <Input
-            type='number'
-            name='speaking_fluency'
-            placeholder="Speaking Fluency"
-            onChange={handleChange}
-            value={state.speaking_fluency}
-            />
-        </Grid.Column>
+            <fieldset style={{ border: '1px solid transparent', margin: '10px 5px 0px 5px', background: '#E0EBF0'}}>
+            <div style={{
+display: 'grid', textAlign: 'left', gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr',
+gridGap: '15px', margin: '10px'
+}}>
 
-        <Grid.Column>
-        <Segment>Speaking Accuracy</Segment>
-            <Input
-            type='number'
-            name='speaking_accuracy'
-            placeholder="Speaking Accuracy"
-            onChange={handleChange}
-            value={state.speaking_accuracy}
-            />
-        </Grid.Column>
+<div>
+<div>Speaking Fluency</div>
+<div>
+<Input
+type='number'
+name='speaking_fluency'
+placeholder="Speaking Fluency"
+onChange={handleChange}
+value={state.speaking_fluency}
+/>
+</div>
+</div>
 
-        <Grid.Column>
-        <Segment>Vocabulary</Segment>
-            <Input
-            type='number'
-            name='vocabulary'
-            placeholder="Vocabulary"
-            onChange={handleChange}
-            value={state.vocabulary}
-            />
-        </Grid.Column>
+<div>
+<div>Speaking Accuracy</div>
+<div>
+<Input
+type='number'
+name='speaking_accuracy'
+placeholder="Speaking Accuracy"
+onChange={handleChange}
+value={state.speaking_accuracy}
+/>
+</div>
+</div>
 
-        <Grid.Column>
-        <Segment>Pronunciation</Segment>
-            <Input
-            type='number'
-            name='pronunciation'
-            placeholder="Pronunciation"
-            onChange={handleChange}
-            value={state.pronunciation}
-            />
-        </Grid.Column>
+<div>
+<div>Vocabulary</div>
+<div>
+<Input
+type='number'
+name='vocabulary'
+placeholder="Vocabulary"
+onChange={handleChange}
+value={state.vocabulary}
+/>
+</div>
+</div>
 
+<div>
+<div>Pronunciation</div>
+<div>
+<Input
+type='number'
+name='pronunciation'
+placeholder="Pronunciation"
+onChange={handleChange}
+value={state.pronunciation}
+/>
+</div>
+</div>
 
-        <Grid.Column>
-        <Segment style={{color: "#26ABBD", cursor:"pointer", width:"fit-content"}} >
-        <Icon name="save"onClick={formSubmit} style = {{color:"#26ABBD",cursor:"pointer"}}/> Add Report
-        </Segment>
-        </Grid.Column>
-    </Grid.Row>
-
-    <Grid.Row>
-        {/* row 2  */}
-        <Grid.Column>
-        <Segment>Grammar</Segment>
-            <Input
-            type='number'
-            name='grammar'
-            placeholder="Grammar"
-            onChange={handleChange}
-            value={state.grammar}
-            />
-        </Grid.Column>
-
-        <Grid.Column>
-        <Segment>Listening</Segment>
-            <Input
-            type='number'
-            name='listening'
-            placeholder="Listening"
-            onChange={handleChange}
-            value={state.listening}
-            />
-        </Grid.Column>
-        
-        <Grid.Column>
-        <Segment>Writing</Segment>
-            <Input
-            type='number'
-            name='writing'
-            placeholder="Writing"
-            onChange={handleChange}
-            value={state.writing}
-            />
-        </Grid.Column>
-    
-        <Grid.Column>
-        <Segment>Reading</Segment>
-            <Input
-            type='number'
-            name='reading'
-            placeholder="Reading"
-            onChange={handleChange}
-            value={state.reading}
-            />
-        </Grid.Column>
-    
-        <Grid.Column>
-        <Segment>Interest</Segment>
-            <Input
-            type='number'
-            name='interest'
-            placeholder="Interest"
-            onChange={handleChange}
-            value={state.interest}
-            />
-        </Grid.Column>
-    </Grid.Row>   
-
-    <Grid.Row>
-        {/* row 3 */}
-        <Grid.Column>
-        <Segment>Participation</Segment>
-            <Input
-            type='number'
-            name='participation'
-            placeholder="Participation"
-            onChange={handleChange}
-            value={state.participation}
-            />
-        </Grid.Column>
-
-        <Grid.Column>
-        <Segment>Submitting Homework</Segment>
-            <Input
-            type='number'
-            name='submitting_homework'
-            placeholder="Submitting Homework"
-            onChange={handleChange}
-            value={state.submitting_homework}
-            />
-        </Grid.Column>
-
-        <Grid.Column>
-        <Segment>Homework Effort</Segment>
-            <Input
-            type='number'
-            name='homework_effort'
-            placeholder="Homework Effort"
-            onChange={handleChange}
-            value={state.homework_effort}
-            />
-        </Grid.Column>
-
-        <Grid.Column>
-        <Segment>Notes</Segment>
-            <Input
-            type='text'
-            name='notes'
-            placeholder="Notes"
-            onChange={handleChange}
-            value={state.notes}
-            />
-        </Grid.Column>
-        
-        <Grid.Column>
-        <Segment>Overall</Segment>
-            <Input
-            type='number'
-            name='overall'
-            placeholder="Overall"
-            onChange={handleChange}
-            value={state.overall}
-            />
-        </Grid.Column>
-    </Grid.Row>
-
-    <Grid.Row>
-       <Grid.Column>
-        <Segment>Course Id</Segment>
-            <Input
-            type='number'
-            name='course_id'
-            placeholder="Course Id"
-            onChange={handleChange}
-            value={state.course_id}
-            />
-        </Grid.Column>
-
-        <Grid.Column>
-        <Segment>Student Id</Segment>
-            <Input
-            type='number'
-            name='student_id'
-            placeholder="Student Id"
-            onChange={handleChange}
-            value={state.student_id}
-            />
-        </Grid.Column>
+<div>
+<div style={{color: "#26ABBD", cursor:"pointer", width:"fit-content"}} >
+<Icon name="save"onClick={formSubmit} style = {{color:"#26ABBD",cursor:"pointer"}}/> Add Report
+</div>
+</div>
 
 
-        <Grid.Column>
-        <Segment>Teacher Id</Segment>
-            <Input
-            type='number'
-            name='teacher_id'
-            placeholder="Teacher Id"
-            onChange={handleChange}
-            value={state.teacher_id}
-            />
-        </Grid.Column>
+{/* row 2  */}
+<div>
+<div>Grammar</div>
+<div>
+<Input
+type='number'
+name='grammar'
+placeholder="Grammar"
+onChange={handleChange}
+value={state.grammar}
+/>
+</div>
+</div>
 
-        <Grid.Column>
-        <Segment>Report Date</Segment>
-            <Input
-            type='text'
-            name='report_date'
-            placeholder="Report Date"
-            onChange={handleChange}
-            value={state.report_date}
-            />
-        </Grid.Column>
+<div>
+<div>Listening</div>
+<div>
+<Input
+type='number'
+name='listening'
+placeholder="Listening"
+onChange={handleChange}
+value={state.listening}
+/>
+</div>
+</div>
 
-        <Grid.Column>
-        </Grid.Column>
-    </Grid.Row>
-            </Grid>
+
+<div>
+<div>Writing</div>
+<div>
+<Input
+type='number'
+name='writing'
+placeholder="Writing"
+onChange={handleChange}
+value={state.writing}
+/>
+</div>
+</div>
+
+<div>
+<div>Reading</div>
+<div>
+<Input
+type='number'
+name='reading'
+placeholder="Reading"
+onChange={handleChange}
+value={state.reading}
+/>
+</div>
+</div>
+
+<div>
+<div>Interest</div>
+<div>
+<Input
+type='number'
+name='interest'
+placeholder="Interest"
+onChange={handleChange}
+value={state.interest}
+/>
+</div>
+</div>
+
+{/* row 3 */}
+<div>
+<div>Participation</div>
+<div>
+<Input
+type='number'
+name='participation'
+placeholder="Participation"
+onChange={handleChange}
+value={state.participation}
+/>
+</div>
+</div>
+
+
+<div>
+<div>Submitting Homework</div>
+<div>
+<Input
+type='number'
+name='submitting_homework'
+placeholder="Submitting Homework"
+onChange={handleChange}
+value={state.submitting_homework}
+/>
+</div>
+</div>
+
+<div>
+<div>Homework Effort</div>
+<div>
+<Input
+type='number'
+name='homework_effort'
+placeholder="Homework Effort"
+onChange={handleChange}
+value={state.homework_effort}
+/>
+</div>
+</div>
+
+
+<div>
+<div>Notes</div>
+<div>
+<Input
+type='text'
+name='notes'
+placeholder="Notes"
+onChange={handleChange}
+value={state.notes}
+/>
+</div>
+</div>
+
+<div>
+<div>Overall</div>
+<div>
+<Input
+type='number'
+name='overall'
+placeholder="Overall"
+onChange={handleChange}
+value={state.overall}
+/>
+</div>
+</div>
+
+
+<div>
+<div>Course Id</div>
+<div>
+<Input
+type='number'
+name='course_id'
+placeholder="Course Id"
+onChange={handleChange}
+value={state.course_id}
+/>
+</div>
+</div>
+
+
+<div>
+<div>Student Id</div>
+<div>
+<Input
+type='number'
+name='student_id'
+placeholder="Student Id"
+onChange={handleChange}
+value={state.student_id}
+/>
+</div>
+</div>
+
+
+<div>
+<div>Teacher Id</div>
+<div>
+<Input
+type='number'
+name='teacher_id'
+placeholder="Teacher Id"
+onChange={handleChange}
+value={state.teacher_id}
+/>
+</div>
+</div>
+
+<div>
+<div>Report Date</div>
+<div>
+<Input
+type='text'
+name='report_date'
+placeholder="Report Date"
+onChange={handleChange}
+value={state.report_date}
+/>
+</div>
+</div>
+
+
+
+            </div>
+            </fieldset>
           )}
-        </div>
-        
+          </FormWrap>
+    
     )
 }
 
