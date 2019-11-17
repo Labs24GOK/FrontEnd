@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { getStudentTable } from '../../../../actions';
 import { Table, Spin } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -25,7 +25,7 @@ const StudentTable = props => {
 
 
   const handleAddButton = () => {
-    setForm(true);
+    setForm(!form);
   }
 
   const studentTableColumns = [
