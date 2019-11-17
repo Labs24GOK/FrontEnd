@@ -65,7 +65,7 @@ gridGap: '15px', margin: '10px'
 }}>
 
 <div>
-<div>Speaking Fluency</div>
+<label>Speaking Fluency</label>
 <div>
 <Input
 type='number'
@@ -78,7 +78,7 @@ value={state.speaking_fluency}
 </div>
 
 <div>
-<div>Speaking Accuracy</div>
+<label>Speaking Accuracy</label>
 <div>
 <Input
 type='number'
@@ -91,7 +91,7 @@ value={state.speaking_accuracy}
 </div>
 
 <div>
-<div>Vocabulary</div>
+<label>Vocabulary</label>
 <div>
 <Input
 type='number'
@@ -104,7 +104,7 @@ value={state.vocabulary}
 </div>
 
 <div>
-<div>Pronunciation</div>
+<label>Pronunciation</label>
 <div>
 <Input
 type='number'
@@ -125,7 +125,7 @@ value={state.pronunciation}
 
 {/* row 2  */}
 <div>
-<div>Grammar</div>
+<label>Grammar</label>
 <div>
 <Input
 type='number'
@@ -138,7 +138,7 @@ value={state.grammar}
 </div>
 
 <div>
-<div>Listening</div>
+<label>Listening</label>
 <div>
 <Input
 type='number'
@@ -152,7 +152,7 @@ value={state.listening}
 
 
 <div>
-<div>Writing</div>
+<label>Writing</label>
 <div>
 <Input
 type='number'
@@ -165,7 +165,7 @@ value={state.writing}
 </div>
 
 <div>
-<div>Reading</div>
+<label>Reading</label>
 <div>
 <Input
 type='number'
@@ -178,7 +178,7 @@ value={state.reading}
 </div>
 
 <div>
-<div>Interest</div>
+<label>Interest</label>
 <div>
 <Input
 type='number'
@@ -192,7 +192,7 @@ value={state.interest}
 
 {/* row 3 */}
 <div>
-<div>Participation</div>
+<label>Participation</label>
 <div>
 <Input
 type='number'
@@ -206,7 +206,7 @@ value={state.participation}
 
 
 <div>
-<div>Submitting Homework</div>
+<label>Submitting Homework</label>
 <div>
 <Input
 type='number'
@@ -219,7 +219,7 @@ value={state.submitting_homework}
 </div>
 
 <div>
-<div>Homework Effort</div>
+<label>Homework Effort</label>
 <div>
 <Input
 type='number'
@@ -233,7 +233,7 @@ value={state.homework_effort}
 
 
 <div>
-<div>Notes</div>
+<label>Notes</label>
 <div>
 <Input
 type='text'
@@ -246,7 +246,7 @@ value={state.notes}
 </div>
 
 <div>
-<div>Overall</div>
+<label>Overall</label>
 <div>
 <Input
 type='number'
@@ -260,7 +260,7 @@ value={state.overall}
 
 
 <div>
-<div>Course Id</div>
+<label>Course Id</label>
 <div>
 <Input
 type='number'
@@ -274,7 +274,7 @@ value={state.course_id}
 
 
 <div>
-<div>Student Id</div>
+<label>Student Id</label>
 <div>
 <Input
 type='number'
@@ -288,7 +288,7 @@ value={state.student_id}
 
 
 <div>
-<div>Teacher Id</div>
+<label>Teacher Id</label>
 <div>
 <Input
 type='number'
@@ -301,7 +301,7 @@ value={state.teacher_id}
 </div>
 
 <div>
-<div>Report Date</div>
+<label>Report Date</label>
 <div>
 <Input
 type='text'
