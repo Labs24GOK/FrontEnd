@@ -2,11 +2,9 @@ import React, {useState, useEffect } from 'react'
 import { connect } from 'react-redux';
 import { editParentById, toggleEditParent } from '../../../../actions';
 import { withRouter } from 'react-router-dom';
-// import { Grid, label, Input, Icon } from 'semantic-ui-react';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import { FormWrap, Input, Button, RowFlex, Column, RowFlexEnd } from '../mainStyle/styledComponent';
-
+import { FormWrap, Input, Button, Div, FormSet} from '../mainStyle/styledComponent';
 const ParentForm = props => {
     
     const [state, setState] = useState({
@@ -20,8 +18,6 @@ const ParentForm = props => {
         flat: props.parentById.flat,
         road: props.parentById.road
     })
-
-
     const handleChange = e => {
         setState({
             ...state,
@@ -36,10 +32,15 @@ const ParentForm = props => {
         props.toggleEditParent();
     }
     return(
-       <FormWrap onSubmit={handleSubmit} >
-                           
-                  <RowFlex>
-                        <Column>
+       <FormWrap onSubmit={handleSubmit}>
+            <Div>
+                     <div style={{gridColumn: "span3"}} >
+                      
+                    </div>
+                </Div>
+                <FormSet>
+                 <Div>              
+                        <div>
                            <label>Father Name</label>
                            <div>
                             <Input
@@ -50,8 +51,8 @@ const ParentForm = props => {
                                 value={state.father_name}
                             />
                             </div>
-                        </Column>
-                        <Column>
+                        </div>
+                        <div>
                             <label>Mother Name</label>
                             <div>
                             <Input
@@ -62,32 +63,32 @@ const ParentForm = props => {
                                 value={state.mother_name}
                             />
                             </div>
-                        </Column>
-                        <Column>
+                        </div>
+                        <div>
                             <label>Primary Telephone</label>
                             <div>
                             <Input
                                 type='text'
-                                name='secondary_telephone'
+                                name='primary_telephone'
                                 placeholder='Primary Telephone'
+                                onChange={handleChange}
+                                value={state.primary_telephone}
+                            />
+                            </div>
+                        </div>
+                        <div>
+                            <label>Scondary Telephone</label>
+                            <div>
+                            <Input
+                                type='text'
+                                name='secondary_telephone'
+                                placeholder='Scondary Telephone'
                                 onChange={handleChange}
                                 value={state.secondary_telephone}
                             />
                             </div>
-                        </Column>
-                    </RowFlex>
-                        {/* <div >
-                            <label.Group horizontal style={{ background: "#E0EBF0", "box-shadow":"none", border:"none" }}>
-                                <label.Inline onClick={handleSubmit} style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" ,margin: 0}}>
-                                    <Icon name="save" style={{ color: "#26ABBD", cursor: "pointer" }} /> Save
-                            </label.Inline>
-                                <label.Inline onClick={handleCancel} style={{ color: "#C73642", cursor: "pointer", width: "fit-content", "margin-left": "10px" }}>
-                                    <Icon name="cancel" style={{ color: "#C73642", cursor: "pointer" }} /> Cancel
-                            </label.Inline>
-                            </label.Group>
-                        </div> */}
-                   <RowFlex>
-                   <Column>
+                        </div>
+                    <div>
                         <label>Block Code</label>
                         <div>
                         <Input
@@ -98,8 +99,8 @@ const ParentForm = props => {
                                 value={state.block_code}
                             />
                         </div>
-                    </Column>
-                    <Column>
+                    </div>
+                    <div>
                         <label>Building</label>
                         <div>
                         <Input
@@ -110,8 +111,8 @@ const ParentForm = props => {
                                 value={state.building}
                             />
                         </div>
-                    </Column>
-                    <Column>
+                    </div>
+                    <div>
                         <label>Flat</label>
                         <div>
                         <Input
@@ -122,8 +123,8 @@ const ParentForm = props => {
                                 value={state.flat}
                             />
                         </div>
-                    </Column>
-                    <Column>
+                    </div>
+                    <div>
                         <label>Road</label>
                         <div>
                         <Input
@@ -134,27 +135,21 @@ const ParentForm = props => {
                                 value={state.road}
                             />
                         </div>
-                    </Column>     
-                    </RowFlex>
-                    
-                    
-
-                                
-             <RowFlexEnd>
-             <Column>
+                    </div>                 
+               </Div>
+            </FormSet>
+             <div style={{ alignSelf: 'flex-end' }}>
              <Button onClick={handleCancel} style={{ background: '#C73642', color:'#FFFFFF', width: '80px' }}>
                  Cancel
              </Button>
-             <Button type="submit" onClick={handleSubmit} style={{ background: '#269FB0', color: '#FFFFFF', width: '80px' }}> 
+             <Button type="submit" onClick={handleSubmit} style={{ background: '#269FB0', color: '#FFFFFF',width: '80px'  }}> 
                   Save
              </Button>
-             </Column>
-         </RowFlexEnd>
+         </div>
        </FormWrap> 
                 
     )
 }
-
 const mapStateToProps = state => {
     return {
         isLoading: state.parentReducer.isLoading,
@@ -162,11 +157,9 @@ const mapStateToProps = state => {
         isEditing: state.parentReducer.isEditing,
     };
   };
-
-
 export default withRouter(
     connect(
         mapStateToProps,
         { editParentById, toggleEditParent }
     )(ParentForm)
-)
+) 

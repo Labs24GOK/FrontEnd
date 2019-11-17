@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const FormWrap = styled.form`
-  // background: #EDEEEF;
   border: 0px transparant;
   border-radius: 3px;
   font-size: 12px;
@@ -66,11 +65,18 @@ export const Button = styled.button`
   height: 25px;
   border-radius: 3px;
   margin: 10px 5px 10px 10px;
-  background: #269FB0;
+  background-color: #269FB0;
   text-align: center;
-  color: white;
+  color: #ffffff;
 `
-
+export const RedButton = styled.button`
+  background-color: #C73642;
+  width: 120px;
+  height: 25px;
+  border-radius: 3px;
+  margin: 10px 5px 10px 10px;
+  text-align: center;
+`;
 export const DropdownContent =  styled.div`
   display: block;
   position: absolute;
@@ -106,11 +112,7 @@ export const TabsWrapColumn = styled.div`
   padding-top: 145px;
 `
 
-export const RedButton = styled.button`
-  background-color: #FFC8C8;
-  padding: 12px 28px;
-  border-radius: 4px;
-`;
+
 
 //student form and info tab styles
 export const StudentFormWrap = styled.form`

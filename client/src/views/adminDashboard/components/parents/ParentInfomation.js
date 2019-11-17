@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getParentById, toggleEditParent } from '../../../../actions';
 import { withRouter, Link } from 'react-router-dom';
 import ParentForm from './ParentForm'
-import { Grid, Segment, Form, Icon } from 'semantic-ui-react'
+import { FormWrap, Input, Button, Div, FormSet} from '../mainStyle/styledComponent';
 
 const ParentInfomation = props => {
     useEffect(() => {
@@ -16,54 +16,55 @@ const ParentInfomation = props => {
     }
 
     return (
-        <div className="gridView">
+        <div>
             {!props.isEditing ?
-                <Grid columns='equal' style={{margin: '10px 5px 0px 5px'}}>
-                    <Grid.Row>
-                        <Grid.Column>
-                            <Segment>Father Name</Segment>
-                            <Segment>{props.parentById.father_name}</Segment>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Segment>Mother Name</Segment>
-                            <Segment>{props.parentById.mother_name}</Segment>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Segment>Primary Telephone</Segment>
-                            <Segment>{props.parentById.primary_telephone}</Segment>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Segment>Secondary Telephone</Segment>
-                            <Segment>{props.parentById.secondary_telephone}</Segment>
-                        </Grid.Column>
-                        <Grid.Column >
-                            <Segment style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" }} onClick={editParentInfo}>
-                                <Icon name="edit" style={{ color: "#26ABBD", cursor: "pointer" }} /> Edit
-                        </Segment>
-                        </Grid.Column>
-                    </Grid.Row>
-                    <Grid.Row>
-                        <Grid.Column>
-                            <Segment>Block Code</Segment>
-                            <Segment>{props.parentById.block_code}</Segment>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Segment>Building</Segment>
-                            <Segment>{props.parentById.building}</Segment>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Segment>Flat</Segment>
-                            <Segment>{props.parentById.flat}</Segment>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Segment>Road</Segment>
-                            <Segment>{props.parentById.road}</Segment>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <div></div>
-                        </Grid.Column>
-                    </Grid.Row>
-                </Grid>
+            <FormWrap>
+                <Div>
+                     <div style={{gridColumn: "span3"}} >
+                        <p style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" }} onClick={editParentInfo}>
+                             Edit
+                        </p>
+                    </div>
+                </Div>
+                <Div>
+                    <div>
+                        <label>Father Name</label>
+                        <p>{props.parentById.father_name}</p>
+                    </div>
+                    <div>
+                        <label>Mother Name</label>
+                        <p>{props.parentById.mother_name}</p>
+                    </div>
+                    <div>
+                        <label>Primary Telephone</label>
+                        <p>{props.parentById.primary_telephone}</p>
+                    </div>
+                    <div>
+                        <label>Secondary Telephone</label>
+                        <p>{props.parentById.secondary_telephone}</p>
+                    </div>
+                   
+                    <div>
+                        <label>Block Code</label>
+                        <p>{props.parentById.block_code}</p>
+                    </div>
+                    <div>
+                        <label>Building</label>
+                        <p>{props.parentById.building}</p>
+                    </div>
+                    <div>
+                        <label>Flat</label>
+                        <p>{props.parentById.flat}</p>
+                    </div>
+                    <div>
+                        <label>Road</label>
+                        <p>{props.parentById.road}</p>
+                    </div>
+                    <div>
+                        <div></div>
+                    </div>
+                </Div>
+            </FormWrap>
                 : <ParentForm {...props} />}
         </div>
     )
