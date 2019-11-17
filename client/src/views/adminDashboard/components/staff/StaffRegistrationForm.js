@@ -1,16 +1,18 @@
 import React, { useState} from 'react';
 import { connect } from 'react-redux'
-import { Icon, Segment } from 'semantic-ui-react'
 import { addStaff, toggleAddStaffComponent } from '../../../../actions';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import moment from 'moment';
 import Dropdown from 'react-dropdown';
-import 'react-dropdown/style.css'
+import 'react-dropdown/style.css';
 import { FormWrap, Input, Button} from '../mainStyle/styledComponent.js';
 
 
 const StaffRegistrationForm = (props) => {
 console.log ( 'staff registry props', props)
 
+
+const testArr = ['yep', 'yep']
   const [state, setState] = useState({
     id: '',
     name: '',
@@ -38,6 +40,8 @@ console.log ( 'staff registry props', props)
 }
 
 
+
+
 const formSubmit = e => {
     console.log('state sent', state)
   e.preventDefault();
@@ -50,6 +54,8 @@ const cancelBtn = e => {
 }
 
 
+
+
   return(
     <FormWrap onSubmit={formSubmit} style={{ margin: '30px 10px 20px 10px' }}>
         <fieldset style={{ border: '1px solid transparent', margin: '10px 5px 0px 5px', background: '#E0EBF0' }}>
@@ -58,8 +64,9 @@ const cancelBtn = e => {
           gridGap: '15px', margin: '10px'
         }}>
             {/* row 1 */}
-            <div>
-                    <Segment>Staff ID</Segment>
+                <div>
+                    <label>Staff ID</label>
+                    <div>
                     <Input 
                         type='text'
                         name='id'
@@ -67,9 +74,11 @@ const cancelBtn = e => {
                         onChange={handleChange}
                         value={state.id}
                     />
-                
-            
-                    <Segment>Name</Segment>
+                </div>
+                </div>
+                <div>
+                    <label>Name</label>
+                    <div>
                     <Input 
                         type='text'
                         name='name'
@@ -77,11 +86,12 @@ const cancelBtn = e => {
                         onChange={handleChange}
                         value={state.name}
                     />
-                
+                 </div>
+                </div>
 
-
-                <div style={{ gridColumn: 'span 2' }}>
-                    <Segment>Short Name</Segment>
+                <div>
+                    <label>Short Name</label>
+                    <div>
                     <Input 
                         type='text'
                         name='short_name'
@@ -90,8 +100,10 @@ const cancelBtn = e => {
                         value={state.short_name}
                     />
                     </div>
-            
-                <Segment>CPR</Segment>
+                    </div>
+            <div>
+                <label>CPR</label>
+                <div>
                     <Input 
                         type='text'
                         name='cpr'
@@ -99,59 +111,57 @@ const cancelBtn = e => {
                         onChange={handleChange}
                         value={state.cpr}
                     />
-                
-
-
-
-            
-                    <Segment.Group horizontal style={{ background: "#E0EBF0" }}>
-                        <Segment.Inline onClick={formSubmit} style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" ,margin: 0}}>
-                        <Icon name="save" type='submit' style={{ color: "#26ABBD", cursor: "pointer" }} /> Save
-                        </Segment.Inline>
-                        <Segment.Inline onClick={cancelBtn} style={{ color: "#C73642", cursor: "pointer", width: "fit-content", "margin-left": "10px" }}>
-                        <Icon name="cancel" style={{ color: "#C73642", cursor: "pointer" }}  /> Cancel
-                        </Segment.Inline>
-                        </Segment.Group>
-                
                 </div>
+                </div>
+            
                 
                 {/* row 2 */}
                 <div>
             
-                    <Segment>Mobile Number</Segment>
+                    <label>Mobile Number</label>
+                    <div>
                     <Input 
                         type='text' //use date for calendar
                         name='mobile_number'
                         placeholder='Mobile Number'
                         onChange={handleChange}
                         value={state.mobile_number}
+                        options={testArr}
                     />
-                
+                </div>
+                </div>
     
+                    <div>
                     {/* needs to be dropdown */}
-                    <Segment>Accent</Segment>
-                    <Input
-                        name='accent'
-                        placeholder='Accent'
-                        onChange={handleChange}
+                    <label>Accent</label>
+                    <div>
+                    <Dropdown
                         value={state.accent}
-                        className='dropdown'
+                        onChange={(e) => setState({ ...state, accent: e })}
                         controlClassName='myControlClassName'
+                        className='dropdown'
+                        options={testArr}
                     />
-                
+                </div>
+                </div>
+
+                <div>
                     {/* needs to be dropdown */}
-                    <Segment>Gender</Segment>
-                    <Input
-                        name='gender'
-                        placeholder='Gender'
-                        onChange={handleChange}
+                    <label>Gender</label>
+                    <div>
+                    <Dropdown
                         value={state.gender}
-                        className='dropdown'
+                        onChange={(e) => setState({ ...state, gender: e })}
                         controlClassName='myControlClassName'
+                        className='dropdown'
+                        options={testArr}
                     />
-                
+                </div>
+                </div>
             
-                    <Segment>Birthdate</Segment>
+                <div>
+                    <label>Birthdate</label>
+                    <div>
                     <Input 
                         type='date'
                         name='birthdate'
@@ -159,11 +169,13 @@ const cancelBtn = e => {
                         onChange={handleChange}
                         value={state.birthdate}
                     />
-                
                 </div>
-                <div>
+                </div>
+                
             
-                    <Segment>Teaching Rate</Segment>
+                <div>
+                    <label>Teaching Rate</label>
+                    <div>
                     <Input 
                         type='text'
                         name='teaching_rate'
@@ -171,11 +183,13 @@ const cancelBtn = e => {
                         onChange={handleChange}
                         value={state.teaching_rate}
                     />
-                
-              
+                </div>
+                </div>
               {/* row3 */}
             
-                    <Segment>Admin</Segment>
+            <div>
+                    <label>Admin</label>
+                    <div>
                     <Input 
                         type='text'
                         name='admin'
@@ -183,9 +197,12 @@ const cancelBtn = e => {
                         onChange={handleChange}
                         value={state.admin}
                     />
-                
+                </div>
+                </div>
             
-                    <Segment>Active</Segment>
+                <div>
+                    <label>Active</label>
+                    <div>
                     <Input 
                         type='text'
                         name='active'
@@ -193,9 +210,12 @@ const cancelBtn = e => {
                         onChange={handleChange}
                         value={state.active}
                     />
-                
+                </div>
+                </div>
             
-                    <Segment>User Id</Segment>
+                <div>
+                    <label>User Id</label>
+                    <div>
                     <Input 
                         type='text'
                         name='user_id'
@@ -203,10 +223,19 @@ const cancelBtn = e => {
                         onChange={handleChange}
                         value={state.user_id}
                     />
-                
-            </div>
+                    </div>
                 </div>
+            </div>
             </fieldset>
+            <div style={{ alignSelf: 'flex-end' }}>
+            <Button onClick={cancelBtn} style={{ background: '#C73642', width: '80px' }}>
+                Cancel
+            </Button>
+            <Button type="submit"> 
+                Add student
+            </Button>
+        </div>
+
         </FormWrap>
   )
 }

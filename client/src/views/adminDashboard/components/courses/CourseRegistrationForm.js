@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
 import moment from 'moment';
-import Dropdown from 'react-dropdown'
-import 'react-dropdown/style.css'
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 
 
 import { FormWrap, Input, Button } from '../mainStyle/styledComponent.js';
