@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
+import { getDropDownCourses, addCourse, toggleAddCourseComponent, getCourseTable } from '../../../../actions';
 import moment from 'moment';
 import Dropdown from 'react-dropdown';
-import 'react-dropdown/style.css';
 
+import 'react-dropdown/style.css';
 
 import { FormWrap, Input, Button } from '../mainStyle/styledComponent.js';
 
 
 const CourseRegistrationForm = (props) => {
-
-    const genderArr = ['hi', 'bye']
+    useEffect(() => {
+        props.getDropDownCourses();
+    },[])
 
     const [course, setCourse] = useState({
         term_id: '',
@@ -25,11 +27,13 @@ const CourseRegistrationForm = (props) => {
         section: '',
         subsection: '',
         hourly_rate: '',
-        start_time: '16:30:00',
-        end_time: '18:30:30',
+        start_time: '',
+        end_time: '',
         notes: '',
         status: '',
     })
+
+    const status = ['active', 'completed', 'waitlist']
 
     const [touched, setTouched] = useState({
         term_id: false,
@@ -60,8 +64,9 @@ const CourseRegistrationForm = (props) => {
 
     function handleSubmit(event) {
         event.preventDefault();
-
-    
+        props.addCourse(course);
+        props.getCourseTable()
+        props.setForm(false);
     }
 
     const handleCancel = () => {
@@ -150,7 +155,7 @@ const CourseRegistrationForm = (props) => {
                         <label>Subsection</label>
                         <div style={shouldMarkError('subsection')? {border: '1px solid red'} : null}>
                             <Input
-                                type="text"
+                                type="number"
                                 name="subsection"
                                 value={course.subsection}
                                 onChange={handleChange} 
@@ -176,7 +181,7 @@ const CourseRegistrationForm = (props) => {
                         <label>Start Time</label>
                         <div style={shouldMarkError('start_time')? {border: '1px solid red'} : null}>
                             <Input
-                                type="text"
+                                type="time"
                                 name="start_time"
                                 value={course.start_time}
                                 onChange={handleChange} 
@@ -189,7 +194,7 @@ const CourseRegistrationForm = (props) => {
                         <label>End Time</label>
                         <div style={shouldMarkError('end_time')? {border: '1px solid red'} : null}>
                             <Input
-                                type="text"
+                                type="time"
                                 name="end_time"
                                 value={course.end_time}
                                 onChange={handleChange} 
@@ -214,11 +219,12 @@ const CourseRegistrationForm = (props) => {
                     <div>
                         <label>Status</label>
                         <div style={shouldMarkError('status')? {border: '1px solid red'} : null}>
-                            <Input
-                                type="text"
-                                name="status"
+                            <Dropdown
                                 value={course.status}
-                                onChange={handleChange} 
+                                onChange={(e) => setCourse({ ...course, status: e.value })}
+                                controlClassName='myControlClassName'
+                                className='dropdownRoot'
+                                options={status}
                                 onBlur={handleBlur('status')}
                             />
                         </div>
@@ -231,8 +237,8 @@ const CourseRegistrationForm = (props) => {
                                 value={course.term_id}
                                 onChange={(e) => setCourse({ ...course, term_id: e })}
                                 controlClassName='myControlClassName'
-                                className='dropdown'
-                                options={genderArr}
+                                className='dropdownRoot'
+                                options={props.termDropdown}
                                 onBlur={handleBlur('term_id')}
                             />
                         </div>
@@ -245,9 +251,9 @@ const CourseRegistrationForm = (props) => {
                                 value={course.course_type_id}
                                 onChange={(e) => setCourse({ ...course, course_type_id: e })}
                                 controlClassName='myControlClassName'
-                                className='dropdown'
-                                options={genderArr}
-                                onBlur={handleBlur}
+                                className='dropdownRoot'
+                                options={props.courseTypeDropdown}
+                                onBlur={handleBlur('course_type_id')}
                             />
                         </div>
                     </div>
@@ -259,8 +265,9 @@ const CourseRegistrationForm = (props) => {
                                 value={course.group_type_id}
                                 onChange={(e) => setCourse({ ...course, group_type_id: e })}
                                 controlClassName='myControlClassName'
-                                className='dropdown'
-                                options={genderArr}
+                                className='dropdownRoot'
+                                options={props.groupTypeDropdown}
+                                onBlur={handleBlur('group_type_id')}
                             />
                         </div>
                     </div>
@@ -272,8 +279,9 @@ const CourseRegistrationForm = (props) => {
                                 value={course.school_grade_id}
                                 onChange={(e) => setCourse({ ...course, school_grade_id: e })}
                                 controlClassName='myControlClassName'
-                                className='dropdown'
-                                options={genderArr}
+                                className='dropdownRoot'
+                                options={props.schoolGradeDropdown}
+                                onBlur={handleBlur('school_grade_id')}
                             />
                         </div>
                     </div>
@@ -286,8 +294,9 @@ const CourseRegistrationForm = (props) => {
                                 value={course.level_id}
                                 onChange={(e) => setCourse({ ...course, level_id: e })}
                                 controlClassName='myControlClassName'
-                                className='dropdown'
-                                options={genderArr}
+                                className='dropdownRoot'
+                                options={props.levelDropdown}
+                                onBlur={handleBlur('level_id')}
                             />
                         </div>
                     </div>
@@ -299,8 +308,9 @@ const CourseRegistrationForm = (props) => {
                                 value={course.course_schedule_id}
                                 onChange={(e) => setCourse({ ...course, course_schedule_id: e })}
                                 controlClassName='myControlClassName'
-                                className='dropdown'
-                                options={genderArr}
+                                className='dropdownRoot'
+                                options={props.courseScheduleDropdown}
+                                onBlur={handleBlur('course_schedule_id')}
                             />
                         </div>
                     </div>
@@ -312,8 +322,9 @@ const CourseRegistrationForm = (props) => {
                                 value={course.room_id}
                                 onChange={(e) => setCourse({ ...course, room_id: e })}
                                 controlClassName='myControlClassName'
-                                className='dropdown'
-                                options={genderArr}
+                                className='dropdownRoot'
+                                options={props.roomDropdown}
+                                onBlur={handleBlur('room_id')}
                             />
                         </div>
                     </div>
@@ -325,8 +336,9 @@ const CourseRegistrationForm = (props) => {
                                 value={course.teacher_id}
                                 onChange={(e) => setCourse({ ...course, teacher_id: e })}
                                 controlClassName='myControlClassName'
-                                className='dropdown'
-                                options={genderArr}
+                                className='dropdownRoot'
+                                options={props.teacherDropdown}
+                                onBlur={handleBlur('teacher_id')}
                             />
                         </div>
                     </div>
@@ -349,13 +361,21 @@ const CourseRegistrationForm = (props) => {
 
 const mapStateToProps = state => {
     return {
-
+        termDropdown: state.coursesTableReducer.termTable,
+        courseTypeDropdown: state.coursesTableReducer.courseTypeTable,
+        groupTypeDropdown: state.coursesTableReducer.groupTypeTable,
+        schoolGradeDropdown: state.coursesTableReducer.schoolGradeTable,
+        levelDropdown: state.coursesTableReducer.levelTable,
+        courseScheduleDropdown: state.coursesTableReducer.courseScheduleTable,
+        roomDropdown: state.coursesTableReducer.roomTable,
+        teacherDropdown: state.coursesTableReducer.teacherTable,
+        isPosting: state.coursesTableReducer.isPosting,
     };
 };
 
 export default withRouter(
     connect(
         mapStateToProps,
-        {}
+        { getDropDownCourses, addCourse, toggleAddCourseComponent, getCourseTable }
     )(CourseRegistrationForm)
 );
