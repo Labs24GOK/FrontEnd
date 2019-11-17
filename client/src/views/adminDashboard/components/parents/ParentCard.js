@@ -20,10 +20,10 @@ const ParentCard = props => {
           menuItem: 'PARENT INFORMATION',
           render: () => <Tab.Pane attached={false}><ParentInfomation parentId={props.parentId}/></Tab.Pane>,
       },
-      {
-        menuItem: 'STUDENT INFORMATION',
-        render: () => <Tab.Pane attached={false}><StudentInfo parentId={props.parentId}/></Tab.Pane>,
-    },
+    //   {
+    //     menuItem: 'STUDENT INFORMATION',
+    //     render: () => <Tab.Pane attached={false}><StudentInfo parentId={props.parentId}/></Tab.Pane>,
+    // },
   ]
 
   const backToParentTable = () => {
