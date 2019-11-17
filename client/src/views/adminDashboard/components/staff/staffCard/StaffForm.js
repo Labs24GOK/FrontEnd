@@ -226,7 +226,7 @@ const StaffForm = props => {
             <Button onClick={closeBtn} style={{ background: '#C73642', color:'#FFFFFF', width: '80px' }}>
                 Cancel
             </Button>
-            <Button type="submit" onClick={formSubmit} style={{ background: '#E0EBF0', color: '#26ABBD' }}> 
+            <Button type="submit"  style={{ background: '#E0EBF0', color: '#26ABBD' }}> 
                  Save
             </Button>
         </div>
