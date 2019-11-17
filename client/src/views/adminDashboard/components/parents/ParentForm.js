@@ -2,7 +2,11 @@ import React, {useState, useEffect } from 'react'
 import { connect } from 'react-redux';
 import { editParentById, toggleEditParent } from '../../../../actions';
 import { withRouter } from 'react-router-dom';
-import { Grid, Segment, Input, Icon } from 'semantic-ui-react'
+// import { Grid, label, Input, Icon } from 'semantic-ui-react';
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
+import { FormWrap, Input, Button} from '../mainStyle/styledComponent';
+
 const ParentForm = props => {
     
     const [state, setState] = useState({
@@ -16,6 +20,8 @@ const ParentForm = props => {
         flat: props.parentById.flat,
         road: props.parentById.road
     })
+
+
     const handleChange = e => {
         setState({
             ...state,
@@ -30,15 +36,16 @@ const ParentForm = props => {
         props.toggleEditParent();
     }
     return(
-        <>
-       <div className="ui segment active tab editForm">
-                <Grid columns='equal'>
-                    
-                    <Grid.Row>
-                        <Grid.Column>
-                            <Segment>
-                            Father Name
-                        </Segment>
+       <FormWrap onSubmit={handleSubmit} style={{ margin: '3%' }}>
+                <fieldset style={{ border: '1px solid transparent', margin: '10px 5px 0px 5px', background: '#E0EBF0' }}>
+                 <div style={{
+                display: 'grid', textAlign: 'left', gridTemplateColumns: '1fr 1fr 1fr 1fr',
+                gridGap: '15px', margin: '10px'
+                }}>              
+                  
+                        <div>
+                           <label>Father Name</label>
+                           <div>
                             <Input
                                 type='text'
                                 name='father_name'
@@ -46,9 +53,13 @@ const ParentForm = props => {
                                 onChange={handleChange}
                                 value={state.father_name}
                             />
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Segment>Mother Name</Segment>
+                            </div>
+                        </div>
+
+
+                        <div>
+                            <label>Mother Name</label>
+                            <div>
                             <Input
                                 type='text'
                                 name='mother_name'
@@ -56,9 +67,12 @@ const ParentForm = props => {
                                 onChange={handleChange}
                                 value={state.mother_name}
                             />
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Segment>Primary Telephone</Segment>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label>Primary Telephone</label>
+                            <div>
                             <Input
                                 type='text'
                                 name='secondary_telephone'
@@ -66,21 +80,23 @@ const ParentForm = props => {
                                 onChange={handleChange}
                                 value={state.secondary_telephone}
                             />
-                        </Grid.Column>
-                        <Grid.Column >
-                            <Segment.Group horizontal style={{ background: "#E0EBF0", "box-shadow":"none", border:"none" }}>
-                                <Segment.Inline onClick={handleSubmit} style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" ,margin: 0}}>
+                            </div>
+                        </div>
+
+                        {/* <div >
+                            <label.Group horizontal style={{ background: "#E0EBF0", "box-shadow":"none", border:"none" }}>
+                                <label.Inline onClick={handleSubmit} style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" ,margin: 0}}>
                                     <Icon name="save" style={{ color: "#26ABBD", cursor: "pointer" }} /> Save
-                            </Segment.Inline>
-                                <Segment.Inline onClick={handleCancel} style={{ color: "#C73642", cursor: "pointer", width: "fit-content", "margin-left": "10px" }}>
+                            </label.Inline>
+                                <label.Inline onClick={handleCancel} style={{ color: "#C73642", cursor: "pointer", width: "fit-content", "margin-left": "10px" }}>
                                     <Icon name="cancel" style={{ color: "#C73642", cursor: "pointer" }} /> Cancel
-                            </Segment.Inline>
-                            </Segment.Group>
-                        </Grid.Column>
-                    </Grid.Row>
-                    <Grid.Row>
-                    <Grid.Column>
-                        <Segment>Block Code</Segment>
+                            </label.Inline>
+                            </label.Group>
+                        </div> */}
+                   
+                    <div>
+                        <label>Block Code</label>
+                        <div>
                         <Input
                                 type='text'
                                 name='block_code'
@@ -88,9 +104,12 @@ const ParentForm = props => {
                                 onChange={handleChange}
                                 value={state.block_code}
                             />
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Segment>Building</Segment>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label>Building</label>
+                        <div>
                         <Input
                                 type='text'
                                 name='building'
@@ -98,9 +117,12 @@ const ParentForm = props => {
                                 onChange={handleChange}
                                 value={state.building}
                             />
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Segment>Flat</Segment>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label>Flat</label>
+                        <div>
                         <Input
                                 type='text'
                                 name='flat'
@@ -108,9 +130,12 @@ const ParentForm = props => {
                                 onChange={handleChange}
                                 value={state.flat}
                             />
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Segment>Road</Segment>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label>Road</label>
+                        <div>
                         <Input
                                 type='text'
                                 name='road'
@@ -118,14 +143,20 @@ const ParentForm = props => {
                                 onChange={handleChange}
                                 value={state.road}
                             />
-                    </Grid.Column>
-                    <Grid.Column>
-                        <div></div>
-                    </Grid.Column>
-                </Grid.Row>
-            </Grid>
-            </div>
-        </>
+                        </div>
+                    </div>                 
+               </div>
+            </fieldset>
+             <div style={{ alignSelf: 'flex-end' }}>
+             <Button onClick={handleCancel} style={{ background: '#C73642', color:'#FFFFFF', width: '80px' }}>
+                 Cancel
+             </Button>
+             <Button type="submit" onClick={handleSubmit} style={{ background: '#E0EBF0', color: '#26ABBD' }}> 
+                  Save
+             </Button>
+         </div>
+       </FormWrap> 
+                
     )
 }
 
@@ -136,6 +167,8 @@ const mapStateToProps = state => {
         isEditing: state.parentReducer.isEditing,
     };
   };
+
+
 export default withRouter(
     connect(
         mapStateToProps,
