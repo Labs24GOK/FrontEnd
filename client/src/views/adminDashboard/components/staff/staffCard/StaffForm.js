@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { editStaffById, toggleStaffEditComponent } from '../../../../../actions';
 import { withRouter, Link } from 'react-router-dom';
-// import { Grid, label, Input, Icon, Form } from 'semantic-ui-react';
+import { Grid, Segment, Input, Icon, Form } from 'semantic-ui-react';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import { FormWrap, Input, Button} from '../../mainStyle/styledComponent';
+import {  Button } from '../../mainStyle/styledComponent.js';
+
 
 const StaffForm = props => {
     const { staffID } = props;
@@ -43,17 +44,14 @@ const StaffForm = props => {
         props.toggleStaffEditComponent()
     }
 
+    const testArr = ['yep', 'yep']
 
     return(
-        <FormWrap onSubmit={formSubmit} style={{ margin: '30px 10px 20px 10px' }}>
-             <fieldset style={{ border: '1px solid transparent', margin: '10px 5px 0px 5px', background: '#E0EBF0' }}>
-             <div style={{
-            display: 'grid', textAlign: 'left', gridTemplateColumns: '1fr 1fr 1fr 1fr',
-            gridGap: '15px', margin: '10px'
-            }}>
-                    <div>
-                        <label>Staff ID</label>
-                        <div>
+        <div className="ui segment active tab editForm" style={{ margin: '5%'}}>
+            <Grid columns='equal' style={{ marginRight: '3.5%', marginLeft: '3.5%'}}>
+                    <Grid.Row>
+                        <Grid.Column>
+                            <Segment>Staff ID</Segment>
                         <Input 
                         type='text'
                         name='id'
@@ -61,12 +59,9 @@ const StaffForm = props => {
                         onChange={handleChange}
                         value={state.id}
                     />
-                </div>
-                </div>
-
-                <div>
-                    <label>Name</label>
-                    <div>
+                </Grid.Column>
+                <Grid.Column>
+                    <Segment>Name</Segment>
                     <Input 
                         type='text'
                         name='name'
@@ -74,12 +69,11 @@ const StaffForm = props => {
                         onChange={handleChange}
                         value={state.name}
                     />
-                    </div>
-                    </div>
+                </Grid.Column>
 
-                    <div>
-                    <label>Short Name</label>
-                    <div>
+
+                <Grid.Column>
+                    <Segment>Short Name</Segment>
                     <Input 
                         type='text'
                         name='short_name'
@@ -87,12 +81,9 @@ const StaffForm = props => {
                         onChange={handleChange}
                         value={state.short_name}
                     />
-                    </div>
-                    </div>
-
-                    <div>
-                <label>CPR</label>
-                <div>
+                </Grid.Column>
+                <Grid.Column>
+                <Segment>CPR</Segment>
                     <Input 
                         type='text'
                         name='cpr'
@@ -100,19 +91,23 @@ const StaffForm = props => {
                         onChange={handleChange}
                         value={state.cpr}
                     />
-                </div>
-                </div>
-                    {/* <label.Group horizontal style={{ background: "#E0EBF0" }}>
-                        <label.Inline onClick={formSubmit} style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" ,margin: 0}}>
+                </Grid.Column>
+{/* 
+                <Grid.Column >
+                    <Segment.Group horizontal style={{ background: "#E0EBF0" }}>
+                        <Segment.Inline onClick={formSubmit} style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" ,margin: 0}}>
                         <Icon name="save" tyoe='submit' style={{ color: "#26ABBD", cursor: "pointer" }} /> Save
-                        </label.Inline>
-                        <label.Inline onClick={closeBtn} style={{ color: "#C73642", cursor: "pointer", width: "fit-content", "margin-left": "10px" }}>
+                        </Segment.Inline>
+                        <Segment.Inline onClick={closeBtn} style={{ color: "#C73642", cursor: "pointer", width: "fit-content", "margin-left": "10px" }}>
                         <Icon name="cancel" style={{ color: "#C73642", cursor: "pointer" }}  /> Cancel
-                        </label.Inline>
-                        </label.Group> */}
-                <div>
-                    <label>Mobile Number</label>
-                    <div>
+                        </Segment.Inline>
+                        </Segment.Group>
+                </Grid.Column> */}
+                </Grid.Row>
+
+                <Grid.Row>
+                <Grid.Column>
+                    <Segment>Mobile Number</Segment>
                     <Input 
                         type='text' //use date for calendar
                         name='mobile_number'
@@ -120,38 +115,30 @@ const StaffForm = props => {
                         onChange={handleChange}
                         value={state.mobile_number}
                     />
-                </div>
-                </div>
+                </Grid.Column>
     
-                <div>
-                    <label>Accent</label>
-                    <div>
-                    <Input 
-                        type='text'
-                        name='accent'
-                        placeholder='Accent'
+                <Grid.Column>
+                    <Segment>Accent</Segment>
+                    <Dropdown
                         onChange={handleChange}
                         value={state.accent}
+                        controlClassName='myControlClassName'
+                        className='dropdown'
+                        options={testArr}
                     />
-                    </div>
-                    </div>
-
-                    <div>
-                    <label>Gender</label>
-                    <div>
-                    <Input 
-                        type='text'
-                        name='gender'
-                        placeholder='Gender'
-                        onChange={handleChange}
-                        value={state.gender}
+                </Grid.Column>
+                <Grid.Column>
+                    <Segment>Gender</Segment>
+                    <Dropdown 
+                        // onChange={handleChange}
+                        onChange={(e) => setState({ ...state, gender: e })}
+                        controlClassName='myControlClassName'
+                        className='dropdown'
+                        options={testArr}
                     />
-                    </div>
-                    </div>
-
-                    <div>
-                    <label>Birthdate</label>
-                    <div>
+                </Grid.Column>
+                <Grid.Column>
+                    <Segment>Birthdate</Segment>
                     <Input 
                         type='date'
                         name='birthdate'
@@ -159,12 +146,11 @@ const StaffForm = props => {
                         onChange={handleChange}
                         value={state.birthdate}
                     />
-                    </div>
-                    </div>
-              
-                    <div>
-                    <label>Teaching Rate</label>
-                    <div>
+                </Grid.Column>
+                </Grid.Row>
+                <Grid.Row>
+                <Grid.Column>
+                    <Segment>Teaching Rate</Segment>
                     <Input 
                         type='text'
                         name='teaching_rate'
@@ -172,12 +158,10 @@ const StaffForm = props => {
                         onChange={handleChange}
                         value={state.teaching_rate}
                     />
-                     </div>
-                     </div>
-
-                     <div>
-                    <label>Admin</label>
-                    <div>
+                </Grid.Column>
+              
+                <Grid.Column>
+                    <Segment>Admin</Segment>
                     <Input 
                         type='text'
                         name='admin'
@@ -185,12 +169,9 @@ const StaffForm = props => {
                         onChange={handleChange}
                         value={state.admin}
                     />
-                    </div>
-                    </div>
-
-                    <div>
-                    <label>Active</label>
-                    <div>
+                </Grid.Column>
+                <Grid.Column>
+                    <Segment>Active</Segment>
                     <Input 
                         type='text'
                         name='active'
@@ -198,12 +179,9 @@ const StaffForm = props => {
                         onChange={handleChange}
                         value={state.active}
                     />
-                    </div>
-                    </div>
-
-                    <div>
-                    <label>User Id</label>
-                    <div>
+                </Grid.Column>
+                <Grid.Column>
+                    <Segment>User Id</Segment>
                     <Input 
                         type='text'
                         name='user_id'
@@ -211,22 +189,24 @@ const StaffForm = props => {
                         onChange={handleChange}
                         value={state.user_id}
                     />
-                    </div>
-                    </div>
-                </div>
-            </fieldset>
+                </Grid.Column>
+            </Grid.Row>
+            </Grid>
             <div style={{ alignSelf: 'flex-end' }}>
-            <Button onClick={closeBtn} style={{ background: '#C73642', color:'#FFFFFF', width: '80px' }}>
+            <Button onClick={closeBtn} style={{ background: '#C73642',  color:'#FFFFFF', width: '80px', marginBottom: '2%'}}>
                 Cancel
             </Button>
-            <Button type="submit" onClick={formSubmit} style={{ background: '#E0EBF0', color: '#26ABBD' }}> 
-                 Save
+            <Button type="submit" onClick={formSubmit} style={{ background: '#E0EBF0', color: '#26ABBD', marginBottom: '2%'}}> 
+                Save
             </Button>
         </div>
-        </FormWrap>
+        </div>
     )
 }
 
+
+
+    
 
 export default withRouter(
     connect(

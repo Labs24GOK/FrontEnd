@@ -19,6 +19,16 @@ export const Input = styled.input`
   height: 26px;
 `
 
+
+export const CardStyle = styled.div`
+  outline: none;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  background: white;
+  width: 100%;
+  height: 26px;
+`
+
 export const Button = styled.button`
   width: 120px;
   height: 25px;
