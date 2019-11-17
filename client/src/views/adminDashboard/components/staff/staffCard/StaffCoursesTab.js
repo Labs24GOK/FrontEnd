@@ -25,24 +25,16 @@ const StaffCoursesTab = props => {
             title: 'Term',
             dataIndex: 'term',
             key: 3,
-            sorter: (a, b) => a.id - b.id,
-            sortDirections: ['ascend']
         },
         {
             title: 'Days',
             dataIndex: 'term',
             key: 4,
-            sorter: (a, b) => b.cpr - a.cpr,
-            sortDirections: ['descend'],
         },
         {
             title: 'Type',
             dataIndex: 'course_type',
             key: 5,
-            sorter: (a, b) => {
-                return (b.first_name === null) - (a.first_name === null) || +(a.first_name > b.first_name) || -(a.first_name < b.first_name);
-            },
-            sortDirections: ['descend']
         },
         {
             title: 'Group Type',
