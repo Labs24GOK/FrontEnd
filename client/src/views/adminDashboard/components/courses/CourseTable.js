@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
-import { getCourseTable} from '../../../../actions';
+import { getCourseTable, getDropDownCourses} from '../../../../actions';
 import { Table, Spin } from 'antd';
 import 'antd/dist/antd.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -75,14 +75,14 @@ const CourseTable = props => {
         <div>
           <SearchCourseTable />
         </div>
-        <div className="create-new-entry" style={{ cursor: 'pointer', color: '#26ABBD' }}>
+        <div className="create-new-entry" style={{ cursor: 'pointer', color: '#26ABBD' }}  onClick={handleAddButton}>
           <div style={{ marginRight: '10px' }}>Add Course</div>
-          <div><FontAwesomeIcon onClick={handleAddButton} style={{ width: '18px', height: '21px' }} icon={faPlusCircle} size='lg' /></div>
+          <div><FontAwesomeIcon style={{ width: '18px', height: '21px' }} icon={faPlusCircle} size='lg' /></div>
         </div>
       </div>
 
       {form ? (
-            <CourseRegistrationForm handleCancelButtonOnForm={handleCancelButtonOnForm}/>
+            <CourseRegistrationForm handleCancelButtonOnForm={handleCancelButtonOnForm} setForm={setForm}/>
           ) : null}
           
 
@@ -120,6 +120,6 @@ const mapStateToProps = state => {
 export default withRouter(
   connect(
     mapStateToProps,
-    { getCourseTable }
+    { getCourseTable, getDropDownCourses }
   )(CourseTable)
 )
