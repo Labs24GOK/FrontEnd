@@ -37,10 +37,6 @@ const StudentCard = props => {
         if (props.studentView === 'studentCardView') {
             props.setStudentView('studentTableView')
         }
-        if (props.isEditing) {
-            props.toggleEditComponent()
-            props.setStudentView('studentCardView')
-        }
     }
 
     return (

@@ -156,7 +156,7 @@ const StudentInformationTab = props => {
                         </Grid.Row>
                         {/* row 6 */}
 {/* edit placement exam is done, just need add placement test functionality. uncomment line 153 - 167 to see modal */}
-                        {/* <Grid.Row>
+                        <Grid.Row>
                             <Grid.Column>
                                 <Segment>Notes</Segment>
                                 <Segment>{props.studentById.notes}</Segment>
@@ -164,7 +164,7 @@ const StudentInformationTab = props => {
                             <Grid.Column>
                                 <RedButton onClick={openModal}>Placement Exam</RedButton>
                             </Grid.Column>
-                        </Grid.Row> */}
+                        </Grid.Row>
                     </Grid>
                     : <StudentForm {...props} />
             }

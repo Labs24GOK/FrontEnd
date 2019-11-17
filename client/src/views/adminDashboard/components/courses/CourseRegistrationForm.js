@@ -223,7 +223,7 @@ const CourseRegistrationForm = (props) => {
                                 value={course.status}
                                 onChange={(e) => setCourse({ ...course, status: e.value })}
                                 controlClassName='myControlClassName'
-                                className='dropdownRoot'
+                                className='dropdown'
                                 options={status}
                                 onBlur={handleBlur('status')}
                             />
@@ -237,7 +237,7 @@ const CourseRegistrationForm = (props) => {
                                 value={course.term_id}
                                 onChange={(e) => setCourse({ ...course, term_id: e })}
                                 controlClassName='myControlClassName'
-                                className='dropdownRoot'
+                                className='dropdown'
                                 options={props.termDropdown}
                                 onBlur={handleBlur('term_id')}
                             />
@@ -251,7 +251,7 @@ const CourseRegistrationForm = (props) => {
                                 value={course.course_type_id}
                                 onChange={(e) => setCourse({ ...course, course_type_id: e })}
                                 controlClassName='myControlClassName'
-                                className='dropdownRoot'
+                                className='dropdown'
                                 options={props.courseTypeDropdown}
                                 onBlur={handleBlur('course_type_id')}
                             />
@@ -265,7 +265,7 @@ const CourseRegistrationForm = (props) => {
                                 value={course.group_type_id}
                                 onChange={(e) => setCourse({ ...course, group_type_id: e })}
                                 controlClassName='myControlClassName'
-                                className='dropdownRoot'
+                                className='dropdown'
                                 options={props.groupTypeDropdown}
                                 onBlur={handleBlur('group_type_id')}
                             />
@@ -279,7 +279,7 @@ const CourseRegistrationForm = (props) => {
                                 value={course.school_grade_id}
                                 onChange={(e) => setCourse({ ...course, school_grade_id: e })}
                                 controlClassName='myControlClassName'
-                                className='dropdownRoot'
+                                className='dropdown'
                                 options={props.schoolGradeDropdown}
                                 onBlur={handleBlur('school_grade_id')}
                             />
@@ -294,7 +294,7 @@ const CourseRegistrationForm = (props) => {
                                 value={course.level_id}
                                 onChange={(e) => setCourse({ ...course, level_id: e })}
                                 controlClassName='myControlClassName'
-                                className='dropdownRoot'
+                                className='dropdown'
                                 options={props.levelDropdown}
                                 onBlur={handleBlur('level_id')}
                             />
@@ -308,7 +308,7 @@ const CourseRegistrationForm = (props) => {
                                 value={course.course_schedule_id}
                                 onChange={(e) => setCourse({ ...course, course_schedule_id: e })}
                                 controlClassName='myControlClassName'
-                                className='dropdownRoot'
+                                className='dropdown'
                                 options={props.courseScheduleDropdown}
                                 onBlur={handleBlur('course_schedule_id')}
                             />
@@ -322,7 +322,7 @@ const CourseRegistrationForm = (props) => {
                                 value={course.room_id}
                                 onChange={(e) => setCourse({ ...course, room_id: e })}
                                 controlClassName='myControlClassName'
-                                className='dropdownRoot'
+                                className='dropdown'
                                 options={props.roomDropdown}
                                 onBlur={handleBlur('room_id')}
                             />
@@ -336,7 +336,7 @@ const CourseRegistrationForm = (props) => {
                                 value={course.teacher_id}
                                 onChange={(e) => setCourse({ ...course, teacher_id: e })}
                                 controlClassName='myControlClassName'
-                                className='dropdownRoot'
+                                className='dropdown'
                                 options={props.teacherDropdown}
                                 onBlur={handleBlur('teacher_id')}
                             />
