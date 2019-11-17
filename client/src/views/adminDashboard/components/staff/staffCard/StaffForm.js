@@ -216,10 +216,10 @@ const StaffForm = props => {
                 </div>
             </fieldset>
             <div style={{ alignSelf: 'flex-end' }}>
-            <Button onClick={closeBtn} style={{ background: '#C73642', width: '80px' }}>
+            <Button onClick={closeBtn} style={{ background: '#C73642', color:'#FFFFFF', width: '80px' }}>
                 Cancel
             </Button>
-            <Button type="submit" onClick={formSubmit}> 
+            <Button type="submit" onClick={formSubmit} style={{ background: '#E0EBF0', color: '#26ABBD' }}> 
                  Save
             </Button>
         </div>
