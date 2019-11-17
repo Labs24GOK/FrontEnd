@@ -23,10 +23,10 @@ const StaffInformationTab = props => {
 
     return (
         props.isLoading ? <Spin style={{ marginTop: '150px' }} size="large" /> :
-            <div className="gridView">
+            <div className="gridView" style={{ margin: '3'}}>
                 {
                     !props.isEditing ?
-                        <Grid columns='equal'>
+                        <Grid columns='equal'style={{ marginRight: '3.5%', marginLeft: '3.5%'}}>
                             <Grid.Row>
                                 <Grid.Column>
                                     <Segment>Staff ID</Segment>
@@ -49,7 +49,7 @@ const StaffInformationTab = props => {
                                 </Grid.Column>
 
                                 <Grid.Column>
-                                    <Segment style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" }} onClick={editStaffInfo}>
+                                    <Segment style={{ color: "#26ABBD", cursor: "pointer"}} onClick={editStaffInfo}>
                                         <Icon name="edit" style={{ color: "#26ABBD", cursor: "pointer" }} /> Edit
                     </Segment>
                                 </Grid.Column>

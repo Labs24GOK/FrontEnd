@@ -47,8 +47,8 @@ const StaffForm = props => {
     const testArr = ['yep', 'yep']
 
     return(
-        <div className="ui segment active tab editForm" style={{ margin: '5%'}}>
-            <Grid columns='equal' style={{ marginRight: '3.5%', marginLeft: '3.5%'}}>
+        <div className="ui segment active tab editForm" style={{ margin: '3%'}}>
+            <Grid columns='equal' style={{ marginRight: '3.5%', marginLeft: '3.5%', padding: '1%'}}>
                     <Grid.Row>
                         <Grid.Column>
                             <Segment>Staff ID</Segment>
