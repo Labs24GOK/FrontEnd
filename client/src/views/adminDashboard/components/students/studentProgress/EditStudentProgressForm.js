@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
-import { Grid, Segment, Input, Icon } from 'semantic-ui-react';
+import { Icon } from 'semantic-ui-react';
 import { toggleEditProgressComponent, editStudentProgress, getStudentProgress } from '../../../../../actions';
 import { Table, Spin } from 'antd';
-
+import { FormWrap, Input, Button} from '../../mainStyle/styledComponent';
 
 
 
@@ -51,15 +51,19 @@ const EditStudentProgressForm = props => {
     }
 
     return (
-        <div className="gridView">
+        <FormWrap style={{ margin: '3%' }}>
             {props.isLoading ? (
                 <Spin style={{ marginTop: '150px' }} size="large" />
             ) : (
-                    <Grid columns='equal'>
-                        <Grid.Row>
+                    <fieldset style={{ border: '1px solid transparent', margin: '10px 5px 0px 5px', background: '#E0EBF0'}}>
+                         <div style={{
+                            display: 'grid', textAlign: 'left', gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr',
+                            gridGap: '15px', margin: '10px'
+                            }}>
                             {/* row 1 */}
-                            <Grid.Column>
-                                <Segment>Speaking Fluency</Segment>
+                            <div>
+                                <label>Speaking Fluency</label>
+                                <div>
                                 <Input
                                     type='number'
                                     name='speaking_fluency'
@@ -67,10 +71,12 @@ const EditStudentProgressForm = props => {
                                     onChange={handleChange}
                                     value={state.speaking_fluency}
                                 />
-                            </Grid.Column>
+                            </div>
+                            </div>
 
-                            <Grid.Column>
-                                <Segment>Speaking Accuracy</Segment>
+                            <div>
+                                <label>Speaking Accuracy</label>
+                                <div>
                                 <Input
                                     type='number'
                                     name='speaking_accuracy'
@@ -78,10 +84,12 @@ const EditStudentProgressForm = props => {
                                     onChange={handleChange}
                                     value={state.speaking_accuracy}
                                 />
-                            </Grid.Column>
+                            </div>
+                            </div>
 
-                            <Grid.Column>
-                                <Segment>Vocabulary</Segment>
+                            <div>
+                                <label>Vocabulary</label>
+                                <div>
                                 <Input
                                     type='number'
                                     name='vocabulary'
@@ -89,10 +97,12 @@ const EditStudentProgressForm = props => {
                                     onChange={handleChange}
                                     value={state.vocabulary}
                                 />
-                            </Grid.Column>
+                            </div>
+                            </div>
 
-                            <Grid.Column>
-                                <Segment>Pronunciation</Segment>
+                            <div>
+                                <label>Pronunciation</label>
+                                <div>
                                 <Input
                                     type='number'
                                     name='pronunciation'
@@ -100,19 +110,21 @@ const EditStudentProgressForm = props => {
                                     onChange={handleChange}
                                     value={state.pronunciation}
                                 />
-                            </Grid.Column>
+                            </div>
+                            </div>
 
-                            <Grid.Column>
-                                <Segment onClick={formSubmit} style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" }} >
+                            <div>
+                                <div onClick={formSubmit} style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" }} >
                                     <Icon name="save" style={{ color: "#26ABBD", cursor: "pointer" }} /> Save Report
-                </Segment>
-                            </Grid.Column>
-                        </Grid.Row>
+                </div>
+                            </div>
+                        
 
-                        <Grid.Row>
+                        
                             {/* row 2  */}
-                            <Grid.Column>
-                                <Segment>Grammar</Segment>
+                            <div>
+                                <label>Grammar</label>
+                                <div>
                                 <Input
                                     type='number'
                                     name='grammar'
@@ -120,10 +132,13 @@ const EditStudentProgressForm = props => {
                                     onChange={handleChange}
                                     value={state.grammar}
                                 />
-                            </Grid.Column>
+                            </div>  
+                            </div>
 
-                            <Grid.Column>
-                                <Segment>Listening</Segment>
+
+                            <div>
+                                <label>Listening</label>
+                                <div>
                                 <Input
                                     type='number'
                                     name='listening'
@@ -131,10 +146,12 @@ const EditStudentProgressForm = props => {
                                     onChange={handleChange}
                                     value={state.listening}
                                 />
-                            </Grid.Column>
+                                </div>
+                            </div>
 
-                            <Grid.Column>
-                                <Segment>Writing</Segment>
+                            <div>
+                                <label>Writing</label>
+                                <div>
                                 <Input
                                     type='number'
                                     name='writing'
@@ -142,10 +159,12 @@ const EditStudentProgressForm = props => {
                                     onChange={handleChange}
                                     value={state.writing}
                                 />
-                            </Grid.Column>
+                            </div>
+                            </div>
 
-                            <Grid.Column>
-                                <Segment>Reading</Segment>
+                            <div>
+                                <label>Reading</label>
+                                <div>
                                 <Input
                                     type='number'
                                     name='reading'
@@ -153,10 +172,12 @@ const EditStudentProgressForm = props => {
                                     onChange={handleChange}
                                     value={state.reading}
                                 />
-                            </Grid.Column>
+                            </div>
+                            </div>
 
-                            <Grid.Column>
-                                <Segment>Interest</Segment>
+                            <div>
+                                <label>Interest</label>
+                                <div>
                                 <Input
                                     type='number'
                                     name='interest'
@@ -164,13 +185,15 @@ const EditStudentProgressForm = props => {
                                     onChange={handleChange}
                                     value={state.interest}
                                 />
-                            </Grid.Column>
-                        </Grid.Row>
+                            </div>
+                            </div>
+                        
 
-                        <Grid.Row>
+                       
                             {/* row 3 */}
-                            <Grid.Column>
-                                <Segment>Participation</Segment>
+                            <div>
+                                <label>Participation</label>
+                                <div>
                                 <Input
                                     type='number'
                                     name='participation'
@@ -178,10 +201,12 @@ const EditStudentProgressForm = props => {
                                     onChange={handleChange}
                                     value={state.participation}
                                 />
-                            </Grid.Column>
+                            </div>
+                            </div>
 
-                            <Grid.Column>
-                                <Segment>Submitting Homework</Segment>
+                            <div>
+                                <label>Submitting Homework</label>
+                                <div>
                                 <Input
                                     type='number'
                                     name='submitting_homework'
@@ -189,10 +214,12 @@ const EditStudentProgressForm = props => {
                                     onChange={handleChange}
                                     value={state.submitting_homework}
                                 />
-                            </Grid.Column>
+                            </div>
+                            </div>
 
-                            <Grid.Column>
-                                <Segment>Homework Effort</Segment>
+                            <div>
+                                <label>Homework Effort</label>
+                                <div>
                                 <Input
                                     type='number'
                                     name='homework_effort'
@@ -200,10 +227,12 @@ const EditStudentProgressForm = props => {
                                     onChange={handleChange}
                                     value={state.homework_effort}
                                 />
-                            </Grid.Column>
+                            </div>
+                            </div>
 
-                            <Grid.Column>
-                                <Segment>Notes</Segment>
+                            <div>
+                                <label>Notes</label>
+                                <div>
                                 <Input
                                     type='text'
                                     name='notes'
@@ -211,10 +240,12 @@ const EditStudentProgressForm = props => {
                                     onChange={handleChange}
                                     value={state.notes}
                                 />
-                            </Grid.Column>
+                            </div>
+                            </div>
 
-                            <Grid.Column>
-                                <Segment>Overall</Segment>
+                            <div>
+                                <label>Overall</label>
+                                <div>
                                 <Input
                                     type='number'
                                     name='overall'
@@ -222,12 +253,13 @@ const EditStudentProgressForm = props => {
                                     onChange={handleChange}
                                     value={state.overall}
                                 />
-                            </Grid.Column>
-                        </Grid.Row>
+                            </div>
+                            </div>
 
-                        <Grid.Row>
-                            <Grid.Column>
-                                <Segment>Course Id</Segment>
+                        
+                            <div>
+                                <label>Course Id</label>
+                                <div>
                                 <Input
                                     type='number'
                                     name='course_id'
@@ -235,10 +267,12 @@ const EditStudentProgressForm = props => {
                                     onChange={handleChange}
                                     value={state.course_id}
                                 />
-                            </Grid.Column>
+                            </div>
+                            </div>
 
-                            <Grid.Column>
-                                <Segment>Student Id</Segment>
+                            <div>
+                                <label>Student Id</label>
+                                <div>
                                 <Input
                                     type='number'
                                     name='student_id'
@@ -246,11 +280,13 @@ const EditStudentProgressForm = props => {
                                     onChange={handleChange}
                                     value={state.student_id}
                                 />
-                            </Grid.Column>
+                            </div>
+                            </div>
 
 
-                            <Grid.Column>
-                                <Segment>Teacher Id</Segment>
+                            <div>
+                                <label>Teacher Id</label>
+                                <div>
                                 <Input
                                     type='number'
                                     name='teacher_id'
@@ -258,10 +294,12 @@ const EditStudentProgressForm = props => {
                                     onChange={handleChange}
                                     value={state.teacher_id}
                                 />
-                            </Grid.Column>
+                            </div>
+                            </div>
 
-                            <Grid.Column>
-                                <Segment>Report Date</Segment>
+                            <div>
+                                <label>Report Date</label>
+                                <div>
                                 <Input
                                     type='text'
                                     name='report_date'
@@ -269,14 +307,14 @@ const EditStudentProgressForm = props => {
                                     onChange={handleChange}
                                     value={reportDate}
                                 />
-                            </Grid.Column>
+                            </div>
+                            </div>
 
-                            <Grid.Column>
-                            </Grid.Column>
-                        </Grid.Row>
-                    </Grid>
+                          
+                            </div>
+                    </fieldset>
                 )}
-        </div>
+        </FormWrap>
 
     )
 }

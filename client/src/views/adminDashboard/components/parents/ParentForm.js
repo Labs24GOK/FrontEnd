@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 // import { Grid, label, Input, Icon } from 'semantic-ui-react';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import { FormWrap, Input, Button} from '../mainStyle/styledComponent';
+import { FormWrap, Input, Button, RowFlex, Column, RowFlexEnd } from '../mainStyle/styledComponent';
 
 const ParentForm = props => {
     
@@ -36,14 +36,10 @@ const ParentForm = props => {
         props.toggleEditParent();
     }
     return(
-       <FormWrap onSubmit={handleSubmit} style={{ margin: '3%' }}>
-                <fieldset style={{ border: '1px solid transparent', margin: '10px 5px 0px 5px', background: '#E0EBF0' }}>
-                 <div style={{
-                display: 'grid', textAlign: 'left', gridTemplateColumns: '1fr 1fr 1fr 1fr',
-                gridGap: '15px', margin: '10px'
-                }}>              
-                  
-                        <div>
+       <FormWrap onSubmit={handleSubmit} >
+                           
+                  <RowFlex>
+                        <Column>
                            <label>Father Name</label>
                            <div>
                             <Input
@@ -54,10 +50,8 @@ const ParentForm = props => {
                                 value={state.father_name}
                             />
                             </div>
-                        </div>
-
-
-                        <div>
+                        </Column>
+                        <Column>
                             <label>Mother Name</label>
                             <div>
                             <Input
@@ -68,9 +62,8 @@ const ParentForm = props => {
                                 value={state.mother_name}
                             />
                             </div>
-                        </div>
-
-                        <div>
+                        </Column>
+                        <Column>
                             <label>Primary Telephone</label>
                             <div>
                             <Input
@@ -81,8 +74,8 @@ const ParentForm = props => {
                                 value={state.secondary_telephone}
                             />
                             </div>
-                        </div>
-
+                        </Column>
+                    </RowFlex>
                         {/* <div >
                             <label.Group horizontal style={{ background: "#E0EBF0", "box-shadow":"none", border:"none" }}>
                                 <label.Inline onClick={handleSubmit} style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" ,margin: 0}}>
@@ -93,8 +86,8 @@ const ParentForm = props => {
                             </label.Inline>
                             </label.Group>
                         </div> */}
-                   
-                    <div>
+                   <RowFlex>
+                   <Column>
                         <label>Block Code</label>
                         <div>
                         <Input
@@ -105,9 +98,8 @@ const ParentForm = props => {
                                 value={state.block_code}
                             />
                         </div>
-                    </div>
-
-                    <div>
+                    </Column>
+                    <Column>
                         <label>Building</label>
                         <div>
                         <Input
@@ -118,9 +110,8 @@ const ParentForm = props => {
                                 value={state.building}
                             />
                         </div>
-                    </div>
-
-                    <div>
+                    </Column>
+                    <Column>
                         <label>Flat</label>
                         <div>
                         <Input
@@ -131,9 +122,8 @@ const ParentForm = props => {
                                 value={state.flat}
                             />
                         </div>
-                    </div>
-
-                    <div>
+                    </Column>
+                    <Column>
                         <label>Road</label>
                         <div>
                         <Input
@@ -144,17 +134,22 @@ const ParentForm = props => {
                                 value={state.road}
                             />
                         </div>
-                    </div>                 
-               </div>
-            </fieldset>
-             <div style={{ alignSelf: 'flex-end' }}>
+                    </Column>     
+                    </RowFlex>
+                    
+                    
+
+                                
+             <RowFlexEnd>
+             <Column>
              <Button onClick={handleCancel} style={{ background: '#C73642', color:'#FFFFFF', width: '80px' }}>
                  Cancel
              </Button>
-             <Button type="submit" onClick={handleSubmit} style={{ background: '#E0EBF0', color: '#26ABBD' }}> 
+             <Button type="submit" onClick={handleSubmit} style={{ background: '#269FB0', color: '#FFFFFF', width: '80px' }}> 
                   Save
              </Button>
-         </div>
+             </Column>
+         </RowFlexEnd>
        </FormWrap> 
                 
     )

@@ -22,7 +22,7 @@ const StudentProgressTab = props => {
 
 
     return (
-        <div className="gridView">
+        <div className="gridView" style={{ margin: '3%'}}>
             {
                 props.progressByStudentId ? 
                 <Segment style={{
@@ -37,9 +37,33 @@ const StudentProgressTab = props => {
             {
                 edit ? < EditStudentProgressForm {...props} setEdit={setEdit} edit={edit}/> 
                 : (props.progressByStudentId ? 
-                    <Grid columns='equal'>
+                    <Grid columns='equal' style={{ margin: '3%'}}>
                         <Grid.Row>
                             {/* row 1 start */}
+                        <Grid.Column>
+                        </Grid.Column>
+
+                        <Grid.Column>
+                        </Grid.Column>
+
+                        <Grid.Column>
+                        </Grid.Column>
+
+                        <Grid.Column>
+                        </Grid.Column>
+
+                        <Grid.Column>
+                                <Segment onClick={() => { setEdit(true) }} style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" }} >
+                                    <Icon name="edit"  
+                                        style={{ color: "#26ABBD", cursor: "pointer" }} 
+                                        /> Edit Report
+                                    </Segment>
+                            </Grid.Column>
+
+                        </Grid.Row>
+{/* 
+                        row 2 */}
+                        <Grid.Row>
                             <Grid.Column>
                                 <Segment>Speaking Fluency</Segment>
                                 <Progress
@@ -80,15 +104,9 @@ const StudentProgressTab = props => {
                                     width={80}
                                 />
                             </Grid.Column>
-                            <Grid.Column>
-                                <Segment onClick={() => { setEdit(true) }} style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" }} >
-                                    <Icon name="edit"  
-                                        style={{ color: "#26ABBD", cursor: "pointer" }} 
-                                        /> Edit Report
-                                    </Segment>
-                            </Grid.Column>
+                           
                         </Grid.Row>
-                        {/* row 2 start */}
+                        {/* row 3 start */}
                         <Grid.Row>
                             <Grid.Column>
                                 <Segment>Listening</Segment>
@@ -125,7 +143,7 @@ const StudentProgressTab = props => {
                             <Grid.Column>
                             </Grid.Column>
                         </Grid.Row>
-                        {/* row 3 start */}
+                        {/* row 4 start */}
                         <Grid.Row>
                             <Grid.Column>
                                 <Segment>Participation</Segment>
@@ -156,36 +174,59 @@ const StudentProgressTab = props => {
                             <Grid.Column>
                             </Grid.Column>
                         </Grid.Row>
-                        {/* row 4 start */}
+                        {/* row 5 start */}
                         <Grid.Row>
                             <Grid.Column>
                                 <Segment>Notes</Segment>
                                 <Segment>{props.progressByStudentId.notes}</Segment>
                             </Grid.Column>
-                        </Grid.Row>     
-                        {/* row 5 start */}
-                        <Grid.Row>
-                            <Grid.Column>
-                            </Grid.Column>
-                            <Grid.Column>
-                            </Grid.Column>
-                            <Grid.Column>
-                                <label>
-                                    <Segment>Overall</Segment></label>
-                                <Progress
-                                    type="circle"
-                                    percent={props.progressByStudentId.speaking_fluency * 10}
-                                    strokeColor='green'
-                                />
-                            </Grid.Column>
-                        </Grid.Row>
-                        {/* row 5 end */}
-                            <Grid.Row>
+
                             <Grid.Column>
                                 <Segment>Report Date</Segment>
                                 <Segment>{props.progressByStudentId.report_date}</Segment>
                             </Grid.Column>
+
+                            <Grid.Column>
+                            </Grid.Column>
+
+                            
+                            <Grid.Column>
+                            </Grid.Column>
+
+
+                            <Grid.Column>
+                            </Grid.Column>
+                        </Grid.Row>     
+                        {/* row 6 start */}
+                        <Grid.Row>
+
+                            <Grid.Column>
+                            </Grid.Column>
+
+                            <Grid.Column>
+                            </Grid.Column>
+
+                            <Grid.Column>
+                            </Grid.Column>
+
+
+                            <Grid.Column>
+                                <div style={{ margin: '0 auto'}}>
+                                    <Segment style={{ border: '1 px solid red'}}>Overall</Segment>
+                                    </div>
+                                <Progress
+                                    type="circle"
+                                    percent={props.progressByStudentId.speaking_fluency * 10}
+                                    strokeColor='green'
+                                    width={200}
+                                />
+                            </Grid.Column>
+
+                            <Grid.Column>
+                            </Grid.Column>
                         </Grid.Row>
+                        {/* row 5 end */}
+                           
                     </Grid>
                 : < AddStudentProgressForm {...props}/> )
             }

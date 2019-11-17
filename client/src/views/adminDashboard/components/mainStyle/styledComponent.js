@@ -8,7 +8,25 @@ export const FormWrap = styled.form`
   display: flex;
   flex-direction: column;
   transition: all 200ms ease;
+  background-color: #E0EBF0;
 `
+export const RowFlex = styled.div`
+  display: flex;
+  justify-conntent: space-around;
+  padding: 10px;
+`;
+
+export const RowFlexEnd = styled.div`
+  diaplay: flex;
+  justify-conntent: flex-end;
+  padding: 10px;
+`;
+export const Column = styled.div`
+  width: 100%;
+  text-align: left;
+  padding: 5px;
+`;
+
 
 export const Input = styled.input`
   outline: none;
@@ -17,6 +35,7 @@ export const Input = styled.input`
   background: white;
   width: 100%;
   height: 26px;
+  padding: 5px;
 `
 
 
