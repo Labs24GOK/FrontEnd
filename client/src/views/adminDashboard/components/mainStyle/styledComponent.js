@@ -10,6 +10,19 @@ export const FormWrap = styled.form`
   transition: all 200ms ease;
 `
 
+export const FormSet = styled.div`
+ border: 1px solid transparent; 
+ margin: 10px 5px 0px 5px;
+background-color: #E0EBF0;
+`
+
+export const Div = styled.div`
+display: grid;
+text-align: left;
+grid-template-columns: 1fr 1fr 1fr 1fr;
+grid-gap: 15px;
+ margin: 10px;
+`
 export const Input = styled.input`
   outline: none;
   border-radius: 3px;

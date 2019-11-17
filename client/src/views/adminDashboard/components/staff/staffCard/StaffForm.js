@@ -5,7 +5,7 @@ import { withRouter, Link } from 'react-router-dom';
 // import { Grid, label, Input, Icon, Form } from 'semantic-ui-react';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import { FormWrap, Input, Button} from '../../mainStyle/styledComponent';
+import { FormWrap, Input, Button, Div, FormSet} from '../../mainStyle/styledComponent';
 
 const StaffForm = props => {
     const { staffID } = props;
@@ -46,12 +46,9 @@ const StaffForm = props => {
     const TestArr = ['test', 'test']
 
     return(
-        <FormWrap onSubmit={formSubmit} style={{ margin: '3%' }}>
-             <fieldset style={{ border: '1px solid transparent', margin: '10px 5px 0px 5px', background: '#E0EBF0' }}>
-             <div style={{
-            display: 'grid', textAlign: 'left', gridTemplateColumns: '1fr 1fr 1fr 1fr',
-            gridGap: '15px', margin: '10px'
-            }}>
+        <FormWrap onSubmit={formSubmit}>
+             <FormSet >
+             <Div>
                     <div>
                         <label>Staff ID</label>
                         <div>
@@ -220,8 +217,8 @@ const StaffForm = props => {
                     />
                     </div>
                     </div>
-                </div>
-            </fieldset>
+                </Div>
+            </FormSet>
             <div style={{ alignSelf: 'flex-end' }}>
             <Button onClick={closeBtn} style={{ background: '#C73642', color:'#FFFFFF', width: '80px' }}>
                 Cancel

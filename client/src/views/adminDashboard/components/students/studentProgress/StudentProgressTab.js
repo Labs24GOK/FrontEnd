@@ -209,11 +209,9 @@ const StudentProgressTab = props => {
                             <Grid.Column>
                             </Grid.Column>
 
-
+                            {/* segment is lined up with the others so bigger circle siz is knocking it out of line  */}
                             <Grid.Column>
-                                <div style={{ margin: '0 auto'}}>
                                     <Segment style={{ border: '1 px solid red'}}>Overall</Segment>
-                                    </div>
                                 <Progress
                                     type="circle"
                                     percent={props.progressByStudentId.speaking_fluency * 10}
