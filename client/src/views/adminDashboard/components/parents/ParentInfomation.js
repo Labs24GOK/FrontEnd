@@ -18,7 +18,7 @@ const ParentInfomation = props => {
     return (
         <div className="gridView">
             {!props.isEditing ?
-                <Grid columns='equal'>
+                <Grid columns='equal' style={{margin: '10px 5px 0px 5px'}}>
                     <Grid.Row>
                         <Grid.Column>
                             <Segment>Father Name</Segment>
