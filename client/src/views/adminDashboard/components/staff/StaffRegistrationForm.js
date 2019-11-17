@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import moment from 'moment';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import { FormWrap, Input, Button} from '../mainStyle/styledComponent.js';
+import { FormWrap, Input, Button, FormSet} from '../mainStyle/styledComponent.js';
 
 
 const StaffRegistrationForm = (props) => {
@@ -57,8 +57,8 @@ const cancelBtn = e => {
 
 
   return(
-    <FormWrap onSubmit={formSubmit} style={{ margin: '30px 10px 20px 10px' }}>
-        <fieldset style={{ border: '1px solid transparent', margin: '10px 5px 0px 5px', background: '#E0EBF0' }}>
+    <FormWrap onSubmit={formSubmit}>
+        <FormSet>
         <div style={{
           display: 'grid', textAlign: 'left', gridTemplateColumns: '1fr 1fr 1fr 1fr',
           gridGap: '15px', margin: '10px'
@@ -226,7 +226,7 @@ const cancelBtn = e => {
                     </div>
                 </div>
             </div>
-            </fieldset>
+            </FormSet>
             <div style={{ alignSelf: 'flex-end' }}>
             <Button onClick={cancelBtn} style={{ background: '#C73642', width: '80px' }}>
                 Cancel

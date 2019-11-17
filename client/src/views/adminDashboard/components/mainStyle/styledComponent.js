@@ -143,3 +143,26 @@ font-size: 14px;
 font-weight: 400;
 margin-left: -2px;
 `
+
+export const ButtonDiv = styled.div`
+align-self: flex-end;
+`
+export const CancelButton = styled.button`
+background-color: #C73642; 
+color:#FFFFFF; 
+width: 80px;
+height: 25px;
+border-radius: 3px;
+margin: 10px 5px 10px 10px;
+text-align: center;
+`
+
+export const SaveButton = styled.button`
+width: 80px;
+height: 25px;
+border-radius: 3px;
+margin: 10px 5px 10px 10px;
+text-align: center;
+color: #FFFFFF; 
+background-color: #26ABBD;
+`
