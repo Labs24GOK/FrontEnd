@@ -49,7 +49,14 @@ export const Input = styled.input`
   height: 26px;
   padding: 5px;
 `
-
+export const TextDiv = styled.div`
+  border-radius: 3px;
+  border: 1px solid transparent;
+  background: white;
+  width: 100%;
+  height: 26px;
+  padding: 5px;
+`
 
 export const CardStyle = styled.div`
   outline: none;
