@@ -75,4 +75,4 @@ const mapStateToProps = state => {
       mapStateToProps,
       { getParentById }
   )(ParentCard)
-  )
+  ) 
