@@ -5,7 +5,7 @@ import { postStudentProgress, togglePostComponent } from '../../../../../actions
 import { Table, Spin } from 'antd';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import { FormWrap, Input, Button, Label } from '../../mainStyle/styledComponent';
+import { FormWrap, Input, Button, Label, FormSet, Div } from '../../mainStyle/styledComponent';
 
 
 
@@ -54,11 +54,8 @@ const StudentProgressForm = props => {
 
     return (
         <FormWrap onSubmit={formSubmit}>
-            <fieldset style={{ border: '1px solid transparent', margin: '10px 5px 0px 5px', background: '#E0EBF0' }}>
-                <div style={{
-                    display: 'grid', textAlign: 'left', gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr',
-                    gridGap: '15px', margin: '10px'
-                }}>
+            <FormSet>
+                <Div>
 
                     <div>
                         <Label>Speaking Fluency</Label>
@@ -312,8 +309,8 @@ const StudentProgressForm = props => {
 
 
 
-                </div>
-            </fieldset>
+                    </Div>
+            </FormSet>
         </FormWrap>
 
     )

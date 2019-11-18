@@ -16,13 +16,11 @@ const StudentProgressTab = props => {
         props.getStudentProgress(props.studentID)
     }, [])
     
-    let options = { year: 'numeric', month: 'numeric', day: 'numeric' }; //'long'
-    let report_date = new Date(props.progressByStudentId.report_date).toLocaleDateString('en-GB', options)
-
-
-
+    // let options = { year: 'numeric', month: 'numeric', day: 'numeric' }; //'long'
+    // let report_date = new Date(props.progressByStudentId.report_date).toLocaleDateString('en-GB', options)
 
     const [edit, setEdit] = useState(false)
+
     if (edit) {
         return (
             < EditStudentProgressForm {...props} setEdit={setEdit} edit={edit} />
@@ -135,7 +133,7 @@ const StudentProgressTab = props => {
                         </div>
                         <div>
                             <Label>Report Date</Label>
-                            <Label>{report_date}</Label>
+                            <Label>{props.progressByStudentId.report_date}</Label>
                         </div>
                         <div></div>
                         <div>

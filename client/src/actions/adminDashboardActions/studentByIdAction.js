@@ -1,9 +1,7 @@
 import axios from 'axios';
-
 export const FETCH_STUDENTBYID_START = 'FETCH_STUDENTBYID_START';
 export const FETCH_STUDENTBYID_SUCCESS = 'FETCH_STUDENTBYID_SUCCESS';
 export const FETCH_STUDENTBYID_FAILURE = 'FETCH_STUDENTBYID_FAILURE';
-
 export const getStudentById = id => dispatch => {
     dispatch({ type: FETCH_STUDENTBYID_START })
     axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=student&where=id=${id}`)
@@ -20,13 +18,10 @@ export const getStudentById = id => dispatch => {
        }) 
     })
 }
-
-
 export const EDIT_STUDENTBYID_START = 'EDIT_STUDENTBYID_START';
 export const EDIT_STUDENTBYID_CANCELLED = 'EDIT_STUDENTBYID_CANCELLED';
 export const EDIT_STUDENTBYID_SUCCESS = 'EDIT_STUDENTBYID_SUCCESS';
 export const EDIT_STUDENTBYID_FAILURE = 'EDIT_STUDENTBYID_FAILURE';
-
 export const toggleEditComponent = (isEditing, isEdited) => dispatch => {
     if(isEditing==='true') {
         return dispatch({ type: EDIT_STUDENTBYID_START })
@@ -41,22 +36,10 @@ export const toggleEditComponent = (isEditing, isEdited) => dispatch => {
     //     return dispatch({type: EDIT_STUDENTBYID_FAILURE})
     // }
 }
-
 export const editStudentById = (student_id, state ) => dispatch => {
     // let obj1 = {id:id, block_code:"431", delinquent:true} //will fix later 
     // let state1 = {...state, ...obj1 }
-
-    let {block_code, preferred_contact_type_id, school_grade_id, location_id} = state
-    let newState = {
-        ...state, 
-        block_code: block_code.label,  
-        preferred_contact_type_id: preferred_contact_type_id.method,
-        school_grade_id: school_grade_id.name,
-        location_id: location_id.name,
-        }
-    console.log('EDIT ACTION STATE', newState)
-    dispatch({ type: EDIT_STUDENTBYID_START})
-    axios.put(`https://speak-out-be-staging.herokuapp.com/api/?table=student&where=id=${student_id}`, newState)
+    axios.put(`https://speak-out-be-staging.herokuapp.com/api/?table=student&where=id=${student_id}`, state)
     .then(res => {
         dispatch({
             type: EDIT_STUDENTBYID_SUCCESS,
@@ -70,11 +53,9 @@ export const editStudentById = (student_id, state ) => dispatch => {
        }) 
     })
 }
-
 export const DELETE_STUDENTBYID_START = 'DELETE_STUDENTBYID_START';
 export const DELETE_STUDENTBYID_SUCCESS = 'DELETE_STUDENTBYID_SUCCESS';
 export const DELETE_STUDENTBYID_FAILURE = 'DELETE_STUDENTBYID_FAILURE';
-
 export const deleteStudentById = id => dispatch => {
     dispatch({ type: DELETE_STUDENTBYID_START })
     axios.put(`https://speak-out-be-staging.herokuapp.com/api/?table=student&where=id=${id}`)
@@ -91,18 +72,13 @@ export const deleteStudentById = id => dispatch => {
        }) 
     })
 }
-
-
-
 export const EDIT_DROPDOWN_START = 'EDIT_DROPDOWN_START';
 export const EDIT_DROPDOWN_SUCCESSTABLE1 = 'EDIT_DROPDOWN_SUCCESSTABLE1';
 export const EDIT_DROPDOWN_SUCCESSTABLE2 = 'EDIT_DROPDOWN_SUCCESSTABLE2';
 export const EDIT_DROPDOWN_SUCCESSTABLE3 = 'EDIT_DROPDOWN_SUCCESSTABLE3';
 export const EDIT_DROPDOWN_SUCCESSTABLE4 = 'EDIT_DROPDOWN_SUCCESSTABLE4';
 export const EDIT_DROPDOWN_FAILURE = 'EDIT_DROPDOWN_FAILURE';
-
 export const editStudentDropDown = () => dispatch => {
-
     const locationTable = axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=location`)
     const contactTable = axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=preferred_contact_type`)
     const gradeTable = axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=school_grade`)
@@ -131,3 +107,7 @@ export const editStudentDropDown = () => dispatch => {
          dispatch({type: EDIT_DROPDOWN_FAILURE, payload: err.payload})
      });
 };
+
+
+
+

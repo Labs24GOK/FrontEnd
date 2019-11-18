@@ -26,12 +26,16 @@ const EditStudentProgressForm = props => {
         teacher_id: props.progressByStudentId.teacher_id,
         report_date: reportDate
     })
+
     const [cancelEdit, setCancelEdit] = useState(false)
+
+
     const handleChange = e => {
         setState({ ...state, [e.target.name]: e.target.value })
     }
     const handleCancel = e => {
         e.preventDefault()
+        setCancelEdit(true)
         props.toggleEditProgressComponent();
     }
     const formSubmit = e => {
