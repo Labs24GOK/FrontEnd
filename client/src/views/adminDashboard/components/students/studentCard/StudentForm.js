@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import { FormWrap, Input, Button} from '../../mainStyle/styledComponent';
+import { FormWrap, Input, Button, Div, FormSet, ButtonDiv, CancelButton, SaveButton} from '../../mainStyle/styledComponent';
 
 const StudentForm = (props) => {
 
@@ -90,21 +90,20 @@ const StudentForm = (props) => {
     const testArr = ['test', 'test']
     
     return (
-            <FormWrap onSubmit={handleSubmit} style={{ margin: '3%' }}>
+            <FormWrap onSubmit={handleSubmit}>
                 {!props.isEdited ? <h3 style={{color: 'red'}}>{props.error}</h3> : null}
-                <fieldset style={{ border: '1px solid transparent', margin: '10px 5px 0px 5px', background: '#E0EBF0' }}>
-                <div style={{
-                display: 'grid', textAlign: 'left', gridTemplateColumns: '1fr 1fr 1fr 1fr',
-                gridGap: '15px', margin: '10px'
-                }}>
-                        {/* row 1 */}
-                            <div>
-                                <div  style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" }} >
-                                    <Icon name="save" style={{ color: "#26ABBD", cursor: "pointer" }} /> Save Report
-                                </div>
-                            </div>
+                <FormSet>
+                    <Div>
+                    {/* row 1 */}
                         
+                                <div  style={{ gridColumn: "span 3", color: "#26ABBD", cursor: "pointer", width: "fit-content" }} >
+                                    <Icon name="save" style={{ color: "#26ABBD", cursor: "pointer" }} /> Save 
+                            
+                                    <Icon name="cancel" style={{ color: "#C73642", cursor: "pointer" }} onClick={handleCancel}  /> Cancel
+                                </div>                        
+                        </Div>
                         
+                        <Div>
                         <div>
                             <label>CPR</label>
                             <div>
@@ -222,9 +221,7 @@ const StudentForm = (props) => {
                         
                         
                             {/* <div horizontal style={{ background: "#E0EBF0", boxShadow: "none", border: "none" }}> */}
-                           
-                            
-                       
+                        
                 
                     {/* row 2 */}
 
@@ -398,7 +395,7 @@ const StudentForm = (props) => {
                       
                         <div>
                             <label>Grade Updated</label>
-                            <div></div>
+                            <div>
                             <Input
                                 type='date'
                                 name='grade_updated'
@@ -424,7 +421,7 @@ const StudentForm = (props) => {
                       </div>
                       </div>
                     
-                    <div>
+                    <div style={{ gridColumn: 'span 4' }}>
                         <label>Notes</label>
                         <div>
                         <textarea
@@ -440,8 +437,9 @@ const StudentForm = (props) => {
                         />
                         </div>
                         </div>
+                        </Div>
                         {/* </div> */}
-                </fieldset>
+                </FormSet>
             </FormWrap>
     )
 }
