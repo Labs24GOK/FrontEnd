@@ -3,12 +3,9 @@ import { connect } from 'react-redux';
 import { toggleEditProgressComponent, editStudentProgress, getStudentProgress } from '../../../../../actions';
 import { Spin } from 'antd';
 import { FormWrap, FormSet, Label, Div, SaveButton, ButtonDiv, CancelButton, Input } from '../../mainStyle/styledComponent';
-
 const EditStudentProgressForm = props => {
     const { studentID } = props
-
     let reportDate = new Date(props.progressByStudentId.report_date).toISOString().split("T")[0];
-
     const [state, setState] = useState({
         id: props.progressByStudentId.id,
         speaking_fluency: props.progressByStudentId.speaking_fluency,
@@ -29,14 +26,14 @@ const EditStudentProgressForm = props => {
         teacher_id: props.progressByStudentId.teacher_id,
         report_date: reportDate
     })
-
+    const [cancelEdit, setCancelEdit] = useState(false)
     const handleChange = e => {
         setState({ ...state, [e.target.name]: e.target.value })
     }
     const handleCancel = e => {
+        e.preventDefault()
         props.toggleEditProgressComponent();
     }
-
     const formSubmit = e => {
         e.preventDefault()
         props.editStudentProgress(studentID, state)
@@ -46,7 +43,6 @@ const EditStudentProgressForm = props => {
             }, 1000);
         }
     }
-
     return (
         <FormWrap >
             {props.isLoading ? (
@@ -67,7 +63,6 @@ const EditStudentProgressForm = props => {
                                     />
                                 </div>
                             </div>
-
                             <div>
                                 <Label>Speaking Accuracy</Label>
                                 <div>
@@ -80,7 +75,6 @@ const EditStudentProgressForm = props => {
                                     />
                                 </div>
                             </div>
-
                             <div>
                                 <Label>Vocabulary</Label>
                                 <div>
@@ -93,7 +87,6 @@ const EditStudentProgressForm = props => {
                                     />
                                 </div>
                             </div>
-
                             <div>
                                 <Label>Pronunciation</Label>
                                 <div>
@@ -118,8 +111,6 @@ const EditStudentProgressForm = props => {
                                     />
                                 </div>
                             </div>
-
-
                             <div>
                                 <Label>Listening</Label>
                                 <div>
@@ -132,7 +123,6 @@ const EditStudentProgressForm = props => {
                                     />
                                 </div>
                             </div>
-
                             <div>
                                 <Label>Writing</Label>
                                 <div>
@@ -145,7 +135,6 @@ const EditStudentProgressForm = props => {
                                     />
                                 </div>
                             </div>
-
                             <div>
                                 <Label>Reading</Label>
                                 <div>
@@ -158,7 +147,6 @@ const EditStudentProgressForm = props => {
                                     />
                                 </div>
                             </div>
-
                             <div>
                                 <Label>Interest</Label>
                                 <div>
@@ -183,7 +171,6 @@ const EditStudentProgressForm = props => {
                                     />
                                 </div>
                             </div>
-
                             <div>
                                 <Label>Submitting Homework</Label>
                                 <div>
@@ -196,7 +183,6 @@ const EditStudentProgressForm = props => {
                                     />
                                 </div>
                             </div>
-
                             <div>
                                 <Label>Homework Effort</Label>
                                 <div>
@@ -209,7 +195,6 @@ const EditStudentProgressForm = props => {
                                     />
                                 </div>
                             </div>
-
                             <div>
                                 <Label>Notes</Label>
                                 <div>
@@ -222,7 +207,6 @@ const EditStudentProgressForm = props => {
                                     />
                                 </div>
                             </div>
-
                             <div>
                                 <Label>Overall</Label>
                                 <div>
@@ -235,8 +219,6 @@ const EditStudentProgressForm = props => {
                                     />
                                 </div>
                             </div>
-
-
                             <div>
                                 <Label>Course Id</Label>
                                 <div>
@@ -249,7 +231,6 @@ const EditStudentProgressForm = props => {
                                     />
                                 </div>
                             </div>
-
                             <div>
                                 <Label>Student Id</Label>
                                 <div>
@@ -262,8 +243,6 @@ const EditStudentProgressForm = props => {
                                     />
                                 </div>
                             </div>
-
-
                             <div>
                                 <Label>Teacher Id</Label>
                                 <div>
@@ -276,7 +255,6 @@ const EditStudentProgressForm = props => {
                                     />
                                 </div>
                             </div>
-
                             <div>
                                 <Label>Report Date</Label>
                                 <div>
@@ -292,7 +270,7 @@ const EditStudentProgressForm = props => {
                         </Div>
                     </FormSet>
                     <ButtonDiv>
-                        <CancelButton onClick={handleCancel}>
+                        <CancelButton onClick={() => {setCancelEdit(true)}}>
                             Cancel
                         </CancelButton>
                         <SaveButton onClick={formSubmit} >
@@ -302,10 +280,8 @@ const EditStudentProgressForm = props => {
                     </>
                     )}
                     </FormWrap>
-
     )
 }
-
 const mapStateToProps = state => {
     return {
         isLoading: state.studentProgressReducer.isLoading,
@@ -315,13 +291,18 @@ const mapStateToProps = state => {
         error: state.studentProgressReducer.error
     };
 };
-
-
 export default
     connect(
         mapStateToProps,
         { editStudentProgress, toggleEditProgressComponent, getStudentProgress }
     )(EditStudentProgressForm)
+
+
+
+
+
+
+
 
 
 

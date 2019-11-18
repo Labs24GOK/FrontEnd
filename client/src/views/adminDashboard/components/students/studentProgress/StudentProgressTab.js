@@ -7,15 +7,22 @@ import AddStudentProgressForm from './AddStudentProgressForm';
 import EditStudentProgressForm from './EditStudentProgressForm'
 import { FormWrap, FormSet, Label, Div, SaveButton, ButtonDiv } from '../../mainStyle/styledComponent';
 
+
+
+
+
 const StudentProgressTab = props => {
     useEffect(() => {
         props.getStudentProgress(props.studentID)
     }, [])
-
-    const [edit, setEdit] = useState(false)
+    
     let options = { year: 'numeric', month: 'numeric', day: 'numeric' }; //'long'
     let report_date = new Date(props.progressByStudentId.report_date).toLocaleDateString('en-GB', options)
 
+
+
+
+    const [edit, setEdit] = useState(false)
     if (edit) {
         return (
             < EditStudentProgressForm {...props} setEdit={setEdit} edit={edit} />
@@ -65,7 +72,6 @@ const StudentProgressTab = props => {
                                 width={80}
                             />
                         </div>
-
                         <div>
                             <Label>Listening</Label>
                             <Progress
@@ -141,7 +147,6 @@ const StudentProgressTab = props => {
                                 width={200}
                                 />
                         </div>
-
                     </Div>
                 </FormSet>
                     <ButtonDiv>
@@ -157,7 +162,6 @@ const StudentProgressTab = props => {
         )
     }
 }
-
 const mapStateToProps = state => {
     return {
         isLoading: state.studentProgressReducer.isLoading,
@@ -167,13 +171,13 @@ const mapStateToProps = state => {
         isPosting: state.studentProgressReducer.isPosting,
     };
 };
-
 export default withRouter(
     connect(
         mapStateToProps,
         { getStudentProgress, togglePostComponent }
     )(StudentProgressTab)
 )
+
 
 
 
