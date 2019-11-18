@@ -57,6 +57,9 @@ export const TextDiv = styled.div`
   height: 26px;
   padding: 5px;
 `
+export const DivIcon = styled.div`
+
+`;
 
 export const CardStyle = styled.div`
   outline: none;

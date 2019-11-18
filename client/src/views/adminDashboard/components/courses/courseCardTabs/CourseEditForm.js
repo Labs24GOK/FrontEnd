@@ -2,7 +2,8 @@ import React, {useState } from 'react'
 import { connect } from 'react-redux';
 import { editCouseById, toggleEditCourse } from '../../../../../actions';
 import { withRouter } from 'react-router-dom';
-import { Grid, Segment, Input, Icon } from 'semantic-ui-react'
+import {  Icon } from 'semantic-ui-react'
+import { FormWrap, Input, CancelButton, SaveButton, Div, FormSet} from '../../mainStyle/styledComponent'
 
 const CourseEditForm = props => {
     
@@ -34,14 +35,16 @@ const CourseEditForm = props => {
     }
     return(
         <>
-       <div className="ui segment active tab editForm">
-                <Grid columns='equal'>
-                    
-                    <Grid.Row>
-                        <Grid.Column>
-                            <Segment>
-                            Course Type
-                        </Segment>
+       <div>
+            <FormWrap onSubmit={handleSubmit}>
+                <Div>
+                    <div style={{gridColumn: "span3"}} >
+                    </div>
+                </Div>
+                <FormSet>
+                    <Div>
+                        <div>
+                            <label>Course Type</label>
                             <Input
                                 type='text'
                                 name='course_type'
@@ -49,9 +52,9 @@ const CourseEditForm = props => {
                                 onChange={handleChange}
                                 value={state.course_type}
                             />
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Segment>Group Type</Segment>
+                        </div>
+                        <div>
+                            <label>Group Type</label>
                             <Input
                                 type='text'
                                 name='group_type'
@@ -59,9 +62,9 @@ const CourseEditForm = props => {
                                 onChange={handleChange}
                                 value={state.group_type}
                             />
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Segment>School Grade</Segment>
+                        </div>
+                        <div>
+                            <label>School Grade</label>
                             <Input
                                 type='text'
                                 name='school_grade'
@@ -69,9 +72,9 @@ const CourseEditForm = props => {
                                 onChange={handleChange}
                                 value={state.school_grade}
                             />
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Segment>Level</Segment>
+                        </div>
+                        <div>
+                            <label>Level</label>
                             <Input
                                 type='text'
                                 name='level'
@@ -79,21 +82,9 @@ const CourseEditForm = props => {
                                 onChange={handleChange}
                                 value={state.level}
                             />
-                        </Grid.Column>
-                        <Grid.Column >
-                            <Segment.Group horizontal style={{ background: "#E0EBF0", "box-shadow":"none", border:"none" }}>
-                                <Segment.Inline onClick={handleSubmit} style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" ,margin: 0}}>
-                                    <Icon name="save" style={{ color: "#26ABBD", cursor: "pointer" }} /> Save
-                            </Segment.Inline>
-                                <Segment.Inline onClick={handleCancel} style={{ color: "#C73642", cursor: "pointer", width: "fit-content", "margin-left": "10px" }}>
-                                    <Icon name="cancel" style={{ color: "#C73642", cursor: "pointer" }} /> Cancel
-                            </Segment.Inline>
-                            </Segment.Group>
-                        </Grid.Column>
-                    </Grid.Row>
-                    <Grid.Row>
-                    <Grid.Column>
-                        <Segment>Section</Segment>
+                        </div>
+                    <div>
+                        <label>Section</label>
                         <Input
                                 type='text'
                                 name='section'
@@ -101,9 +92,9 @@ const CourseEditForm = props => {
                                 onChange={handleChange}
                                 value={state.section}
                             />
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Segment>Subsection</Segment>
+                    </div>
+                    <div>
+                        <label>Subsection</label>
                         <Input
                                 type='text'
                                 name='subsection'
@@ -111,9 +102,9 @@ const CourseEditForm = props => {
                                 onChange={handleChange}
                                 value={state.subsection}
                             />
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Segment>Room</Segment>
+                    </div>
+                    <div>
+                        <label>Room</label>
                         <Input
                                 type='text'
                                 name='room_id'
@@ -121,9 +112,9 @@ const CourseEditForm = props => {
                                 onChange={handleChange}
                                 value={state.room_id}
                             />
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Segment>Start Time</Segment>
+                    </div>
+                    <div>
+                        <label>Start Time</label>
                         <Input
                                 type='text'
                                 name='start_time'
@@ -131,9 +122,9 @@ const CourseEditForm = props => {
                                 onChange={handleChange}
                                 value={state.start_time}
                             />
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Segment>End Time</Segment>
+                    </div>
+                    <div>
+                        <label>End Time</label>
                         <Input
                                 type='text'
                                 name='end_time'
@@ -141,11 +132,9 @@ const CourseEditForm = props => {
                                 onChange={handleChange}
                                 value={state.end_time}
                             />
-                    </Grid.Column>
-                </Grid.Row>
-                <Grid.Row>
-                <Grid.Column>
-                    <Segment>Notes</Segment>
+                    </div>
+                <div>
+                    <label>Notes</label>
                         <Input
                                 type='text'
                                 name='notes'
@@ -153,9 +142,18 @@ const CourseEditForm = props => {
                                 onChange={handleChange}
                                 value={state.notes}
                             />
-                    </Grid.Column>
-                </Grid.Row>
-            </Grid>
+                    </div>
+                    </Div>
+                </FormSet>
+                <div style={{ alignSelf: 'flex-end' }}>
+                    <CancelButton onClick={handleCancel} >
+                        Cancel
+                    </CancelButton>
+                    <SaveButton type="submit" onClick={handleSubmit}> 
+                        Save
+                    </SaveButton>
+                </div>
+            </FormWrap>
             </div>
         </>
     )

@@ -20,10 +20,9 @@ const ParentInfomation = props => {
             {!props.isEditing ?
             <FormWrap>
                 <Div>
-                     <div style={{gridColumn: "span3", marginRight: "5px"}} >
-                        <Icon name='edit' style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" }} onClick={editParentInfo}/>
+                     <div onClick={editParentInfo} style={{gridColumn: "span3", marginRight: "5px",color: "#26ABBD", cursor: "pointer", width: "fit-content"}} >
+                        <Icon name='edit' style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" }} />
                              Edit
-                        
                     </div>
                 </Div>
                 <Div>
@@ -60,8 +59,10 @@ const ParentInfomation = props => {
                         <label>Road</label>
                         <TextDiv>{props.parentById.road}</TextDiv>
                     </div>
-                    <div>
-                        <div></div>
+                   
+                </Div>
+                <Div>
+                     <div style={{gridColumn: "span3"}} >
                     </div>
                 </Div>
             </FormWrap>
