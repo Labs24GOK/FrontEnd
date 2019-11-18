@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { Icon } from 'semantic-ui-react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
 import { getStaffById, toggleStaffEditComponent } from '../../../../../actions';
 import { withRouter } from 'react-router-dom';
 import StaffForm from './StaffForm';
 import { FormWrap, Div, TextDiv, SaveButton, FormSet, ButtonDiv, Label } from '../../mainStyle/styledComponent';
-import { Spin, Table } from 'antd';
 
 
 const StaffInformationTab = props => {

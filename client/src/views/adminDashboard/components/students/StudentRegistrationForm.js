@@ -341,7 +341,8 @@ const StudentRegistrationForm = (props) => {
                 controlClassName='myControlClassName'
                 className='dropdownRoot'
                 options={props.dropDownList3}
-                className='dropdown' />
+                className='dropdown' 
+                />
             </div>
           </div>
           <div style={{ gridColumn: 'span 4' }}>

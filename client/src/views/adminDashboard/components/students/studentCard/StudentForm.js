@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
 import { Icon} from 'semantic-ui-react'
-import { editStudentById, toggleEditComponent } from '../../../../../actions';
+import { editStudentById, editStudentDropDown, toggleEditComponent } from '../../../../../actions';
 import { withRouter } from 'react-router-dom';
-
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import { FormWrap, Input, Div, FormSet, ButtonDiv, CancelButton, SaveButton, Label} from '../../mainStyle/styledComponent';
@@ -36,60 +35,63 @@ const StudentForm = (props) => {
         expelled: props.studentById.expelled,
         notes: props.studentById.notes,
         family_id: props.studentById.family_id,
-        registration_date: registration_date
+        registration_date: registration_date,
+        grade_updated: props.studentById.grade_updated,
+        school_grade_id: props.studentById.school_grade_id
     });
+
+    useEffect(() => {
+        props.editStudentDropDown();
+      }, [])
+    
+console.log('STUDENT', props)
 
     const [error, setError] = useState({
         first_name: false,
         additional_names: false
     })
 
-    const handleChange = (e, result) => {
-        const {name, value}= result || e.target;
-        if(e.target.value === ''){
-            setError({
-                ...error,   
-                [name]: true
-            })
-        }
-        if(value.length !== 0){
-            setError(false)
-        }
+    // const handleChange = (e, result) => {
+    //     const {name, value}= result || e.target;
+    //     if(e.target.value === ''){
+    //         setError({
+    //             ...error,   
+    //             [name]: true
+    //         })
+    //     }
+    //     if(value.length !== 0){
+    //         setError(false)
+    //     }
+    //     setState({
+    //         ...state,
+    //         [name]: value
+    //     })
+    // }
+
+    function handleChange(event) {
         setState({
-            ...state,
-            [name]: value
+          ...state,
+          [event.target.name]: event.target.value
         })
-    }
+      }
+
 
     const handleSubmit = e => {
         e.preventDefault();
-        if(error) {
-            props.toggleEditComponent('true', 'false')
-        } else {
-            props.toggleEditComponent('false', 'true')
+        // if(error) {
+        //     props.toggleEditComponent('true', 'false')
+        // } else {
+        //     props.toggleEditComponent('false', 'true')
             props.editStudentById(studentID, state)
         }
-    }
+    
 
     const handleCancel = e => {
         props.toggleEditComponent('false', 'false');
     }
 
-    const genderOptions = [
-        { key: 'M', text: 'M', value:'M' },
-        { key: 'F', text: 'F', value:'F'  }
-    ]
+    const genderArr = ['F', 'M']
 
-    const blockCode = [
-        {key: 363, text: 363, value: 363},
-        {key: 431, text: 431, value: 431},
-        {key: 433, text: 433, value: 433},
-        {key: 435, text: 435, value: 435},
-        {key: 439, text: 439, value: 439},
-        {key: 441, text: 441, value: 441},
-    ]
-
-    const testArr = ['test', 'test']
     
     return (
             <FormWrap onSubmit={handleSubmit}>
@@ -110,42 +112,26 @@ const StudentForm = (props) => {
                        <div>
                             <Label>First name</Label>
                             <div>
-                            {!error.first_name ? <Input 
+                             <Input 
                                 type='text'
                                 name='first_name'
                                 placeholder='First Name'
                                 onChange={handleChange}
                                 value={state.first_name}
-                            />  :  <Input required
-                                type='text'
-                                name='first_name'
-                                placeholder='First Name'
-                                onChange={handleChange}
-                                value={state.first_name}
-                                error={{content:'First Name is required'}}
-                            /> }
-                           </div> 
+                                />  
+                         </div>
                         </div>
                         <div style={{ gridColumn: 'span 2' }}>
                             <Label>Additional names</Label>
                             <div>
-                            {!error.additional_names ? <Input
+                                <Input
                                 type='text'
                                 name='additional_names'
                                 placeholder='Additional Names'
                                 onChange={handleChange}
                                 value={state.additional_names}
                                 style={{ width: '100%'}}
-                            /> : <Input
-                                required
-                                type='text'
-                                name='additional_names'
-                                placeholder='Additional Names'
-                                onChange={handleChange}
-                                value={state.additional_names}
-                                error={{content:'Additional Names'}}
-                                style={{ width: '100%'}}
-                            />}
+                                /> 
                             </div>
                         </div>
                         <div>
@@ -155,8 +141,8 @@ const StudentForm = (props) => {
                                 controlClassName='myControlClassName'
                                 className='dropdown'
                                 value={state.gender} 
-                                onChange={handleChange}
-                                options={genderOptions} 
+                                onChange= {(e) => setState({ ...state, gender: e.value })}
+                                options={genderArr} 
                                 />
                             </div>
                         </div>
@@ -203,9 +189,9 @@ const StudentForm = (props) => {
                                     <Dropdown
                                         controlClassName='myControlClassName'
                                         className='dropdown'
-                                        onChange={handleChange}
+                                        onChange={(e) => setState({ ...state, location_id: e })}
                                         value={state.location_id}
-                                        options={testArr}
+                                        options={props.dropDownList1}
                                     />
                                 </div>
                             </div>
@@ -240,9 +226,9 @@ const StudentForm = (props) => {
                                 <Dropdown
                                     controlClassName='myControlClassName'
                                     className='dropdown'
-                                    onChange={handleChange}
-                                    value={state.preferred_contact_method}
-                                    options={testArr}
+                                    onChange= {(e) => setState({ ...state, preferred_contact_type_id: e })}
+                                    value={state.preferred_contact_type_id}
+                                    options={props.dropDownList2}
                                 />
                             </div>
                         </div>
@@ -252,8 +238,8 @@ const StudentForm = (props) => {
                                 <Dropdown 
                                 controlClassName='myControlClassName'
                                 className='dropdown'
-                                options={testArr}
-                                onChange={handleChange}
+                                options={props.dropDownList4}
+                                onChange={(e) => setState({ ...state, block_code: e })}
                                 value={state.block_code}
                                 />
                             </div>
@@ -312,9 +298,10 @@ const StudentForm = (props) => {
                                 <Dropdown
                                 controlClassName='myControlClassName'
                                 className='dropdown'
-                                    onChange={handleChange}
-                                    value={state.school_grade_id}
-                                    options={testArr}
+                                onChange={handleChange}
+                                onChange={(e) => setState({ ...state, school_grade_id: e })}
+                                options={props.dropDownList3}
+                                value={state.school_grade_id}
                                 />
                             </div>
                         </div>
@@ -378,7 +365,11 @@ const mapStateToProps = state => {
         studentById: state.studentByIdReducer.studentById,
         isEdited: state.studentByIdReducer.isEdited,
         isEditing: state.studentByIdReducer.isEditing,
-        error: state.studentByIdReducer.error
+        error: state.studentByIdReducer.error,
+        dropDownList1: state.studentByIdReducer.dropDownList1,
+        dropDownList2: state.studentByIdReducer.dropDownList2,
+        dropDownList3: state.studentByIdReducer.dropDownList3,
+        dropDownList4: state.studentByIdReducer.dropDownList4
     };
 };
 
@@ -386,6 +377,6 @@ const mapStateToProps = state => {
 export default withRouter(
     connect(
         mapStateToProps,
-        { editStudentById, toggleEditComponent }
+        { editStudentById, toggleEditComponent, editStudentDropDown }
     )(StudentForm)
 )

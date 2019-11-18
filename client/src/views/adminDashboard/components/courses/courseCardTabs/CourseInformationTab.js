@@ -3,7 +3,7 @@ import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getCourseById, toggleEditCourse } from '../../../../../actions';
 import CourseEditForm from './CourseEditForm'
-import { FormWrap, Div, TextDiv, Label } from '../../mainStyle/styledComponent';
+import { FormWrap, Div, TextDiv, Label, FormSet } from '../../mainStyle/styledComponent';
 
 const CourseInformationTab = props => {
 
@@ -22,12 +22,7 @@ const CourseInformationTab = props => {
     <div>
     {!props.isEditing ?
       <FormWrap>
-         <Div>
-          <div onClick={editCourseInfo}  style={{gridColumn: "span3", marginRight: "5px",color: "#26ABBD", cursor: "pointer", width: "fit-content" }} >
-            {/* <Icon name='edit' style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" }} />
-              Edit */}
-          </div>
-        </Div>
+        <FormSet>
         <Div>
           <div>
             <Label>Course Type</Label>
@@ -74,6 +69,7 @@ const CourseInformationTab = props => {
               <div style={{gridColumn: "span3"}} >
             </div>
           </Div>
+          </FormSet>
       </FormWrap>
        : <CourseEditForm {...props} />}
       </div>

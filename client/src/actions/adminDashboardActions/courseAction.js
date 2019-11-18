@@ -65,14 +65,14 @@ export const ADD_COURSE_START = 'ADD_COURSE_START';
 export const ADD_COURSE_SUCCESS = 'ADD_COURSE_SUCCESS';
 export const ADD_COURSE_FAILURE = 'ADD_COURSE_FAILURE';
 
-export const toggleAddCourseComponent = () => dispatch => {
-    // console.log('hey')
-    dispatch({ type: ADD_COURSE_START })
-}
+// export const toggleAddCourseComponent = () => dispatch => {
+//     // console.log('hey')
+//     dispatch({ type: ADD_COURSE_START })
+// }
 
 export const addCourse = course => dispatch => {
-    console.log(course)
-    const { course_schedule_id, course_type_id, group_type_id, level_id, room_id, school_grade_id, teacher_id, term_id } = course;
+    // console.log(course)
+    let { course_schedule_id, course_type_id, group_type_id, level_id, room_id, school_grade_id, teacher_id, term_id } = course;
     const newCourse = {
         ...course,
         course_schedule_id: course_schedule_id.value,
@@ -84,15 +84,22 @@ export const addCourse = course => dispatch => {
         teacher_id: teacher_id.value,
         term_id: term_id.value
     }
+
+    
     console.log(newCourse)
+    dispatch({ type: ADD_COURSE_START })
     axios.post('https://speak-out-be-staging.herokuapp.com/api?table=course', newCourse)
         .then(res => {
-            if(res.status===201){
-                axios.get('https://speak-out-be-staging.herokuapp.com/api?table=course_view').then(res => {
-                    dispatch({type: ADD_COURSE_SUCCESS, payload: res.data.tableData[0]})
+            // if(res.status===201){
+                // axios.get('https://speak-out-be-staging.herokuapp.com/api?table=course_view').then(res => {
+                //     dispatch({type: ADD_COURSE_SUCCESS, payload: res.data.tableData[0]})
+                console.log('res from AddCourse', res)
+                 dispatch({
+            type: ADD_COURSE_SUCCESS, payload: res.data[0]
                 })
-            }
-        }).catch(err=> {
+            })
+        // })
+        .catch(err=> {
             console.log('err',err)
             dispatch({type: ADD_COURSE_FAILURE, payload: err})
         });

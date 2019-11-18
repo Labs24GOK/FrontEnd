@@ -55,7 +55,7 @@ const StaffForm = props => {
                                 type='text'
                                 name='id'
                                 placeholder='Staff Id'
-                                onChange={handleChange}
+                                // onChange={handleChange} can not change id
                                 value={state.id}
                             />
                         </div>
@@ -98,7 +98,7 @@ const StaffForm = props => {
                                 value={state.cpr}
                             />
                         </div>
-                    <div/>
+                    </div>
 
                     <div>
                         <Label>Mobile Number</Label>
@@ -209,7 +209,7 @@ const StaffForm = props => {
                             />
                         </div>
                     </div>
-                    </div>
+                    
                 </Div>
             </FormSet>
             <ButtonDiv>
