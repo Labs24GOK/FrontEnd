@@ -41,8 +41,8 @@ const EditStudentProgressForm = props => {
 
     const handleCancel = e => {
         e.preventDefault()
-        // setCancelEdit(true)
-        props.toggleEditProgressComponent(true);
+        setCancelEdit(true)
+        props.toggleEditProgressComponent();
     }
 
     const formSubmit = e => {
@@ -62,7 +62,7 @@ const EditStudentProgressForm = props => {
                 <Spin style={{ marginTop: '150px' }} size="large" />
             ) : (
                 <>
-                    <FormSet>
+                    <FormSet onSubmit={formSubmit}>
                         <Div>
                             <div>
                                 <Label>Speaking Fluency</Label>
@@ -286,7 +286,7 @@ const EditStudentProgressForm = props => {
                         <CancelButton onClick={handleCancel}>
                             Cancel
                         </CancelButton>
-                        <SaveButton onClick={formSubmit} style={{width: '120px'}} >
+                        <SaveButton style={{width: '120px'}} >
                             Save Report
                         </SaveButton>
                     </ButtonDiv>
