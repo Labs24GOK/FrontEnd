@@ -369,9 +369,6 @@ const StudentRegistrationForm = (props) => {
       </ButtonDiv>
     </FormWrap>
   )
-
-  // }
-  // }
 }
 
 

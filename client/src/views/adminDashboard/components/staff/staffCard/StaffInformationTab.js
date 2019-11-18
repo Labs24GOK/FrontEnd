@@ -27,8 +27,8 @@ const StaffInformationTab = props => {
                     <FormWrap>
                         <Div>
                          
-                                <div style={{gridColumn: "span 3", marginRight: "5px"}} onClick={editStaffInfo}>
-                                <Icon name='edit' style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" }} /> Edit
+                                <div style={{gridColumn: "span 3",marginRight: "15px",color: "#26ABBD", cursor: "pointer", width: "fit-content"}} onClick={editStaffInfo}>
+                                <Icon name='edit' style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" }}/> Edit
                                 </div>
                               
                         </Div>
@@ -75,8 +75,6 @@ const StaffInformationTab = props => {
                                     <label>Birth date</label>
                                     <TextDiv>{birthdate}</TextDiv>
                                 </div>
-
-
              
                                 <div>
                                     <label>Teaching Rate</label>
