@@ -83,3 +83,39 @@ export const deleteStudentById = id => dispatch => {
 
 
 
+export const EDIT_DROPDOWN_START = 'EDIT_DROPDOWN_START';
+export const EDIT_DROPDOWN_SUCCESSTABLE1 = 'EDIT_DROPDOWN_SUCCESSTABLE1';
+export const EDIT_DROPDOWN_SUCCESSTABLE2 = 'EDIT_DROPDOWN_SUCCESSTABLE2';
+export const EDIT_DROPDOWN_SUCCESSTABLE3 = 'EDIT_DROPDOWN_SUCCESSTABLE3';
+export const EDIT_DROPDOWN_SUCCESSTABLE4 = 'EDIT_DROPDOWN_SUCCESSTABLE4';
+export const EDIT_DROPDOWN_FAILURE = 'EDIT_DROPDOWN_FAILURE';
+
+export const editStudentDropDown = () => dispatch => {
+
+    const locationTable = axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=location`)
+    const contactTable = axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=preferred_contact_type`)
+    const gradeTable = axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=school_grade`)
+    const blockTable = axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=block`)
+    
+    dispatch({ type: EDIT_DROPDOWN_START})
+    axios.all([locationTable, contactTable, gradeTable, blockTable])
+    .then(axios.spread((...res) => {
+        let tablesThree = res.map((each, i) => {
+          if(i === 0) {
+            dispatch({type: EDIT_DROPDOWN_SUCCESSTABLE1, payload:each.data.tableData})
+          } 
+          if(i === 1) {
+            dispatch({type: EDIT_DROPDOWN_SUCCESSTABLE2, payload:each.data.tableData})
+          }
+          if(i === 2){
+            dispatch({type: EDIT_DROPDOWN_SUCCESSTABLE3, payload:each.data.tableData})
+          }
+          if(i === 3){
+            dispatch({type: EDIT_DROPDOWN_SUCCESSTABLE4, payload:each.data.tableData})
+          }
+        })
+     })).catch(err=> {
+         console.log('err',err)
+         dispatch({type: EDIT_DROPDOWN_FAILURE, payload: err.payload})
+     });
+};

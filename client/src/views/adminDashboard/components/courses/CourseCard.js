@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { getCourseById, toggleEditCourse } from '../../../../actions';
@@ -58,10 +58,9 @@ let course_type =  courseProps.charAt(0).toUpperCase() + courseProps.slice(1)
                     {course_type}
                     <div className="headerDiv">
                         <div>
-                    <div className="headerSeparateDiv">{props.courseById.term}</div>
-                    <div className="headerSeparateDiv">{props.courseById.teacher}</div>
-                    </div>
-                    <div className="headerSeparateDiv">{props.courseById.course_schedule}</div>
+                            <div className="headerSeparateDiv"> {props.courseById.term}</div>
+                            <div className="headerSeparateDiv">{props.courseById.teacher}</div>
+                        </div>
                     </div>
                     
                     </Header>

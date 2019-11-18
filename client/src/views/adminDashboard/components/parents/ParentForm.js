@@ -4,7 +4,7 @@ import { editParentById, toggleEditParent } from '../../../../actions';
 import { withRouter } from 'react-router-dom';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import { FormWrap, Input, CancelButton, SaveButton, Div, FormSet, ButtonDiv} from '../mainStyle/styledComponent';
+import { FormWrap, Input, CancelButton, SaveButton, ButtonDiv, Div, FormSet, Label} from '../mainStyle/styledComponent';
 const ParentForm = props => {
     
     const [state, setState] = useState({
@@ -33,14 +33,10 @@ const ParentForm = props => {
     }
     return(
        <FormWrap onSubmit={handleSubmit}>
-            {/* <Div>
-                <div style={{gridColumn: "span3"}} >
-                </div>
-            </Div> */}
                 <FormSet>
                  <Div>              
                         <div>
-                           <label>Father Name</label>
+                           <Label>Father Name</Label>
                            <div>
                             <Input
                                 type='text'
@@ -52,7 +48,7 @@ const ParentForm = props => {
                             </div>
                         </div>
                         <div>
-                            <label>Mother Name</label>
+                            <Label>Mother Name</Label>
                             <div>
                             <Input
                                 type='text'
@@ -64,7 +60,7 @@ const ParentForm = props => {
                             </div>
                         </div>
                         <div>
-                            <label>Primary Telephone</label>
+                            <Label>Primary Telephone</Label>
                             <div>
                             <Input
                                 type='text'
@@ -76,19 +72,19 @@ const ParentForm = props => {
                             </div>
                         </div>
                         <div>
-                            <label>Scondary Telephone</label>
+                            <Label>Secondary Telephone</Label>
                             <div>
                             <Input
                                 type='text'
                                 name='secondary_telephone'
-                                placeholder='Scondary Telephone'
+                                placeholder='Secondary Telephone'
                                 onChange={handleChange}
                                 value={state.secondary_telephone}
                             />
                             </div>
                         </div>
                     <div>
-                        <label>Block Code</label>
+                        <Label>Block Code</Label>
                         <div>
                         <Input
                                 type='text'
@@ -100,7 +96,7 @@ const ParentForm = props => {
                         </div>
                     </div>
                     <div>
-                        <label>Building</label>
+                        <Label>Building</Label>
                         <div>
                         <Input
                                 type='text'
@@ -112,7 +108,7 @@ const ParentForm = props => {
                         </div>
                     </div>
                     <div>
-                        <label>Flat</label>
+                        <Label>Flat</Label>
                         <div>
                         <Input
                                 type='text'
@@ -124,7 +120,7 @@ const ParentForm = props => {
                         </div>
                     </div>
                     <div>
-                        <label>Road</label>
+                        <Label>Road</Label>
                         <div>
                         <Input
                                 type='text'
@@ -137,7 +133,7 @@ const ParentForm = props => {
                     </div>                 
                </Div>
             </FormSet>
-             <ButtonDiv>
+             <ButtonDiv style={{ alignSelf: 'flex-end', paddingRight: '15px' }}>
              <CancelButton onClick={handleCancel} >
                  Cancel
              </CancelButton>

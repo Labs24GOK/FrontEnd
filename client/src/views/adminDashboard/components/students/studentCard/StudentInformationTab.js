@@ -1,22 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { getStudentById, toggleEditComponent, toggleEditPlacement } from '../../../../../actions';
 import { withRouter } from 'react-router-dom';
 import StudentForm from './StudentForm';
-import { FormWrap, Div, TextDiv } from '../../mainStyle/styledComponent'
+import { FormWrap, Div, TextDiv, SaveButton, FormSet, ButtonDiv, Label } from '../../mainStyle/styledComponent'
 
 
 const StudentInformationTab = props => {
-    const [modalState, setModalState]= useState(false)
-
-    const openModal = () => {
-        setModalState(true)
-    }
-    const cancelModal = () => {
-        setModalState(false)
-    }
- 
     useEffect(() => {
         props.getStudentById(props.studentID)
     }, [])
@@ -34,114 +24,106 @@ const StudentInformationTab = props => {
     return (
         <div>
             {
-                !props.isEditing ?
-                    <FormWrap>
-                        <Div>
-                        <div onClick={editStudentInfo} style={{gridColumn: "span3", marginRight: "15px",color: "#26ABBD", cursor: "pointer", width: "fit-content"}}>
-                            <Icon name="edit" style = {{color:"#26ABBD",cursor:"pointer"}}/> Edit 
-                        </div>
-                        </Div>
-                        <Div>
-                            <div>
-                                <label>First name</label>
-                                <TextDiv>{props.studentById.first_name}</TextDiv>
-                            </div>
-                            <div>
-                                <label>Additional names</label>
-                                <TextDiv>{props.studentById.additional_names}</TextDiv>
-                            </div>
-                            <div>
-                                <label>Gender</label>
-                                <TextDiv>{props.studentById.gender}</TextDiv>
-                            </div>
-                            <div>
-                                <label>Birthdate</label>
-                                <TextDiv>{birthdate}</TextDiv>
-                            </div>
-                            
-                            <div>
-                                <label>Home Phone</label>
-                                <TextDiv>{props.studentById.home_telephone}</TextDiv>
-                            </div>
-                            <div>
-                                <label>Mobile</label>
-                                <TextDiv>{props.studentById.mobile_telephone}</TextDiv>
-                            </div>
-                            <div>
-                                <label>Email</label>
-                                <TextDiv>{props.studentById.email}</TextDiv>
-                            </div>
-                            <div>
-                                <label>Contact Method</label>
-                                <TextDiv>{props.studentById.preferred_contact_type_id}</TextDiv>
-                            </div>
-                            <div>
-                                <label>Location</label>
-                                <TextDiv>{props.studentById.location_id}</TextDiv>
-                            </div>
-                            <div>
-                                <label>Registration Date</label>
-                                <TextDiv>{registration_date}</TextDiv>
-                            </div>
-                            <div>
-                                <label>Road</label>
-                                <TextDiv>{props.studentById.road}</TextDiv>
-                            </div>
-                            <div>
-                                <label>Flat</label>
-                                <TextDiv>{props.studentById.flat}</TextDiv>
-                            </div>
-                            <div>
-                                <label>Building</label>
-                                <TextDiv>{props.studentById.building}</TextDiv>
-                            </div>
-                            <div>
-                                <label>Block Code</label>
-                                <TextDiv>{props.studentById.block_code}</TextDiv>
-                            </div>
-                            {/* row 4 */}
-                            <div>
-                                <label>Delinquent</label>
-                                <TextDiv>{props.studentById.delinquent ? 'Yes' : 'No'}</TextDiv>
-                            </div>
-                            <div>
-                                <label>CPR</label>
-                                <TextDiv>{props.studentById.cpr}</TextDiv>
-                            </div>
-                            <div>
-                                <label>ID</label>
-                                <TextDiv>{props.studentById.id}</TextDiv>
-                            </div>
-                            <div>
-                                <label>School Name</label>
-                                <TextDiv>{props.studentById.school_name}</TextDiv>
-                            </div>
-                            <div>
-                                <label>School Grade ID</label>
-                                <TextDiv>{props.studentById.school_grade_id}</TextDiv>
-                            </div>
-                        {/* row 5 */}
+            !props.isEditing ?
+                <FormWrap>
+                    <FormSet>
+                    <Div>
                         <div>
-                                <label>Grade Updated</label>
-                                <TextDiv>{grade_updated}</TextDiv> 
+                            <Label>CPR</Label>
+                            <TextDiv>{props.studentById.cpr || "-" }</TextDiv>
                         </div>
                         <div>
-                                <label>Family ID</label>
-                                <TextDiv>{props.studentById.family_id}</TextDiv> 
+                            <Label>First name</Label>
+                            <TextDiv>{props.studentById.first_name || "-" }</TextDiv>
+                        </div>
+                        <div style={{ gridColumn: 'span 2' }}>
+                            <Label>Additional names</Label>
+                            <TextDiv>{props.studentById.additional_names || "-" }</TextDiv>
                         </div>
                         <div>
-                                <label>Expelled</label>
-                                <TextDiv>{props.studentById.expelled ? 'Yes' : 'No'}</TextDiv> 
+                            <Label>Gender</Label>
+                            <TextDiv>{props.studentById.gender || "-" }</TextDiv>
                         </div>
                         <div>
-                                <label>No Call</label>
-                                <TextDiv>{props.studentById.no_call ? 'Yes': 'No'}</TextDiv> 
+                            <Label>Email</Label>
+                            <TextDiv>{props.studentById.email || "-" }</TextDiv>
                         </div>
                         <div>
+                            <Label>School Name</Label>
+                            <TextDiv>{props.studentById.school_name || "-" }</TextDiv>
                         </div>
-                        </Div>
-                    </FormWrap>
-                    : <StudentForm {...props} />
+                        <div>
+                            <Label>Birthdate</Label>
+                            <TextDiv>{birthdate || "-" }</TextDiv>
+                        </div>
+                        <div>
+                            <Label>Location</Label>
+                            <TextDiv>{props.studentById.location_id || "-" }</TextDiv>
+                        </div>
+                        <div>
+                            <Label>Home Phone</Label>
+                            <TextDiv>{props.studentById.home_telephone || "-" }</TextDiv>
+                        </div>
+                        <div>
+                            <Label>Mobile</Label>
+                            <TextDiv>{props.studentById.mobile_telephone || "-" }</TextDiv>
+                        </div>
+                        
+                        <div>
+                            <Label>Contact Method</Label>
+                            <TextDiv>{props.studentById.preferred_contact_type_id || "-" }</TextDiv>
+                        </div>
+                        <div>
+                            <Label>Block Code</Label>
+                            <TextDiv>{props.studentById.block_code || "-" }</TextDiv>
+                        </div>
+                        <div>
+                            <Label>Road</Label>
+                            <TextDiv>{props.studentById.road || "-" }</TextDiv>
+                        </div>
+                        <div>
+                            <Label>Building</Label>
+                            <TextDiv>{props.studentById.building || "-" }</TextDiv>
+                        </div>
+                        <div>
+                            <Label>Flat</Label>
+                            <TextDiv>{props.studentById.flat || "-" }</TextDiv>
+                        </div>
+                        <div>
+                            <Label>Delinquent</Label>
+                            <TextDiv>{props.studentById.delinquent ? 'Yes' : 'No' || "-" }</TextDiv>
+                        </div>
+                        <div>
+                            <Label>School Grade ID</Label>
+                            <TextDiv>{props.studentById.school_grade_id || "-" }</TextDiv>
+                        </div>
+                        <div>
+                                <Label>Grade Updated</Label>
+                                <TextDiv>{grade_updated || "-" }</TextDiv> 
+                        </div>
+                        <div>
+                            <Label>Registration Date</Label>
+                            <TextDiv>{registration_date || "-" }</TextDiv>
+                        </div>
+                        {/* <div>
+                            <Label>Family ID</Label>
+                            <TextDiv>{props.studentById.family_id || "-" }</TextDiv> 
+                        </div> */}
+                        <div style={{ gridColumn: 'span 4'}}>
+                            <Label>Notes</Label>
+                            <div>
+                                <TextDiv style={{height: '80px' }}>{props.studentById.notes || "-" }</TextDiv> 
+                            </div>
+                        </div>
+                    </Div>
+                </FormSet>
+                    <ButtonDiv >
+                        <SaveButton type="submit" onClick={editStudentInfo}> 
+                            Edit
+                        </SaveButton>
+                    </ButtonDiv>
+                </FormWrap>
+                : <StudentForm {...props} />
             }
         </div>
     )

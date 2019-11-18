@@ -3,8 +3,7 @@ import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getCourseById, toggleEditCourse } from '../../../../../actions';
 import CourseEditForm from './CourseEditForm'
-import { Icon } from 'semantic-ui-react'
-import { FormWrap, Div, TextDiv } from '../../mainStyle/styledComponent';
+import { FormWrap, Div, TextDiv, Label } from '../../mainStyle/styledComponent';
 
 const CourseInformationTab = props => {
 
@@ -31,44 +30,44 @@ const CourseInformationTab = props => {
         </Div>
         <Div>
           <div>
-            <label>Course Type</label>
-            <TextDiv>{props.courseById.course_type}</TextDiv>
+            <Label>Course Type</Label>
+            <TextDiv>{props.courseById.course_type || "-" }</TextDiv>
           </div>
           <div>
-            <label>Group Type</label>
-            <TextDiv>{props.courseById.group_type}</TextDiv>
+            <Label>Group Type</Label>
+            <TextDiv>{props.courseById.group_type || "-" }</TextDiv>
           </div>
           <div>
-            <label>School Grade</label>
-            <TextDiv>{props.courseById.school_grade}</TextDiv>
+            <Label>School Grade</Label>
+            <TextDiv>{props.courseById.school_grade || "-" }</TextDiv>
           </div>
           <div>
-            <label>Level</label>
-            <TextDiv>{props.courseById.level}</TextDiv>
+            <Label>Level</Label>
+            <TextDiv>{props.courseById.level || "-" }</TextDiv>
           </div>
           <div>
-            <label>Section</label>
-            <TextDiv>{props.courseById.section}</TextDiv>
+            <Label>Section</Label>
+            <TextDiv>{props.courseById.section || "-" }</TextDiv>
           </div>
           <div>
-            <label>Subsection</label>
-            <TextDiv>{props.courseById.subsection}</TextDiv>
+            <Label>Subsection</Label>
+            <TextDiv>{props.courseById.subsection || "-" }</TextDiv>
           </div>
           <div>
-            <label>Room</label>
-            <TextDiv>{props.courseById.room_id}</TextDiv>
+            <Label>Room</Label>
+            <TextDiv>{props.courseById.room_id || "-" }</TextDiv>
           </div>
           <div>
-            <label>Start Time</label>
-            <TextDiv>{props.courseById.start_time}</TextDiv>
+            <Label>Start Time</Label>
+            <TextDiv>{props.courseById.start_time || "-" }</TextDiv>
           </div>
           <div>
-            <label>End Time</label>
-            <TextDiv>{props.courseById.end_time}</TextDiv>
+            <Label>End Time</Label>
+            <TextDiv>{props.courseById.end_time || "-" }</TextDiv>
           </div>
           <div>
-            <label>Notes</label>
-            <TextDiv>{props.courseById.notes}</TextDiv>
+            <Label>Notes</Label>
+            <TextDiv>{props.courseById.notes || "-" }</TextDiv>
           </div>
           </Div>
           <Div>
