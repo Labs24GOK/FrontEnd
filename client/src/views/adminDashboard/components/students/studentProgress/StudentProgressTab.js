@@ -8,11 +8,11 @@ import EditStudentProgressForm from './EditStudentProgressForm'
 import { FormWrap, FormSet, Label, Div, SaveButton, ButtonDiv } from '../../mainStyle/styledComponent';
 
 const StudentProgressTab = props => {
+    // let options = { year: 'numeric', month: 'numeric', day: 'numeric' }; //'long'
+    // let report_date = new Date(props.progressByStudentId.report_date).toLocaleDateString('en-GB', options)
     useEffect(() => {
         props.getStudentProgress(props.studentID)
     }, [])
-    let options = { year: 'numeric', month: 'numeric', day: 'numeric' }; //'long'
-    let report_date = new Date(props.progressByStudentId.report_date).toLocaleDateString('en-GB', options)
 
     const [edit, setEdit] = useState(false)
 
@@ -129,7 +129,7 @@ const StudentProgressTab = props => {
                         </div>
                         <div>
                             <Label>Report Date</Label>
-                            <Label>{report_date}</Label>
+                            <Label>{props.progressByStudentId.report_date}</Label>
                         </div>
                         <div></div>
                         <div>
