@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import moment from 'moment';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import { FormWrap, Input, Button, FormSet} from '../mainStyle/styledComponent.js';
+import { FormWrap, Input, Button, Div, FormSet, ButtonDiv, CancelButton, SaveButton} from '../mainStyle/styledComponent';
 
 
 const StaffRegistrationForm = (props) => {
@@ -59,10 +59,7 @@ const cancelBtn = e => {
   return(
     <FormWrap onSubmit={formSubmit}>
         <FormSet>
-        <div style={{
-          display: 'grid', textAlign: 'left', gridTemplateColumns: '1fr 1fr 1fr 1fr',
-          gridGap: '15px', margin: '10px'
-        }}>
+            <Div>
             {/* row 1 */}
                 <div>
                     <label>Staff ID</label>
@@ -225,16 +222,16 @@ const cancelBtn = e => {
                     />
                     </div>
                 </div>
-            </div>
+            </Div>
             </FormSet>
-            <div style={{ alignSelf: 'flex-end' }}>
+            <ButtonDiv style={{ alignSelf: 'flex-end' }}>
             <Button onClick={cancelBtn} style={{ background: '#C73642', width: '80px' }}>
                 Cancel
             </Button>
             <Button type="submit"> 
                 Add student
             </Button>
-        </div>
+        </ButtonDiv>
 
         </FormWrap>
   )

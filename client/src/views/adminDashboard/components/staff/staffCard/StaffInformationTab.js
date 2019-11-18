@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { Grid, Segment, Icon } from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { getStaffById, toggleStaffEditComponent } from '../../../../../actions';
 import { withRouter } from 'react-router-dom';
 import StaffForm from './StaffForm';
+import { FormWrap, Input, Button, Div, TextDiv } from '../../mainStyle/styledComponent';
 import { Spin, Table } from 'antd';
 
 
@@ -23,94 +24,84 @@ const StaffInformationTab = props => {
 
     return (
         props.isLoading ? <Spin style={{ marginTop: '150px' }} size="large" /> :
-            <div className="gridView" style={{ margin: '3%'}}>
-                {
-                    !props.isEditing ?
-                        <Grid columns='equal' style={{margin: '10px 5px 0px 5px'}}>
-                            <Grid.Row>
-                                <Grid.Column>
-                                    <Segment>Staff ID</Segment>
-                                    <Segment>{props.staffById.id}</Segment>
-                                </Grid.Column>
+                    <FormWrap>
+                        <Div>
+                         
+                                <div style={{gridColumn: "span 3", marginRight: "5px"}} onClick={editStaffInfo}>
+                                <Icon name='edit' style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" }} /> Edit
+                                </div>
+                              
+                        </Div>
+                            {
+                                !props.isEditing ?
+                    
+                            <Div>
+                                <div>
+                                    <label>Staff ID</label>
+                                    <TextDiv>{props.staffById.id}</TextDiv>
+                                </div>
 
-                                <Grid.Column>
-                                    <Segment>Name</Segment>
-                                    <Segment>{props.staffById.name}</Segment>
-                                </Grid.Column>
+                                <div>
+                                    <label>Name</label>
+                                    <TextDiv>{props.staffById.name}</TextDiv>
+                                </div>
 
-                                <Grid.Column>
-                                    <Segment>Short Name</Segment>
-                                    <Segment>{props.staffById.short_name}</Segment>
-                                </Grid.Column>
+                                <div>
+                                    <label>Short Name</label>
+                                    <TextDiv>{props.staffById.short_name}</TextDiv>
+                                </div>
 
-                                <Grid.Column>
-                                    <Segment>CPR</Segment>
-                                    <Segment>{props.staffById.cpr}</Segment>
-                                </Grid.Column>
+                                <div>
+                                    <label>CPR</label>
+                                    <TextDiv>{props.staffById.cpr}</TextDiv>
+                                </div>
 
-                                <Grid.Column>
-                                    <Segment style={{ color: "#26ABBD", cursor: "pointer"}} onClick={editStaffInfo}>
-                                        <Icon name="edit" style={{ color: "#26ABBD", cursor: "pointer" }} /> Edit
-                    </Segment>
-                                </Grid.Column>
+                                <div>
+                                    <label>Mobile Number</label>
+                                    <TextDiv>{props.staffById.mobile_number}</TextDiv>
+                                </div>
 
-                            </Grid.Row>
+                                <div>
+                                    <label>Accent</label>
+                                    <TextDiv>{props.staffById.accent}</TextDiv>
+                                </div>
+
+                                <div>
+                                    <label>Gender</label>
+                                    <TextDiv>{props.staffById.gender}</TextDiv>
+                                </div>
+
+                                <div>
+                                    <label>Birth date</label>
+                                    <TextDiv>{birthdate}</TextDiv>
+                                </div>
 
 
-                            <Grid.Row>
-                                <Grid.Column>
-                                    <Segment>Mobile Number</Segment>
-                                    <Segment>{props.staffById.mobile_number}</Segment>
-                                </Grid.Column>
+             
+                                <div>
+                                    <label>Teaching Rate</label>
+                                    <TextDiv>{props.staffById.teaching_rate}</TextDiv>
+                                </div>
+                                <div>
+                                    <label>Admin</label>
+                                    <TextDiv>{props.staffById.admin}</TextDiv>
+                                </div>
+                                <div>
+                                    <label>Active</label>
+                                    <TextDiv>{props.staffById.active}</TextDiv>
+                                </div>
+                                <div>
+                                    <label>User ID</label>
+                                    <TextDiv>{props.staffById.user_id}</TextDiv>
+                                </div>
 
-                                <Grid.Column>
-                                    <Segment>Accent</Segment>
-                                    <Segment>{props.staffById.accent}</Segment>
-                                </Grid.Column>
+                                <div>
 
-                                <Grid.Column>
-                                    <Segment>Gender</Segment>
-                                    <Segment>{props.staffById.gender}</Segment>
-                                </Grid.Column>
-
-                                <Grid.Column>
-                                    <Segment>Birth date</Segment>
-                                    <Segment>{birthdate}</Segment>
-                                </Grid.Column>
-
-                                <Grid.Column>
-                                </Grid.Column>
-                            </Grid.Row>
-
-                            <Grid.Row>
-                                <Grid.Column>
-                                    <Segment>Teaching Rate</Segment>
-                                    <Segment>{props.staffById.teaching_rate}</Segment>
-                                </Grid.Column>
-                                <Grid.Column>
-                                    <Segment>Admin</Segment>
-                                    <Segment>{props.staffById.admin}</Segment>
-                                </Grid.Column>
-                                <Grid.Column>
-                                    <Segment>Active</Segment>
-                                    <Segment>{props.staffById.active}</Segment>
-                                </Grid.Column>
-                                <Grid.Column>
-                                    <Segment>User ID</Segment>
-                                    <Segment>{props.staffById.user_id}</Segment>
-                                </Grid.Column>
-
-                                <Grid.Column>
-
-                                </Grid.Column>
-
-                            </Grid.Row>
-
-                        </Grid>
+                                </div>
+                        </Div>
                         : <StaffForm {...props} />
                 }
-
-            </div>
+            </FormWrap>
     )
 }
 
