@@ -44,7 +44,6 @@ const ParentCard = props => {
                     Back
                     </div>
                 <div className='card-title'>
-
                     <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' circular size='small' />
                     <Header as='h2'>
                         {props.parentById.father_name}

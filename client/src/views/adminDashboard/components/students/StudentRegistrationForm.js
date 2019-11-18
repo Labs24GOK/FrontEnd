@@ -8,7 +8,7 @@ import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
 import '../mainStyle/mainTable.scss';
 
-import { FormWrap, Input, Button, Div, FormSet, ButtonDiv, CancelButton, SaveButton} from '../mainStyle/styledComponent';
+import { FormWrap, Input, Button, Div, FormSet, ButtonDiv, CancelButton, AddButton} from '../mainStyle/styledComponent';
 
 
 const StudentRegistrationForm = (props) => {
@@ -363,9 +363,9 @@ const StudentRegistrationForm = (props) => {
         <CancelButton onClick={handleCancel}>
           Cancel
             </CancelButton>
-        <SaveButton type="submit">
+        <AddButton type="submit">
           Add student
-            </SaveButton>
+            </AddButton>
       </ButtonDiv>
     </FormWrap>
   )

@@ -229,7 +229,7 @@ const cancelBtn = e => {
                 Cancel
             </Button>
             <Button type="submit"> 
-                Add student
+                Add Staff
             </Button>
         </ButtonDiv>
 

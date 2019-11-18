@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getStaffById, toggleStaffEditComponent } from '../../../../../actions';
 import { withRouter } from 'react-router-dom';
 import StaffForm from './StaffForm';
-import { FormWrap, Input, Button, Div, TextDiv } from '../../mainStyle/styledComponent';
+import { FormWrap, Div, TextDiv } from '../../mainStyle/styledComponent';
 import { Spin, Table } from 'antd';
 
 
@@ -23,83 +23,77 @@ const StaffInformationTab = props => {
     }
 
     return (
-        props.isLoading ? <Spin style={{ marginTop: '150px' }} size="large" /> :
-                    <FormWrap>
-                        <Div>
-                         
-                                <div style={{gridColumn: "span 3",marginRight: "15px",color: "#26ABBD", cursor: "pointer", width: "fit-content"}} onClick={editStaffInfo}>
-                                <Icon name='edit' style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" }}/> Edit
-                                </div>
-                              
-                        </Div>
-                            {
-                                !props.isEditing ?
-                    
-                            <Div>
-                                <div>
-                                    <label>Staff ID</label>
-                                    <TextDiv>{props.staffById.id}</TextDiv>
-                                </div>
+        <div>
+        {!props.isEditing ?
+            <FormWrap>
+                    <div style={{padding: "15px",color: "#26ABBD", cursor: "pointer", textAlign: "right"}} onClick={editStaffInfo}>
+                        <Icon name='edit' style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" }}/> Edit
+                    </div>
+                <Div>
+                    <div>
+                        <label>Staff ID</label>
+                        <TextDiv>{props.staffById.id}</TextDiv>
+                    </div>
 
-                                <div>
-                                    <label>Name</label>
-                                    <TextDiv>{props.staffById.name}</TextDiv>
-                                </div>
+                    <div>
+                        <label>Name</label>
+                        <TextDiv>{props.staffById.name}</TextDiv>
+                    </div>
 
-                                <div>
-                                    <label>Short Name</label>
-                                    <TextDiv>{props.staffById.short_name}</TextDiv>
-                                </div>
+                    <div>
+                        <label>Short Name</label>
+                        <TextDiv>{props.staffById.short_name}</TextDiv>
+                    </div>
 
-                                <div>
-                                    <label>CPR</label>
-                                    <TextDiv>{props.staffById.cpr}</TextDiv>
-                                </div>
+                    <div>
+                        <label>CPR</label>
+                        <TextDiv>{props.staffById.cpr}</TextDiv>
+                    </div>
 
-                                <div>
-                                    <label>Mobile Number</label>
-                                    <TextDiv>{props.staffById.mobile_number}</TextDiv>
-                                </div>
+                    <div>
+                        <label>Mobile Number</label>
+                        <TextDiv>{props.staffById.mobile_number}</TextDiv>
+                    </div>
 
-                                <div>
-                                    <label>Accent</label>
-                                    <TextDiv>{props.staffById.accent}</TextDiv>
-                                </div>
+                    <div>
+                        <label>Accent</label>
+                        <TextDiv>{props.staffById.accent}</TextDiv>
+                    </div>
 
-                                <div>
-                                    <label>Gender</label>
-                                    <TextDiv>{props.staffById.gender}</TextDiv>
-                                </div>
+                    <div>
+                        <label>Gender</label>
+                        <TextDiv>{props.staffById.gender}</TextDiv>
+                    </div>
 
-                                <div>
-                                    <label>Birth date</label>
-                                    <TextDiv>{birthdate}</TextDiv>
-                                </div>
-             
-                                <div>
-                                    <label>Teaching Rate</label>
-                                    <TextDiv>{props.staffById.teaching_rate}</TextDiv>
-                                </div>
-                                <div>
-                                    <label>Admin</label>
-                                    <TextDiv>{props.staffById.admin}</TextDiv>
-                                </div>
-                                <div>
-                                    <label>Active</label>
-                                    <TextDiv>{props.staffById.active}</TextDiv>
-                                </div>
-                                <div>
-                                    <label>User ID</label>
-                                    <TextDiv>{props.staffById.user_id}</TextDiv>
-                                </div>
+                    <div>
+                        <label>Birth date</label>
+                        <TextDiv>{birthdate}</TextDiv>
+                    </div>
+    
+                    <div>
+                        <label>Teaching Rate</label>
+                        <TextDiv>{props.staffById.teaching_rate}</TextDiv>
+                    </div>
+                    <div>
+                        <label>Admin</label>
+                        <TextDiv>{props.staffById.admin}</TextDiv>
+                    </div>
+                    <div>
+                        <label>Active</label>
+                        <TextDiv>{props.staffById.active}</TextDiv>
+                    </div>
+                    <div>
+                        <label>User ID</label>
+                        <TextDiv>{props.staffById.user_id}</TextDiv>
+                    </div>
 
-                                <div>
-
-                                </div>
-                        </Div>
-                        : <StaffForm {...props} />
-                }
-            </FormWrap>
+                    <div>
+                    </div>
+                </Div>
+                </FormWrap>
+                : <StaffForm {...props} />
+        }
+        </div>
     )
 }
 
