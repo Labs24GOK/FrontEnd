@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import { getParentById, toggleEditParent } from '../../../../actions';
 import { withRouter } from 'react-router-dom';
 import ParentForm from './ParentForm'
-import { FormWrap, Div, TextDiv } from '../mainStyle/styledComponent';
-import { Icon } from 'semantic-ui-react';
+import { FormWrap, Div, TextDiv, SaveButton, FormSet, ButtonDiv, Label } from '../mainStyle/styledComponent';
 const ParentInfomation = props => {
     useEffect(() => {
         props.getParentById(props.parentId)
@@ -19,50 +18,49 @@ const ParentInfomation = props => {
         <div>
             {!props.isEditing ?
             <FormWrap>
-                <Div>
-                     <div style={{gridColumn: "span3", marginRight: "15px",color: "#26ABBD", cursor: "pointer", width: "fit-content"}} >
-                        <Icon name='edit' style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" }} onClick={editParentInfo}/>
-                             Edit
-                    </div>
-                </Div>
+                <FormSet>
                 <Div>
                     <div>
-                        <label>Father Name</label>
-                        <TextDiv>{props.parentById.father_name}</TextDiv>
+                        <Label>Father Name</Label>
+                        <TextDiv>{props.parentById.father_name || "-" }</TextDiv>
                     </div>
                     <div>
-                        <label>Mother Name</label>
-                        <TextDiv>{props.parentById.mother_name}</TextDiv>
+                        <Label>Mother Name</Label>
+                        <TextDiv>{props.parentById.mother_name || "-" }</TextDiv>
                     </div>
                     <div>
-                        <label>Primary Telephone</label>
-                        <TextDiv>{props.parentById.primary_telephone}</TextDiv>
+                        <Label>Primary Telephone</Label>
+                        <TextDiv>{props.parentById.primary_telephone || "-" }</TextDiv>
                     </div>
                     <div>
-                        <label>Secondary Telephone</label>
-                        <TextDiv>{props.parentById.secondary_telephone}</TextDiv>
+                        <Label>Secondary Telephone</Label>
+                        <TextDiv>{props.parentById.secondary_telephone || "-" }</TextDiv>
                     </div>
                    
                     <div>
-                        <label>Block Code</label>
-                        <TextDiv>{props.parentById.block_code}</TextDiv>
+                        <Label>Block Code</Label>
+                        <TextDiv>{props.parentById.block_code || "-" }</TextDiv>
                     </div>
                     <div>
-                        <label>Building</label>
-                        <TextDiv>{props.parentById.building}</TextDiv>
+                        <Label>Building</Label>
+                        <TextDiv>{props.parentById.building || "-" }</TextDiv>
                     </div>
                     <div>
-                        <label>Flat</label>
-                        <TextDiv>{props.parentById.flat}</TextDiv>
+                        <Label>Flat</Label>
+                        <TextDiv>{props.parentById.flat || "-" }</TextDiv>
                     </div>
                     <div>
-                        <label>Road</label>
-                        <TextDiv>{props.parentById.road}</TextDiv>
-                    </div>
-                    <div>
-                        <div></div>
+                        <Label>Road</Label>
+                        <TextDiv>{props.parentById.road || "-" }</TextDiv>
                     </div>
                 </Div>
+                </FormSet>
+                <ButtonDiv>
+                    <SaveButton type="submit" onClick={editParentInfo}> 
+                        Edit
+                    </SaveButton>
+                </ButtonDiv>
+                
             </FormWrap>
                 : <ParentForm {...props} />}
         </div>

@@ -47,24 +47,19 @@ export const Input = styled.input`
   border: 1px solid transparent;
   background: white;
   width: 100%;
-  height: 26px;
-  padding: 5px;
+  padding: 6px;
 `
 export const TextDiv = styled.div`
   border-radius: 3px;
   border: 1px solid transparent;
   background: white;
   width: 100%;
-  height: 26px;
-  padding: 5px;
+  padding: 3.5px;
 `
-export const DivIcon = styled.div`
-  margin-right: 15px;
-  color: #26ABBD"; 
-  cursor: pointer; 
-  width: fit-content;
-`;
-
+export const Label = styled.h5`
+ margin: 2px;
+ font-weight: lighter;
+`
 export const CardStyle = styled.div`
   outline: none;
   border-radius: 3px;
@@ -82,6 +77,8 @@ export const Button = styled.button`
   background-color: #269FB0;
   text-align: center;
   color: #ffffff;
+  border: none;
+  cursor: pointer;
 `
 export const RedButton = styled.button`
   background-color: #C73642;
@@ -90,6 +87,8 @@ export const RedButton = styled.button`
   border-radius: 3px;
   margin: 10px 5px 10px 10px;
   text-align: center;
+  border: none;
+  cursor: pointer;
 `;
 export const DropdownContent =  styled.div`
   display: block;
@@ -160,6 +159,7 @@ margin-left: -2px;
 
 export const ButtonDiv = styled.div`
 align-self: flex-end;
+margin-right: 15px;
 `
 export const CancelButton = styled.button`
 background-color: #C73642; 
@@ -169,6 +169,8 @@ height: 25px;
 border-radius: 3px;
 margin: 10px 5px 10px 10px;
 text-align: center;
+border: none;
+cursor: pointer;
 `
 
 export const SaveButton = styled.button`
@@ -179,6 +181,8 @@ margin: 10px 5px 10px 10px;
 text-align: center;
 color: #FFFFFF; 
 background-color: #26ABBD;
+border: none;
+cursor: pointer;
 `
 export const AddButton = styled.button`
 width: 120px;
@@ -188,4 +192,6 @@ margin: 10px 5px 10px 10px;
 text-align: center;
 color: #FFFFFF; 
 background-color: #26ABBD;
+border: none;
+cursor: pointer;
 `

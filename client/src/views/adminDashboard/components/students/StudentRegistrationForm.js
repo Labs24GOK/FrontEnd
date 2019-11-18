@@ -8,7 +8,7 @@ import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
 import '../mainStyle/mainTable.scss';
 
-import { FormWrap, Input, Button, Div, FormSet, ButtonDiv, CancelButton, AddButton} from '../mainStyle/styledComponent';
+import { FormWrap, Input, Button, Div, FormSet, ButtonDiv, CancelButton, AddButton, Label} from '../mainStyle/styledComponent';
 
 
 const StudentRegistrationForm = (props) => {
@@ -175,7 +175,7 @@ const StudentRegistrationForm = (props) => {
       <FormSet>
         <Div>
           <div>
-            <label>CPR</label>
+            <Label>CPR</Label>
             <div style={{ border: `1px solid ${errorBorderCpr}`, borderRadius: '3px' }}>
               <Input
                 type="text"
@@ -185,7 +185,7 @@ const StudentRegistrationForm = (props) => {
             </div>
           </div>
           <div>
-            <label>First Name</label>
+            <Label>First Name</Label>
             <div style={{ border: `1px solid ${errorBorderFirstName}`, borderRadius: '3px' }}>
               <Input
                 type="text"
@@ -195,7 +195,7 @@ const StudentRegistrationForm = (props) => {
             </div>
           </div>
           <div style={{ gridColumn: 'span 2' }}>
-            <label>Additional names</label>
+            <Label>Additional names</Label>
             <div style={{ border: `1px solid ${errorBorderAdditionalNames}`, borderRadius: '3px' }}>
               <Input
                 style={{ width: '100%' }}
@@ -206,7 +206,7 @@ const StudentRegistrationForm = (props) => {
             </div>
           </div>
           <div>
-            <label>Gender</label>
+            <Label>Gender</Label>
             <div style={{ border: `1px solid ${errorBorderGender}`, borderRadius: '3px' }}>
               <Dropdown
                 value={student.gender}
@@ -218,7 +218,7 @@ const StudentRegistrationForm = (props) => {
             </div>
           </div>
           <div>
-            <label>Email</label>
+            <Label>Email</Label>
             <div style={{ border: `1px solid ${errorBorderEmail}`, borderRadius: '3px' }}>
               <Input
                 type="email"
@@ -228,7 +228,7 @@ const StudentRegistrationForm = (props) => {
             </div>
           </div>
           <div>
-            <label>School Name</label>
+            <Label>School Name</Label>
             <div style={{ border: `1px solid ${errorBorderSchoolName}`, borderRadius: '3px' }}>
               <Input
                 type="text"
@@ -238,7 +238,7 @@ const StudentRegistrationForm = (props) => {
             </div>
           </div>
           <div >
-            <label>Birth date</label>
+            <Label>Birth date</Label>
             <div style={{ border: `1px solid ${errorBorderBirthdate}`, borderRadius: '3px' }}>
               <Input
                 type="date"
@@ -248,7 +248,7 @@ const StudentRegistrationForm = (props) => {
             </div>
           </div>
           <div>
-            <label>Location</label>
+            <Label>Location</Label>
             <div style={{ border: `1px solid ${errorBorderLocation}`, borderRadius: '3px' }}>
               <Dropdown
                 value={student.location_id}
@@ -259,7 +259,7 @@ const StudentRegistrationForm = (props) => {
             </div>
           </div>
           <div>
-            <label>Home Telephone</label>
+            <Label>Home Telephone</Label>
             <div style={{ border: `1px solid ${errorBorderHomeTelephone}`, borderRadius: '3px' }}>
               <Input
                 type="text"
@@ -269,7 +269,7 @@ const StudentRegistrationForm = (props) => {
             </div>
           </div>
           <div>
-            <label>Mobile Telephone</label>
+            <Label>Mobile Telephone</Label>
             <div style={{ border: `1px solid ${errorBorderMobileTelephone}`, borderRadius: '3px' }}>
               <Input
                 type="text"
@@ -279,7 +279,7 @@ const StudentRegistrationForm = (props) => {
             </div>
           </div>
           <div>
-            <label>Preferred contact method</label>
+            <Label>Preferred contact method</Label>
             <div style={{ border: `1px solid ${errorBorderContactType}`, borderRadius: '3px' }}>
               <Dropdown
                 onChange={(e) => setStudent({ ...student, preferred_contact_type_id: e })}
@@ -291,7 +291,7 @@ const StudentRegistrationForm = (props) => {
             </div>
           </div>
           <div>
-            <label>Block</label>
+            <Label>Block</Label>
             <div style={{ border: `1px solid ${errorBorderBlock}`, borderRadius: '3px' }}>
               <Dropdown
                 onChange={(e) => { setStudent({ ...student, block_code: e }) }}
@@ -303,7 +303,7 @@ const StudentRegistrationForm = (props) => {
             </div>
           </div>
           <div>
-            <label>Road</label>
+            <Label>Road</Label>
             <div style={{ border: `1px solid ${errorBorderRoad}`, borderRadius: '3px' }}>
               <Input
                 type="text"
@@ -313,7 +313,7 @@ const StudentRegistrationForm = (props) => {
             </div>
           </div>
           <div>
-            <label>Building</label>
+            <Label>Building</Label>
             <div style={{ border: `1px solid ${errorBorderBuilding}`, borderRadius: '3px' }}>
               <Input
                 type="text"
@@ -323,7 +323,7 @@ const StudentRegistrationForm = (props) => {
             </div>
           </div>
           <div>
-            <label>Flat</label>
+            <Label>Flat</Label>
             <div style={{ border: `1px solid ${errorBorderFlat}`, borderRadius: '3px' }}>
               <Input
                 type="text"
@@ -333,7 +333,7 @@ const StudentRegistrationForm = (props) => {
             </div>
           </div>
           <div>
-            <label>School grade</label>
+            <Label>School grade</Label>
             <div style={{ border: `1px solid ${errorBorderSchoolGrade}`, borderRadius: '3px' }}>
               <Dropdown
                 onChange={(e) => { setStudent({ ...student, school_grade_id: e }) }}
@@ -345,7 +345,7 @@ const StudentRegistrationForm = (props) => {
             </div>
           </div>
           <div style={{ gridColumn: 'span 4' }}>
-            <label>Notes</label>
+            <Label>Notes</Label>
             <div style={{ border: `1px solid ${errorBorderNotes}`, borderRadius: '3px' }}>
               <textarea
                 style={{

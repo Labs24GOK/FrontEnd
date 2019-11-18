@@ -5,7 +5,7 @@ import { postStudentProgress, togglePostComponent } from '../../../../../actions
 import { Table, Spin } from 'antd';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import { FormWrap, Input, Button } from '../../mainStyle/styledComponent';
+import { FormWrap, Input, Button, Label } from '../../mainStyle/styledComponent';
 
 
 
@@ -61,7 +61,7 @@ const StudentProgressForm = props => {
                 }}>
 
                     <div>
-                        <label>Speaking Fluency</label>
+                        <Label>Speaking Fluency</Label>
                         <div>
                             <Input
                                 type='number'
@@ -74,7 +74,7 @@ const StudentProgressForm = props => {
                     </div>
 
                     <div>
-                        <label>Speaking Accuracy</label>
+                        <Label>Speaking Accuracy</Label>
                         <div>
                             <Input
                                 type='number'
@@ -87,7 +87,7 @@ const StudentProgressForm = props => {
                     </div>
 
                     <div>
-                        <label>Vocabulary</label>
+                        <Label>Vocabulary</Label>
                         <div>
                             <Input
                                 type='number'
@@ -100,7 +100,7 @@ const StudentProgressForm = props => {
                     </div>
 
                     <div>
-                        <label>Pronunciation</label>
+                        <Label>Pronunciation</Label>
                         <div>
                             <Input
                                 type='number'
@@ -122,7 +122,7 @@ const StudentProgressForm = props => {
 
                     {/* row 2  */}
                     <div>
-                        <label>Grammar</label>
+                        <Label>Grammar</Label>
                         <div>
                             <Input
                                 type='number'
@@ -135,7 +135,7 @@ const StudentProgressForm = props => {
                     </div>
 
                     <div>
-                        <label>Listening</label>
+                        <Label>Listening</Label>
                         <div>
                             <Input
                                 type='number'
@@ -149,7 +149,7 @@ const StudentProgressForm = props => {
 
 
                     <div>
-                        <label>Writing</label>
+                        <Label>Writing</Label>
                         <div>
                             <Input
                                 type='number'
@@ -162,7 +162,7 @@ const StudentProgressForm = props => {
                     </div>
 
                     <div>
-                        <label>Reading</label>
+                        <Label>Reading</Label>
                         <div>
                             <Input
                                 type='number'
@@ -175,7 +175,7 @@ const StudentProgressForm = props => {
                     </div>
 
                     <div>
-                        <label>Interest</label>
+                        <Label>Interest</Label>
                         <div>
                             <Input
                                 type='number'
@@ -189,7 +189,7 @@ const StudentProgressForm = props => {
 
                     {/* row 3 */}
                     <div>
-                        <label>Participation</label>
+                        <Label>Participation</Label>
                         <div>
                             <Input
                                 type='number'
@@ -203,7 +203,7 @@ const StudentProgressForm = props => {
 
 
                     <div>
-                        <label>Submitting Homework</label>
+                        <Label>Submitting Homework</Label>
                         <div>
                             <Input
                                 type='number'
@@ -216,7 +216,7 @@ const StudentProgressForm = props => {
                     </div>
 
                     <div>
-                        <label>Homework Effort</label>
+                        <Label>Homework Effort</Label>
                         <div>
                             <Input
                                 type='number'
@@ -230,7 +230,7 @@ const StudentProgressForm = props => {
 
 
                     <div>
-                        <label>Notes</label>
+                        <Label>Notes</Label>
                         <div>
                             <Input
                                 type='text'
@@ -243,7 +243,7 @@ const StudentProgressForm = props => {
                     </div>
 
                     <div>
-                        <label>Overall</label>
+                        <Label>Overall</Label>
                         <div>
                             <Input
                                 type='number'
@@ -257,7 +257,7 @@ const StudentProgressForm = props => {
 
 
                     <div>
-                        <label>Course Id</label>
+                        <Label>Course Id</Label>
                         <div>
                             <Input
                                 type='number'
@@ -271,7 +271,7 @@ const StudentProgressForm = props => {
 
 
                     <div>
-                        <label>Student Id</label>
+                        <Label>Student Id</Label>
                         <div>
                             <Input
                                 type='number'
@@ -285,7 +285,7 @@ const StudentProgressForm = props => {
 
 
                     <div>
-                        <label>Teacher Id</label>
+                        <Label>Teacher Id</Label>
                         <div>
                             <Input
                                 type='number'
@@ -298,7 +298,7 @@ const StudentProgressForm = props => {
                     </div>
 
                     <div>
-                        <label>Report Date</label>
+                        <Label>Report Date</Label>
                         <div>
                             <Input
                                 type='text'

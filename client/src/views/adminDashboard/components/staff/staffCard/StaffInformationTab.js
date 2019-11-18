@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getStaffById, toggleStaffEditComponent } from '../../../../../actions';
 import { withRouter } from 'react-router-dom';
 import StaffForm from './StaffForm';
-import { FormWrap, Div, TextDiv } from '../../mainStyle/styledComponent';
+import { FormWrap, Div, TextDiv, SaveButton, FormSet, ButtonDiv, Label } from '../../mainStyle/styledComponent';
 import { Spin, Table } from 'antd';
 
 
@@ -26,73 +26,74 @@ const StaffInformationTab = props => {
         <div>
         {!props.isEditing ?
             <FormWrap>
-                    <div style={{padding: "15px",color: "#26ABBD", cursor: "pointer", textAlign: "right"}} onClick={editStaffInfo}>
-                        <Icon name='edit' style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" }}/> Edit
-                    </div>
+                <FormSet>
                 <Div>
                     <div>
-                        <label>Staff ID</label>
-                        <TextDiv>{props.staffById.id}</TextDiv>
+                        <Label>Staff ID</Label>
+                        <TextDiv>{props.staffById.id || "-" }</TextDiv>
                     </div>
 
                     <div>
-                        <label>Name</label>
-                        <TextDiv>{props.staffById.name}</TextDiv>
+                        <Label>Name</Label>
+                        <TextDiv>{props.staffById.name || "-" }</TextDiv>
                     </div>
 
                     <div>
-                        <label>Short Name</label>
-                        <TextDiv>{props.staffById.short_name}</TextDiv>
+                        <Label>Short Name</Label>
+                        <TextDiv>{props.staffById.short_name || "-" }</TextDiv>
                     </div>
 
                     <div>
-                        <label>CPR</label>
-                        <TextDiv>{props.staffById.cpr}</TextDiv>
+                        <Label>CPR</Label>
+                        <TextDiv>{props.staffById.cpr || "-" }</TextDiv>
                     </div>
 
                     <div>
-                        <label>Mobile Number</label>
-                        <TextDiv>{props.staffById.mobile_number}</TextDiv>
+                        <Label>Mobile Number</Label>
+                        <TextDiv>{props.staffById.mobile_number || "-" }</TextDiv>
                     </div>
 
                     <div>
-                        <label>Accent</label>
-                        <TextDiv>{props.staffById.accent}</TextDiv>
+                        <Label>Accent</Label>
+                        <TextDiv>{props.staffById.accent || "-" }</TextDiv>
                     </div>
 
                     <div>
-                        <label>Gender</label>
-                        <TextDiv>{props.staffById.gender}</TextDiv>
+                        <Label>Gender</Label>
+                        <TextDiv>{props.staffById.gender || "-" }</TextDiv>
                     </div>
 
                     <div>
-                        <label>Birth date</label>
-                        <TextDiv>{birthdate}</TextDiv>
+                        <Label>Birth date</Label>
+                        <TextDiv>{birthdate || "-" }</TextDiv>
                     </div>
     
                     <div>
-                        <label>Teaching Rate</label>
-                        <TextDiv>{props.staffById.teaching_rate}</TextDiv>
+                        <Label>Teaching Rate</Label>
+                        <TextDiv>{props.staffById.teaching_rate || "-" }</TextDiv>
                     </div>
                     <div>
-                        <label>Admin</label>
-                        <TextDiv>{props.staffById.admin}</TextDiv>
+                        <Label>Admin</Label>
+                        <TextDiv>{props.staffById.admin || "-" }</TextDiv>
                     </div>
                     <div>
-                        <label>Active</label>
-                        <TextDiv>{props.staffById.active}</TextDiv>
+                        <Label>Active</Label>
+                        <TextDiv>{props.staffById.active || "-" }</TextDiv>
                     </div>
                     <div>
-                        <label>User ID</label>
-                        <TextDiv>{props.staffById.user_id}</TextDiv>
-                    </div>
-
-                    <div>
+                        <Label>User ID</Label>
+                        <TextDiv>{props.staffById.user_id || "-" }</TextDiv>
                     </div>
                 </Div>
+                </FormSet>
+                <ButtonDiv>
+                    <SaveButton type="submit" onClick={editStaffInfo}> 
+                        Edit
+                    </SaveButton>
+                </ButtonDiv>
                 </FormWrap>
                 : <StaffForm {...props} />
-        }
+            }
         </div>
     )
 }

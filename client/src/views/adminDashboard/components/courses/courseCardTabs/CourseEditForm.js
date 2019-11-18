@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { editCouseById, toggleEditCourse } from '../../../../../actions';
 import { withRouter } from 'react-router-dom';
 import {  Icon } from 'semantic-ui-react'
-import { FormWrap, Input, CancelButton, SaveButton, Div, FormSet} from '../../mainStyle/styledComponent'
+import { FormWrap, Input, CancelButton, SaveButton, Div, FormSet, Label} from '../../mainStyle/styledComponent'
 
 const CourseEditForm = props => {
     
@@ -44,7 +44,7 @@ const CourseEditForm = props => {
                 <FormSet>
                     <Div>
                         <div>
-                            <label>Course Type</label>
+                            <Label>Course Type</Label>
                             <Input
                                 type='text'
                                 name='course_type'
@@ -54,7 +54,7 @@ const CourseEditForm = props => {
                             />
                         </div>
                         <div>
-                            <label>Group Type</label>
+                            <Label>Group Type</Label>
                             <Input
                                 type='text'
                                 name='group_type'
@@ -64,7 +64,7 @@ const CourseEditForm = props => {
                             />
                         </div>
                         <div>
-                            <label>School Grade</label>
+                            <Label>School Grade</Label>
                             <Input
                                 type='text'
                                 name='school_grade'
@@ -74,7 +74,7 @@ const CourseEditForm = props => {
                             />
                         </div>
                         <div>
-                            <label>Level</label>
+                            <Label>Level</Label>
                             <Input
                                 type='text'
                                 name='level'
@@ -84,7 +84,7 @@ const CourseEditForm = props => {
                             />
                         </div>
                     <div>
-                        <label>Section</label>
+                        <Label>Section</Label>
                         <Input
                                 type='text'
                                 name='section'
@@ -94,7 +94,7 @@ const CourseEditForm = props => {
                             />
                     </div>
                     <div>
-                        <label>Subsection</label>
+                        <Label>Subsection</Label>
                         <Input
                                 type='text'
                                 name='subsection'
@@ -104,7 +104,7 @@ const CourseEditForm = props => {
                             />
                     </div>
                     <div>
-                        <label>Room</label>
+                        <Label>Room</Label>
                         <Input
                                 type='text'
                                 name='room_id'
@@ -114,7 +114,7 @@ const CourseEditForm = props => {
                             />
                     </div>
                     <div>
-                        <label>Start Time</label>
+                        <Label>Start Time</Label>
                         <Input
                                 type='text'
                                 name='start_time'
@@ -124,7 +124,7 @@ const CourseEditForm = props => {
                             />
                     </div>
                     <div>
-                        <label>End Time</label>
+                        <Label>End Time</Label>
                         <Input
                                 type='text'
                                 name='end_time'
@@ -134,7 +134,7 @@ const CourseEditForm = props => {
                             />
                     </div>
                 <div>
-                    <label>Notes</label>
+                    <Label>Notes</Label>
                         <Input
                                 type='text'
                                 name='notes'

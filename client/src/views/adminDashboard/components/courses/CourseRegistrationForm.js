@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
 import { getDropDownCourses, addCourse, toggleAddCourseComponent } from '../../../../actions';
-import moment from 'moment';
 import Dropdown from 'react-dropdown';
 
 import 'react-dropdown/style.css';
 
-import { FormWrap, Input, Button } from '../mainStyle/styledComponent.js';
+import { FormWrap, Input, Button, Label } from '../mainStyle/styledComponent.js';
 
 
 const CourseRegistrationForm = (props) => {
@@ -141,7 +140,7 @@ const CourseRegistrationForm = (props) => {
                     gridGap: '15px', margin: '10px'
                 }}>
                     <div>
-                        <label>Section</label>
+                        <Label>Section</Label>
                         <div style={shouldMarkError('section')? {border: '1px solid red'} : null}>
                             <Input
                                 type="text"
@@ -153,7 +152,7 @@ const CourseRegistrationForm = (props) => {
                         </div>
                     </div>
                     <div>
-                        <label>Subsection</label>
+                        <Label>Subsection</Label>
                         <div style={shouldMarkError('subsection')? {border: '1px solid red'} : null}>
                             <Input
                                 type="number"
@@ -166,7 +165,7 @@ const CourseRegistrationForm = (props) => {
                     </div>
 
                     <div>
-                        <label>Hourly Rate</label>
+                        <Label>Hourly Rate</Label>
                         <div style={shouldMarkError('hourly_rate')? {border: '1px solid red'} : null}>
                             <Input
                                 type="text"
@@ -179,7 +178,7 @@ const CourseRegistrationForm = (props) => {
                     </div>
 
                     <div>
-                        <label>Start Time</label>
+                        <Label>Start Time</Label>
                         <div style={shouldMarkError('start_time')? {border: '1px solid red'} : null}>
                             <Input
                                 type="time"
@@ -192,7 +191,7 @@ const CourseRegistrationForm = (props) => {
                     </div>
 
                     <div>
-                        <label>End Time</label>
+                        <Label>End Time</Label>
                         <div style={shouldMarkError('end_time')? {border: '1px solid red'} : null}>
                             <Input
                                 type="time"
@@ -205,7 +204,7 @@ const CourseRegistrationForm = (props) => {
                     </div>
 
                     <div>
-                        <label>Notes</label>
+                        <Label>Notes</Label>
                         <div style={shouldMarkError('notes')? {border: '1px solid red'} : null}>
                             <Input
                                 type="text"
@@ -218,7 +217,7 @@ const CourseRegistrationForm = (props) => {
                     </div>
 
                     <div>
-                        <label>Status</label>
+                        <Label>Status</Label>
                         <div style={shouldMarkError('status')? {border: '1px solid red'} : null}>
                             <Dropdown
                                 value={course.status}
@@ -232,7 +231,7 @@ const CourseRegistrationForm = (props) => {
                     </div>
 
                     <div>
-                        <label>Term</label>
+                        <Label>Term</Label>
                         <div style={shouldMarkError('term_id')? {border: '1px solid red'} : null}>
                             <Dropdown
                                 value={course.term_id}
@@ -246,7 +245,7 @@ const CourseRegistrationForm = (props) => {
                     </div>
 
                     <div>
-                        <label>Course Type</label>
+                        <Label>Course Type</Label>
                         <div style={shouldMarkError('course_type_id')? {border: '1px solid red'} : null}>
                             <Dropdown
                                 value={course.course_type_id}
@@ -260,7 +259,7 @@ const CourseRegistrationForm = (props) => {
                     </div>
 
                     <div>
-                        <label>Group Type</label>
+                        <Label>Group Type</Label>
                         <div style={shouldMarkError('group_type_id')? {border: '1px solid red'} : null}>
                             <Dropdown
                                 value={course.group_type_id}
@@ -274,7 +273,7 @@ const CourseRegistrationForm = (props) => {
                     </div>
 
                     <div>
-                        <label>School Grade</label>
+                        <Label>School Grade</Label>
                         <div style={shouldMarkError('school_grade_id')? {border: '1px solid red'} : null}>
                             <Dropdown
                                 value={course.school_grade_id}
@@ -289,7 +288,7 @@ const CourseRegistrationForm = (props) => {
 
 
                     <div>
-                        <label>Level</label>
+                        <Label>Level</Label>
                         <div style={shouldMarkError('level_id')? {border: '1px solid red'} : null}>
                             <Dropdown
                                 value={course.level_id}
@@ -303,7 +302,7 @@ const CourseRegistrationForm = (props) => {
                     </div>
 
                     <div>
-                        <label>Course Schedule</label>
+                        <Label>Course Schedule</Label>
                         <div style={shouldMarkError('course_schedule_id')? {border: '1px solid red'} : null}>
                             <Dropdown
                                 value={course.course_schedule_id}
@@ -317,7 +316,7 @@ const CourseRegistrationForm = (props) => {
                     </div>
 
                     <div>
-                        <label>Room</label>
+                        <Label>Room</Label>
                         <div style={shouldMarkError('room_id')? {border: '1px solid red'} : null}>
                             <Dropdown
                                 value={course.room_id}
@@ -331,7 +330,7 @@ const CourseRegistrationForm = (props) => {
                     </div>
 
                     <div>
-                        <label>Teacher</label>
+                        <Label>Teacher</Label>
                         <div style={shouldMarkError('teacher_id')? {border: '1px solid red'} : null}>
                             <Dropdown
                                 value={course.teacher_id}

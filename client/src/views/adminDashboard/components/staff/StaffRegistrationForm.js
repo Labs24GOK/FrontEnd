@@ -4,7 +4,7 @@ import { addStaff, toggleAddStaffComponent, getStaffTable } from '../../../../ac
 import { withRouter } from 'react-router-dom';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import { FormWrap, Input, Button, Div, FormSet} from '../mainStyle/styledComponent';
+import { FormWrap, Input, Button, Div, FormSet, Label} from '../mainStyle/styledComponent';
 
 
 const StaffRegistrationForm = (props) => {
@@ -63,7 +63,7 @@ const StaffRegistrationForm = (props) => {
             <Div>
             {/* row 1 */}
                 <div>
-                    <label>Staff ID</label>
+                    <Label>Staff ID</Label>
                     <div>
                     <Input 
                         type='text'
@@ -75,7 +75,7 @@ const StaffRegistrationForm = (props) => {
                 </div>
                 </div>
                     <div>
-                        <label>Name</label>
+                        <Label>Name</Label>
                         <div>
                             <Input
                                 type='text'
@@ -88,7 +88,7 @@ const StaffRegistrationForm = (props) => {
                     </div>
 
                     <div>
-                        <label>Short Name</label>
+                        <Label>Short Name</Label>
                         <div>
                             <Input
                                 type='text'
@@ -100,7 +100,7 @@ const StaffRegistrationForm = (props) => {
                         </div>
                     </div>
                     <div>
-                        <label>CPR</label>
+                        <Label>CPR</Label>
                         <div>
                             <Input
                                 type='text'
@@ -116,7 +116,7 @@ const StaffRegistrationForm = (props) => {
                     {/* row 2 */}
                     <div>
 
-                        <label>Mobile Number</label>
+                        <Label>Mobile Number</Label>
                         <div>
                             <Input
                                 type='text' //use date for calendar
@@ -130,7 +130,7 @@ const StaffRegistrationForm = (props) => {
 
                     <div>
                         {/* needs to be dropdown */}
-                        <label>Accent</label>
+                        <Label>Accent</Label>
                         <div>
                             <Input
                                 type='text' //use date for calendar
@@ -144,7 +144,7 @@ const StaffRegistrationForm = (props) => {
 
                     <div>
                         {/* needs to be dropdown */}
-                        <label>Gender</label>
+                        <Label>Gender</Label>
                         <div>
                             <Dropdown
                                 value={state.gender}
@@ -157,7 +157,7 @@ const StaffRegistrationForm = (props) => {
                     </div>
 
                     <div>
-                        <label>Birthdate</label>
+                        <Label>Birthdate</Label>
                         <div>
                             <Input
                                 type='date'
@@ -171,7 +171,7 @@ const StaffRegistrationForm = (props) => {
 
 
                     <div>
-                        <label>Teaching Rate</label>
+                        <Label>Teaching Rate</Label>
                         <div>
                             <Input
                                 type='text'
@@ -185,7 +185,7 @@ const StaffRegistrationForm = (props) => {
                     {/* row3 */}
 
                     <div>
-                        <label>Admin</label>
+                        <Label>Admin</Label>
                         <div>
                             <Dropdown
                                 value={state.admin}
@@ -198,7 +198,7 @@ const StaffRegistrationForm = (props) => {
                     </div>
 
                     <div>
-                        <label>Active</label>
+                        <Label>Active</Label>
                         <div>
                             <Dropdown
                                 value={state.active}
@@ -211,7 +211,7 @@ const StaffRegistrationForm = (props) => {
                     </div>
 
                     {/* <div>
-                    <label>User Id</label>
+                    <Label>User Id</Label>
                     <div>
                     <Input 
                         type='text'
@@ -224,7 +224,7 @@ const StaffRegistrationForm = (props) => {
                 </div> */}
                     <div>
 
-                        <label>Email</label>
+                        <Label>Email</Label>
                         <div>
                             <Input
                                 type='email' //use date for calendar

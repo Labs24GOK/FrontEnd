@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { editStaffById, toggleStaffEditComponent } from '../../../../../actions';
 import { withRouter, Link } from 'react-router-dom';
-// import { Grid, label, Input, Icon, Form } from 'semantic-ui-react';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import { FormWrap, Input, Button, Div, FormSet, ButtonDiv, CancelButton, SaveButton} from '../../mainStyle/styledComponent';
+import { FormWrap, Input, Button, Div, FormSet, ButtonDiv, CancelButton, SaveButton, Label} from '../../mainStyle/styledComponent';
 
 const StaffForm = props => {
     const { staffID } = props;
@@ -50,7 +49,7 @@ const StaffForm = props => {
              <FormSet >
              <Div>
                     <div>
-                        <label>Staff ID</label>
+                        <Label>Staff ID</Label>
                         <div>
                         <Input 
                         type='text'
@@ -63,7 +62,7 @@ const StaffForm = props => {
                 </div>
 
                 <div>
-                    <label>Name</label>
+                    <Label>Name</Label>
                     <div>
                     <Input 
                         type='text'
@@ -76,7 +75,7 @@ const StaffForm = props => {
                     </div>
 
                     <div>
-                    <label>Short Name</label>
+                    <Label>Short Name</Label>
                     <div>
                     <Input 
                         type='text'
@@ -89,7 +88,7 @@ const StaffForm = props => {
                     </div>
 
                     <div>
-                <label>CPR</label>
+                <Label>CPR</Label>
                 <div>
                     <Input 
                         type='text'
@@ -99,17 +98,7 @@ const StaffForm = props => {
                         value={state.cpr}
                     />
                 </div>
-                </div>
-                    {/* <label.Group horizontal style={{ background: "#E0EBF0" }}>
-                        <label.Inline onClick={formSubmit} style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" ,margin: 0}}>
-                        <Icon name="save" tyoe='submit' style={{ color: "#26ABBD", cursor: "pointer" }} /> Save
-                        </label.Inline>
-                        <label.Inline onClick={closeBtn} style={{ color: "#C73642", cursor: "pointer", width: "fit-content", "margin-left": "10px" }}>
-                        <Icon name="cancel" style={{ color: "#C73642", cursor: "pointer" }}  /> Cancel
-                        </label.Inline>
-                        </label.Group> */}
-                <div>
-                    <label>Mobile Number</label>
+                    <Label>Mobile Number</Label>
                     <div>
                     <Input 
                         type='text' //use date for calendar
@@ -122,7 +111,7 @@ const StaffForm = props => {
                 </div>
     
                 <div>
-                    <label>Accent</label>
+                    <Label>Accent</Label>
                     <div>
                     <Dropdown 
                         // type='text'
@@ -138,7 +127,7 @@ const StaffForm = props => {
                     </div>
 
                     <div>
-                    <label>Gender</label>
+                    <Label>Gender</Label>
                     <div>
                     <Dropdown  
                         // type='text'
@@ -154,7 +143,7 @@ const StaffForm = props => {
                     </div>
 
                     <div>
-                    <label>Birthdate</label>
+                    <Label>Birthdate</Label>
                     <div>
                     <Input 
                         type='date'
@@ -167,7 +156,7 @@ const StaffForm = props => {
                     </div>
               
                     <div>
-                    <label>Teaching Rate</label>
+                    <Label>Teaching Rate</Label>
                     <div>
                     <Input 
                         type='text'
@@ -180,7 +169,7 @@ const StaffForm = props => {
                      </div>
 
                      <div>
-                    <label>Admin</label>
+                    <Label>Admin</Label>
                     <div>
                     <Input 
                         type='text'
@@ -193,7 +182,7 @@ const StaffForm = props => {
                     </div>
 
                     <div>
-                    <label>Active</label>
+                    <Label>Active</Label>
                     <div>
                     <Input 
                         type='text'
@@ -206,7 +195,7 @@ const StaffForm = props => {
                     </div>
 
                     <div>
-                    <label>User Id</label>
+                    <Label>User Id</Label>
                     <div>
                     <Input 
                         type='text'
