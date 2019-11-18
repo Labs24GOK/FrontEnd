@@ -8,6 +8,7 @@ export const FormWrap = styled.form`
   flex-direction: column;
   transition: all 200ms ease;
   background-color: #E0EBF0;
+  margin: 30px 10px 20px;
 `
 export const RowFlex = styled.div`
   display: flex;

@@ -170,13 +170,10 @@ const StudentRegistrationForm = (props) => {
   // } else {
 
   return (
-    <FormWrap onSubmit={handleSubmit} style={{ margin: '30px 10px 20px 10px' }}>
-      <fieldset style={{ border: '1px solid transparent', margin: '10px 5px 0px 5px', background: '#E0EBF0' }}>
-        <div style={{
-          display: 'grid', textAlign: 'left', gridTemplateColumns: '1fr 1fr 1fr 1fr',
-          gridGap: '15px', margin: '10px'
-        }}>
-          <div >
+    <FormWrap onSubmit={handleSubmit}>
+      <FormSet>
+        <Div>
+          <div>
             <label>CPR</label>
             <div style={{ border: `1px solid ${errorBorderCpr}`, borderRadius: '3px' }}>
               <Input
@@ -360,8 +357,8 @@ const StudentRegistrationForm = (props) => {
                 onChange={handleChange} />
             </div>
           </div>
-        </div>
-      </fieldset>
+        </Div>
+      </FormSet>
       <ButtonDiv >
         <CancelButton onClick={handleCancel}>
           Cancel
