@@ -101,6 +101,7 @@ export const editStudentDropDown = () => dispatch => {
     axios.all([locationTable, contactTable, gradeTable, blockTable])
     .then(axios.spread((...res) => {
         let tablesThree = res.map((each, i) => {
+         
           if(i === 0) {
             dispatch({type: EDIT_DROPDOWN_SUCCESSTABLE1, payload:each.data.tableData})
           } 

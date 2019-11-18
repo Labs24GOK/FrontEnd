@@ -176,7 +176,7 @@ export {
   DISPLAY_STUDENTSBYCOURSEID_SUCCESS,
   DISPLAY_STUDENTSBYCOURSEID_FAILURE,
 
-  toggleAddCourseComponent,
+  // toggleAddCourseComponent,
   addCourse,
   ADD_COURSE_START,
   ADD_COURSE_SUCCESS,

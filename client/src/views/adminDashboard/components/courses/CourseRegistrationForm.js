@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
-import { getDropDownCourses, addCourse, toggleAddCourseComponent } from '../../../../actions';
+import { getDropDownCourses, addCourse,  } from '../../../../actions';
 import Dropdown from 'react-dropdown';
 
 import 'react-dropdown/style.css';
@@ -376,6 +376,6 @@ const mapStateToProps = state => {
 export default withRouter(
     connect(
         mapStateToProps,
-        { getDropDownCourses, addCourse, toggleAddCourseComponent }
+        { getDropDownCourses, addCourse,  }
     )(CourseRegistrationForm)
 );
