@@ -155,7 +155,6 @@ console.log('STUDENT', props)
                                     placeholder='email'
                                     onChange={handleChange}
                                     value={state.email}
-                                    error={{content: 'Please enter email', pointing: 'above'}}
                                 />
                             </div>
                         </div>

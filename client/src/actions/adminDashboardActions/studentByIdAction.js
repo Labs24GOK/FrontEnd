@@ -45,7 +45,18 @@ export const toggleEditComponent = (isEditing, isEdited) => dispatch => {
 export const editStudentById = (student_id, state ) => dispatch => {
     // let obj1 = {id:id, block_code:"431", delinquent:true} //will fix later 
     // let state1 = {...state, ...obj1 }
-    axios.put(`https://speak-out-be-staging.herokuapp.com/api/?table=student&where=id=${student_id}`, state)
+
+    let {block_code, preferred_contact_type_id, school_grade_id, location_id} = state
+    let newState = {
+        ...state, 
+        block_code: block_code.label,  
+        preferred_contact_type_id: preferred_contact_type_id.method,
+        school_grade_id: school_grade_id.name,
+        location_id: location_id.name,
+        }
+    console.log('EDIT ACTION STATE', newState)
+    dispatch({ type: EDIT_STUDENTBYID_START})
+    axios.put(`https://speak-out-be-staging.herokuapp.com/api/?table=student&where=id=${student_id}`, newState)
     .then(res => {
         dispatch({
             type: EDIT_STUDENTBYID_SUCCESS,

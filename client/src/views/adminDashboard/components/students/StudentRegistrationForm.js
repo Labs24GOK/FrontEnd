@@ -336,7 +336,7 @@ const StudentRegistrationForm = (props) => {
             <Label>School grade</Label>
             <div style={{ border: `1px solid ${errorBorderSchoolGrade}`, borderRadius: '3px' }}>
               <Dropdown
-                onChange={(e) => { setStudent({ ...student, school_grade_id: e }) }}
+                onChange={(e) => { setStudent({...student, school_grade_id: e }) }}
                 value={student.school_grade_id}
                 controlClassName='myControlClassName'
                 className='dropdownRoot'
