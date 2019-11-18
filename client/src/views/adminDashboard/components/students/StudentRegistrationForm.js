@@ -163,8 +163,9 @@ const StudentRegistrationForm = (props) => {
   }
 }
 
-  const handleCancel = () => {
-
+  const handleCancel = e => {
+    e.preventDefault();
+    props.setForm(false)
   }
   // {if (props.createNewStudentIsLoading) {
   //   return <Spin style={{marginTop: '90px'}}size="large" />
@@ -364,7 +365,7 @@ const StudentRegistrationForm = (props) => {
         </div>
       </fieldset>
       <div style={{ alignSelf: 'flex-end' }}>
-        <Button onClick={handleCancel} style={{ background: '#C73642', width: '80px' }}>
+        <Button type='button' value='Cancel' onClick={handleCancel} style={{ background: '#C73642', width: '80px' }}>
           Cancel
             </Button>
         <Button type="submit">

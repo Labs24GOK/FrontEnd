@@ -12,6 +12,8 @@ import SearchStaffTable from './SearchStaffTable';
 
 
 const StaffTable = props => {
+  console.log(props.staffList)
+  const {availableID} = props;
   const [form, setForm] = useState(false);
     useEffect(() => {
         props.getStaffTable();
@@ -98,13 +100,13 @@ const StaffTable = props => {
              <SearchStaffTable />
             </div>
             <div className="create-new-entry">
-              <div style={{marginRight: '10px', cursor: 'pointer', color: '#26ABBD' }}>Create New Staff Member</div>
-              <div><FontAwesomeIcon onClick={handleAddButton} style={{width: '25px', height: '25px', cursor: 'pointer', color: '#26ABBD'}} icon={faPlusCircle} size='lg'/></div>
+              <div style={{marginRight: '10px', cursor: 'pointer', color: '#26ABBD' }} onClick={handleAddButton}>Create New Staff Member</div>
+              <div><FontAwesomeIcon style={{width: '25px', height: '25px', cursor: 'pointer', color: '#26ABBD'}} icon={faPlusCircle} size='lg'/></div>
             </div>
           </div>
 
           {form ? (
-            <StaffRegistrationForm handleCancelButtonOnForm={handleCancelButtonOnForm}/>
+            <StaffRegistrationForm handleCancelButtonOnForm={handleCancelButtonOnForm} availableID={availableID} setForm={setForm}/>
           ) : null}
           
           
@@ -138,6 +140,7 @@ const mapStateToProps = state => {
     isLoading: state.staffTableReducer.isLoading,
     staffList: state.staffTableReducer.staffList,
     error: state.staffTableReducer.error,
+    availableID : state.staffTableReducer.availableID
   };
 };
 
