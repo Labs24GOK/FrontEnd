@@ -60,7 +60,7 @@ export const TextDiv = styled.div`
 `
 export const DivIcon = styled.div`
   margin-right: 15px;
-  color: #26ABBD"; 
+  color: 26ABBD; 
   cursor: pointer; 
   width: fit-content;
 `;
