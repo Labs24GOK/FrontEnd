@@ -89,7 +89,7 @@ export const addCourse = course => dispatch => {
         .then(res => {
             if(res.status===201){
                 axios.get('https://speak-out-be-staging.herokuapp.com/api?table=course_view').then(res => {
-                    dispatch({type: ADD_COURSE_SUCCESS, payload:res.data.tableData})
+                    dispatch({type: ADD_COURSE_SUCCESS, payload: res.data.tableData[0]})
                 })
             }
         }).catch(err=> {

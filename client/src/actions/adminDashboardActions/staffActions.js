@@ -1,14 +1,25 @@
 import axios from 'axios';
+import { faSort } from '@fortawesome/free-solid-svg-icons';
 
 export const FETCH_STAFF_START = 'FETCH_STAFF_START';
 export const FETCH_STAFF_SUCCESS = 'FETCH_STAFF_SUCCESS';
 export const FETCH_STAFF_FAILURE = 'FETCH_STAFF_FAILURE';
+export const FETCH_NEXTAVAILABLEID = 'FETCH_NEXTAVAILABLEID';
 
 export const getStaffTable = () => dispatch => {
     dispatch({type: FETCH_STAFF_START})
     axios.get('https://speak-out-be-staging.herokuapp.com/api?table=staff')
         .then(res => {
+            const ids = res.data.tableData.map(each => {
+                return each.id
+            })
+            ids.sort((a,b) => {
+                return a - b
+            })
+            const nextAvailableID = ids[ids.length-1] + 1
            dispatch({type: FETCH_STAFF_SUCCESS, payload:res.data.tableData})
+           dispatch({type: FETCH_NEXTAVAILABLEID, payload: nextAvailableID})
+
         }).catch(err=> {
             console.log('err',err)
             dispatch({type: FETCH_STAFF_FAILURE, payload: err.payload})
@@ -68,14 +79,20 @@ export const ADD_STAFF_SUCCESS = 'ADD_STAFF_SUCCESS';
 export const ADD_STAFF_FAILURE = 'ADD_STAFF_FAILURE';
 
 export const toggleAddStaffComponent = () => dispatch => {
-    // console.log('hey')
     dispatch({ type: ADD_STAFF_START })
 }
 
 export const addStaff = staff => dispatch => {
-    axios.post('https://speak-out-be-staging.herokuapp.com/api?table=staff', staff)
+    const { admin, active } = staff;
+    const staffNew = {
+        ...staff,
+        admin: admin.value,
+        active: active.value
+    }
+    axios.post('https://speak-out-be-staging.herokuapp.com/api?table=staff', staffNew)
         .then(res => {
-           dispatch({type: ADD_STAFF_SUCCESS, payload:res.data})
+            const [staffAdded] = res.data
+           dispatch({type: ADD_STAFF_SUCCESS, payload: staffAdded})
         }).catch(err=> {
             console.log('err',err)
             dispatch({type: ADD_STAFF_FAILURE, payload: err.payload})

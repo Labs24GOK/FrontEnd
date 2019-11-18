@@ -162,8 +162,9 @@ const StudentRegistrationForm = (props) => {
   }
 }
 
-  const handleCancel = () => {
-
+  const handleCancel = e => {
+    e.preventDefault();
+    props.setForm(false)
   }
   // {if (props.createNewStudentIsLoading) {
   //   return <Spin style={{marginTop: '90px'}}size="large" />

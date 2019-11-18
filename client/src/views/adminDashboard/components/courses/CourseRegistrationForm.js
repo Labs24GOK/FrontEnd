@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
-import { getDropDownCourses, addCourse, toggleAddCourseComponent, getCourseTable } from '../../../../actions';
+import { getDropDownCourses, addCourse, toggleAddCourseComponent } from '../../../../actions';
 import moment from 'moment';
 import Dropdown from 'react-dropdown';
 
@@ -65,12 +65,12 @@ const CourseRegistrationForm = (props) => {
     function handleSubmit(event) {
         event.preventDefault();
         props.addCourse(course);
-        props.getCourseTable()
         props.setForm(false);
     }
 
-    const handleCancel = () => {
-
+    const handleCancel = event => {
+        event.preventDefault();
+        props.setForm(false)
     }
 
     const handleBlur = field => evt => {
@@ -125,6 +125,7 @@ const CourseRegistrationForm = (props) => {
    
 
     const errors = validate(course);
+    console.log(errors)
     const isDisabled = Object.keys(errors).some(x => errors[x]);
     const shouldMarkError = field => {
         const hasError = errors[field];
@@ -376,6 +377,6 @@ const mapStateToProps = state => {
 export default withRouter(
     connect(
         mapStateToProps,
-        { getDropDownCourses, addCourse, toggleAddCourseComponent, getCourseTable }
+        { getDropDownCourses, addCourse, toggleAddCourseComponent }
     )(CourseRegistrationForm)
 );
