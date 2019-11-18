@@ -11,10 +11,10 @@ const StudentProgressTab = props => {
     useEffect(() => {
         props.getStudentProgress(props.studentID)
     }, [])
-
-    const [edit, setEdit] = useState(false)
     let options = { year: 'numeric', month: 'numeric', day: 'numeric' }; //'long'
     let report_date = new Date(props.progressByStudentId.report_date).toLocaleDateString('en-GB', options)
+
+    const [edit, setEdit] = useState(false)
 
     if (edit) {
         return (
