@@ -58,7 +58,11 @@ export const TextDiv = styled.div`
   padding: 5px;
 `
 export const DivIcon = styled.div`
-
+  grid-column: span3; 
+  margin-right: 15px;
+  color: #26ABBD"; 
+  cursor: pointer; 
+  width: fit-content;
 `;
 
 export const CardStyle = styled.div`
