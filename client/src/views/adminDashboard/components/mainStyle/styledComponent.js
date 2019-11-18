@@ -58,6 +58,12 @@ export const TextDiv = styled.div`
   height: 26px;
   padding: 5px;
 `
+export const DivIcon = styled.div`
+  margin-right: 15px;
+  color: #26ABBD"; 
+  cursor: pointer; 
+  width: fit-content;
+`;
 
 export const CardStyle = styled.div`
   outline: none;
@@ -167,6 +173,15 @@ text-align: center;
 
 export const SaveButton = styled.button`
 width: 80px;
+height: 25px;
+border-radius: 3px;
+margin: 10px 5px 10px 10px;
+text-align: center;
+color: #FFFFFF; 
+background-color: #26ABBD;
+`
+export const AddButton = styled.button`
+width: 120px;
 height: 25px;
 border-radius: 3px;
 margin: 10px 5px 10px 10px;

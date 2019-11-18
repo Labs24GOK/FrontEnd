@@ -33,11 +33,10 @@ const ParentForm = props => {
     }
     return(
        <FormWrap onSubmit={handleSubmit}>
-            <Div>
-                     <div style={{gridColumn: "span3"}} >
-                      
-                    </div>
-                </Div>
+            {/* <Div>
+                <div style={{gridColumn: "span3"}} >
+                </div>
+            </Div> */}
                 <FormSet>
                  <Div>              
                         <div>

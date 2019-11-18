@@ -129,7 +129,7 @@ import {
                     isLoading: false,
                     error: null,
                     isPosting: true,
-                    courseList: action.payload
+                    courseList: [action.payload, ...state.courseList]
                 };
             case ADD_COURSE_FAILURE:
                 return {

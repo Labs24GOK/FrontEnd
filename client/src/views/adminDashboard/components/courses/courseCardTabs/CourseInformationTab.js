@@ -3,7 +3,8 @@ import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getCourseById, toggleEditCourse } from '../../../../../actions';
 import CourseEditForm from './CourseEditForm'
-import { Grid, Segment, Icon } from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react'
+import { FormWrap, Div, TextDiv } from '../../mainStyle/styledComponent';
 
 const CourseInformationTab = props => {
 
@@ -19,61 +20,62 @@ const CourseInformationTab = props => {
 
   return (
     <>
-    <div className="gridView">
+    <div>
     {!props.isEditing ?
-      <Grid columns='equal'>
-        <Grid.Row>
-          <Grid.Column>
-            <Segment>Course Type</Segment>
-            <Segment>{props.courseById.course_type}</Segment>
-          </Grid.Column>
-          <Grid.Column>
-            <Segment>Group Type</Segment>
-            <Segment>{props.courseById.group_type}</Segment>
-          </Grid.Column>
-          <Grid.Column>
-            <Segment>School Grade</Segment>
-            <Segment>{props.courseById.school_grade}</Segment>
-          </Grid.Column>
-          <Grid.Column>
-            <Segment>Level</Segment>
-            <Segment>{props.courseById.level}</Segment>
-          </Grid.Column>
-          <Grid.Column>
-            <Segment style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" }} onClick={editCourseInfo}>
-              <Icon name="edit" style={{ color: "#26ABBD", cursor: "pointer" }} /> Edit
-            </Segment>
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column>
-            <Segment>Section</Segment>
-            <Segment>{props.courseById.section}</Segment>
-          </Grid.Column>
-          <Grid.Column>
-            <Segment>Subsection</Segment>
-            <Segment>{props.courseById.subsection}</Segment>
-          </Grid.Column>
-          <Grid.Column>
-            <Segment>Room</Segment>
-            <Segment>{props.courseById.room_id}</Segment>
-          </Grid.Column>
-          <Grid.Column>
-            <Segment>Start Time</Segment>
-            <Segment>{props.courseById.start_time}</Segment>
-          </Grid.Column>
-          <Grid.Column>
-            <Segment>End Time</Segment>
-            <Segment>{props.courseById.end_time}</Segment>
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column>
-            <Segment>Notes</Segment>
-            <Segment>{props.courseById.notes}</Segment>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+      <FormWrap>
+         <Div>
+          <div onClick={editCourseInfo}  style={{gridColumn: "span3", marginRight: "5px",color: "#26ABBD", cursor: "pointer", width: "fit-content" }} >
+            {/* <Icon name='edit' style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" }} />
+              Edit */}
+          </div>
+        </Div>
+        <Div>
+          <div>
+            <label>Course Type</label>
+            <TextDiv>{props.courseById.course_type}</TextDiv>
+          </div>
+          <div>
+            <label>Group Type</label>
+            <TextDiv>{props.courseById.group_type}</TextDiv>
+          </div>
+          <div>
+            <label>School Grade</label>
+            <TextDiv>{props.courseById.school_grade}</TextDiv>
+          </div>
+          <div>
+            <label>Level</label>
+            <TextDiv>{props.courseById.level}</TextDiv>
+          </div>
+          <div>
+            <label>Section</label>
+            <TextDiv>{props.courseById.section}</TextDiv>
+          </div>
+          <div>
+            <label>Subsection</label>
+            <TextDiv>{props.courseById.subsection}</TextDiv>
+          </div>
+          <div>
+            <label>Room</label>
+            <TextDiv>{props.courseById.room_id}</TextDiv>
+          </div>
+          <div>
+            <label>Start Time</label>
+            <TextDiv>{props.courseById.start_time}</TextDiv>
+          </div>
+          <div>
+            <label>End Time</label>
+            <TextDiv>{props.courseById.end_time}</TextDiv>
+          </div>
+          <div>
+            <label>Notes</label>
+            <TextDiv>{props.courseById.notes}</TextDiv>
+          </div>
+          </Div>
+          <Div>
+              <div style={{gridColumn: "span3"}} >
+            </div>
+          </Div>
+      </FormWrap>
        : <CourseEditForm {...props} />}
       </div>
     </>

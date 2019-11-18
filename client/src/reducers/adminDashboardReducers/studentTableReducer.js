@@ -79,7 +79,7 @@ export const studentTableReducer = (state = initialState, action) => {
                 ...state,
                 createNewStudentIsLoading: false,
                 createNewStudentSuccessMessage: 'Student has been successfuly added',
-                studentList: [action.payload,...state.studentList]
+                studentList: [action.payload, ...state.studentList]
             }
         case CREATE_NEW_STUDENT_FAILURE:
             return {

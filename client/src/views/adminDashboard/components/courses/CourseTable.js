@@ -68,7 +68,7 @@ const CourseTable = props => {
     },
   ];
 
-
+const courseData = props.courseList.sort((a,b) => { return b.id - a.id })
   return (
     <div>
       <div className="row-above">
@@ -91,7 +91,7 @@ const CourseTable = props => {
       ) : (
           <Table
             className="rowHover"
-            dataSource={props.courseList}
+            dataSource={courseData}
             columns={tableColumns}
             pagination={{ pageSize: 15 }}
             rowKey='id'

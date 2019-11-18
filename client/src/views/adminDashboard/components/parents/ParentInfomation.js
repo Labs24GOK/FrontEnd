@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
 import { getParentById, toggleEditParent } from '../../../../actions';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import ParentForm from './ParentForm'
-import { FormWrap, Input, Button, Div, TextDiv } from '../mainStyle/styledComponent';
+import { FormWrap, Div, TextDiv } from '../mainStyle/styledComponent';
 import { Icon } from 'semantic-ui-react';
 const ParentInfomation = props => {
     useEffect(() => {
@@ -20,10 +20,9 @@ const ParentInfomation = props => {
             {!props.isEditing ?
             <FormWrap>
                 <Div>
-                     <div style={{gridColumn: "span3", marginRight: "5px"}} >
+                     <div style={{gridColumn: "span3", marginRight: "15px",color: "#26ABBD", cursor: "pointer", width: "fit-content"}} >
                         <Icon name='edit' style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" }} onClick={editParentInfo}/>
                              Edit
-                        
                     </div>
                 </Div>
                 <Div>
@@ -84,3 +83,4 @@ export default withRouter(
         { getParentById, toggleEditParent }
     )(ParentInfomation)
 )
+ 
