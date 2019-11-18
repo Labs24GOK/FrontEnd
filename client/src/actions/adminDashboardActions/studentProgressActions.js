@@ -37,7 +37,7 @@ export const postStudentProgress = student => dispatch => {
         console.log('POST ACTION:', res.data)
         dispatch({
             type: CREATE_STUDENTPROGRESS_SUCCESS,
-            payload: res.data.tableData
+            payload: res.data[0]
         })
     })
     .catch(err => {

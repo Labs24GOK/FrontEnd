@@ -12,12 +12,11 @@ import { FormWrap, FormSet, Label, Div, SaveButton, ButtonDiv } from '../../main
 
 
 const StudentProgressTab = props => {
+    // let options = { year: 'numeric', month: 'numeric', day: 'numeric' }; //'long'
+    // let report_date = new Date(props.progressByStudentId.report_date).toLocaleDateString('en-GB', options)
     useEffect(() => {
         props.getStudentProgress(props.studentID)
     }, [])
-    
-    // let options = { year: 'numeric', month: 'numeric', day: 'numeric' }; //'long'
-    // let report_date = new Date(props.progressByStudentId.report_date).toLocaleDateString('en-GB', options)
 
     const [edit, setEdit] = useState(false)
 
@@ -136,13 +135,15 @@ const StudentProgressTab = props => {
                             <Label>{props.progressByStudentId.report_date}</Label>
                         </div>
                         <div></div>
-                        <div>
-                            <Label>Overall</Label>
+                        <div>                        
                             <Progress
                                 type="circle"
                                 percent={props.progressByStudentId.speaking_fluency * 10}
                                 strokeColor='green'
+                                label= 'Overall'
                                 width={200}
+                                format={percent => `${percent}% Total`}
+                                className='overall-circle'
                                 />
                         </div>
                     </Div>

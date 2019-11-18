@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import { toggleEditProgressComponent, editStudentProgress, getStudentProgress } from '../../../../../actions';
 import { Spin } from 'antd';
 import { FormWrap, FormSet, Label, Div, SaveButton, ButtonDiv, CancelButton, Input } from '../../mainStyle/styledComponent';
+
+
+
+
 const EditStudentProgressForm = props => {
     const { studentID } = props
     let reportDate = new Date(props.progressByStudentId.report_date).toISOString().split("T")[0];
@@ -33,11 +37,14 @@ const EditStudentProgressForm = props => {
     const handleChange = e => {
         setState({ ...state, [e.target.name]: e.target.value })
     }
+
+
     const handleCancel = e => {
         e.preventDefault()
-        setCancelEdit(true)
+        // setCancelEdit(true)
         props.toggleEditProgressComponent();
     }
+
     const formSubmit = e => {
         e.preventDefault()
         props.editStudentProgress(studentID, state)
@@ -47,6 +54,8 @@ const EditStudentProgressForm = props => {
             }, 1000);
         }
     }
+
+    
     return (
         <FormWrap >
             {props.isLoading ? (
@@ -274,7 +283,7 @@ const EditStudentProgressForm = props => {
                         </Div>
                     </FormSet>
                     <ButtonDiv>
-                        <CancelButton onClick={() => {setCancelEdit(true)}}>
+                        <CancelButton onClick={handleCancel}>
                             Cancel
                         </CancelButton>
                         <SaveButton onClick={formSubmit} >

@@ -8,10 +8,7 @@ import 'react-dropdown/style.css';
 import { FormWrap, Input, Button, Label, FormSet, Div } from '../../mainStyle/styledComponent';
 
 
-
-
 const StudentProgressForm = props => {
-
     const [state, setState] = useState({
         speaking_fluency: '',
         speaking_accuracy: '',
@@ -32,31 +29,21 @@ const StudentProgressForm = props => {
         report_date: '',
         id: props.id,
     })
-
-
-
-
     const handleChange = e => {
         setState({ ...state, [e.target.name]: e.target.value })
     }
-
-
     const formSubmit = e => {
         e.preventDefault()
         props.postStudentProgress(state)
     }
-
     // const overallAverage = arr => {
     //     arr = [state.speaking_fluency, state.speaking_accuracy, state.vocabulary, state.pronunciation, state.grammar, state.listening, state.writing, state.reading, state.interest, state.participation]
     //    arr.reduce(( a, b) => a + b, 0) / arr.length
-
     // }
-
     return (
         <FormWrap onSubmit={formSubmit}>
             <FormSet>
                 <Div>
-
                     <div>
                         <Label>Speaking Fluency</Label>
                         <div>
@@ -69,7 +56,6 @@ const StudentProgressForm = props => {
                             />
                         </div>
                     </div>
-
                     <div>
                         <Label>Speaking Accuracy</Label>
                         <div>
@@ -82,7 +68,6 @@ const StudentProgressForm = props => {
                             />
                         </div>
                     </div>
-
                     <div>
                         <Label>Vocabulary</Label>
                         <div>
@@ -95,7 +80,6 @@ const StudentProgressForm = props => {
                             />
                         </div>
                     </div>
-
                     <div>
                         <Label>Pronunciation</Label>
                         <div>
@@ -108,15 +92,12 @@ const StudentProgressForm = props => {
                             />
                         </div>
                     </div>
-
                     <div>
                         <div style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" }} >
                             <Icon name="save" onClick={formSubmit} style={{ color: "#26ABBD", cursor: "pointer" }} /> 
                             Add Report
                         </div>
                     </div>
-
-
                     {/* row 2  */}
                     <div>
                         <Label>Grammar</Label>
@@ -130,7 +111,6 @@ const StudentProgressForm = props => {
                             />
                         </div>
                     </div>
-
                     <div>
                         <Label>Listening</Label>
                         <div>
@@ -143,8 +123,6 @@ const StudentProgressForm = props => {
                             />
                         </div>
                     </div>
-
-
                     <div>
                         <Label>Writing</Label>
                         <div>
@@ -157,7 +135,6 @@ const StudentProgressForm = props => {
                             />
                         </div>
                     </div>
-
                     <div>
                         <Label>Reading</Label>
                         <div>
@@ -170,7 +147,6 @@ const StudentProgressForm = props => {
                             />
                         </div>
                     </div>
-
                     <div>
                         <Label>Interest</Label>
                         <div>
@@ -183,7 +159,6 @@ const StudentProgressForm = props => {
                             />
                         </div>
                     </div>
-
                     {/* row 3 */}
                     <div>
                         <Label>Participation</Label>
@@ -197,8 +172,6 @@ const StudentProgressForm = props => {
                             />
                         </div>
                     </div>
-
-
                     <div>
                         <Label>Submitting Homework</Label>
                         <div>
@@ -211,7 +184,6 @@ const StudentProgressForm = props => {
                             />
                         </div>
                     </div>
-
                     <div>
                         <Label>Homework Effort</Label>
                         <div>
@@ -224,8 +196,6 @@ const StudentProgressForm = props => {
                             />
                         </div>
                     </div>
-
-
                     <div>
                         <Label>Notes</Label>
                         <div>
@@ -238,7 +208,6 @@ const StudentProgressForm = props => {
                             />
                         </div>
                     </div>
-
                     <div>
                         <Label>Overall</Label>
                         <div>
@@ -251,8 +220,6 @@ const StudentProgressForm = props => {
                             />
                         </div>
                     </div>
-
-
                     <div>
                         <Label>Course Id</Label>
                         <div>
@@ -265,8 +232,6 @@ const StudentProgressForm = props => {
                             />
                         </div>
                     </div>
-
-
                     <div>
                         <Label>Student Id</Label>
                         <div>
@@ -279,8 +244,6 @@ const StudentProgressForm = props => {
                             />
                         </div>
                     </div>
-
-
                     <div>
                         <Label>Teacher Id</Label>
                         <div>
@@ -293,12 +256,11 @@ const StudentProgressForm = props => {
                             />
                         </div>
                     </div>
-
                     <div>
                         <Label>Report Date</Label>
                         <div>
                             <Input
-                                type='text'
+                                type='date'
                                 name='report_date'
                                 placeholder="Report Date"
                                 onChange={handleChange}
@@ -306,16 +268,11 @@ const StudentProgressForm = props => {
                             />
                         </div>
                     </div>
-
-
-
                     </Div>
             </FormSet>
         </FormWrap>
-
     )
 }
-
 const mapStateToProps = state => {
     return {
         isLoading: state.studentProgressReducer.isLoading,
@@ -325,14 +282,8 @@ const mapStateToProps = state => {
         error: state.studentProgressReducer.error
     };
 };
-
-
 export default
     connect(
         mapStateToProps,
         { postStudentProgress, togglePostComponent }
     )(StudentProgressForm)
-
-
-
-
