@@ -42,7 +42,7 @@ const EditStudentProgressForm = props => {
     const handleCancel = e => {
         e.preventDefault()
         // setCancelEdit(true)
-        props.toggleEditProgressComponent();
+        props.toggleEditProgressComponent(true);
     }
 
     const formSubmit = e => {
@@ -55,7 +55,7 @@ const EditStudentProgressForm = props => {
         }
     }
 
-    
+
     return (
         <FormWrap >
             {props.isLoading ? (
@@ -286,7 +286,7 @@ const EditStudentProgressForm = props => {
                         <CancelButton onClick={handleCancel}>
                             Cancel
                         </CancelButton>
-                        <SaveButton onClick={formSubmit} >
+                        <SaveButton onClick={formSubmit} style={{width: '120px'}} >
                             Save Report
                         </SaveButton>
                     </ButtonDiv>
