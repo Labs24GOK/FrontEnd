@@ -6,7 +6,7 @@ import Dropdown from 'react-dropdown';
 
 import 'react-dropdown/style.css';
 
-import { FormWrap, Input, Button, Label, FormSet } from '../mainStyle/styledComponent.js';
+import { FormWrap, Input, Button, Label, FormSet, Div, ButtonDiv } from '../mainStyle/styledComponent.js';
 
 
 const CourseRegistrationForm = (props) => {
@@ -135,10 +135,7 @@ const CourseRegistrationForm = (props) => {
     return (
         <FormWrap onSubmit={handleSubmit}>
             <FormSet>
-                <div style={{
-                    display: 'grid', textAlign: 'left', gridTemplateColumns: '1fr 1fr 1fr 1fr',
-                    gridGap: '15px', margin: '10px'
-                }}>
+                <Div>
                     <div>
                         <Label>Section</Label>
                         <div style={shouldMarkError('section')? {border: '1px solid red'} : null}>
@@ -343,16 +340,16 @@ const CourseRegistrationForm = (props) => {
                         </div>
                     </div>
 
-        </div>
+        </Div>
       </FormSet>
-        <div style={{ alignSelf: 'flex-end' }}>
+        <ButtonDiv>
             <Button onClick={handleCancel} style={{ background: '#C73642', width: '80px' }}>
                 Cancel
             </Button>
             <Button type="submit" disabled={isDisabled}>
                 Add Course
             </Button>
-        </div>
+        </ButtonDiv>
     </FormWrap >
   )
 }

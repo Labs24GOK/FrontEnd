@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { toggleEditProgressComponent, editStudentProgress, getStudentProgress } from '../../../../../actions';
 import { Spin } from 'antd';
 import { FormWrap, FormSet, Label, Div, SaveButton, ButtonDiv, CancelButton, Input } from '../../mainStyle/styledComponent';
+import StudentProgressTab from './StudentProgressTab';
 
 
 
@@ -37,14 +38,6 @@ const EditStudentProgressForm = props => {
     const handleChange = e => {
         setState({ ...state, [e.target.name]: e.target.value })
     }
-
-
-    const handleCancel = e => {
-        e.preventDefault()
-        setCancelEdit(true)
-        props.toggleEditProgressComponent();
-    }
-
     const formSubmit = e => {
         e.preventDefault()
         props.editStudentProgress(studentID, state)
@@ -55,7 +48,15 @@ const EditStudentProgressForm = props => {
         }
     }
 
+    if (cancelEdit) {
+        return (
+            <StudentProgressTab  {...props} setCancelEdit={setCancelEdit} cancelEdit={cancelEdit}/>
+        )
+    } else {
+       
 
+        
+    
     return (
         <FormWrap >
             {props.isLoading ? (
@@ -283,7 +284,7 @@ const EditStudentProgressForm = props => {
                         </Div>
                     </FormSet>
                     <ButtonDiv>
-                        <CancelButton onClick={handleCancel}>
+                        <CancelButton onClick={() => { setCancelEdit(true)}}>
                             Cancel
                         </CancelButton>
                         <SaveButton style={{width: '120px'}} >
@@ -292,8 +293,9 @@ const EditStudentProgressForm = props => {
                     </ButtonDiv>
                     </>
                     )}
-                    </FormWrap>
-    )
+                </FormWrap>
+        )
+    }
 }
 const mapStateToProps = state => {
     return {

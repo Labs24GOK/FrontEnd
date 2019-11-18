@@ -5,7 +5,7 @@ import { postStudentProgress, togglePostComponent } from '../../../../../actions
 import { Table, Spin } from 'antd';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import { FormWrap, Input, Button, Label, FormSet, Div } from '../../mainStyle/styledComponent';
+import { FormWrap, Input, SaveButton, Label, FormSet, Div, ButtonDiv } from '../../mainStyle/styledComponent';
 
 
 const StudentProgressForm = props => {
@@ -92,13 +92,7 @@ const StudentProgressForm = props => {
                             />
                         </div>
                     </div>
-                    <div>
-                        <div style={{ color: "#26ABBD", cursor: "pointer", width: "fit-content" }} >
-                            <Icon name="save" onClick={formSubmit} style={{ color: "#26ABBD", cursor: "pointer" }} /> 
-                            Add Report
-                        </div>
-                    </div>
-                    {/* row 2  */}
+                    
                     <div>
                         <Label>Grammar</Label>
                         <div>
@@ -270,6 +264,11 @@ const StudentProgressForm = props => {
                     </div>
                     </Div>
             </FormSet>
+                <ButtonDiv>
+                    <SaveButton onClick={formSubmit} >
+                        Add Report
+                    </SaveButton>
+                </ButtonDiv>
         </FormWrap>
     )
 }

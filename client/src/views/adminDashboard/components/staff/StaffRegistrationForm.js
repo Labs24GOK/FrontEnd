@@ -4,7 +4,7 @@ import { addStaff, toggleAddStaffComponent, getStaffTable } from '../../../../ac
 import { withRouter } from 'react-router-dom';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import { FormWrap, Input, Button, Div, FormSet, Label} from '../mainStyle/styledComponent';
+import { FormWrap, Input, Button, Div, FormSet, Label, ButtonDiv} from '../mainStyle/styledComponent';
 
 
 const StaffRegistrationForm = (props) => {
@@ -237,14 +237,14 @@ const StaffRegistrationForm = (props) => {
                     </div>
                 </Div>
             </FormSet>
-            <div style={{ alignSelf: 'flex-end' }}>
+            <ButtonDiv>
                 <Button type="button" value="cancel" onClick={cancelBtn} style={{ background: '#C73642', width: '80px' }}>
                     Cancel
             </Button>
                 <Button type="submit">
                     Add Staff
             </Button>
-            </div>
+            </ButtonDiv>
             {/* <h3  onTimeout={props.isPosted}  timeout={3000}> Hey </h3> */}
         </FormWrap>
 
