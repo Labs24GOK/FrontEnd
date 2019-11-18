@@ -224,13 +224,13 @@ const cancelBtn = e => {
                 </div>
             </Div>
             </FormSet>
-            <ButtonDiv style={{ alignSelf: 'flex-end' }}>
-            <Button onClick={cancelBtn} style={{ background: '#C73642', width: '80px' }}>
+            <ButtonDiv>
+            <CancelButton onClick={cancelBtn}>
                 Cancel
-            </Button>
-            <Button type="submit"> 
+            </CancelButton>
+            <SaveButton type="submit"> 
                 Add student
-            </Button>
+            </SaveButton>
         </ButtonDiv>
 
         </FormWrap>

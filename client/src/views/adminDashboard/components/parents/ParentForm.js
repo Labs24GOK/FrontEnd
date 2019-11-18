@@ -4,7 +4,7 @@ import { editParentById, toggleEditParent } from '../../../../actions';
 import { withRouter } from 'react-router-dom';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import { FormWrap, Input, CancelButton, SaveButton, Div, FormSet} from '../mainStyle/styledComponent';
+import { FormWrap, Input, CancelButton, SaveButton, Div, FormSet, ButtonDiv} from '../mainStyle/styledComponent';
 const ParentForm = props => {
     
     const [state, setState] = useState({
@@ -138,14 +138,14 @@ const ParentForm = props => {
                     </div>                 
                </Div>
             </FormSet>
-             <div style={{ alignSelf: 'flex-end' }}>
+             <ButtonDiv>
              <CancelButton onClick={handleCancel} >
                  Cancel
              </CancelButton>
              <SaveButton type="submit" onClick={handleSubmit}> 
                   Save
              </SaveButton>
-         </div>
+         </ButtonDiv>
        </FormWrap> 
                 
     )

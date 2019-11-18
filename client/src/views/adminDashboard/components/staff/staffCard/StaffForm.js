@@ -47,6 +47,11 @@ const StaffForm = props => {
 
     return(
         <FormWrap onSubmit={formSubmit}>
+             <Div>
+                     <div style={{gridColumn: "span3"}} >
+                      
+                    </div>
+                </Div>
              <FormSet >
              <Div>
                     <div>

@@ -95,10 +95,8 @@ const StudentForm = (props) => {
                 <FormSet>
                     <Div>
                     {/* row 1 */}
-                        
-                                <div  style={{ gridColumn: "span 3", color: "#26ABBD", cursor: "pointer", width: "fit-content" }} >
-                                    <Icon name="save" style={{ color: "#26ABBD", cursor: "pointer" }} /> Save 
-                            
+                                <div  style={{ gridColumn: "span 4", marginRight: "15px", color: "#26ABBD", cursor: "pointer", width: "fit-content" }} >
+                                    <Icon name="save" style={{ color: "#26ABBD", cursor: "pointer" }} /> Save                           
                                     <Icon name="cancel" style={{ color: "#C73642", cursor: "pointer" }} onClick={handleCancel}  /> Cancel
                                 </div>                        
                         </Div>

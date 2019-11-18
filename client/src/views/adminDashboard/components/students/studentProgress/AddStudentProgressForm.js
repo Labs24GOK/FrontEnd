@@ -5,7 +5,7 @@ import { postStudentProgress, togglePostComponent } from '../../../../../actions
 import { Table, Spin } from 'antd';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import { FormWrap, Input, Button} from '../../mainStyle/styledComponent';
+import { FormWrap, Input, FormSet, Button, Div,} from '../../mainStyle/styledComponent';
 
 
 
@@ -54,15 +54,20 @@ const formSubmit = e => {
 // }
 
     return(
-        <FormWrap onSubmit={formSubmit} style={{ margin: '3%' }}>
+        <FormWrap onSubmit={formSubmit}>
               {props.isLoading ? (
             <Spin style={{marginTop: '150px'}}size="large" />
           ) : (
-            <fieldset style={{ border: '1px solid transparent', margin: '10px 5px 0px 5px', background: '#E0EBF0'}}>
-            <div style={{
-display: 'grid', textAlign: 'left', gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr',
-gridGap: '15px', margin: '10px'
-}}>
+            <FormSet>
+            <Div>
+
+
+<div>
+<div style={{color: "#26ABBD", cursor:"pointer", width:"fit-content"}} >
+<Icon name="save"onClick={formSubmit} style = {{color:"#26ABBD",cursor:"pointer"}}/> Add Report
+</div>
+</div>
+
 
 <div>
 <label>Speaking Fluency</label>
@@ -115,13 +120,6 @@ value={state.pronunciation}
 />
 </div>
 </div>
-
-<div>
-<div style={{color: "#26ABBD", cursor:"pointer", width:"fit-content"}} >
-<Icon name="save"onClick={formSubmit} style = {{color:"#26ABBD",cursor:"pointer"}}/> Add Report
-</div>
-</div>
-
 
 {/* row 2  */}
 <div>
@@ -315,8 +313,8 @@ value={state.report_date}
 
 
 
-            </div>
-            </fieldset>
+            </Div>
+            </FormSet>
           )}
           </FormWrap>
     
