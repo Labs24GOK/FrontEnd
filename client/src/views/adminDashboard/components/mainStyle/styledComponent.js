@@ -31,7 +31,8 @@ export const Column = styled.div`
 export const FormSet = styled.div`
  border: 1px solid transparent; 
  margin: 10px 5px 0px 5px;
-background-color: #E0EBF0;
+ background-color: #E0EBF0;
+ padding: 0 3px 0 20px;
 `
 
 export const Div = styled.div`
@@ -49,16 +50,13 @@ export const Input = styled.input`
   width: 100%;
   padding: 6px;
 `
-export const TextDiv = styled.div`
-  border-radius: 3px;
-  border: 1px solid transparent;
-  background: white;
-  width: 100%;
-  padding: 3.5px;
+export const TextDiv = styled.p`
+  font-size: 14px
+  
 `
 export const Label = styled.h5`
  margin: 2px;
- font-weight: lighter;
+//  font-weight: lighter;
 `
 export const CardStyle = styled.div`
   outline: none;
