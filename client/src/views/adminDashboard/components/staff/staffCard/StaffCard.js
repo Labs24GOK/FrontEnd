@@ -4,7 +4,6 @@ import { getStaffById, toggleEditComponent } from '../../../../../actions';
 import { withRouter, Link } from 'react-router-dom';
 import StaffInformationTab from './StaffInformationTab';
 import StaffCoursesTab from './StaffCoursesTab';
-
 import { Header, Image, Icon, Tab } from 'semantic-ui-react'
 import 'antd/dist/antd.css';
 import '../../mainStyle/mainCard.scss';

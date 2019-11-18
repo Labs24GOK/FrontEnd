@@ -11,13 +11,13 @@ export const FormWrap = styled.form`
 `
 export const RowFlex = styled.div`
   display: flex;
-  justify-conntent: space-around;
+  justify-content: space-around;
   padding: 10px;
 `;
 
 export const RowFlexEnd = styled.div`
-  diaplay: flex;
-  justify-conntent: flex-end;
+  display: flex;
+  justify-content: flex-end;
   padding: 10px;
 `;
 export const Column = styled.div`
