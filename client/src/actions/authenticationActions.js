@@ -44,6 +44,7 @@ export const logIn = (user, history) => {
       .post('http://localhost:3001/login', user)
       .then(res => {
         console.log('LOGGING IN', res);
+        // SETTING THE USER TYPE TO LOCAL STORAGE SO THAT IT DOES NOT GET LOST IF USER RELOAD THE PAGE
         localStorage.setItem('userType', res.data.user_type);
         dispatch({ type: LOGIN_SUCCESS, payload: res.data });
         history.push('/dashboard');
