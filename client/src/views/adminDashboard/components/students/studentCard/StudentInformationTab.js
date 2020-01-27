@@ -1,121 +1,131 @@
-import React, {useState, useEffect } from 'react'
-// import { bindActionCreators } from 'redux';
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
-import { getStudentById, toggleEditComponent } from '../../../../../actions';
-import { withRouter, Link } from 'react-router-dom';
+import { getStudentById, toggleEditComponent, toggleEditPlacement } from '../../../../../actions';
+import { withRouter } from 'react-router-dom';
 import StudentForm from './StudentForm';
-import './StudentInformationTab.css'
-
+import { FormWrap, Div, TextDiv, SaveButton, FormSet, ButtonDiv, Label } from '../../mainStyle/styledComponent'
 
 
 const StudentInformationTab = props => {
     useEffect(() => {
-        props.getStudentById(props.match.params.id)
+        props.getStudentById(props.studentID)
     }, [])
 
-    const [edit, setEdit] = useState(false)
-
     let options = { year: 'numeric', month: 'numeric', day: 'numeric' }; //'long'
-    let birthdate = new Date(props.studentById.birthdate).toLocaleDateString('en-US', options) 
-    let registration_date = new Date(props.studentById.registration_date).toLocaleDateString('en-US', options)
+    let birthdate = new Date(props.studentById.birthdate).toLocaleDateString('en-GB', options)
+    let registration_date = new Date(props.studentById.registration_date).toLocaleDateString('en-GB', options)
+    let grade_updated = new Date(props.studentById.grade_updated).toLocaleDateString('en-GB', options)
     
     const editStudentInfo = e => {
-        console.log('hi')
         e.preventDefault();
-        props.toggleEditComponent();
-   }
+        props.toggleEditComponent('true');
+    }
 
     return (
-        <>
-        {
-            !props.isEditing ? <div className='grid-container'>
-            <div className='row1'>
-                <h4>First Name</h4>
-                <p>{props.studentById.first_name}</p>
-                </div>
-            <div className='row1'>
-                <h4>Additional Names</h4>
-                <p>{props.studentById.additional_names}</p>
-                </div>
-            <div className='row1'>
-                <h4>Gender</h4>
-                <p>{props.studentById.gender}</p>
-                </div>
-            <div className='row1'>
-                <h4>Birth date</h4>
-                <p>{birthdate}</p>
-                </div>
-
-            <div className='row2'>
-                <h4>Home Telephone</h4>
-                <p>{props.studentById.home_telephone}</p>
-                </div>
-            <div className='row2'>
-                <h4>Mobile Telephone</h4>
-                <p>{props.studentById.mobile_telephone}</p>
-            </div>
-            <div className='row2'>
-                <h4>Email</h4>
-                <p>{props.studentById.email}</p>
-                </div>
-            <div className='row2'>
-                <h4>Preferred Contact Method</h4>
-                <p>{props.studentById.preferred_contact_method}</p>
-            </div>
-
-            <div className='row3'>
-                <h4>Location</h4>
-                <p>Not done</p>
-                </div>
-            <div className='row3'>
-                <h4>Registration Date</h4>
-                <p>{registration_date}</p>
-                </div>
-            <div className='row3'>
-                <h4>Block</h4>
-                <p>{props.studentById.block}</p>
-                </div>
-            <div className='row3'>
-                <h4>Road</h4>
-                <p>{props.studentById.road}</p>
-                </div>
-            <div className='row3'>
-                <h4>Flat</h4>
-                <p>{props.studentById.flat}</p>
-                </div>
-            <div className='row3'>
-                <h4>Building</h4>
-                <p>{props.studentById.building}</p>
-                </div>
-
-            <div className='row4'>
-                <h4>No Call</h4>
-                <p>{props.studentById.no_call}</p>
-                </div>
-            <div className='row4'>
-                <h4>Delinquent Account</h4>
-                <p>{props.studentById.delinquent_account}</p>
-                </div>
-            <div className='row4'>
-                <h4>Expelled</h4>
-                <p>{props.studentById.expelled}</p>
-                </div>
-
-            <div className='row5'>
-                <h4>Notes</h4>
-                <p>{props.studentById.notes}</p>
-                </div>
-
-            <div className='button-container'>
-                <button className='placement-button' onClick={editStudentInfo}>Edit</button>
-            </div>
-
-        </div> : <StudentForm props={props}/>
-        }
-            
-            
-            
-        </>
+        <div>
+            {
+            !props.isEditing ?
+                <FormWrap>
+                    <FormSet>
+                    <Div>
+                        <div>
+                            <Label>CPR</Label>
+                            <TextDiv>{props.studentById.cpr || "-" }</TextDiv>
+                        </div>
+                        <div>
+                            <Label>First name</Label>
+                            <TextDiv>{props.studentById.first_name || "-" }</TextDiv>
+                        </div>
+                        <div style={{ gridColumn: 'span 2' }}>
+                            <Label>Additional names</Label>
+                            <TextDiv>{props.studentById.additional_names || "-" }</TextDiv>
+                        </div>
+                        <div>
+                            <Label>Gender</Label>
+                            <TextDiv>{props.studentById.gender || "-" }</TextDiv>
+                        </div>
+                        <div>
+                            <Label>Email</Label>
+                            <TextDiv>{props.studentById.email || "-" }</TextDiv>
+                        </div>
+                        <div>
+                            <Label>School Name</Label>
+                            <TextDiv>{props.studentById.school_name || "-" }</TextDiv>
+                        </div>
+                        <div>
+                            <Label>Birthdate</Label>
+                            <TextDiv>{birthdate || "-" }</TextDiv>
+                        </div>
+                        <div>
+                            <Label>Location</Label>
+                            <TextDiv>{props.studentById.location_id || "-" }</TextDiv>
+                        </div>
+                        <div>
+                            <Label>Home Phone</Label>
+                            <TextDiv>{props.studentById.home_telephone || "-" }</TextDiv>
+                        </div>
+                        <div>
+                            <Label>Mobile</Label>
+                            <TextDiv>{props.studentById.mobile_telephone || "-" }</TextDiv>
+                        </div>
+                        
+                        <div>
+                            <Label>Contact Method</Label>
+                            <TextDiv>{props.studentById.preferred_contact_type_id || "-" }</TextDiv>
+                        </div>
+                        <div>
+                            <Label>Block Code</Label>
+                            <TextDiv>{props.studentById.block_code || "-" }</TextDiv>
+                        </div>
+                        <div>
+                            <Label>Road</Label>
+                            <TextDiv>{props.studentById.road || "-" }</TextDiv>
+                        </div>
+                        <div>
+                            <Label>Building</Label>
+                            <TextDiv>{props.studentById.building || "-" }</TextDiv>
+                        </div>
+                        <div>
+                            <Label>Flat</Label>
+                            <TextDiv>{props.studentById.flat || "-" }</TextDiv>
+                        </div>
+                        <div>
+                            <Label>Delinquent</Label>
+                            <TextDiv>{props.studentById.delinquent ? 'Yes' : 'No' || "-" }</TextDiv>
+                        </div>
+                        <div>
+                            <Label>School Grade ID</Label>
+                            <TextDiv>{props.studentById.school_grade_id || "-" }</TextDiv>
+                        </div>
+                        <div>
+                                <Label>Grade Updated</Label>
+                                <TextDiv>{grade_updated || "-" }</TextDiv> 
+                        </div>
+                        <div>
+                            <Label>Registration Date</Label>
+                            <TextDiv>{registration_date || "-" }</TextDiv>
+                        </div>
+                        {/* <div>
+                            <Label>Family ID</Label>
+                            <TextDiv>{props.studentById.family_id || "-" }</TextDiv> 
+                        </div> */}
+                        <div style={{ gridColumn: 'span 4'}}>
+                            <Label>Notes</Label>
+                            <div>
+                                <TextDiv style={{height: '80px' }}>{props.studentById.notes || "-" }</TextDiv> 
+                            </div>
+                        </div>
+                    </Div>
+                </FormSet>
+                    <ButtonDiv >
+                        <SaveButton type="submit" onClick={editStudentInfo}> 
+                            Edit
+                        </SaveButton>
+                    </ButtonDiv>
+                </FormWrap>
+                : <StudentForm {...props} />
+            }
+        </div>
     )
 }
 
@@ -124,19 +134,14 @@ const mapStateToProps = state => {
     return {
         isLoading: state.studentByIdReducer.isLoading,
         studentById: state.studentByIdReducer.studentById,
-        isEditing: state.studentByIdReducer.isEditting,
+        isEditing: state.studentByIdReducer.isEditing,
+        isTestEditing: state.placementTestReducer.isTestEditing,
     };
-  };
+};
 
-const mapDispatchToProps = dispatch => {
-    return {
-
-    }
-}
-  
-  export default withRouter(
+export default withRouter(
     connect(
-      mapStateToProps,
-      { getStudentById, toggleEditComponent }
-  )(StudentInformationTab)
-  )
+        mapStateToProps,
+        { getStudentById, toggleEditComponent, toggleEditPlacement }
+    )(StudentInformationTab)
+)

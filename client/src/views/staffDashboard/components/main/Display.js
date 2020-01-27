@@ -4,19 +4,19 @@ import Staff from '../staff/Staff';
 import Courses from '../courses/Courses';
 import Worklog from '../worklog/Worklog';
 import Attendance from '../attendance/Attendance';
-import MainUserPage from '../mainUserPage/MainUserPage';
+// import MainUserPage from '../mainUserPage/MainUserPage';
 
 
 function Display({ navigation }) {
 
-  {if (navigation === 'main') {
-    return (
-      <div>
-        <MainUserPage />
-      </div>
-    )
-  } 
-  else if (navigation === 'students') {
+  // {if (navigation === 'main') {
+  //   return (
+  //     <div>
+  //       <MainUserPage />
+  //     </div>
+  //   )
+  // } 
+if (navigation === 'students') {
     return (
       <div>
         <Students />
@@ -44,7 +44,7 @@ function Display({ navigation }) {
   //     </div>
   //   )
   // } 
-}
-}
+  }
+
 
 export default Display;
