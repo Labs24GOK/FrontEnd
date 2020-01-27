@@ -6,7 +6,7 @@ export const FETCH_COURSES_FAILURE = 'FETCH_COURSES_FAILURE';
 
 export const getCourseTable = () => dispatch => {
     dispatch({type: FETCH_COURSES_START})
-    axios.get('https://speak-out-be-staging.herokuapp.com/api?table=course_view')
+    axios.get('http://localhost:3001/api?table=course')
         .then(res => {
            dispatch({type: FETCH_COURSES_SUCCESS, payload:res.data.tableData})
         }).catch(err=> {
@@ -20,7 +20,7 @@ export const FETCH_COURSEBYID_FAILURE = 'FETCH_COURSEBYID_FAILURE';
 
 export const getCourseById = id => dispatch => {
     dispatch({ type: FETCH_COURSEBYID_START })
-    axios.get(`https://speak-out-be-staging.herokuapp.com/api?table=course_view&where=id=${id}`)
+    axios.get(`http://localhost:3001/api?table=course&where=id=${id}`)
     .then(res => {
         dispatch({
             type: FETCH_COURSEBYID_SUCCESS,
@@ -45,7 +45,7 @@ export const toggleEditCourse = () => dispatch => {
 }
 
 export const editCouseById = (id, state) => dispatch => {
-    axios.put(`https://speak-out-be-staging.herokuapp.com/api?table=course_view&where=id=${id}`, state)
+    axios.put(`http://localhost:3001/api?table=course&where=id=${id}`, state)
     .then(res => {
         dispatch({
             type: EDIT_COURSEBYID_SUCCESS,
@@ -88,10 +88,10 @@ export const addCourse = course => dispatch => {
     
     console.log(newCourse)
     dispatch({ type: ADD_COURSE_START })
-    axios.post('https://speak-out-be-staging.herokuapp.com/api?table=course', newCourse)
+    axios.post('http://localhost:3001/api?table=course', newCourse)
         .then(res => {
             // if(res.status===201){
-                // axios.get('https://speak-out-be-staging.herokuapp.com/api?table=course_view').then(res => {
+                // axios.get('http://localhost:3001/api?table=course').then(res => {
                 //     dispatch({type: ADD_COURSE_SUCCESS, payload: res.data.tableData[0]})
                 console.log('res from AddCourse', res)
                  dispatch({
@@ -117,14 +117,14 @@ export const FETCH_DROPDOWN_TABLETEACHER = 'FETCH_DROPDOWN_TABLETEACHER';
 export const FETCH_DROPDOWNCOURSES_FAILURE = 'FETCH_DROPDOWNCOURSES_FAILURE';
 
 export const getDropDownCourses = () => dispatch => {
-    const term = axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=term`)
-    const courseType = axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=course_type`)
-    const groupType = axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=group_type`)
-    const schoolGrade = axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=school_grade`)
-    const level = axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=level`)
-    const courseSchedule = axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=course_schedule`)
-    const room = axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=room`)
-    const teacher = axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=staff`)
+    const term = axios.get(`http://localhost:3001/api/?table=term`)
+    const courseType = axios.get(`http://localhost:3001/api/?table=course_type`)
+    const groupType = axios.get(`http://localhost:3001/api/?table=group_type`)
+    const schoolGrade = axios.get(`http://localhost:3001/api/?table=school_grade`)
+    const level = axios.get(`http://localhost:3001/api/?table=level`)
+    const courseSchedule = axios.get(`http://localhost:3001/api/?table=course_schedule`)
+    const room = axios.get(`http://localhost:3001/api/?table=room`)
+    const teacher = axios.get(`http://localhost:3001/api/?table=staff`)
 
     dispatch({ type: FETCH_DROPDOWNCOURSES_START})
     axios.all([term, courseType, groupType, schoolGrade, level, courseSchedule, room, teacher])
@@ -170,7 +170,7 @@ export const DISPLAY_STUDENTSBYCOURSEID_FAILURE = 'DISPLAY_STUDENTSBYCOURSEID_FA
 export const getStudentTableByCourseID = course_id => dispatch => {
     console.log('course_id in courseAction.js', course_id)
     dispatch({type: DISPLAY_STUDENTSBYCOURSEID_START})
-    axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=course_enrollment_view&where=course_id=${course_id}`)
+    axios.get(`http://localhost:3001/api/?table=course_enrollment&where=course_id=${course_id}`)
         .then(res => {
             console.log('res in courseAction.js',res)
            dispatch({type: DISPLAY_STUDENTSBYCOURSEID_SUCCESS, payload:res.data.tableData})
@@ -183,7 +183,7 @@ export const SET_FILTER_COURSES = 'SET_FILTER_COURSES';
 export const filterCourseTable = (searchTerm) => dispatch => {
     dispatch({type: SET_FILTER_COURSES, payload: searchTerm})
     dispatch({type: FETCH_COURSES_START});
-    axios.get(`https://speak-out-be-staging.herokuapp.com/api?table=course_view`)
+    axios.get(`http://localhost:3001/api?table=course`)
         .then(res => {
             searchTerm = searchTerm.toLowerCase();
             let courseList = res.data.tableData;

@@ -8,7 +8,7 @@ export const FETCH_NEXTAVAILABLEID = 'FETCH_NEXTAVAILABLEID';
 
 export const getStaffTable = () => dispatch => {
     dispatch({type: FETCH_STAFF_START})
-    axios.get('https://speak-out-be-staging.herokuapp.com/api?table=staff')
+    axios.get('http://localhost:3001/api?table=staff')
         .then(res => {
             const ids = res.data.tableData.map(each => {
                 return each.id
@@ -33,7 +33,7 @@ export const FETCH_STAFFBYID_FAILURE = 'FETCH_STAFFBYID_FAILURE';
 
 export const getStaffById = id => dispatch => {
     dispatch({ type: FETCH_STAFFBYID_START })
-    axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=staff&where=id=${id}`)
+    axios.get(`http://localhost:3001/api/?table=staff&where=id=${id}`)
     .then(res => {
         dispatch({
             type: FETCH_STAFFBYID_SUCCESS,
@@ -58,7 +58,7 @@ export const toggleStaffEditComponent = () => dispatch => {
 }
 
 export const editStaffById = (id, state) => dispatch => {
-    axios.put(`https://speak-out-be-staging.herokuapp.com/api/?table=staff&where=id=${id}`, state)
+    axios.put(`http://localhost:3001/api/?table=staff&where=id=${id}`, state)
     .then(res => {
         dispatch({
             type: EDIT_STAFFBYID_SUCCESS,
@@ -89,7 +89,7 @@ export const addStaff = staff => dispatch => {
         admin: admin.value,
         active: active.value
     }
-    axios.post('https://speak-out-be-staging.herokuapp.com/api?table=staff', staffNew)
+    axios.post('http://localhost:3001/api?table=staff', staffNew)
         .then(res => {
             const [staffAdded] = res.data
            dispatch({type: ADD_STAFF_SUCCESS, payload: staffAdded})
@@ -103,7 +103,7 @@ export const SET_FILTER_STAFF = 'SET_FILTER_STAFF';
 export const filterStaffTable = (searchTerm) => dispatch => {
     dispatch({type: SET_FILTER_STAFF, payload: searchTerm})
     dispatch({type: FETCH_STAFF_START});
-    axios.get(`https://speak-out-be-staging.herokuapp.com/api?table=staff`)
+    axios.get(`http://localhost:3001/api?table=staff`)
         .then(res => {
             searchTerm = searchTerm.toLowerCase();
             let staffList = res.data.tableData;
