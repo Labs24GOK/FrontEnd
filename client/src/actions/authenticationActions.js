@@ -1,5 +1,5 @@
 import axios from 'axios';
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true;
 
 export const LOGGEDIN_START = 'LOGGEDIN_START';
 export const LOGGEDIN_SUCCESS = 'LOGGEDIN_SUCCESS';
@@ -16,40 +16,42 @@ export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
 export const loggedIn = (history, location) => {
   return dispatch => {
     dispatch({ type: LOGGEDIN_START });
-    
-    axios 
-      .get('https://speak-out-be-staging.herokuapp.com/user')
+
+    axios
+      .get('http://localhost:3001/user')
       .then(res => {
-        console.log(res.data)
-        dispatch({ type: LOGGEDIN_SUCCESS, payload: res.data})
-        if (!res.data.authenticated && location.pathname === "/dashboard") {
-          history.push('/login')
+        console.log(res.data);
+        dispatch({ type: LOGGEDIN_SUCCESS, payload: res.data });
+        if (!res.data.authenticated && location.pathname === '/dashboard') {
+          history.push('/login');
         } else {
-          history.push('/dashboard')
+          history.push('/dashboard');
         }
       })
       .catch(err => {
-        console.log('ERROR', err)
+        console.log('ERROR', err);
         let wrongCredentials = true;
-        dispatch({ type: LOGGEDIN_FAILURE, payload: wrongCredentials })
-      })  
+        dispatch({ type: LOGGEDIN_FAILURE, payload: wrongCredentials });
+      });
   };
-}
+};
 
 export const logIn = (user, history) => {
   return dispatch => {
-    dispatch( {type: LOGIN_START} );
+    dispatch({ type: LOGIN_START });
 
     axios
-      .post('https://speak-out-be-staging.herokuapp.com/login', user)
+      .post('http://localhost:3001/login', user)
       .then(res => {
-        dispatch({ type: LOGIN_SUCCESS, payload: res.data })
+        console.log('LOGGING IN', res);
+        localStorage.setItem('userType', res.data.user_type);
+        dispatch({ type: LOGIN_SUCCESS, payload: res.data });
         history.push('/dashboard');
       })
       .catch(err => {
-        console.log('ERROR', err)
-        dispatch({ type: LOGIN_FAILURE, payload: 'Error' })
-      })  
+        console.log('ERROR', err);
+        dispatch({ type: LOGIN_FAILURE, payload: 'Error' });
+      });
   };
 };
 
@@ -58,14 +60,14 @@ export const logOut = history => {
     dispatch({ type: LOGOUT_START });
 
     axios
-      .get('https://speak-out-be-staging.herokuapp.com/logout')
+      .get('http://localhost:3001/logout')
       .then(res => {
-        dispatch({ type: LOGOUT_SUCCESS, payload: res.data })
+        dispatch({ type: LOGOUT_SUCCESS, payload: res.data });
         history.push('/');
       })
       .catch(err => {
-        console.log('ERROR API', err)
-        dispatch({ type: LOGOUT_FAILURE, payload: 'Error' })
-      })
-  }
+        console.log('ERROR API', err);
+        dispatch({ type: LOGOUT_FAILURE, payload: 'Error' });
+      });
+  };
 };
