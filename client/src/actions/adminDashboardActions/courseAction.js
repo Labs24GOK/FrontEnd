@@ -8,6 +8,7 @@ export const getCourseTable = () => dispatch => {
     dispatch({type: FETCH_COURSES_START})
     axios.get('http://localhost:3001/api?table=course')
         .then(res => {
+            console.log("Fetch Course Success Response:", res)
            dispatch({type: FETCH_COURSES_SUCCESS, payload:res.data.tableData})
         }).catch(err=> {
             dispatch({type: FETCH_COURSES_FAILURE, payload: err.payload})
