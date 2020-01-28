@@ -7,7 +7,7 @@ export const FETCH_COURSES_FAILURE = 'FETCH_COURSES_FAILURE';
 export const getCourseTable = () => dispatch => {
   dispatch({ type: FETCH_COURSES_START });
   axios
-    .get('http://localhost:3001/api?table=course_view')
+    .get('http://localhost:3001/api?table=course')
     .then(res => {
       dispatch({ type: FETCH_COURSES_SUCCESS, payload: res.data.tableData });
     })
@@ -23,7 +23,7 @@ export const FETCH_COURSEBYID_FAILURE = 'FETCH_COURSEBYID_FAILURE';
 export const getCourseById = id => dispatch => {
   dispatch({ type: FETCH_COURSEBYID_START });
   axios
-    .get(`http://localhost:3001/api?table=course_view&where=id=${id}`)
+    .get(`http://localhost:3001/api?table=course&where=id=${id}`)
     .then(res => {
       dispatch({
         type: FETCH_COURSEBYID_SUCCESS,
@@ -48,7 +48,7 @@ export const toggleEditCourse = () => dispatch => {
 
 export const editCouseById = (id, state) => dispatch => {
   axios
-    .put(`http://localhost:3001/api?table=course_view&where=id=${id}`, state)
+    .put(`http://localhost:3001/api?table=course&where=id=${id}`, state)
     .then(res => {
       dispatch({
         type: EDIT_COURSEBYID_SUCCESS,
@@ -102,7 +102,7 @@ export const addCourse = course => dispatch => {
     .post('http://localhost:3001/api?table=course', newCourse)
     .then(res => {
       // if(res.status===201){
-      // axios.get('http://localhost:3001/api?table=course_view').then(res => {
+      // axios.get('http://localhost:3001/api?table=course').then(res => {
       //     dispatch({type: ADD_COURSE_SUCCESS, payload: res.data.tableData[0]})
       console.log('res from AddCourse', res);
       dispatch({
@@ -228,7 +228,7 @@ export const getStudentTableByCourseID = course_id => dispatch => {
   dispatch({ type: DISPLAY_STUDENTSBYCOURSEID_START });
   axios
     .get(
-      `http://localhost:3001/api/?table=course_enrollment_view&where=course_id=${course_id}`
+      `http://localhost:3001/api/?table=course_enrollment&where=course_id=${course_id}`
     )
     .then(res => {
       console.log('res in courseAction.js', res);
@@ -250,7 +250,7 @@ export const filterCourseTable = searchTerm => dispatch => {
   dispatch({ type: SET_FILTER_COURSES, payload: searchTerm });
   dispatch({ type: FETCH_COURSES_START });
   axios
-    .get(`http://localhost:3001/api?table=course_view`)
+    .get(`http://localhost:3001/api?table=course`)
     .then(res => {
       searchTerm = searchTerm.toLowerCase();
       let courseList = res.data.tableData;
