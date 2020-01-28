@@ -10,7 +10,7 @@ export const getStudentCourses = student_id => dispatch => {
   dispatch({ type: FETCH_STUDENTCOURSES_START });
   axios
     .get(
-      `http://localhost:4000/api/?table=course_result&where=student_id=${student_id}`
+      `https://speak-out-be-staging.herokuapp.com/api/?table=course_result&where=student_id=${student_id}`
     )
     .then(res => {
       dispatch({

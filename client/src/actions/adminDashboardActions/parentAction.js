@@ -7,7 +7,7 @@ export const FETCH_PARENTS_FAILURE = 'FETCH_PARENTS_FAILURE';
 export const getParentTable = () => dispatch => {
   dispatch({ type: FETCH_PARENTS_START });
   axios
-    .get('http://localhost:4000/api?table=family')
+    .get('https://speak-out-be-staging.herokuapp.com/api?table=family')
     .then(res => {
       dispatch({ type: FETCH_PARENTS_SUCCESS, payload: res.data.tableData });
     })
@@ -24,7 +24,9 @@ export const FETCH_PARENTBYID_FAILURE = 'FETCH_PARENTBYID_FAILURE';
 export const getParentById = id => dispatch => {
   dispatch({ type: FETCH_PARENTBYID_START });
   axios
-    .get(`http://localhost:4000/api/?table=family&where=id=${id}`)
+    .get(
+      `https://speak-out-be-staging.herokuapp.com/api/?table=family&where=id=${id}`
+    )
     .then(res => {
       dispatch({
         type: FETCH_PARENTBYID_SUCCESS,
@@ -49,7 +51,10 @@ export const toggleEditParent = () => dispatch => {
 
 export const editParentById = (id, state) => dispatch => {
   axios
-    .put(`http://localhost:4000/api/?table=family&where=id=${id}`, state)
+    .put(
+      `https://speak-out-be-staging.herokuapp.com/api/?table=family&where=id=${id}`,
+      state
+    )
     .then(res => {
       dispatch({
         type: EDIT_PARENTBYID_SUCCESS,
@@ -75,7 +80,7 @@ export const getStudentByFamilyId = family_id => dispatch => {
   dispatch({ type: FETCH_STUDENTBYFAMILYID_START });
   axios
     .get(
-      `http://localhost:4000/api/?table=student&where=family_id=${family_id}`
+      `https://speak-out-be-staging.herokuapp.com/api/?table=student&where=family_id=${family_id}`
     )
     .then(res => {
       console.log('FAMILY ID RES', res.data);
@@ -104,7 +109,7 @@ export const toggleAddParentComponent = () => dispatch => {
 export const addParent = parent => dispatch => {
   console.log('parent action', parent);
   axios
-    .post('http://localhost:4000/api?table=family', parent)
+    .post('https://speak-out-be-staging.herokuapp.com/api?table=family', parent)
     .then(res => {
       console.log('ADD PARENT ACTION', res.data);
       dispatch({ type: ADD_PARENT_SUCCESS });
@@ -120,7 +125,7 @@ export const filterParentTable = searchTerm => dispatch => {
   dispatch({ type: SET_FILTER_PARENT, payload: searchTerm });
   dispatch({ type: FETCH_PARENTS_START });
   axios
-    .get(`http://localhost:4000/api?table=family`)
+    .get(`https://speak-out-be-staging.herokuapp.com/api?table=family`)
     .then(res => {
       searchTerm = searchTerm.toLowerCase();
       let parentList = res.data.tableData;
