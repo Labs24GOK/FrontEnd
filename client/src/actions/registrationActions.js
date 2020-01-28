@@ -1,7 +1,7 @@
-import axios from "axios";
-export const FAMILY_REGISTER_START = "FAMILY_REGISTER_START";
-export const FAMILY_REGISTER_SUCCESS = "FAMILY_REGISTER_SUCCESS";
-export const FAMILY_REGISTER_FAILURE = "FAMILY_REGISTER_FAILURE";
+import axios from 'axios';
+export const FAMILY_REGISTER_START = 'FAMILY_REGISTER_START';
+export const FAMILY_REGISTER_SUCCESS = 'FAMILY_REGISTER_SUCCESS';
+export const FAMILY_REGISTER_FAILURE = 'FAMILY_REGISTER_FAILURE';
 export const familyRegister = (register, history) => {
   return dispatch => {
     dispatch({ type: FAMILY_REGISTER_START });

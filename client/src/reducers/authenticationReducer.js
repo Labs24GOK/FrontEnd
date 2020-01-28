@@ -29,7 +29,6 @@ const initialState = {
   }
 };
 
-
 export const authenticationReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_START:
@@ -49,9 +48,9 @@ export const authenticationReducer = (state = initialState, action) => {
         },
         user: {
           authenticated: true,
-          username: action.payload.username, //update the be login endpoint to return username
+          username: action.payload.username //update the be login endpoint to return username
         }
-      }
+      };
     case LOGIN_FAILURE:
       return {
         ...state,
@@ -77,7 +76,7 @@ export const authenticationReducer = (state = initialState, action) => {
         },
         user: {
           authenticated: false,
-          username: null,
+          username: null
         }
       };
     case LOGOUT_FAILURE:
@@ -115,7 +114,7 @@ export const authenticationReducer = (state = initialState, action) => {
           isLoading: false,
           error: 'Error' //display proper error
         }
-      }
+      };
     default:
       return state;
   }

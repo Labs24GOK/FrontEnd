@@ -80,11 +80,10 @@ console.log('STUDENT', props)
     const handleSubmit = e => {
         e.preventDefault();
         console.log("this is state:", state)
-    if(error) {
-        props.toggleEditComponent('true', 'false')
-    } else {
-        props.toggleEditComponent('false', 'true')
-    }
+    // if(error) {
+    //     props.toggleEditComponent('true', 'false')
+    // } else {
+    //     props.toggleEditComponent('false', 'true')
             props.editStudentById(studentID, state)
         }
     
