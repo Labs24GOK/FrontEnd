@@ -10,9 +10,11 @@ import { FormWrap, Input, Div, FormSet, ButtonDiv, CancelButton, SaveButton, Lab
 const StudentForm = (props) => {
 
     const { studentID } = props;
-    let options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+    //let options = { year: 'numeric', month: 'numeric', day: 'numeric' };
     let birthdate = new Date(props.studentById.birthdate).toISOString().split("T")[0];
-    let registration_date = new Date(props.studentById.registration_date).toLocaleDateString('en-GB', options)
+    let registration_date = new Date(props.studentById.registration_date)
+    registration_date.setDate(registration_date.getDate()-1)
+    //.toLocaleDateString('en-GB', options)
 
     const [state, setState] = useState({
         cpr: props.studentById.cpr,
@@ -318,17 +320,6 @@ console.log('STUDENT', props)
                                 />
                             </div>
                         </div>
-                        <div>
-                            <Label>Registration Date</Label>
-                            <div>
-                                <Input
-                                    type='text'
-                                    name='registration_date'
-                                    placeholder='Registration Date'
-                                    value={registration_date}
-                                />
-                        </div>
-                      </div>
                     
                     <div style={{ gridColumn: 'span 4' }}>
                         <Label>Notes</Label>
