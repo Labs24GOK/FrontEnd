@@ -18,13 +18,13 @@ export const loggedIn = (history, location) => {
     dispatch({ type: LOGGEDIN_START });
 
     axios
-      .get('https://speak-out-be-staging.herokuapp.com/user')
+      .get('http://localhost:4000/user')
       .then(res => {
         console.log(res.data);
         dispatch({ type: LOGGEDIN_SUCCESS, payload: res.data });
         if (!res.data.authenticated && location.pathname === '/dashboard') {
           history.push('/login');
-        } else {
+        } else if (res.data.authenticated) {
           history.push('/dashboard');
         }
       })
@@ -41,7 +41,7 @@ export const logIn = (user, history) => {
     dispatch({ type: LOGIN_START });
 
     axios
-      .post('https://speak-out-be-staging.herokuapp.com/login', user)
+      .post('http://localhost:4000/login', user)
       .then(res => {
         console.log('LOGGING IN', res);
         // SETTING THE USER TYPE TO LOCAL STORAGE SO THAT IT DOES NOT GET LOST IF USER RELOAD THE PAGE
@@ -61,9 +61,10 @@ export const logOut = history => {
     dispatch({ type: LOGOUT_START });
 
     axios
-      .get('https://speak-out-be-staging.herokuapp.com/logout')
+      .get('http://localhost:4000/logout')
       .then(res => {
         dispatch({ type: LOGOUT_SUCCESS, payload: res.data });
+        localStorage.removeItem('userType');
         history.push('/');
       })
       .catch(err => {

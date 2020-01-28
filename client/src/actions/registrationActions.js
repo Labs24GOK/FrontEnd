@@ -6,10 +6,7 @@ export const familyRegister = (register, history) => {
   return dispatch => {
     dispatch({ type: FAMILY_REGISTER_START });
     axios
-      .post(
-        'https://speak-out-be-staging.herokuapp.com/parent-register',
-        register
-      )
+      .post('http://localhost:4000/parent-register', register)
       .then(res => {
         dispatch({ type: FAMILY_REGISTER_SUCCESS, payload: res.data });
         // history.push('/login');

@@ -7,7 +7,7 @@ export const FETCH_STUDENTS_FAILURE = 'FETCH_STUDENTS_FAILURE';
 export const getStudentTable = () => dispatch => {
   dispatch({ type: FETCH_STUDENTS_START });
   axios
-    .get('https://speak-out-be-staging.herokuapp.com/api?table=student')
+    .get('http://localhost:4000/api?table=student')
     .then(res => {
       dispatch({ type: FETCH_STUDENTS_SUCCESS, payload: res.data.tableData });
     })
@@ -23,7 +23,7 @@ export const filterStudentTable = searchTerm => dispatch => {
   dispatch({ type: SET_FILTER_STUDENT, payload: searchTerm });
   dispatch({ type: FETCH_STUDENTS_START });
   axios
-    .get(`https://speak-out-be-staging.herokuapp.com/api?table=student`)
+    .get(`http://localhost:4000/api?table=student`)
     .then(res => {
       searchTerm = searchTerm.toLowerCase();
       let studentList = res.data.tableData;
@@ -82,10 +82,7 @@ export const createNewStudent = student => dispatch => {
   };
   dispatch({ type: CREATE_NEW_STUDENT_START });
   axios
-    .post(
-      `https://speak-out-be-staging.herokuapp.com/api/?table=student`,
-      newStudent
-    )
+    .post(`http://localhost:4000/api/?table=student`, newStudent)
     .then(res => {
       console.log('res from createNewStudent', res);
       dispatch({
@@ -110,18 +107,12 @@ export const FETCH_DROPDOWN_SUCCESSTABLE4 = 'FETCH_DROPDOWN_SUCCESSTABLE4';
 export const FETCH_DROPDOWN_FAILURE = 'FETCH_DROPDOWN_FAILURE';
 
 export const getDropDown = () => dispatch => {
-  const locationTable = axios.get(
-    `https://speak-out-be-staging.herokuapp.com/api/?table=location`
-  );
+  const locationTable = axios.get(`http://localhost:4000/api/?table=location`);
   const contactTable = axios.get(
-    `https://speak-out-be-staging.herokuapp.com/api/?table=preferred_contact_type`
+    `http://localhost:4000/api/?table=preferred_contact_type`
   );
-  const gradeTable = axios.get(
-    `https://speak-out-be-staging.herokuapp.com/api/?table=school_grade`
-  );
-  const blockTable = axios.get(
-    `https://speak-out-be-staging.herokuapp.com/api/?table=block`
-  );
+  const gradeTable = axios.get(`http://localhost:4000/api/?table=school_grade`);
+  const blockTable = axios.get(`http://localhost:4000/api/?table=block`);
 
   dispatch({ type: FETCH_DROPDOWN_START });
   axios

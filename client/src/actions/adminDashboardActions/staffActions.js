@@ -9,7 +9,7 @@ export const FETCH_NEXTAVAILABLEID = 'FETCH_NEXTAVAILABLEID';
 export const getStaffTable = () => dispatch => {
   dispatch({ type: FETCH_STAFF_START });
   axios
-    .get('https://speak-out-be-staging.herokuapp.com/api?table=staff')
+    .get('http://localhost:4000/api?table=staff')
     .then(res => {
       const ids = res.data.tableData.map(each => {
         return each.id;
@@ -34,9 +34,7 @@ export const FETCH_STAFFBYID_FAILURE = 'FETCH_STAFFBYID_FAILURE';
 export const getStaffById = id => dispatch => {
   dispatch({ type: FETCH_STAFFBYID_START });
   axios
-    .get(
-      `https://speak-out-be-staging.herokuapp.com/api/?table=staff&where=id=${id}`
-    )
+    .get(`http://localhost:4000/api/?table=staff&where=id=${id}`)
     .then(res => {
       dispatch({
         type: FETCH_STAFFBYID_SUCCESS,
@@ -62,10 +60,7 @@ export const toggleStaffEditComponent = () => dispatch => {
 
 export const editStaffById = (id, state) => dispatch => {
   axios
-    .put(
-      `https://speak-out-be-staging.herokuapp.com/api/?table=staff&where=id=${id}`,
-      state
-    )
+    .put(`http://localhost:4000/api/?table=staff&where=id=${id}`, state)
     .then(res => {
       dispatch({
         type: EDIT_STAFFBYID_SUCCESS,
@@ -96,10 +91,7 @@ export const addStaff = staff => dispatch => {
     active: active.value
   };
   axios
-    .post(
-      'https://speak-out-be-staging.herokuapp.com/api?table=staff',
-      staffNew
-    )
+    .post('http://localhost:4000/api?table=staff', staffNew)
     .then(res => {
       const [staffAdded] = res.data;
       dispatch({ type: ADD_STAFF_SUCCESS, payload: staffAdded });
@@ -115,7 +107,7 @@ export const filterStaffTable = searchTerm => dispatch => {
   dispatch({ type: SET_FILTER_STAFF, payload: searchTerm });
   dispatch({ type: FETCH_STAFF_START });
   axios
-    .get(`https://speak-out-be-staging.herokuapp.com/api?table=staff`)
+    .get(`http://localhost:4000/api?table=staff`)
     .then(res => {
       searchTerm = searchTerm.toLowerCase();
       let staffList = res.data.tableData;
