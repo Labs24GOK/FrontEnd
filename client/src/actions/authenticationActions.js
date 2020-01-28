@@ -18,7 +18,7 @@ export const loggedIn = (history, location) => {
     dispatch({ type: LOGGEDIN_START });
 
     axios
-      .get('http://localhost:3001/user')
+      .get('http://localhost:4000/user')
       .then(res => {
         console.log(res.data);
         dispatch({ type: LOGGEDIN_SUCCESS, payload: res.data });
@@ -41,7 +41,7 @@ export const logIn = (user, history) => {
     dispatch({ type: LOGIN_START });
 
     axios
-      .post('http://localhost:3001/login', user)
+      .post('http://localhost:4000/login', user)
       .then(res => {
         console.log('LOGGING IN', res);
         // SETTING THE USER TYPE TO LOCAL STORAGE SO THAT IT DOES NOT GET LOST IF USER RELOAD THE PAGE
@@ -61,7 +61,7 @@ export const logOut = history => {
     dispatch({ type: LOGOUT_START });
 
     axios
-      .get('http://localhost:3001/logout')
+      .get('http://localhost:4000/logout')
       .then(res => {
         dispatch({ type: LOGOUT_SUCCESS, payload: res.data });
         history.push('/');

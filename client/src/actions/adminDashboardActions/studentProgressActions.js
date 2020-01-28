@@ -8,7 +8,7 @@ export const getStudentProgress = student_id => dispatch => {
   dispatch({ type: FETCH_STUDENTPROGESS_START });
   axios
     .get(
-      `http://localhost:3001/api/?table=progress_report&where=student_id=${student_id}`
+      `http://localhost:4000/api/?table=progress_report&where=student_id=${student_id}`
     )
     .then(res => {
       dispatch({
@@ -34,7 +34,7 @@ export const togglePostComponent = () => dispatch => {
 
 export const postStudentProgress = student => dispatch => {
   axios
-    .post('http://localhost:3001/api/?table=progress_report', student)
+    .post('http://localhost:4000/api/?table=progress_report', student)
     .then(res => {
       console.log('POST ACTION:', res.data);
       dispatch({
@@ -63,7 +63,7 @@ export const editStudentProgress = (student_id, state) => dispatch => {
   console.log('state', state);
   axios
     .put(
-      `http://localhost:3001/api/?table=progress_report&where=student_id=${student_id}`,
+      `http://localhost:4000/api/?table=progress_report&where=student_id=${student_id}`,
       state
     )
     .then(res => {
