@@ -10,7 +10,7 @@ export const FETCH_STUDENTSBYCOURSEID_FAILURE = 'FETCH_STUDENTSBYCOURSEID_FAILUR
 
 export const getStaffCourses = teacher_id => dispatch => {
     dispatch({ type: FETCH_STAFFCOURSES_START })
-    axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=course_view&where=teacher_id=${teacher_id}`)
+    axios.get(`http://localhost:4000/api/?table=course_view&where=teacher_id=${teacher_id}`)
     .then(res => {
         dispatch({
             type: FETCH_STAFFCOURSES_SUCCESS,
@@ -27,7 +27,7 @@ export const getStaffCourses = teacher_id => dispatch => {
 
 export const getStudentsByCourseID = course_id => dispatch => {
     dispatch({ type: FETCH_STUDENTSBYCOURSEID_START })
-    axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=course_enrollment_view&where=course_id=${course_id}`)
+    axios.get(`http://localhost:4000/api/?table=course_enrollment_view&where=course_id=${course_id}`)
     .then(res => {
         dispatch({
             type: FETCH_STUDENTSBYCOURSEID_SUCCESS,

@@ -6,7 +6,7 @@ export const FETCH_PLACEMENTTESTS_FAILURE = 'FETCH_PLACEMENTTESTS_FAILURE';
 
 export const getPlacementTests = () => dispatch => {
     dispatch({type: FETCH_PLACEMENTTESTS_START})
-    axios.get('https://speak-out-be-staging.herokuapp.com/api?table=placementexam')
+    axios.get('http://localhost:4000/api?table=placementexam')
         .then(res => {
            dispatch({type: FETCH_PLACEMENTTESTS_SUCCESS, payload:res.data.tableData})
         }).catch(err=> {
@@ -22,7 +22,7 @@ export const FETCH_PLACEMENTTESTTBYID_FAILURE = 'FETCH_PLACEMENTTESTTBYID_FAILUR
 
 export const getPlacementTestById = id => dispatch => {
     dispatch({ type: FETCH_PLACEMENTTESTTBYID_START })
-    axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=placementexam&where=student_id=${id}`)
+    axios.get(`http://localhost:4000/api/?table=placementexam&where=student_id=${id}`)
     .then(res => {
         dispatch({
             type: FETCH_PLACEMENTTESTTBYID_SUCCESS,
@@ -46,7 +46,7 @@ export const toggleEditPlacement = () => dispatch => {
 }
 
 export const editPlacementTestById = (id, state) => dispatch => {
-    axios.put(`https://speak-out-be-staging.herokuapp.com/api/?table=student&where=student_id=${id}`, state)
+    axios.put(`http://localhost:4000/api/?table=student&where=student_id=${id}`, state)
     .then(res => {
         console.log("res for editPlacementById", res)
         dispatch({

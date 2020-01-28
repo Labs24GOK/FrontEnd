@@ -8,7 +8,7 @@ export const getStudentCourses = student_id => dispatch => {
   //most students are missing the course info so this is the test student that is working 
    
     dispatch({ type: FETCH_STUDENTCOURSES_START })
-    axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=course_result_view&where=student_id=${student_id}`)
+    axios.get(`http://localhost:4000/api/?table=course_result_view&where=student_id=${student_id}`)
     .then(res => {
         dispatch({
             type: FETCH_STUDENTCOURSES_SUCCESS,

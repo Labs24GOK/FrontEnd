@@ -30,6 +30,7 @@ const StudentForm = (props) => {
         road: props.studentById.road,
         flat: props.studentById.flat,
         building: props.studentById.building,
+        school_name: props.studentById.school_name,
         no_call: props.studentById.no_call,
         delinquent: props.studentById.delinquent,
         expelled: props.studentById.expelled,
@@ -78,10 +79,12 @@ console.log('STUDENT', props)
 
     const handleSubmit = e => {
         e.preventDefault();
-        // if(error) {
-        //     props.toggleEditComponent('true', 'false')
-        // } else {
-        //     props.toggleEditComponent('false', 'true')
+        console.log("this is state:", state)
+    if(error) {
+        props.toggleEditComponent('true', 'false')
+    } else {
+        props.toggleEditComponent('false', 'true')
+    }
             props.editStudentById(studentID, state)
         }
     

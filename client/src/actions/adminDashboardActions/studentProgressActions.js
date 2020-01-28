@@ -6,7 +6,7 @@ export const FETCH_STUDENTPROGESS_FAILURE = 'FETCH_STUDENTPROGESS_FAILURE';
 
 export const getStudentProgress = student_id => dispatch => {
     dispatch({ type: FETCH_STUDENTPROGESS_START })
-    axios.get(`https://speak-out-be-staging.herokuapp.com/api/?table=progress_report&where=student_id=${student_id}`)
+    axios.get(`http://localhost:4000/api/?table=progress_report&where=student_id=${student_id}`)
     .then(res => { 
         dispatch({
             type: FETCH_STUDENTPROGESS_SUCCESS,
@@ -32,7 +32,7 @@ export const togglePostComponent = () => dispatch => {
 
 
 export const postStudentProgress = student => dispatch => {
-    axios.post('https://speak-out-be-staging.herokuapp.com/api/?table=progress_report', student)
+    axios.post('http://localhost:4000/api/?table=progress_report', student)
     .then(res => { 
         console.log('POST ACTION:', res.data)
         dispatch({
@@ -60,7 +60,7 @@ export const toggleEditProgressComponent = () => dispatch => {
 export const editStudentProgress = (student_id, state) => dispatch => {
     console.log('student_id',student_id)
     console.log('state',state)
-    axios.put(`https://speak-out-be-staging.herokuapp.com/api/?table=progress_report&where=student_id=${student_id}`, state)
+    axios.put(`http://localhost:4000/api/?table=progress_report&where=student_id=${student_id}`, state)
     .then(res => { 
         console.log('EDIT ACTION:', res)
         dispatch({
