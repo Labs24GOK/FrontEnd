@@ -43,6 +43,8 @@ const StudentForm = (props) => {
         school_grade_id: props.studentById.school_grade_id
     });
 
+console.log(props.dropDownList4)
+
     useEffect(() => {
         props.editStudentDropDown();
       }, [])
@@ -192,7 +194,7 @@ console.log('STUDENT', props)
                                     <Dropdown
                                         controlClassName='myControlClassName'
                                         className='dropdown'
-                                        onChange={(e) => setState({ ...state, location_id: e })}
+                                        onChange={(e) => setState({ ...state, location_id: e.value })}
                                         value={state.location_id}
                                         options={props.dropDownList1}
                                     />
@@ -229,7 +231,7 @@ console.log('STUDENT', props)
                                 <Dropdown
                                     controlClassName='myControlClassName'
                                     className='dropdown'
-                                    onChange= {(e) => setState({ ...state, preferred_contact_type_id: e })}
+                                    onChange= {(e) => setState({ ...state, preferred_contact_type_id: e.value })}
                                     value={state.preferred_contact_type_id}
                                     options={props.dropDownList2}
                                 />
@@ -242,7 +244,7 @@ console.log('STUDENT', props)
                                 controlClassName='myControlClassName'
                                 className='dropdown'
                                 options={props.dropDownList4}
-                                onChange={(e) => setState({ ...state, block_code: e })}
+                                onChange={(e) => setState({ ...state, block_code: e.label })}
                                 value={state.block_code}
                                 />
                             </div>
@@ -302,7 +304,7 @@ console.log('STUDENT', props)
                                 controlClassName='myControlClassName'
                                 className='dropdown'
                                 onChange={handleChange}
-                                onChange={(e) => setState({ ...state, school_grade_id: e })}
+                                onChange={(e) => setState({ ...state, school_grade_id: e.value })}
                                 options={props.dropDownList3}
                                 value={state.school_grade_id}
                                 />
