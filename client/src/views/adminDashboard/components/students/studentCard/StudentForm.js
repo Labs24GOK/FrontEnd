@@ -13,7 +13,7 @@ const StudentForm = (props) => {
     //let options = { year: 'numeric', month: 'numeric', day: 'numeric' };
     let birthdate = new Date(props.studentById.birthdate).toISOString().split("T")[0];
     let registration_date = new Date(props.studentById.registration_date)
-    registration_date.setDate(registration_date.getDate()-1)
+    registration_date.setDate(registration_date.getDate())
     //.toLocaleDateString('en-GB', options)
 
     const [state, setState] = useState({

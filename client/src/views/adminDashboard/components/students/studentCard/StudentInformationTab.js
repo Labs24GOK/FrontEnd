@@ -11,15 +11,17 @@ const StudentInformationTab = props => {
         props.getStudentById(props.studentID)
     }, [])
 
-    let options = { year: 'numeric', month: 'numeric', day: 'numeric' }; //'long'
-    let birthdate = new Date(props.studentById.birthdate).toLocaleDateString('en-GB', options)
+    let options = { year: 'numeric', month: 'numeric', day: 'numeric'}; //'long'
+    let birthdate = new Date(props.studentById.birthdate).toLocaleDateString('en-GB', {timeZone: 'UTC'})
     let registration_date = new Date(props.studentById.registration_date).toLocaleDateString('en-GB', options)
     let grade_updated = new Date(props.studentById.grade_updated).toLocaleDateString('en-GB', options)
-    
+
     const editStudentInfo = e => {
         e.preventDefault();
         props.toggleEditComponent('true');
     }
+console.log(props.studentById.birthdate)
+console.log(birthdate)
 
     return (
         <div>
