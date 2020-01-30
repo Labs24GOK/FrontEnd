@@ -4,15 +4,13 @@ export const FETCH_COURSES_START = 'FETCH_COURSES_START';
 export const FETCH_COURSES_SUCCESS = 'FETCH_COURSES_SUCCESS';
 export const FETCH_COURSES_FAILURE = 'FETCH_COURSES_FAILURE';
 
-//FETCH COURSES SUCCESS -> term_id, course_type_id, group_type_id, school_grade__id, level_id, course_schedule_id, teacher_id
-
 export const getCourseTable = () => dispatch => {
   dispatch({ type: FETCH_COURSES_START });
   axios
-    .get('http://localhost:4000/api?table=course')
+    .get(`http://localhost:4000/course`)
     .then(res => {
       console.log("RES FOR COURSE TABLE", res)
-      dispatch({ type: FETCH_COURSES_SUCCESS, payload: res.data.tableData });
+      dispatch({ type: FETCH_COURSES_SUCCESS, payload: res.data });
     })
     .catch(err => {
       dispatch({ type: FETCH_COURSES_FAILURE, payload: err.payload });

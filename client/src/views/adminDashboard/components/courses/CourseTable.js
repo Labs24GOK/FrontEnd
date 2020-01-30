@@ -28,7 +28,7 @@ const CourseTable = props => {
   const tableColumns = [
     {
       title: 'Course ID',
-      dataIndex: 'id',
+      dataIndex: 'course_id',
       key: 1,
     },
     {

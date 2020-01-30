@@ -36,7 +36,7 @@ import {
   const initialState = {
         isLoading: false,
         error: null,
-        courseList: [],//the list we are defining in this branch
+        courseList: [],
         courseById: [],
         studentsById: [],
         termTable: [],
