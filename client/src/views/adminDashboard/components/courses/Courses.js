@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
+import CourseTable from './CourseTable.js';
+import CourseCard from './CourseCard.js';
 
-function Courses() {
+
+const Course = () => {
+  const [clickedTabs, setClickedTab] = useState([]);
+  const [courseView, setCourseView] = useState('courseTableView');
+  const [courseID, setCourseID] = useState('');
 
   return (
-    <div>
-      Courses
-    </div>
+    <>
+      {
+          courseView === 'courseTableView' ? <CourseTable setCourseView = {setCourseView} 
+                    setCourseID={setCourseID} setClickedTabs = {setClickedTab}/> 
+        : courseView === 'courseCardView' ? <CourseCard courseId = {courseID} 
+                    setCourseView={setCourseView} courseView={courseView}/> : null
+      }
+    </>
   )
-}
+};
 
-export default Courses;
+export default Course;

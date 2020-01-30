@@ -1,398 +1,395 @@
-import React, {useEffect, useState} from 'react';
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faCaretDown, faCalendar, faTimes } from '@fortawesome/free-solid-svg-icons';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom';
+import { createNewStudent, getDropDown, getStudentTable } from '../../../../actions';
+import { Spin } from 'antd';
+import moment from 'moment';
 import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
-import './StudentTable.css';
-import Calendar from 'react-calendar';
-// import Calendar from 'react-calendar/dist/entry.nostyle';
-import { Icon } from 'semantic-ui-react';
+import '../mainStyle/mainTable.scss';
 
-const FormWrap = styled.form`
-  // background: #EDEEEF;
-  border: 0px transparant;
-  border-radius: 3px;
-  font-size: 12px;
-  display: flex;
-  flex-direction: column;
-  transition: all 200ms ease;
-`
+import { FormWrap, Input, Button, Div, FormSet, ButtonDiv, CancelButton, AddButton, Label} from '../mainStyle/styledComponent';
 
-const Input = styled.input`
-  outline: none;
-  border-radius: 3px;
-  border: 1px solid transparent;
-  background: white;
-  width: 100%;
-  height: 26px;
-`
 
-const Button = styled.button`
-  width: 120px;
-  height: 25px;
-  border-radius: 3px;
-  margin: 10px;
-  background: #EDEEEF;
-  text-align: left;
-`
+const StudentRegistrationForm = (props) => {
+  const [student, setStudent] = useState({
+    cpr: '',
+    registration_date: moment(new Date()).format("YYYY-MM-DD"),
+    first_name: '',
+    additional_names: '',
+    gender: '',
+    birthdate: '',
+    school_grade_id: '',
+    school_name: '',
+    grade_updated: moment(new Date()).format("YYYY-MM-DD"),
+    home_telephone: '',
+    mobile_telephone: '',
+    block_code: '',
+    road: '',
+    building: '',
+    flat: '',
+    email: '',
+    notes: '',
+    preferred_contact_type_id: '',
+    no_call: false,
+    delinquent: false,
+    expelled: false,
+    location_id: '',
+    family_id: 1
+  });
 
-const DropdownContent =  styled.div`
-  display: block;
-  position: absolute;
-  width: 40px;
-  background: red;
-  z-index: 1;
-`
-
-function StudentRegistrationForm({ handleCancelButtonOnForm }) {
-  const [student, setStudent] = useState({cpr: '', registrationDate: '', firstName: '', additionalNames: '', 
-                                          gender: '', birthdate: '', schoolGradeId: '', schoolName: '', 
-                                          gradeUpdated: '', homeTelephone: '', mobileTelephone: '', 
-                                          block: '', road: '', building: '', flat: '', email: '', 
-                                          notes: '', contactTypeId: '', noCall: false, delinquent: false,
-                                          expelled: false, locationId: ''});
-
-  const [gender, setGender] = useState(['select', 'F', 'M']);
-  const [location, setLocation] = useState(['select', 'location 1', 'location 2']);
-  const [contactMethod, setContactMethod] = useState(['select', 'contact1', 'contact2']);
-  const [schoolGrade, setSchoolGrade] = useState(['select', 'grade1', 'grade2']);
-
-  const [date, setDate] = useState(new Date());
-  const [display, setDisplay] = useState('none');
-  const [icon, setIcon] = useState("calendar alternate outline");
 
   useEffect(() => {
+    props.getDropDown();
+  }, [])
 
-  })
+
+
+
+
+  // set arrays of foreign key values to use in the dropdown (except 'gender' array it's not a foreign key)
+  const genderArr = ['F', 'M'];
+
+  // handle required fields (make them all required for now)
+  const [errorBorderCpr, setErrorBorderCpr] = useState('transparent'); //error #C73642
+  const [errorBorderFirstName, setErrorBorderFirstName] = useState('transparent'); //error #C73642
+  const [errorBorderAdditionalNames, setErrorBorderAdditionalNames] = useState('transparent'); //error #C73642
+  const [errorBorderGender, setErrorBorderGender] = useState('transparent'); //error #C73642
+  const [errorBorderBirthdate, setErrorBorderBirthdate] = useState('transparent'); //error #C73642
+  const [errorBorderSchoolGrade, setErrorBorderSchoolGrade] = useState('transparent'); //error #C73642
+  const [errorBorderSchoolName, setErrorBorderSchoolName] = useState('transparent'); //error #C73642
+  const [errorBorderHomeTelephone, setErrorBorderHomeTelephone] = useState('transparent'); //error #C73642
+  const [errorBorderMobileTelephone, setErrorBorderMobileTelephone] = useState('transparent'); //error #C73642
+  const [errorBorderBlock, setErrorBorderBlock] = useState('transparent'); //error #C73642
+  const [errorBorderRoad, setErrorBorderRoad] = useState('transparent'); //error #C73642
+  const [errorBorderBuilding, setErrorBorderBuilding] = useState('transparent'); //error #C73642
+  const [errorBorderFlat, setErrorBorderFlat] = useState('transparent'); //error #C73642
+  const [errorBorderEmail, setErrorBorderEmail] = useState('transparent'); //error #C73642
+  const [errorBorderNotes, setErrorBorderNotes] = useState('transparent'); //error #C73642
+  const [errorBorderContactType, setErrorBorderContactType] = useState('transparent'); //error #C73642
+  const [errorBorderLocation, setErrorBorderLocation] = useState('transparent'); //error #C73642
+
+
 
 
   function handleChange(event) {
-    if (event.target.name === 'noCall' || event.target.name === 'delinquent' || event.target.name === 'expelled') {
-      // important: event.target.value for checkbox should have !! in front for it to work
-      setStudent({...student, [event.target.name]: !!event.target.value})
-    } else {
-      setStudent({ ...student, [event.target.name]: event.target.value })
-    }
-  }                                        
+    setStudent({
+      ...student,
+      [event.target.name]: event.target.value
+    })
+  }
+
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log('STUDENT: ', student)
-  }
 
-  function handleCancel(event) {
-    event.preventDefault();
-    handleCancelButtonOnForm();
-  }
+    // check for required fields
+    if (student.cpr === '' || student.firstName === '' || 
+        student.additionalNames === '' || student.gender === '' ||
+        student.birthdate === '' || student.school_grade_id === '' || 
+        student.schoolName === '' || student.homeTelephone === '' ||
+        student.mobileTelephone === '' || student.block === '' || 
+        student.road === '' || student.building === '' ||
+        student.flat === '' || student.email === '' || 
+        student.notes === '' || student.contactTypeId === '' ||
+        student.locationId === '') 
+      { 
+        // highlight all that were missed
+        if (student.cpr === '') {
+          setErrorBorderCpr('#ef6570');
+        } 
+        if (student.firstName === '') {
+          setErrorBorderFirstName('#ef6570');
+        } 
+        if (student.additionalNames === '') {
+          setErrorBorderAdditionalNames('#ef6570');
+        }
+        if (student.gender === '') {
+          setErrorBorderGender('#ef6570');
+        }
+        if (student.birthdate === '') {
+          setErrorBorderBirthdate('#ef6570');
+        }
+        if (student.school_grade_id === '') {
+          setErrorBorderSchoolGrade('#ef6570');
+        }
+        if (student.schoolName === '') {
+          setErrorBorderSchoolName('#ef6570');
+        }
+        if (student.homeTelephone === '') {
+          setErrorBorderHomeTelephone('#ef6570');
+        }
+        if (student.mobileTelephone === '') {
+          setErrorBorderMobileTelephone('#ef6570');
+        }
+        if (student.block === '') {
+          setErrorBorderBlock('#ef6570');
+        }
+        if (student.road === '') {
+          setErrorBorderRoad('#ef6570');
+        }
+        if (student.building === '') {
+          setErrorBorderBuilding('#ef6570');
+        }
+        if (student.flat === '') {
+          setErrorBorderFlat('#ef6570');
+        }
+        if (student.email === '') {
+          setErrorBorderEmail('#ef6570');
+        }
+        if (student.notes === '') {
+          setErrorBorderNotes('#ef6570');
+        }
+        if (student.contactTypeId === '') {
+          setErrorBorderContactType('#ef6570');
+        }
+        if (student.locationId === '') {
+          setErrorBorderLocation('#ef6570');
+        }
 
-  function displayCalendar() {
-    if (display === 'none') {
-      setDisplay('inline');
     } else {
-      setDisplay('none');
-    }
-  }
 
-  function calendarInput(date) {
-    // console.log('DATE: ', {date}, new Date())
-    console.log('DATE: ',  new Date(date))
-    setStudent({...student, registrationDate: date})
-    setDisplay('none');
-  }
+    const birthdateDate = moment(student.birthdate).toDate();
+    const birthdateISO = birthdateDate.toISOString()
+    props.createNewStudent(student)
+    if(props.createNewStudentSuccessMessage === 'Student has been successfuly added')
+    setTimeout(()=>{
+      props.getStudentTable()
+    },1000)
 
-  function handleGenderDropdown(e) {
-    console.log('Gender click ', e)
-  }
-  
-  function handleLocationDropdown(e) {
+    props.setForm(false)
 
   }
+}
 
-  function handleContactMethodDropdown(e) {
-
+  const handleCancel = e => {
+    e.preventDefault();
+    props.setForm(false)
   }
-
-  function handleSchoolGradeDropdown(e) {
-
-  }
+  // {if (props.createNewStudentIsLoading) {
+  //   return <Spin style={{marginTop: '90px'}}size="large" />
+  // } else {
 
   return (
-    <FormWrap onSubmit={handleSubmit} style={{margin: '30px 10px 20px 10px'}}>
-      <fieldset style={{border: '1px solid transparent', margin: '10px 5px 0px 5px',  background: '#EDEEEF'}}>
-        <div style={{display: 'grid', textAlign: 'left', gridTemplateColumns: '1fr 1fr 1fr 1fr',gridGap: '15px', margin: '10px'}}>
-          <div >
-            <label>CPR</label>
-            <div>
+    <FormWrap onSubmit={handleSubmit}>
+      <FormSet>
+        <Div>
+          <div>
+            <Label>CPR</Label>
+            <div style={{ border: `1px solid ${errorBorderCpr}`, borderRadius: '3px' }}>
               <Input
                 type="text"
                 name="cpr"
                 value={student.cpr}
-                onChange={handleChange}
-              />
+                onChange={handleChange} />
             </div>
           </div>
           <div>
-            <label>First Name</label>
-            <div>
+            <Label>First Name</Label>
+            <div style={{ border: `1px solid ${errorBorderFirstName}`, borderRadius: '3px' }}>
               <Input
                 type="text"
-                name="firstName"
-                value={student.firstName}
-                onChange={handleChange}
-              />
+                name="first_name"
+                value={student.first_name}
+                onChange={handleChange} />
             </div>
           </div>
-          <div style={{gridColumn: 'span 2'}}>
-            <label>Additional names</label>
-            <div>
-              <Input style={{width: '100%'}}
+          <div style={{ gridColumn: 'span 2' }}>
+            <Label>Additional names</Label>
+            <div style={{ border: `1px solid ${errorBorderAdditionalNames}`, borderRadius: '3px' }}>
+              <Input
+                style={{ width: '100%' }}
                 type="text"
-                name="additionalNames"
-                value={student.additionalNames}
-                onChange={handleChange}
+                name="additional_names"
+                value={student.additional_names}
+                onChange={handleChange} />
+            </div>
+          </div>
+          <div>
+            <Label>Gender</Label>
+            <div style={{ border: `1px solid ${errorBorderGender}`, borderRadius: '3px' }}>
+              <Dropdown
+                value={student.gender}
+                onChange={(e) => setStudent({ ...student, gender: e.value })}
+                controlClassName='myControlClassName'
+                options={genderArr}
+                className='dropdown'
               />
             </div>
           </div>
-        <div>
-          <label>Gender</label>
           <div>
-            {/* <Input
-              type="text"
-              name="gender"
-              value={student.gender}
-              onChange={handleChange}
-            /> */}
-            {/* <FontAwesomeIcon onClick={handleGenderDropdown} icon={faCaretDown} style={{width: '20px', height: '20px', position: 'relative', marginLeft: '-25px', marginTop: '1px', color: '#afb2b5'}}/> */}
-            <Dropdown onChange={handleGenderDropdown} controlClassName='myControlClassName' className='dropdownRoot' options={[<Calendar />]}   
-            placeholder='' value={gender[0]}
-            />
-            {/* <DropdownContent>
-              <p>F</p>
-              <p>M</p>
-            </DropdownContent> */}
+            <Label>Email</Label>
+            <div style={{ border: `1px solid ${errorBorderEmail}`, borderRadius: '3px' }}>
+              <Input
+                type="email"
+                name="email"
+                value={student.email}
+                onChange={handleChange} />
+            </div>
           </div>
-        </div>
-        <div>
-          <label>Email</label>
           <div>
-            <Input
-              type="email"
-              name="email"
-              value={student.email}
-              onChange={handleChange}
-            />
+            <Label>School Name</Label>
+            <div style={{ border: `1px solid ${errorBorderSchoolName}`, borderRadius: '3px' }}>
+              <Input
+                type="text"
+                name="school_name"
+                value={student.school_name}
+                onChange={handleChange} />
+            </div>
           </div>
-        </div>
-        <div >
-          <label>Birth date</label>
           <div >
-          <Input
-            type="text"
-            name="birthdate"
-            value={student.birthdate}
-            onChange={handleChange}
-          />
-          <FontAwesomeIcon  icon={faCalendar} style={{width: '15px', height: '15px', position: 'relative', marginLeft: '-22px', marginTop: '4px', color: '#737577'}}/>
-          {/* <Icon style={{color: 'red',width: '15px', height: '15px', position: 'relative', marginLeft: '-22px', marginTop: '4px', color: '#737577'}}/> */}
-          {/* <div style={{width: '200px', position: 'relative'}}><Calendar style={{width: '100%',zIndex: '5', overflow: 'scroll'}}/></div> */}
-          </div>
-        </div>
-        <div style={{position: 'relative'}}>
-          <label>Registration date</label>
-          <div style={{position: 'absolute', width: '100%'}}>
-          <Input
-            type="text"
-            name="registrationDate"
-            value={student.registrationDate}
-            onChange={handleChange}
-          />
-          <FontAwesomeIcon onClick={displayCalendar} icon={faCalendar} style={{width: '15px', height: '15px', position: 'relative', marginLeft: '-22px', marginTop: '4px', color: '#737577'}}/>
-          <div style={{width: '200px', display: `${display}`}}>
-              <Calendar style={{width: '100%',zIndex: '5', overflow: 'scroll', position: 'absolute'}} 
-              value={date}
-              onChange={calendarInput}
-              />
-          </div>
-          </div>
-        </div>
-        <div>
-          <label>Location</label>
-          <div>
-          {/* <Input
-            type="text"
-            name="locationId"
-            value={student.locationId}
-            onChange={handleChange}
-          /> */}
-          {/* <FontAwesomeIcon  icon={faCaretDown} style={{width: '20px', height: '20px', position: 'relative', marginLeft: '-25px', marginTop: '1px', color: '#afb2b5'}}/> */}
-          <Dropdown value={location[0]} controlClassName='myControlClassName' className='dropdownRoot' options={location}   
-            placeholder='' 
-            />
-          </div>
-        </div>
-        <div>
-          <label>Home Telephone</label>
-          <div>
-          <Input
-            type="text"
-            name="homeTelephone"
-            value={student.homeTelephone}
-            onChange={handleChange}
-          />
-          </div>
-        </div>
-        <div>
-          <label>Mobile Telephone</label>
-          <div>
-          <Input
-            type="text"
-            name="mobileTelephone"
-            value={student.mobileTelephone}
-            onChange={handleChange}
-          />
-          </div>
-        </div>
-        <div>
-          <label>Preferred contact method</label>
-          <div>
-          {/* <Input
-            type="text"
-            name="contactTypeId"
-            value={student.contactTypeId}
-            onChange={handleChange}
-          />
-          <FontAwesomeIcon  icon={faCaretDown} style={{width: '20px', height: '20px', position: 'relative', marginLeft: '-25px', marginTop: '1px', color: '#afb2b5'}}/> */}
-          <Dropdown value={contactMethod[0]} controlClassName='myControlClassName' className='dropdownRoot' options={contactMethod}   
-            placeholder='' 
-            />
-          </div>
-        </div>
-        <div>
-          <label>Block</label>
-          <div>
-          <Input
-            type="text"
-            name="block"
-            value={student.block}
-            onChange={handleChange}
-          />
-          </div>
-        </div>
-        <div>
-          <label>Road</label>
-          <div>
-          <Input
-            type="text"
-            name="road"
-            value={student.road}
-            onChange={handleChange}
-          />
-          </div>
-        </div>
-        <div>
-          <label>Building</label>
-          <div>
-          <Input
-            type="text"
-            name="building"
-            value={student.building}
-            onChange={handleChange}
-          />
-          </div>
-        </div>
-        <div>
-          <label>Flat</label>
-          <div>
-          <Input
-            type="text"
-            name="flat"
-            value={student.flat}
-            onChange={handleChange}
-          />
-          </div>
-        </div>
-        <div>
-          <label>School grade</label>
-          <div>
-          {/* <Input
-            type="text"
-            name="schoolGradeId"
-            value={student.schoolGradeId}
-            onChange={handleChange}
-          />
-          <FontAwesomeIcon  icon={faCaretDown} style={{width: '20px', height: '20px', position: 'relative', marginLeft: '-25px', marginTop: '1px', color: '#afb2b5'}}/> */}
-          <Dropdown value={schoolGrade[0]} controlClassName='myControlClassName' className='dropdownRoot' options={schoolGrade}   
-            placeholder='' 
-            />
-          </div>
-        </div>
-        <div>
-          <label>School Name</label>
-          <div>
-          <Input
-            type="text"
-            name="schoolName"
-            value={student.schoolName}
-            onChange={handleChange}
-          />
-          </div>
-        </div>
-        <div style={{gridColumn: 'span 2', display: 'flex'}}>
-          <div style={{marginRight: '30px'}}>
-            <label>No call</label>
-            <div>
-            <Input 
-              type="checkbox"
-              name="noCall"
-              onChange={handleChange}
-            />
-            </div>
-          </div>
-          <div style={{marginRight: '30px'}}>
-            <label>Delinquent</label>
-            <div>
-            <Input 
-              type="checkbox"
-              name="delinquent"
-              onChange={handleChange}
-            />
+            <Label>Birth date</Label>
+            <div style={{ border: `1px solid ${errorBorderBirthdate}`, borderRadius: '3px' }}>
+              <Input
+                type="date"
+                name="birthdate"
+                value={student.birthdate}
+                onChange={handleChange} />
             </div>
           </div>
           <div>
-            <label>Expelled</label>
-            <div>
-            <Input 
-              type="checkbox"
-              name="expelled"
-              onChange={handleChange}
-            />
+            <Label>Location</Label>
+            <div style={{ border: `1px solid ${errorBorderLocation}`, borderRadius: '3px' }}>
+              <Dropdown
+                value={student.location_id}
+                onChange={(e) => setStudent({ ...student, location_id: e })}
+                controlClassName='myControlClassName'
+                options={props.dropDownList1}
+                className='dropdown' />
             </div>
-            </div>
-        </div>
-        <div style={{gridColumn: 'span 4'}}>
-          <label>Notes</label>
-          <div>
-          <textarea style={{width: '100%', height: '80px', outline: 'none', border: '1px solid transparent', borderRadius: '3px'}}
-            type="text"
-            name="notes"
-            value={student.notes}
-            onChange={handleChange}
-          />
           </div>
-        </div>
-        </div>
-      </fieldset>
-      <div style={{alignSelf: 'flex-end'}}>
-        <Button onClick={handleCancel} style={{background: '#dbddde'}}>
+          <div>
+            <Label>Home Telephone</Label>
+            <div style={{ border: `1px solid ${errorBorderHomeTelephone}`, borderRadius: '3px' }}>
+              <Input
+                type="text"
+                name="home_telephone"
+                value={student.home_telephone}
+                onChange={handleChange} />
+            </div>
+          </div>
+          <div>
+            <Label>Mobile Telephone</Label>
+            <div style={{ border: `1px solid ${errorBorderMobileTelephone}`, borderRadius: '3px' }}>
+              <Input
+                type="text"
+                name="mobile_telephone"
+                value={student.mobile_telephone}
+                onChange={handleChange} />
+            </div>
+          </div>
+          <div>
+            <Label>Preferred contact method</Label>
+            <div style={{ border: `1px solid ${errorBorderContactType}`, borderRadius: '3px' }}>
+              <Dropdown
+                onChange={(e) => setStudent({ ...student, preferred_contact_type_id: e })}
+                value={student.preferred_contact_type_id}
+                controlClassName='myControlClassName'
+                options={props.dropDownList2}
+                className='dropdown'
+                 />
+            </div>
+          </div>
+          <div>
+            <Label>Block</Label>
+            <div style={{ border: `1px solid ${errorBorderBlock}`, borderRadius: '3px' }}>
+              <Dropdown
+                onChange={(e) => { setStudent({ ...student, block_code: e }) }}
+                controlClassName='myControlClassName'
+                options={props.dropDownList4}
+                value={student.block_code} 
+                className='dropdown'
+                />
+            </div>
+          </div>
+          <div>
+            <Label>Road</Label>
+            <div style={{ border: `1px solid ${errorBorderRoad}`, borderRadius: '3px' }}>
+              <Input
+                type="text"
+                name="road"
+                value={student.road}
+                onChange={handleChange} />
+            </div>
+          </div>
+          <div>
+            <Label>Building</Label>
+            <div style={{ border: `1px solid ${errorBorderBuilding}`, borderRadius: '3px' }}>
+              <Input
+                type="text"
+                name="building"
+                value={student.building}
+                onChange={handleChange} />
+            </div>
+          </div>
+          <div>
+            <Label>Flat</Label>
+            <div style={{ border: `1px solid ${errorBorderFlat}`, borderRadius: '3px' }}>
+              <Input
+                type="text"
+                name="flat"
+                value={student.flat}
+                onChange={handleChange} />
+            </div>
+          </div>
+          <div>
+            <Label>School grade</Label>
+            <div style={{ border: `1px solid ${errorBorderSchoolGrade}`, borderRadius: '3px' }}>
+              <Dropdown
+                onChange={(e) => { setStudent({...student, school_grade_id: e }) }}
+                value={student.school_grade_id}
+                controlClassName='myControlClassName'
+                className='dropdownRoot'
+                options={props.dropDownList3}
+                className='dropdown' 
+                />
+            </div>
+          </div>
+          <div style={{ gridColumn: 'span 4' }}>
+            <Label>Notes</Label>
+            <div style={{ border: `1px solid ${errorBorderNotes}`, borderRadius: '3px' }}>
+              <textarea
+                style={{
+                  width: '100%', height: '80px', outline: 'none',
+                  border: '1px solid transparent', borderRadius: '3px'
+                }}
+                type="text"
+                name="notes"
+                value={student.notes}
+                onChange={handleChange} />
+            </div>
+          </div>
+        </Div>
+      </FormSet>
+      <ButtonDiv >
+        <CancelButton onClick={handleCancel}>
           Cancel
-        </Button>
-        <Button type="submit">
-          Save
-        </Button>
-      </div>
+            </CancelButton>
+        <AddButton type="submit">
+          Add student
+            </AddButton>
+      </ButtonDiv>
     </FormWrap>
   )
 }
 
-export default StudentRegistrationForm;
+
+
+const mapStateToProps = state => {
+  return {
+    createNewStudentIsLoading: state.studentTableReducer.createNewStudentIsLoading,
+    dropDownList1: state.studentTableReducer.dropDownList1,
+    dropDownList2: state.studentTableReducer.dropDownList2,
+    dropDownList3: state.studentTableReducer.dropDownList3,
+    dropDownList4: state.studentTableReducer.dropDownList4,
+    createNewStudentSuccessMessage: state.studentTableReducer.createNewStudentSuccessMessage
+
+  };
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { createNewStudent, getDropDown, getStudentTable }
+  )(StudentRegistrationForm)
+);
