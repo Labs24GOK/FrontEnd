@@ -36,7 +36,7 @@ import {
   const initialState = {
         isLoading: false,
         error: null,
-        courseList: [],
+        courseList: [],//the list we are defining in this branch
         courseById: [],
         studentsById: [],
         termTable: [],
@@ -56,6 +56,7 @@ import {
   
   export const coursesTableReducer = (state = initialState, action) => {
     switch (action.type) {
+        //populate course table
         case FETCH_COURSES_START:
             return {
                 ...state,
