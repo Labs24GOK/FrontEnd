@@ -10,9 +10,11 @@ import { FormWrap, Input, Div, FormSet, ButtonDiv, CancelButton, SaveButton, Lab
 const StudentForm = (props) => {
 
     const { studentID } = props;
-    let options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+    //let options = { year: 'numeric', month: 'numeric', day: 'numeric' };
     let birthdate = new Date(props.studentById.birthdate).toISOString().split("T")[0];
-    let registration_date = new Date(props.studentById.registration_date).toLocaleDateString('en-GB', options)
+    let registration_date = new Date(props.studentById.registration_date)
+    registration_date.setDate(registration_date.getDate())
+    //.toLocaleDateString('en-GB', options)
 
     const [state, setState] = useState({
         cpr: props.studentById.cpr,
@@ -30,6 +32,7 @@ const StudentForm = (props) => {
         road: props.studentById.road,
         flat: props.studentById.flat,
         building: props.studentById.building,
+        school_name: props.studentById.school_name,
         no_call: props.studentById.no_call,
         delinquent: props.studentById.delinquent,
         expelled: props.studentById.expelled,
@@ -78,10 +81,11 @@ console.log('STUDENT', props)
 
     const handleSubmit = e => {
         e.preventDefault();
-        // if(error) {
-        //     props.toggleEditComponent('true', 'false')
-        // } else {
-        //     props.toggleEditComponent('false', 'true')
+        console.log("this is state:", state)
+    // if(error) {
+    //     props.toggleEditComponent('true', 'false')
+    // } else {
+    //     props.toggleEditComponent('false', 'true')
             props.editStudentById(studentID, state)
         }
     
@@ -188,8 +192,8 @@ console.log('STUDENT', props)
                                     <Dropdown
                                         controlClassName='myControlClassName'
                                         className='dropdown'
-                                        onChange={(e) => setState({ ...state, location_id: e })}
-                                        value={state.location_id}
+                                        onChange={(e) => setState({ ...state, location_id: e.value })}
+                                        value={props.dropDownList1[state.location_id - 1]}
                                         options={props.dropDownList1}
                                     />
                                 </div>
@@ -225,8 +229,8 @@ console.log('STUDENT', props)
                                 <Dropdown
                                     controlClassName='myControlClassName'
                                     className='dropdown'
-                                    onChange= {(e) => setState({ ...state, preferred_contact_type_id: e })}
-                                    value={state.preferred_contact_type_id}
+                                    onChange= {(e) => setState({ ...state, preferred_contact_type_id: e.value })}
+                                    value={props.dropDownList2[state.preferred_contact_type_id - 1]}
                                     options={props.dropDownList2}
                                 />
                             </div>
@@ -238,8 +242,8 @@ console.log('STUDENT', props)
                                 controlClassName='myControlClassName'
                                 className='dropdown'
                                 options={props.dropDownList4}
-                                onChange={(e) => setState({ ...state, block_code: e })}
-                                value={state.block_code}
+                                onChange={(e) => setState({ ...state, block_code: e.label })}
+                                value={`${state.block_code}`}
                                 />
                             </div>
                         </div>
@@ -298,9 +302,9 @@ console.log('STUDENT', props)
                                 controlClassName='myControlClassName'
                                 className='dropdown'
                                 onChange={handleChange}
-                                onChange={(e) => setState({ ...state, school_grade_id: e })}
+                                onChange={(e) => setState({ ...state, school_grade_id: e.value })}
                                 options={props.dropDownList3}
-                                value={state.school_grade_id}
+                                value={props.dropDownList3[state.school_grade_id - 1]}
                                 />
                             </div>
                         </div>
@@ -316,17 +320,6 @@ console.log('STUDENT', props)
                                 />
                             </div>
                         </div>
-                        <div>
-                            <Label>Registration Date</Label>
-                            <div>
-                                <Input
-                                    type='text'
-                                    name='registration_date'
-                                    placeholder='Registration Date'
-                                    value={registration_date}
-                                />
-                        </div>
-                      </div>
                     
                     <div style={{ gridColumn: 'span 4' }}>
                         <Label>Notes</Label>
