@@ -120,7 +120,7 @@ export const coursesTableReducer = (state = initialState, action) => {
         return obj;
       });
       let teacher = action.payload.staff.map(each => {
-        let obj = { value: each.id, label: each.name };
+        let obj = { value: each.staff_id, label: each.name };
         return obj;
       });
       return {

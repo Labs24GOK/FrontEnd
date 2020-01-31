@@ -93,7 +93,7 @@ export const addCourse = course => dispatch => {
       console.log('res from AddCourse', res);
       dispatch({
         type: ADD_COURSE_SUCCESS,
-        payload: res.data[0],
+        payload: res.data,
       });
     })
     .catch(err => {
