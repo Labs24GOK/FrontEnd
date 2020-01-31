@@ -121,11 +121,11 @@ const CourseRegistrationForm = props => {
     };
   };
 
-  const canBeSubmitted = () => {
-    const errors = validate(course);
-    const isDisabled = Object.keys(errors).some(x => errors[x]);
-    return !isDisabled;
-  };
+  // const canBeSubmitted = () => {
+  //   const errors = validate(course);
+  //   const isDisabled = Object.keys(errors).some(x => errors[x]);
+  //   return !isDisabled;
+  // };
 
   const errors = validate(course);
   console.log(errors);
