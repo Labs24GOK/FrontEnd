@@ -24,11 +24,12 @@ export const FETCH_COURSEBYID_FAILURE = 'FETCH_COURSEBYID_FAILURE';
 export const getCourseById = id => dispatch => {
   dispatch({ type: FETCH_COURSEBYID_START });
   axios
-    .get(`http://localhost:4000/api?table=course&where=id=${id}`)
+    .get(`http://localhost:4000/course/${id}`)
     .then(res => {
+      console.log("RES FROM FETCH COURSEBYID", res)
       dispatch({
         type: FETCH_COURSEBYID_SUCCESS,
-        payload: res.data.tableData[0]
+        payload: res.data
       });
     })
     .catch(err => {
@@ -49,7 +50,7 @@ export const toggleEditCourse = () => dispatch => {
 
 export const editCouseById = (id, state) => dispatch => {
   axios
-    .put(`http://localhost:4000/api?table=course&where=id=${id}`, state)
+    .put(`http://localhost:4000/course/${id}`, state)
     .then(res => {
       dispatch({
         type: EDIT_COURSEBYID_SUCCESS,

@@ -65,7 +65,7 @@ const CourseInformationTab = props => {
           </div>
           <div>
             <Label>Room</Label>
-            <TextDiv>{props.courseById.room_id || "-" }</TextDiv>
+            <TextDiv>{props.courseById.room || "-" }</TextDiv>
           </div>
           <div>
             <Label>Teacher</Label>

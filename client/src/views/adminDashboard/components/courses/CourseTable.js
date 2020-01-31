@@ -110,12 +110,13 @@ const CourseTable = props => {
           dataSource={courseData}
           columns={tableColumns}
           pagination={{ pageSize: 15 }}
-          rowKey='id'
+          rowKey='course_id'
           onRow={(record, rowIndex) => {
             return {
               onClick: event => {
                 props.setCourseView('courseCardView');
-                props.setCourseID(record.id);
+                console.log("Record.course_id", record.course_id)
+                props.setCourseID(record.course_id);
               },
             };
           }}
