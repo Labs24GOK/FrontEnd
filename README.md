@@ -1,5 +1,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/d7cd0bec7a79ce0d7fa1/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/speak-out-fe/maintainability)
 
+[![Test Coverage](https://api.codeclimate.com/v1/badges/d7cd0bec7a79ce0d7fa1/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/speak-out-fe/test_coverage)
+
 🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline, feel free to add your own flare to it.
 
 🚫 The numbers 1️⃣ through 5️⃣ next to each item represent the week that part of the docs needs to be comepleted by.  Make sure to delete the numbers by the end of Labs.
