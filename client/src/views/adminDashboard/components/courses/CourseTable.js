@@ -109,7 +109,7 @@ const CourseTable = props => {
           className='rowHover'
           dataSource={courseData}
           columns={tableColumns}
-          pagination={{ pageSize: 15 }}
+          pagination={{ pageSize: 5 }}
           rowKey='course_id'
           onRow={(record, rowIndex) => {
             return {

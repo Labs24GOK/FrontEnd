@@ -161,12 +161,13 @@ export const filterCourseTable = searchTerm => dispatch => {
   dispatch({ type: SET_FILTER_COURSES, payload: searchTerm });
   dispatch({ type: FETCH_COURSES_START });
   axios
-    .get(`http://localhost:4000/api?table=course`)
+    .get(`http://localhost:4000/course`)
     .then(res => {
+      console.log("Set filter courses filter get", res)
       searchTerm = searchTerm.toLowerCase();
-      let courseList = res.data.tableData;
+      let courseList = res.data;
       courseList = courseList.filter(course => {
-        if (course.id && course.id.toString().match(searchTerm)) {
+        if (course.course_id && course.course_id.toString().match(searchTerm)) {
           return true;
         }
         if (course.term && course.term.toLowerCase().match(searchTerm)) {
