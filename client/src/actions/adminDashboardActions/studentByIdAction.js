@@ -5,11 +5,11 @@ export const FETCH_STUDENTBYID_FAILURE = 'FETCH_STUDENTBYID_FAILURE';
 export const getStudentById = id => dispatch => {
   dispatch({ type: FETCH_STUDENTBYID_START });
   axios
-    .get(`http://localhost:4000/api/?table=student&where=id=${id}`)
+    .get(`http://localhost:4000/student/${id}`)
     .then(res => {
       dispatch({
         type: FETCH_STUDENTBYID_SUCCESS,
-        payload: res.data.tableData[0]
+        payload: res.data
       });
     })
     .catch(err => {
