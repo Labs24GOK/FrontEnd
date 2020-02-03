@@ -7,9 +7,9 @@ export const FETCH_STUDENTS_FAILURE = 'FETCH_STUDENTS_FAILURE';
 export const getStudentTable = () => dispatch => {
   dispatch({ type: FETCH_STUDENTS_START });
   axios
-    .get('http://localhost:4000/api?table=student')
+    .get('http://localhost:4000/students')
     .then(res => {
-      dispatch({ type: FETCH_STUDENTS_SUCCESS, payload: res.data.tableData });
+      dispatch({ type: FETCH_STUDENTS_SUCCESS, payload: res.data });
     })
     .catch(err => {
       console.log('err', err);
