@@ -40,7 +40,7 @@ export const getStaffById = id => dispatch => {
       console.log('SINGLE STAFF', res);
       dispatch({
         type: FETCH_STAFFBYID_SUCCESS,
-        payload: res.data.tableData[0],
+        payload: res.data,
       });
     })
     .catch(err => {

@@ -21,33 +21,44 @@ import {
 
 const StaffForm = props => {
   const { staffID } = props;
+  let birthdate = new Date(props.staffById.birthdate).toISOString().split("T")[0];
   console.log('STAFF EDIT', props.staffById);
 
-  const gender = ['M', 'F'];
+  const genderArr = ['F', 'M']
+
+  let adminNum = 0;
+if (props.staffById.user_type === 'staff'){
+  adminNum = 1;
+}
+
+let activeNum = 0;
+if (props.staffById.active === false){
+  activeNum = 1;
+}
   const admin = [
-    { label: 'True', value: true },
-    { label: 'False', value: false }
+    { label: 'Yes', value: true },
+    { label: 'No', value: false }
   ];
   const active = [
-    { label: 'True', value: true },
-    { label: 'False', value: false }
+    { label: 'Yes', value: true },
+    { label: 'No', value: false }
   ];
 
   const [state, setState] = useState({
-    id: props.staffById.id,
     name: props.staffById.name,
     short_name: props.staffById.short_name,
     username: props.staffById.username,
     cpr: props.staffById.cpr,
     mobile_number: props.staffById.mobile_number,
+    email: props.staffById.email,
     gender: props.staffById.gender,
     accent: props.staffById.accent,
     gender: props.staffById.gender,
+    birthdate: birthdate,
     mobile_number: props.staffById.mobile_number,
     teaching_rate: props.staffById.teaching_rate,
-    admin: props.staffById.user_type === 'admin' ? true : false,
-    active: props.staffById.active,
-    user_id: props.staffById.user_id
+    admin: props.staffById.user_type,
+    active: props.staffById.active
   });
 
   const handleChange = e => {
@@ -58,6 +69,7 @@ const StaffForm = props => {
   };
 
   const formSubmit = e => {
+    console.log("THIS IS STATE", state)
     e.preventDefault();
     props.editStaffById(staffID, state);
   };
@@ -66,8 +78,6 @@ const StaffForm = props => {
     e.preventDefault();
     props.toggleStaffEditComponent();
   };
-
-  const TestArr = ['test', 'test'];
 
   return (
     <FormWrap onSubmit={formSubmit}>
@@ -158,7 +168,7 @@ const StaffForm = props => {
                 onChange={e => setState({ ...state, gender: e.value })}
                 value={state.gender}
                 controlClassName="myControlClassName"
-                options={gender}
+                options={genderArr}
                 className="dropdown"
               />
             </div>
@@ -194,8 +204,8 @@ const StaffForm = props => {
             <Label>Admin</Label>
             <div>
               <Dropdown
-                value={state.admin}
-                onChange={e => setState({ ...state, admin: e })}
+                value={admin[adminNum].label}
+                onChange={e => setState({ ...state, admin: e.value })}
                 controlClassName="myControlClassName"
                 className="dropdown"
                 options={admin}
@@ -207,8 +217,8 @@ const StaffForm = props => {
             <Label>Active</Label>
             <div>
               <Dropdown
-                value={state.active}
-                onChange={e => setState({ ...state, active: e })}
+                value={active[activeNum].label}
+                onChange={e => setState({ ...state, active: e.value })}
                 controlClassName="myControlClassName"
                 className="dropdown"
                 options={active}
