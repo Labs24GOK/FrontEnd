@@ -100,7 +100,7 @@ export const coursesTableReducer = (state = initialState, action) => {
         return obj;
       });
       let groupType = action.payload.group_types.map(each => {
-        let obj = { value: each.id, label: each.long_description };
+        let obj = { value: each.id, label: each.short_description };
         return obj;
       });
       let schoolGrade = action.payload.school_grades.map(each => {
