@@ -105,6 +105,7 @@ export const addStaff = staff => dispatch => {
 };
 
 export const SET_FILTER_STAFF = 'SET_FILTER_STAFF';
+
 export const filterStaffTable = searchTerm => dispatch => {
   dispatch({ type: SET_FILTER_STAFF, payload: searchTerm });
   dispatch({ type: FETCH_STAFF_START });
@@ -112,7 +113,7 @@ export const filterStaffTable = searchTerm => dispatch => {
     .get(`http://localhost:4000/staff`)
     .then(res => {
       searchTerm = searchTerm.toLowerCase();
-      let staffList = res.data.tableData;
+      let staffList = res.data;
       staffList = staffList.filter(staff => {
         if (staff.name && staff.name.toLowerCase().match(searchTerm)) {
           return true;
