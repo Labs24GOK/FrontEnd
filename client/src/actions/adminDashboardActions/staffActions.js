@@ -40,14 +40,14 @@ export const getStaffById = id => dispatch => {
       console.log('SINGLE STAFF', res);
       dispatch({
         type: FETCH_STAFFBYID_SUCCESS,
-        payload: res.data
+        payload: res.data.tableData[0],
       });
     })
     .catch(err => {
       console.log(err);
       dispatch({
         type: FETCH_STAFFBYID_FAILURE,
-        payload: err.data
+        payload: err.data,
       });
     });
 };
@@ -66,13 +66,13 @@ export const editStaffById = (id, state) => dispatch => {
     .then(res => {
       dispatch({
         type: EDIT_STAFFBYID_SUCCESS,
-        payload: res.data
+        payload: res.data,
       });
     })
     .catch(err => {
       dispatch({
         type: EDIT_STAFFBYID_FAILURE,
-        payload: err.data
+        payload: err.data,
       });
     });
 };
@@ -90,7 +90,7 @@ export const addStaff = staff => dispatch => {
   const staffNew = {
     ...staff,
     admin: admin.value,
-    active: active.value
+    active: active.value,
   };
   axios
     .post('http://localhost:4000/staff', staffNew)

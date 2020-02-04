@@ -13,13 +13,13 @@ import 'semantic-ui-css/semantic.min.css';
 
 const CourseCard = props => {
 
+    console.log("Props", props)
+
     const { courseId } = props
 
     useEffect(() => {
         props.getCourseById(courseId)
     }, [])
-
-
 
     const panes = [
         {
