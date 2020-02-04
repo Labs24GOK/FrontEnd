@@ -14,7 +14,7 @@ export const getParentTable = () => dispatch => {
     .catch(err => {
       console.log('err', err);
       dispatch({ type: FETCH_PARENTS_FAILURE, payload: err.payload });
-    });
+    })
 };
 
 export const FETCH_PARENTBYID_START = 'FETCH_PARENTBYID_START';
