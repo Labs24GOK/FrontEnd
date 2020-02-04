@@ -109,7 +109,7 @@ export const filterStaffTable = searchTerm => dispatch => {
   dispatch({ type: SET_FILTER_STAFF, payload: searchTerm });
   dispatch({ type: FETCH_STAFF_START });
   axios
-    .get(`http://localhost:4000/api?table=staff`)
+    .get(`http://localhost:4000/staff`)
     .then(res => {
       searchTerm = searchTerm.toLowerCase();
       let staffList = res.data.tableData;
