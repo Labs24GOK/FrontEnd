@@ -13,13 +13,13 @@ export const getStudentProgress = student_id => dispatch => {
     .then(res => {
       dispatch({
         type: FETCH_STUDENTPROGESS_SUCCESS,
-        payload: res.data.tableData[0] //taking off array lets me see payload in console and brings success message
+        payload: res.data.tableData[0], //taking off array lets me see payload in console and brings success message
       });
     })
     .catch(err => {
       dispatch({
         type: FETCH_STUDENTPROGESS_FAILURE,
-        payload: err.data
+        payload: err.data,
       });
     });
 };
@@ -39,13 +39,13 @@ export const postStudentProgress = student => dispatch => {
       console.log('POST ACTION:', res.data);
       dispatch({
         type: CREATE_STUDENTPROGRESS_SUCCESS,
-        payload: res.data[0]
+        payload: res.data[0],
       });
     })
     .catch(err => {
       dispatch({
         type: CREATE_STUDENTPROGRESS_FAILURE,
-        payload: err.data
+        payload: err.data,
       });
     });
 };
@@ -70,13 +70,13 @@ export const editStudentProgress = (student_id, state) => dispatch => {
       console.log('EDIT ACTION:', res);
       dispatch({
         type: EDIT_STUDENTPROGRESS_SUCCESS,
-        payload: res.data
+        payload: res.data,
       });
     })
     .catch(err => {
       dispatch({
         type: EDIT_STUDENTPROGRESS_FAILURE,
-        payload: err.data
+        payload: err.data,
       });
     });
 };
