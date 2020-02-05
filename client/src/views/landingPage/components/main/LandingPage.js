@@ -3,7 +3,7 @@ import Header from './header/Header';
 import Special from './special/Special';
 import Affordability from './affordability/Affordability';
 import AgeGroups from './ageGroups/AgeGroups';
-import Carousel from './carousel/Carousel';
+//import Carousel from './carousel/Carousel';
 import RegistrationInformation from './registrationInformation/RegistrationInformation';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
@@ -19,7 +19,6 @@ useEffect(() => {
       <Special />
       <Affordability />
       <AgeGroups />
-      <Carousel />
       <RegistrationInformation />
     </>
   )
