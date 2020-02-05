@@ -23,7 +23,7 @@ export const filterStudentTable = searchTerm => dispatch => {
   dispatch({ type: SET_FILTER_STUDENT, payload: searchTerm });
   dispatch({ type: FETCH_STUDENTS_START });
   axios
-    .get(`http://localhost:4000/api?table=student`)
+    .get(`http://localhost:4000/student`)
     .then(res => {
       searchTerm = searchTerm.toLowerCase();
       let studentList = res.data.tableData;
@@ -82,7 +82,7 @@ export const createNewStudent = student => dispatch => {
   };
   dispatch({ type: CREATE_NEW_STUDENT_START });
   axios
-    .post(`http://localhost:4000/api/?table=student`, newStudent)
+    .post(`http://localhost:4000/api/student`, newStudent)
     .then(res => {
       console.log('res from createNewStudent', res);
       dispatch({

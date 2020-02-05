@@ -42,7 +42,7 @@ export const editStudentById = (student_id, state) => dispatch => {
   // let state1 = {...state, ...obj1 }
   axios
     .put(
-      `http://localhost:4000/student=id=${student_id}`,
+      `http://localhost:4000/student/${student_id}`,
       state
     )
     .then(res => {
@@ -64,7 +64,7 @@ export const DELETE_STUDENTBYID_FAILURE = 'DELETE_STUDENTBYID_FAILURE';
 export const deleteStudentById = id => dispatch => {
   dispatch({ type: DELETE_STUDENTBYID_START });
   axios
-    .put(`http://localhost:4000/student=id=${id}`)
+    .put(`http://localhost:4000/student/${id}`)
     .then(res => {
       dispatch({
         type: DELETE_STUDENTBYID_SUCCESS,
