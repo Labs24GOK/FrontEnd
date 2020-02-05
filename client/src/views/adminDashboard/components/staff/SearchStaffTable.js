@@ -7,7 +7,6 @@ const SearchStaffTable = props => {
     const handleSearchInput = (e) => {
         const searchTerm = e.target.value;
         props.filterStaffTable(searchTerm)
-      
       }
     return (
         <>

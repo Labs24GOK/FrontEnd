@@ -9,16 +9,17 @@ export const FETCH_NEXTAVAILABLEID = 'FETCH_NEXTAVAILABLEID';
 export const getStaffTable = () => dispatch => {
   dispatch({ type: FETCH_STAFF_START });
   axios
-    .get('http://localhost:4000/api?table=staff')
+    .get('http://localhost:4000/staff')
     .then(res => {
-      const ids = res.data.tableData.map(each => {
+      console.log(res);
+      const ids = res.data.map(each => {
         return each.id;
       });
       ids.sort((a, b) => {
         return a - b;
       });
       const nextAvailableID = ids[ids.length - 1] + 1;
-      dispatch({ type: FETCH_STAFF_SUCCESS, payload: res.data.tableData });
+      dispatch({ type: FETCH_STAFF_SUCCESS, payload: res.data });
       dispatch({ type: FETCH_NEXTAVAILABLEID, payload: nextAvailableID });
     })
     .catch(err => {
@@ -34,11 +35,12 @@ export const FETCH_STAFFBYID_FAILURE = 'FETCH_STAFFBYID_FAILURE';
 export const getStaffById = id => dispatch => {
   dispatch({ type: FETCH_STAFFBYID_START });
   axios
-    .get(`http://localhost:4000/api/?table=staff&where=id=${id}`)
+    .get(`http://localhost:4000/staff/${id}`)
     .then(res => {
+      console.log('SINGLE STAFF', res);
       dispatch({
         type: FETCH_STAFFBYID_SUCCESS,
-        payload: res.data.tableData[0],
+        payload: res.data,
       });
     })
     .catch(err => {
@@ -60,7 +62,7 @@ export const toggleStaffEditComponent = () => dispatch => {
 
 export const editStaffById = (id, state) => dispatch => {
   axios
-    .put(`http://localhost:4000/api/?table=staff&where=id=${id}`, state)
+    .put(`http://localhost:4000/staff/${id}`, state)
     .then(res => {
       dispatch({
         type: EDIT_STAFFBYID_SUCCESS,
@@ -91,9 +93,9 @@ export const addStaff = staff => dispatch => {
     active: active.value,
   };
   axios
-    .post('http://localhost:4000/api?table=staff', staffNew)
+    .post('http://localhost:4000/staff', staffNew)
     .then(res => {
-      const [staffAdded] = res.data;
+      const staffAdded = res.data;
       dispatch({ type: ADD_STAFF_SUCCESS, payload: staffAdded });
     })
     .catch(err => {
@@ -103,14 +105,15 @@ export const addStaff = staff => dispatch => {
 };
 
 export const SET_FILTER_STAFF = 'SET_FILTER_STAFF';
+
 export const filterStaffTable = searchTerm => dispatch => {
   dispatch({ type: SET_FILTER_STAFF, payload: searchTerm });
   dispatch({ type: FETCH_STAFF_START });
   axios
-    .get(`http://localhost:4000/api?table=staff`)
+    .get(`http://localhost:4000/staff`)
     .then(res => {
       searchTerm = searchTerm.toLowerCase();
-      let staffList = res.data.tableData;
+      let staffList = res.data;
       staffList = staffList.filter(staff => {
         if (staff.name && staff.name.toLowerCase().match(searchTerm)) {
           return true;
