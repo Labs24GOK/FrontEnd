@@ -59,6 +59,7 @@ import Kindergarten from '../views/landingPage/components/courseStructure/Kinder
 import Primary from '../views/landingPage/components/courseStructure/Primary';
 import MiddleAndSecondary from '../views/landingPage/components/courseStructure/MiddleAndSecondary';
 import Register from '../authentication/Register';
+
 function Routes(props) {
   useEffect(() => {
     props.loggedIn(props.history, props.location);
