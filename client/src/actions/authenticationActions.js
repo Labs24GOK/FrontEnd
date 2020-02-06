@@ -1,7 +1,7 @@
 import axios from 'axios';
-axios.defaults.withCredentials = true;
-
 import API_URL from '../config/apiUrl';
+
+axios.defaults.withCredentials = true;
 
 export const LOGGEDIN_START = 'LOGGEDIN_START';
 export const LOGGEDIN_SUCCESS = 'LOGGEDIN_SUCCESS';
