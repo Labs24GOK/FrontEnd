@@ -60,4 +60,4 @@ describe('Staff Table Reducer', () => {
     expect(newState.staffTableReducer.isLoading).toBe(false);
     expect(newState.staffTableReducer.error).toBe('Whatever.');
   });
-});
+}); 
