@@ -9,6 +9,10 @@ import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import { toggle } from "../../../../actions/landingPageActions/landingPageActions";
 
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-157968315-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
+
 function LandingPage(props) {
 useEffect(() => {
   props.toggle();

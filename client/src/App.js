@@ -10,6 +10,7 @@ library.add(faAngleLeft)
 ReactGA.initialize('UA-157968315-1');
 
 ReactGA.pageview(window.location.pathname + window.location.search);
+console.log(window.location.pathname + window.location.search)
 
 function App() {
   
