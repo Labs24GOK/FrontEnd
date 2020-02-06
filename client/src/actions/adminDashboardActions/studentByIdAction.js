@@ -2,11 +2,13 @@ import axios from 'axios';
 export const FETCH_STUDENTBYID_START = 'FETCH_STUDENTBYID_START';
 export const FETCH_STUDENTBYID_SUCCESS = 'FETCH_STUDENTBYID_SUCCESS';
 export const FETCH_STUDENTBYID_FAILURE = 'FETCH_STUDENTBYID_FAILURE';
-export const getStudentById = id => dispatch => {
+
+export const getStudentById = student_id => dispatch => {
   dispatch({ type: FETCH_STUDENTBYID_START });
   axios
-    .get(`http://localhost:4000/student/${id}`)
+    .get(`http://localhost:4000/student/${student_id}`)
     .then(res => {
+      console.log("RES FETCH STUDENTBYID", res)
       dispatch({
         type: FETCH_STUDENTBYID_SUCCESS,
         payload: res.data
@@ -79,52 +81,17 @@ export const deleteStudentById = id => dispatch => {
     });
 };
 export const EDIT_DROPDOWN_START = 'EDIT_DROPDOWN_START';
-export const EDIT_DROPDOWN_SUCCESSTABLE1 = 'EDIT_DROPDOWN_SUCCESSTABLE1';
-export const EDIT_DROPDOWN_SUCCESSTABLE2 = 'EDIT_DROPDOWN_SUCCESSTABLE2';
-export const EDIT_DROPDOWN_SUCCESSTABLE3 = 'EDIT_DROPDOWN_SUCCESSTABLE3';
-export const EDIT_DROPDOWN_SUCCESSTABLE4 = 'EDIT_DROPDOWN_SUCCESSTABLE4';
+export const EDIT_DROPDOWN_SUCCESS = 'EDIT_DROPDOWN_SUCCESS';
 export const EDIT_DROPDOWN_FAILURE = 'EDIT_DROPDOWN_FAILURE';
-export const editStudentDropDown = () => dispatch => {
-  const locationTable = axios.get(`http://localhost:4000/student=location`);
-  const contactTable = axios.get(
-    `http://localhost:4000/student=preferred_contact_type`
-  );
-  const gradeTable = axios.get(`http://localhost:4000/student=school_grade`);
-  const blockTable = axios.get(`http://localhost:4000/student=block`);
 
+export const editStudentDropDown = () => dispatch => {
   dispatch({ type: EDIT_DROPDOWN_START });
   axios
-    .all([locationTable, contactTable, gradeTable, blockTable])
-    .then(
-      axios.spread((...res) => {
-        let tablesThree = res.map((each, i) => {
-          if (i === 0) {
-            dispatch({
-              type: EDIT_DROPDOWN_SUCCESSTABLE1,
-              payload: each.data.tableData
-            });
-          }
-          if (i === 1) {
-            dispatch({
-              type: EDIT_DROPDOWN_SUCCESSTABLE2,
-              payload: each.data.tableData
-            });
-          }
-          if (i === 2) {
-            dispatch({
-              type: EDIT_DROPDOWN_SUCCESSTABLE3,
-              payload: each.data.tableData
-            });
-          }
-          if (i === 3) {
-            dispatch({
-              type: EDIT_DROPDOWN_SUCCESSTABLE4,
-              payload: each.data.tableData
-            });
-          }
-        });
-      })
-    )
+  .get(`http://localhost:4000/student/dropdowns`)
+  .then(res => {
+    console.log('RES FOR EDIT STUDENT DROPDOWN', res);
+    dispatch({ type: EDIT_DROPDOWN_SUCCESS, payload: res.data });
+  })
     .catch(err => {
       console.log('err', err);
       dispatch({ type: EDIT_DROPDOWN_FAILURE, payload: err.payload });

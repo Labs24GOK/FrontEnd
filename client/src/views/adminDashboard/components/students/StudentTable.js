@@ -6,32 +6,29 @@ import { Table, Spin } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import StudentRegistrationForm from './StudentRegistrationForm';
-import SearchStundentTable from './SearchStudentTable'
+import SearchStundentTable from './SearchStudentTable';
 import 'antd/dist/antd.css';
-import '../mainStyle/mainTable.scss'; 
+import '../mainStyle/mainTable.scss';
 
 const StudentTable = props => {
   const [form, setForm] = useState(false);
 
   useEffect(() => {
     props.getStudentTable();
-  }, [])
-
+  }, []);
 
   const handleCancelButtonOnForm = () => {
     setForm(false);
-  }
-
-
+  };
 
   const handleAddButton = () => {
     setForm(!form);
-  }
+  };
 
   const studentTableColumns = [
     {
       title: 'Student ID',
-      dataIndex: 'id',
+      dataIndex: 'student_id',
       key: 1,
     },
     {
@@ -62,50 +59,59 @@ const StudentTable = props => {
   ];
 
   const studentData = props.studentList.sort((a, b) => {
-    return b.id - a.id
-  })
+    return b.id - a.id;
+  });
   return (
     <div>
-      <div className="row-above">
+      <div className='row-above'>
         <div>
           <SearchStundentTable />
         </div>
-        <div className="create-new-entry"  onClick={handleAddButton} style={{cursor: "pointer", color: '#26ABBD'}}>
+        <div
+          className='create-new-entry'
+          onClick={handleAddButton}
+          style={{ cursor: 'pointer', color: '#26ABBD' }}
+        >
           <div style={{ marginRight: '10px' }}>Create New Student</div>
-          <div><FontAwesomeIcon  
-            style={{ width: '25px', height: '25px', cursor: 'pointer' }} 
-            icon={faPlusCircle} size='lg' />
+          <div>
+            <FontAwesomeIcon
+              style={{ width: '25px', height: '25px', cursor: 'pointer' }}
+              icon={faPlusCircle}
+              size='lg'
+            />
           </div>
         </div>
       </div>
 
       {form ? (
-        <StudentRegistrationForm handleCancelButtonOnForm={handleCancelButtonOnForm} setForm={setForm} />
+        <StudentRegistrationForm
+          handleCancelButtonOnForm={handleCancelButtonOnForm}
+          setForm={setForm}
+        />
       ) : null}
 
-
       {props.isLoading ? (
-        <Spin style={{ marginTop: '150px' }} size="large" />
+        <Spin style={{ marginTop: '150px' }} size='large' />
       ) : (
-          <Table
-            className="rowHover"
-            dataSource={studentData}
-            columns={studentTableColumns}
-            pagination={{ pageSize: 15 }}
-            rowKey='id'
-            onRow={(record, rowIndex) => {
-              return {
-                onClick: event => {
-                  props.setStudentView('studentCardView');
-                  props.setStudentID(record.id)
-                }
-              };
-            }}
-          />
-        )}
+        <Table
+          className='rowHover'
+          dataSource={studentData}
+          columns={studentTableColumns}
+          pagination={{ pageSize: 15 }}
+          rowKey='id'
+          onRow={(record, rowIndex) => {
+            return {
+              onClick: event => {
+                props.setStudentView('studentCardView');
+                props.setStudentID(record.student_id);
+              },
+            };
+          }}
+        />
+      )}
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = state => {
   return {
@@ -116,8 +122,5 @@ const mapStateToProps = state => {
 };
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    { getStudentTable }
-  )(StudentTable)
-)
+  connect(mapStateToProps, { getStudentTable })(StudentTable)
+);

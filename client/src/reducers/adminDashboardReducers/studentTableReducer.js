@@ -9,10 +9,7 @@ import {
     CREATE_NEW_STUDENT_FAILURE,
 
     FETCH_DROPDOWN_START,
-    FETCH_DROPDOWN_SUCCESSTABLE1,
-    FETCH_DROPDOWN_SUCCESSTABLE2,
-    FETCH_DROPDOWN_SUCCESSTABLE3,
-    FETCH_DROPDOWN_SUCCESSTABLE4,
+    FETCH_DROPDOWN_SUCCESS,
     FETCH_DROPDOWN_FAILURE,
 
 } from '../../actions';
@@ -28,18 +25,18 @@ const initialState = {
     cardError: null,
     cardIsEditting: false,
     cardIsEditted: false,
-    dropDownList1: [],
-    dropDownList2: [],
-    dropDownList3: [],
-    dropDownList4: [],
-    locationID: {},
-    contactMethodID: {},
-    blockID: {},
-    gradeID: {},
+    locationsTable: [],
+    contactTypesTable: [],
+    blocksTable: [],
+    schoolGradeTable: [],
+    // familiesTable: [],
+    // locationID: {},
+    // contactMethodID: {},
+    // blockID: {},
+    // gradeID: {},
     createNewStudentIsLoading: false,
     createNewStudentError: null,
     createNewStudentSuccessMessage: '',
-
 }
 
 export const studentTableReducer = (state = initialState, action) => {
@@ -98,49 +95,31 @@ export const studentTableReducer = (state = initialState, action) => {
                 isLoading: true,
                 error: null
             }
-        case FETCH_DROPDOWN_SUCCESSTABLE1:
-            let location = action.payload.map(each => {
+        case FETCH_DROPDOWN_SUCCESS:
+            let grade = action.payload.school_grades.map(each => {
+                let obj= {value: each.id, label: each.name}
+                return obj;
+            })
+            let block = action.payload.blocks.map(each => {
+                let obj = {value: each.block_code, label: each.block_code}
+                return obj;
+            })
+            let contact = action.payload.contact_types.map(each => {
+                let obj = {value : each.id, label: each.method}
+                return obj;
+            })
+            let location = action.payload.locations.map(each => {
                 let obj = {value: each.id, label: each.name}
                 return obj;
             })
             return {
                 ...state,
                 isLoading: false,
+                locationsTable: location,
+                contactTypesTable: contact,
+                blocksTable: block,
+                schoolGradeTable: grade,
                 error: null,
-                dropDownList1: location
-            }
-        case FETCH_DROPDOWN_SUCCESSTABLE2:
-            let contact = action.payload.map(each => {
-                let obj = {value : each.id, label: each.method}
-                return obj;
-            })
-            return {
-                ...state,
-                isLoading: false,
-                error: null,
-                dropDownList2: contact
-            }
-        case FETCH_DROPDOWN_SUCCESSTABLE3:
-            let grade = action.payload.map(each => {
-                let obj= {value: each.id, label:each.name}
-                return obj;
-            })
-            return {
-                ...state,
-                isLoading: false,
-                error: null,
-                dropDownList3: grade
-            }
-        case FETCH_DROPDOWN_SUCCESSTABLE4:
-            let block = action.payload.map(each => {
-                let obj = {value: each.id, label: each.block_code}
-                return obj;
-            })
-            return {
-                ...state,
-                isLoading: false,
-                error: null,
-                dropDownList4: block
             }
         case FETCH_DROPDOWN_FAILURE:
             return {

@@ -23,7 +23,7 @@ export const filterStudentTable = searchTerm => dispatch => {
   dispatch({ type: SET_FILTER_STUDENT, payload: searchTerm });
   dispatch({ type: FETCH_STUDENTS_START });
   axios
-    .get(`http://localhost:4000/student`)
+    .get(`http://localhost:4000/students`)
     .then(res => {
       searchTerm = searchTerm.toLowerCase();
       let studentList = res.data.tableData;
@@ -68,26 +68,26 @@ export const CREATE_NEW_STUDENT_FAILURE = 'CREATE_NEW_STUDENT_FAILURE';
 
 export const createNewStudent = student => dispatch => {
   let {
+    school_grade_id,
     block_code,
     preferred_contact_type_id,
-    school_grade_id,
     location_id
   } = student;
   let newStudent = {
     ...student,
+    school_grade_id: school_grade_id.value,
     block_code: block_code.label,
     preferred_contact_type_id: preferred_contact_type_id.value,
-    school_grade_id: school_grade_id.value,
     location_id: location_id.value
   };
   dispatch({ type: CREATE_NEW_STUDENT_START });
   axios
-    .post(`http://localhost:4000/api/student`, newStudent)
+    .post(`http://localhost:4000/student`, newStudent)
     .then(res => {
       console.log('res from createNewStudent', res);
       dispatch({
         type: CREATE_NEW_STUDENT_SUCCESS,
-        payload: res.data[0]
+        payload: res.data
       });
     })
     .catch(err => {
@@ -100,53 +100,17 @@ export const createNewStudent = student => dispatch => {
 };
 
 export const FETCH_DROPDOWN_START = 'FETCH_DROPDOWN_START';
-export const FETCH_DROPDOWN_SUCCESSTABLE1 = 'FETCH_DROPDOWN_SUCCESSTABLE1';
-export const FETCH_DROPDOWN_SUCCESSTABLE2 = ' FETCH_DROPDOWN_SUCCESSTABLE2';
-export const FETCH_DROPDOWN_SUCCESSTABLE3 = 'FETCH_DROPDOWN_SUCCESSTABLE3';
-export const FETCH_DROPDOWN_SUCCESSTABLE4 = 'FETCH_DROPDOWN_SUCCESSTABLE4';
+export const FETCH_DROPDOWN_SUCCESS = 'FETCH_DROPDOWN_SUCCESS';
 export const FETCH_DROPDOWN_FAILURE = 'FETCH_DROPDOWN_FAILURE';
 
 export const getDropDown = () => dispatch => {
-  const locationTable = axios.get(`http://localhost:4000/api/?table=location`);
-  const contactTable = axios.get(
-    `http://localhost:4000/api/?table=preferred_contact_type`
-  );
-  const gradeTable = axios.get(`http://localhost:4000/api/?table=school_grade`);
-  const blockTable = axios.get(`http://localhost:4000/api/?table=block`);
-
   dispatch({ type: FETCH_DROPDOWN_START });
   axios
-    .all([locationTable, contactTable, gradeTable, blockTable])
-    .then(
-      axios.spread((...res) => {
-        let tablesThree = res.map((each, i) => {
-          if (i === 0) {
-            dispatch({
-              type: FETCH_DROPDOWN_SUCCESSTABLE1,
-              payload: each.data.tableData
-            });
-          }
-          if (i === 1) {
-            dispatch({
-              type: FETCH_DROPDOWN_SUCCESSTABLE2,
-              payload: each.data.tableData
-            });
-          }
-          if (i === 2) {
-            dispatch({
-              type: FETCH_DROPDOWN_SUCCESSTABLE3,
-              payload: each.data.tableData
-            });
-          }
-          if (i === 3) {
-            dispatch({
-              type: FETCH_DROPDOWN_SUCCESSTABLE4,
-              payload: each.data.tableData
-            });
-          }
-        });
-      })
-    )
+  .get(`http://localhost:4000/student/dropdowns`)
+  .then(res => {
+    console.log('RES FOR STUDENT DROPDOWN', res);
+    dispatch({ type: FETCH_DROPDOWN_SUCCESS, payload: res.data });
+  })
     .catch(err => {
       console.log('err', err);
       dispatch({ type: FETCH_DROPDOWN_FAILURE, payload: err.payload });

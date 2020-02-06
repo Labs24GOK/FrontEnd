@@ -145,7 +145,7 @@ export const getStudentTableByCourseID = course_id => dispatch => {
       console.log('res in courseAction.js', res);
       dispatch({
         type: DISPLAY_STUDENTSBYCOURSEID_SUCCESS,
-        payload: res.data.tableData,
+        payload: res.data.tabledata,
       });
     })
     .catch(err => {
