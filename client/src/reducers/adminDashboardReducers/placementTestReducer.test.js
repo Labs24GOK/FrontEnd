@@ -48,15 +48,17 @@ describe('Placement Tests', () => {
     });
     newState = store.getState();
     expect(
-      Object.keys(newState.staffByIdReducer.staffById).length
+      Object.keys(newState.placementTestReducer.placementTestById).length
     ).toBeGreaterThan(0);
-    expect(newState.placementTestReducer.isEditing).toBe(false);
-    expect(newState.placementTestReducer.isEdited).toBe(true);
+    expect(newState.placementTestReducer.isLoading).toBe(false);
 
     /// FETCH FAILED
-    store.dispatch({ type: 'EDIT_STAFFBYID_FAILURE', payload: 'whatever.' });
+    store.dispatch({
+      type: 'FETCH_PLACEMENTTESTTBYID_FAILURE',
+      payload: 'whatever.'
+    });
     newState = store.getState();
-    expect(newState.staffByIdReducer.isLoading).toBe(false);
-    expect(newState.staffByIdReducer.error).toBe('whatever.');
+    expect(newState.placementTestReducer.isLoading).toBe(false);
+    expect(newState.placementTestReducer.error).toBe('whatever.');
   });
 });
