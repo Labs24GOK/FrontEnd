@@ -6,6 +6,10 @@ import { connect } from 'react-redux';
 import "./aboutUs.scss";
 import Garden from "../../../../assets/Garden.png";
 
+import ReactGA from 'react-ga';
+
+ReactGA.pageview(window.location.pathname + window.location.search);
+
 function AboutUs(props) {
   useEffect(() => {
     props.toggle()
