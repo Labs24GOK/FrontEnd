@@ -40,4 +40,4 @@ describe('dispatch', () => {
     expect(newState.staffTableReducer.isPosting).toBe(false);
     expect(newState.staffTableReducer.error).toBe(null);
   });
-});
+}); 
