@@ -1,2 +1,2 @@
-- name: Code Climate Coverage Action
-  uses: paambaati/codeclimate-action@v2.4.0
+# - name: Code Climate Coverage Action
+#   uses: paambaati/codeclimate-action@v2.4.0
