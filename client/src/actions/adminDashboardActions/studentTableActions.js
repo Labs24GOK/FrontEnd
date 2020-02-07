@@ -1,4 +1,5 @@
 import axios from 'axios';
+import API_URL from '../../config/apiUrl';
 
 export const FETCH_STUDENTS_START = 'FETCH_STUDENTS_START';
 export const FETCH_STUDENTS_SUCCESS = 'FETCH_STUDENTS_SUCCESS';
@@ -7,7 +8,7 @@ export const FETCH_STUDENTS_FAILURE = 'FETCH_STUDENTS_FAILURE';
 export const getStudentTable = () => dispatch => {
   dispatch({ type: FETCH_STUDENTS_START });
   axios
-    .get('http://localhost:4000/students')
+    .get(`${API_URL}/students`)
     .then(res => {
       dispatch({ type: FETCH_STUDENTS_SUCCESS, payload: res.data });
     })
@@ -23,7 +24,7 @@ export const filterStudentTable = searchTerm => dispatch => {
   dispatch({ type: SET_FILTER_STUDENT, payload: searchTerm });
   dispatch({ type: FETCH_STUDENTS_START });
   axios
-    .get(`http://localhost:4000/students`)
+    .get(`${API_URL}/students`)
     .then(res => {
       searchTerm = searchTerm.toLowerCase();
       let studentList = res.data.tableData;
@@ -82,7 +83,7 @@ export const createNewStudent = student => dispatch => {
   };
   dispatch({ type: CREATE_NEW_STUDENT_START });
   axios
-    .post(`http://localhost:4000/student`, newStudent)
+    .post(`${API_URL}/student`, newStudent)
     .then(res => {
       console.log('res from createNewStudent', res);
       dispatch({
@@ -106,7 +107,7 @@ export const FETCH_DROPDOWN_FAILURE = 'FETCH_DROPDOWN_FAILURE';
 export const getDropDown = () => dispatch => {
   dispatch({ type: FETCH_DROPDOWN_START });
   axios
-  .get(`http://localhost:4000/student/dropdowns`)
+  .get(`${API_URL}/student/dropdowns`)
   .then(res => {
     console.log('RES FOR STUDENT DROPDOWN', res);
     dispatch({ type: FETCH_DROPDOWN_SUCCESS, payload: res.data });
@@ -119,5 +120,5 @@ export const getDropDown = () => dispatch => {
 
 //helper
 export const resetForm = () => {
-  return { type: 'RESET_FORM' };
+	return { type: 'RESET_FORM' };
 };

@@ -7,6 +7,9 @@ import Dropdown from "react-dropdown";
 import "./register.scss";
 import { callbackify } from "util";
 import { toggle } from "../actions/landingPageActions/landingPageActions";
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-157968315-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 
 

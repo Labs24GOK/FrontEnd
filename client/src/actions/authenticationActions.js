@@ -1,4 +1,6 @@
 import axios from 'axios';
+import API_URL from '../config/apiUrl';
+
 axios.defaults.withCredentials = true;
 
 export const LOGGEDIN_START = 'LOGGEDIN_START';
@@ -14,62 +16,62 @@ export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
 
 export const loggedIn = (history, location) => {
-  return dispatch => {
-    dispatch({ type: LOGGEDIN_START });
+	return dispatch => {
+		dispatch({ type: LOGGEDIN_START });
 
-    axios
-      .get('http://localhost:4000/user')
-      .then(res => {
-        console.log(res.data);
-        dispatch({ type: LOGGEDIN_SUCCESS, payload: res.data });
-        if (!res.data.authenticated && location.pathname === '/dashboard') {
-          history.push('/login');
-        } else if (res.data.authenticated) {
-          history.push('/dashboard');
-        }
-      })
-      .catch(err => {
-        console.log('ERROR', err);
-        let wrongCredentials = true;
-        dispatch({ type: LOGGEDIN_FAILURE, payload: wrongCredentials });
-      });
-  };
+		axios
+			.get(`${API_URL}/user`)
+			.then(res => {
+				console.log(res.data);
+				dispatch({ type: LOGGEDIN_SUCCESS, payload: res.data });
+				if (!res.data.authenticated && location.pathname === '/dashboard') {
+					history.push('/login');
+				} else if (res.data.authenticated) {
+					history.push('/dashboard');
+				}
+			})
+			.catch(err => {
+				console.log('ERROR', err);
+				let wrongCredentials = true;
+				dispatch({ type: LOGGEDIN_FAILURE, payload: wrongCredentials });
+			});
+	};
 };
 
 export const logIn = (user, history) => {
-  return dispatch => {
-    dispatch({ type: LOGIN_START });
+	return dispatch => {
+		dispatch({ type: LOGIN_START });
 
-    axios
-      .post('http://localhost:4000/login', user)
-      .then(res => {
-        console.log('LOGGING IN', res);
-        // SETTING THE USER TYPE TO LOCAL STORAGE SO THAT IT DOES NOT GET LOST IF USER RELOAD THE PAGE
-        localStorage.setItem('userType', res.data.user_type);
-        dispatch({ type: LOGIN_SUCCESS, payload: res.data });
-        history.push('/dashboard');
-      })
-      .catch(err => {
-        console.log('ERROR', err);
-        dispatch({ type: LOGIN_FAILURE, payload: 'Error' });
-      });
-  };
+		axios
+			.post(`${API_URL}/login`, user)
+			.then(res => {
+				console.log('LOGGING IN', res);
+				// SETTING THE USER TYPE TO LOCAL STORAGE SO THAT IT DOES NOT GET LOST IF USER RELOAD THE PAGE
+				localStorage.setItem('userType', res.data.user_type);
+				dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+				history.push('/dashboard');
+			})
+			.catch(err => {
+				console.log('ERROR', err);
+				dispatch({ type: LOGIN_FAILURE, payload: 'Error' });
+			});
+	};
 };
 
 export const logOut = history => {
-  return dispatch => {
-    dispatch({ type: LOGOUT_START });
+	return dispatch => {
+		dispatch({ type: LOGOUT_START });
 
-    axios
-      .get('http://localhost:4000/logout')
-      .then(res => {
-        dispatch({ type: LOGOUT_SUCCESS, payload: res.data });
-        localStorage.removeItem('userType');
-        history.push('/');
-      })
-      .catch(err => {
-        console.log('ERROR API', err);
-        dispatch({ type: LOGOUT_FAILURE, payload: 'Error' });
-      });
-  };
+		axios
+			.get(`${API_URL}/logout`)
+			.then(res => {
+				dispatch({ type: LOGOUT_SUCCESS, payload: res.data });
+				localStorage.removeItem('userType');
+				history.push('/');
+			})
+			.catch(err => {
+				console.log('ERROR API', err);
+				dispatch({ type: LOGOUT_FAILURE, payload: 'Error' });
+			});
+	};
 };

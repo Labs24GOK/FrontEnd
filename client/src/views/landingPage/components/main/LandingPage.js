@@ -3,11 +3,15 @@ import Header from './header/Header';
 import Special from './special/Special';
 import Affordability from './affordability/Affordability';
 import AgeGroups from './ageGroups/AgeGroups';
-import Carousel from './carousel/Carousel';
+//import Carousel from './carousel/Carousel';
 import RegistrationInformation from './registrationInformation/RegistrationInformation';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import { toggle } from "../../../../actions/landingPageActions/landingPageActions";
+
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-157968315-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 function LandingPage(props) {
 useEffect(() => {
@@ -19,7 +23,6 @@ useEffect(() => {
       <Special />
       <Affordability />
       <AgeGroups />
-      <Carousel />
       <RegistrationInformation />
     </>
   )
