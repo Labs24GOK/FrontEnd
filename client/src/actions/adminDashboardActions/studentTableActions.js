@@ -27,7 +27,7 @@ export const filterStudentTable = searchTerm => dispatch => {
     .get(`${API_URL}/students`)
     .then(res => {
       searchTerm = searchTerm.toLowerCase();
-      let studentList = res.data.tableData;
+      let studentList = res.data;
       studentList = studentList.filter(student => {
         if (
           student.first_name &&
@@ -35,7 +35,7 @@ export const filterStudentTable = searchTerm => dispatch => {
         ) {
           return true;
         }
-        if (student.id && student.id.toString().match(searchTerm)) {
+        if (student.student_id && student.student_id.toString().match(searchTerm)) {
           return true;
         }
         if (student.cpr && student.cpr.toString().match(searchTerm)) {

@@ -42,7 +42,7 @@ const StudentTable = props => {
       key: 3,
     },
     {
-      title: 'Additional Name',
+      title: 'Additional Names',
       dataIndex: 'additional_names',
       key: 4,
     },
