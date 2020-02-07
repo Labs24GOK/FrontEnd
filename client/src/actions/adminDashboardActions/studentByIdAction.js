@@ -4,14 +4,14 @@ import API_URL from '../../config/apiUrl';
 export const FETCH_STUDENTBYID_START = 'FETCH_STUDENTBYID_START';
 export const FETCH_STUDENTBYID_SUCCESS = 'FETCH_STUDENTBYID_SUCCESS';
 export const FETCH_STUDENTBYID_FAILURE = 'FETCH_STUDENTBYID_FAILURE';
-export const getStudentById = id => dispatch => {
+export const getStudentById = student_id => dispatch => {
 	dispatch({ type: FETCH_STUDENTBYID_START });
 	axios
-		.get(`${API_URL}/api/?table=student&where=id=${id}`)
+		.get(`${API_URL}/student/${student_id}`)
 		.then(res => {
 			dispatch({
 				type: FETCH_STUDENTBYID_SUCCESS,
-				payload: res.data.tableData[0]
+				payload: res.data
 			});
 		})
 		.catch(err => {
@@ -69,7 +69,7 @@ export const deleteStudentById = id => dispatch => {
     .then(res => {
       dispatch({
         type: DELETE_STUDENTBYID_SUCCESS,
-        payload: res.id
+        payload: res.student_id
       });
     })
     .catch(err => {

@@ -20,7 +20,7 @@ const StudentInformationTab = props => {
         e.preventDefault();
         props.toggleEditComponent('true');
     }
-console.log("props.studentById.birthdate:", props.studentById.birthdate)
+console.log("props.studentById:", props.studentById)
 console.log("birthdate:", birthdate)
 
     return (
@@ -71,7 +71,7 @@ console.log("birthdate:", birthdate)
                             <TextDiv>{props.studentById.mobile_telephone || "-" }</TextDiv>
                         </div>
                         <div>
-                            <Label>Contact Method</Label>
+                            <Label>Preferred Contact Method</Label>
                             <TextDiv>{props.studentById.preferred_contact_type || "-" }</TextDiv>
                         </div>
                         <div>

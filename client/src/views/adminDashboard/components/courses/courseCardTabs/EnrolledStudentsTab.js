@@ -123,7 +123,7 @@ const EnrolledStudentsTab = props => {
               return {
                 onClick: event => {
                   props.setCourseView('courseCardView')
-                  props.setCourseID(record.id)
+                  props.setCourseID(record.student_id)
                 }
               };
             }}
