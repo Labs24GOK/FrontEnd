@@ -10,18 +10,18 @@ import '../mainStyle/mainTable.scss';
 
 import { FormWrap, Input, Button, Div, FormSet, ButtonDiv, CancelButton, AddButton, Label} from '../mainStyle/styledComponent';
 
-
 const StudentRegistrationForm = (props) => {
+  console.log("STUDENT REGISTRATION FORM PROPS", props)
   const [student, setStudent] = useState({
     cpr: '',
-    registration_date: moment(new Date()).format("YYYY-MM-DD"),
+    // registration_date: moment(new Date()).format("YYYY-MM-DD"),
     first_name: '',
     additional_names: '',
     gender: '',
     birthdate: '',
     school_grade_id: '',
     school_name: '',
-    grade_updated: moment(new Date()).format("YYYY-MM-DD"),
+    // grade_updated: moment(new Date()).format("YYYY-MM-DD"),
     home_telephone: '',
     mobile_telephone: '',
     block_code: '',
@@ -148,14 +148,14 @@ const StudentRegistrationForm = (props) => {
         }
 
     } else {
-
-    const birthdateDate = moment(student.birthdate).toDate();
-    const birthdateISO = birthdateDate.toISOString()
+    console.log("Student request body", student)
+    // const birthdateDate = moment(student.birthdate).toDate();
+    // const birthdateISO = birthdateDate.toISOString()
     props.createNewStudent(student)
-    if(props.createNewStudentSuccessMessage === 'Student has been successfuly added')
-    setTimeout(()=>{
-      props.getStudentTable()
-    },1000)
+    // if(props.createNewStudentSuccessMessage === 'Student has been successfuly added')
+    // setTimeout(()=>{
+    //   props.getStudentTable()
+    // },1000)
 
     props.setForm(false)
 
@@ -254,7 +254,7 @@ const StudentRegistrationForm = (props) => {
                 value={student.location_id}
                 onChange={(e) => setStudent({ ...student, location_id: e })}
                 controlClassName='myControlClassName'
-                options={props.dropDownList1}
+                options={props.locationsTable}
                 className='dropdown' />
             </div>
           </div>
@@ -279,13 +279,13 @@ const StudentRegistrationForm = (props) => {
             </div>
           </div>
           <div>
-            <Label>Preferred contact method</Label>
+            <Label>Preferred Contact Method</Label>
             <div style={{ border: `1px solid ${errorBorderContactType}`, borderRadius: '3px' }}>
               <Dropdown
                 onChange={(e) => setStudent({ ...student, preferred_contact_type_id: e })}
                 value={student.preferred_contact_type_id}
                 controlClassName='myControlClassName'
-                options={props.dropDownList2}
+                options={props.contactTypesTable}
                 className='dropdown'
                  />
             </div>
@@ -296,7 +296,7 @@ const StudentRegistrationForm = (props) => {
               <Dropdown
                 onChange={(e) => { setStudent({ ...student, block_code: e }) }}
                 controlClassName='myControlClassName'
-                options={props.dropDownList4}
+                options={props.blocksTable}
                 value={student.block_code} 
                 className='dropdown'
                 />
@@ -333,14 +333,14 @@ const StudentRegistrationForm = (props) => {
             </div>
           </div>
           <div>
-            <Label>School grade</Label>
+            <Label>School Grade</Label>
             <div style={{ border: `1px solid ${errorBorderSchoolGrade}`, borderRadius: '3px' }}>
               <Dropdown
                 onChange={(e) => { setStudent({...student, school_grade_id: e }) }}
                 value={student.school_grade_id}
                 controlClassName='myControlClassName'
                 className='dropdownRoot'
-                options={props.dropDownList3}
+                options={props.schoolGradeTable}
                 className='dropdown' 
                 />
             </div>
@@ -378,10 +378,10 @@ const StudentRegistrationForm = (props) => {
 const mapStateToProps = state => {
   return {
     createNewStudentIsLoading: state.studentTableReducer.createNewStudentIsLoading,
-    dropDownList1: state.studentTableReducer.dropDownList1,
-    dropDownList2: state.studentTableReducer.dropDownList2,
-    dropDownList3: state.studentTableReducer.dropDownList3,
-    dropDownList4: state.studentTableReducer.dropDownList4,
+    schoolGradeTable: state.studentTableReducer.schoolGradeTable,
+    blocksTable: state.studentTableReducer.blocksTable,
+    contactTypesTable: state.studentTableReducer.contactTypesTable,
+    locationsTable: state.studentTableReducer.locationsTable,
     createNewStudentSuccessMessage: state.studentTableReducer.createNewStudentSuccessMessage
 
   };

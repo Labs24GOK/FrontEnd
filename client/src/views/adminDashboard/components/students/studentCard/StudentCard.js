@@ -1,8 +1,8 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getStudentById, toggleEditComponent } from '../../../../../actions';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import StudentInformationTab from './StudentInformationTab';
 import StudentCoursesTab from './StudentCoursesTab';
 import { Tab } from 'semantic-ui-react';
@@ -54,7 +54,7 @@ const StudentCard = props => {
                         <div className="headerDiv">
                             <div>
                                 <div className="headerSeparateDiv">CPR # {props.studentById.cpr}</div>
-                                <div className="headerSeparateDiv">STUDENT ID {props.studentById.id}</div>
+                                <div className="headerSeparateDiv">STUDENT ID {props.studentById.student_id}</div>
                             </div>
                         </div>
 
