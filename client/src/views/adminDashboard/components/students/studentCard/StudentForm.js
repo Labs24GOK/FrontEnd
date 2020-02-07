@@ -11,70 +11,40 @@ const StudentForm = (props) => {
     console.log("STUDENT FORM PROPS", props)
    
     const { studentID } = props;
-    // let options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+    
     let birthdate = new Date(props.studentById.birthdate).toISOString().split("T")[0];
-    let registration_date = new Date(props.studentById.registration_date).toISOString().split("T")[0];
     let grade_updated = new Date(props.studentById.grade_updated).toISOString().split("T")[0];
-    // .toLocaleDateString('en-GB', options)
-
-    console.log("BIRTHDATE IN EDIT STUDENT FORM", birthdate)
-    console.log("REGISTRATION DATE IN EDIT STUDENT FORM", registration_date)
+    
+    // console.log("BIRTHDATE IN EDIT STUDENT FORM", birthdate)
 
     const [state, setState] = useState({
         cpr: props.studentById.cpr,
-        id: studentID,
         first_name: props.studentById.first_name,
         additional_names: props.studentById.additional_names,
         gender: props.studentById.gender,
         birthdate: birthdate,
+        school_grade_id: props.studentById.school_grade_id,
+        school_name: props.studentById.school_name,
         home_telephone: props.studentById.home_telephone,
         mobile_telephone: props.studentById.mobile_telephone,
-        email: props.studentById.email,
-        preferred_contact_type_id: '',
-        preferred_contact_type: '',
-        location_id: '',
-        location: '',
-        block_code: '',
+        block_code: props.studentById.block_code,
         road: props.studentById.road,
         flat: props.studentById.flat,
         building: props.studentById.building,
-        school_name: props.studentById.school_name,
+        email: props.studentById.email,
+        notes: props.studentById.notes,
+        preferred_contact_type_id: props.studentById.preferred_contact_type_id,
+        location_id: props.studentById.location_id,
+        family_id: props.studentById.family_id,
         no_call: props.studentById.no_call,
         delinquent: props.studentById.delinquent,
         expelled: props.studentById.expelled,
-        notes: props.studentById.notes,
-        family_id: props.studentById.family_id,
-        registration_date: registration_date,
         grade_updated: grade_updated,
-        school_grade_id: '',
-        school_grade: ''
     });
 
     useEffect(() => {
         props.editStudentDropDown();
       }, [])
-
-    const [error, setError] = useState({
-        first_name: false,
-        additional_names: false
-    })
-
-    // const handleChange = (e, result) => {
-    //     const {name, value}= result || e.target;
-    //     if(e.target.value === ''){
-    //         setError({
-    //             ...error,   
-    //             [name]: true
-    //         })
-    //     }
-    //     if(value.length !== 0){
-    //         setError(false)
-    //     }
-    //     setState({
-    //         ...state,
-    //         [name]: value
-    //     })
-    // }
 
     function handleChange(event) {
         setState({
@@ -83,15 +53,10 @@ const StudentForm = (props) => {
         })
       }
 
-
     const handleSubmit = e => {
+        console.log("THIS IS STATE:", state)
         e.preventDefault();
-        console.log("this is state:", state)
-    // if(error) {
-    //     props.toggleEditComponent('true', 'false')
-    // } else {
-    //     props.toggleEditComponent('false', 'true')
-            props.editStudentById(state)
+        props.editStudentById(studentID, state)
         }
     
 
@@ -101,6 +66,33 @@ const StudentForm = (props) => {
 
     const genderArr = ['F', 'M']
 
+    let delinquentNum = 0;
+    if (props.studentById.delinquent === false){
+      delinquentNum = 1;
+    }
+
+    let expelledNum = 0;
+    if (props.studentById.expelled === false){
+      expelledNum = 1;
+    }
+
+    let no_callNum = 0;
+    if (props.studentById.expelled === false){
+      expelledNum = 1;
+    }
+
+      const delinquent = [
+        { label: 'Yes', value: true },
+        { label: 'No', value: false }
+      ];
+      const expelled = [
+        { label: 'Yes', value: true },
+        { label: 'No', value: false }
+      ];
+      const no_call = [
+        { label: 'Yes', value: true },
+        { label: 'No', value: false }
+      ];
     
     return (
         <FormWrap onSubmit={handleSubmit}>
@@ -197,10 +189,9 @@ const StudentForm = (props) => {
                             <Dropdown
                                 controlClassName='myControlClassName'
                                 className='dropdown'
-                                onChange={(e) => setState({ ...state, location_id: e })}
-                                value={state.location_id}
+                                onChange={(e) => setState({ ...state, location_id: e.value })}
+                                value={props.studentById.location}
                                 options={props.locationsTable}
-                                placeholder={props.studentById.location}
                             />
                             </div>
                         </div>
@@ -235,22 +226,22 @@ const StudentForm = (props) => {
                             <Dropdown
                                 controlClassName='myControlClassName'
                                 className='dropdown'
-                                onChange= {(e) => { setState({ ...state, preferred_contact_type_id: e }) }}
-                                value={state.preferred_contact_type_id}
+                                onChange= {(e) => { setState({ ...state, preferred_contact_type_id: e.value }) }}
+                                value={props.studentById.preferred_contact_type}
                                 options={props.contactTypesTable}
-                                placeholder={props.studentById.preferred_contact_type}
                             />
                         </div>
                     </div>
                     <div>
                         <Label>No Call</Label>
                             <div>
-                                <Input
-                                    type='boolean'
-                                    name='no_call'
-                                    placeholder='No Call'
-                                    onChange={handleChange}
-                                    value={state.no_call}
+                                <Dropdown
+                                   controlClassName="myControlClassName"
+                                   className="dropdown"
+                                   name='no_call'
+                                   onChange={e => setState({ ...state, no_call: e.value })}
+                                   value={no_call[no_callNum].label}
+                                   options={no_call}
                                 />
                             </div>
                         </div>
@@ -261,7 +252,7 @@ const StudentForm = (props) => {
                             controlClassName='myControlClassName'
                             className='dropdown'
                             options={props.blocksTable}
-                            onChange={(e) => setState({ ...state, block_code: e.label })}
+                            onChange={(e) => setState({ ...state, block_code: e.value })}
                             value={`${state.block_code}`}
                             />
                         </div>
@@ -308,10 +299,9 @@ const StudentForm = (props) => {
                             <Dropdown
                             controlClassName='myControlClassName'
                             className='dropdown'
-                            onChange={(e) => setState({ ...state, school_grade_id: e })}
+                            onChange={(e) => setState({ ...state, school_grade_id: e.value })}
                             options={props.schoolGradeTable}
-                            value={state.school_grade_id}
-                            placeholder={props.studentById.school_grade}
+                            value={props.studentById.school_grade}
                             />
                         </div>
                     </div>
@@ -326,7 +316,7 @@ const StudentForm = (props) => {
                                 value={state.grade_updated}
                             />
                         </div>
-                        <div>
+                        {/* <div>
                         <Label>Registration Date</Label>
                             <div>
                                 <Input
@@ -337,28 +327,30 @@ const StudentForm = (props) => {
                                     value={state.registration_date}
                                 />
                             </div>
-                        </div>
+                        </div> */}
                         <div>
                             <Label>Delinquent</Label>
                             <div>
-                                <Input
-                                    type='boolean'
+                                <Dropdown
+                                    controlClassName="myControlClassName"
+                                    className="dropdown"
                                     name='delinquent'
-                                    placeholder='Delinquent'
-                                    onChange={handleChange}
-                                    value={state.delinquent}
+                                    onChange={e => setState({ ...state, delinquent: e.value })}
+                                    value={delinquent[delinquentNum].label}
+                                    options={delinquent}
                                 />
                             </div>
                         </div>
                         <div>
                             <Label>Expelled</Label>
                             <div>
-                                <Input
-                                    type='boolean'
+                            <Dropdown
+                                    controlClassName="myControlClassName"
+                                    className="dropdown"
                                     name='expelled'
-                                    placeholder='Expelled'
-                                    onChange={handleChange}
-                                    value={state.expelled}
+                                    onChange={e => setState({ ...state, expelled: e.value })}
+                                    value={expelled[expelledNum].label}
+                                    options={expelled}
                                 />
                             </div>
                         </div>
