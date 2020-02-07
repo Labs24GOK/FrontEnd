@@ -12,7 +12,7 @@ const StudentInformationTab = props => {
     }, [])
 
     let options = { year: 'numeric', month: 'numeric', day: 'numeric'}; //'long'
-    let birthdate = new Date(props.studentById.birthdate).toLocaleDateString('en-GB', {timeZone: 'UTC'})
+    let birthdate = new Date(props.studentById.birthdate).toLocaleDateString('en-GB', options)
     let registration_date = new Date(props.studentById.registration_date).toLocaleDateString('en-GB', options)
     let grade_updated = new Date(props.studentById.grade_updated).toLocaleDateString('en-GB', options)
 
@@ -20,8 +20,8 @@ const StudentInformationTab = props => {
         e.preventDefault();
         props.toggleEditComponent('true');
     }
-console.log(props.studentById.birthdate)
-console.log(birthdate)
+console.log("props.studentById:", props.studentById)
+console.log("birthdate:", birthdate)
 
     return (
         <div>
@@ -35,11 +35,11 @@ console.log(birthdate)
                             <TextDiv>{props.studentById.cpr || "-" }</TextDiv>
                         </div>
                         <div>
-                            <Label>First name</Label>
+                            <Label>First Name</Label>
                             <TextDiv>{props.studentById.first_name || "-" }</TextDiv>
                         </div>
                         <div style={{ gridColumn: 'span 2' }}>
-                            <Label>Additional names</Label>
+                            <Label>Additional Names</Label>
                             <TextDiv>{props.studentById.additional_names || "-" }</TextDiv>
                         </div>
                         <div>
@@ -60,7 +60,7 @@ console.log(birthdate)
                         </div>
                         <div>
                             <Label>Location</Label>
-                            <TextDiv>{props.studentById.location_id || "-" }</TextDiv>
+                            <TextDiv>{props.studentById.location || "-" }</TextDiv>
                         </div>
                         <div>
                             <Label>Home Phone</Label>
@@ -70,10 +70,13 @@ console.log(birthdate)
                             <Label>Mobile</Label>
                             <TextDiv>{props.studentById.mobile_telephone || "-" }</TextDiv>
                         </div>
-                        
                         <div>
-                            <Label>Contact Method</Label>
-                            <TextDiv>{props.studentById.preferred_contact_type_id || "-" }</TextDiv>
+                            <Label>Preferred Contact Method</Label>
+                            <TextDiv>{props.studentById.preferred_contact_type || "-" }</TextDiv>
+                        </div>
+                        <div>
+                            <Label>No Call</Label>
+                            <TextDiv>{props.studentById.no_call ? 'Yes' : 'No' || "-" }</TextDiv>
                         </div>
                         <div>
                             <Label>Block Code</Label>
@@ -92,20 +95,24 @@ console.log(birthdate)
                             <TextDiv>{props.studentById.flat || "-" }</TextDiv>
                         </div>
                         <div>
-                            <Label>Delinquent</Label>
-                            <TextDiv>{props.studentById.delinquent ? 'Yes' : 'No' || "-" }</TextDiv>
+                            <Label>School Grade</Label>
+                            <TextDiv>{props.studentById.school_grade || "-" }</TextDiv>
                         </div>
                         <div>
-                            <Label>School Grade ID</Label>
-                            <TextDiv>{props.studentById.school_grade_id || "-" }</TextDiv>
-                        </div>
-                        <div>
-                                <Label>Grade Updated</Label>
-                                <TextDiv>{grade_updated || "-" }</TextDiv> 
+                            <Label>Grade Updated</Label>
+                            <TextDiv>{grade_updated || "-" }</TextDiv> 
                         </div>
                         <div>
                             <Label>Registration Date</Label>
                             <TextDiv>{registration_date || "-" }</TextDiv>
+                        </div>
+                        <div>
+                            <Label>Delinquent</Label>
+                            <TextDiv>{props.studentById.delinquent ? 'Yes' : 'No' || "-" }</TextDiv>
+                        </div>
+                        <div>
+                            <Label>Expelled</Label>
+                            <TextDiv>{props.studentById.expelled ? 'Yes' : 'No' || "-" }</TextDiv>
                         </div>
                         {/* <div>
                             <Label>Family ID</Label>
