@@ -37,34 +37,49 @@ const CourseTable = props => {
       key: 2,
     },
     {
+      title: 'Group Type',
+      dataIndex: 'group_type',
+      key: 3,
+    },
+    {
       title: 'Course Type',
       dataIndex: 'course_type',
       key: 4,
     },
     {
-      title: 'Group Type',
-      dataIndex: 'group_type',
-      key: 5,
-    },
-    {
       title: 'School Grade',
       dataIndex: 'school_grade',
-      key: 6,
+      key: 5,
     },
     {
       title: 'Level',
       dataIndex: 'level',
-      key: 7,
+      key: 6,
     },
     {
       title: 'Course Schedule',
       dataIndex: 'course_schedule',
-      key: 8,
+      key: 7,
     },
     {
       title: 'Teacher',
       dataIndex: 'teacher',
+      key: 8,
+    },
+    {
+      title: 'Confirmed',
+      dataIndex: 'confirmed',
       key: 9,
+    },
+    {
+      title: 'Unconfirmed',
+      dataIndex: 'unconfirmed',
+      key: 10,
+    },
+    {
+      title: 'Status',
+      dataIndex: 'status',
+      key: 11,
     },
   ];
 
@@ -109,14 +124,14 @@ const CourseTable = props => {
           className='rowHover'
           dataSource={courseData}
           columns={tableColumns}
-          pagination = {false}
+          pagination={false}
           // pagination={{ pageSize: 10, total: 50 }}
           rowKey='course_id'
           onRow={(record, rowIndex) => {
             return {
               onClick: event => {
                 props.setCourseView('courseCardView');
-                console.log("Record.course_id", record.course_id)
+                console.log('Record.course_id', record.course_id);
                 props.setCourseID(record.course_id);
               },
             };

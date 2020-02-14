@@ -2,23 +2,23 @@ import React, {useState } from 'react'
 import { connect } from 'react-redux';
 import { editCouseById, toggleEditCourse } from '../../../../../actions';
 import { withRouter } from 'react-router-dom';
-import {  Icon } from 'semantic-ui-react'
+// import {  Icon } from 'semantic-ui-react'
 import { FormWrap, Input, CancelButton, SaveButton, Div, FormSet, Label} from '../../mainStyle/styledComponent'
 
 const CourseEditForm = props => {
     
     const [state, setState] = useState({
-        id: props.courseById.id,
+        term_id: props.courseById.term_id,
         course_type: props.courseById.course_type,
         group_type: props.courseById.group_type,
         school_grade: props.courseById.school_grade,
         level: props.courseById.level,
         section: props.courseById.section,
-        subsection: props.courseById.subsection,
         room_id: props.courseById.room_id,
         start_time: props.courseById.start_time,
         end_time: props.courseById.end_time,
         notes: props.courseById.notes,
+        status: props.courseById.status
     })
     const handleChange = e => {
         setState({
@@ -91,16 +91,6 @@ const CourseEditForm = props => {
                                 placeholder='Section'
                                 onChange={handleChange}
                                 value={state.section}
-                            />
-                    </div>
-                    <div>
-                        <Label>Subsection</Label>
-                        <Input
-                                type='text'
-                                name='subsection'
-                                placeholder='Subsection'
-                                onChange={handleChange}
-                                value={state.subsection}
                             />
                     </div>
                     <div>

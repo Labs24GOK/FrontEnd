@@ -9,7 +9,9 @@ import {
   TextDiv,
   Label,
   FormSet,
-} from '../../mainStyle/styledComponent';
+  SaveButton, 
+  ButtonDiv
+} from '../../mainStyle/styledComponent'; 
 
 const CourseInformationTab = props => {
   useEffect(() => {
@@ -18,7 +20,7 @@ const CourseInformationTab = props => {
 
   const editCourseInfo = e => {
     e.preventDefault();
-    props.toggleEditCourse();
+    props.toggleEditCourse('true');
   };
 
   return (
@@ -29,9 +31,8 @@ const CourseInformationTab = props => {
             <FormSet>
               <Div>
                 <div>
-                  <Label>Status</Label>
-
-                  <TextDiv>{props.courseById.status || '-'}</TextDiv>
+                  <Label>Course ID</Label>
+                  <TextDiv>{props.courseById.course_id || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>Term</Label>
@@ -46,10 +47,6 @@ const CourseInformationTab = props => {
                   <TextDiv>{props.courseById.group_type || '-'}</TextDiv>
                 </div>
                 <div>
-                  <Label>School Grade</Label>
-                  <TextDiv>{props.courseById.school_grade || '-'}</TextDiv>
-                </div>
-                <div>
                   <Label>Level</Label>
                   <TextDiv>{props.courseById.level || '-'}</TextDiv>
                 </div>
@@ -58,21 +55,12 @@ const CourseInformationTab = props => {
                   <TextDiv>{props.courseById.section || '-'}</TextDiv>
                 </div>
                 <div>
-                  <Label>Subsection</Label>
-                  <TextDiv>{props.courseById.subsection || '-'}</TextDiv>
+                  <Label>School Grade</Label>
+                  <TextDiv>{props.courseById.school_grade || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>Room</Label>
                   <TextDiv>{props.courseById.room || '-'}</TextDiv>
-                </div>
-                <div>
-                  <Label>Teacher</Label>
-                  <TextDiv>{props.courseById.teacher || '-'}</TextDiv>
-                </div>
-                <div>
-                  <Label>Hourly Rate</Label>
-
-                  <TextDiv>{props.courseById.hourly_rate || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>Course Schedule</Label>
@@ -87,6 +75,18 @@ const CourseInformationTab = props => {
                   <TextDiv>{props.courseById.end_time || '-'}</TextDiv>
                 </div>
                 <div>
+                  <Label>Teacher</Label>
+                  <TextDiv>{props.courseById.teacher || '-'}</TextDiv>
+                </div>
+                <div>
+                  <Label>Hourly Rate</Label>
+                  <TextDiv>{props.courseById.hourly_rate || '-'}</TextDiv>
+                </div>
+                <div>
+                  <Label>Status</Label>
+                  <TextDiv>{props.courseById.status || '-'}</TextDiv>
+                </div>
+                <div>
                   <Label>Notes</Label>
                   <TextDiv>{props.courseById.notes || '-'}</TextDiv>
                 </div>
@@ -95,6 +95,11 @@ const CourseInformationTab = props => {
                 <div style={{ gridColumn: 'span3' }}></div>
               </Div>
             </FormSet>
+            <ButtonDiv >
+              <SaveButton type="submit" onClick={editCourseInfo}> 
+                      Edit
+                  </SaveButton>
+              </ButtonDiv>
           </FormWrap>
         ) : (
           <CourseEditForm {...props} />
