@@ -25,20 +25,22 @@ const CourseRegistrationForm = props => {
     term_id: '',
     course_type_id: '',
     group_type_id: '',
-    school_grade_id: '',
     level_id: '',
-    course_schedule_id: '',
-    room_id: '',
-    teacher_id: '',
     section: '',
-    hourly_rate: '',
+    school_grade_id: '',
+    course_schedule_id: '',
+    start_date: '',
+    end_date: '',
     start_time: '',
     end_time: '',
-    notes: '',
+    room_id: '',
+    teacher_id: '',
+    hourly_rate: '',
     status: '',
+    notes: '',
   });
 
-  const status = ['active', 'completed', 'waitlist', 'cancelled'];
+  const status = ['Active', 'Completed', 'Waitlist', 'Cancelled'];
   const section = ['A', 'B', 'C']
 
   const [touched, setTouched] = useState({
@@ -83,55 +85,10 @@ const CourseRegistrationForm = props => {
     });
   };
 
-  //I have commented out all validation (and its styling) written by prior labs as it does not work properly but it may be ammended or changed later
-  // const validate = state => {
-  //   const {
-  //     term_id,
-  //     course_type_id,
-  //     group_type_id,
-  //     school_grade_id,
-  //     level_id,
-  //     course_schedule_id,
-  //     room_id,
-  //     teacher_id,
-  //     section,
-  //     hourly_rate,
-  //     start_time,
-  //     end_time,
-  //     notes,
-  //     status,
-  //   } = state;
-  //   return {
-  //     term_id: term_id.length === 0,
-  //     course_type_id: course_type_id.length === 0,
-  //     group_type_id: group_type_id.length === 0,
-  //     school_grade_id: school_grade_id.length === 0,
-  //     level_id: level_id.length === 0,
-  //     course_schedule_id: course_schedule_id.length === 0,
-  //     room_id: room_id.length === 0,
-  //     teacher_id: teacher_id.length === 0,
-  //     section: section.length === 0,
-  //     hourly_rate: hourly_rate.length === 0,
-  //     start_time: start_time.length === 0,
-  //     end_time: end_time.length === 0,
-  //     notes: notes.length === 0,
-  //     status: status.length === 0,
-  //   };
-  // };
-
   // const canBeSubmitted = () => {
   //   const errors = validate(course);
   //   const isDisabled = Object.keys(errors).some(x => errors[x]);
   //   return !isDisabled;
-  // };
-
-  // const errors = validate(course);
-  // console.log(errors);
-  // const isDisabled = Object.keys(errors).some(x => errors[x]);
-  // const shouldMarkError = field => {
-  //   const hasError = errors[field];
-  //   const shouldShow = touched[field];
-  //   return hasError ? shouldShow : false;
   // };
 
   return (
@@ -146,44 +103,16 @@ const CourseRegistrationForm = props => {
                   controlClassName='myControlClassName'
                   className='dropdown'
                   options={props.termDropdown}
-                  onBlur={handleBlur('term_id')}
                 />
             </div>
           <div>
-            <Label>Section</Label>
-            {/* <div
-              style={
-                shouldMarkError('section') ? { border: '1px solid red' } : null
-              }
-            > */}
-            <Dropdown
-                value={course.section}
-                onChange={e => setCourse({ ...course, section: e.value })}
+            <Label>Course Type</Label>
+              <Dropdown
+                value={course.course_type_id}
+                onChange={e => setCourse({ ...course, course_type_id: e })}
                 controlClassName='myControlClassName'
                 className='dropdown'
-                options={section}
-                onBlur={handleBlur('section')}
-              />
-            {/* </div> */}
-          </div>
-          <div>
-            <Label>Start Time</Label>
-              <Input
-                type='time'
-                name='start_time'
-                value={course.start_time}
-                onChange={handleChange}
-                onBlur={handleBlur('start_time')}
-              />
-          </div>
-          <div>
-            <Label>End Time</Label>
-              <Input
-                type='time'
-                name='end_time'
-                value={course.end_time}
-                onChange={handleChange}
-                onBlur={handleBlur('end_time')}
+                options={props.courseTypeDropdown}
               />
           </div>
           <div>
@@ -194,18 +123,6 @@ const CourseRegistrationForm = props => {
                 controlClassName='myControlClassName'
                 className='dropdown'
                 options={props.groupTypeDropdown}
-                onBlur={handleBlur('group_type_id')}
-              />
-          </div>
-          <div>
-            <Label>Course Type</Label>
-              <Dropdown
-                value={course.course_type_id}
-                onChange={e => setCourse({ ...course, course_type_id: e })}
-                controlClassName='myControlClassName'
-                className='dropdown'
-                options={props.courseTypeDropdown}
-                onBlur={handleBlur('course_type_id')}
               />
           </div>
           <div>
@@ -216,7 +133,6 @@ const CourseRegistrationForm = props => {
                 controlClassName='myControlClassName'
                 className='dropdown'
                 options={props.schoolGradeDropdown}
-                onBlur={handleBlur('school_grade_id')}
               />
           </div>
           <div>
@@ -227,7 +143,16 @@ const CourseRegistrationForm = props => {
                 controlClassName='myControlClassName'
                 className='dropdown'
                 options={props.levelDropdown}
-                onBlur={handleBlur('level_id')}
+              />
+          </div>
+          <div>
+            <Label>Section</Label>
+            <Dropdown
+                value={course.section}
+                onChange={e => setCourse({ ...course, section: e.value })}
+                controlClassName='myControlClassName'
+                className='dropdown'
+                options={section}
               />
           </div>
           <div>
@@ -238,7 +163,40 @@ const CourseRegistrationForm = props => {
                 controlClassName='myControlClassName'
                 className='dropdown'
                 options={props.courseScheduleDropdown}
-                onBlur={handleBlur('course_schedule_id')}
+              />
+          </div>
+          <div >
+            <Label>Start Date</Label>
+              <Input
+                type="date"
+                name="start_date"
+                value={course.start_date}
+                onChange={handleChange} />
+          </div>
+          <div >
+            <Label>End Date</Label>
+              <Input
+                type="date"
+                name="end_date"
+                value={course.end_date}
+                onChange={handleChange} />
+          </div>
+          <div>
+            <Label>Start Time</Label>
+              <Input
+                type='time'
+                name='start_time'
+                value={course.start_time}
+                onChange={handleChange}
+              />
+          </div>
+          <div>
+            <Label>End Time</Label>
+              <Input
+                type='time'
+                name='end_time'
+                value={course.end_time}
+                onChange={handleChange}
               />
           </div>
           <div>
@@ -249,7 +207,6 @@ const CourseRegistrationForm = props => {
                 controlClassName='myControlClassName'
                 className='dropdown'
                 options={props.roomDropdown}
-                onBlur={handleBlur('room_id')}
               />
           </div>
           <div>
@@ -260,7 +217,6 @@ const CourseRegistrationForm = props => {
                 controlClassName='myControlClassName'
                 className='dropdown'
                 options={props.teacherDropdown}
-                onBlur={handleBlur('teacher_id')}
               />
           </div>
           <div>
@@ -270,7 +226,6 @@ const CourseRegistrationForm = props => {
                 name='hourly_rate'
                 value={course.hourly_rate}
                 onChange={handleChange}
-                onBlur={handleBlur('hourly_rate')}
               />
           </div>
           <div>
@@ -281,7 +236,6 @@ const CourseRegistrationForm = props => {
                 controlClassName='myControlClassName'
                 className='dropdown'
                 options={status}
-                onBlur={handleBlur('status')}
               />
           </div>
           <div>
@@ -291,7 +245,6 @@ const CourseRegistrationForm = props => {
                 name='notes'
                 value={course.notes}
                 onChange={handleChange}
-                onBlur={handleBlur('notes')}
               />
           </div>
         </Div>

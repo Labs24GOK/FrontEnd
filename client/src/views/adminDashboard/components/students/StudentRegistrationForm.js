@@ -383,7 +383,6 @@ const mapStateToProps = state => {
     contactTypesTable: state.studentTableReducer.contactTypesTable,
     locationsTable: state.studentTableReducer.locationsTable,
     createNewStudentSuccessMessage: state.studentTableReducer.createNewStudentSuccessMessage
-
   };
 };
 

@@ -59,12 +59,16 @@ const CourseInformationTab = props => {
                   <TextDiv>{props.courseById.school_grade || '-'}</TextDiv>
                 </div>
                 <div>
-                  <Label>Room</Label>
-                  <TextDiv>{props.courseById.room || '-'}</TextDiv>
-                </div>
-                <div>
                   <Label>Course Schedule</Label>
                   <TextDiv>{props.courseById.course_schedule || '-'}</TextDiv>
+                </div>
+                <div>
+                  <Label>Start Date</Label>
+                  <TextDiv>{props.courseById.start_date || '-'}</TextDiv>
+                </div>
+                <div>
+                  <Label>End Date</Label>
+                  <TextDiv>{props.courseById.end_date || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>Start Time</Label>
@@ -75,13 +79,17 @@ const CourseInformationTab = props => {
                   <TextDiv>{props.courseById.end_time || '-'}</TextDiv>
                 </div>
                 <div>
+                  <Label>Room</Label>
+                  <TextDiv>{props.courseById.room || '-'}</TextDiv>
+                </div>
+                <div>
                   <Label>Teacher</Label>
                   <TextDiv>{props.courseById.teacher || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>Hourly Rate</Label>
                   <TextDiv>{props.courseById.hourly_rate || '-'}</TextDiv>
-                </div>
+                </div>               
                 <div>
                   <Label>Status</Label>
                   <TextDiv>{props.courseById.status || '-'}</TextDiv>

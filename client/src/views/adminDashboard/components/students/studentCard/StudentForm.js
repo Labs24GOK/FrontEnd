@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
-import { Icon} from 'semantic-ui-react'
+// import { Icon} from 'semantic-ui-react'
 import { editStudentById, editStudentDropDown, toggleEditComponent } from '../../../../../actions';
 import { withRouter } from 'react-router-dom';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import { FormWrap, Input, Div, FormSet, ButtonDiv, CancelButton, SaveButton, Label} from '../../mainStyle/styledComponent';
 
-const StudentForm = (props) => {
-    console.log("STUDENT FORM PROPS", props)
+const StudentForm = props => {
+    
    
     const { studentID } = props;
     
