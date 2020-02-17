@@ -84,7 +84,7 @@ const CourseTable = props => {
           style={{ cursor: 'pointer', color: '#26ABBD' }}
           onClick={handleAddButton}
         >
-          <div style={{ marginRight: '10px' }}>Add Course</div>
+          <div style={{ marginRight: '10px' }}>Add Course</div> 
           <div>
             <FontAwesomeIcon
               style={{ width: '18px', height: '21px' }}

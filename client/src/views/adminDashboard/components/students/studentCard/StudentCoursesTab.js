@@ -4,10 +4,24 @@ import { withRouter, Link } from 'react-router-dom';
 import { getStudentCourses } from '../../../../../actions';
 import { Table } from 'antd';
 
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import EnrollStudentForm from './EnrollStudentForm';
+
 import './studentTable.scss'
 
 const StudentCoursesTab = props => {
  
+  const [form, setForm] = useState(false);
+
+  const handleCancelButtonOnForm = () => {
+    setForm(false);
+  };
+
+  const handleEnrollButton = () => {
+    setForm(!form);
+  };
 
   useEffect(() => {
     props.getStudentCourses(props.studentID)
@@ -82,6 +96,30 @@ const StudentCoursesTab = props => {
 
   return (
     <>
+    <div className='row-above'>
+        <div
+          className='create-new-entry'
+          style={{ cursor: 'pointer', color: '#26ABBD' }}
+          onClick={handleEnrollButton}
+        >
+          <div style={{ marginRight: '10px' }}>Enroll Student</div> 
+          <div>
+            <FontAwesomeIcon
+              style={{ width: '18px', height: '21px' }}
+              icon={faPlusCircle}
+              size='lg'
+            />
+          </div>
+        </div>
+      </div>
+
+      {form ? (
+        <EnrollStudentForm
+          handleCancelButtonOnForm={handleCancelButtonOnForm}
+          setForm={setForm}
+        />
+      ) : null}
+
       <Table dataSource={props.courseByStudentId} className="coursesTable" columns={studentCourseColumns} pagination={false} />
     </>
   )

@@ -428,7 +428,7 @@ const CourseRegistrationForm = props => {
           Cancel
         </Button>
         <Button type='submit' disabled={isDisabled}>
-          Add Course
+          Add Course 
         </Button>
       </ButtonDiv>
     </FormWrap>
