@@ -43,22 +43,22 @@ const CourseRegistrationForm = props => {
   const status = ['Active', 'Completed', 'Waitlist', 'Cancelled'];
   const section = ['A', 'B', 'C']
 
-  const [touched, setTouched] = useState({
-    term_id: false,
-    course_type_id: false,
-    group_type_id: false,
-    school_grade_id: false,
-    level_id: false,
-    course_schedule_id: false,
-    room_id: false,
-    teacher_id: false,
-    section: false,
-    hourly_rate: false,
-    start_time: false,
-    end_time: false,
-    notes: false,
-    status: false,
-  });
+  // const [touched, setTouched] = useState({
+  //   term_id: false,
+  //   course_type_id: false,
+  //   group_type_id: false,
+  //   school_grade_id: false,
+  //   level_id: false,
+  //   course_schedule_id: false,
+  //   room_id: false,
+  //   teacher_id: false,
+  //   section: false,
+  //   hourly_rate: false,
+  //   start_time: false,
+  //   end_time: false,
+  //   notes: false,
+  //   status: false,
+  // });
 
   function handleChange(event) {
     setCourse({
@@ -78,12 +78,12 @@ const CourseRegistrationForm = props => {
     props.setForm(false);
   };
 
-  const handleBlur = field => evt => {
-    setTouched({
-      ...touched,
-      [field]: true,
-    });
-  };
+  // const handleBlur = field => evt => {
+  //   setTouched({
+  //     ...touched,
+  //     [field]: true,
+  //   });
+  // };
 
   // const canBeSubmitted = () => {
   //   const errors = validate(course);
@@ -128,7 +128,7 @@ const CourseRegistrationForm = props => {
           <div>
             <Label>School Grade</Label>
               <Dropdown
-                value={course.school_grade_id}
+                value={1}
                 onChange={e => setCourse({ ...course, school_grade_id: e })}
                 controlClassName='myControlClassName'
                 className='dropdown'
@@ -165,7 +165,7 @@ const CourseRegistrationForm = props => {
                 options={props.courseScheduleDropdown}
               />
           </div>
-          <div >
+          {/* <div >
             <Label>Start Date</Label>
               <Input
                 type="date"
@@ -180,7 +180,7 @@ const CourseRegistrationForm = props => {
                 name="end_date"
                 value={course.end_date}
                 onChange={handleChange} />
-          </div>
+          </div> */}
           <div>
             <Label>Start Time</Label>
               <Input

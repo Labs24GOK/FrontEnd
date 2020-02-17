@@ -1,8 +1,9 @@
-import React, {useState } from 'react'
+import React, {useState, useEffect } from 'react'
 import { connect } from 'react-redux';
-import { editCouseById, toggleEditCourse } from '../../../../../actions';
+import { editCourseById, toggleEditCourse, getDropDownCourses } from '../../../../../actions';
 import { withRouter } from 'react-router-dom';
 import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 // import {  Icon } from 'semantic-ui-react'
 import { FormWrap, Input, CancelButton, SaveButton, Div, FormSet, Label, ButtonDiv} from '../../mainStyle/styledComponent'
 
@@ -11,8 +12,8 @@ const CourseEditForm = props => {
 
     const { courseID } = props;
 
-    let startdate = new Date(props.studentById.start_date).toISOString().split("T")[0];
-    let enddate = new Date(props.studentById.end_date).toISOString().split("T")[0];
+    // let startdate = new Date(props.studentById.start_date).toISOString().split("T")[0];
+    // let enddate = new Date(props.studentById.end_date).toISOString().split("T")[0];
     
     const [state, setState] = useState({
         term_id: props.courseById.term_id,
@@ -21,8 +22,8 @@ const CourseEditForm = props => {
         level_id: props.courseById.level_id,
         school_grade_id: props.courseById.school_grade_id,
         section: props.courseById.section,
-        start_date: startdate,
-        end_date: enddate,
+        // start_date: startdate,
+        // end_date: enddate,
         start_time: props.courseById.start_time,
         end_time: props.courseById.end_time,
         room_id: props.courseById.room_id,
@@ -31,6 +32,11 @@ const CourseEditForm = props => {
         notes: props.courseById.notes,
         status: props.courseById.status,
     })
+
+    useEffect(() => {
+        props.getDropDownCourses();
+      }, [])
+
     const handleChange = e => {
         setState({
             ...state,
@@ -39,10 +45,11 @@ const CourseEditForm = props => {
     }
     const handleSubmit = e => {
         e.preventDefault();
-        props.editCouseById(props.courseId, state)
+        props.editCourseById(courseID, state)
     }
     const handleCancel = e => {
-        props.toggleEditCourse();
+        e.preventDefault();
+        props.toggleEditCourse('false', 'false');
     }
 
     const status = ['Active', 'Completed', 'Waitlist', 'Cancelled'];
@@ -59,7 +66,7 @@ const CourseEditForm = props => {
                     <div>
                         <Label>Term</Label>
                             <Dropdown
-                            value={props.courseById.term_id}
+                            value={props.courseById.term}
                             onChange={e => setState({ ...state, term_id: e.value })}
                             controlClassName='myControlClassName'
                             className='dropdown'
@@ -69,7 +76,7 @@ const CourseEditForm = props => {
                     <div>
                         <Label>Course Type</Label>
                         <Dropdown
-                            value={props.courseById.course_type_id}
+                            value={props.courseById.course_type}
                             onChange={e => setState({ ...state, course_type_id: e.value })}
                             controlClassName='myControlClassName'
                             className='dropdown'
@@ -79,7 +86,7 @@ const CourseEditForm = props => {
                     <div>
                         <Label>Group Type</Label>
                         <Dropdown
-                            value={props.courseById.group_type_id}
+                            value={props.courseById.group_type}
                             onChange={e => setState({ ...state, group_type_id: e.value })}
                             controlClassName='myControlClassName'
                             className='dropdown'
@@ -89,7 +96,7 @@ const CourseEditForm = props => {
                     <div>
                         <Label>School Grade</Label>
                         <Dropdown
-                            value={props.courseById.school_grade_id}
+                            value={props.courseById.school_grade}
                             onChange={e => setState({ ...state, school_grade_id: e.value })}
                             controlClassName='myControlClassName'
                             className='dropdown'
@@ -99,7 +106,7 @@ const CourseEditForm = props => {
                     <div>
                         <Label>Level</Label>
                         <Dropdown
-                            value={props.courseById.level_id}
+                            value={props.courseById.level}
                             onChange={e => setState({ ...state, level_id: e.value })}
                             controlClassName='myControlClassName'
                             className='dropdown'
@@ -119,14 +126,14 @@ const CourseEditForm = props => {
                     <div>
                         <Label>Course Schedule</Label>
                         <Dropdown
-                            value={props.courseById.course_schedule_id}
+                            value={props.courseById.course_schedule}
                             onChange={e => setState({ ...state, course_schedule_id: e.value })}
                             controlClassName='myControlClassName'
                             className='dropdown'
                             options={props.courseScheduleDropdown}
                         />
                     </div>
-                    <div >
+                    {/* <div >
                         <Label>Start Date</Label>
                         <Input
                             type="date"
@@ -141,7 +148,7 @@ const CourseEditForm = props => {
                             name="end_date"
                             value={state.end_date}
                             onChange={handleChange} />
-                    </div>
+                    </div> */}
                     <div>
                         <Label>Start Time</Label>
                         <Input
@@ -163,7 +170,7 @@ const CourseEditForm = props => {
                     <div>
                         <Label>Room</Label>
                         <Dropdown
-                            value={props.courseById.room_id}
+                            value={`${props.courseById.room}`}
                             onChange={e => setState({ ...state, room_id: e.value })}
                             controlClassName='myControlClassName'
                             className='dropdown'
@@ -173,7 +180,7 @@ const CourseEditForm = props => {
                     <div>
                         <Label>Teacher</Label>
                         <Dropdown
-                            value={props.courseById.teacher_id}
+                            value={props.courseById.teacher}
                             onChange={e => setState({ ...state, teacher_id: e.value })}
                             controlClassName='myControlClassName'
                             className='dropdown'
@@ -199,7 +206,7 @@ const CourseEditForm = props => {
                             options={status}
                         />
                     </div>
-                    <div>
+                    <div style={{ gridColumn: 'span 4' }}>
                         <Label>Notes</Label>
                         <Input
                             type='text'
@@ -226,12 +233,21 @@ const mapStateToProps = state => {
     return {
         isLoading: state.coursesTableReducer.isLoading,
         courseById: state.coursesTableReducer.courseById,
+        isEdited: state.coursesTableReducer.isEdited,
         isEditing: state.coursesTableReducer.isEditing,
+        termDropdown: state.coursesTableReducer.termTable,
+        courseTypeDropdown: state.coursesTableReducer.courseTypeTable,
+        groupTypeDropdown: state.coursesTableReducer.groupTypeTable,
+        schoolGradeDropdown: state.coursesTableReducer.schoolGradeTable,
+        levelDropdown: state.coursesTableReducer.levelTable,
+        courseScheduleDropdown: state.coursesTableReducer.courseScheduleTable,
+        roomDropdown: state.coursesTableReducer.roomTable,
+        teacherDropdown: state.coursesTableReducer.teacherTable,
     };
   };
 export default withRouter(
     connect(
         mapStateToProps,
-        { editCouseById, toggleEditCourse }
+        { editCourseById, toggleEditCourse, getDropDownCourses }
     )(CourseEditForm)
 )

@@ -15,7 +15,7 @@ import {
 
 const CourseInformationTab = props => {
   useEffect(() => {
-    props.getCourseById(props.courseId);
+    props.getCourseById(props.courseID);
   }, []);
 
   const editCourseInfo = e => {

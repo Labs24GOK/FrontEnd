@@ -12,6 +12,7 @@ import {
   ADD_COURSE_SUCCESS,
   ADD_COURSE_FAILURE,
   EDIT_COURSEBYID_START,
+  EDIT_COURSEBYID_CANCELLED,
   EDIT_COURSEBYID_SUCCESS,
   EDIT_COURSEBYID_FAILURE,
   DISPLAY_STUDENTSBYCOURSEID_START,
@@ -171,10 +172,16 @@ export const coursesTableReducer = (state = initialState, action) => {
         isEditing: !state.isEditing,
         error: null,
       };
+    case EDIT_COURSEBYID_CANCELLED: 
+    return {
+        ...state,
+        isEditing:false,
+        isEdited:false
+    }
     case EDIT_COURSEBYID_SUCCESS:
       return {
         ...state,
-        isEditing: !state.isEditing,
+        isEditing: false,
         isEdited: true,
         courseById: action.payload,
       };
@@ -182,6 +189,8 @@ export const coursesTableReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
+        isEditing: true,
+        isEdited: false,
         error: action.payload,
       };
     //get students by course id

@@ -24,14 +24,10 @@ export const getStudentById = student_id => dispatch => {
       });
     });
 };
-export const EDIT_STUDENTBYID_START =
-  'EDIT_STUDENTBYID_START';
-export const EDIT_STUDENTBYID_CANCELLED =
-  'EDIT_STUDENTBYID_CANCELLED';
-export const EDIT_STUDENTBYID_SUCCESS =
-  'EDIT_STUDENTBYID_SUCCESS';
-export const EDIT_STUDENTBYID_FAILURE =
-  'EDIT_STUDENTBYID_FAILURE';
+export const EDIT_STUDENTBYID_START = 'EDIT_STUDENTBYID_START';
+export const EDIT_STUDENTBYID_CANCELLED = 'EDIT_STUDENTBYID_CANCELLED';
+export const EDIT_STUDENTBYID_SUCCESS = 'EDIT_STUDENTBYID_SUCCESS';
+export const EDIT_STUDENTBYID_FAILURE = 'EDIT_STUDENTBYID_FAILURE';
 export const toggleEditComponent = (
   isEditing,
   isEdited
@@ -42,12 +38,6 @@ export const toggleEditComponent = (
   if (isEditing === 'false' && isEdited === 'false') {
     return dispatch({ type: EDIT_STUDENTBYID_CANCELLED });
   }
-  // if(isEditing==='false' && isEdited === 'true' ) {
-  //     return dispatch({type: EDIT_STUDENTBYID_SUCCESS})
-  // }
-  // if(isEditing === 'true' && isEdited ==='false') {
-  //     return dispatch({type: EDIT_STUDENTBYID_FAILURE})
-  // }
 };
 export const editStudentById = (
   student_id,
