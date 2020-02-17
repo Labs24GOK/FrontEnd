@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { getDropDownCourses, addCourse } from '../../../../../actions';
 import Dropdown from 'react-dropdown';
+import { Table, Button as Button2, Spin } from 'antd';
+import CourseSearchModule from './CourseSearchModule';
 
 import 'react-dropdown/style.css';
 
@@ -19,7 +21,7 @@ import {
   const EnrollStudentForm = props => {
 
     const [course, setCourse] = useState({
-        course_id: 'test',
+        course_id: '',
         term_id: '',
         course_schedule_id: '',
         course_type_id: '',
@@ -28,6 +30,11 @@ import {
         section: '',
         status: ''
       });
+
+    const [modalVisible, setModalVisible] = useState({
+        visible: false,
+        loading: false,
+    })  
 
 const status = ['active', 'completed', 'waitlist'];
 
@@ -49,8 +56,12 @@ function handleChange(event) {
   };
 
   return (
+    <>
     <FormWrap onSubmit={handleSubmit}>
       <FormSet>
+      <Button2 onClick={() => {
+            setModalVisible({ visible: true })
+        }}>Search Courses</Button2>
         <Div2>
           <div>
             <Label>Course ID</Label>
@@ -59,6 +70,7 @@ function handleChange(event) {
                 name='course_id'
                 value={course.course_id}
                 onChange={handleChange}
+                readOnly={true}
               />
            </div>
 
@@ -153,7 +165,11 @@ function handleChange(event) {
         </Button>
       </ButtonDiv>
     </FormWrap>
-    );
+    <CourseSearchModule modalVisible={modalVisible} 
+    setModalVisible={setModalVisible} 
+    />
+    </>
+    ); 
 };
 
 const mapStateToProps = state => {
