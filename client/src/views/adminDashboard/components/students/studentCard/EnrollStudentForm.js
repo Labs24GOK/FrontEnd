@@ -22,15 +22,15 @@ import {
 
     const [course, setCourse] = useState({
         course_id: '',
-        term_id: '',
-        course_schedule_id: '',
-        course_type_id: '',
+        term: '',
+        course_schedule: '',
+        section: '',
         group_type_id: '',
         level_id: '',
         section: '',
         status: ''
       });
-
+console.log(course)
     const [modalVisible, setModalVisible] = useState({
         visible: false,
         loading: false,
@@ -79,51 +79,7 @@ function handleChange(event) {
             <Input
                 type='text'
                 name='term id'
-                value={course.term_id}
-                onChange={handleChange}
-                readOnly={true}
-              />
-           </div>
-
-           <div>
-            <Label>Days</Label>
-            <Input
-                type='text'
-                name='Days'
-                value={course.course_schedule_id}
-                onChange={handleChange}
-                readOnly={true}
-              />
-           </div>
-
-           <div>
-            <Label>Type</Label>
-            <Input
-                type='text'
-                name='type'
-                value={course.course_type_id}
-                onChange={handleChange}
-                readOnly={true}
-              />
-           </div>
-
-           <div>
-            <Label>Group Type</Label>
-            <Input
-                type='text'
-                name='Group type'
-                value={course.group_type_id}
-                onChange={handleChange}
-                readOnly={true}
-              />
-           </div>
-
-           <div>
-            <Label>Level</Label>
-            <Input
-                type='text'
-                name='term id'
-                value={course.level_id}
+                value={course.term}
                 onChange={handleChange}
                 readOnly={true}
               />
@@ -133,8 +89,52 @@ function handleChange(event) {
             <Label>Section</Label>
             <Input
                 type='text'
-                name='section'
+                name='Days'
                 value={course.section}
+                onChange={handleChange}
+                readOnly={true}
+              />
+           </div>
+
+           <div>
+            <Label>Level</Label>
+            <Input
+                type='text'
+                name='type'
+                value={course.level}
+                onChange={handleChange}
+                readOnly={true}
+              />
+           </div>
+
+           <div>
+            <Label>Course Type</Label>
+            <Input
+                type='text'
+                name='Group type'
+                value={course.course_type}
+                onChange={handleChange}
+                readOnly={true}
+              />
+           </div>
+
+           <div>
+            <Label>Group Type</Label>
+            <Input
+                type='text'
+                name='term id'
+                value={course.group_type}
+                onChange={handleChange}
+                readOnly={true}
+              />
+           </div>
+
+           <div>
+            <Label>School Grade</Label>
+            <Input
+                type='text'
+                name='section'
+                value={course.school_grade}
                 onChange={handleChange}
                 readOnly={true}
               />
@@ -167,6 +167,7 @@ function handleChange(event) {
     </FormWrap>
     <CourseSearchModule modalVisible={modalVisible} 
     setModalVisible={setModalVisible} 
+    setCourse={setCourse}
     />
     </>
     ); 

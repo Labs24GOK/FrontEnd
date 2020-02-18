@@ -12,7 +12,6 @@ const CourseSearchModule = props => {
         props.getCourseTable();
       }, []);
 
-    const [course, setCourse] = useState({course: []})
     const [searchText, setSearchText] = useState("");
     const [searchedColumn, setSearchedColumn] = useState("");
 
@@ -137,12 +136,11 @@ const CourseSearchModule = props => {
       ];
 
       
-  console.log('Course List:', props.courseList);
 
     const handleOk = () => {
         setTimeout(() => {
             props.setModalVisible({ loading: false, visible: false });
-        }, 1000);
+        }, 10);
     };
 
     const handleCancel = () => {
@@ -155,13 +153,10 @@ const CourseSearchModule = props => {
 
      const rowSelection = {
         type: 'radio',
-        onChange: (courseData) => {
-            const courseNew = courseData.map(each => {
-                console.log(courseData)
-            })
-            
-        },
-      };
+        onSelect: (record) => {
+          props.setCourse(record)
+        }
+        };
 
     return (
         <>
