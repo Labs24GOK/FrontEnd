@@ -39,10 +39,7 @@ export const toggleEditComponent = (
     return dispatch({ type: EDIT_STUDENTBYID_CANCELLED });
   }
 };
-export const editStudentById = (
-  student_id,
-  state
-) => dispatch => {
+export const editStudentById = (student_id, state) => dispatch => {
   axios
     .put(`${API_URL}/student/${student_id}`, state)
     .then(res => {

@@ -165,7 +165,6 @@ export const DISPLAY_STUDENTSBYCOURSEID_FAILURE =
   'DISPLAY_STUDENTSBYCOURSEID_FAILURE';
 
 export const getStudentTableByCourseID = course_id => dispatch => {
-  console.log('course_id in courseAction.js', course_id);
   dispatch({ type: DISPLAY_STUDENTSBYCOURSEID_START });
   axios
     .get(

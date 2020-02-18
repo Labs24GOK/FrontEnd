@@ -12,18 +12,19 @@ const CourseEditForm = props => {
 
     const { courseID } = props;
 
-    // let startdate = new Date(props.studentById.start_date).toISOString().split("T")[0];
-    // let enddate = new Date(props.studentById.end_date).toISOString().split("T")[0];
+    let startdate = new Date(props.courseById.start_date).toISOString().split("T")[0];
+    let enddate = new Date(props.courseById.end_date).toISOString().split("T")[0];
     
     const [state, setState] = useState({
         term_id: props.courseById.term_id,
         course_type_id: props.courseById.course_type_id,
+        course_schedule_id: props.courseById.course_schedule_id,
         group_type_id: props.courseById.group_type_id,
         level_id: props.courseById.level_id,
         school_grade_id: props.courseById.school_grade_id,
         section: props.courseById.section,
-        // start_date: startdate,
-        // end_date: enddate,
+        start_date: startdate,
+        end_date: enddate,
         start_time: props.courseById.start_time,
         end_time: props.courseById.end_time,
         room_id: props.courseById.room_id,
@@ -44,6 +45,7 @@ const CourseEditForm = props => {
         })
     }
     const handleSubmit = e => {
+        console.log("THIS IS SUBMIT COURSE STATE", state)
         e.preventDefault();
         props.editCourseById(courseID, state)
     }
@@ -133,7 +135,7 @@ const CourseEditForm = props => {
                             options={props.courseScheduleDropdown}
                         />
                     </div>
-                    {/* <div >
+                    <div >
                         <Label>Start Date</Label>
                         <Input
                             type="date"
@@ -148,7 +150,7 @@ const CourseEditForm = props => {
                             name="end_date"
                             value={state.end_date}
                             onChange={handleChange} />
-                    </div> */}
+                    </div>
                     <div>
                         <Label>Start Time</Label>
                         <Input

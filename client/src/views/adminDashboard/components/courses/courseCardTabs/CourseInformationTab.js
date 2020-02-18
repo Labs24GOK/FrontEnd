@@ -3,15 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getCourseById, toggleEditCourse } from '../../../../../actions';
 import CourseEditForm from './CourseEditForm';
-import {
-  FormWrap,
-  Div,
-  TextDiv,
-  Label,
-  FormSet,
-  SaveButton, 
-  ButtonDiv
-} from '../../mainStyle/styledComponent'; 
+import { FormWrap, Div, TextDiv, Label, FormSet, SaveButton, ButtonDiv } from '../../mainStyle/styledComponent'; 
 
 const CourseInformationTab = props => {
   useEffect(() => {
@@ -23,10 +15,14 @@ const CourseInformationTab = props => {
     props.toggleEditCourse('true');
   };
 
+  let options = { year: 'numeric', month: 'numeric', day: 'numeric'}; //'long'
+  let startdate = new Date(props.courseById.start_date).toLocaleDateString('en-GB', options)
+  let enddate = new Date(props.courseById.end_date).toLocaleDateString('en-GB', options)
+
   return (
-    <>
       <div>
-        {!props.isEditing ? (
+        {
+        !props.isEditing ?
           <FormWrap>
             <FormSet>
               <Div>
@@ -64,11 +60,11 @@ const CourseInformationTab = props => {
                 </div>
                 <div>
                   <Label>Start Date</Label>
-                  <TextDiv>{props.courseById.start_date || '-'}</TextDiv>
+                  <TextDiv>{startdate || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>End Date</Label>
-                  <TextDiv>{props.courseById.end_date || '-'}</TextDiv>
+                  <TextDiv>{enddate || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>Start Time</Label>
@@ -109,12 +105,10 @@ const CourseInformationTab = props => {
                   </SaveButton>
               </ButtonDiv>
           </FormWrap>
-        ) : (
-          <CourseEditForm {...props} />
-        )}
+         : <CourseEditForm {...props} />
+        }
       </div>
-    </>
-  );
+  )
 };
 
 const mapStateToProps = state => {

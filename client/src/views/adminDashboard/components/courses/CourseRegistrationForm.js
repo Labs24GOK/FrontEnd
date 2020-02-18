@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { getDropDownCourses, addCourse } from '../../../../actions';
 import Dropdown from 'react-dropdown';
-
 import 'react-dropdown/style.css';
 
 import {
@@ -35,7 +34,7 @@ const CourseRegistrationForm = props => {
     end_time: '',
     room_id: '',
     teacher_id: '',
-    hourly_rate: '',
+    hourly_rate: '10.00',
     status: '',
     notes: '',
   });
@@ -68,6 +67,7 @@ const CourseRegistrationForm = props => {
   }
 
   function handleSubmit(event) {
+    console.log("CREATE COURSE BODY", course)
     event.preventDefault();
     props.addCourse(course);
     props.setForm(false);
@@ -90,6 +90,17 @@ const CourseRegistrationForm = props => {
   //   const isDisabled = Object.keys(errors).some(x => errors[x]);
   //   return !isDisabled;
   // };
+
+  const toggleGradeDisabled = courseTypeId => {
+    let gradeDisabled = false
+    if (courseTypeId === 2 ){
+      gradeDisabled = true
+    } else {
+      gradeDisabled = false
+    }
+    return gradeDisabled
+  }
+
 
   return (
     <FormWrap onSubmit={handleSubmit}>
@@ -128,11 +139,12 @@ const CourseRegistrationForm = props => {
           <div>
             <Label>School Grade</Label>
             <Dropdown
-              value={1}
+              value={course.school_grade_id}
               onChange={e => setCourse({ ...course, school_grade_id: e })}
               controlClassName='myControlClassName'
               className='dropdown'
               options={props.schoolGradeDropdown}
+              disabled={course.course_type_id.value !== 2}
             />
           </div>
           <div>
@@ -165,7 +177,7 @@ const CourseRegistrationForm = props => {
               options={props.courseScheduleDropdown}
             />
           </div>
-          {/* <div >
+          <div >
             <Label>Start Date</Label>
               <Input
                 type="date"
@@ -180,7 +192,7 @@ const CourseRegistrationForm = props => {
                 name="end_date"
                 value={course.end_date}
                 onChange={handleChange} />
-          </div> */}
+          </div>
           <div>
             <Label>Start Time</Label>
             <Input

@@ -8,14 +8,13 @@ import 'react-dropdown/style.css';
 import { FormWrap, Input, Div, FormSet, ButtonDiv, CancelButton, SaveButton, Label} from '../../mainStyle/styledComponent';
 
 const StudentForm = props => {
-    
+   
+    console.log("STUDENT EDIT FORM PROPS", props)
    
     const { studentID } = props;
     
     let birthdate = new Date(props.studentById.birthdate).toISOString().split("T")[0];
     let grade_updated = new Date(props.studentById.grade_updated).toISOString().split("T")[0];
-    
-    // console.log("BIRTHDATE IN EDIT STUDENT FORM", birthdate)
 
     const [state, setState] = useState({
         cpr: props.studentById.cpr,
@@ -54,7 +53,7 @@ const StudentForm = props => {
       }
 
     const handleSubmit = e => {
-        console.log("THIS IS STATE:", state)
+        console.log("THIS IS STUDENT SUBMIT STATE:", state)
         e.preventDefault();
         props.editStudentById(studentID, state)
         }

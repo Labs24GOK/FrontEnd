@@ -169,7 +169,7 @@ export const coursesTableReducer = (state = initialState, action) => {
     case EDIT_COURSEBYID_START:
       return {
         ...state,
-        isEditing: !state.isEditing,
+        isEditing: true,
         error: null,
       };
     case EDIT_COURSEBYID_CANCELLED: 
@@ -189,7 +189,7 @@ export const coursesTableReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        isEditing: true,
+        isEditing: false,
         isEdited: false,
         error: action.payload,
       };
