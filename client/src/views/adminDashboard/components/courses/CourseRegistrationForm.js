@@ -41,7 +41,7 @@ const CourseRegistrationForm = props => {
   });
 
   const status = ['Active', 'Completed', 'Waitlist', 'Cancelled'];
-  const section = ['A', 'B', 'C']
+  const section = ['A', 'B', 'C'];
 
   // const [touched, setTouched] = useState({
   //   term_id: false,
@@ -95,75 +95,75 @@ const CourseRegistrationForm = props => {
     <FormWrap onSubmit={handleSubmit}>
       <FormSet>
         <Div>
-            <div>
-              <Label>Term</Label>
-                <Dropdown
-                  value={course.term_id}
-                  onChange={e => setCourse({ ...course, term_id: e })}
-                  controlClassName='myControlClassName'
-                  className='dropdown'
-                  options={props.termDropdown}
-                />
-            </div>
+          <div>
+            <Label>Term</Label>
+            <Dropdown
+              value={course.term_id}
+              onChange={e => setCourse({ ...course, term_id: e })}
+              controlClassName='myControlClassName'
+              className='dropdown'
+              options={props.termDropdown}
+            />
+          </div>
           <div>
             <Label>Course Type</Label>
-              <Dropdown
-                value={course.course_type_id}
-                onChange={e => setCourse({ ...course, course_type_id: e })}
-                controlClassName='myControlClassName'
-                className='dropdown'
-                options={props.courseTypeDropdown}
-              />
+            <Dropdown
+              value={course.course_type_id}
+              onChange={e => setCourse({ ...course, course_type_id: e })}
+              controlClassName='myControlClassName'
+              className='dropdown'
+              options={props.courseTypeDropdown}
+            />
           </div>
           <div>
             <Label>Group Type</Label>
-              <Dropdown
-                value={course.group_type_id}
-                onChange={e => setCourse({ ...course, group_type_id: e })}
-                controlClassName='myControlClassName'
-                className='dropdown'
-                options={props.groupTypeDropdown}
-              />
+            <Dropdown
+              value={course.group_type_id}
+              onChange={e => setCourse({ ...course, group_type_id: e })}
+              controlClassName='myControlClassName'
+              className='dropdown'
+              options={props.groupTypeDropdown}
+            />
           </div>
           <div>
             <Label>School Grade</Label>
-              <Dropdown
-                value={1}
-                onChange={e => setCourse({ ...course, school_grade_id: e })}
-                controlClassName='myControlClassName'
-                className='dropdown'
-                options={props.schoolGradeDropdown}
-              />
+            <Dropdown
+              value={1}
+              onChange={e => setCourse({ ...course, school_grade_id: e })}
+              controlClassName='myControlClassName'
+              className='dropdown'
+              options={props.schoolGradeDropdown}
+            />
           </div>
           <div>
             <Label>Level</Label>
-              <Dropdown
-                value={course.level_id}
-                onChange={e => setCourse({ ...course, level_id: e })}
-                controlClassName='myControlClassName'
-                className='dropdown'
-                options={props.levelDropdown}
-              />
+            <Dropdown
+              value={course.level_id}
+              onChange={e => setCourse({ ...course, level_id: e })}
+              controlClassName='myControlClassName'
+              className='dropdown'
+              options={props.levelDropdown}
+            />
           </div>
           <div>
             <Label>Section</Label>
             <Dropdown
-                value={course.section}
-                onChange={e => setCourse({ ...course, section: e.value })}
-                controlClassName='myControlClassName'
-                className='dropdown'
-                options={section}
-              />
+              value={course.section}
+              onChange={e => setCourse({ ...course, section: e.value })}
+              controlClassName='myControlClassName'
+              className='dropdown'
+              options={section}
+            />
           </div>
           <div>
             <Label>Course Schedule</Label>
-              <Dropdown
-                value={course.course_schedule_id}
-                onChange={e => setCourse({ ...course, course_schedule_id: e })}
-                controlClassName='myControlClassName'
-                className='dropdown'
-                options={props.courseScheduleDropdown}
-              />
+            <Dropdown
+              value={course.course_schedule_id}
+              onChange={e => setCourse({ ...course, course_schedule_id: e })}
+              controlClassName='myControlClassName'
+              className='dropdown'
+              options={props.courseScheduleDropdown}
+            />
           </div>
           {/* <div >
             <Label>Start Date</Label>
@@ -183,69 +183,69 @@ const CourseRegistrationForm = props => {
           </div> */}
           <div>
             <Label>Start Time</Label>
-              <Input
-                type='time'
-                name='start_time'
-                value={course.start_time}
-                onChange={handleChange}
-              />
+            <Input
+              type='time'
+              name='start_time'
+              value={course.start_time}
+              onChange={handleChange}
+            />
           </div>
           <div>
             <Label>End Time</Label>
-              <Input
-                type='time'
-                name='end_time'
-                value={course.end_time}
-                onChange={handleChange}
-              />
+            <Input
+              type='time'
+              name='end_time'
+              value={course.end_time}
+              onChange={handleChange}
+            />
           </div>
           <div>
             <Label>Room</Label>
-              <Dropdown
-                value={course.room_id}
-                onChange={e => setCourse({ ...course, room_id: e })}
-                controlClassName='myControlClassName'
-                className='dropdown'
-                options={props.roomDropdown}
-              />
+            <Dropdown
+              value={course.room_id}
+              onChange={e => setCourse({ ...course, room_id: e })}
+              controlClassName='myControlClassName'
+              className='dropdown'
+              options={props.roomDropdown}
+            />
           </div>
           <div>
             <Label>Teacher</Label>
-              <Dropdown
-                value={course.teacher_id}
-                onChange={e => setCourse({ ...course, teacher_id: e })}
-                controlClassName='myControlClassName'
-                className='dropdown'
-                options={props.teacherDropdown}
-              />
+            <Dropdown
+              value={course.teacher_id}
+              onChange={e => setCourse({ ...course, teacher_id: e })}
+              controlClassName='myControlClassName'
+              className='dropdown'
+              options={props.teacherDropdown}
+            />
           </div>
           <div>
             <Label>Hourly Rate</Label>
-              <Input
-                type='text'
-                name='hourly_rate'
-                value={course.hourly_rate}
-                onChange={handleChange}
-              />
+            <Input
+              type='text'
+              name='hourly_rate'
+              value={course.hourly_rate}
+              onChange={handleChange}
+            />
           </div>
           <div>
             <Label>Status</Label>
-              <Dropdown
-                value={course.status}
-                onChange={e => setCourse({ ...course, status: e.value })}
-                controlClassName='myControlClassName'
-                className='dropdown'
-                options={status}
-              />
+            <Dropdown
+              value={course.status}
+              onChange={e => setCourse({ ...course, status: e.value })}
+              controlClassName='myControlClassName'
+              className='dropdown'
+              options={status}
+            />
           </div>
           <div>
             <Label>Notes</Label>
-              <Input
-                type='text'
-                name='notes'
-                value={course.notes}
-                onChange={handleChange}
-              />
+            <Input
+              type='text'
+              name='notes'
+              value={course.notes}
+              onChange={handleChange}
+            />
           </div>
         </Div>
       </FormSet>
@@ -256,9 +256,7 @@ const CourseRegistrationForm = props => {
         >
           Cancel
         </Button>
-        <Button type='submit'>
-          Add Course
-        </Button>
+        <Button type='submit'>Add Course</Button>
       </ButtonDiv>
     </FormWrap>
   );
