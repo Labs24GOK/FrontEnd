@@ -8,7 +8,7 @@ import 'react-dropdown/style.css';
 import { FormWrap, Input, Div, FormSet, ButtonDiv, CancelButton, SaveButton, Label} from '../../mainStyle/styledComponent';
 
 const StudentForm = (props) => {
-    console.log("STUDENT FORM PROPS", props)
+    //console.log("STUDENT FORM PROPS", props)
    
     const { studentID } = props;
     
@@ -54,7 +54,7 @@ const StudentForm = (props) => {
       }
 
     const handleSubmit = e => {
-        console.log("THIS IS STATE:", state)
+        //console.log("THIS IS STATE:", state)
         e.preventDefault();
         props.editStudentById(studentID, state)
         }

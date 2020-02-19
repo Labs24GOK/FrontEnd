@@ -68,7 +68,7 @@ const CourseTable = props => {
     }
   ];
 
-  console.log('Course List:', props.courseList);
+  //console.log('Course List:', props.courseList);
 
   const courseData = props.courseList.sort((a, b) => {
     return b.id - a.id;
@@ -116,7 +116,7 @@ const CourseTable = props => {
             return {
               onClick: event => {
                 props.setCourseView('courseCardView');
-                console.log('Record.course_id', record.course_id);
+                //console.log('Record.course_id', record.course_id);
                 props.setCourseID(record.course_id);
               }
             };

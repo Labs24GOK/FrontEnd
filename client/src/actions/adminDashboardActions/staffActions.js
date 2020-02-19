@@ -13,7 +13,7 @@ export const getStaffTable = () => dispatch => {
   axios
     .get(`${API_URL}/staff`)
     .then(res => {
-      console.log(res);
+      //console.log(res);
       const ids = res.data.map(each => {
         return each.id;
       });
@@ -25,7 +25,7 @@ export const getStaffTable = () => dispatch => {
       dispatch({ type: FETCH_NEXTAVAILABLEID, payload: nextAvailableID });
     })
     .catch(err => {
-      console.log('err', err);
+      //console.log('err', err);
       dispatch({ type: FETCH_STAFF_FAILURE, payload: err.payload });
     });
 };
@@ -39,14 +39,14 @@ export const getStaffById = id => dispatch => {
   axios
     .get(`${API_URL}/staff/${id}`)
     .then(res => {
-      console.log('SINGLE STAFF', res);
+      //console.log('SINGLE STAFF', res);
       dispatch({
         type: FETCH_STAFFBYID_SUCCESS,
         payload: res.data
       });
     })
     .catch(err => {
-      console.log(err);
+      //console.log(err);
       dispatch({
         type: FETCH_STAFFBYID_FAILURE,
         payload: err.data
@@ -101,7 +101,7 @@ export const addStaff = staff => dispatch => {
       dispatch({ type: ADD_STAFF_SUCCESS, payload: staffAdded });
     })
     .catch(err => {
-      console.log('err', err);
+      //console.log('err', err);
       dispatch({ type: ADD_STAFF_FAILURE, payload: err.payload });
     });
 };
@@ -120,7 +120,7 @@ export const deleteStaffById = id => dispatch => {
 			
     })
     .catch(err => {
-      console.log('err', err.message);
+      //console.log('err', err.message);
       dispatch({ type: DELETE_STAFF_FAILURE, payload: err.message });
     });
 };
@@ -180,7 +180,7 @@ export const filterStaffTable = searchTerm => dispatch => {
       dispatch({ type: FETCH_STAFF_SUCCESS, payload: staffList });
     })
     .catch(err => {
-      console.log('err', err);
+      //console.log('err', err);
       dispatch({ type: FETCH_STAFF_FAILURE, payload: err.payload });
     });
 };

@@ -11,7 +11,10 @@ import '../../mainStyle/mainCard.scss';
 const StaffCard = props => {
   useEffect(() => {
     props.getStaffById(props.staffID);
-  }, []);
+    //console.log("it's running");
+  }, [props.staffID]);
+
+  //console.log('STAFF BY ID', props.staffById);
 
   const panes = [
     {
@@ -65,14 +68,14 @@ const StaffCard = props => {
           />
 
           <Header as="h2">
-            {props.staffById.name}
+            {props.staffById && props.staffById.name}
             <div className="headerDiv">
               <div>
                 <div className="headerSeparateDiv">
-                  CPR # {props.staffById.cpr}
+                  CPR # {props.staffById && props.staffById.cpr}
                 </div>
                 <div className="headerSeparateDiv">
-                  Staff ID: {props.staffById.staff_id}
+                  Staff ID: {props.staffById && props.staffById.staff_id}
                 </div>
               </div>
             </div>

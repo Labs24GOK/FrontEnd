@@ -14,7 +14,7 @@ const StudentInfo = props => {
         props.getStudentByFamilyId();
     },[])
 
-console.log('student info props', props)
+//console.log('student info props', props)
  //create a fn or statement for full name
 
 //   if(!props.studentByFamilyId) {

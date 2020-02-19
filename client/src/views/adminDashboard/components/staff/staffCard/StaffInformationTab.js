@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import {
   getStaffById,
@@ -21,17 +21,16 @@ import {
 import Modal from '../../modals/DeleteModal';
 
 const StaffInformationTab = props => {
-  console.log('STAFFFFFFFFID', props.staffID);
+  //const [birthdate, setBirthdate] = useState(new Date().toLocaleDateString());
+
   useEffect(() => {
     props.getStaffById(props.staffID);
-  }, []);
+  }, [props.staffID]);
 
   let options = { year: 'numeric', month: 'numeric', day: 'numeric' }; //'long'
-  let birthdate = new Date(props.staffById.birthdate)
-    .toLocaleDateString
-    // 'en-GB',
-    // options
-    ();
+  let birthdate = new Date(
+    props.staffById && props.staffById.birthdate
+  ).toLocaleDateString('en-GB', options);
 
   const editStaffInfo = e => {
     e.preventDefault();
@@ -57,37 +56,51 @@ const StaffInformationTab = props => {
               <Div>
                 <div>
                   <Label>Staff ID</Label>
-                  <TextDiv>{props.staffById.staff_id || '-'}</TextDiv>
+                  <TextDiv>
+                    {(props.staffById && props.staffById.staff_id) || '-'}
+                  </TextDiv>
                 </div>
 
                 <div>
                   <Label>Name</Label>
-                  <TextDiv>{props.staffById.name || '-'}</TextDiv>
+                  <TextDiv>
+                    {(props.staffById && props.staffById.name) || '-'}
+                  </TextDiv>
                 </div>
 
                 <div>
                   <Label>Short Name</Label>
-                  <TextDiv>{props.staffById.short_name || '-'}</TextDiv>
+                  <TextDiv>
+                    {(props.staffById && props.staffById.short_name) || '-'}
+                  </TextDiv>
                 </div>
 
                 <div>
                   <Label>CPR</Label>
-                  <TextDiv>{props.staffById.cpr || '-'}</TextDiv>
+                  <TextDiv>
+                    {(props.staffById && props.staffById.cpr) || '-'}
+                  </TextDiv>
                 </div>
 
                 <div>
                   <Label>Mobile Number</Label>
-                  <TextDiv>{props.staffById.mobile_number || '-'}</TextDiv>
+                  <TextDiv>
+                    {(props.staffById && props.staffById.mobile_number) || '-'}
+                  </TextDiv>
                 </div>
 
                 <div>
                   <Label>Accent</Label>
-                  <TextDiv>{props.staffById.accent || '-'}</TextDiv>
+                  <TextDiv>
+                    {(props.staffById && props.staffById.accent) || '-'}
+                  </TextDiv>
                 </div>
 
                 <div>
                   <Label>Gender</Label>
-                  <TextDiv>{props.staffById.gender || '-'}</TextDiv>
+                  <TextDiv>
+                    {(props.staffById && props.staffById.gender) || '-'}
+                  </TextDiv>
                 </div>
 
                 <div>
@@ -97,12 +110,14 @@ const StaffInformationTab = props => {
 
                 <div>
                   <Label>Teaching Rate</Label>
-                  <TextDiv>{props.staffById.teaching_rate || '-'}</TextDiv>
+                  <TextDiv>
+                    {(props.staffById && props.staffById.teaching_rate) || '-'}
+                  </TextDiv>
                 </div>
                 <div>
                   <Label>Admin</Label>
                   <TextDiv>
-                    {props.staffById.user_type === 'admin'
+                    {props.staffById && props.staffById.user_type === 'admin'
                       ? 'Yes'
                       : 'No' || '-'}
                   </TextDiv>
@@ -110,12 +125,16 @@ const StaffInformationTab = props => {
                 <div>
                   <Label>Active</Label>
                   <TextDiv>
-                    {props.staffById.active ? 'Yes' : 'No' || '-'}
+                    {props.staffById && props.staffById.active
+                      ? 'Yes'
+                      : 'No' || '-'}
                   </TextDiv>
                 </div>
                 <div>
                   <Label>User ID</Label>
-                  <TextDiv>{props.staffById.user_id || '-'}</TextDiv>
+                  <TextDiv>
+                    {(props.staffById && props.staffById.user_id) || '-'}
+                  </TextDiv>
                 </div>
               </Div>
             </FormSet>

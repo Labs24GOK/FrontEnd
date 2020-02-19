@@ -128,7 +128,7 @@ const CourseRegistrationForm = props => {
   // };
 
   const errors = validate(course);
-  console.log(errors);
+  //console.log(errors);
   const isDisabled = Object.keys(errors).some(x => errors[x]);
   const shouldMarkError = field => {
     const hasError = errors[field];

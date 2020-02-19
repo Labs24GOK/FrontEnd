@@ -11,7 +11,7 @@ import {
 } from '../../actions';
 
 const initialState = {
-  staffById: [],
+  staffById: {},
   isLoading: false,
   error: null,
   isEditing: false,

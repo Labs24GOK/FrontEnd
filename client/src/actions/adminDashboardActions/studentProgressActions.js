@@ -35,7 +35,7 @@ export const postStudentProgress = student => dispatch => {
 	axios
 		.post(`${API_URL}/api/?table=progress_report`, student)
 		.then(res => {
-			console.log('POST ACTION:', res.data);
+			//('POST ACTION:', res.data);
 			dispatch({
 				type: CREATE_STUDENTPROGRESS_SUCCESS,
 				payload: res.data[0]
@@ -58,15 +58,15 @@ export const toggleEditProgressComponent = () => dispatch => {
 };
 
 export const editStudentProgress = (student_id, state) => dispatch => {
-	console.log('student_id', student_id);
-	console.log('state', state);
+	//console.log('student_id', student_id);
+	//console.log('state', state);
 	axios
 		.put(
 			`${API_URL}/api/?table=progress_report&where=student_id=${student_id}`,
 			state
 		)
 		.then(res => {
-			console.log('EDIT ACTION:', res);
+			//console.log('EDIT ACTION:', res);
 			dispatch({
 				type: EDIT_STUDENTPROGRESS_SUCCESS,
 				payload: res.data

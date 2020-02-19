@@ -31,64 +31,64 @@ const CourseInformationTab = props => {
                 <div>
                   <Label>Status</Label>
 
-                  <TextDiv>{props.courseById.status || '-'}</TextDiv>
+                  <TextDiv>{props.courseById && props.courseById.status || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>Term</Label>
-                  <TextDiv>{props.courseById.term || '-'}</TextDiv>
+                  <TextDiv>{props.courseById && props.courseById.term || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>Course Type</Label>
-                  <TextDiv>{props.courseById.course_type || '-'}</TextDiv>
+                  <TextDiv>{props.courseById && props.courseById.course_type || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>Group Type</Label>
-                  <TextDiv>{props.courseById.group_type || '-'}</TextDiv>
+                  <TextDiv>{props.courseById && props.courseById.group_type || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>School Grade</Label>
-                  <TextDiv>{props.courseById.school_grade || '-'}</TextDiv>
+                  <TextDiv>{props.courseById && props.courseById.school_grade || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>Level</Label>
-                  <TextDiv>{props.courseById.level || '-'}</TextDiv>
+                  <TextDiv>{props.courseById && props.courseById.level || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>Section</Label>
-                  <TextDiv>{props.courseById.section || '-'}</TextDiv>
+                  <TextDiv>{props.courseById && props.courseById.section || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>Subsection</Label>
-                  <TextDiv>{props.courseById.subsection || '-'}</TextDiv>
+                  <TextDiv>{props.courseById && props.courseById.subsection || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>Room</Label>
-                  <TextDiv>{props.courseById.room || '-'}</TextDiv>
+                  <TextDiv>{props.courseById && props.courseById.room || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>Teacher</Label>
-                  <TextDiv>{props.courseById.teacher || '-'}</TextDiv>
+                  <TextDiv>{props.courseById && props.courseById.teacher || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>Hourly Rate</Label>
 
-                  <TextDiv>{props.courseById.hourly_rate || '-'}</TextDiv>
+                  <TextDiv>{props.courseById && props.courseById.hourly_rate || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>Course Schedule</Label>
-                  <TextDiv>{props.courseById.course_schedule || '-'}</TextDiv>
+                  <TextDiv>{props.courseById && props.courseById.course_schedule || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>Start Time</Label>
-                  <TextDiv>{props.courseById.start_time || '-'}</TextDiv>
+                  <TextDiv>{props.courseById && props.courseById.start_time || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>End Time</Label>
-                  <TextDiv>{props.courseById.end_time || '-'}</TextDiv>
+                  <TextDiv>{props.courseById && props.courseById.end_time || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>Notes</Label>
-                  <TextDiv>{props.courseById.notes || '-'}</TextDiv>
+                  <TextDiv>{props.courseById && props.courseById.notes || '-'}</TextDiv>
                 </div>
               </Div>
               <Div>

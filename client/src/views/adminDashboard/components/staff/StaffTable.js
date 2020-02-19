@@ -11,7 +11,7 @@ import StaffRegistrationForm from './StaffRegistrationForm';
 import SearchStaffTable from './SearchStaffTable';
 
 const StaffTable = props => {
-  console.log(props.staffList);
+  //console.log(props.staffList);
   const { availableID } = props;
   const [form, setForm] = useState(false);
   useEffect(() => {
@@ -23,7 +23,6 @@ const StaffTable = props => {
   };
 
   const handleAddButton = () => {
-    console.log('hey');
     setForm(!form);
   };
 
@@ -151,9 +150,7 @@ const StaffTable = props => {
           onRow={record => {
             return {
               onClick: () => {
-                console.log('RECORD', record);
                 props.setStaffID(record.staff_id);
-                console.log('StaffID', record.staff_id);
                 props.setStaffView('staffCardView');
               }
             };

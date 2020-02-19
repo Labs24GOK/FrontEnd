@@ -13,7 +13,7 @@ import 'semantic-ui-css/semantic.min.css';
 
 const CourseCard = props => {
 
-    console.log("Props", props)
+    //console.log("Props", props)
 
     const { courseId } = props
 
