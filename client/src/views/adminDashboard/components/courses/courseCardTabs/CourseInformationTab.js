@@ -1,10 +1,25 @@
 import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getCourseById, toggleEditCourse } from '../../../../../actions';
+import {
+  getCourseById,
+  toggleEditCourse,
+  toggleDeleteModel,
+  deleteCourseById
+} from '../../../../../actions';
 import CourseEditForm from './CourseEditForm';
-import { FormWrap, Div, TextDiv, Label, FormSet, SaveButton, ButtonDiv } from '../../mainStyle/styledComponent';
-import { timeConverter, dateConverter } from '../../../../../utils/helpers.js' 
+import {
+  FormWrap,
+  Div,
+  TextDiv,
+  Label,
+  FormSet,
+  SaveButton,
+  DeleteButton,
+  ButtonDiv
+} from '../../mainStyle/styledComponent';
+import { timeConverter, dateConverter } from '../../../../../utils/helpers.js';
+import Modal from '../../modals/DeleteModal';
 
 const CourseInformationTab = props => {
   useEffect(() => {
@@ -16,42 +31,66 @@ const CourseInformationTab = props => {
     props.toggleEditCourse('true');
   };
 
-  const startDate = dateConverter(props.courseById.start_date)
-  const endDate = dateConverter(props.courseById.end_date)
-  const startTime = timeConverter(props.courseById.start_time)
-  const endTime = timeConverter(props.courseById.end_time)
+  const startDate = dateConverter(props.courseById.start_date);
+  const endDate = dateConverter(props.courseById.end_date);
+  const startTime = timeConverter(props.courseById.start_time);
+  const endTime = timeConverter(props.courseById.end_time);
 
+  const areYouSureYouWantToDelete = e => {
+    e.preventDefault();
+    props.toggleDeleteModel(true);
+  };
+
+  const deleteCourseInfo = async () => {
+    await props.deleteCourseById(props.courseById.course_id);
+    setTimeout(() => {
+      props.setCourseView('courseTableView');
+    }, 500);
+  };
 
   return (
-      <div>
-        {
-        !props.isEditing ?
+    <div>
+      {!props.isEditing ? (
+        <>
           <FormWrap>
             <FormSet>
               <Div>
                 <div>
-                  <Label>Course ID</Label>
-                  <TextDiv>{props.courseById.course_id || '-'}</TextDiv>
+                  <Label>Status</Label>
+
+                  <TextDiv>
+                    {(props.courseById && props.courseById.status) || '-'}
+                  </TextDiv>
                 </div>
                 <div>
                   <Label>Term</Label>
-                  <TextDiv>{props.courseById.term || '-'}</TextDiv>
+                  <TextDiv>
+                    {(props.courseById && props.courseById.term) || '-'}
+                  </TextDiv>
                 </div>
                 <div>
                   <Label>Course Type</Label>
-                  <TextDiv>{props.courseById.course_type || '-'}</TextDiv>
+                  <TextDiv>
+                    {(props.courseById && props.courseById.course_type) || '-'}
+                  </TextDiv>
                 </div>
                 <div>
                   <Label>Group Type</Label>
-                  <TextDiv>{props.courseById.group_type || '-'}</TextDiv>
+                  <TextDiv>
+                    {(props.courseById && props.courseById.group_type) || '-'}
+                  </TextDiv>
                 </div>
                 <div>
                   <Label>Level</Label>
-                  <TextDiv>{props.courseById.level || '-'}</TextDiv>
+                  <TextDiv>
+                    {(props.courseById && props.courseById.level) || '-'}
+                  </TextDiv>
                 </div>
                 <div>
                   <Label>Section</Label>
-                  <TextDiv>{props.courseById.section || '-'}</TextDiv>
+                  <TextDiv>
+                    {(props.courseById && props.courseById.section) || '-'}
+                  </TextDiv>
                 </div>
                 <div>
                   <Label>School Grade</Label>
@@ -79,51 +118,70 @@ const CourseInformationTab = props => {
                 </div>
                 <div>
                   <Label>Room</Label>
-                  <TextDiv>{props.courseById.room || '-'}</TextDiv>
+                  <TextDiv>
+                    {(props.courseById && props.courseById.room) || '-'}
+                  </TextDiv>
                 </div>
                 <div>
                   <Label>Teacher</Label>
-                  <TextDiv>{props.courseById.teacher || '-'}</TextDiv>
+                  <TextDiv>
+                    {(props.courseById && props.courseById.teacher) || '-'}
+                  </TextDiv>
                 </div>
                 <div>
                   <Label>Hourly Rate</Label>
-                  <TextDiv>{props.courseById.hourly_rate || '-'}</TextDiv>
-                </div>               
+                  <TextDiv>
+                    {(props.courseById && props.courseById.hourly_rate) || '-'}
+                  </TextDiv>
+                </div>
                 <div>
                   <Label>Status</Label>
-                  <TextDiv>{props.courseById.status || '-'}</TextDiv>
+                  <TextDiv>
+                    {(props.courseById && props.courseById.status) || '-'}
+                  </TextDiv>
                 </div>
                 <div>
                   <Label>Notes</Label>
-                  <TextDiv>{props.courseById.notes || '-'}</TextDiv>
+                  <TextDiv>
+                    {(props.courseById && props.courseById.notes) || '-'}
+                  </TextDiv>
                 </div>
               </Div>
               <Div>
                 <div style={{ gridColumn: 'span3' }}></div>
               </Div>
             </FormSet>
-            <ButtonDiv >
-              <SaveButton type="submit" onClick={editCourseInfo}> 
-                      Edit
-                  </SaveButton>
-              </ButtonDiv>
+            <ButtonDiv>
+              <SaveButton type="submit" onClick={editCourseInfo}>
+                Edit
+              </SaveButton>
+              <DeleteButton type="submit" onClick={areYouSureYouWantToDelete}>
+                Delete
+              </DeleteButton>
+            </ButtonDiv>
           </FormWrap>
-         : <CourseEditForm {...props} />
-        }
-      </div>
-  )
+          <Modal submitActionCB={deleteCourseInfo} />
+        </>
+      ) : (
+        <CourseEditForm {...props} />
+      )}
+    </div>
+  );
 };
 
 const mapStateToProps = state => {
   return {
     isLoading: state.coursesTableReducer.isLoading,
     courseById: state.coursesTableReducer.courseById,
-    isEditing: state.coursesTableReducer.isEditing,
+    isEditing: state.coursesTableReducer.isEditing
   };
 };
 
 export default withRouter(
-  connect(mapStateToProps, { getCourseById, toggleEditCourse })(
-    CourseInformationTab
-  )
+  connect(mapStateToProps, {
+    getCourseById,
+    toggleEditCourse,
+    toggleDeleteModel,
+    deleteCourseById
+  })(CourseInformationTab)
 );

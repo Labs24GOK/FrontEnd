@@ -39,6 +39,7 @@ const AttendanceModal = props => {
     ] 
 
     const handleOk = () => {
+        console.log(attendance)
         props.postStudentAttendance(attendance)
         setTimeout(() => {
             props.setModalVisible({ loading: false, visible: false });

@@ -22,7 +22,7 @@ export const loggedIn = (history, location) => {
 		axios
 			.get(`${API_URL}/user`)
 			.then(res => {
-				console.log(res.data);
+				//console.log(res.data);
 				dispatch({ type: LOGGEDIN_SUCCESS, payload: res.data });
 				if (!res.data.authenticated && location.pathname === '/dashboard') {
 					history.push('/login');
@@ -31,7 +31,7 @@ export const loggedIn = (history, location) => {
 				}
 			})
 			.catch(err => {
-				console.log('ERROR', err);
+				//console.log('ERROR', err);
 				let wrongCredentials = true;
 				dispatch({ type: LOGGEDIN_FAILURE, payload: wrongCredentials });
 			});
@@ -45,14 +45,14 @@ export const logIn = (user, history) => {
 		axios
 			.post(`${API_URL}/login`, user)
 			.then(res => {
-				console.log('LOGGING IN', res);
+				//console.log('LOGGING IN', res);
 				// SETTING THE USER TYPE TO LOCAL STORAGE SO THAT IT DOES NOT GET LOST IF USER RELOAD THE PAGE
 				localStorage.setItem('userType', res.data.user_type);
 				dispatch({ type: LOGIN_SUCCESS, payload: res.data });
 				history.push('/dashboard');
 			})
 			.catch(err => {
-				console.log('ERROR', err);
+				//console.log('ERROR', err);
 				dispatch({ type: LOGIN_FAILURE, payload: 'Error' });
 			});
 	};
@@ -70,7 +70,7 @@ export const logOut = history => {
 				history.push('/');
 			})
 			.catch(err => {
-				console.log('ERROR API', err);
+				//console.log('ERROR API', err);
 				dispatch({ type: LOGOUT_FAILURE, payload: 'Error' });
 			});
 	};

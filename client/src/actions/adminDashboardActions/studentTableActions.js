@@ -18,7 +18,7 @@ export const getStudentTable = () => dispatch => {
       });
     })
     .catch(err => {
-      console.log('err', err);
+      //console.log('err', err);
       dispatch({
         type: FETCH_STUDENTS_FAILURE,
         payload: err.payload
@@ -82,7 +82,7 @@ export const filterStudentTable = searchTerm => dispatch => {
       });
     })
     .catch(err => {
-      console.log('err', err);
+      //console.log('err', err);
       dispatch({
         type: FETCH_STUDENTS_FAILURE,
         payload: err.payload
@@ -116,14 +116,14 @@ export const createNewStudent = student => dispatch => {
   axios
     .post(`${API_URL}/student`, newStudent)
     .then(res => {
-      console.log('res from createNewStudent', res);
+      //console.log('res from createNewStudent', res);
       dispatch({
         type: CREATE_NEW_STUDENT_SUCCESS,
         payload: res.data
       });
     })
     .catch(err => {
-      console.log('error from createNewStudent', err);
+      //console.log('error from createNewStudent', err);
       dispatch({
         type: CREATE_NEW_STUDENT_FAILURE,
         payload: err.data
@@ -142,14 +142,14 @@ export const getDropDown = () => dispatch => {
   axios
     .get(`${API_URL}/student/dropdowns`)
     .then(res => {
-      console.log('RES FOR STUDENT DROPDOWN', res);
+      //console.log('RES FOR STUDENT DROPDOWN', res);
       dispatch({
         type: FETCH_DROPDOWN_SUCCESS,
         payload: res.data
       });
     })
     .catch(err => {
-      console.log('err', err);
+      //console.log('err', err);
       dispatch({
         type: FETCH_DROPDOWN_FAILURE,
         payload: err.payload

@@ -24,6 +24,36 @@ export const getStudentById = student_id => dispatch => {
       });
     });
 };
+
+export const ENROLL_STUDENT_START =
+  'ENROLL_STUDENT_START';
+export const ENROLL_STUDENT_SUCCESS =
+  'ENROLL_STUDENT_SUCCESS';
+export const ENROLL_STUDENT_CANCELLED =
+  'ENROLL_STUDENT_CANCELLED';
+export const ENROLL_STUDENT_FAILURE =
+  'ENROLL_STUDENT_FAILURE';
+export const enrollStudent = (
+  student_id,
+  course_id,
+  state
+) => dispatch => {
+  axios
+    .post(`${API_URL}/student/${student_id}/course/${course_id}`, state)
+    .then(res => {
+      dispatch({
+        type: ENROLL_STUDENT_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: ENROLL_STUDENT_FAILURE,
+        payload: 'Error enrolling the student'
+      });
+    });
+};
+
 export const EDIT_STUDENTBYID_START = 'EDIT_STUDENTBYID_START';
 export const EDIT_STUDENTBYID_CANCELLED = 'EDIT_STUDENTBYID_CANCELLED';
 export const EDIT_STUDENTBYID_SUCCESS = 'EDIT_STUDENTBYID_SUCCESS';
@@ -61,10 +91,11 @@ export const DELETE_STUDENTBYID_SUCCESS =
   'DELETE_STUDENTBYID_SUCCESS';
 export const DELETE_STUDENTBYID_FAILURE =
   'DELETE_STUDENTBYID_FAILURE';
+  
 export const deleteStudentById = id => dispatch => {
   dispatch({ type: DELETE_STUDENTBYID_START });
   axios
-    .put(`${API_URL}/student/${id}`)
+    .delete(`${API_URL}/student/${id}`)
     .then(res => {
       dispatch({
         type: DELETE_STUDENTBYID_SUCCESS,
@@ -89,14 +120,14 @@ export const editStudentDropDown = () => dispatch => {
   axios
     .get(`${API_URL}/student/dropdowns`)
     .then(res => {
-      console.log('RES FOR EDIT STUDENT DROPDOWN', res);
+      //console.log('RES FOR EDIT STUDENT DROPDOWN', res);
       dispatch({
         type: EDIT_DROPDOWN_SUCCESS,
         payload: res.data
       });
     })
     .catch(err => {
-      console.log('err', err);
+      //console.log('err', err);
       dispatch({
         type: EDIT_DROPDOWN_FAILURE,
         payload: err.payload

@@ -42,6 +42,15 @@ grid-template-columns: 1fr 1fr 1fr 1fr;
 grid-gap: 15px;
  margin: 10px;
 `
+
+export const Div2 = styled.div`
+display: grid;
+text-align: left;
+grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+grid-gap: 15px;
+ margin: 10px;
+`
+
 export const Input = styled.input`
   outline: none;
   border-radius: 3px;
@@ -182,6 +191,19 @@ background-color: #26ABBD;
 border: none;
 cursor: pointer;
 `
+
+export const DeleteButton = styled.button`
+width: 80px;
+height: 25px;
+border-radius: 3px;
+margin: 10px 5px 10px 10px;
+text-align: center;
+color: #FFFFFF; 
+background-color: #EC404E;
+border: none;
+cursor: pointer;
+`
+
 export const AddButton = styled.button`
 width: 120px;
 height: 25px;
