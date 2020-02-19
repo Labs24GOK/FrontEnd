@@ -128,11 +128,11 @@ const CourseInformationTab = props => {
                 </div>
                 <div>
                   <Label>Hourly Rate</Label>
-                  <TextDiv>{props.courseById.hourly_rate || '-'}</TextDiv>
+                  <TextDiv>{props.courseById && props.courseById.hourly_rate || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>Status</Label>
-                  <TextDiv>{props.courseById.status || '-'}</TextDiv>
+                  <TextDiv>{props.courseById && props.courseById.status || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>Notes</Label>
