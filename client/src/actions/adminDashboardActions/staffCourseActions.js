@@ -11,10 +11,10 @@ export const FETCH_STUDENTSBYCOURSEID_SUCCESS =
 export const FETCH_STUDENTSBYCOURSEID_FAILURE =
 	'FETCH_STUDENTSBYCOURSEID_FAILURE';
 
-export const getStaffCourses = teacher_id => dispatch => {
+export const getStaffCourses = staff_id => dispatch => {
 	dispatch({ type: FETCH_STAFFCOURSES_START });
 	axios
-		.get(`${API_URL}/staff/:staffID/courses`)
+		.get(`${API_URL}/staff/${staff_id}/courses`)
 		.then(res => {
 			dispatch({
 				type: FETCH_STAFFCOURSES_SUCCESS,
