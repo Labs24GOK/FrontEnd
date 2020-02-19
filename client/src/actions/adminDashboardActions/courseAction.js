@@ -2,10 +2,8 @@ import axios from 'axios';
 import API_URL from '../../config/apiUrl';
 
 export const FETCH_COURSES_START = 'FETCH_COURSES_START';
-export const FETCH_COURSES_SUCCESS =
-  'FETCH_COURSES_SUCCESS';
-export const FETCH_COURSES_FAILURE =
-  'FETCH_COURSES_FAILURE';
+export const FETCH_COURSES_SUCCESS = 'FETCH_COURSES_SUCCESS';
+export const FETCH_COURSES_FAILURE = 'FETCH_COURSES_FAILURE';
 
 export const getCourseTable = () => dispatch => {
   dispatch({ type: FETCH_COURSES_START });
@@ -26,12 +24,9 @@ export const getCourseTable = () => dispatch => {
     });
 };
 
-export const FETCH_COURSEBYID_START =
-  'FETCH_COURSEBYID_START';
-export const FETCH_COURSEBYID_SUCCESS =
-  'FETCH_COURSEBYID_SUCCESS';
-export const FETCH_COURSEBYID_FAILURE =
-  'FETCH_COURSEBYID_FAILURE';
+export const FETCH_COURSEBYID_START = 'FETCH_COURSEBYID_START';
+export const FETCH_COURSEBYID_SUCCESS = 'FETCH_COURSEBYID_SUCCESS';
+export const FETCH_COURSEBYID_FAILURE = 'FETCH_COURSEBYID_FAILURE';
 
 export const getCourseById = id => dispatch => {
   dispatch({ type: FETCH_COURSEBYID_START });
@@ -52,12 +47,9 @@ export const getCourseById = id => dispatch => {
     });
 };
 
-export const FETCH_DROPDOWNCOURSES_START =
-  'FETCH_DROPDOWNCOURSES_START';
-export const FETCH_DROPDOWNCOURSES_SUCCESS =
-  'FETCH_DROPDOWNCOURSES_SUCCESS';
-export const FETCH_DROPDOWNCOURSES_FAILURE =
-  'FETCH_DROPDOWNCOURSES_FAILURE';
+export const FETCH_DROPDOWNCOURSES_START = 'FETCH_DROPDOWNCOURSES_START';
+export const FETCH_DROPDOWNCOURSES_SUCCESS = 'FETCH_DROPDOWNCOURSES_SUCCESS';
+export const FETCH_DROPDOWNCOURSES_FAILURE = 'FETCH_DROPDOWNCOURSES_FAILURE';
 
 export const getDropDownCourses = () => dispatch => {
   dispatch({ type: FETCH_DROPDOWNCOURSES_START });
@@ -123,20 +115,23 @@ export const addCourse = course => dispatch => {
     });
 };
 
-export const EDIT_COURSEBYID_START =
-  'EDIT_COURSEBYID_START';
-export const EDIT_COURSEBYID_SUCCESS =
-  'EDIT_COURSEBYID_SUCCESS';
-export const EDIT_COURSEBYID_FAILURE =
-  'EDIT_COURSEBYID_FAILURE';
+export const EDIT_COURSEBYID_START = 'EDIT_COURSEBYID_START';
+export const EDIT_COURSEBYID_CANCELLED = 'EDIT_COURSEBYID_CANCELLED';
+export const EDIT_COURSEBYID_SUCCESS = 'EDIT_COURSEBYID_SUCCESS';
+export const EDIT_COURSEBYID_FAILURE = 'EDIT_COURSEBYID_FAILURE';
 
-export const toggleEditCourse = () => dispatch => {
-  dispatch({ type: EDIT_COURSEBYID_START });
+export const toggleEditCourse = (isEditing, isEdited) => dispatch => {
+  if (isEditing === 'true') {
+    return dispatch({ type: EDIT_COURSEBYID_START });
+  }
+  if (isEditing === 'false' && isEdited === 'false') {
+    return dispatch({ type: EDIT_COURSEBYID_CANCELLED });
+  }
 };
 
-export const editCouseById = (id, state) => dispatch => {
+export const editCourseById = (course_id, state) => dispatch => {
   axios
-    .put(`${API_URL}/course/${id}`, state)
+    .put(`${API_URL}/course/${course_id}`, state)
     .then(res => {
       dispatch({
         type: EDIT_COURSEBYID_SUCCESS,
@@ -146,7 +141,31 @@ export const editCouseById = (id, state) => dispatch => {
     .catch(err => {
       dispatch({
         type: EDIT_COURSEBYID_FAILURE,
-        payload: err.data
+        payload: 'Error saving changed course information.'
+      });
+    });
+};
+
+export const DELETE_COURSEBYID_START = 'EDIT_COURSEBYID_START';
+export const DELETE_COURSEBYID_SUCCESS = 'EDIT_COURSEBYID_SUCCESS';
+export const DELETE_COURSEBYID_FAILURE = 'EDIT_COURSEBYID_FAILURE';
+
+export const deleteCourseById = course_id => dispatch => {
+  dispatch({
+    type: DELETE_COURSEBYID_START
+  });
+  axios
+    .delete(`${API_URL}/course/${course_id}`)
+    .then(res => {
+      dispatch({
+        type: DELETE_COURSEBYID_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: DELETE_COURSEBYID_FAILURE,
+        payload: 'Error deleting course information.'
       });
     });
 };
@@ -159,17 +178,14 @@ export const DISPLAY_STUDENTSBYCOURSEID_FAILURE =
   'DISPLAY_STUDENTSBYCOURSEID_FAILURE';
 
 export const getStudentTableByCourseID = course_id => dispatch => {
-  //console.log('course_id in courseAction.js', course_id);
   dispatch({ type: DISPLAY_STUDENTSBYCOURSEID_START });
   axios
-    .get(
-      `${API_URL}/api/?table=course_enrollment&where=course_id=${course_id}`
-    )
+    .get(`${API_URL}/course/${course_id}`)
     .then(res => {
       //console.log('res in courseAction.js', res);
       dispatch({
         type: DISPLAY_STUDENTSBYCOURSEID_SUCCESS,
-        payload: res.data.tableData
+        payload: res.data
       });
     })
     .catch(err => {
@@ -194,16 +210,10 @@ export const filterCourseTable = searchTerm => dispatch => {
       searchTerm = searchTerm.toLowerCase();
       let courseList = res.data;
       courseList = courseList.filter(course => {
-        if (
-          course.course_id &&
-          course.course_id.toString().match(searchTerm)
-        ) {
+        if (course.course_id && course.course_id.toString().match(searchTerm)) {
           return true;
         }
-        if (
-          course.term &&
-          course.term.toLowerCase().match(searchTerm)
-        ) {
+        if (course.term && course.term.toLowerCase().match(searchTerm)) {
           return true;
         }
         if (
@@ -220,30 +230,20 @@ export const filterCourseTable = searchTerm => dispatch => {
         }
         if (
           course.school_grade &&
-          course.school_grade
-            .toLowerCase()
-            .match(searchTerm)
+          course.school_grade.toLowerCase().match(searchTerm)
         ) {
           return true;
         }
-        if (
-          course.level &&
-          course.level.toLowerCase().match(searchTerm)
-        ) {
+        if (course.level && course.level.toLowerCase().match(searchTerm)) {
           return true;
         }
         if (
           course.course_schedule &&
-          course.course_schedule
-            .toLowerCase()
-            .match(searchTerm)
+          course.course_schedule.toLowerCase().match(searchTerm)
         ) {
           return true;
         }
-        if (
-          course.teacher &&
-          course.teacher.toLowerCase().match(searchTerm)
-        ) {
+        if (course.teacher && course.teacher.toLowerCase().match(searchTerm)) {
           return true;
         }
         return false;

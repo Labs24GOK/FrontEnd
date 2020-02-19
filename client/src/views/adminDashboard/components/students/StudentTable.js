@@ -49,6 +49,7 @@ const StudentTable = props => {
     {
       title: 'Gender',
       dataIndex: 'gender',
+      filters: [{ text: 'M', value: 'male' }, { text: 'F', value: 'female' }],
       key: 5,
     },
     {
@@ -63,6 +64,9 @@ const StudentTable = props => {
   });
   return (
     <div>
+        <h2 style={{textAlign: "left", marginLeft: "1.3rem"}}>
+          Student Table
+        </h2>
       <div className='row-above'>
         <div>
           <SearchStundentTable />

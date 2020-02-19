@@ -17,7 +17,7 @@ const Course = () => {
         />
       ) : courseView === 'courseCardView' ? (
         <CourseCard
-          courseId={courseID}
+          courseID={courseID}
           setCourseView={setCourseView}
           courseView={courseView}
         />

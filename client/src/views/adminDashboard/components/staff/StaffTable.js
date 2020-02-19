@@ -105,6 +105,7 @@ const StaffTable = props => {
 
   return (
     <div>
+      <h2 style={{ textAlign: 'left', marginLeft: '1.3rem' }}>Staff Table</h2>
       <div className="row-above">
         <div>
           <SearchStaffTable />
