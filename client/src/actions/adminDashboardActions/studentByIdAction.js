@@ -39,7 +39,7 @@ export const enrollStudent = (
   state
 ) => dispatch => {
   axios
-    .put(`${API_URL}/student/${student_id}/course/${course_id}`, state)
+    .post(`${API_URL}/student/${student_id}/course/${course_id}`, state)
     .then(res => {
       dispatch({
         type: ENROLL_STUDENT_SUCCESS,

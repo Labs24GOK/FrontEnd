@@ -11,8 +11,10 @@ import EnrollStudentForm from './EnrollStudentForm';
 
 import './studentTable.scss'
 
+
+
 const StudentCoursesTab = props => {
- 
+  console.log(props.courseByStudentId)
   const [form, setForm] = useState(false);
 
   const handleCancelButtonOnForm = () => {
@@ -26,28 +28,6 @@ const StudentCoursesTab = props => {
   useEffect(() => {
     props.getStudentCourses(props.studentID)
   }, [])
-
-//SHAPE OF DATA: DO NOT DELETE YET
-  // course_schedule: "Sat / Tue"
-  // course_type: "general"
-  // created_at: "2019-11-06T18:48:23.360Z"
-  // end_time: "18:30:00"
-  // group_type: "Nursery"
-  // hourly_rate: "7.000"
-  // id: 1
-  // level: "SS 1"
-  // notes: "Some notes about this course"
-  // result: "pass"
-  // room_id: 1
-  // school_grade: "Nursery"
-  // section: "A"
-  // start_time: "16:30:00"
-  // status: "completed"
-  // student_id: 1
-  // subsection: 1
-  // teacher: "Victoria Labdon"
-  // term: "Fall 2014"
-  // updated_at: "2019-11-06T18:48:23.360Z"
 
   const studentCourseColumns = [
     {
@@ -74,7 +54,7 @@ const StudentCoursesTab = props => {
     },
     {
       title: 'Level',
-      dataIndex: 'level',
+      dataIndex: 'course_level',
       key: 5,
     },
     {
@@ -83,14 +63,9 @@ const StudentCoursesTab = props => {
       key: 6,
     },
     {
-      title: 'Subsection',
-      dataIndex: 'subsection',
-      key: 7,
-    },
-    {
       title: 'Status',
-      dataIndex: 'status',
-      key: 8,
+      dataIndex: 'student_result_type',
+      key: 7,
     },
   ];
 

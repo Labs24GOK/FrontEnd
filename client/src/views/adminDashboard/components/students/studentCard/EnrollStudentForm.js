@@ -80,8 +80,6 @@ function handleChange(event) {
     props.setForm(false);
   };
 
-  console.log("props.studentById:", props.studentById)
-
   return (
     <>
     <FormWrap onSubmit={handleSubmit}>
