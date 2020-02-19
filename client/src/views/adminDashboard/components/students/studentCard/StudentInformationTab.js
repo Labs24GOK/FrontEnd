@@ -20,7 +20,7 @@ const StudentInformationTab = props => {
         e.preventDefault();
         props.toggleEditComponent('true');
     }
-
+    
     return (
         <div>
             {

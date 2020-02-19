@@ -16,9 +16,7 @@ function Tab(props) {
       setIcon(faMap);
     } else if (props.tab.key === 'Staff') {
       setIcon(faUserFriends);
-    } else if (props.tab.key === 'Family') {
-      setIcon(faUserFriends);
-    }
+    } 
   }, [])
   const handleClick = (tab) => {
     props.setSelected(tab.toLowerCase())

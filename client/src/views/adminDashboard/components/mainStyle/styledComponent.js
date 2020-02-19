@@ -42,6 +42,15 @@ grid-template-columns: 1fr 1fr 1fr 1fr;
 grid-gap: 15px;
  margin: 10px;
 `
+
+export const Div2 = styled.div`
+display: grid;
+text-align: left;
+grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+grid-gap: 15px;
+ margin: 10px;
+`
+
 export const Input = styled.input`
   outline: none;
   border-radius: 3px;
