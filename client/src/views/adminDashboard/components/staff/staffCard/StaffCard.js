@@ -18,7 +18,10 @@ const StaffCard = props => {
       menuItem: 'STAFF INFORMATION',
       render: () => (
         <Tab.Pane attached={false}>
-          <StaffInformationTab staffID={props.staffID} />
+          <StaffInformationTab
+            setStaffView={props.setStaffView}
+            staffID={props.staffID}
+          />
         </Tab.Pane>
       )
     },

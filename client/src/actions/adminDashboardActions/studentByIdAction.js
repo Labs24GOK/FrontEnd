@@ -74,6 +74,7 @@ export const DELETE_STUDENTBYID_SUCCESS =
   'DELETE_STUDENTBYID_SUCCESS';
 export const DELETE_STUDENTBYID_FAILURE =
   'DELETE_STUDENTBYID_FAILURE';
+  
 export const deleteStudentById = id => dispatch => {
   dispatch({ type: DELETE_STUDENTBYID_START });
   axios

@@ -29,43 +29,43 @@ const CourseTable = props => {
     {
       title: 'Course ID',
       dataIndex: 'course_id',
-      key: 1,
+      key: 1
     },
     {
       title: 'Term',
       dataIndex: 'term',
-      key: 2,
+      key: 2
     },
     {
       title: 'Course Type',
       dataIndex: 'course_type',
-      key: 4,
+      key: 4
     },
     {
       title: 'Group Type',
       dataIndex: 'group_type',
-      key: 5,
+      key: 5
     },
     {
       title: 'School Grade',
       dataIndex: 'school_grade',
-      key: 6,
+      key: 6
     },
     {
       title: 'Level',
       dataIndex: 'level',
-      key: 7,
+      key: 7
     },
     {
       title: 'Course Schedule',
       dataIndex: 'course_schedule',
-      key: 8,
+      key: 8
     },
     {
       title: 'Teacher',
       dataIndex: 'teacher',
-      key: 9,
-    },
+      key: 9
+    }
   ];
 
   console.log('Course List:', props.courseList);
@@ -75,12 +75,12 @@ const CourseTable = props => {
   });
   return (
     <div>
-      <div className='row-above'>
+      <div className="row-above">
         <div>
           <SearchCourseTable />
         </div>
         <div
-          className='create-new-entry'
+          className="create-new-entry"
           style={{ cursor: 'pointer', color: '#26ABBD' }}
           onClick={handleAddButton}
         >
@@ -89,7 +89,7 @@ const CourseTable = props => {
             <FontAwesomeIcon
               style={{ width: '18px', height: '21px' }}
               icon={faPlusCircle}
-              size='lg'
+              size="lg"
             />
           </div>
         </div>
@@ -103,22 +103,22 @@ const CourseTable = props => {
       ) : null}
 
       {props.isLoading ? (
-        <Spin style={{ marginTop: '150px' }} size='large' />
+        <Spin style={{ marginTop: '150px' }} size="large" />
       ) : (
         <Table
-          className='rowHover'
+          className="rowHover"
           dataSource={courseData}
           columns={tableColumns}
-          pagination = {false}
+          pagination={false}
           // pagination={{ pageSize: 10, total: 50 }}
-          rowKey='course_id'
+          rowKey="course_id"
           onRow={(record, rowIndex) => {
             return {
               onClick: event => {
                 props.setCourseView('courseCardView');
-                console.log("Record.course_id", record.course_id)
+                console.log('Record.course_id', record.course_id);
                 props.setCourseID(record.course_id);
-              },
+              }
             };
           }}
         />
@@ -131,7 +131,7 @@ const mapStateToProps = state => {
   return {
     isLoading: state.coursesTableReducer.isLoading,
     courseList: state.coursesTableReducer.courseList,
-    error: state.coursesTableReducer.error,
+    error: state.coursesTableReducer.error
   };
 };
 

@@ -149,10 +149,11 @@ const StaffTable = props => {
           pagination={{ pageSize: 15 }}
           rowKey="id"
           onRow={record => {
-            console.log('RECORD', record);
             return {
               onClick: () => {
+                console.log('RECORD', record);
                 props.setStaffID(record.staff_id);
+                console.log('StaffID', record.staff_id);
                 props.setStaffView('staffCardView');
               }
             };
