@@ -32,8 +32,8 @@ const EnrollStudentForm = props => {
       });
 
     const [state, setState] = useState({
-        result_type_code : 2,
-        notes : "Student is in"
+        result_type_code : -3,
+        notes : ''
     });
 
     const [modalVisible, setModalVisible] = useState({
@@ -41,12 +41,18 @@ const EnrollStudentForm = props => {
         loading: false,
     })  
 
-const status = ['active', 'completed', 'waitlist'];
-
 const statusArr = [
   {value: -3, label: 'unconfirmed'},
-  {value: -2, label: 'no show'}
-]
+  {value: -2, label: 'no show'},
+  {value: -1, label: 'cancelled enrollment'},
+  {value: 0, label: 'drop'},
+  {value: 1, label: 'transfer out'},
+  {value: 2, label: 'fail'},
+  {value: 3, label: 'incomplete'},
+  {value: 4, label: 'no exam'},
+  {value: 5, label: 'pass'},
+  {value: 6, label: 'confirm'},
+];
 
 function handleChange(event) {
     setCourse({
@@ -56,17 +62,17 @@ function handleChange(event) {
   }
 
   function handleChange2(event) {
-    setCourse({
+    setState({
       ...state,
       [event.target.name]: event.target.value,
     });
   }
 
   function handleSubmit(event) {
-
+    console.log("this is state", state, props.studentById.student_id, course.course_id )
     event.preventDefault();
     props.setForm(false);
-    props.enrollStudent( props.studentById, course.course_id, state)
+    props.enrollStudent( props.studentById.student_id, course.course_id, state)
   }
 
   const handleCancel = event => {
@@ -169,16 +175,17 @@ function handleChange(event) {
                 value={course.status}
                 onChange={handleChange}
                 readOnly={true}
-              />
+              /> 
            </div>
 
            <div>
-             <Label>Gender</Label>
+             <Label>Result</Label>
               <Dropdown
                   controlClassName='myControlClassName'
                   className='dropdown'
-                  onChange={(e) => setState({ ...state, location_id: e.value })}
-                  value={state.result_type_code}
+                  name='result_type_code'
+                  onChange={(e) => setState({ ...state, result_type_code: e.value })}
+                  value={statusArr[state.result_type_code + 3]}
                   options={statusArr}
               />
               </div>
