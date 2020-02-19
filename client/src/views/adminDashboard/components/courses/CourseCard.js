@@ -13,22 +13,18 @@ import 'semantic-ui-css/semantic.min.css';
 
 const CourseCard = props => {
 
-    console.log("Props", props)
-
-    const { courseId } = props
-
     useEffect(() => {
-        props.getCourseById(courseId)
+        props.getCourseById(props.courseID)
     }, [])
 
     const panes = [
         {
             menuItem: 'COURSE INFORMATION',
-            render: () => <Tab.Pane attached={false}>{<CourseInformationTab courseId ={courseId}/>}</Tab.Pane>,
+            render: () => <Tab.Pane attached={false}>{<CourseInformationTab courseID ={props.courseID}/>}</Tab.Pane>,
         },
         {
             menuItem: 'ENROLLED STUDENTS',
-            render: () => <Tab.Pane attached={false}>{<EnrolledStudentsTab courseId = {courseId} />}</Tab.Pane>,
+            render: () => <Tab.Pane attached={false}>{<EnrolledStudentsTab courseID = {props.courseId} />}</Tab.Pane>,
         },
     ]
 

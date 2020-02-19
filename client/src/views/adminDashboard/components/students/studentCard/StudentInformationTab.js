@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
 import { getStudentById, toggleEditComponent, toggleEditPlacement } from '../../../../../actions';
 import { withRouter } from 'react-router-dom';
@@ -20,8 +20,6 @@ const StudentInformationTab = props => {
         e.preventDefault();
         props.toggleEditComponent('true');
     }
-console.log("props.studentById:", props.studentById)
-console.log("birthdate:", birthdate)
 
     return (
         <div>

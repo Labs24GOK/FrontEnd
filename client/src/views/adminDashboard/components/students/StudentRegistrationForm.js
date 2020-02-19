@@ -14,14 +14,14 @@ const StudentRegistrationForm = (props) => {
   console.log("STUDENT REGISTRATION FORM PROPS", props)
   const [student, setStudent] = useState({
     cpr: '',
-    // registration_date: moment(new Date()).format("YYYY-MM-DD"),
+    registration_date: '',
     first_name: '',
     additional_names: '',
     gender: '',
     birthdate: '',
     school_grade_id: '',
     school_name: '',
-    // grade_updated: moment(new Date()).format("YYYY-MM-DD"),
+    grade_updated: '',
     home_telephone: '',
     mobile_telephone: '',
     block_code: '',
@@ -383,7 +383,6 @@ const mapStateToProps = state => {
     contactTypesTable: state.studentTableReducer.contactTypesTable,
     locationsTable: state.studentTableReducer.locationsTable,
     createNewStudentSuccessMessage: state.studentTableReducer.createNewStudentSuccessMessage
-
   };
 };
 

@@ -9,6 +9,7 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import CourseRegistrationForm from './CourseRegistrationForm';
 import SearchCourseTable from './SearchCourseTable';
 import '../mainStyle/mainCard.scss';
+import { timeConverter } from '../../../../utils/helpers.js'
 
 const CourseTable = props => {
   const [form, setForm] = useState(false);
@@ -37,34 +38,71 @@ const CourseTable = props => {
       key: 2,
     },
     {
+      title: 'Group Type',
+      dataIndex: 'group_type',
+      key: 3,
+    },
+    {
       title: 'Course Type',
       dataIndex: 'course_type',
       key: 4,
     },
     {
-      title: 'Group Type',
-      dataIndex: 'group_type',
-      key: 5,
-    },
-    {
       title: 'School Grade',
       dataIndex: 'school_grade',
-      key: 6,
+      key: 5,
     },
     {
       title: 'Level',
       dataIndex: 'level',
-      key: 7,
+      key: 6,
     },
     {
       title: 'Course Schedule',
       dataIndex: 'course_schedule',
+      key: 7,
+    },
+    {
+      title: 'Start Time',
+      dataIndex: 'start_time',
       key: 8,
+      render: (value, row, index) => {
+        return <span>{timeConverter(value)}</span>;
+      }
+    },
+    {
+      title: 'End Time',
+      dataIndex: 'end_time',
+      key: 9,
+      render: (value, row, index) => {
+        return <span>{timeConverter(value)}</span>;
+      }
     },
     {
       title: 'Teacher',
       dataIndex: 'teacher',
-      key: 9,
+      key: 10,
+    },
+    {
+      title: 'Students',
+      dataIndex: 'students',
+      //this is for total number of students once the endpoints/functionality is built
+      key: 11,
+    },
+    {
+      title: 'Confirmed',
+      dataIndex: 'confirmed',
+      key: 12,
+    },
+    {
+      title: 'Unconfirmed',
+      dataIndex: 'unconfirmed',
+      key: 13,
+    },
+    {
+      title: 'Status',
+      dataIndex: 'status',
+      key: 14,
     },
   ];
 
@@ -109,14 +147,14 @@ const CourseTable = props => {
           className='rowHover'
           dataSource={courseData}
           columns={tableColumns}
-          pagination = {false}
+          pagination={false}
           // pagination={{ pageSize: 10, total: 50 }}
           rowKey='course_id'
           onRow={(record, rowIndex) => {
             return {
               onClick: event => {
                 props.setCourseView('courseCardView');
-                console.log("Record.course_id", record.course_id)
+                console.log('Record.course_id', record.course_id);
                 props.setCourseID(record.course_id);
               },
             };
