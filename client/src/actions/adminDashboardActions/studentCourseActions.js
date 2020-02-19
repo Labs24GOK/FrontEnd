@@ -10,11 +10,11 @@ export const getStudentCourses = student_id => dispatch => {
 
 	dispatch({ type: FETCH_STUDENTCOURSES_START });
 	axios
-		.get(`${API_URL}/api/?table=course_result&where=student_id=${student_id}`)
+		.get(`${API_URL}/student/${student_id}/courses`)
 		.then(res => {
 			dispatch({
 				type: FETCH_STUDENTCOURSES_SUCCESS,
-				payload: res.data.tableData
+				payload: res.data
 			});
 		})
 		.catch(err => {

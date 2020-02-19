@@ -92,7 +92,7 @@ const StudentForm = props => {
         { label: 'Yes', value: true },
         { label: 'No', value: false }
       ];
-    
+    console.log(props.locationsTable)
     return (
         <FormWrap onSubmit={handleSubmit}>
             <FormSet>

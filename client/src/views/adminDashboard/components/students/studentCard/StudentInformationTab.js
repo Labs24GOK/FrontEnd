@@ -195,10 +195,6 @@ const StudentInformationTab = props => {
                       : 'No' || '-'}
                   </TextDiv>
                 </div>
-                {/* <div>
-                            <Label>Family ID</Label>
-                            <TextDiv>{props.studentById.family_id || "-" }</TextDiv> 
-                        </div> */}
                 <div style={{ gridColumn: 'span 4' }}>
                   <Label>Notes</Label>
                   <div>
