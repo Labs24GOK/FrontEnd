@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getStudentById, toggleEditComponent } from '../../../../../actions';
@@ -6,79 +5,98 @@ import { withRouter } from 'react-router-dom';
 import StudentInformationTab from './StudentInformationTab';
 import StudentCoursesTab from './StudentCoursesTab';
 import { Tab } from 'semantic-ui-react';
-import { Header, Image, Icon } from 'semantic-ui-react'
+import { Header, Image, Icon } from 'semantic-ui-react';
 import StudentProgressTab from '../studentProgress/StudentProgressTab';
 
-
 import 'antd/dist/antd.css';
-import '../../mainStyle/mainCard.scss'
+import '../../mainStyle/mainCard.scss';
 
 const StudentCard = props => {
-    useEffect(() => {
-        props.getStudentById(props.studentID)
-    }, [])
+  useEffect(() => {
+    props.getStudentById(props.studentID);
+  }, []);
 
-    const studentPanes = [
-        {
-            menuItem: 'STUDENT INFORMATION',
-            render: () => <Tab.Pane attached={false}><StudentInformationTab studentID={props.studentID} /></Tab.Pane>,
-        },
-        {
-            menuItem: 'COURSES',
-            render: () => <Tab.Pane attached={false}>{<StudentCoursesTab studentID={props.studentID} />}</Tab.Pane>,
-        },
-        {
-            menuItem: 'PROGRESS',
-            render: () => <Tab.Pane attached={false}><StudentProgressTab studentID={props.studentID} /></Tab.Pane>,
-        },
-    ]
-
-    const goBack = () => {
-        if (props.studentView === 'studentCardView') {
-            props.setStudentView('studentTableView')
-        }
+  const studentPanes = [
+    {
+      menuItem: 'STUDENT INFORMATION',
+      render: () => (
+        <Tab.Pane attached={false}>
+          <StudentInformationTab
+            studentID={props.studentID}
+            setStudentView={props.setStudentView}
+          />
+        </Tab.Pane>
+      )
+    },
+    {
+      menuItem: 'COURSES',
+      render: () => (
+        <Tab.Pane attached={false}>
+          {<StudentCoursesTab studentID={props.studentID} />}
+        </Tab.Pane>
+      )
+    },
+    {
+      menuItem: 'PROGRESS',
+      render: () => (
+        <Tab.Pane attached={false}>
+          <StudentProgressTab studentID={props.studentID} />
+        </Tab.Pane>
+      )
     }
+  ];
 
-    return (
-        <div>
-                <div className="back-button" onClick={goBack} style={{ cursor: "pointer", width: "10%" }}>
-                    <Icon name='angle left' />
-                    Back
-                    </div>
-                <div className='card-title'>
+  const goBack = () => {
+    if (props.studentView === 'studentCardView') {
+      props.setStudentView('studentTableView');
+    }
+  };
 
-                    <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' circular size='small' />
+  return (
+    <div>
+      <div
+        className="back-button"
+        onClick={goBack}
+        style={{ cursor: 'pointer', width: '10%' }}
+      >
+        <Icon name="angle left" />
+        Back
+      </div>
+      <div className="card-title">
+        <Image
+          src="https://react.semantic-ui.com/images/wireframe/square-image.png"
+          circular
+          size="small"
+        />
 
-                    <Header as='h2'>
-                        {props.studentById.first_name} {props.studentById.additional_names}
-                        <div className="headerDiv">
-                            <div>
-                                <div className="headerSeparateDiv">CPR # {props.studentById.cpr}</div>
-                                <div className="headerSeparateDiv">STUDENT ID {props.studentById.student_id}</div>
-                            </div>
-                        </div>
-
-                    </Header>
-                </div>
-                <Tab menu={{ secondary: true, pointing: true }} panes={studentPanes} />
-                
-        </div>
-
-    )
-}
-
+        <Header as="h2">
+          {props.studentById && props.studentById.first_name}{' '}
+          {props.studentById && props.studentById.additional_names}
+          <div className="headerDiv">
+            <div>
+              <div className="headerSeparateDiv">
+                CPR # {props.studentById && props.studentById.cpr}
+              </div>
+              <div className="headerSeparateDiv">
+                STUDENT ID {props.studentById && props.studentById.student_id}
+              </div>
+            </div>
+          </div>
+        </Header>
+      </div>
+      <Tab menu={{ secondary: true, pointing: true }} panes={studentPanes} />
+    </div>
+  );
+};
 
 const mapStateToProps = state => {
-    return {
-        isLoading: state.studentByIdReducer.isLoading,
-        studentById: state.studentByIdReducer.studentById,
-        isEditing: state.studentByIdReducer.isEditing,
-    };
+  return {
+    isLoading: state.studentByIdReducer.isLoading,
+    studentById: state.studentByIdReducer.studentById,
+    isEditing: state.studentByIdReducer.isEditing
+  };
 };
 
 export default withRouter(
-    connect(
-        mapStateToProps,
-        { getStudentById, toggleEditComponent }
-    )(StudentCard)
-)
+  connect(mapStateToProps, { getStudentById, toggleEditComponent })(StudentCard)
+);

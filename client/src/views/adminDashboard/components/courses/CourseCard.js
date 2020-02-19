@@ -10,75 +10,88 @@ import '../mainStyle/mainCard.scss';
 import 'antd/dist/antd.css';
 import 'semantic-ui-css/semantic.min.css';
 
-
 const CourseCard = props => {
+  useEffect(() => {
+    props.getCourseById(props.courseID);
+  }, []);
 
-    useEffect(() => {
-        props.getCourseById(props.courseID)
-    }, [])
-
-    const panes = [
-        {
-            menuItem: 'COURSE INFORMATION',
-            render: () => <Tab.Pane attached={false}>{<CourseInformationTab courseID ={props.courseID}/>}</Tab.Pane>,
-        },
-        {
-            menuItem: 'ENROLLED STUDENTS',
-            render: () => <Tab.Pane attached={false}>{<EnrolledStudentsTab courseID = {props.courseId} />}</Tab.Pane>,
-        },
-    ]
-
-    const goBack = () => {
-        if(props.courseView === 'courseCardView') {
-            props.setCourseView('courseTableView')
-        }
+  const panes = [
+    {
+      menuItem: 'COURSE INFORMATION',
+      render: () => (
+        <Tab.Pane attached={false}>
+          {
+            <CourseInformationTab
+              courseID={props.courseID}
+              setCourseView={props.setCourseView}
+            />
+          }
+        </Tab.Pane>
+      )
+    },
+    {
+      menuItem: 'ENROLLED STUDENTS',
+      render: () => (
+        <Tab.Pane attached={false}>
+          {<EnrolledStudentsTab courseID={props.courseId} />}
+        </Tab.Pane>
+      )
     }
+  ];
 
-//working
-//had to add empy string b/c it was returning empty string and toUpperCase undefined 
-let  courseProps = props.courseById.course_type || ''
-let course_type =  courseProps.charAt(0).toUpperCase() + courseProps.slice(1)
+  const goBack = () => {
+    if (props.courseView === 'courseCardView') {
+      props.setCourseView('courseTableView');
+    }
+  };
 
+  //working
+  //had to add empy string b/c it was returning empty string and toUpperCase undefined
+  let courseProps = props.courseById.course_type || '';
+  let course_type = courseProps.charAt(0).toUpperCase() + courseProps.slice(1);
 
-    return (
-        <div>
-                <div className="back-button" onClick={goBack} style={{cursor:"pointer", width:"10%"}}>   
-                    <Icon name='angle left'/>
-                    Back
-                    </div>
-                <div className='card-title'>
-                
-                <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' circular size='small' />
-                    
-                    <Header as='h2'> 
-                    {course_type}
-                    <div className="headerDiv">
-                        <div>
-                            <div className="headerSeparateDiv"> {props.courseById.term}</div>
-                            <div className="headerSeparateDiv">{props.courseById.teacher}</div>
-                        </div>
-                    </div>
-                    
-                    </Header>
-                </div>
-             <Tab menu={{ secondary: true, pointing: true }} panes={panes}  />
-        </div>
-        
-    )
-}
+  return (
+    <div>
+      <div
+        className="back-button"
+        onClick={goBack}
+        style={{ cursor: 'pointer', width: '10%' }}
+      >
+        <Icon name="angle left" />
+        Back
+      </div>
+      <div className="card-title">
+        <Image
+          src="https://react.semantic-ui.com/images/wireframe/square-image.png"
+          circular
+          size="small"
+        />
 
+        <Header as="h2">
+          {course_type}
+          <div className="headerDiv">
+            <div>
+              <div className="headerSeparateDiv"> {props.courseById.term}</div>
+              <div className="headerSeparateDiv">
+                {props.courseById.teacher}
+              </div>
+            </div>
+          </div>
+        </Header>
+      </div>
+      <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
+    </div>
+  );
+};
 
 const mapStateToProps = state => {
-    return {
-        isLoading: state.coursesTableReducer.isLoading,
-        courseById: state.coursesTableReducer.courseById,
-        error: state.coursesTableReducer.error,
-    };
+  return {
+    isLoading: state.coursesTableReducer.isLoading,
+    courseById: state.coursesTableReducer.courseById,
+    error: state.coursesTableReducer.error
+  };
 };
 
 export default withRouter(
-    connect(
-        mapStateToProps,
-        { getCourseById, toggleEditCourse }
-    )(CourseCard)
-)
+  connect(mapStateToProps, { getCourseById, toggleEditCourse })(CourseCard)
+);

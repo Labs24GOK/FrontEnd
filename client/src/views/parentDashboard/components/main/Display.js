@@ -8,7 +8,7 @@ import MainUserPage from '../mainUserPage/MainUserPage';
 function Display({ navigation }) {
 
   useEffect(() => {
-    console.log('Display navigation: ', navigation)
+    //console.log('Display navigation: ', navigation)
   })
   {if (navigation === 'main') {
     return (

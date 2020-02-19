@@ -91,10 +91,11 @@ export const DELETE_STUDENTBYID_SUCCESS =
   'DELETE_STUDENTBYID_SUCCESS';
 export const DELETE_STUDENTBYID_FAILURE =
   'DELETE_STUDENTBYID_FAILURE';
+  
 export const deleteStudentById = id => dispatch => {
   dispatch({ type: DELETE_STUDENTBYID_START });
   axios
-    .put(`${API_URL}/student/${id}`)
+    .delete(`${API_URL}/student/${id}`)
     .then(res => {
       dispatch({
         type: DELETE_STUDENTBYID_SUCCESS,
@@ -119,14 +120,14 @@ export const editStudentDropDown = () => dispatch => {
   axios
     .get(`${API_URL}/student/dropdowns`)
     .then(res => {
-      console.log('RES FOR EDIT STUDENT DROPDOWN', res);
+      //console.log('RES FOR EDIT STUDENT DROPDOWN', res);
       dispatch({
         type: EDIT_DROPDOWN_SUCCESS,
         payload: res.data
       });
     })
     .catch(err => {
-      console.log('err', err);
+      //console.log('err', err);
       dispatch({
         type: EDIT_DROPDOWN_FAILURE,
         payload: err.payload

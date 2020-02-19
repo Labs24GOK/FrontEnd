@@ -171,11 +171,11 @@ function Register(props) {
       { user: user, family: family, student: student },
       props.history
     );
-    console.log("REG OBJECT: ", {
-      user: user,
-      family: family,
-      student: student
-    });
+    // console.log("REG OBJECT: ", {
+    //   user: user,
+    //   family: family,
+    //   student: student
+    // });
   };
 
   {if (!props.success) {

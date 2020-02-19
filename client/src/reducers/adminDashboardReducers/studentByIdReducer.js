@@ -89,7 +89,7 @@ export const studentByIdReducer = (state = initialState, action) => {
                     error: null
                 }
             case EDIT_DROPDOWN_SUCCESS:
-                console.log("ACTION.PAYLOAD", action.payload)
+                //console.log("ACTION.PAYLOAD", action.payload)
             let grade = action.payload.school_grades.map(each => {
                 let obj= {value: each.id, label: each.name}
                 return obj;
