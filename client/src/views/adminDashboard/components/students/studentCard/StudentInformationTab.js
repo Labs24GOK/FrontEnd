@@ -20,8 +20,7 @@ const StudentInformationTab = props => {
         e.preventDefault();
         props.toggleEditComponent('true');
     }
-console.log("props.studentById:", props.studentById)
-console.log("birthdate:", birthdate)
+//console.log("props.studentById:", props.studentById)
 
     return (
         <div>

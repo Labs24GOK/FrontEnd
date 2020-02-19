@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { getDropDownCourses, addCourse } from '../../../../../actions';
+import { getDropDownCourses, addCourse, enrollStudent, getStudentById } from '../../../../../actions';
 import Dropdown from 'react-dropdown';
 import { Table, Button as Button2, Spin } from 'antd';
 import CourseSearchModule from './CourseSearchModule';
@@ -18,7 +18,7 @@ import {
     ButtonDiv,
   } from '../../mainStyle/styledComponent.js';
 
-  const EnrollStudentForm = props => {
+const EnrollStudentForm = props => {
 
     const [course, setCourse] = useState({
         course_id: '',
@@ -30,13 +30,23 @@ import {
         section: '',
         status: ''
       });
-console.log(course)
+
+    const [state, setState] = useState({
+        result_type_code : 2,
+        notes : "Student is in"
+    });
+
     const [modalVisible, setModalVisible] = useState({
         visible: false,
         loading: false,
     })  
 
 const status = ['active', 'completed', 'waitlist'];
+
+const statusArr = [
+  {value: -3, label: 'unconfirmed'},
+  {value: -2, label: 'no show'}
+]
 
 function handleChange(event) {
     setCourse({
@@ -45,15 +55,26 @@ function handleChange(event) {
     });
   }
 
+  function handleChange2(event) {
+    setCourse({
+      ...state,
+      [event.target.name]: event.target.value,
+    });
+  }
+
   function handleSubmit(event) {
+
     event.preventDefault();
     props.setForm(false);
+    props.enrollStudent( props.studentById, course.course_id, state)
   }
 
   const handleCancel = event => {
     event.preventDefault();
     props.setForm(false);
   };
+
+  console.log("props.studentById:", props.studentById)
 
   return (
     <>
@@ -150,6 +171,35 @@ function handleChange(event) {
                 readOnly={true}
               />
            </div>
+
+           <div>
+             <Label>Gender</Label>
+              <Dropdown
+                  controlClassName='myControlClassName'
+                  className='dropdown'
+                  onChange={(e) => setState({ ...state, location_id: e.value })}
+                  value={state.result_type_code}
+                  options={statusArr}
+              />
+              </div>
+
+           <div style={{ gridColumn: 'span 4' }}>
+                    <Label>Notes</Label>
+                    <div>
+                        <textarea
+                        style={{
+                        width: '100%', height: '80px', outline: 'none',
+                        border: '1px solid transparent', borderRadius: '3px'
+                        }}
+                        type='text'
+                        name='notes'
+                        placeholder='Notes'
+                        onChange={handleChange2}
+                        value={state.notes}
+                        />
+                        </div>
+                    </div>
+           
            
         </Div2>
       </FormSet>
@@ -184,11 +234,12 @@ const mapStateToProps = state => {
       roomDropdown: state.coursesTableReducer.roomTable,
       teacherDropdown: state.coursesTableReducer.teacherTable,
       isPosting: state.coursesTableReducer.isPosting,
+      studentById: state.studentByIdReducer.studentById,
     };
   };
 
 export default withRouter(
-    connect(mapStateToProps, { getDropDownCourses, addCourse })(
+    connect(mapStateToProps, { enrollStudent, getDropDownCourses, addCourse })(
       EnrollStudentForm
     )
   );

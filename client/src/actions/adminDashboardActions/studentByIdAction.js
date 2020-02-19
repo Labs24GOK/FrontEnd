@@ -24,6 +24,37 @@ export const getStudentById = student_id => dispatch => {
       });
     });
 };
+
+export const ENROLL_STUDENT_START =
+  'ENROLL_STUDENT_START';
+export const ENROLL_STUDENT_SUCCESS =
+  'ENROLL_STUDENT_SUCCESS';
+export const ENROLL_STUDENT_CANCELLED =
+  'ENROLL_STUDENT_CANCELLED';
+export const ENROLL_STUDENT_FAILURE =
+  'ENROLL_STUDENT_FAILURE';
+export const enrollStudent = (
+  student_id,
+  course_id,
+  state
+) => dispatch => {
+  axios
+    .put(`${API_URL}/student/${student_id}/course/${course_id}`, state)
+    .then(res => {
+      dispatch({
+        type: ENROLL_STUDENT_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: ENROLL_STUDENT_FAILURE,
+        payload: 'Error enrolling the student'
+      });
+    });
+};
+
+
 export const EDIT_STUDENTBYID_START =
   'EDIT_STUDENTBYID_START';
 export const EDIT_STUDENTBYID_CANCELLED =
@@ -31,7 +62,7 @@ export const EDIT_STUDENTBYID_CANCELLED =
 export const EDIT_STUDENTBYID_SUCCESS =
   'EDIT_STUDENTBYID_SUCCESS';
 export const EDIT_STUDENTBYID_FAILURE =
-  'EDIT_STUDENTBYID_FAILURE';
+  'EDIT_STUDENTBYID_FAILURE'; 
 export const toggleEditComponent = (
   isEditing,
   isEdited
