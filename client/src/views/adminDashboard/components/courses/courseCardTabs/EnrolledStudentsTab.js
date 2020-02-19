@@ -16,7 +16,7 @@ const EnrolledStudentsTab = props => {
 
 
   useEffect(() => {
-    props.getStudentTableByCourseID(props.courseId);
+    props.getStudentTableByCourseID(props.courseID);
   }, [])
 
   const handleCancelButtonOnForm = () => {

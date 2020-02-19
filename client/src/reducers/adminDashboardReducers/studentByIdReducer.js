@@ -20,7 +20,7 @@ const initialState = {
   isLoading: false,
   error: null,
   isEditing: false,
-  isEdited: true,
+  isEdited: false,
   locationsTable: [],
   contactTypesTable: [], 
   blocksTable: [],

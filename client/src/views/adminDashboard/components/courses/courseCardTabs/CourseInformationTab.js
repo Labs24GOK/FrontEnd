@@ -3,35 +3,35 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getCourseById, toggleEditCourse } from '../../../../../actions';
 import CourseEditForm from './CourseEditForm';
-import {
-  FormWrap,
-  Div,
-  TextDiv,
-  Label,
-  FormSet,
-} from '../../mainStyle/styledComponent';
+import { FormWrap, Div, TextDiv, Label, FormSet, SaveButton, ButtonDiv } from '../../mainStyle/styledComponent';
+import { timeConverter, dateConverter } from '../../../../../utils/helpers.js' 
 
 const CourseInformationTab = props => {
   useEffect(() => {
-    props.getCourseById(props.courseId);
+    props.getCourseById(props.courseID);
   }, []);
 
   const editCourseInfo = e => {
     e.preventDefault();
-    props.toggleEditCourse();
+    props.toggleEditCourse('true');
   };
 
+  const startDate = dateConverter(props.courseById.start_date)
+  const endDate = dateConverter(props.courseById.end_date)
+  const startTime = timeConverter(props.courseById.start_time)
+  const endTime = timeConverter(props.courseById.end_time)
+
+
   return (
-    <>
       <div>
-        {!props.isEditing ? (
+        {
+        !props.isEditing ?
           <FormWrap>
             <FormSet>
               <Div>
                 <div>
-                  <Label>Status</Label>
-
-                  <TextDiv>{props.courseById.status || '-'}</TextDiv>
+                  <Label>Course ID</Label>
+                  <TextDiv>{props.courseById.course_id || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>Term</Label>
@@ -46,10 +46,6 @@ const CourseInformationTab = props => {
                   <TextDiv>{props.courseById.group_type || '-'}</TextDiv>
                 </div>
                 <div>
-                  <Label>School Grade</Label>
-                  <TextDiv>{props.courseById.school_grade || '-'}</TextDiv>
-                </div>
-                <div>
                   <Label>Level</Label>
                   <TextDiv>{props.courseById.level || '-'}</TextDiv>
                 </div>
@@ -58,8 +54,28 @@ const CourseInformationTab = props => {
                   <TextDiv>{props.courseById.section || '-'}</TextDiv>
                 </div>
                 <div>
-                  <Label>Subsection</Label>
-                  <TextDiv>{props.courseById.subsection || '-'}</TextDiv>
+                  <Label>School Grade</Label>
+                  <TextDiv>{props.courseById.school_grade || '-'}</TextDiv>
+                </div>
+                <div>
+                  <Label>Course Schedule</Label>
+                  <TextDiv>{props.courseById.course_schedule || '-'}</TextDiv>
+                </div>
+                <div>
+                  <Label>Start Date</Label>
+                  <TextDiv>{startDate || '-'}</TextDiv>
+                </div>
+                <div>
+                  <Label>End Date</Label>
+                  <TextDiv>{endDate || '-'}</TextDiv>
+                </div>
+                <div>
+                  <Label>Start Time</Label>
+                  <TextDiv>{startTime || '-'}</TextDiv>
+                </div>
+                <div>
+                  <Label>End Time</Label>
+                  <TextDiv>{endTime || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>Room</Label>
@@ -71,20 +87,11 @@ const CourseInformationTab = props => {
                 </div>
                 <div>
                   <Label>Hourly Rate</Label>
-
                   <TextDiv>{props.courseById.hourly_rate || '-'}</TextDiv>
-                </div>
+                </div>               
                 <div>
-                  <Label>Course Schedule</Label>
-                  <TextDiv>{props.courseById.course_schedule || '-'}</TextDiv>
-                </div>
-                <div>
-                  <Label>Start Time</Label>
-                  <TextDiv>{props.courseById.start_time || '-'}</TextDiv>
-                </div>
-                <div>
-                  <Label>End Time</Label>
-                  <TextDiv>{props.courseById.end_time || '-'}</TextDiv>
+                  <Label>Status</Label>
+                  <TextDiv>{props.courseById.status || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>Notes</Label>
@@ -95,13 +102,16 @@ const CourseInformationTab = props => {
                 <div style={{ gridColumn: 'span3' }}></div>
               </Div>
             </FormSet>
+            <ButtonDiv >
+              <SaveButton type="submit" onClick={editCourseInfo}> 
+                      Edit
+                  </SaveButton>
+              </ButtonDiv>
           </FormWrap>
-        ) : (
-          <CourseEditForm {...props} />
-        )}
+         : <CourseEditForm {...props} />
+        }
       </div>
-    </>
-  );
+  )
 };
 
 const mapStateToProps = state => {
