@@ -59,10 +59,6 @@ const CourseEditForm = props => {
 
     return (
         <FormWrap onSubmit={handleSubmit}>
-                {/* <Div>
-                    <div style={{gridColumn: "span3"}} >
-                    </div>
-                </Div> */}
             <FormSet>
                 <Div>
                     <div>
@@ -103,6 +99,7 @@ const CourseEditForm = props => {
                             controlClassName='myControlClassName'
                             className='dropdown'
                             options={props.schoolGradeDropdown}
+                            // disabled={props.courseById.course_type_id.value !== 2}
                         />
                     </div>
                     <div>

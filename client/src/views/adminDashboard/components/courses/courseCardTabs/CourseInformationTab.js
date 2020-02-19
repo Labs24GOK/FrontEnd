@@ -3,7 +3,8 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getCourseById, toggleEditCourse } from '../../../../../actions';
 import CourseEditForm from './CourseEditForm';
-import { FormWrap, Div, TextDiv, Label, FormSet, SaveButton, ButtonDiv } from '../../mainStyle/styledComponent'; 
+import { FormWrap, Div, TextDiv, Label, FormSet, SaveButton, ButtonDiv } from '../../mainStyle/styledComponent';
+import { timeConverter, dateConverter } from '../../../../../utils/helpers.js' 
 
 const CourseInformationTab = props => {
   useEffect(() => {
@@ -15,9 +16,11 @@ const CourseInformationTab = props => {
     props.toggleEditCourse('true');
   };
 
-  let options = { year: 'numeric', month: 'numeric', day: 'numeric'}; //'long'
-  let startdate = new Date(props.courseById.start_date).toLocaleDateString('en-GB', options)
-  let enddate = new Date(props.courseById.end_date).toLocaleDateString('en-GB', options)
+  const startDate = dateConverter(props.courseById.start_date)
+  const endDate = dateConverter(props.courseById.end_date)
+  const startTime = timeConverter(props.courseById.start_time)
+  const endTime = timeConverter(props.courseById.end_time)
+
 
   return (
       <div>
@@ -60,19 +63,19 @@ const CourseInformationTab = props => {
                 </div>
                 <div>
                   <Label>Start Date</Label>
-                  <TextDiv>{startdate || '-'}</TextDiv>
+                  <TextDiv>{startDate || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>End Date</Label>
-                  <TextDiv>{enddate || '-'}</TextDiv>
+                  <TextDiv>{endDate || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>Start Time</Label>
-                  <TextDiv>{props.courseById.start_time || '-'}</TextDiv>
+                  <TextDiv>{startTime || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>End Time</Label>
-                  <TextDiv>{props.courseById.end_time || '-'}</TextDiv>
+                  <TextDiv>{endTime || '-'}</TextDiv>
                 </div>
                 <div>
                   <Label>Room</Label>

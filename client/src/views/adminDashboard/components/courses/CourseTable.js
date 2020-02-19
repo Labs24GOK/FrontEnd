@@ -9,6 +9,7 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import CourseRegistrationForm from './CourseRegistrationForm';
 import SearchCourseTable from './SearchCourseTable';
 import '../mainStyle/mainCard.scss';
+import { timeConverter } from '../../../../utils/helpers.js'
 
 const CourseTable = props => {
   const [form, setForm] = useState(false);
@@ -62,24 +63,46 @@ const CourseTable = props => {
       key: 7,
     },
     {
+      title: 'Start Time',
+      dataIndex: 'start_time',
+      key: 8,
+      render: (value, row, index) => {
+        return <span>{timeConverter(value)}</span>;
+      }
+    },
+    {
+      title: 'End Time',
+      dataIndex: 'end_time',
+      key: 9,
+      render: (value, row, index) => {
+        return <span>{timeConverter(value)}</span>;
+      }
+    },
+    {
       title: 'Teacher',
       dataIndex: 'teacher',
-      key: 8,
+      key: 10,
+    },
+    {
+      title: 'Students',
+      dataIndex: 'students',
+      //this is for total number of students once the endpoints/functionality is built
+      key: 11,
     },
     {
       title: 'Confirmed',
       dataIndex: 'confirmed',
-      key: 9,
+      key: 12,
     },
     {
       title: 'Unconfirmed',
       dataIndex: 'unconfirmed',
-      key: 10,
+      key: 13,
     },
     {
       title: 'Status',
       dataIndex: 'status',
-      key: 11,
+      key: 14,
     },
   ];
 

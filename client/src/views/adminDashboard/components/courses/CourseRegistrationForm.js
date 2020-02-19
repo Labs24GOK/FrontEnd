@@ -78,30 +78,6 @@ const CourseRegistrationForm = props => {
     props.setForm(false);
   };
 
-  // const handleBlur = field => evt => {
-  //   setTouched({
-  //     ...touched,
-  //     [field]: true,
-  //   });
-  // };
-
-  // const canBeSubmitted = () => {
-  //   const errors = validate(course);
-  //   const isDisabled = Object.keys(errors).some(x => errors[x]);
-  //   return !isDisabled;
-  // };
-
-  const toggleGradeDisabled = courseTypeId => {
-    let gradeDisabled = false
-    if (courseTypeId === 2 ){
-      gradeDisabled = true
-    } else {
-      gradeDisabled = false
-    }
-    return gradeDisabled
-  }
-
-
   return (
     <FormWrap onSubmit={handleSubmit}>
       <FormSet>
