@@ -27,7 +27,7 @@ const StudentCoursesTab = props => {
 
   useEffect(() => {
     props.getStudentCourses(props.studentID)
-  }, [])
+  }, [form])
 
   const studentCourseColumns = [
     {
@@ -92,6 +92,7 @@ const StudentCoursesTab = props => {
         <EnrollStudentForm
           handleCancelButtonOnForm={handleCancelButtonOnForm}
           setForm={setForm}
+          form={form}
         />
       ) : null}
 
