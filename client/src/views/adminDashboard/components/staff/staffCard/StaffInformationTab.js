@@ -44,7 +44,9 @@ const StaffInformationTab = props => {
 
   const deleteStaffInfo = async () => {
     await props.deleteStaffById(props.staffById.staff_id);
-    props.setStaffView('staffTableView');
+    setTimeout(() => {
+      props.setStaffView('staffTableView');
+    }, 500);
   };
 
   return (

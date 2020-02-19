@@ -50,7 +50,9 @@ const StudentInformationTab = props => {
 
   const deleteStudentInfo = async () => {
     await props.deleteStudentById(props.studentById.student_id);
-    props.setStudentView('studentTableView');
+    setTimeout(() => {
+      props.setStudentView('studentTableView');
+    }, 500);
   };
 
   return (

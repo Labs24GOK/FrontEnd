@@ -43,7 +43,9 @@ const CourseInformationTab = props => {
 
   const deleteCourseInfo = async () => {
     await props.deleteCourseById(props.courseById.course_id);
-    props.setCourseView('courseTableView');
+    setTimeout(() => {
+      props.setCourseView('courseTableView');
+    }, 500);
   };
 
   return (
@@ -128,11 +130,15 @@ const CourseInformationTab = props => {
                 </div>
                 <div>
                   <Label>Hourly Rate</Label>
-                  <TextDiv>{props.courseById && props.courseById.hourly_rate || '-'}</TextDiv>
+                  <TextDiv>
+                    {(props.courseById && props.courseById.hourly_rate) || '-'}
+                  </TextDiv>
                 </div>
                 <div>
                   <Label>Status</Label>
-                  <TextDiv>{props.courseById && props.courseById.status || '-'}</TextDiv>
+                  <TextDiv>
+                    {(props.courseById && props.courseById.status) || '-'}
+                  </TextDiv>
                 </div>
                 <div>
                   <Label>Notes</Label>
