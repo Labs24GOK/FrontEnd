@@ -32,7 +32,7 @@ export const getStaffCourses = staff_id => dispatch => {
 export const getStudentsByCourseID = course_id => dispatch => {
 	dispatch({ type: FETCH_STUDENTSBYCOURSEID_START });
 	axios
-		.get(`${API_URL}/api/?table=course_enrollment&where=course_id=${course_id}`)
+		.get(`${API_URL}/course/${course_id}/students`)
 		.then(res => {
 			dispatch({
 				type: FETCH_STUDENTSBYCOURSEID_SUCCESS,

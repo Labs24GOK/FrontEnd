@@ -24,14 +24,19 @@ const StaffCoursesTab = props => {
 
   const staffCourseColumns = [
     {
+      title: 'Course ID',
+      dataIndex: 'course_id',
+      key: 1,
+    },
+    {
       title: 'Term',
       dataIndex: 'term',
-      key: 1,
+      key: 2,
     },
     {
       title: 'Start Time',
       dataIndex: 'start_time',
-      key: 2,
+      key: 3,
       render: (value, row, index) => {
         return <span>{timeConverter(value)}</span>;
       },
@@ -39,7 +44,7 @@ const StaffCoursesTab = props => {
     {
       title: 'End Time',
       dataIndex: 'end_time',
-      key: 3,
+      key: 4,
       render: (value, row, index) => {
         return <span>{timeConverter(value)}</span>;
       },
@@ -47,31 +52,31 @@ const StaffCoursesTab = props => {
     {
       title: 'Group Type',
       dataIndex: 'group_type',
-      key: 4,
+      key: 5,
     },
     {
       title: 'Course Type',
       dataIndex: 'course_type',
-      key: 5,
+      key: 6,
     },
     {
       title: 'Level',
       dataIndex: 'level',
-      key: 6,
+      key: 7,
     },
     {
       title: 'Section',
       dataIndex: 'section',
-      key: 7,
+      key: 8,
     },
     {
       title: 'Status',
       dataIndex: 'status',
-      key: 8,
+      key: 9,
     },
     {
       title: 'Attendance',
-      key: 9,
+      key: 10,
       render: (text, record) => {
         return (
           <Button
