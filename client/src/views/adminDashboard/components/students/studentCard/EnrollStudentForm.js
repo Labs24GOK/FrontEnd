@@ -5,6 +5,8 @@ import { getDropDownCourses, addCourse, enrollStudent, getStudentById } from '..
 import Dropdown from 'react-dropdown';
 import { Table, Button as Button2, Spin } from 'antd';
 import CourseSearchModule from './CourseSearchModule';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import 'react-dropdown/style.css';
 
@@ -16,6 +18,7 @@ import {
     FormSet,
     Div2,
     ButtonDiv,
+    DisabledInput,
   } from '../../mainStyle/styledComponent.js';
 
 const EnrollStudentForm = props => {
@@ -86,22 +89,25 @@ function handleChange(event) {
       <FormSet>
       <Button2 onClick={() => {
             setModalVisible({ visible: true })
-        }}>Search Courses</Button2>
+        }}>Search Courses <FontAwesomeIcon icon={faSearch} className="fa-fw"/>
+        </Button2>
         <Div2>
           <div>
             <Label>Course ID</Label>
-            <Input
+            <DisabledInput
                 type='text'
                 name='course_id'
                 value={course.course_id}
                 onChange={handleChange}
                 readOnly={true}
+                onClick={() => {
+                  setModalVisible({ visible: true })
+              }}
               />
            </div>
-
            <div>
             <Label>Term</Label>
-            <Input
+            <DisabledInput
                 type='text'
                 name='term id'
                 value={course.term}
@@ -109,10 +115,9 @@ function handleChange(event) {
                 readOnly={true}
               />
            </div>
-
            <div>
             <Label>Section</Label>
-            <Input
+            <DisabledInput
                 type='text'
                 name='Days'
                 value={course.section}
@@ -120,10 +125,9 @@ function handleChange(event) {
                 readOnly={true}
               />
            </div>
-
            <div>
             <Label>Level</Label>
-            <Input
+            <DisabledInput
                 type='text'
                 name='type'
                 value={course.level}
@@ -131,10 +135,9 @@ function handleChange(event) {
                 readOnly={true}
               />
            </div>
-
            <div>
             <Label>Course Type</Label>
-            <Input
+            <DisabledInput
                 type='text'
                 name='Group type'
                 value={course.course_type}
@@ -142,10 +145,9 @@ function handleChange(event) {
                 readOnly={true}
               />
            </div>
-
            <div>
             <Label>Group Type</Label>
-            <Input
+            <DisabledInput
                 type='text'
                 name='term id'
                 value={course.group_type}
@@ -153,10 +155,9 @@ function handleChange(event) {
                 readOnly={true}
               />
            </div>
-
            <div>
             <Label>School Grade</Label>
-            <Input
+            <DisabledInput
                 type='text'
                 name='section'
                 value={course.school_grade}
@@ -164,10 +165,9 @@ function handleChange(event) {
                 readOnly={true}
               />
            </div>
-
            <div>
             <Label>Status</Label>
-            <Input
+            <DisabledInput
                 type='text'
                 name='status'
                 value={course.status}
@@ -175,7 +175,6 @@ function handleChange(event) {
                 readOnly={true}
               /> 
            </div>
-
            <div>
              <Label>Result</Label>
               <Dropdown

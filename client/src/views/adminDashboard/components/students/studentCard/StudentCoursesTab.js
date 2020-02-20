@@ -2,20 +2,24 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 import { getStudentCourses } from '../../../../../actions';
-import { Table } from 'antd';
-
+import { Table, Button } from 'antd';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import EnrollStudentForm from './EnrollStudentForm';
+import ViewAttendanceModule from './ViewAttendanceModule';
+import { dateConverter } from '../../../../../utils/helpers.js';
 
 import './studentTable.scss'
-
-
 
 const StudentCoursesTab = props => {
   console.log(props.courseByStudentId)
   const [form, setForm] = useState(false);
+  const [ courseID, setCourseID] = useState();
+  const [modalVisible, setModalVisible] = useState({
+    visible: false,
+    loading: false,
+})  
 
   const handleCancelButtonOnForm = () => {
     setForm(false);
@@ -63,9 +67,36 @@ const StudentCoursesTab = props => {
       key: 6,
     },
     {
-      title: 'Status',
+      title: 'Student Status',
       dataIndex: 'student_result_type',
       key: 7,
+    },
+    {
+      title: 'First Day',
+      dataIndex: 'first_day',
+      key: 8,
+      render: (value, row, index) => {
+        return <span>{dateConverter(value)}</span>;
+      }
+    },
+    {
+      title: 'Last Day',
+      dataIndex: 'last_day',
+      key: 9,
+      render: (value, row, index) => {
+        return <span>{dateConverter(value)}</span>;
+      }
+    },
+    {
+      title: 'Attendance',
+      dataIndex: 'attendance',
+      key: 10,
+      render: () => {
+        return  <Button onClick={() => {
+          setModalVisible({ visible: true })
+      }}>View Attendance
+      </Button>;
+      }
     },
   ];
 
@@ -96,7 +127,20 @@ const StudentCoursesTab = props => {
         />
       ) : null}
 
-      <Table dataSource={props.courseByStudentId} className="coursesTable" columns={studentCourseColumns} pagination={false} />
+      <Table dataSource={props.courseByStudentId} className="coursesTable" columns={studentCourseColumns} pagination={false} 
+      onRow={record => {
+        return {
+          onClick: () => {
+            setCourseID(record.course_id);
+            console.log(courseID)
+          }
+        };
+      }}/>
+    <ViewAttendanceModule 
+    modalVisible={modalVisible} 
+    setModalVisible={setModalVisible} 
+    courseID={courseID}
+    />
     </>
   )
 }

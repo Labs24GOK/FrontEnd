@@ -59,6 +59,17 @@ export const Input = styled.input`
   width: 100%;
   padding: 6px;
 `
+
+export const DisabledInput = styled.input`
+  outline: none;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  background: Gainsboro;
+  width: 100%;
+  padding: 6px;
+  font-family: Arial, FontAwesome;
+`
+
 export const TextDiv = styled.p`
   font-size: 14px
   
