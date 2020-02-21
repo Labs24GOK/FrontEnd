@@ -1,64 +1,62 @@
-import React, { useState, useEffect } from 'react';
+import 'react-dropdown/style.css';
+import '../StaffTable.scss';
+
+import { Button, DatePicker, Modal, Spin, Table } from 'antd';
+import axios from 'axios';
+import moment from 'moment';
+import React, { useEffect, useState } from 'react';
+import Dropdown from 'react-dropdown';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { postStudentAttendance, getDropDownCourses} from '../../../../../actions';
-import { Table, Button, Modal, Spin, DatePicker } from 'antd';
-import Dropdown from 'react-dropdown';
-import moment from 'moment'
-import { Label } from '../../mainStyle/styledComponent.js'
-import 'react-dropdown/style.css';
-import '../StaffTable.scss'
-import axios from 'axios'
+import {
+  getDropDownCourses,
+  postStudentAttendance,
+} from '../../../../../actions';
 import API_URL from '../../../../../config/apiUrl';
+import { Label } from '../../mainStyle/styledComponent.js';
 
 const AttendanceModal = props => {
-
   const [state, setState] = useState({
     meeting: {
-        teacher_id: props.staffID,
-        course_id: props.courseID,
-        meeting_date: moment().format('YYYY-MM-DD'),
-        notes: 'testing',
-        material_covered: 'testing'
+      teacher_id: props.staffID,
+      course_id: props.courseID,
+      meeting_date: moment().format('YYYY-MM-DD'),
+      notes: 'testing',
+      material_covered: 'testing',
     },
-    students: [
-    ],
+    students: [],
   });
 
   useEffect(() => {
     props.getDropDownCourses();
   }, []);
-  
-  const [attendees, setAttendees] = useState([])
-
+  const [attendees, setAttendees] = useState([]);
   useEffect(() => {
-
     setState({
-        ...state,
-        meeting: {
-          ...state.meeting,
-          course_id: props.courseID,
-        }
-    })
+      ...state,
+      meeting: {
+        ...state.meeting,
+        course_id: props.courseID,
+      },
+    });
 
-    if(state.meeting.meeting_date && props.courseID){
-        axios
-    .get(`${API_URL}/attendance/date/${state.meeting.meeting_date}/course/${props.courseID}`)
-    .then(res => {
-        setAttendees(res.data.attendanceRecord)
-    })
-    .catch(err => {
-        console.log("ERROR", err)
-    })
-}
+    // !!!
 
-  }, [state.meeting.meeting_date, props.courseID])
+    if (state.meeting.meeting_date && props.courseID) {
+      axios
+        .get(
+          `${API_URL}/attendance/date/${state.meeting.meeting_date}/course/${props.courseID}`
+        )
+        .then(res => {
+          setAttendees(res.data.attendanceRecord);
+        })
+        .catch(err => {
+          console.log('ERROR', err);
+        });
+    }
+  }, [state.meeting.meeting_date, props.courseID]);
 
-  const attendanceStatus = [
-      'present',
-      'absent',
-      'late'
-  ]
+  const attendanceStatus = ['present', 'absent', 'late'];
 
   const attendanceColumns = [
     {
@@ -72,83 +70,84 @@ const AttendanceModal = props => {
       key: 2,
     },
     {
-     title: 'Attendance',
-     dataIndex: 'attendance',
-     key: 3,
-     render: (text, row, index) => { return (
-        <Dropdown
-        value={attendees[index].attendance}
-        onChange={e => setAttendees(attendees.map((each, i) => {
-        
-            if (i === index){
-               return {...each, attendance: e.value}
-           } else {
-               return each
-           }
-        })
-        )}
-        
-        controlClassName="myControlClassName"
-        options={attendanceStatus}
-        className="dropdown"
-      />
-     )}
-    }
+      title: 'Attendance',
+      dataIndex: 'attendance',
+      key: 3,
+      render: (text, row, index) => {
+        return (
+          <Dropdown
+            value={attendees[index].attendance}
+            onChange={e =>
+              setAttendees(
+                attendees.map((each, i) => {
+                  if (i === index) {
+                    return { ...each, attendance: e.value };
+                  } else {
+                    return each;
+                  }
+                })
+              )
+            }
+            controlClassName='myControlClassName'
+            options={attendanceStatus}
+            className='dropdown'
+          />
+        );
+      },
+    },
   ];
 
-  console.log("STATE", state)
+  console.log('STATE', state);
 
   const handleOk = () => {
-    const studentsArr = attendees.map((each) => {
-        return {
-            student_id: each.student_id,
-            attendance: each.attendance
-        }
-    })
-    console.log("ATTENDANCE STATE", {...state, students: studentsArr});
-    props.postStudentAttendance({...state, students: studentsArr});
-    
+    const studentsArr = attendees.map(each => {
+      return {
+        student_id: each.student_id,
+        attendance: each.attendance,
+      };
+    });
+    console.log('ATTENDANCE STATE', { ...state, students: studentsArr });
+    props.postStudentAttendance({ ...state, students: studentsArr });
+
     props.setModalVisible({ loading: false, visible: false });
 
     setState({
-        meeting: {
-            teacher_id: props.staffID,
-            course_id: props.courseID,
-            meeting_date: moment().format('YYYY-MM-DD'),
-            notes: 'testing',
-            material_covered: 'testing'
-        },
-        students: [
-        ]
-    })
+      meeting: {
+        teacher_id: props.staffID,
+        course_id: props.courseID,
+        meeting_date: moment().format('YYYY-MM-DD'),
+        notes: 'testing',
+        material_covered: 'testing',
+      },
+      students: [],
+    });
   };
 
   const handleCancel = () => {
     setState({
-        meeting: {
+      meeting: {
         teacher_id: '',
         course_id: '',
         meeting_date: moment().format('YYYY-MM-DD'),
         notes: '',
-        material_covered: ''
-    },
-    students: [
-    ]})
+        material_covered: '',
+      },
+      students: [],
+    });
     props.setModalVisible({ visible: false });
   };
 
   const changeHandler = (date, dateString) => {
-
     setState({
       ...state,
       meeting: {
         ...state.meeting,
-        meeting_date: dateString
+        meeting_date: dateString,
       },
     });
   };
 
-  const dateFormat = 'YYYY-MM-DD'
+  const dateFormat = 'YYYY-MM-DD';
 
   return (
     <>
@@ -170,18 +169,36 @@ const AttendanceModal = props => {
               </Button>,
             ]}
           >
-            <DatePicker size='small' onChange={changeHandler} defaultValue={moment()} value={moment(state.meeting.meeting_date)} format={dateFormat} />
-            <div>
-            <Label>Teacher</Label>
-            <Dropdown
-              value={props.staffID}
-              onChange={e => setState({ ...state, teacher_id: e })}
-              controlClassName="myControlClassName"
-              className="dropdown"
-              options={props.teacherDropdown}
+            <DatePicker
+              size='small'
+              onChange={changeHandler}
+              defaultValue={moment()}
+              value={
+                state.meeting.meeting_date
+                  ? moment(state.meeting.meeting_date)
+                  : moment()
+              }
+              format={dateFormat}
             />
-          </div>
-            <span style={{ marginLeft: 8 }}/>
+            <div>
+              <Label>Teacher</Label>
+              <Dropdown
+                value={props.teacher}
+                onChange={e =>
+                  setState(state => ({
+                    ...state,
+                    meeting: {
+                      ...state.meeting,
+                      teacher_id: e.value,
+                    },
+                  }))
+                }
+                controlClassName='myControlClassName'
+                className='dropdown'
+                options={props.teacherDropdown}
+              />
+            </div>
+            <span style={{ marginLeft: 8 }} />
             <Table
               dataSource={attendees}
               columns={attendanceColumns}
@@ -198,12 +215,13 @@ const mapStateToProps = state => {
   return {
     isLoading: state.staffCourseReducer.isLoading,
     studentList: state.studentsByCourseIDReducer.studentByCourseId,
-    teacherDropdown: state.coursesTableReducer.teacherTable
+    teacherDropdown: state.coursesTableReducer.teacherTable,
   };
 };
 
 export default withRouter(
-  connect(mapStateToProps, { postStudentAttendance, getDropDownCourses })(
-    AttendanceModal
-  )
+  connect(mapStateToProps, {
+    postStudentAttendance,
+    getDropDownCourses,
+  })(AttendanceModal)
 );

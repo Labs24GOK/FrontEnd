@@ -12,7 +12,7 @@ export {
   loggedIn,
   LOGGEDIN_START,
   LOGGEDIN_SUCCESS,
-  LOGGEDIN_FAILURE
+  LOGGEDIN_FAILURE,
 } from './authenticationActions.js';
 
 export {
@@ -30,7 +30,7 @@ export {
   FETCH_DROPDOWN_START,
   FETCH_DROPDOWN_SUCCESS,
   FETCH_DROPDOWN_FAILURE,
-  resetForm
+  resetForm,
 } from './adminDashboardActions/studentTableActions.js';
 
 export {
@@ -44,13 +44,11 @@ export {
   EDIT_STUDENTBYID_SUCCESS,
   EDIT_STUDENTBYID_CANCELLED,
   EDIT_STUDENTBYID_FAILURE,
-
   enrollStudent,
   ENROLL_STUDENT_START,
   ENROLL_STUDENT_SUCCESS,
   ENROLL_STUDENT_CANCELLED,
   ENROLL_STUDENT_FAILURE,
-
   editStudentDropDown,
   EDIT_DROPDOWN_START,
   EDIT_DROPDOWN_SUCCESS,
@@ -58,7 +56,7 @@ export {
   deleteStudentById,
   DELETE_STUDENTBYID_START,
   DELETE_STUDENTBYID_SUCCESS,
-  DELETE_STUDENTBYID_FAILURE
+  DELETE_STUDENTBYID_FAILURE,
 } from './adminDashboardActions/studentByIdAction.js';
 
 export {
@@ -85,7 +83,7 @@ export {
   ADD_PARENT_SUCCESS,
   ADD_PARENT_FAILURE,
   filterParentTable,
-  SET_FILTER_PARENT
+  SET_FILTER_PARENT,
 } from './adminDashboardActions/parentAction.js';
 
 export {
@@ -113,7 +111,7 @@ export {
   DELETE_STAFF_SUCCESS,
   DELETE_STAFF_FAILURE,
   filterStaffTable,
-  SET_FILTER_STAFF
+  SET_FILTER_STAFF,
 } from './adminDashboardActions/staffActions.js';
 
 export {
@@ -130,14 +128,14 @@ export {
   toggleEditProgressComponent,
   EDIT_STUDENTPROGRESS_START,
   EDIT_STUDENTPROGRESS_SUCCESS,
-  EDIT_STUDENTPROGRESS_FAILURE
+  EDIT_STUDENTPROGRESS_FAILURE,
 } from './adminDashboardActions/studentProgressActions.js';
 
 export {
   getStudentCourses,
   FETCH_STUDENTCOURSES_START,
   FETCH_STUDENTCOURSES_SUCCESS,
-  FETCH_STUDENTCOURSES_FAILURE
+  FETCH_STUDENTCOURSES_FAILURE,
 } from './adminDashboardActions/studentCourseActions.js';
 
 export {
@@ -173,7 +171,7 @@ export {
   DELETE_COURSEBYID_START,
   DELETE_COURSEBYID_SUCCESS,
   DELETE_COURSEBYID_FAILURE,
-  deleteCourseById
+  deleteCourseById,
 } from './adminDashboardActions/courseAction';
 
 export {
@@ -189,7 +187,7 @@ export {
   FETCH_PLACEMENTTESTTBYID_FAILURE,
   EDIT_PLACEMENTTESTTBYID_START,
   EDIT_PLACEMENTTESTTBYID_SUCCESS,
-  EDIT_PLACEMENTTESTTBYID_FAILURE
+  EDIT_PLACEMENTTESTTBYID_FAILURE,
 } from './adminDashboardActions/placementTestAction';
 
 export {
@@ -200,23 +198,23 @@ export {
   getStudentsByCourseID,
   FETCH_STUDENTSBYCOURSEID_START,
   FETCH_STUDENTSBYCOURSEID_SUCCESS,
-  FETCH_STUDENTSBYCOURSEID_FAILURE
+  FETCH_STUDENTSBYCOURSEID_FAILURE,
 } from './adminDashboardActions/staffCourseActions.js';
 
 export {
   postStudentAttendance,
   CREATE_ATTENDANCE_START,
   CREATE_ATTENDANCE_SUCCESS,
-  CREATE_ATTENDANCE_FAILURE
+  CREATE_ATTENDANCE_FAILURE,
 } from './adminDashboardActions/attendanceActions.js';
 
 export {
   FAMILY_REGISTER_START,
   FAMILY_REGISTER_SUCCESS,
-  FAMILY_REGISTER_FAILURE
+  FAMILY_REGISTER_FAILURE,
 } from './registrationActions';
 
 export {
   TOGGLE_DELETE_MODAL,
-  toggleDeleteModel
+  toggleDeleteModel,
 } from './adminDashboardActions/deleteModalAction';
