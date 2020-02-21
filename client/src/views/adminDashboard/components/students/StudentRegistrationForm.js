@@ -74,31 +74,53 @@ const StudentRegistrationForm = props => {
 		'transparent'
 	); //error #C73642
 	const [errorBorderGender, setErrorBorderGender] = useState('transparent'); //error #C73642
-	const [errorBorderBirthdate, setErrorBorderBirthdate] = useState(
-		'transparent'
-	); //error #C73642
-	const [errorBorderSchoolGrade, setErrorBorderSchoolGrade] = useState(
-		'transparent'
-	); //error #C73642
-	const [errorBorderSchoolName, setErrorBorderSchoolName] = useState(
-		'transparent'
-	); //error #C73642
 	const [errorBorderHomeTelephone, setErrorBorderHomeTelephone] = useState(
 		'transparent'
 	); //error #C73642
 	const [errorBorderMobileTelephone, setErrorBorderMobileTelephone] = useState(
 		'transparent'
 	); //error #C73642
+	const [errorBorderEmail, setErrorBorderEmail] = useState('transparent'); //error #C73642
+	const [errorBorderContactType, setErrorBorderContactType] = useState(
+		'transparent'
+	); //error #C73642
+	const [errorBorderBirthdate, setErrorBorderBirthdate] = useState(
+		'transparent'
+	); //error #C73642
+	const [errorBorderSchoolName, setErrorBorderSchoolName] = useState(
+		'transparent'
+	); //error #C73642
+	const [errorBorderSchoolGrade, setErrorBorderSchoolGrade] = useState(
+		'transparent'
+	); //error #C73642
+	const [errorBorderLocation, setErrorBorderLocation] = useState('transparent'); //error #C73642
 	const [errorBorderBlock, setErrorBorderBlock] = useState('transparent'); //error #C73642
 	const [errorBorderRoad, setErrorBorderRoad] = useState('transparent'); //error #C73642
 	const [errorBorderBuilding, setErrorBorderBuilding] = useState('transparent'); //error #C73642
 	const [errorBorderFlat, setErrorBorderFlat] = useState('transparent'); //error #C73642
-	const [errorBorderEmail, setErrorBorderEmail] = useState('transparent'); //error #C73642
-	const [errorBorderNotes, setErrorBorderNotes] = useState('transparent'); //error #C73642
-	const [errorBorderContactType, setErrorBorderContactType] = useState(
+	const [
+		errorBorderPrimaryEmergencyName,
+		setErrorBorderPrimaryEmergencyName
+	] = useState('transparent'); //error #C73642
+	const [
+		errorBorderPrimaryEmergencyRelationship,
+		setErrorBorderPrimaryEmergencyRelationship
+	] = useState('transparent'); //error #C73642
+	const [
+		errorBorderPrimaryEmergencyPhone,
+		setErrorBorderPrimaryEmergencyPhone
+	] = useState('transparent'); //error #C73642
+	const [errorBorderEmergencyName, setErrorBorderEmergencyName] = useState(
 		'transparent'
 	); //error #C73642
-	const [errorBorderLocation, setErrorBorderLocation] = useState('transparent'); //error #C73642
+	const [
+		errorBorderEmergencyRelationship,
+		setErrorBorderEmergencyRelationship
+	] = useState('transparent'); //error #C73642
+	const [errorBorderEmergencyPhone, setErrorBorderEmergencyPhone] = useState(
+		'transparent'
+	); //error #C73642
+	const [errorBorderNotes, setErrorBorderNotes] = useState('transparent'); //error #C73642
 
 	function handleChange(event) {
 		setStudent({
