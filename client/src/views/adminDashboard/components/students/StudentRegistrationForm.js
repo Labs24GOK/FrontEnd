@@ -138,19 +138,25 @@ const StudentRegistrationForm = props => {
 			student.firstName === '' ||
 			student.additionalNames === '' ||
 			student.gender === '' ||
-			student.birthdate === '' ||
-			student.school_grade_id === '' ||
-			student.schoolName === '' ||
 			student.homeTelephone === '' ||
 			student.mobileTelephone === '' ||
+			student.email === '' ||
+			student.contactTypeId === '' ||
+			student.birthdate === '' ||
+			student.schoolName === '' ||
+			student.schoolGradeId === '' ||
+			student.locationId === '' ||
 			student.block === '' ||
 			student.road === '' ||
 			student.building === '' ||
 			student.flat === '' ||
-			student.email === '' ||
-			student.notes === '' ||
-			student.contactTypeId === '' ||
-			student.locationId === ''
+			student.primaryEmergencyName === '' ||
+			student.primaryEmergencyRelationship === '' ||
+			student.primaryEmergencyPhone === '' ||
+			student.emergencyName === '' ||
+			student.emergencyRelationship === '' ||
+			student.emergencyPhone === '' ||
+			student.notes === ''
 		) {
 			// highlight all that were missed
 			if (student.cpr === '') {
@@ -165,20 +171,29 @@ const StudentRegistrationForm = props => {
 			if (student.gender === '') {
 				setErrorBorderGender('#ef6570');
 			}
-			if (student.birthdate === '') {
-				setErrorBorderBirthdate('#ef6570');
-			}
-			if (student.school_grade_id === '') {
-				setErrorBorderSchoolGrade('#ef6570');
-			}
-			if (student.schoolName === '') {
-				setErrorBorderSchoolName('#ef6570');
-			}
 			if (student.homeTelephone === '') {
 				setErrorBorderHomeTelephone('#ef6570');
 			}
 			if (student.mobileTelephone === '') {
 				setErrorBorderMobileTelephone('#ef6570');
+			}
+			if (student.email === '') {
+				setErrorBorderEmail('#ef6570');
+			}
+			if (student.contactTypeId === '') {
+				setErrorBorderContactType('#ef6570');
+			}
+			if (student.birthdate === '') {
+				setErrorBorderBirthdate('#ef6570');
+			}
+			if (student.schoolName === '') {
+				setErrorBorderSchoolName('#ef6570');
+			}
+			if (student.schoolGradeId === '') {
+				setErrorBorderSchoolGrade('#ef6570');
+			}
+			if (student.locationId === '') {
+				setErrorBorderLocation('#ef6570');
 			}
 			if (student.block === '') {
 				setErrorBorderBlock('#ef6570');
@@ -192,17 +207,26 @@ const StudentRegistrationForm = props => {
 			if (student.flat === '') {
 				setErrorBorderFlat('#ef6570');
 			}
-			if (student.email === '') {
-				setErrorBorderEmail('#ef6570');
+			if (student.primaryEmergencyName === '') {
+				setErrorBorderPrimaryEmergencyName('ef6570');
+			}
+			if (student.primaryEmergencyRelationship === '') {
+				setErrorBorderPrimaryEmergencyRelationship('ef6570');
+			}
+			if (student.primaryEmergencyPhone === '') {
+				setErrorBorderPrimaryEmergencyPhone('ef6570');
+			}
+			if (student.EmergencyName === '') {
+				setErrorBorderEmergencyName('ef6570');
+			}
+			if (student.EmergencyRelationship === '') {
+				setErrorBorderEmergencyRelationship('ef6570');
+			}
+			if (student.EmergencyPhone === '') {
+				setErrorBorderEmergencyPhone('ef6570');
 			}
 			if (student.notes === '') {
 				setErrorBorderNotes('#ef6570');
-			}
-			if (student.contactTypeId === '') {
-				setErrorBorderContactType('#ef6570');
-			}
-			if (student.locationId === '') {
-				setErrorBorderLocation('#ef6570');
 			}
 		} else {
 			//console.log("Student request body", student)
@@ -297,71 +321,6 @@ const StudentRegistrationForm = props => {
 						</div>
 					</div>
 					<div>
-						<Label>Email</Label>
-						<div
-							style={{
-								border: `1px solid ${errorBorderEmail}`,
-								borderRadius: '3px'
-							}}
-						>
-							<Input
-								type="email"
-								name="email"
-								value={student.email}
-								onChange={handleChange}
-							/>
-						</div>
-					</div>
-					<div>
-						<Label>School Name</Label>
-						<div
-							style={{
-								border: `1px solid ${errorBorderSchoolName}`,
-								borderRadius: '3px'
-							}}
-						>
-							<Input
-								type="text"
-								name="school_name"
-								value={student.school_name}
-								onChange={handleChange}
-							/>
-						</div>
-					</div>
-					<div>
-						<Label>Birth date</Label>
-						<div
-							style={{
-								border: `1px solid ${errorBorderBirthdate}`,
-								borderRadius: '3px'
-							}}
-						>
-							<Input
-								type="date"
-								name="birthdate"
-								value={student.birthdate}
-								onChange={handleChange}
-							/>
-						</div>
-					</div>
-					<div>
-						<Label>Location</Label>
-						<div
-							style={{
-								border: `1px solid ${errorBorderLocation}`,
-								borderRadius: '3px'
-							}}
-						>
-							<Dropdown
-								value={student.location_id}
-								onChange={e => setStudent({ ...student, location_id: e })}
-								controlClassName="myControlClassName"
-								options={props.locationsTable}
-								className="dropdown"
-							/>
-						</div>
-					</div>
-					<div>
 						<Label>Home Telephone</Label>
 						<div
 							style={{
@@ -394,6 +353,22 @@ const StudentRegistrationForm = props => {
 						</div>
 					</div>
 					<div>
+						<Label>Email</Label>
+						<div
+							style={{
+								border: `1px solid ${errorBorderEmail}`,
+								borderRadius: '3px'
+							}}
+						>
+							<Input
+								type="email"
+								name="email"
+								value={student.email}
+								onChange={handleChange}
+							/>
+						</div>
+					</div>
+					<div>
 						<Label>Preferred Contact Method</Label>
 						<div
 							style={{
@@ -408,6 +383,75 @@ const StudentRegistrationForm = props => {
 								value={student.preferred_contact_type_id}
 								controlClassName="myControlClassName"
 								options={props.contactTypesTable}
+								className="dropdown"
+							/>
+						</div>
+					</div>
+					<div>
+						<Label>Birth date</Label>
+						<div
+							style={{
+								border: `1px solid ${errorBorderBirthdate}`,
+								borderRadius: '3px'
+							}}
+						>
+							<Input
+								type="date"
+								name="birthdate"
+								value={student.birthdate}
+								onChange={handleChange}
+							/>
+						</div>
+					</div>
+					<div>
+						<Label>School Name</Label>
+						<div
+							style={{
+								border: `1px solid ${errorBorderSchoolName}`,
+								borderRadius: '3px'
+							}}
+						>
+							<Input
+								type="text"
+								name="school_name"
+								value={student.school_name}
+								onChange={handleChange}
+							/>
+						</div>
+					</div>
+					<div>
+						<Label>School Grade</Label>
+						<div
+							style={{
+								border: `1px solid ${errorBorderSchoolGrade}`,
+								borderRadius: '3px'
+							}}
+						>
+							<Dropdown
+								onChange={e => {
+									setStudent({ ...student, school_grade_id: e });
+								}}
+								value={student.school_grade_id}
+								controlClassName="myControlClassName"
+								className="dropdownRoot"
+								options={props.schoolGradeTable}
+								className="dropdown"
+							/>
+						</div>
+					</div>
+					<div>
+						<Label>Location</Label>
+						<div
+							style={{
+								border: `1px solid ${errorBorderLocation}`,
+								borderRadius: '3px'
+							}}
+						>
+							<Dropdown
+								value={student.location_id}
+								onChange={e => setStudent({ ...student, location_id: e })}
+								controlClassName="myControlClassName"
+								options={props.locationsTable}
 								className="dropdown"
 							/>
 						</div>
@@ -479,23 +523,101 @@ const StudentRegistrationForm = props => {
 							/>
 						</div>
 					</div>
-					<div>
-						<Label>School Grade</Label>
+					<div style={{ gridColumn: 'span 2' }}>
+						<Label>Primary Emergency Contact Name</Label>
 						<div
 							style={{
-								border: `1px solid ${errorBorderSchoolGrade}`,
+								border: `1px solid ${errorBorderPrimaryEmergencyName}`,
 								borderRadius: '3px'
 							}}
 						>
-							<Dropdown
-								onChange={e => {
-									setStudent({ ...student, school_grade_id: e });
-								}}
-								value={student.school_grade_id}
-								controlClassName="myControlClassName"
-								className="dropdownRoot"
-								options={props.schoolGradeTable}
-								className="dropdown"
+							<Input
+								style={{ width: '100%' }}
+								type="text"
+								name="primary_emergency_name"
+								value={student.primary_emergency_name}
+								onChange={handleChange}
+							/>
+						</div>
+					</div>
+					<div>
+						<Label>Relationship</Label>
+						<div
+							style={{
+								border: `1px solid ${errorBorderPrimaryEmergencyRelationship}`,
+								borderRadius: '3px'
+							}}
+						>
+							<Input
+								type="text"
+								name="primary_emergency_relationship"
+								value={student.primary_emergency_relationship}
+								onChange={handleChange}
+							/>
+						</div>
+					</div>
+					<div>
+						<Label>Phone Number</Label>
+						<div
+							style={{
+								border: `1px solid ${errorBorderPrimaryEmergencyPhone}`,
+								borderRadius: '3px'
+							}}
+						>
+							<Input
+								type="text"
+								name="primary_emergency_phone"
+								value={student.primary_emergency_phone}
+								onChange={handleChange}
+							/>
+						</div>
+					</div>
+					<div style={{ gridColumn: 'span 2' }}>
+						<Label>Emergency Contact Name</Label>
+						<div
+							style={{
+								border: `1px solid ${errorBorderEmergencyName}`,
+								borderRadius: '3px'
+							}}
+						>
+							<Input
+								style={{ width: '100%' }}
+								type="text"
+								name="emergency_name"
+								value={student.emergency_name}
+								onChange={handleChange}
+							/>
+						</div>
+					</div>
+					<div>
+						<Label>Relationship</Label>
+						<div
+							style={{
+								border: `1px solid ${errorBorderEmergencyRelationship}`,
+								borderRadius: '3px'
+							}}
+						>
+							<Input
+								type="text"
+								name="emergency_relationship"
+								value={student.emergency_relationship}
+								onChange={handleChange}
+							/>
+						</div>
+					</div>
+					<div>
+						<Label>Phone Number</Label>
+						<div
+							style={{
+								border: `1px solid ${errorBorderEmergencyPhone}`,
+								borderRadius: '3px'
+							}}
+						>
+							<Input
+								type="text"
+								name="emergency_phone"
+								value={student.emergency_phone}
+								onChange={handleChange}
 							/>
 						</div>
 					</div>
