@@ -134,6 +134,13 @@ export {
 } from './adminDashboardActions/studentProgressActions.js';
 
 export {
+  getStudentAttendanceTable,
+  FETCH_STUDENTATTENDANCE_START,
+  FETCH_STUDENTATTENDANCE_SUCCESS,
+  FETCH_STUDENTATTENDANCE_FAILURE,
+} from './adminDashboardActions/studentAttendanceActions.js';
+
+export {
   getStudentCourses,
   FETCH_STUDENTCOURSES_START,
   FETCH_STUDENTCOURSES_SUCCESS,

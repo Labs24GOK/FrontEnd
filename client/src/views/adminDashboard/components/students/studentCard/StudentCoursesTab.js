@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
-import { getStudentCourses } from '../../../../../actions';
+import { getStudentCourses, getStudentAttendanceTable } from '../../../../../actions';
 import { Table, Button } from 'antd';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,7 +13,6 @@ import { dateConverter } from '../../../../../utils/helpers.js';
 import './studentTable.scss'
 
 const StudentCoursesTab = props => {
-  console.log(props.courseByStudentId)
   const [form, setForm] = useState(false);
   const [ courseID, setCourseID] = useState();
   const [modalVisible, setModalVisible] = useState({
@@ -32,6 +31,10 @@ const StudentCoursesTab = props => {
   useEffect(() => {
     props.getStudentCourses(props.studentID)
   }, [form])
+
+useEffect(() => {
+  props.getStudentAttendanceTable(courseID)
+}, [courseID]);
 
   const studentCourseColumns = [
     {
@@ -93,6 +96,7 @@ const StudentCoursesTab = props => {
       key: 10,
       render: () => {
         return  <Button onClick={() => {
+          props.getStudentAttendanceTable(courseID)
           setModalVisible({ visible: true })
       }}>View Attendance
       </Button>;
@@ -131,14 +135,14 @@ const StudentCoursesTab = props => {
       onRow={record => {
         return {
           onClick: () => {
-            setCourseID(record.course_id);
-            console.log(courseID)
+            setCourseID(record.course_enrollment_id);
           }
         };
       }}/>
     <ViewAttendanceModule 
     modalVisible={modalVisible} 
-    setModalVisible={setModalVisible} 
+    setModalVisible={setModalVisible}
+    setCourseID={setCourseID}
     courseID={courseID}
     />
     </>
@@ -156,6 +160,6 @@ const mapStateToProps = state => {
 export default withRouter(
   connect(
     mapStateToProps,
-    { getStudentCourses }
+    { getStudentCourses, getStudentAttendanceTable }
   )(StudentCoursesTab)
 )

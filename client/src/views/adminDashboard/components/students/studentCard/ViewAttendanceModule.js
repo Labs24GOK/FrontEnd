@@ -1,31 +1,26 @@
 import React, { useState,useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { getCourseTable } from '../../../../../actions';
+import { getStudentAttendanceTable } from '../../../../../actions';
 import { Table, Button, Modal, Spin, Input, Icon,  } from 'antd';
+import { dateConverter } from '../../../../../utils/helpers.js';
 
 import '../../students/studentCard/studentTable.scss'
 
 const ViewAttendanceModule = props => {
 
     useEffect(() => {
+
       }, []);
 
     const tableColumns = [
         {
           title: 'Date',
-          dataIndex: 'date',
+          dataIndex: 'meeting_date',
           key: 'date',
-        },
-        {
-          title: 'Pacing Guide',
-          dataIndex: 'pacing_guide',
-          key: 'pacing_guide',
-        },
-        {
-          title: 'Content',
-          dataIndex: 'content',
-          key: 'content',
+          render: (value, row, index) => {
+            return <span>{dateConverter(value)}</span>;
+          }
         },
         {
           title: 'Attendance',
@@ -43,6 +38,8 @@ const ViewAttendanceModule = props => {
     const handleCancel = () => {
         props.setModalVisible({ visible: false });
     };
+  
+    const attendanceData = props.attendanceList.attendanceList;
 
     return (
         <>
@@ -56,14 +53,11 @@ const ViewAttendanceModule = props => {
                         onOk={handleOk}
                         onCancel={handleCancel}
                         footer={[
-                            <Button key="back" onClick={handleCancel}>
+                            <Button key="submit" type="primary" onClick={handleOk}>
                                 Return
                         </Button>,
-                            <Button key="submit" type="primary" onClick={handleOk}>
-                                Submit
-                        </Button>,
                         ]}>
-                        <Table dataSource={null} 
+                        <Table dataSource={attendanceData} 
                             columns={tableColumns} 
                           />
                     </Modal>
@@ -77,13 +71,13 @@ const ViewAttendanceModule = props => {
 const mapStateToProps = state => {
     return {
         isLoading: state.staffCourseReducer.isLoading,
-        courseList: state.coursesTableReducer.courseList,
+        attendanceList: state.attendanceReducer.attendanceList,
     };
 };
 
 export default withRouter(
     connect(
         mapStateToProps,
-        { getCourseTable }
+        { getStudentAttendanceTable }
     )(ViewAttendanceModule)
 )
