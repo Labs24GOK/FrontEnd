@@ -22,6 +22,8 @@ const StaffCoursesTab = props => {
     loading: false,
   });
 
+  const [courseID, setCourseID] = useState(0)
+
   const staffCourseColumns = [
     {
       title: 'Course ID',
@@ -81,7 +83,8 @@ const StaffCoursesTab = props => {
         return (
           <Button
             onClick={() => {
-              props.getStudentsByCourseID(record.course_id);
+              setCourseID(record.course_id)
+              // props.getStudentsByCourseID(courseID);
               setModalVisible({ visible: true });
             }}
           >
@@ -109,6 +112,7 @@ const StaffCoursesTab = props => {
             setModalVisible={setModalVisible}
             staffID={staffID}
             teacher={teacher}
+            courseID={courseID}
           />
         </>
       )}

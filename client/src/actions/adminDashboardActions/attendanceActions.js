@@ -5,10 +5,10 @@ export const CREATE_ATTENDANCE_START = 'CREATE_ATTENDANCE_START';
 export const CREATE_ATTENDANCE_SUCCESS = 'CREATE_ATTENDANCE_SUCCESS';
 export const CREATE_ATTENDANCE_FAILURE = 'CREATE_ATTENDANCE_FAILURE';
 
-export const postStudentAttendance = attendance => dispatch => {
+export const postStudentAttendance = state => dispatch => {
 	dispatch({ type: CREATE_ATTENDANCE_START });
 	axios
-		.post(`${API_URL}/api/attendance`, attendance)
+		.post(`${API_URL}/attendance`, state)
 		.then(res => {
 			//console.log(res);
 			if (res.status === 201) {
