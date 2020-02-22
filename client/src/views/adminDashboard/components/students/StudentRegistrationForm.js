@@ -286,7 +286,7 @@ const StudentRegistrationForm = props => {
 							/>
 						</div>
 					</div>
-					<div style={{ gridColumn: 'span 2' }}>
+					<div>
 						<Label>Additional names</Label>
 						<div
 							style={{
@@ -295,7 +295,6 @@ const StudentRegistrationForm = props => {
 							}}
 						>
 							<Input
-								style={{ width: '100%' }}
 								type="text"
 								name="additional_names"
 								value={student.additional_names}
