@@ -143,7 +143,7 @@ const StudentForm = props => {
 							/>
 						</div>
 					</div>
-					<div style={{ gridColumn: 'span 2' }}>
+					<div>
 						<Label>Additional Names</Label>
 						<div>
 							<Input
@@ -152,7 +152,6 @@ const StudentForm = props => {
 								placeholder="Additional Names"
 								onChange={handleChange}
 								value={state.additional_names}
-								style={{ width: '100%' }}
 							/>
 						</div>
 					</div>
