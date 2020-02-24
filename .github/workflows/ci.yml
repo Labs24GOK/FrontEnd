@@ -12,7 +12,7 @@ jobs:
         with:
           node-version: "12"
       - name: Install dependencies
-        run: cd movie-knight && npm install
+        run: cd client && npm install
 
       - uses: paambaati/codeclimate-action@v2.4.0
         env:
