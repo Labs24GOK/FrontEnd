@@ -1,7 +1,6 @@
 import 'react-dropdown/style.css';
-import '../StaffTable.scss';
 
-import { Button, DatePicker, Modal, Spin, Table } from 'antd';
+import { Button, DatePicker, Modal, Spin, Table, notification } from 'antd';
 import axios from 'axios';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
@@ -13,9 +12,11 @@ import {
   postStudentAttendance,
 } from '../../../../../actions';
 import API_URL from '../../../../../config/apiUrl';
-import { Label } from '../../mainStyle/styledComponent.js';
+import { DropdownLabel } from '../../mainStyle/styledComponent.js';
 
 const AttendanceModal = props => {
+  console.log("ATTENDANCE MODAL PROPS", props)
+  //set initial State
   const [state, setState] = useState({
     meeting: {
       teacher_id: props.staffID,
@@ -30,8 +31,11 @@ const AttendanceModal = props => {
   useEffect(() => {
     props.getDropDownCourses();
   }, []);
+  //manage the state of the Students array
   const [attendees, setAttendees] = useState([]);
   useEffect(() => {
+
+    //Set courseID for Axios call (Some concerns this may cause issues in future as state is immediately used in below Axios call)
     setState({
       ...state,
       meeting: {
@@ -40,14 +44,15 @@ const AttendanceModal = props => {
       },
     });
 
-    // !!!
-
+    //!!! See above note
+    //AXIOS call to get all necessary information and (by not being in a Redux action) gives the ability to manipulate student array more effectively.
     if (state.meeting.meeting_date && props.courseID) {
       axios
         .get(
           `${API_URL}/attendance/date/${state.meeting.meeting_date}/course/${props.courseID}`
         )
         .then(res => {
+          console.log(res.data.attendanceRecord)
           setAttendees(res.data.attendanceRecord);
         })
         .catch(err => {
@@ -56,8 +61,10 @@ const AttendanceModal = props => {
     }
   }, [state.meeting.meeting_date, props.courseID]);
 
+  //Array(datasource) for attendance dropdown menu
   const attendanceStatus = ['present', 'absent', 'late'];
 
+  //Columns of Table to be rendered in Modal
   const attendanceColumns = [
     {
       title: 'Student ID',
@@ -65,9 +72,13 @@ const AttendanceModal = props => {
       key: 1,
     },
     {
-      title: 'Name',
-      dataIndex: `student_name`,
-      key: 2,
+    title: 'Name',
+    key: 2,
+      render: (text, record) => (
+        <span>
+          <p>{record.student_name} {record.student_additional_names}</p>
+        </span>
+      )
     },
     {
       title: 'Attendance',
@@ -88,7 +99,7 @@ const AttendanceModal = props => {
                 })
               )
             }
-            controlClassName='myControlClassName'
+            controlClassName='myControlClassNameModal'
             options={attendanceStatus}
             className='dropdown'
           />
@@ -97,9 +108,9 @@ const AttendanceModal = props => {
     },
   ];
 
-  console.log('STATE', state);
-
+  //Handles the "Submit" button.
   const handleOk = () => {
+    //maps student array to proper format before sending
     const studentsArr = attendees.map(each => {
       return {
         student_id: each.student_id,
@@ -107,10 +118,10 @@ const AttendanceModal = props => {
       };
     });
     console.log('ATTENDANCE STATE', { ...state, students: studentsArr });
-    props.postStudentAttendance({ ...state, students: studentsArr });
-
+    props.postStudentAttendance({ ...state, students: studentsArr })
+    //Closes modal
     props.setModalVisible({ loading: false, visible: false });
-
+    //resets State to current date after submit
     setState({
       meeting: {
         teacher_id: props.staffID,
@@ -121,8 +132,13 @@ const AttendanceModal = props => {
       },
       students: [],
     });
+    // openNotification('success')
   };
+  
+  console.log("MESSAGE", props.attendanceResponse)
 
+
+  //Handles the "Return" button (closes modal and resets state as seen below)
   const handleCancel = () => {
     setState({
       meeting: {
@@ -147,8 +163,10 @@ const AttendanceModal = props => {
     });
   };
 
+  //dateFormat for moment()
   const dateFormat = 'YYYY-MM-DD';
 
+  //actual Rendering on web page
   return (
     <>
       {props.isLoading ? (
@@ -170,7 +188,8 @@ const AttendanceModal = props => {
             ]}
           >
             <DatePicker
-              size='small'
+              size='default'
+              className='attendanceDate'
               onChange={changeHandler}
               defaultValue={moment()}
               value={
@@ -179,9 +198,10 @@ const AttendanceModal = props => {
                   : moment()
               }
               format={dateFormat}
-            />
+              />
+            <span style={{ marginBotton: 8 }} />
             <div>
-              <Label>Teacher</Label>
+              <DropdownLabel>Teacher</DropdownLabel>
               <Dropdown
                 value={props.teacher}
                 onChange={e =>
@@ -193,7 +213,7 @@ const AttendanceModal = props => {
                     },
                   }))
                 }
-                controlClassName='myControlClassName'
+                controlClassName='myControlClassNameModal'
                 className='dropdown'
                 options={props.teacherDropdown}
               />
@@ -214,7 +234,6 @@ const AttendanceModal = props => {
 const mapStateToProps = state => {
   return {
     isLoading: state.staffCourseReducer.isLoading,
-    studentList: state.studentsByCourseIDReducer.studentByCourseId,
     teacherDropdown: state.coursesTableReducer.teacherTable,
   };
 };

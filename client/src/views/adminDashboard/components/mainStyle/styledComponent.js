@@ -65,7 +65,11 @@ export const TextDiv = styled.p`
 `
 export const Label = styled.h5`
  margin: 2px;
-//  font-weight: lighter;
+`
+export const DropdownLabel = styled.h5`
+ margin: 2px;
+ color: grey;
+ font-weight: lighter;
 `
 export const CardStyle = styled.div`
   outline: none;

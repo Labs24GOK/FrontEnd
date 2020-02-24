@@ -5,7 +5,7 @@ import {
 } from '../../actions';
 
 const initialState = {
-  studentByCourseId: [],
+  attendanceResponse: '',
   isLoading: false,
   error: null,
 };
@@ -22,7 +22,7 @@ export const attendanceReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        studentByCourseId: action.payload,
+        attendanceResponse: action.payload,
       };
     case CREATE_ATTENDANCE_FAILURE:
       return {

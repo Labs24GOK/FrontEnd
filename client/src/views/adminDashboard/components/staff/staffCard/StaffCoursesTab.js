@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { getStaffCourses, getStudentsByCourseID } from '../../../../../actions';
 import AttendanceModal from './AttendanceModal';
 import { Table, Button, Spin } from 'antd';
-import { timeConverter, dateConverter } from '../../../../../utils/helpers.js';
+import { timeConverter } from '../../../../../utils/helpers.js';
 import '../../students/studentCard/studentTable.scss';
 
 const StaffCoursesTab = props => {
@@ -84,7 +84,6 @@ const StaffCoursesTab = props => {
           <Button
             onClick={() => {
               setCourseID(record.course_id)
-              // props.getStudentsByCourseID(courseID);
               setModalVisible({ visible: true });
             }}
           >
