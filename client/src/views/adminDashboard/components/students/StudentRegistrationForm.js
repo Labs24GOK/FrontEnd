@@ -45,10 +45,10 @@ const StudentRegistrationForm = props => {
 		road: '',
 		building: '',
 		flat: '',
-		primary_emergency_name: '',
+		primary_emergency_contact_name: '',
 		primary_emergency_relationship: '',
 		primary_emergency_phone: '',
-		emergency_name: '',
+		emergency_contact_name: '',
 		emergency_relationship: '',
 		emergency_phone: '',
 		notes: '',
@@ -99,8 +99,8 @@ const StudentRegistrationForm = props => {
 	const [errorBorderBuilding, setErrorBorderBuilding] = useState('transparent'); //error #C73642
 	const [errorBorderFlat, setErrorBorderFlat] = useState('transparent'); //error #C73642
 	const [
-		errorBorderPrimaryEmergencyName,
-		setErrorBorderPrimaryEmergencyName
+		errorBorderprimaryEmergencyContactName,
+		setErrorBorderprimaryEmergencyContactName
 	] = useState('transparent'); //error #C73642
 	const [
 		errorBorderPrimaryEmergencyRelationship,
@@ -110,9 +110,10 @@ const StudentRegistrationForm = props => {
 		errorBorderPrimaryEmergencyPhone,
 		setErrorBorderPrimaryEmergencyPhone
 	] = useState('transparent'); //error #C73642
-	const [errorBorderEmergencyName, setErrorBorderEmergencyName] = useState(
-		'transparent'
-	); //error #C73642
+	const [
+		errorBorderEmergencyContactName,
+		setErrorBorderEmergencyContactName
+	] = useState('transparent'); //error #C73642
 	const [
 		errorBorderEmergencyRelationship,
 		setErrorBorderEmergencyRelationship
@@ -150,10 +151,10 @@ const StudentRegistrationForm = props => {
 			student.road === '' ||
 			student.building === '' ||
 			student.flat === '' ||
-			student.primaryEmergencyName === '' ||
+			student.primaryEmergencyContactName === '' ||
 			student.primaryEmergencyRelationship === '' ||
 			student.primaryEmergencyPhone === '' ||
-			student.emergencyName === '' ||
+			student.EmergencyContactName === '' ||
 			student.emergencyRelationship === '' ||
 			student.emergencyPhone === '' ||
 			student.notes === ''
@@ -207,8 +208,8 @@ const StudentRegistrationForm = props => {
 			if (student.flat === '') {
 				setErrorBorderFlat('#ef6570');
 			}
-			if (student.primaryEmergencyName === '') {
-				setErrorBorderPrimaryEmergencyName('ef6570');
+			if (student.primaryEmergencyContactName === '') {
+				setErrorBorderprimaryEmergencyContactName('ef6570');
 			}
 			if (student.primaryEmergencyRelationship === '') {
 				setErrorBorderPrimaryEmergencyRelationship('ef6570');
@@ -216,8 +217,8 @@ const StudentRegistrationForm = props => {
 			if (student.primaryEmergencyPhone === '') {
 				setErrorBorderPrimaryEmergencyPhone('ef6570');
 			}
-			if (student.EmergencyName === '') {
-				setErrorBorderEmergencyName('ef6570');
+			if (student.EmergencyContactName === '') {
+				setErrorBorderEmergencyContactName('ef6570');
 			}
 			if (student.EmergencyRelationship === '') {
 				setErrorBorderEmergencyRelationship('ef6570');
@@ -526,15 +527,15 @@ const StudentRegistrationForm = props => {
 						<Label>Primary Emergency Contact Name</Label>
 						<div
 							style={{
-								border: `1px solid ${errorBorderPrimaryEmergencyName}`,
+								border: `1px solid ${errorBorderprimaryEmergencyContactName}`,
 								borderRadius: '3px'
 							}}
 						>
 							<Input
 								style={{ width: '100%' }}
 								type="text"
-								name="primary_emergency_name"
-								value={student.primary_emergency_name}
+								name="primary_emergency_contact_name"
+								value={student.primary_emergency_contact_name}
 								onChange={handleChange}
 							/>
 						</div>
@@ -575,15 +576,15 @@ const StudentRegistrationForm = props => {
 						<Label>Emergency Contact Name</Label>
 						<div
 							style={{
-								border: `1px solid ${errorBorderEmergencyName}`,
+								border: `1px solid ${errorBorderEmergencyContactName}`,
 								borderRadius: '3px'
 							}}
 						>
 							<Input
 								style={{ width: '100%' }}
 								type="text"
-								name="emergency_name"
-								value={student.emergency_name}
+								name="emergency_contact_name"
+								value={student.emergency_contact_name}
 								onChange={handleChange}
 							/>
 						</div>

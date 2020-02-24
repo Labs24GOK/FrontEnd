@@ -28,7 +28,7 @@ const StudentFamilyTab = props => {
 									<Label>Primary Emergency Contact Name</Label>
 									<TextDiv>
 										{(props.studentById &&
-											props.studentById.primary_emergency_name) ||
+											props.studentById.primary_emergency_contact_name) ||
 											'-'}
 									</TextDiv>
 								</div>
@@ -51,7 +51,8 @@ const StudentFamilyTab = props => {
 								<div style={{ gridColumn: 'span 2' }}>
 									<Label>Emergency Contact Name</Label>
 									<TextDiv>
-										{(props.studentById && props.studentById.emergency_name) ||
+										{(props.studentById &&
+											props.studentById.emergency_contact_name) ||
 											'-'}
 									</TextDiv>
 								</div>

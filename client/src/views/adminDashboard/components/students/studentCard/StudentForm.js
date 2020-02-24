@@ -49,11 +49,12 @@ const StudentForm = props => {
 		road: props.studentById.road,
 		building: props.studentById.building,
 		flat: props.studentById.flat,
-		primary_emergency_name: props.studentById.primary_emergency_name,
+		primary_emergency_contact_name:
+			props.studentById.primary_emergency_contact_name,
 		primary_emergency_relationship:
 			props.studentById.primary_emergency_relationship,
 		primary_emergency_phone: props.studentById.primary_emergency_phone,
-		emergency_name: props.studentById.emergency_name,
+		emergency_contact_name: props.studentById.emergency_contact_name,
 		emergency_relationship: props.studentById.emergency_relationship,
 		emergency_phone: props.studentById.emergency_phone,
 		notes: props.studentById.notes,
@@ -322,10 +323,10 @@ const StudentForm = props => {
 						<div>
 							<Input
 								type="text"
-								name="primary_emergency_name"
+								name="primary_emergency_contact_name"
 								placeholder="Primary Emergency Contact Name"
 								onChange={handleChange}
-								value={state.primary_emergency_name}
+								value={state.primary_emergency_contact_name}
 								style={{ width: '100%' }}
 							/>
 						</div>
@@ -359,10 +360,10 @@ const StudentForm = props => {
 						<div>
 							<Input
 								type="text"
-								name="emergency_name"
+								name="emergency_contact_name"
 								placeholder="Emergency Contact Name"
 								onChange={handleChange}
-								value={state.emergency_name}
+								value={state.emergency_contact_name}
 								style={{ width: '100%' }}
 							/>
 						</div>
