@@ -54,6 +54,64 @@ export const enrollStudent = (
     });
 };
 
+
+export const EDIT_ENROLL_STUDENT_START =
+  'EDIT_ENROLL_STUDENT_START';
+export const EDIT_ENROLL_STUDENT_SUCCESS =
+  'EDIT_ENROLL_STUDENT_SUCCESS';
+export const EDIT_ENROLL_STUDENT_CANCELLED =
+  'EDIT_ENROLL_STUDENT_CANCELLED';
+export const EDIT_ENROLL_STUDENT_FAILURE =
+  'EDIT_ENROLL_STUDENT_FAILURE';
+export const editEnrollStudent = (
+  student_id,
+  course_id,
+  state
+) => dispatch => {
+  axios
+    .put(`${API_URL}/student/${student_id}/course/${course_id}`, state)
+    .then(res => {
+      dispatch({
+        type: EDIT_ENROLL_STUDENT_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: EDIT_ENROLL_STUDENT_FAILURE,
+        payload: 'Error enrolling the student'
+      });
+    });
+};
+
+export const UNENROLL_STUDENT_START =
+  'UNENROLL_STUDENT_START';
+export const UNENROLL_STUDENT_SUCCESS =
+  'UNENROLL_STUDENT_SUCCESS';
+export const UNENROLL_STUDENT_CANCELLED =
+  'UNENROLL_STUDENT_CANCELLED';
+export const UNENROLL_STUDENT_FAILURE =
+  'UNENROLL_STUDENT_FAILURE';
+export const unenrollEnrollStudent = (
+  student_id,
+  course_id
+) => dispatch => {
+  axios
+    .delete(`${API_URL}/student/${student_id}/course/${course_id}`)
+    .then(res => {
+      dispatch({
+        type: UNENROLL_STUDENT_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: UNENROLL_STUDENT_FAILURE,
+        payload: 'Error unenrolling the student'
+      });
+    });
+};
+
 export const EDIT_STUDENTBYID_START = 'EDIT_STUDENTBYID_START';
 export const EDIT_STUDENTBYID_CANCELLED = 'EDIT_STUDENTBYID_CANCELLED';
 export const EDIT_STUDENTBYID_SUCCESS = 'EDIT_STUDENTBYID_SUCCESS';

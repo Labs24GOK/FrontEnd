@@ -7,18 +7,29 @@ import { Table, Button } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import EnrollStudentForm from './EnrollStudentForm';
+import EditEnrollStudentForm from './EditEnrollStudentForm';
 import ViewAttendanceModule from './ViewAttendanceModule';
 import { dateConverter } from '../../../../../utils/helpers.js';
 
 import './studentTable.scss'
 
+import {
+  DeleteButton as EditButton
+} from '../../mainStyle/styledComponent';
+
 const StudentCoursesTab = props => {
   const [form, setForm] = useState(false);
+  const [editForm, setEditForm] = useState(false);
   const [ courseID, setCourseID] = useState();
+  const [ info, setInfo] = useState();
   const [modalVisible, setModalVisible] = useState({
     visible: false,
     loading: false,
 })  
+
+const editStudentEnrollment = () => {
+  setEditForm(!editForm);
+}
 
   const handleCancelButtonOnForm = () => {
     setForm(false);
@@ -30,7 +41,7 @@ const StudentCoursesTab = props => {
 
   useEffect(() => {
     props.getStudentCourses(props.studentID)
-  }, [form])
+  }, [form, editForm])
 
 useEffect(() => {
   props.getStudentAttendanceTable(courseID)
@@ -44,7 +55,7 @@ useEffect(() => {
     },
     {
       title: 'Days',
-      dataIndex: 'term',
+      dataIndex: 'course_days',
       key: 2,
       sortDirections: ['descend']
     },
@@ -102,6 +113,15 @@ useEffect(() => {
       </Button>;
       }
     },
+    {
+      title: 'Edit',
+      dataIndex: 'edit',
+      key: 11,
+      render: () => {
+        return  <EditButton onClick={editStudentEnrollment}>Edit
+      </EditButton>;
+      }
+    },
   ];
 
   return (
@@ -131,10 +151,20 @@ useEffect(() => {
         />
       ) : null}
 
+      
+      {editForm ? (
+        <EditEnrollStudentForm
+          setEditForm={setEditForm}
+          editForm={editForm}
+          info={info}
+        />
+      ) : null}
+
       <Table dataSource={props.courseByStudentId} className="coursesTable" columns={studentCourseColumns} pagination={false} 
       onRow={record => {
         return {
           onClick: () => {
+            setInfo(record)
             setCourseID(record.course_enrollment_id);
           }
         };
