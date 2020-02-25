@@ -11,14 +11,14 @@ export const FETCH_STUDENTSBYCOURSEID_SUCCESS =
 export const FETCH_STUDENTSBYCOURSEID_FAILURE =
 	'FETCH_STUDENTSBYCOURSEID_FAILURE';
 
-export const getStaffCourses = teacher_id => dispatch => {
+export const getStaffCourses = staff_id => dispatch => {
 	dispatch({ type: FETCH_STAFFCOURSES_START });
 	axios
-		.get(`${API_URL}/api/?table=course&where=teacher_id=${teacher_id}`)
+		.get(`${API_URL}/staff/${staff_id}/courses`)
 		.then(res => {
 			dispatch({
 				type: FETCH_STAFFCOURSES_SUCCESS,
-				payload: res.data.tableData
+				payload: res.data
 			});
 		})
 		.catch(err => {
@@ -32,11 +32,11 @@ export const getStaffCourses = teacher_id => dispatch => {
 export const getStudentsByCourseID = course_id => dispatch => {
 	dispatch({ type: FETCH_STUDENTSBYCOURSEID_START });
 	axios
-		.get(`${API_URL}/api/?table=course_enrollment&where=course_id=${course_id}`)
+		.get(`${API_URL}/course/${course_id}/students`)
 		.then(res => {
 			dispatch({
 				type: FETCH_STUDENTSBYCOURSEID_SUCCESS,
-				payload: res.data.tableData
+				payload: res.data
 			});
 		})
 		.catch(err => {

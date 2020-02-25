@@ -76,8 +76,34 @@ export const TextDiv = styled.p`
 `
 export const Label = styled.h5`
  margin: 2px;
-//  font-weight: lighter;
 `
+export const DropdownLabel = styled.h5`
+ margin: 2px;
+ color: grey;
+ font-weight: lighter;
+`
+export const CalenderLabel = styled.h5`
+ margin: 2px;
+ color: grey;
+ font-weight: lighter;
+`
+export const RightTopDiv = styled.div `
+ display: inline-block;
+ width: 50%;
+ margin-bottom: 0px;
+`
+export const LeftTopDiv = styled.div `
+display: inline-block;
+width: 50%;
+margin-bottom: 0px;
+`
+export const TopSection = styled.div `
+ display: flex;
+ align-items: center;
+ width: 100%;
+ margin-bottom: 15px;
+`
+
 export const CardStyle = styled.div`
   outline: none;
   border-radius: 3px;
