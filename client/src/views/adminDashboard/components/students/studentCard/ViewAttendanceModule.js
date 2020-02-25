@@ -43,7 +43,7 @@ const ViewAttendanceModule = props => {
                 :
                 <>
                     <Modal
-                        width= "50%"
+                        width= "30%"
                         title={`Attendance Records - ${props.info.term} / Section ${props.info.section} / ${props.info.term}`}
                         visible={props.modalVisible.visible}
                         onOk={handleOk}

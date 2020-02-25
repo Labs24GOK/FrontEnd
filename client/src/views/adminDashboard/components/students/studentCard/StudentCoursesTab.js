@@ -68,7 +68,7 @@ const deleteStudentInfo = async () => {
   /* Use Effects */
   useEffect(() => {
       props.getStudentCourses(props.studentID)
-  }, [info])
+  }, [props.courseByStudentId])
 
   useEffect(() => {
     props.editEnrollStudent( info.student_id, info.course_id, state)
@@ -76,7 +76,7 @@ const deleteStudentInfo = async () => {
 
   useEffect(() => {
     props.getStudentAttendanceTable(courseID)
-  }, [modalVisible])
+  }, [courseID])
 
   /* End Use Effects */
 

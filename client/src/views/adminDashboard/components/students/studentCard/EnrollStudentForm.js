@@ -36,7 +36,7 @@ const EnrollStudentForm = props => {
 
     const [state, setState] = useState({
         result_type_code : -3,
-        notes : ''
+        notes : 'test'
     });
 
     const [modalVisible, setModalVisible] = useState({
@@ -186,25 +186,7 @@ function handleChange(event) {
                   options={statusArr}
               />
               </div>
-
-           <div style={{ gridColumn: 'span 4' }}>
-                    <Label>Notes</Label>
-                    <div>
-                        <textarea
-                        style={{
-                        width: '100%', height: '80px', outline: 'none',
-                        border: '1px solid transparent', borderRadius: '3px'
-                        }}
-                        type='text'
-                        name='notes'
-                        placeholder='Notes'
-                        onChange={handleChange2}
-                        value={state.notes}
-                        />
-                        </div>
-                    </div>
-           
-           
+ 
         </Div2>
       </FormSet>
       <ButtonDiv>
