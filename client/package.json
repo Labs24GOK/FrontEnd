@@ -45,6 +45,10 @@
     "coverage": "CI=true npm run test -- --coverage || true"
   },
   "jest": {
+    "transform": {
+      "^.+\\.svg$": "<rootDir>/svgTransform.js",
+      "^.+\\.(js|jsx)$": "babel-jest"
+    },
     "collectCoverageFrom": [
       "**/*.{js,jsx}",
       "!**/node_modules/**",
