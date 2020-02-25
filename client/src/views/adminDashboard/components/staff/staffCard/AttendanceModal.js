@@ -1,5 +1,6 @@
 import 'react-dropdown/style.css';
 import '../StaffTable.scss'
+
 import { Button, DatePicker, Modal, Spin, Table } from 'antd';
 import axios from 'axios';
 import moment from 'moment';
@@ -12,11 +13,11 @@ import {
   postStudentAttendance,
 } from '../../../../../actions';
 import API_URL from '../../../../../config/apiUrl';
-import { DropdownLabel, TopSection, CalenderLabel, RightTopDiv, LeftTopDiv } from '../../mainStyle/styledComponent.js';
+import { CalenderLabel, DropdownLabel, LeftTopDiv, RightTopDiv, TopSection } from '../../mainStyle/styledComponent.js';
 
 const AttendanceModal = props => {
-  console.log("ATTENDANCE MODAL PROPS", props)
   //set initial State
+  console.log('props', props);
   const [state, setState] = useState({
     meeting: {
       teacher_id: props.staffID,
@@ -28,38 +29,53 @@ const AttendanceModal = props => {
     students: [],
   });
 
+  const [selectedTeacher, setSelectedTeacher] = useState(props.teacher)
+
   useEffect(() => {
     props.getDropDownCourses();
   }, []);
   //manage the state of the Students array
   const [attendees, setAttendees] = useState([]);
-  useEffect(() => {
 
-    //Set courseID for Axios call (Some concerns this may cause issues in future as state is immediately used in below Axios call)
-    setState({
+  useEffect(() => {
+    // Set courseID for Axios call (Some concerns this may cause issues in future as state is immediately used in below Axios call)
+    console.log('props.courseID', props.courseID);
+
+    setState(state => ({
       ...state,
       meeting: {
         ...state.meeting,
         course_id: props.courseID,
       },
-    });
+    }));
 
+
+  }, [props.courseID])
+
+  useEffect(() => {
+    console.log('state.meeting.teacher_id', state.meeting.teacher_id);
+  }, [state.meeting.teacher_id])
+
+  useEffect(() => {
+    console.log('state', state);
     //!!! See above note
     //AXIOS call to get all necessary information and (by not being in a Redux action) gives the ability to manipulate student array more effectively.
-    if (state.meeting.meeting_date && props.courseID) {
+    if (state.meeting.meeting_date && state.meeting.course_id) {
+      console.log('inside axios call');
+
       axios
         .get(
-          `${API_URL}/attendance/date/${state.meeting.meeting_date}/course/${props.courseID}`
+          `${API_URL}/attendance/date/${state.meeting.meeting_date}/course/${state.meeting.course_id}`
         )
         .then(res => {
-          console.log(res.data.attendanceRecord)
+          console.log('res', res);
           setAttendees(res.data.attendanceRecord);
         })
         .catch(err => {
-          console.log('ERROR', err);
+          
         });
     }
-  }, [state.meeting.meeting_date, props.courseID]);
+  }, [state.meeting.meeting_date, state.meeting.course_id]);
 
   //Array(datasource) for attendance dropdown menu
   const attendanceStatus = ['present', 'absent', 'late'];
@@ -117,7 +133,7 @@ const AttendanceModal = props => {
         attendance: each.attendance,
       };
     });
-    console.log('ATTENDANCE STATE', { ...state, students: studentsArr });
+    console.log('attendance', { ...state, students: studentsArr });
     props.postStudentAttendance({ ...state, students: studentsArr })
     //Closes modal
     props.setModalVisible({ loading: false, visible: false });
@@ -134,8 +150,6 @@ const AttendanceModal = props => {
     });
     // openNotification('success')
   };
-  
-  console.log("MESSAGE", props.attendanceResponse)
 
 
   //Handles the "Return" button (closes modal and resets state as seen below)
@@ -213,8 +227,8 @@ const AttendanceModal = props => {
             <RightTopDiv>
               <DropdownLabel>Teacher</DropdownLabel>
               <Dropdown
-                value={props.teacher}
-                onChange={e =>
+                value={selectedTeacher}
+                onChange={e => {
                   setState(state => ({
                     ...state,
                     meeting: {
@@ -222,6 +236,8 @@ const AttendanceModal = props => {
                       teacher_id: e.value,
                     },
                   }))
+                  setSelectedTeacher(e.label);
+                }
                 }
                 controlClassName='myControlClassName'
                 className='modalDropdown'
