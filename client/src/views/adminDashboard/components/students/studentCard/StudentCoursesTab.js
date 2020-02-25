@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
-import { getStudentCourses, getStudentAttendanceTable } from '../../../../../actions';
+import { getStudentCourses, getStudentAttendanceTable, toggleDeleteModel, unenrollEnrollStudent, editEnrollStudent } from '../../../../../actions';
 import { Table, Button } from 'antd';
-
+import Dropdown from 'react-dropdown';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import EnrollStudentForm from './EnrollStudentForm';
@@ -12,14 +12,10 @@ import ViewAttendanceModule from './ViewAttendanceModule';
 import { dateConverter } from '../../../../../utils/helpers.js';
 
 import './studentTable.scss'
-
-import {
-  DeleteButton as EditButton
-} from '../../mainStyle/styledComponent';
+import Modal from '../../modals/DeleteModal';
 
 const StudentCoursesTab = props => {
   const [form, setForm] = useState(false);
-  const [editForm, setEditForm] = useState(false);
   const [ courseID, setCourseID] = useState();
   const [ info, setInfo] = useState();
   const [modalVisible, setModalVisible] = useState({
@@ -27,9 +23,39 @@ const StudentCoursesTab = props => {
     loading: false,
 })  
 
-const editStudentEnrollment = () => {
-  setEditForm(!editForm);
+const [state, setState] = useState({
+  result_type_code : -3,
+  notes : 'test'
+});
+
+const statusArr = [
+  {value: -3, label: 'unconfirmed'},
+  {value: -2, label: 'no show'},
+  {value: -1, label: 'cancelled enrollment'},
+  {value: 0, label: 'drop'},
+  {value: 1, label: 'transfer out'},
+  {value: 2, label: 'fail'},
+  {value: 3, label: 'incomplete'},
+  {value: 4, label: 'no exam'},
+  {value: 5, label: 'pass'},
+  {value: 6, label: 'confirm'},
+];
+
+const areYouSureYouWantToDelete = e => {
+  e.preventDefault();
+  props.toggleDeleteModel(true);
+};
+
+function editStudentStatus(e) {
+  console.log(e)
+  setState({ ...state, result_type_code: e.value })
+  console.log(state, info.student_id, info.course_id)
+  props.editEnrollStudent( info.student_id, info.course_id, state)
 }
+
+const deleteStudentInfo = async () => {
+  await props.unenrollEnrollStudent( info.student_id, info.course_id)
+};
 
   const handleCancelButtonOnForm = () => {
     setForm(false);
@@ -41,7 +67,7 @@ const editStudentEnrollment = () => {
 
   useEffect(() => {
     props.getStudentCourses(props.studentID)
-  }, [form, editForm])
+  }, [state])
 
 useEffect(() => {
   props.getStudentAttendanceTable(courseID)
@@ -82,8 +108,18 @@ useEffect(() => {
     },
     {
       title: 'Student Status',
-      dataIndex: 'student_result_type',
+      dataIndex: 'result_type_code',
       key: 7,
+      render: (value) => {
+        return  <Dropdown
+        controlClassName='myControlClassName'
+        className='dropdown'
+        name='result_type_code'
+        onChange={(e) => editStudentStatus(e)}
+        value={statusArr[value+3]}
+        options={statusArr}
+    />
+      }
     },
     {
       title: 'First Day',
@@ -114,12 +150,15 @@ useEffect(() => {
       }
     },
     {
-      title: 'Edit',
-      dataIndex: 'edit',
+      title: 'Unenroll',
+      dataIndex: 'unenroll',
       key: 11,
       render: () => {
-        return  <EditButton onClick={editStudentEnrollment}>Edit
-      </EditButton>;
+        return          <Button
+        onClick={areYouSureYouWantToDelete}
+        style={{ background: '#C73642', width: '80px' }}>
+        Unenroll
+      </Button>
       }
     },
   ];
@@ -151,15 +190,6 @@ useEffect(() => {
         />
       ) : null}
 
-      
-      {editForm ? (
-        <EditEnrollStudentForm
-          setEditForm={setEditForm}
-          editForm={editForm}
-          info={info}
-        />
-      ) : null}
-
       <Table dataSource={props.courseByStudentId} className="coursesTable" columns={studentCourseColumns} pagination={false} 
       onRow={record => {
         return {
@@ -169,6 +199,7 @@ useEffect(() => {
           }
         };
       }}/>
+    <Modal submitActionCB={deleteStudentInfo} />
     <ViewAttendanceModule 
     modalVisible={modalVisible} 
     setModalVisible={setModalVisible}
@@ -190,6 +221,6 @@ const mapStateToProps = state => {
 export default withRouter(
   connect(
     mapStateToProps,
-    { getStudentCourses, getStudentAttendanceTable }
+    { getStudentCourses, getStudentAttendanceTable, toggleDeleteModel, unenrollEnrollStudent, editEnrollStudent }
   )(StudentCoursesTab)
 )
