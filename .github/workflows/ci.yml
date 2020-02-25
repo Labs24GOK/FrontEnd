@@ -19,5 +19,5 @@ jobs:
           CI: true
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          coverageCommand: npm run test -- --coverage || true
+          coverageCommand: npm run coverage --prefix speak-out-fe/client
           coverageLocations: "client/coverage/lcov.info:lcov"
