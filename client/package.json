@@ -40,7 +40,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test -- --coverage || true",
     "eject": "react-scripts eject",
     "coverage": "CI=true npm run test -- --coverage || true"
   },
