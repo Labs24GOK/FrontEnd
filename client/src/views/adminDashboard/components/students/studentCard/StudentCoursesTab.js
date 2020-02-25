@@ -7,7 +7,6 @@ import Dropdown from 'react-dropdown';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import EnrollStudentForm from './EnrollStudentForm';
-import EditEnrollStudentForm from './EditEnrollStudentForm';
 import ViewAttendanceModule from './ViewAttendanceModule';
 import { dateConverter } from '../../../../../utils/helpers.js';
 
@@ -17,7 +16,10 @@ import Modal from '../../modals/DeleteModal';
 const StudentCoursesTab = props => {
   const [form, setForm] = useState(false);
   const [ courseID, setCourseID] = useState();
-  const [ info, setInfo] = useState();
+  const [ info, setInfo] = useState({
+    student_id: '',
+    course_id: ''
+  });
   const [modalVisible, setModalVisible] = useState({
     visible: false,
     loading: false,
@@ -47,9 +49,7 @@ const areYouSureYouWantToDelete = e => {
 };
 
 function editStudentStatus(e) {
-  console.log(e)
   setState({ ...state, result_type_code: e.value })
-  console.log(state, info.student_id, info.course_id)
   props.editEnrollStudent( info.student_id, info.course_id, state)
 }
 
@@ -65,13 +65,20 @@ const deleteStudentInfo = async () => {
     setForm(!form);
   };
 
+  /* Use Effects */
   useEffect(() => {
-    props.getStudentCourses(props.studentID)
-  }, [state])
+      props.getStudentCourses(props.studentID)
+  }, [info])
 
-useEffect(() => {
-  props.getStudentAttendanceTable(courseID)
-}, [courseID]);
+  useEffect(() => {
+    props.editEnrollStudent( info.student_id, info.course_id, state)
+  }, [state.result_type_code])
+
+  useEffect(() => {
+    props.getStudentAttendanceTable(courseID)
+  }, [modalVisible])
+
+  /* End Use Effects */
 
   const studentCourseColumns = [
     {
@@ -107,7 +114,7 @@ useEffect(() => {
       key: 6,
     },
     {
-      title: 'Student Status',
+      title: 'Status',
       dataIndex: 'result_type_code',
       key: 7,
       render: (value) => {
@@ -156,7 +163,7 @@ useEffect(() => {
       render: () => {
         return          <Button
         onClick={areYouSureYouWantToDelete}
-        style={{ background: '#C73642', width: '80px' }}>
+        style={{ background: '#C73642', width: '80px' , color: 'white'}}>
         Unenroll
       </Button>
       }
@@ -205,6 +212,7 @@ useEffect(() => {
     setModalVisible={setModalVisible}
     setCourseID={setCourseID}
     courseID={courseID}
+    info={info}
     />
     </>
   )

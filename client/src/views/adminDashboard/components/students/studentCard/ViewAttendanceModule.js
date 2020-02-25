@@ -1,17 +1,13 @@
 import React, { useState,useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { getStudentAttendanceTable } from '../../../../../actions';
+import { getStudentAttendanceTable, getStudentById } from '../../../../../actions';
 import { Table, Button, Modal, Spin, Input, Icon,  } from 'antd';
 import { dateConverter } from '../../../../../utils/helpers.js';
 
 import '../../students/studentCard/studentTable.scss'
 
 const ViewAttendanceModule = props => {
-
-    useEffect(() => {
-
-      }, []);
 
     const tableColumns = [
         {
@@ -40,7 +36,7 @@ const ViewAttendanceModule = props => {
     };
   
     const attendanceData = props.attendanceList.attendanceList;
-
+    
     return (
         <>
             {props.isLoading ? <Spin style={{ marginTop: '150px' }} size="large" />
@@ -48,7 +44,7 @@ const ViewAttendanceModule = props => {
                 <>
                     <Modal
                         width= "50%"
-                        title="Attendance Records"
+                        title={`Attendance Records - ${props.info.term} / Section ${props.info.section} / ${props.info.term}`}
                         visible={props.modalVisible.visible}
                         onOk={handleOk}
                         onCancel={handleCancel}
@@ -57,6 +53,7 @@ const ViewAttendanceModule = props => {
                                 Return
                         </Button>,
                         ]}>
+                        <p>{`Student - ${props.studentById.first_name} ${props.studentById.additional_names}`}</p>
                         <Table dataSource={attendanceData} 
                             columns={tableColumns} 
                           />
@@ -72,12 +69,13 @@ const mapStateToProps = state => {
     return {
         isLoading: state.staffCourseReducer.isLoading,
         attendanceList: state.attendanceReducer.attendanceList,
+        studentById: state.studentByIdReducer.studentById,
     };
 };
 
 export default withRouter(
     connect(
         mapStateToProps,
-        { getStudentAttendanceTable }
+        { getStudentAttendanceTable, getStudentById }
     )(ViewAttendanceModule)
 )
