@@ -1,6 +1,6 @@
 import 'react-dropdown/style.css';
-
-import { Button, DatePicker, Modal, Spin, Table, notification } from 'antd';
+import '../StaffTable.scss'
+import { Button, DatePicker, Modal, Spin, Table } from 'antd';
 import axios from 'axios';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
@@ -12,7 +12,7 @@ import {
   postStudentAttendance,
 } from '../../../../../actions';
 import API_URL from '../../../../../config/apiUrl';
-import { DropdownLabel } from '../../mainStyle/styledComponent.js';
+import { DropdownLabel, TopSection, CalenderLabel, RightTopDiv, LeftTopDiv } from '../../mainStyle/styledComponent.js';
 
 const AttendanceModal = props => {
   console.log("ATTENDANCE MODAL PROPS", props)
@@ -87,6 +87,7 @@ const AttendanceModal = props => {
       render: (text, row, index) => {
         return (
           <Dropdown
+            className='modalDropdownTwo'
             value={attendees[index].attendance}
             onChange={e =>
               setAttendees(
@@ -101,7 +102,6 @@ const AttendanceModal = props => {
             }
             controlClassName='myControlClassNameModal'
             options={attendanceStatus}
-            className='dropdown'
           />
         );
       },
@@ -166,6 +166,10 @@ const AttendanceModal = props => {
   //dateFormat for moment()
   const dateFormat = 'YYYY-MM-DD';
 
+  // const disabledDates = date => {
+  //  return date < moment('2020-02-21')
+  // }
+
   //actual Rendering on web page
   return (
     <>
@@ -178,6 +182,7 @@ const AttendanceModal = props => {
             visible={props.modalVisible.visible}
             onOk={handleOk}
             onCancel={handleCancel}
+            style={{ padding: 0 }}
             footer={[
               <Button key='back' onClick={handleCancel}>
                 Return
@@ -187,11 +192,16 @@ const AttendanceModal = props => {
               </Button>,
             ]}
           >
+          <TopSection>
+            <LeftTopDiv>
+            <CalenderLabel>Meeting Date</CalenderLabel>
             <DatePicker
               size='default'
               className='attendanceDate'
+              // disabledDate={disabledDates}
               onChange={changeHandler}
               defaultValue={moment()}
+              style={{ width: 120 }}
               value={
                 state.meeting.meeting_date
                   ? moment(state.meeting.meeting_date)
@@ -199,8 +209,8 @@ const AttendanceModal = props => {
               }
               format={dateFormat}
               />
-            <span style={{ marginBotton: 8 }} />
-            <div>
+            </LeftTopDiv>
+            <RightTopDiv>
               <DropdownLabel>Teacher</DropdownLabel>
               <Dropdown
                 value={props.teacher}
@@ -213,12 +223,12 @@ const AttendanceModal = props => {
                     },
                   }))
                 }
-                controlClassName='myControlClassNameModal'
-                className='dropdown'
+                controlClassName='myControlClassName'
+                className='modalDropdown'
                 options={props.teacherDropdown}
               />
-            </div>
-            <span style={{ marginLeft: 8 }} />
+              </RightTopDiv>
+            </TopSection>
             <Table
               dataSource={attendees}
               columns={attendanceColumns}

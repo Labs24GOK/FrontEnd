@@ -19,7 +19,7 @@ export const postStudentAttendance = state => dispatch => {
    const openEditNotification = (type) => {
     notification[type]({
        message: `Attendance Submission`,
-       description: 'Student Edited Saved Successfully!',
+       description: 'Student Attendance Edited Successfully!',
        duration: 6
     });
    }
