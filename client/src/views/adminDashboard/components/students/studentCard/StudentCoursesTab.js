@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
-import { getStudentCourses, getStudentAttendanceTable, toggleDeleteModel, unenrollEnrollStudent, editEnrollStudent } from '../../../../../actions';
-import { Table, Button } from 'antd';
+import './studentTable.scss'
+
+import { Button, Table } from 'antd';
+import _ from 'lodash';
+import React, { useEffect, useState } from 'react';
 import Dropdown from 'react-dropdown';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { connect } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { editEnrollStudent, getStudentAttendanceTable, getStudentCourses, toggleDeleteModel, unenrollEnrollStudent } from '../../../../../actions';
+import { dateConverter } from '../../../../../utils/helpers.js';
+import Modal from '../../modals/DeleteModal';
 import EnrollStudentForm from './EnrollStudentForm';
 import ViewAttendanceModule from './ViewAttendanceModule';
-import { dateConverter } from '../../../../../utils/helpers.js';
-
-import './studentTable.scss'
-import Modal from '../../modals/DeleteModal';
 
 const StudentCoursesTab = props => {
   const [form, setForm] = useState(false);
@@ -26,7 +27,7 @@ const StudentCoursesTab = props => {
 })  
 
 const [state, setState] = useState({
-  result_type_code : -3,
+  result_type_code : null,
   notes : 'test'
 });
 
@@ -50,11 +51,11 @@ const areYouSureYouWantToDelete = e => {
 
 function editStudentStatus(e) {
   setState({ ...state, result_type_code: e.value })
-  props.editEnrollStudent( info.student_id, info.course_id, state)
 }
 
 const deleteStudentInfo = async () => {
   await props.unenrollEnrollStudent( info.student_id, info.course_id)
+  // props.getStudentCourses(props.studentID)
 };
 
   const handleCancelButtonOnForm = () => {
@@ -67,15 +68,33 @@ const deleteStudentInfo = async () => {
 
   /* Use Effects */
   useEffect(() => {
+    if(props.studentID) {
       props.getStudentCourses(props.studentID)
-  }, [props.courseByStudentId])
+    }
+  }, [props.studentID])
 
   useEffect(() => {
-    props.editEnrollStudent( info.student_id, info.course_id, state)
+
+    if(props.isEdited && props.studentID) {
+      props.getStudentCourses(props.studentID)
+    }
+  }, [props.isEdited, props.studentID])
+
+  useEffect(() => {
+    // !isNaN() handles occurrence of falsey value when 
+    // value of result_type_code is 0
+    // it will return false if data-type is not a number, 
+    // i.e. when data-type is undefined
+    if (!isNaN(state.result_type_code)) {
+      props.editEnrollStudent(info.student_id, info.course_id, state)
+    }
+
   }, [state.result_type_code])
 
   useEffect(() => {
-    props.getStudentAttendanceTable(courseID)
+    if (courseID) {
+      props.getStudentAttendanceTable(courseID)
+    }
   }, [courseID])
 
   /* End Use Effects */
@@ -223,6 +242,7 @@ const mapStateToProps = state => {
     isLoading: state.studentCourseReducer.isLoading,
     courseByStudentId: state.studentCourseReducer.courseByStudentId,
     error: state.studentCourseReducer.error,
+    isEdited: state.studentByIdReducer.isEdited
   };
 };
 

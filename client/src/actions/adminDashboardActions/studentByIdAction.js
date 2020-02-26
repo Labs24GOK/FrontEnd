@@ -25,8 +25,7 @@ export const getStudentById = student_id => dispatch => {
     });
 };
 
-export const ENROLL_STUDENT_START =
-  'ENROLL_STUDENT_START';
+export const ENROLL_STUDENT_START = 'ENROLL_STUDENT_START';
 export const ENROLL_STUDENT_SUCCESS =
   'ENROLL_STUDENT_SUCCESS';
 export const ENROLL_STUDENT_CANCELLED =
@@ -38,8 +37,12 @@ export const enrollStudent = (
   course_id,
   state
 ) => dispatch => {
+  dispatch({ type: ENROLL_STUDENT_START });
   axios
-    .post(`${API_URL}/student/${student_id}/course/${course_id}`, state)
+    .post(
+      `${API_URL}/student/${student_id}/course/${course_id}`,
+      state
+    )
     .then(res => {
       dispatch({
         type: ENROLL_STUDENT_SUCCESS,
@@ -54,7 +57,6 @@ export const enrollStudent = (
     });
 };
 
-
 export const EDIT_ENROLL_STUDENT_START =
   'EDIT_ENROLL_STUDENT_START';
 export const EDIT_ENROLL_STUDENT_SUCCESS =
@@ -68,8 +70,12 @@ export const editEnrollStudent = (
   course_id,
   state
 ) => dispatch => {
+  dispatch({ type: EDIT_ENROLL_STUDENT_START });
   axios
-    .put(`${API_URL}/student/${student_id}/course/${course_id}`, state)
+    .put(
+      `${API_URL}/student/${student_id}/course/${course_id}`,
+      state
+    )
     .then(res => {
       dispatch({
         type: EDIT_ENROLL_STUDENT_SUCCESS,
@@ -96,8 +102,11 @@ export const unenrollEnrollStudent = (
   student_id,
   course_id
 ) => dispatch => {
+  dispatch({ type: UNENROLL_STUDENT_START });
   axios
-    .delete(`${API_URL}/student/${student_id}/course/${course_id}`)
+    .delete(
+      `${API_URL}/student/${student_id}/course/${course_id}`
+    )
     .then(res => {
       dispatch({
         type: UNENROLL_STUDENT_SUCCESS,
@@ -112,10 +121,14 @@ export const unenrollEnrollStudent = (
     });
 };
 
-export const EDIT_STUDENTBYID_START = 'EDIT_STUDENTBYID_START';
-export const EDIT_STUDENTBYID_CANCELLED = 'EDIT_STUDENTBYID_CANCELLED';
-export const EDIT_STUDENTBYID_SUCCESS = 'EDIT_STUDENTBYID_SUCCESS';
-export const EDIT_STUDENTBYID_FAILURE = 'EDIT_STUDENTBYID_FAILURE';
+export const EDIT_STUDENTBYID_START =
+  'EDIT_STUDENTBYID_START';
+export const EDIT_STUDENTBYID_CANCELLED =
+  'EDIT_STUDENTBYID_CANCELLED';
+export const EDIT_STUDENTBYID_SUCCESS =
+  'EDIT_STUDENTBYID_SUCCESS';
+export const EDIT_STUDENTBYID_FAILURE =
+  'EDIT_STUDENTBYID_FAILURE';
 export const toggleEditComponent = (
   isEditing,
   isEdited
@@ -127,7 +140,10 @@ export const toggleEditComponent = (
     return dispatch({ type: EDIT_STUDENTBYID_CANCELLED });
   }
 };
-export const editStudentById = (student_id, state) => dispatch => {
+export const editStudentById = (
+  student_id,
+  state
+) => dispatch => {
   axios
     .put(`${API_URL}/student/${student_id}`, state)
     .then(res => {
@@ -149,7 +165,7 @@ export const DELETE_STUDENTBYID_SUCCESS =
   'DELETE_STUDENTBYID_SUCCESS';
 export const DELETE_STUDENTBYID_FAILURE =
   'DELETE_STUDENTBYID_FAILURE';
-  
+
 export const deleteStudentById = id => dispatch => {
   dispatch({ type: DELETE_STUDENTBYID_START });
   axios
