@@ -20,7 +20,7 @@ const CourseRegistrationForm = props => {
     props.getDropDownCourses();
   }, []);
 
-  console.log("SCHOOL GRADE TABLE",state.coursesTableReducer.schoolGradeTable)
+  console.log("SCHOOL GRADE TABLE", props.schoolGradeDropdown)
 
   const [course, setCourse] = useState({
     term_id: '',
@@ -40,6 +40,9 @@ const CourseRegistrationForm = props => {
     status: '',
     notes: '',
   });
+
+  const [grade, setGrade] = useState(0)
+  console.log("GRADE", grade)
 
   const status = ['Active', 'Completed', 'Waitlist', 'Cancelled'];
   const section = ['A', 'B', 'C'];
@@ -117,8 +120,7 @@ const CourseRegistrationForm = props => {
           <div>
             <Label>School Grade</Label>
             <Dropdown
-              defaultValue={'N/A'}
-              value={course.school_grade_id}
+              value={props.schoolGradeDropdown[0]}
               onChange={e => setCourse({ ...course, school_grade_id: e })}
               controlClassName='myControlClassName'
               className='dropdown'

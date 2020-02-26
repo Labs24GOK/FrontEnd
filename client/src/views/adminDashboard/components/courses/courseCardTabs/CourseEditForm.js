@@ -99,7 +99,7 @@ const CourseEditForm = props => {
                             controlClassName='myControlClassName'
                             className='dropdown'
                             options={props.schoolGradeDropdown}
-                            // disabled={props.courseById.course_type_id.value !== 2}
+                            disabled={state.course_type_id !== 2}
                         />
                     </div>
                     <div>

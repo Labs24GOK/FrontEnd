@@ -29,7 +29,7 @@ const AttendanceModal = props => {
     students: [],
   });
 
-  const [selectedTeacher, setSelectedTeacher] = useState(props.teacher)
+  const [teacher, setTeacher] = useState(props.teacher)
 
   useEffect(() => {
     props.getDropDownCourses();
@@ -68,11 +68,11 @@ const AttendanceModal = props => {
           `${API_URL}/attendance/date/${state.meeting.meeting_date}/course/${state.meeting.course_id}`
         )
         .then(res => {
-          console.log('res', res);
           setAttendees(res.data.attendanceRecord);
+          setTeacher(res.data.meeting.teacher);
         })
         .catch(err => {
-          
+          console.log(err)
         });
     }
   }, [state.meeting.meeting_date, state.meeting.course_id]);
@@ -227,8 +227,7 @@ const AttendanceModal = props => {
             <RightTopDiv>
               <DropdownLabel>Teacher</DropdownLabel>
               <Dropdown
-                value={selectedTeacher}
-                defaultValue={props.teacher}
+                value={teacher}
                 onChange={e => {
                   setState(state => ({
                     ...state,
@@ -237,7 +236,7 @@ const AttendanceModal = props => {
                       teacher_id: e.value,
                     },
                   }))
-                  setSelectedTeacher(e.label);
+                  setTeacher(e.label);
                 }
                 }
                 controlClassName='myControlClassName'
