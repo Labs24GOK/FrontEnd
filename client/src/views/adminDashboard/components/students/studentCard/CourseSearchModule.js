@@ -7,7 +7,7 @@ import { Table, Button, Modal, Spin, Input, Icon,  } from 'antd';
 import '../../students/studentCard/studentTable.scss'
 
 const CourseSearchModule = props => {
-
+console.log(props.courseList)
     useEffect(() => {
         props.getCourseTable();
       }, []);
@@ -82,7 +82,7 @@ const CourseSearchModule = props => {
       };
     }
 
-    let searchInput = null;
+    let searchInput = 'null';
 
     const tableColumns = [
         {
@@ -138,6 +138,16 @@ const CourseSearchModule = props => {
           dataIndex: 'teacher',
           key: 'teacher',
           ...getColumnSearchProps("teacher")
+        },
+        {
+          title: 'Confirmed Students',
+          dataIndex: 'confirmed_students',
+          key: 'confirmed_students',
+        },
+        {
+          title: 'Total Students',
+          dataIndex: 'total_students',
+          key: 'total_students',
         },
       ];
 
