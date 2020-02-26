@@ -68,13 +68,14 @@ const deleteStudentInfo = async () => {
 
   /* Use Effects */
   useEffect(() => {
+    console.log('useEffect props.studentID: ', props.studentID);
     if(props.studentID) {
       props.getStudentCourses(props.studentID)
     }
   }, [props.studentID])
 
   useEffect(() => {
-
+    console.log('useEffect props.isEdited props.studentID: ', props.isEdited, props.studentID);
     if(props.isEdited && props.studentID) {
       props.getStudentCourses(props.studentID)
     }

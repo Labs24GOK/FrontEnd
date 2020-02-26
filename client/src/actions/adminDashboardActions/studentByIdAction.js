@@ -1,6 +1,6 @@
+import { notification } from 'antd';
 import axios from 'axios';
 import API_URL from '../../config/apiUrl';
-import { notification } from 'antd'
 
 export const FETCH_STUDENTBYID_START =
   'FETCH_STUDENTBYID_START';
@@ -34,22 +34,27 @@ export const ENROLL_STUDENT_CANCELLED =
 export const ENROLL_STUDENT_FAILURE =
   'ENROLL_STUDENT_FAILURE';
 
-export const enrollStudent = (student_id, course_id, state) => dispatch => {
+export const enrollStudent = (
+  student_id,
+  course_id,
+  state
+) => dispatch => {
+  const StudentEnrolledSuccessNotification = type => {
+    notification[type]({
+      message: `Student Enrolled`,
+      description: 'Student Enrolled Successfully!',
+      duration: 6
+    });
+  };
+  const StudentEnrolledFailedNotification = type => {
+    notification[type]({
+      message: `Student Enrolled`,
+      description: 'Student Enrolled Failed.',
+      duration: 6
+    });
+  };
 
-  const StudentEnrolledSuccessNotification = (type) => {
-    notification[type]({
-       message: `Student Enrolled`,
-       description: 'Student Enrolled Successfully!',
-       duration: 6
-    });
-   }
-   const StudentEnrolledFailedNotification = (type) => {
-    notification[type]({
-       message: `Student Enrolled`,
-       description: 'Student Enrolled Failed.',
-       duration: 6
-    });
-   }
+  dispatch({ type: ENROLL_STUDENT_START });
 
   axios
     .post(
@@ -57,14 +62,14 @@ export const enrollStudent = (student_id, course_id, state) => dispatch => {
       state
     )
     .then(res => {
-      StudentEnrolledSuccessNotification('success')
+      StudentEnrolledSuccessNotification('success');
       dispatch({
         type: ENROLL_STUDENT_SUCCESS,
         payload: res.data
       });
     })
     .catch(err => {
-      StudentEnrolledFailedNotification('error')
+      StudentEnrolledFailedNotification('error');
       dispatch({
         type: ENROLL_STUDENT_FAILURE,
         payload: 'Error enrolling the student'
@@ -117,34 +122,35 @@ export const unenrollEnrollStudent = (
   student_id,
   course_id
 ) => dispatch => {
-  const StudentUnenrolledSuccessNotification = (type) => {
+  const StudentUnenrolledSuccessNotification = type => {
     notification[type]({
-       message: `Student Unnrolled`,
-       description: 'Student Unenrolled Successfully!',
-       duration: 6
+      message: `Student Unnrolled`,
+      description: 'Student Unenrolled Successfully!',
+      duration: 6
     });
-   }
-   const StudentUnenrolledFailedNotification = (type) => {
+  };
+  const StudentUnenrolledFailedNotification = type => {
     notification[type]({
-       message: `Student Unnrolled`,
-       description: 'Student Unenrolled Failed.',
-       duration: 6
+      message: `Student Unnrolled`,
+      description: 'Student Unenrolled Failed.',
+      duration: 6
     });
-   }
-   
+  };
+
+  dispatch({ type: UNENROLL_STUDENT_START });
   axios
     .delete(
       `${API_URL}/student/${student_id}/course/${course_id}`
     )
     .then(res => {
-      StudentUnenrolledSuccessNotification('success')
+      StudentUnenrolledSuccessNotification('success');
       dispatch({
         type: UNENROLL_STUDENT_SUCCESS,
         payload: res.data
       });
     })
     .catch(err => {
-      StudentUnenrolledFailedNotification('error')
+      StudentUnenrolledFailedNotification('error');
       dispatch({
         type: UNENROLL_STUDENT_FAILURE,
         payload: 'Error unenrolling the student'
