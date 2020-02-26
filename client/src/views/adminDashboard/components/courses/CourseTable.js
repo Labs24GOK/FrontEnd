@@ -85,18 +85,17 @@ const CourseTable = props => {
     },
     {
       title: 'Students',
-      dataIndex: 'students',
-      //this is for total number of students once the endpoints/functionality is built
+      dataIndex: 'total_students',
       key: 11
     },
     {
       title: 'Confirmed',
-      dataIndex: 'confirmed',
+      dataIndex: 'confirmed_students',
       key: 12
     },
     {
       title: 'Unconfirmed',
-      dataIndex: 'unconfirmed',
+      dataIndex: 'unconfirmed_students',
       key: 13
     },
     {

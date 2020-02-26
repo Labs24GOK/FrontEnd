@@ -228,6 +228,7 @@ const AttendanceModal = props => {
               <DropdownLabel>Teacher</DropdownLabel>
               <Dropdown
                 value={selectedTeacher}
+                defaultValue={props.teacher}
                 onChange={e => {
                   setState(state => ({
                     ...state,
