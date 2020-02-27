@@ -1,27 +1,27 @@
 import {
-  FETCH_COURSES_START,
-  FETCH_COURSES_SUCCESS,
-  FETCH_COURSES_FAILURE,
-  FETCH_COURSEBYID_START,
-  FETCH_COURSEBYID_SUCCESS,
-  FETCH_COURSEBYID_FAILURE,
-  FETCH_DROPDOWNCOURSES_START,
-  FETCH_DROPDOWNCOURSES_SUCCESS,
-  FETCH_DROPDOWNCOURSES_FAILURE,
+  ADD_COURSE_FAILURE,
   ADD_COURSE_START,
   ADD_COURSE_SUCCESS,
-  ADD_COURSE_FAILURE,
-  EDIT_COURSEBYID_START,
-  EDIT_COURSEBYID_CANCELLED,
-  EDIT_COURSEBYID_SUCCESS,
-  EDIT_COURSEBYID_FAILURE,
-  DISPLAY_STUDENTSBYCOURSEID_START,
-  DISPLAY_STUDENTSBYCOURSEID_SUCCESS,
-  DISPLAY_STUDENTSBYCOURSEID_FAILURE,
-  SET_FILTER_COURSES,
+  DELETE_COURSEBYID_FAILURE,
   DELETE_COURSEBYID_START,
   DELETE_COURSEBYID_SUCCESS,
-  DELETE_COURSEBYID_FAILURE
+  DISPLAY_STUDENTSBYCOURSEID_FAILURE,
+  DISPLAY_STUDENTSBYCOURSEID_START,
+  DISPLAY_STUDENTSBYCOURSEID_SUCCESS,
+  EDIT_COURSEBYID_CANCELLED,
+  EDIT_COURSEBYID_FAILURE,
+  EDIT_COURSEBYID_START,
+  EDIT_COURSEBYID_SUCCESS,
+  FETCH_COURSEBYID_FAILURE,
+  FETCH_COURSEBYID_START,
+  FETCH_COURSEBYID_SUCCESS,
+  FETCH_COURSES_FAILURE,
+  FETCH_COURSES_START,
+  FETCH_COURSES_SUCCESS,
+  FETCH_DROPDOWNCOURSES_FAILURE,
+  FETCH_DROPDOWNCOURSES_START,
+  FETCH_DROPDOWNCOURSES_SUCCESS,
+  SET_FILTER_COURSES,
 } from '../../actions';
 
 const initialState = {
@@ -41,8 +41,8 @@ const initialState = {
   isEdited: false,
   isEditing: false,
   isPosting: false,
-  isPosting: false,
-  searchTerm: ''
+  isPosted: false,
+  searchTerm: '',
 };
 
 export const coursesTableReducer = (state = initialState, action) => {
@@ -52,47 +52,47 @@ export const coursesTableReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
-        error: null
+        error: null,
       };
     case FETCH_COURSES_SUCCESS:
       return {
         ...state,
         isLoading: false,
         error: null,
-        courseList: action.payload
+        courseList: action.payload,
       };
     case FETCH_COURSES_FAILURE:
       return {
         ...state,
         isLoading: false,
-        error: action.payload
+        error: action.payload,
       };
     // get by course by id
     case FETCH_COURSEBYID_START:
       return {
         ...state,
         isLoading: true,
-        error: null
+        error: null,
       };
     case FETCH_COURSEBYID_SUCCESS:
       return {
         ...state,
         isLoading: false,
         error: null,
-        courseById: action.payload
+        courseById: action.payload,
       };
     case FETCH_COURSEBYID_FAILURE:
       return {
         ...state,
         isLoading: false,
-        error: action.payload
+        error: action.payload,
       };
     // get dropdowns from back-end for add course
     case FETCH_DROPDOWNCOURSES_START:
       return {
         ...state,
         isLoading: true,
-        error: null
+        error: null,
       };
     case FETCH_DROPDOWNCOURSES_SUCCESS:
       let term = action.payload.terms.map(each => {
@@ -138,55 +138,59 @@ export const coursesTableReducer = (state = initialState, action) => {
         roomTable: room,
         courseScheduleTable: courseSchedule,
         teacherTable: teacher,
-        error: null
+        error: null,
       };
     case FETCH_DROPDOWNCOURSES_FAILURE:
       return {
         ...state,
         isLoading: false,
-        error: action.payload
+        error: action.payload,
       };
     //add course
     case ADD_COURSE_START:
       return {
         ...state,
         isLoading: true,
-        isPosting: false,
-        error: null
+        isPosting: true,
+        isPosted: false,
+        error: null,
       };
     case ADD_COURSE_SUCCESS:
       return {
         ...state,
         isLoading: false,
         error: null,
-        isPosting: true,
-        courseList: [action.payload, ...state.courseList]
+        isPosting: false,
+        isPosted: true,
+        courseList: [action.payload, ...state.courseList],
       };
     case ADD_COURSE_FAILURE:
       return {
         ...state,
         isLoading: false,
-        error: action.payload
+        isPosting: false,
+        isPosted: false,
+        error: action.payload,
       };
     // edit by id
     case EDIT_COURSEBYID_START:
       return {
         ...state,
         isEditing: true,
-        error: null
+        error: null,
       };
     case EDIT_COURSEBYID_CANCELLED:
       return {
         ...state,
         isEditing: false,
-        isEdited: false
+        isEdited: false,
       };
     case EDIT_COURSEBYID_SUCCESS:
       return {
         ...state,
         isEditing: false,
         isEdited: true,
-        courseById: action.payload
+        courseById: action.payload,
       };
     case EDIT_COURSEBYID_FAILURE:
       return {
@@ -194,51 +198,51 @@ export const coursesTableReducer = (state = initialState, action) => {
         isLoading: false,
         isEditing: false,
         isEdited: false,
-        error: action.payload
+        error: action.payload,
       };
     case DELETE_COURSEBYID_START:
       return {
         ...state,
         isLoading: true,
-        error: null
+        error: null,
       };
     case DELETE_COURSEBYID_SUCCESS:
       return {
         ...state,
         error: null,
-        courseById: []
+        courseById: [],
       };
     case DELETE_COURSEBYID_FAILURE:
       return {
         ...state,
         isLoading: false,
-        error: action.payload
+        error: action.payload,
       };
     //get students by course id
     case DISPLAY_STUDENTSBYCOURSEID_START:
       return {
         ...state,
         isLoading: true,
-        error: null
+        error: null,
       };
     case DISPLAY_STUDENTSBYCOURSEID_SUCCESS:
       return {
         ...state,
         studentsById: action.payload,
         isLoading: false,
-        error: null
+        error: null,
       };
     case DISPLAY_STUDENTSBYCOURSEID_FAILURE:
       return {
         ...state,
         isLoading: false,
-        error: action.payload
+        error: action.payload,
       };
     // search
     case SET_FILTER_COURSES:
       return {
         ...state,
-        searchTerm: action.payload
+        searchTerm: action.payload,
       };
     default:
       return state;

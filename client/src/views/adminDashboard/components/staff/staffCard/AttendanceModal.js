@@ -1,5 +1,5 @@
 import 'react-dropdown/style.css';
-import '../StaffTable.scss'
+import '../StaffTable.scss';
 
 import { Button, DatePicker, Modal, Spin, Table } from 'antd';
 import axios from 'axios';
@@ -13,7 +13,14 @@ import {
   postStudentAttendance,
 } from '../../../../../actions';
 import API_URL from '../../../../../config/apiUrl';
-import { CalenderLabel, DropdownLabel, LeftTopDiv, RightTopDiv, TopSection } from '../../mainStyle/styledComponent.js';
+import {
+  CalenderLabel,
+  DropdownLabel,
+  LeftTopDiv,
+  RightTopDiv,
+  TopSection,
+} from '../../mainStyle/styledComponent.js';
+// import { dateConverter } from '../../../../../utils/helpers';
 
 const AttendanceModal = props => {
   //set initial State
@@ -29,7 +36,7 @@ const AttendanceModal = props => {
     students: [],
   });
 
-  const [selectedTeacher, setSelectedTeacher] = useState(props.teacher)
+  const [teacher, setTeacher] = useState(props.teacher);
 
   useEffect(() => {
     props.getDropDownCourses();
@@ -38,7 +45,6 @@ const AttendanceModal = props => {
   const [attendees, setAttendees] = useState([]);
 
   useEffect(() => {
-    // Set courseID for Axios call (Some concerns this may cause issues in future as state is immediately used in below Axios call)
     console.log('props.courseID', props.courseID);
 
     setState(state => ({
@@ -48,17 +54,15 @@ const AttendanceModal = props => {
         course_id: props.courseID,
       },
     }));
-
-
-  }, [props.courseID])
+  }, [props.courseID]);
 
   useEffect(() => {
     console.log('state.meeting.teacher_id', state.meeting.teacher_id);
-  }, [state.meeting.teacher_id])
+  }, [state.meeting.teacher_id]);
 
   useEffect(() => {
     console.log('state', state);
-    //!!! See above note
+  
     //AXIOS call to get all necessary information and (by not being in a Redux action) gives the ability to manipulate student array more effectively.
     if (state.meeting.meeting_date && state.meeting.course_id) {
       console.log('inside axios call');
@@ -68,11 +72,11 @@ const AttendanceModal = props => {
           `${API_URL}/attendance/date/${state.meeting.meeting_date}/course/${state.meeting.course_id}`
         )
         .then(res => {
-          console.log('res', res);
           setAttendees(res.data.attendanceRecord);
+          setTeacher(res.data.meeting.teacher);
         })
         .catch(err => {
-          
+          console.log(err);
         });
     }
   }, [state.meeting.meeting_date, state.meeting.course_id]);
@@ -88,13 +92,15 @@ const AttendanceModal = props => {
       key: 1,
     },
     {
-    title: 'Name',
-    key: 2,
+      title: 'Name',
+      key: 2,
       render: (text, record) => (
         <span>
-          <p>{record.student_name} {record.student_additional_names}</p>
+          <p>
+            {record.student_name} {record.student_additional_names}
+          </p>
         </span>
-      )
+      ),
     },
     {
       title: 'Attendance',
@@ -134,7 +140,7 @@ const AttendanceModal = props => {
       };
     });
     console.log('attendance', { ...state, students: studentsArr });
-    props.postStudentAttendance({ ...state, students: studentsArr })
+    props.postStudentAttendance({ ...state, students: studentsArr });
     //Closes modal
     props.setModalVisible({ loading: false, visible: false });
     //resets State to current date after submit
@@ -148,9 +154,7 @@ const AttendanceModal = props => {
       },
       students: [],
     });
-    // openNotification('success')
   };
-
 
   //Handles the "Return" button (closes modal and resets state as seen below)
   const handleCancel = () => {
@@ -181,7 +185,10 @@ const AttendanceModal = props => {
   const dateFormat = 'YYYY-MM-DD';
 
   // const disabledDates = date => {
-  //  return date < moment('2020-02-21')
+  //   console.log("STARTING DATE", `${moment(props.startDate).format('YYYY-MM-DD')}`)
+  //   const beginDate = moment(props.startDate).format('YYYY-MM-DD')
+  //   const lastDate = moment(props.endDate).format('YYYY-MM-DD')
+  //   return date < moment(`${beginDate}`) 
   // }
 
   //actual Rendering on web page
@@ -206,43 +213,42 @@ const AttendanceModal = props => {
               </Button>,
             ]}
           >
-          <TopSection>
-            <LeftTopDiv>
-            <CalenderLabel>Meeting Date</CalenderLabel>
-            <DatePicker
-              size='default'
-              className='attendanceDate'
-              // disabledDate={disabledDates}
-              onChange={changeHandler}
-              defaultValue={moment()}
-              style={{ width: 120 }}
-              value={
-                state.meeting.meeting_date
-                  ? moment(state.meeting.meeting_date)
-                  : moment()
-              }
-              format={dateFormat}
-              />
-            </LeftTopDiv>
-            <RightTopDiv>
-              <DropdownLabel>Teacher</DropdownLabel>
-              <Dropdown
-                value={selectedTeacher}
-                onChange={e => {
-                  setState(state => ({
-                    ...state,
-                    meeting: {
-                      ...state.meeting,
-                      teacher_id: e.value,
-                    },
-                  }))
-                  setSelectedTeacher(e.label);
-                }
-                }
-                controlClassName='myControlClassName'
-                className='modalDropdown'
-                options={props.teacherDropdown}
-              />
+            <TopSection>
+              <LeftTopDiv>
+                <CalenderLabel>Meeting Date</CalenderLabel>
+                <DatePicker
+                  size='default'
+                  className='attendanceDate'
+                  // disabledDate={disabledDates}
+                  onChange={changeHandler}
+                  defaultValue={moment()}
+                  style={{ width: 120 }}
+                  value={
+                    state.meeting.meeting_date
+                      ? moment(state.meeting.meeting_date)
+                      : moment()
+                  }
+                  format={dateFormat}
+                />
+              </LeftTopDiv>
+              <RightTopDiv>
+                <DropdownLabel>Teacher</DropdownLabel>
+                <Dropdown
+                  value={teacher}
+                  onChange={e => {
+                    setState(state => ({
+                      ...state,
+                      meeting: {
+                        ...state.meeting,
+                        teacher_id: e.value,
+                      },
+                    }));
+                    setTeacher(e.label);
+                  }}
+                  controlClassName='myControlClassName'
+                  className='modalDropdown'
+                  options={props.teacherDropdown}
+                />
               </RightTopDiv>
             </TopSection>
             <Table
