@@ -209,13 +209,13 @@ const StudentRegistrationForm = props => {
 				setErrorBorderFlat('#ef6570');
 			}
 			if (student.primary_emergency_contact_name === '') {
-				setErrorBorderPrimaryEmergencyContactName('ef6570');
+				setErrorBorderPrimaryEmergencyContactName('#ef6570');
 			}
 			if (student.primary_emergency_relationship === '') {
-				setErrorBorderPrimaryEmergencyRelationship('ef6570');
+				setErrorBorderPrimaryEmergencyRelationship('#ef6570');
 			}
 			if (student.primary_emergency_phone === '') {
-				setErrorBorderPrimaryEmergencyPhone('ef6570');
+				setErrorBorderPrimaryEmergencyPhone('#ef6570');
 			}
 			// if (student.emergency_contact_name === '') {
 			// 	setErrorBorderEmergencyContactName('ef6570');
