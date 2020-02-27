@@ -58,6 +58,7 @@ const CourseRegistrationForm = props => {
   const [errorBorderTerm, setErrorBorderTerm] = useState('transparent'); //error #C73642
   const [errorBorderCourse, setErrorBorderCourse] = useState('transparent'); //error #C73642
   const [errorBorderGroup, setErrorBorderGroup] = useState('transparent'); //error #C73642
+  const [errorBorderGrade, setErrorBorderGrade] = useState('transparent'); //error #C73642
   const [errorBorderLevel, setErrorBorderLevel] = useState('transparent'); //error #C73642
   const [errorBorderSection, setErrorBorderSection] = useState('transparent'); //error #C73642
   // const [errorBorderGrade, setErrorBorderGrade] = useState('transparent'); //error #C73642
@@ -86,6 +87,7 @@ const CourseRegistrationForm = props => {
       course.term_id === '' ||
       course.course_type_id === '' ||
       course.group_type_id === '' ||
+      course.school_grade_id === '' ||
       course.level_id === '' ||
       course.section === '' ||
       course.course_schedule_id === '' ||
@@ -112,6 +114,15 @@ const CourseRegistrationForm = props => {
         setErrorBorderGroup('#ef6570');
       } else {
         setErrorBorderGroup('transparent');
+      }
+      if (
+        course.course_type_id &&
+        course.course_type_id.value === 2 &&
+        course.school_grade_id === ''
+      ) {
+        setErrorBorderGrade('#ef6570');
+      } else {
+        setErrorBorderGrade('transparent');
       }
       if (course.level_id === '') {
         setErrorBorderLevel('#ef6570');
@@ -236,14 +247,21 @@ const CourseRegistrationForm = props => {
           </div>
           <div>
             <Label>School Grade</Label>
-            <Dropdown
-              value={props.schoolGradeDropdown[0]}
-              onChange={e => setCourse({ ...course, school_grade_id: e })}
-              controlClassName='myControlClassName'
-              className='dropdown'
-              options={props.schoolGradeDropdown}
-              disabled={course.course_type_id.value !== 2}
-            />
+            <div
+              style={{
+                border: `1px solid ${errorBorderGrade}`,
+                borderRadius: '3px',
+              }}
+            >
+              <Dropdown
+                value={props.schoolGradeDropdown[0]}
+                onChange={e => setCourse({ ...course, school_grade_id: e })}
+                controlClassName='myControlClassName'
+                className='dropdown'
+                options={props.schoolGradeDropdown}
+                disabled={course.course_type_id.value !== 2}
+              />
+            </div>
           </div>
           <div>
             <Label>Level</Label>
