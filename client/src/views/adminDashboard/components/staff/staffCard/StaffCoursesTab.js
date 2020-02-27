@@ -5,6 +5,7 @@ import { getStaffCourses, getStudentsByCourseID } from '../../../../../actions';
 import AttendanceModal from './AttendanceModal';
 import { Table, Button, Spin } from 'antd';
 import { timeConverter } from '../../../../../utils/helpers.js';
+import moment from 'moment'
 import '../../students/studentCard/studentTable.scss';
 
 const StaffCoursesTab = props => {
@@ -23,6 +24,9 @@ const StaffCoursesTab = props => {
   });
 
   const [courseID, setCourseID] = useState(0)
+
+  const [startDate, setStartDate] = useState(moment().format('YYYY-MM-DD'))
+  const [endDate, setEndDate] = useState(moment().format('YYYY-MM-DD'))
 
   const staffCourseColumns = [
     {
@@ -84,6 +88,8 @@ const StaffCoursesTab = props => {
           <Button
             onClick={() => {
               setCourseID(record.course_id)
+              setStartDate(record.start_date)
+              setEndDate(record.end_date)
               setModalVisible({ visible: true });
             }}
           >
@@ -112,6 +118,8 @@ const StaffCoursesTab = props => {
             staffID={staffID}
             teacher={teacher}
             courseID={courseID}
+            startDate={startDate}
+            endDate={endDate}
           />
         </>
       )}

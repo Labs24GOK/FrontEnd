@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
-import { getCourseTable, getDropDownCourses } from '../../../../actions';
-import { Table, Spin } from 'antd';
 import 'antd/dist/antd.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '../mainStyle/mainCard.scss';
+
+import { Spin, Table } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { getCourseTable, getDropDownCourses } from '../../../../actions';
+import { timeConverter } from '../../../../utils/helpers.js';
 import CourseRegistrationForm from './CourseRegistrationForm';
 import SearchCourseTable from './SearchCourseTable';
-import '../mainStyle/mainCard.scss';
-import { timeConverter } from '../../../../utils/helpers.js';
 
 const CourseTable = props => {
   const [form, setForm] = useState(false);
@@ -17,6 +18,10 @@ const CourseTable = props => {
   useEffect(() => {
     props.getCourseTable();
   }, []);
+
+  useEffect(() => {
+    if (props.isPosted) props.getCourseTable();
+  }, [props.isPosted]);
 
   const handleCancelButtonOnForm = () => {
     setForm(false);
@@ -30,37 +35,37 @@ const CourseTable = props => {
     {
       title: 'Course ID',
       dataIndex: 'course_id',
-      key: 1
+      key: 1,
     },
     {
       title: 'Term',
       dataIndex: 'term',
-      key: 2
+      key: 2,
     },
     {
       title: 'Group Type',
       dataIndex: 'group_type',
-      key: 3
+      key: 3,
     },
     {
       title: 'Course Type',
       dataIndex: 'course_type',
-      key: 4
+      key: 4,
     },
     {
       title: 'School Grade',
       dataIndex: 'school_grade',
-      key: 5
+      key: 5,
     },
     {
       title: 'Level',
       dataIndex: 'level',
-      key: 6
+      key: 6,
     },
     {
       title: 'Course Schedule',
       dataIndex: 'course_schedule',
-      key: 7
+      key: 7,
     },
     {
       title: 'Start Time',
@@ -68,7 +73,7 @@ const CourseTable = props => {
       key: 8,
       render: (value, row, index) => {
         return <span>{timeConverter(value)}</span>;
-      }
+      },
     },
     {
       title: 'End Time',
@@ -76,34 +81,33 @@ const CourseTable = props => {
       key: 9,
       render: (value, row, index) => {
         return <span>{timeConverter(value)}</span>;
-      }
+      },
     },
     {
       title: 'Teacher',
       dataIndex: 'teacher',
-      key: 10
+      key: 10,
     },
     {
       title: 'Students',
-      dataIndex: 'students',
-      //this is for total number of students once the endpoints/functionality is built
-      key: 11
+      dataIndex: 'total_students',
+      key: 11,
     },
     {
       title: 'Confirmed',
-      dataIndex: 'confirmed',
-      key: 12
+      dataIndex: 'confirmed_students',
+      key: 12,
     },
     {
       title: 'Unconfirmed',
-      dataIndex: 'unconfirmed',
-      key: 13
+      dataIndex: 'unconfirmed_students',
+      key: 13,
     },
     {
       title: 'Status',
       dataIndex: 'status',
-      key: 14
-    }
+      key: 14,
+    },
   ];
 
   //console.log('Course List:', props.courseList);
@@ -114,21 +118,21 @@ const CourseTable = props => {
   return (
     <div>
       <h2 style={{ textAlign: 'left', marginLeft: '1.3rem' }}>Courses Table</h2>
-      <div className="row-above">
+      <div className='row-above'>
         <div>
           <SearchCourseTable />
         </div>
         <div
-          className="create-new-entry"
+          className='create-new-entry'
           style={{ cursor: 'pointer', color: '#26ABBD' }}
           onClick={handleAddButton}
         >
-          <div style={{ marginRight: '10px' }}>Add Course</div> 
+          <div style={{ marginRight: '10px' }}>Add Course</div>
           <div>
             <FontAwesomeIcon
               style={{ width: '18px', height: '21px' }}
               icon={faPlusCircle}
-              size="lg"
+              size='lg'
             />
           </div>
         </div>
@@ -142,13 +146,13 @@ const CourseTable = props => {
       ) : null}
 
       {props.isLoading ? (
-        <Spin style={{ marginTop: '150px' }} size="large" />
+        <Spin style={{ marginTop: '150px' }} size='large' />
       ) : (
         <Table
-          className="rowHover"
+          className='rowHover'
           dataSource={courseData}
           columns={tableColumns}
-          pagination = {false}
+          pagination={false}
           rowKey='course_id'
           onRow={(record, rowIndex) => {
             return {
@@ -156,7 +160,7 @@ const CourseTable = props => {
                 props.setCourseView('courseCardView');
                 console.log('Record.course_id', record.course_id);
                 props.setCourseID(record.course_id);
-              }
+              },
             };
           }}
         />
@@ -168,8 +172,9 @@ const CourseTable = props => {
 const mapStateToProps = state => {
   return {
     isLoading: state.coursesTableReducer.isLoading,
+    isPosted: state.coursesTableReducer.isPosted,
     courseList: state.coursesTableReducer.courseList,
-    error: state.coursesTableReducer.error
+    error: state.coursesTableReducer.error,
   };
 };
 
