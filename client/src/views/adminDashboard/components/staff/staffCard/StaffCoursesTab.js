@@ -4,111 +4,139 @@ import { withRouter } from 'react-router-dom';
 import { getStaffCourses, getStudentsByCourseID } from '../../../../../actions';
 import AttendanceModal from './AttendanceModal';
 import { Table, Button, Spin } from 'antd';
-
-import '../../students/studentCard/studentTable.scss'
+import { timeConverter } from '../../../../../utils/helpers.js';
+import moment from 'moment'
+import '../../students/studentCard/studentTable.scss';
 
 const StaffCoursesTab = props => {
 
-    
-    const {staffID, teacher} = props
-    useEffect(() => {
-        props.getStaffCourses(staffID)
-    }, [])
-    
-    const [modalVisible, setModalVisible] = useState({
-        visible: false,
-        loading: false,
-    })
+    console.log("STAFF COURSE TAB PROPS", props)
 
-    const staffCourseColumns = [
-        {
-            title: 'Term',
-            dataIndex: 'term',
-            key: 3,
-        },
-        {
-            title: 'Days',
-            dataIndex: 'term',
-            key: 4,
-        },
-        {
-            title: 'Type',
-            dataIndex: 'course_type',
-            key: 5,
-        },
-        {
-            title: 'Group Type',
-            dataIndex: 'group_type',
-            key: 6,
-        },
-        {
-            title: 'Level',
-            dataIndex: 'level',
-            key: 7,
-        },
-        {
-            title: 'Section',
-            dataIndex: 'section',
-            key: 8,
-        },
-        {
-            title: 'Subsection',
-            dataIndex: 'subsection',
-            key: 9,
-        },
-        {
-            title: 'Status',
-            dataIndex: 'status',
-            key: 10,
-        },
-        {
-            title: 'ID',
-            dataIndex: 'id',
-            key: 11,
-        },
-        {
-            title: 'Attendance',
-            render: (text, record) => {
-                return (
-                    <Button onClick={() => {
-                        props.getStudentsByCourseID(record.id);
-                        setModalVisible({ visible: true })
-                    }}>Take Attendance</Button>
-                )
-            }
+  const { staffID, teacher } = props;
 
-        },
-    ];
+  useEffect(() => {
+    props.getStaffCourses(staffID);
+  }, []);
 
-    return (
+  const [modalVisible, setModalVisible] = useState({
+    visible: false,
+    loading: false,
+  });
+
+  const [courseID, setCourseID] = useState(0)
+
+  const [startDate, setStartDate] = useState(moment().format('YYYY-MM-DD'))
+  const [endDate, setEndDate] = useState(moment().format('YYYY-MM-DD'))
+
+  const staffCourseColumns = [
+    {
+      title: 'Course ID',
+      dataIndex: 'course_id',
+      key: 1,
+    },
+    {
+      title: 'Term',
+      dataIndex: 'term',
+      key: 2,
+    },
+    {
+      title: 'Start Time',
+      dataIndex: 'start_time',
+      key: 3,
+      render: (value, row, index) => {
+        return <span>{timeConverter(value)}</span>;
+      },
+    },
+    {
+      title: 'End Time',
+      dataIndex: 'end_time',
+      key: 4,
+      render: (value, row, index) => {
+        return <span>{timeConverter(value)}</span>;
+      },
+    },
+    {
+      title: 'Group Type',
+      dataIndex: 'group_type',
+      key: 5,
+    },
+    {
+      title: 'Course Type',
+      dataIndex: 'course_type',
+      key: 6,
+    },
+    {
+      title: 'Level',
+      dataIndex: 'level',
+      key: 7,
+    },
+    {
+      title: 'Section',
+      dataIndex: 'section',
+      key: 8,
+    },
+    {
+      title: 'Status',
+      dataIndex: 'status',
+      key: 9,
+    },
+    {
+      title: 'Attendance',
+      key: 10,
+      render: (text, record) => {
+        return (
+          <Button
+            onClick={() => {
+              setCourseID(record.course_id)
+              setStartDate(record.start_date)
+              setEndDate(record.end_date)
+              setModalVisible({ visible: true });
+            }}
+          >
+            Take Attendance
+          </Button>
+        );
+      },
+    },
+  ];
+
+  return (
+    <>
+      {props.isLoading ? (
+        <Spin style={{ marginTop: '150px' }} size='large' />
+      ) : (
         <>
-            {props.isLoading ? <Spin style={{ marginTop: '150px' }} size="large" />
-                :
-                <>
-                    <Table dataSource={props.coursesByStaffId} className="coursesTable" columns={staffCourseColumns} pagination={false} />
-                    <AttendanceModal modalVisible={modalVisible} 
-                    setModalVisible={setModalVisible} 
-                    staffID={staffID}
-                    teacher={teacher}
-                    />
-                </>
-            }
-
+          <Table
+            dataSource={props.coursesByStaffId}
+            className='coursesTable'
+            columns={staffCourseColumns}
+            pagination={false}
+          />
+          <AttendanceModal
+            modalVisible={modalVisible}
+            setModalVisible={setModalVisible}
+            staffID={staffID}
+            teacher={teacher}
+            courseID={courseID}
+            startDate={startDate}
+            endDate={endDate}
+          />
         </>
-    )
-}
+      )}
+    </>
+  );
+};
 
 const mapStateToProps = state => {
-    return {
-        isLoading: state.staffCourseReducer.isLoading,
-        coursesByStaffId: state.staffCourseReducer.coursesByStaffId,
-        studentList: state.studentsByCourseIDReducer.studentByCourseId
-    };
+  return {
+    isLoading: state.staffCourseReducer.isLoading,
+    coursesByStaffId: state.staffCourseReducer.coursesByStaffId,
+    studentList: state.studentsByCourseIDReducer.studentByCourseId,
+  };
 };
 
 export default withRouter(
-    connect(
-        mapStateToProps,
-        { getStaffCourses, getStudentsByCourseID }
-    )(StaffCoursesTab)
-)
+  connect(mapStateToProps, { getStaffCourses, getStudentsByCourseID })(
+    StaffCoursesTab
+  )
+);

@@ -11,7 +11,7 @@ import StaffRegistrationForm from './StaffRegistrationForm';
 import SearchStaffTable from './SearchStaffTable';
 
 const StaffTable = props => {
-  console.log(props.staffList);
+  //console.log(props.staffList);
   const { availableID } = props;
   const [form, setForm] = useState(false);
   useEffect(() => {
@@ -23,7 +23,6 @@ const StaffTable = props => {
   };
 
   const handleAddButton = () => {
-    console.log('hey');
     setForm(!form);
   };
 
@@ -106,6 +105,7 @@ const StaffTable = props => {
 
   return (
     <div>
+      <h2 style={{ textAlign: 'left', marginLeft: '1.3rem' }}>Staff Table</h2>
       <div className="row-above">
         <div>
           <SearchStaffTable />
@@ -149,7 +149,6 @@ const StaffTable = props => {
           pagination={{ pageSize: 15 }}
           rowKey="id"
           onRow={record => {
-            console.log('RECORD', record);
             return {
               onClick: () => {
                 props.setStaffID(record.staff_id);

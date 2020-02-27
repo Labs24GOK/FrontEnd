@@ -15,7 +15,6 @@
   background: #F6F8FB;
   width: 400px;
   padding: 12px;
-
 }
 
 .create-new-entry {
@@ -40,6 +39,10 @@
 
 .dropdownRoot {
   position: relative;
+}
+
+.myControlClassName.Dropdown-disabled {
+  background: #b8c6cc;
 }
 
 .react-calendar {

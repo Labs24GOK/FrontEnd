@@ -20,7 +20,7 @@ function Login(props) {
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    console.log("LOGIN props: ", props);
+    //console.log("LOGIN props: ", props);
   }, []);
 
   const handleChange = e => {

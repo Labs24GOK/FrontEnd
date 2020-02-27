@@ -13,6 +13,7 @@ import { staffCourseReducer } from './adminDashboardReducers/staffCourseReducer'
 import { studentsByCourseIDReducer } from './adminDashboardReducers/studentByCourseId';
 import { attendanceReducer } from './adminDashboardReducers/attendanceReducer';
 import { addStaffReducer } from './adminDashboardReducers/addStaffReducer';
+import { deleteModalReducer } from './adminDashboardReducers/deleteModalReducer';
 import { registrationReducer } from './registrationReducer';
 import { landingPageReducer } from './landingPageReducers/landingPageReducers';
 
@@ -33,5 +34,6 @@ export const reducer = combineReducers({
   addStaffReducer,
   registrationReducer,
   landingPageReducer,
+  deleteModalReducer
 });
 

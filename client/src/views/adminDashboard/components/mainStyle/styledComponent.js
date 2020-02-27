@@ -42,6 +42,19 @@ grid-template-columns: 1fr 1fr 1fr 1fr;
 grid-gap: 15px;
  margin: 10px;
 `
+
+export const Div2 = styled.div`
+display: grid;
+text-align: left;
+grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+grid-gap: 15px;
+ margin: 10px;
+}
+`
+export const Div3 = styled.div`
+display: flex;
+}
+`
 export const Input = styled.input`
   outline: none;
   border-radius: 3px;
@@ -50,14 +63,51 @@ export const Input = styled.input`
   width: 100%;
   padding: 6px;
 `
+
+export const DisabledInput = styled.input`
+  outline: none;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  background: Gainsboro;
+  width: 100%;
+  padding: 6px;
+  font-family: Arial, FontAwesome;
+`
+
 export const TextDiv = styled.p`
   font-size: 14px
   
 `
 export const Label = styled.h5`
  margin: 2px;
-//  font-weight: lighter;
 `
+export const DropdownLabel = styled.h5`
+ margin: 2px;
+ color: grey;
+ font-weight: lighter;
+`
+export const CalenderLabel = styled.h5`
+ margin: 2px;
+ color: grey;
+ font-weight: lighter;
+`
+export const RightTopDiv = styled.div `
+ display: inline-block;
+ width: 50%;
+ margin-bottom: 0px;
+`
+export const LeftTopDiv = styled.div `
+display: inline-block;
+width: 50%;
+margin-bottom: 0px;
+`
+export const TopSection = styled.div `
+ display: flex;
+ align-items: center;
+ width: 100%;
+ margin-bottom: 15px;
+`
+
 export const CardStyle = styled.div`
   outline: none;
   border-radius: 3px;
@@ -182,6 +232,19 @@ background-color: #26ABBD;
 border: none;
 cursor: pointer;
 `
+
+export const DeleteButton = styled.button`
+width: 80px;
+height: 25px;
+border-radius: 3px;
+margin: 10px 5px 10px 10px;
+text-align: center;
+color: #FFFFFF; 
+background-color: #EC404E;
+border: none;
+cursor: pointer;
+`
+
 export const AddButton = styled.button`
 width: 120px;
 height: 25px;

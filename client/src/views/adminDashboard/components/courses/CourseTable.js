@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
-import { getCourseTable, getDropDownCourses } from '../../../../actions';
-import { Table, Spin } from 'antd';
 import 'antd/dist/antd.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '../mainStyle/mainCard.scss';
+
+import { Spin, Table } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { getCourseTable, getDropDownCourses } from '../../../../actions';
+import { timeConverter } from '../../../../utils/helpers.js';
 import CourseRegistrationForm from './CourseRegistrationForm';
 import SearchCourseTable from './SearchCourseTable';
-import '../mainStyle/mainCard.scss';
 
 const CourseTable = props => {
   const [form, setForm] = useState(false);
@@ -16,6 +18,10 @@ const CourseTable = props => {
   useEffect(() => {
     props.getCourseTable();
   }, []);
+
+  useEffect(() => {
+    if (props.isPosted) props.getCourseTable();
+  }, [props.isPosted]);
 
   const handleCancelButtonOnForm = () => {
     setForm(false);
@@ -37,44 +43,81 @@ const CourseTable = props => {
       key: 2,
     },
     {
+      title: 'Group Type',
+      dataIndex: 'group_type',
+      key: 3,
+    },
+    {
       title: 'Course Type',
       dataIndex: 'course_type',
       key: 4,
     },
     {
-      title: 'Group Type',
-      dataIndex: 'group_type',
-      key: 5,
-    },
-    {
       title: 'School Grade',
       dataIndex: 'school_grade',
-      key: 6,
+      key: 5,
     },
     {
       title: 'Level',
       dataIndex: 'level',
-      key: 7,
+      key: 6,
     },
     {
       title: 'Course Schedule',
       dataIndex: 'course_schedule',
+      key: 7,
+    },
+    {
+      title: 'Start Time',
+      dataIndex: 'start_time',
       key: 8,
+      render: (value, row, index) => {
+        return <span>{timeConverter(value)}</span>;
+      },
+    },
+    {
+      title: 'End Time',
+      dataIndex: 'end_time',
+      key: 9,
+      render: (value, row, index) => {
+        return <span>{timeConverter(value)}</span>;
+      },
     },
     {
       title: 'Teacher',
       dataIndex: 'teacher',
-      key: 9,
+      key: 10,
+    },
+    {
+      title: 'Students',
+      dataIndex: 'total_students',
+      key: 11,
+    },
+    {
+      title: 'Confirmed',
+      dataIndex: 'confirmed_students',
+      key: 12,
+    },
+    {
+      title: 'Unconfirmed',
+      dataIndex: 'unconfirmed_students',
+      key: 13,
+    },
+    {
+      title: 'Status',
+      dataIndex: 'status',
+      key: 14,
     },
   ];
 
-  console.log('Course List:', props.courseList);
+  //console.log('Course List:', props.courseList);
 
   const courseData = props.courseList.sort((a, b) => {
     return b.id - a.id;
   });
   return (
     <div>
+      <h2 style={{ textAlign: 'left', marginLeft: '1.3rem' }}>Courses Table</h2>
       <div className='row-above'>
         <div>
           <SearchCourseTable />
@@ -109,14 +152,13 @@ const CourseTable = props => {
           className='rowHover'
           dataSource={courseData}
           columns={tableColumns}
-          pagination = {false}
-          // pagination={{ pageSize: 10, total: 50 }}
+          pagination={false}
           rowKey='course_id'
           onRow={(record, rowIndex) => {
             return {
               onClick: event => {
                 props.setCourseView('courseCardView');
-                console.log("Record.course_id", record.course_id)
+                console.log('Record.course_id', record.course_id);
                 props.setCourseID(record.course_id);
               },
             };
@@ -130,6 +172,7 @@ const CourseTable = props => {
 const mapStateToProps = state => {
   return {
     isLoading: state.coursesTableReducer.isLoading,
+    isPosted: state.coursesTableReducer.isPosted,
     courseList: state.coursesTableReducer.courseList,
     error: state.coursesTableReducer.error,
   };

@@ -16,7 +16,7 @@ const EnrolledStudentsTab = props => {
 
 
   useEffect(() => {
-    props.getStudentTableByCourseID(props.courseId);
+    props.getStudentTableByCourseID(props.courseID);
   }, [])
 
   const handleCancelButtonOnForm = () => {
@@ -93,22 +93,7 @@ const EnrolledStudentsTab = props => {
 
   return (
     <div>
-      <div className="row-above">
-        <div>
-          <input
-            className="row-above-input"
-            type="text"
-            name="Search"
-            placeholder="Search by registration date, name, cpr, etc..."
-            value={search}
-            onChange={handleSearchInput}
-          />
-        </div>
-        <div className="create-new-entry" style={{ cursor: 'pointer', color: '#26ABBD' }}>
-          <div style={{ marginRight: '10px' }}>Enroll Student</div>
-          <div><FontAwesomeIcon onClick={handleAddButton} style={{ width: '18px', height: '21px' }} icon={faPlusCircle} size='lg' /></div>
-        </div>
-      </div>
+
 
       {props.isLoading ? (
         <Spin style={{ marginTop: '150px' }} size="large" />

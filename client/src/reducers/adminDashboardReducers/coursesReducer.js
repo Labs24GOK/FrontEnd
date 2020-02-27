@@ -1,22 +1,26 @@
 import {
-  FETCH_COURSES_START,
-  FETCH_COURSES_SUCCESS,
-  FETCH_COURSES_FAILURE,
-  FETCH_COURSEBYID_START,
-  FETCH_COURSEBYID_SUCCESS,
-  FETCH_COURSEBYID_FAILURE,
-  FETCH_DROPDOWNCOURSES_START,
-  FETCH_DROPDOWNCOURSES_SUCCESS,
-  FETCH_DROPDOWNCOURSES_FAILURE,
+  ADD_COURSE_FAILURE,
   ADD_COURSE_START,
   ADD_COURSE_SUCCESS,
-  ADD_COURSE_FAILURE,
-  EDIT_COURSEBYID_START,
-  EDIT_COURSEBYID_SUCCESS,
-  EDIT_COURSEBYID_FAILURE,
+  DELETE_COURSEBYID_FAILURE,
+  DELETE_COURSEBYID_START,
+  DELETE_COURSEBYID_SUCCESS,
+  DISPLAY_STUDENTSBYCOURSEID_FAILURE,
   DISPLAY_STUDENTSBYCOURSEID_START,
   DISPLAY_STUDENTSBYCOURSEID_SUCCESS,
-  DISPLAY_STUDENTSBYCOURSEID_FAILURE,
+  EDIT_COURSEBYID_CANCELLED,
+  EDIT_COURSEBYID_FAILURE,
+  EDIT_COURSEBYID_START,
+  EDIT_COURSEBYID_SUCCESS,
+  FETCH_COURSEBYID_FAILURE,
+  FETCH_COURSEBYID_START,
+  FETCH_COURSEBYID_SUCCESS,
+  FETCH_COURSES_FAILURE,
+  FETCH_COURSES_START,
+  FETCH_COURSES_SUCCESS,
+  FETCH_DROPDOWNCOURSES_FAILURE,
+  FETCH_DROPDOWNCOURSES_START,
+  FETCH_DROPDOWNCOURSES_SUCCESS,
   SET_FILTER_COURSES,
 } from '../../actions';
 
@@ -37,7 +41,7 @@ const initialState = {
   isEdited: false,
   isEditing: false,
   isPosting: false,
-  isPosting: false,
+  isPosted: false,
   searchTerm: '',
 };
 
@@ -147,7 +151,8 @@ export const coursesTableReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
-        isPosting: false,
+        isPosting: true,
+        isPosted: false,
         error: null,
       };
     case ADD_COURSE_SUCCESS:
@@ -155,30 +160,59 @@ export const coursesTableReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         error: null,
-        isPosting: true,
+        isPosting: false,
+        isPosted: true,
         courseList: [action.payload, ...state.courseList],
       };
     case ADD_COURSE_FAILURE:
       return {
         ...state,
         isLoading: false,
+        isPosting: false,
+        isPosted: false,
         error: action.payload,
       };
     // edit by id
     case EDIT_COURSEBYID_START:
       return {
         ...state,
-        isEditing: !state.isEditing,
+        isEditing: true,
         error: null,
+      };
+    case EDIT_COURSEBYID_CANCELLED:
+      return {
+        ...state,
+        isEditing: false,
+        isEdited: false,
       };
     case EDIT_COURSEBYID_SUCCESS:
       return {
         ...state,
-        isEditing: !state.isEditing,
+        isEditing: false,
         isEdited: true,
         courseById: action.payload,
       };
     case EDIT_COURSEBYID_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        isEditing: false,
+        isEdited: false,
+        error: action.payload,
+      };
+    case DELETE_COURSEBYID_START:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    case DELETE_COURSEBYID_SUCCESS:
+      return {
+        ...state,
+        error: null,
+        courseById: [],
+      };
+    case DELETE_COURSEBYID_FAILURE:
       return {
         ...state,
         isLoading: false,

@@ -22,7 +22,7 @@ import {
 const StaffForm = props => {
   const { staffID } = props;
   let birthdate = new Date(props.staffById.birthdate).toISOString().split("T")[0];
-  console.log('STAFF EDIT', props.staffById);
+  //('STAFF EDIT', props.staffById);
 
   const genderArr = ['F', 'M']
 
@@ -69,7 +69,7 @@ if (props.staffById.active === false){
   };
 
   const formSubmit = e => {
-    console.log("THIS IS STATE", state)
+    //console.log("THIS IS STATE", state)
     e.preventDefault();
     props.editStaffById(staffID, state);
   };
