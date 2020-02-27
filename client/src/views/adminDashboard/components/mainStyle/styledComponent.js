@@ -49,8 +49,12 @@ text-align: left;
 grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 grid-gap: 15px;
  margin: 10px;
+}
 `
-
+export const Div3 = styled.div`
+display: flex;
+}
+`
 export const Input = styled.input`
   outline: none;
   border-radius: 3px;

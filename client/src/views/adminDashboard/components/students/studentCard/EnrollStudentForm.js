@@ -19,6 +19,8 @@ import {
     Div2,
     ButtonDiv,
     DisabledInput,
+    SearchDiv,
+    Div3
   } from '../../mainStyle/styledComponent.js';
 
 const EnrollStudentForm = props => {
@@ -87,15 +89,13 @@ function handleChange(event) {
     <>
     <FormWrap onSubmit={handleSubmit}>
       <FormSet>
-      <Button2 onClick={() => {
-            setModalVisible({ visible: true })
-        }}>Search Courses <FontAwesomeIcon icon={faSearch} className="fa-fw"/>
-        </Button2>
         <Div2>
           <div>
             <Label>Course ID</Label>
-            <DisabledInput
+            <Div3>
+            <Input
                 type='text'
+                placeholder="Search"
                 name='course_id'
                 value={course.course_id}
                 onChange={handleChange}
@@ -104,7 +104,13 @@ function handleChange(event) {
                   setModalVisible({ visible: true })
               }}
               />
+                         <Button2 onClick={() => {
+                      setModalVisible({ visible: true })
+                  }}><FontAwesomeIcon icon={faSearch}/>
+           </Button2>
+           </Div3>
            </div>
+
            <div>
             <Label>Term</Label>
             <DisabledInput
@@ -175,18 +181,6 @@ function handleChange(event) {
                 readOnly={true}
               /> 
            </div>
-           <div>
-             <Label>Result</Label>
-              <Dropdown
-                  controlClassName='myControlClassName'
-                  className='dropdown'
-                  name='result_type_code'
-                  onChange={(e) => setState({ ...state, result_type_code: e.value })}
-                  value={statusArr[state.result_type_code + 3]}
-                  options={statusArr}
-              />
-              </div>
- 
         </Div2>
       </FormSet>
       <ButtonDiv>
