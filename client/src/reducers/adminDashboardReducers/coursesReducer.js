@@ -221,7 +221,7 @@ export const coursesTableReducer = (state = initialState, action) => {
         isLoading: true,
         error: null
       };
-    case DISPLAY_STUDENTSBYCOURSEID_SUCCESS:
+    case DISPLAY_STUDENTSBYCOURSEID_START:
       return {
         ...state,
         studentsById: action.payload,

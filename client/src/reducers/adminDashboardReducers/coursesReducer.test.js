@@ -90,7 +90,7 @@ describe('Course Reducer', () => {
     expect(newState.coursesTableReducer.isEditing).toBe(true);
     expect(newState.coursesTableReducer.error).toBe(null);
 
-    /// FETCH SUCCESS 
+    /// FETCH SUCCESS
     store.dispatch({
       type: 'EDIT_COURSEBYID_CANCELLED'
     });
@@ -119,4 +119,10 @@ describe('Course Reducer', () => {
     expect(newState.coursesTableReducer.isEditing).toBe(false);
     expect(newState.coursesTableReducer.isEdited).toBe(false);
   });
+  it('SET FITLER FOR COURSES', () => {
+    store.dispatch({ type: 'SET_FILTER_COURSES', payload: 'Whatever.' });
+    newState = store.getState();
+    expect(newState.coursesTableReducer.searchTerm).toBe('Whatever.');
+  });
 });
+ 
