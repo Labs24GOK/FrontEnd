@@ -61,7 +61,7 @@ describe('Course Reducer', () => {
     store.dispatch({ type: 'ADD_COURSE_START' });
     newState = store.getState();
     expect(newState.coursesTableReducer.isLoading).toBe(true);
-    expect(newState.coursesTableReducer.isPosting).toBe(false);
+    expect(newState.coursesTableReducer.isPosting).toBe(true);
     expect(newState.coursesTableReducer.error).toBe(null);
 
     /// FETCH SUCCESS
@@ -73,7 +73,7 @@ describe('Course Reducer', () => {
     expect(newState.coursesTableReducer.courseList.length).toBeGreaterThan(0);
     expect(newState.coursesTableReducer.isLoading).toBe(false);
     expect(newState.coursesTableReducer.error).toBe(null);
-    expect(newState.coursesTableReducer.isPosting).toBe(true);
+    expect(newState.coursesTableReducer.isPosting).toBe(false);
     // expect(newState.coursesTableReducer.isEditing).toBe(false);
     // expect(newState.coursesTableReducer.isEdited).toBe(true);
 
@@ -125,4 +125,3 @@ describe('Course Reducer', () => {
     expect(newState.coursesTableReducer.searchTerm).toBe('Whatever.');
   });
 });
- 
