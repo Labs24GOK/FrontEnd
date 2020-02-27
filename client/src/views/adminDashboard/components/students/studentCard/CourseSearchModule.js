@@ -1,16 +1,22 @@
-import React, { useState,useEffect } from 'react';
+import '../../students/studentCard/studentTable.scss'
+
+import { Button, Icon, Input, Modal, Spin, Table, } from 'antd';
+import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { getCourseTable } from '../../../../../actions';
-import { Table, Button, Modal, Spin, Input, Icon,  } from 'antd';
-
-import '../../students/studentCard/studentTable.scss'
 
 const CourseSearchModule = props => {
-
+  const filterInputField = useRef(null);
     useEffect(() => {
         props.getCourseTable();
       }, []);
+    
+    useEffect(()=> {
+      // updates the # students confirmed/unconfirmed when 
+      // student status as been changed
+      if (props.studentStatusUpdated) props.getCourseTable();
+    }, [props.studentStatusUpdated])
 
     const [searchText, setSearchText] = useState("");
     const [searchedColumn, setSearchedColumn] = useState("");
@@ -26,7 +32,7 @@ const CourseSearchModule = props => {
       setSearchText("");
     };
 
-    function getColumnSearchProps(dataIndex) {
+    function getColumnSearchProps(dataIndex, placeholderText) {
       return {
         filterDropdown: ({
           setSelectedKeys,
@@ -36,8 +42,8 @@ const CourseSearchModule = props => {
         }) => (
           <div style={{ padding: 8 }}>
             <Input
-              ref={node => { searchInput = node;}}
-              placeholder={`Search ${dataIndex}`}
+                ref={node => filterInputField.current = node}
+                placeholder={placeholderText}
               value={selectedKeys[0]}
               onChange={e =>
                 setSelectedKeys(e.target.value ? [e.target.value] : [])
@@ -76,68 +82,76 @@ const CourseSearchModule = props => {
             .includes(value.toLowerCase()),
         onFilterDropdownVisibleChange: visible => {
           if (visible) {
-            setTimeout(() => searchInput.select());
+            setTimeout(() => filterInputField.current.select(), 10);
           }
         }
       };
     }
-
-    let searchInput = null;
 
     const tableColumns = [
         {
           title: 'Course ID',
           dataIndex: 'course_id',
           key: 'course_id',
-          ...getColumnSearchProps("course_id")
+          ...getColumnSearchProps("course_id", 'Search Course ID')
         },
         {
           title: 'Term',
           dataIndex: 'term',
           key: 'term',
-          ...getColumnSearchProps("term")
+          ...getColumnSearchProps("term", 'Search Term')
         },
         {
           title: 'Section',
           dataIndex: 'section',
           key: 'section',
-          ...getColumnSearchProps("section")
+          ...getColumnSearchProps("section", 'Search Section')
         },
         {
           title: 'Level',
           dataIndex: 'level',
           key: 'level',
-          ...getColumnSearchProps("level")
+          ...getColumnSearchProps("level", 'Search Level')
         },
         {
           title: 'Course Type',
           dataIndex: 'course_type',
           key: 'course_type',
-          ...getColumnSearchProps("course_type")
+          ...getColumnSearchProps("course_type", 'Search Course Type')
         },
         {
           title: 'Group Type',
           dataIndex: 'group_type',
           key: 'group_type',
-          ...getColumnSearchProps("group_type")
+          ...getColumnSearchProps("group_type", 'Search Group Type')
         },
         {
           title: 'School Grade',
           dataIndex: 'school_grade',
           key: 'school_grade',
-          ...getColumnSearchProps("school_grade")
+          ...getColumnSearchProps("school_grade", 'Search School Grade')
         },
         {
           title: 'Course Schedule',
           dataIndex: 'course_schedule',
           key: 'course_schedule',
-          ...getColumnSearchProps("course_schedule")
+          ...getColumnSearchProps("course_schedule", 'Search Course Schedule')
         },
         {
           title: 'Teacher',
           dataIndex: 'teacher',
           key: 'teacher',
-          ...getColumnSearchProps("teacher")
+          ...getColumnSearchProps("teacher", 'Search Teacher')
+        },
+        {
+          title: 'Confirmed Students',
+          dataIndex: 'confirmed_students',
+          key: 'confirmed_students',
+        },
+        {
+          title: 'Total Students',
+          dataIndex: 'total_students',
+          key: 'total_students',
         },
       ];
 
@@ -200,6 +214,7 @@ const mapStateToProps = state => {
     return {
         isLoading: state.staffCourseReducer.isLoading,
         courseList: state.coursesTableReducer.courseList,
+        studentStatusUpdated: state.studentByIdReducer.isEdited
     };
 };
 
