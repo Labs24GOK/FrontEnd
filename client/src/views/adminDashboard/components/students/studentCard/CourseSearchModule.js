@@ -7,11 +7,16 @@ import { withRouter } from 'react-router-dom';
 import { getCourseTable } from '../../../../../actions';
 
 const CourseSearchModule = props => {
-console.log(props.courseList)
   const filterInputField = useRef(null);
     useEffect(() => {
         props.getCourseTable();
       }, []);
+    
+    useEffect(()=> {
+      // updates the # students confirmed/unconfirmed when 
+      // student status as been changed
+      if (props.studentStatusUpdated) props.getCourseTable();
+    }, [props.studentStatusUpdated])
 
     const [searchText, setSearchText] = useState("");
     const [searchedColumn, setSearchedColumn] = useState("");
@@ -209,6 +214,7 @@ const mapStateToProps = state => {
     return {
         isLoading: state.staffCourseReducer.isLoading,
         courseList: state.coursesTableReducer.courseList,
+        studentStatusUpdated: state.studentByIdReducer.isEdited
     };
 };
 
