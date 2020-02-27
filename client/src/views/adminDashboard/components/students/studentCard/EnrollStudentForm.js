@@ -20,6 +20,7 @@ import {
     ButtonDiv,
     DisabledInput,
     SearchDiv,
+    Div3
   } from '../../mainStyle/styledComponent.js';
 
 const EnrollStudentForm = props => {
@@ -91,6 +92,7 @@ function handleChange(event) {
         <Div2>
           <div>
             <Label>Course ID</Label>
+            <Div3>
             <Input
                 type='text'
                 placeholder="Search"
@@ -102,7 +104,13 @@ function handleChange(event) {
                   setModalVisible({ visible: true })
               }}
               />
+                         <Button2 onClick={() => {
+                      setModalVisible({ visible: true })
+                  }}><FontAwesomeIcon icon={faSearch}/>
+           </Button2>
+           </Div3>
            </div>
+
            <div>
             <Label>Term</Label>
             <DisabledInput
@@ -176,10 +184,6 @@ function handleChange(event) {
         </Div2>
       </FormSet>
       <ButtonDiv>
-      <Button2 onClick={() => {
-                      setModalVisible({ visible: true })
-                  }}><FontAwesomeIcon icon={faSearch}/>
-                  </Button2>
         <Button
           onClick={handleCancel}
           style={{ background: '#C73642', width: '80px' }}
