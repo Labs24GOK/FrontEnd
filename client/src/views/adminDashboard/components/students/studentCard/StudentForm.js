@@ -140,98 +140,98 @@ const StudentForm = props => {
 		e.preventDefault();
 		// check for required fields
 		if (
-			props.studentById.cpr === '' ||
-			props.studentById.first_name === '' ||
-			props.studentById.additional_names === '' ||
-			props.studentById.gender === '' ||
-			props.studentById.home_telephone === '' ||
-			// props.studentById.mobile_telephone === '' ||
-			props.studentById.email === '' ||
-			props.studentById.preferred_contact_type_id === '' ||
-			props.studentById.birthdate === '' ||
-			props.studentById.school_name === '' ||
-			props.studentById.school_grade_id === '' ||
-			props.studentById.location_id === '' ||
-			props.studentById.block_code === '' ||
-			props.studentById.road === '' ||
-			props.studentById.building === '' ||
-			props.studentById.flat === '' ||
-			props.studentById.primary_emergency_contact_name === '' ||
-			props.studentById.primary_emergency_relationship === '' ||
-			props.studentById.primary_emergency_phone === ''
-			// props.studentById.emergency_contact_name === '' ||
-			// props.studentById.emergency_relationship === '' ||
-			// props.studentById.emergency_phone === '' ||
-			// props.studentById.notes === ''
+			state.cpr === '' ||
+			state.first_name === '' ||
+			state.additional_names === '' ||
+			state.gender === '' ||
+			state.home_telephone === '' ||
+			// state.mobile_telephone === '' ||
+			state.email === '' ||
+			state.preferred_contact_type_id === '' ||
+			state.birthdate === '' ||
+			state.school_name === '' ||
+			state.school_grade_id === '' ||
+			state.location_id === '' ||
+			state.block_code === '' ||
+			state.road === '' ||
+			state.building === '' ||
+			state.flat === '' ||
+			state.primary_emergency_contact_name === '' ||
+			state.primary_emergency_relationship === '' ||
+			state.primary_emergency_phone === ''
+			// state.emergency_contact_name === '' ||
+			// state.emergency_relationship === '' ||
+			// state.emergency_phone === '' ||
+			// state.notes === ''
 		) {
 			// highlight all that were missed
-			if (props.studentById.cpr === '') {
+			if (state.cpr === '') {
 				setErrorBorderCpr('#ef6570');
 			}
-			if (props.studentById.first_name === '') {
+			if (state.first_name === '') {
 				setErrorBorderFirstName('#ef6570');
 			}
-			if (props.studentById.additional_names === '') {
+			if (state.additional_names === '') {
 				setErrorBorderAdditionalNames('#ef6570');
 			}
-			if (props.studentById.gender === '') {
+			if (state.gender === '') {
 				setErrorBorderGender('#ef6570');
 			}
-			if (props.studentById.home_telephone === '') {
+			if (state.home_telephone === '') {
 				setErrorBorderHomeTelephone('#ef6570');
 			}
-			// if (props.studentById.mobile_telephone === '') {
+			// if (state.mobile_telephone === '') {
 			// 	setErrorBorderMobileTelephone('#ef6570');
 			// }
-			if (props.studentById.email === '') {
+			if (state.email === '') {
 				setErrorBorderEmail('#ef6570');
 			}
-			if (props.studentById.preferred_contact_type_id === '') {
+			if (state.preferred_contact_type_id === '') {
 				setErrorBorderContactType('#ef6570');
 			}
-			if (props.studentById.birthdate === '') {
+			if (state.birthdate === '') {
 				setErrorBorderBirthdate('#ef6570');
 			}
-			if (props.studentById.school_name === '') {
+			if (state.school_name === '') {
 				setErrorBorderSchoolName('#ef6570');
 			}
-			if (props.studentById.school_grade_id === '') {
+			if (state.school_grade_id === '') {
 				setErrorBorderSchoolGrade('#ef6570');
 			}
-			if (props.studentById.location_id === '') {
+			if (state.location_id === '') {
 				setErrorBorderLocation('#ef6570');
 			}
-			if (props.studentById.block_code === '') {
+			if (state.block_code === '') {
 				setErrorBorderBlock('#ef6570');
 			}
-			if (props.studentById.road === '') {
+			if (state.road === '') {
 				setErrorBorderRoad('#ef6570');
 			}
-			if (props.studentById.building === '') {
+			if (state.building === '') {
 				setErrorBorderBuilding('#ef6570');
 			}
-			if (props.studentById.flat === '') {
+			if (state.flat === '') {
 				setErrorBorderFlat('#ef6570');
 			}
-			if (props.studentById.primary_emergency_contact_name === '') {
+			if (state.primary_emergency_contact_name === '') {
 				setErrorBorderPrimaryEmergencyContactName('#ef6570');
 			}
-			if (props.studentById.primary_emergency_relationship === '') {
+			if (state.primary_emergency_relationship === '') {
 				setErrorBorderPrimaryEmergencyRelationship('#ef6570');
 			}
-			if (props.studentById.primary_emergency_phone === '') {
+			if (state.primary_emergency_phone === '') {
 				setErrorBorderPrimaryEmergencyPhone('#ef6570');
 			}
-			// if (props.studentById.emergency_contact_name === '') {
+			// if (state.emergency_contact_name === '') {
 			// 	setErrorBorderEmergencyContactName('#ef6570');
 			// }
-			// if (props.studentById.emergency_relationship === '') {
+			// if (state.emergency_relationship === '') {
 			// 	setErrorBorderEmergencyRelationship('#ef6570');
 			// }
-			// if (props.studentById.emergency_phone === '') {
+			// if (state.emergency_phone === '') {
 			// 	setErrorBorderEmergencyPhone('#ef6570');
 			// }
-			// if (props.studentById.notes === '') {
+			// if (state.notes === '') {
 			// 	setErrorBorderNotes('#ef6570');
 			// }
 		} else {
