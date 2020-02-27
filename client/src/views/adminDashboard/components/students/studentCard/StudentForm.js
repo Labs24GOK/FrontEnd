@@ -127,6 +127,14 @@ const StudentForm = props => {
 		'transparent'
 	); //error #C73642
 	const [errorBorderNotes, setErrorBorderNotes] = useState('transparent'); //error #C73642
+	const [errorBorderNoCall, setErrorBorderNoCall] = useState('transparent'); //error #C73642
+	const [errorBorderDelinquent, setErrorBorderDelinquent] = useState(
+		'transparent'
+	); //error #C73642
+	const [errorBorderExpelled, setErrorBorderExpelled] = useState('transparent'); //error #C73642
+	const [errorBorderGradeUpdated, setErrorBorderGradeUpdated] = useState(
+		'transparent'
+	); //error #C73642
 
 	function handleChange(event) {
 		setState({
@@ -158,10 +166,14 @@ const StudentForm = props => {
 			state.flat === '' ||
 			state.primary_emergency_contact_name === '' ||
 			state.primary_emergency_relationship === '' ||
-			state.primary_emergency_phone === ''
+			state.primary_emergency_phone === '' ||
 			// state.emergency_contact_name === '' ||
 			// state.emergency_relationship === '' ||
 			// state.emergency_phone === '' ||
+			state.no_call === '' ||
+			state.delinquent === '' ||
+			state.expelled === '' ||
+			state.grade_updated === ''
 			// state.notes === ''
 		) {
 			// highlight all that were missed
@@ -231,6 +243,18 @@ const StudentForm = props => {
 			// if (state.emergency_phone === '') {
 			// 	setErrorBorderEmergencyPhone('#ef6570');
 			// }
+			if (state.no_call === '') {
+				setErrorBorderNoCall('#ef6570');
+			}
+			if (state.delinquent === '') {
+				setErrorBorderDelinquent('#ef6570');
+			}
+			if (state.expelled === '') {
+				setErrorBorderExpelled('#ef6570');
+			}
+			if (state.grade_updated === '') {
+				setErrorBorderGradeUpdated('#ef6570');
+			}
 			// if (state.notes === '') {
 			// 	setErrorBorderNotes('#ef6570');
 			// }
@@ -668,7 +692,12 @@ const StudentForm = props => {
 					</div>
 					<div>
 						<Label>Grade Updated</Label>
-						<div>
+						<div
+							style={{
+								border: `1px solid ${errorBorderGradeUpdated}`,
+								borderRadius: '3px'
+							}}
+						>
 							<Input
 								type="date"
 								name="grade_updated"
@@ -691,7 +720,12 @@ const StudentForm = props => {
                         </div> */}
 						<div>
 							<Label>No Call</Label>
-							<div>
+							<div
+								style={{
+									border: `1px solid ${errorBorderNoCall}`,
+									borderRadius: '3px'
+								}}
+							>
 								<Dropdown
 									controlClassName="myControlClassName"
 									className="dropdown"
@@ -704,7 +738,12 @@ const StudentForm = props => {
 						</div>
 						<div>
 							<Label>Delinquent</Label>
-							<div>
+							<div
+								style={{
+									border: `1px solid ${errorBorderDelinquent}`,
+									borderRadius: '3px'
+								}}
+							>
 								<Dropdown
 									controlClassName="myControlClassName"
 									className="dropdown"
@@ -717,7 +756,12 @@ const StudentForm = props => {
 						</div>
 						<div>
 							<Label>Expelled</Label>
-							<div>
+							<div
+								style={{
+									border: `1px solid ${errorBorderExpelled}`,
+									borderRadius: '3px'
+								}}
+							>
 								<Dropdown
 									controlClassName="myControlClassName"
 									className="dropdown"
