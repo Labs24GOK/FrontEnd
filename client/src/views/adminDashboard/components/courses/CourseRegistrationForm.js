@@ -85,6 +85,8 @@ const CourseRegistrationForm = props => {
       course.term_id === '' ||
       course.course_type_id === '' ||
       course.group_type_id === '' ||
+      course.course_type_id &&
+      course.course_type_id.value === 2 &&
       course.school_grade_id === '' ||
       course.level_id === '' ||
       course.section === '' ||
