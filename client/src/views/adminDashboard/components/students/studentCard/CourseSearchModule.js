@@ -89,6 +89,7 @@ const CourseSearchModule = props => {
           title: 'Course ID',
           dataIndex: 'course_id',
           key: 'course_id',
+          ...getColumnSearchProps("course_id")
         },
         {
           title: 'Term',
@@ -111,27 +112,32 @@ const CourseSearchModule = props => {
         {
           title: 'Course Type',
           dataIndex: 'course_type',
-          key: 5,
+          key: 'course_type',
+          ...getColumnSearchProps("course_type")
         },
         {
           title: 'Group Type',
           dataIndex: 'group_type',
-          key: 6,
+          key: 'group_type',
+          ...getColumnSearchProps("group_type")
         },
         {
           title: 'School Grade',
           dataIndex: 'school_grade',
-          key: 7,
+          key: 'school_grade',
+          ...getColumnSearchProps("school_grade")
         },
         {
           title: 'Course Schedule',
           dataIndex: 'course_schedule',
-          key: 8,
+          key: 'course_schedule',
+          ...getColumnSearchProps("course_schedule")
         },
         {
           title: 'Teacher',
           dataIndex: 'teacher',
-          key: 9,
+          key: 'teacher',
+          ...getColumnSearchProps("teacher")
         },
       ];
 
