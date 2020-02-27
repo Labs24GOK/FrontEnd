@@ -20,8 +20,6 @@ const CourseRegistrationForm = props => {
     props.getDropDownCourses();
   }, []);
 
-  console.log('SCHOOL GRADE TABLE', props.schoolGradeDropdown);
-
   const [course, setCourse] = useState({
     term_id: '',
     course_type_id: '',
@@ -38,7 +36,7 @@ const CourseRegistrationForm = props => {
     teacher_id: '',
     hourly_rate: '10.00',
     status: '',
-    notes: '',
+    notes: ''
   });
 
   const [grade, setGrade] = useState(0);

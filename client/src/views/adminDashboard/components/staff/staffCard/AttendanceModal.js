@@ -20,6 +20,7 @@ import {
   RightTopDiv,
   TopSection,
 } from '../../mainStyle/styledComponent.js';
+// import { dateConverter } from '../../../../../utils/helpers';
 
 const AttendanceModal = props => {
   //set initial State
@@ -61,7 +62,7 @@ const AttendanceModal = props => {
 
   useEffect(() => {
     console.log('state', state);
-    //!!! See above note
+  
     //AXIOS call to get all necessary information and (by not being in a Redux action) gives the ability to manipulate student array more effectively.
     if (state.meeting.meeting_date && state.meeting.course_id) {
       console.log('inside axios call');
@@ -153,7 +154,6 @@ const AttendanceModal = props => {
       },
       students: [],
     });
-    // openNotification('success')
   };
 
   //Handles the "Return" button (closes modal and resets state as seen below)
@@ -185,7 +185,10 @@ const AttendanceModal = props => {
   const dateFormat = 'YYYY-MM-DD';
 
   // const disabledDates = date => {
-  //  return date < moment('2020-02-21')
+  //   console.log("STARTING DATE", `${moment(props.startDate).format('YYYY-MM-DD')}`)
+  //   const beginDate = moment(props.startDate).format('YYYY-MM-DD')
+  //   const lastDate = moment(props.endDate).format('YYYY-MM-DD')
+  //   return date < moment(`${beginDate}`) 
   // }
 
   //actual Rendering on web page
