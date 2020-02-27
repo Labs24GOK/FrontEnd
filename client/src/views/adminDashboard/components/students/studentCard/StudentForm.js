@@ -9,6 +9,7 @@ import {
 import { withRouter } from 'react-router-dom';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
+import '../../mainStyle/mainTable.scss';
 import {
 	FormWrap,
 	Input,
@@ -69,6 +70,72 @@ const StudentForm = props => {
 		props.editStudentDropDown();
 	}, []);
 
+	// handle required fields (make them all required for now)
+	const [errorBorderCpr, setErrorBorderCpr] = useState('transparent'); //error #C73642
+	const [errorBorderFirstName, setErrorBorderFirstName] = useState(
+		'transparent'
+	); //error #C73642
+	const [errorBorderAdditionalNames, setErrorBorderAdditionalNames] = useState(
+		'transparent'
+	); //error #C73642
+	const [errorBorderGender, setErrorBorderGender] = useState('transparent'); //error #C73642
+	const [errorBorderHomeTelephone, setErrorBorderHomeTelephone] = useState(
+		'transparent'
+	); //error #C73642
+	const [errorBorderMobileTelephone, setErrorBorderMobileTelephone] = useState(
+		'transparent'
+	); //error #C73642
+	const [errorBorderEmail, setErrorBorderEmail] = useState('transparent'); //error #C73642
+	const [errorBorderContactType, setErrorBorderContactType] = useState(
+		'transparent'
+	); //error #C73642
+	const [errorBorderBirthdate, setErrorBorderBirthdate] = useState(
+		'transparent'
+	); //error #C73642
+	const [errorBorderSchoolName, setErrorBorderSchoolName] = useState(
+		'transparent'
+	); //error #C73642
+	const [errorBorderSchoolGrade, setErrorBorderSchoolGrade] = useState(
+		'transparent'
+	); //error #C73642
+	const [errorBorderLocation, setErrorBorderLocation] = useState('transparent'); //error #C73642
+	const [errorBorderBlock, setErrorBorderBlock] = useState('transparent'); //error #C73642
+	const [errorBorderRoad, setErrorBorderRoad] = useState('transparent'); //error #C73642
+	const [errorBorderBuilding, setErrorBorderBuilding] = useState('transparent'); //error #C73642
+	const [errorBorderFlat, setErrorBorderFlat] = useState('transparent'); //error #C73642
+	const [
+		errorBorderPrimaryEmergencyContactName,
+		setErrorBorderPrimaryEmergencyContactName
+	] = useState('transparent'); //error #C73642
+	const [
+		errorBorderPrimaryEmergencyRelationship,
+		setErrorBorderPrimaryEmergencyRelationship
+	] = useState('transparent'); //error #C73642
+	const [
+		errorBorderPrimaryEmergencyPhone,
+		setErrorBorderPrimaryEmergencyPhone
+	] = useState('transparent'); //error #C73642
+	const [
+		errorBorderEmergencyContactName,
+		setErrorBorderEmergencyContactName
+	] = useState('transparent'); //error #C73642
+	const [
+		errorBorderEmergencyRelationship,
+		setErrorBorderEmergencyRelationship
+	] = useState('transparent'); //error #C73642
+	const [errorBorderEmergencyPhone, setErrorBorderEmergencyPhone] = useState(
+		'transparent'
+	); //error #C73642
+	const [errorBorderNotes, setErrorBorderNotes] = useState('transparent'); //error #C73642
+	const [errorBorderNoCall, setErrorBorderNoCall] = useState('transparent'); //error #C73642
+	const [errorBorderDelinquent, setErrorBorderDelinquent] = useState(
+		'transparent'
+	); //error #C73642
+	const [errorBorderExpelled, setErrorBorderExpelled] = useState('transparent'); //error #C73642
+	const [errorBorderGradeUpdated, setErrorBorderGradeUpdated] = useState(
+		'transparent'
+	); //error #C73642
+
 	function handleChange(event) {
 		setState({
 			...state,
@@ -79,7 +146,128 @@ const StudentForm = props => {
 	const handleSubmit = e => {
 		console.log('THIS IS STUDENT SUBMIT STATE:', state);
 		e.preventDefault();
-		props.editStudentById(studentID, state);
+		// check for required fields
+		if (
+			state.cpr === '' ||
+			state.first_name === '' ||
+			state.additional_names === '' ||
+			state.gender === '' ||
+			state.home_telephone === '' ||
+			// state.mobile_telephone === '' ||
+			state.email === '' ||
+			state.preferred_contact_type_id === '' ||
+			state.birthdate === '' ||
+			state.school_name === '' ||
+			state.school_grade_id === '' ||
+			state.location_id === '' ||
+			state.block_code === '' ||
+			state.road === '' ||
+			state.building === '' ||
+			state.flat === '' ||
+			state.primary_emergency_contact_name === '' ||
+			state.primary_emergency_relationship === '' ||
+			state.primary_emergency_phone === '' ||
+			// state.emergency_contact_name === '' ||
+			// state.emergency_relationship === '' ||
+			// state.emergency_phone === '' ||
+			state.no_call === '' ||
+			state.delinquent === '' ||
+			state.expelled === '' ||
+			state.grade_updated === ''
+			// state.notes === ''
+		) {
+			// highlight all that were missed
+			if (state.cpr === '') {
+				setErrorBorderCpr('#ef6570');
+			}
+			if (state.first_name === '') {
+				setErrorBorderFirstName('#ef6570');
+			}
+			if (state.additional_names === '') {
+				setErrorBorderAdditionalNames('#ef6570');
+			}
+			if (state.gender === '') {
+				setErrorBorderGender('#ef6570');
+			}
+			if (state.home_telephone === '') {
+				setErrorBorderHomeTelephone('#ef6570');
+			}
+			// if (state.mobile_telephone === '') {
+			// 	setErrorBorderMobileTelephone('#ef6570');
+			// }
+			if (state.email === '') {
+				setErrorBorderEmail('#ef6570');
+			}
+			if (state.preferred_contact_type_id === '') {
+				setErrorBorderContactType('#ef6570');
+			}
+			if (state.birthdate === '') {
+				setErrorBorderBirthdate('#ef6570');
+			}
+			if (state.school_name === '') {
+				setErrorBorderSchoolName('#ef6570');
+			}
+			if (state.school_grade_id === '') {
+				setErrorBorderSchoolGrade('#ef6570');
+			}
+			if (state.location_id === '') {
+				setErrorBorderLocation('#ef6570');
+			}
+			if (state.block_code === '') {
+				setErrorBorderBlock('#ef6570');
+			}
+			if (state.road === '') {
+				setErrorBorderRoad('#ef6570');
+			}
+			if (state.building === '') {
+				setErrorBorderBuilding('#ef6570');
+			}
+			if (state.flat === '') {
+				setErrorBorderFlat('#ef6570');
+			}
+			if (state.primary_emergency_contact_name === '') {
+				setErrorBorderPrimaryEmergencyContactName('#ef6570');
+			}
+			if (state.primary_emergency_relationship === '') {
+				setErrorBorderPrimaryEmergencyRelationship('#ef6570');
+			}
+			if (state.primary_emergency_phone === '') {
+				setErrorBorderPrimaryEmergencyPhone('#ef6570');
+			}
+			// if (state.emergency_contact_name === '') {
+			// 	setErrorBorderEmergencyContactName('#ef6570');
+			// }
+			// if (state.emergency_relationship === '') {
+			// 	setErrorBorderEmergencyRelationship('#ef6570');
+			// }
+			// if (state.emergency_phone === '') {
+			// 	setErrorBorderEmergencyPhone('#ef6570');
+			// }
+			if (state.no_call === '') {
+				setErrorBorderNoCall('#ef6570');
+			}
+			if (state.delinquent === '') {
+				setErrorBorderDelinquent('#ef6570');
+			}
+			if (state.expelled === '') {
+				setErrorBorderExpelled('#ef6570');
+			}
+			if (state.grade_updated === '') {
+				setErrorBorderGradeUpdated('#ef6570');
+			}
+			// if (state.notes === '') {
+			// 	setErrorBorderNotes('#ef6570');
+			// }
+		} else {
+			//console.log("Student request body", student)
+			// const birthdateDate = moment(student.birthdate).toDate();
+			// const birthdateISO = birthdateDate.toISOString()
+			props.editStudentById(studentID, state);
+			// if(props.createNewStudentSuccessMessage === 'Student has been successfuly added')
+			// setTimeout(()=>{
+			//   props.getStudentTable()
+			// },1000)
+		}
 	};
 
 	const handleCancel = e => {
@@ -122,7 +310,12 @@ const StudentForm = props => {
 				<Div>
 					<div>
 						<Label>CPR</Label>
-						<div>
+						<div
+							style={{
+								border: `1px solid ${errorBorderCpr}`,
+								borderRadius: '3px'
+							}}
+						>
 							<Input
 								type="text"
 								name="cpr"
@@ -134,7 +327,12 @@ const StudentForm = props => {
 					</div>
 					<div>
 						<Label>First Name</Label>
-						<div>
+						<div
+							style={{
+								border: `1px solid ${errorBorderFirstName}`,
+								borderRadius: '3px'
+							}}
+						>
 							<Input
 								type="text"
 								name="first_name"
@@ -146,7 +344,12 @@ const StudentForm = props => {
 					</div>
 					<div>
 						<Label>Additional Names</Label>
-						<div>
+						<div
+							style={{
+								border: `1px solid ${errorBorderAdditionalNames}`,
+								borderRadius: '3px'
+							}}
+						>
 							<Input
 								type="text"
 								name="additional_names"
@@ -158,7 +361,12 @@ const StudentForm = props => {
 					</div>
 					<div>
 						<Label>Gender</Label>
-						<div>
+						<div
+							style={{
+								border: `1px solid ${errorBorderGender}`,
+								borderRadius: '3px'
+							}}
+						>
 							<Dropdown
 								controlClassName="myControlClassName"
 								className="dropdown"
@@ -170,7 +378,12 @@ const StudentForm = props => {
 					</div>
 					<div>
 						<Label>Home Phone</Label>
-						<div>
+						<div
+							style={{
+								border: `1px solid ${errorBorderHomeTelephone}`,
+								borderRadius: '3px'
+							}}
+						>
 							<Input
 								type="text"
 								name="home_telephone"
@@ -182,7 +395,12 @@ const StudentForm = props => {
 					</div>
 					<div>
 						<Label>Mobile</Label>
-						<div>
+						<div
+							style={{
+								border: `1px solid ${errorBorderMobileTelephone}`,
+								borderRadius: '3px'
+							}}
+						>
 							<Input
 								type="text"
 								name="mobile_telephone"
@@ -198,7 +416,12 @@ const StudentForm = props => {
 					</div>
 					<div>
 						<Label>Email</Label>
-						<div>
+						<div
+							style={{
+								border: `1px solid ${errorBorderEmail}`,
+								borderRadius: '3px'
+							}}
+						>
 							<Input
 								type="text"
 								name="email"
@@ -210,7 +433,12 @@ const StudentForm = props => {
 					</div>
 					<div>
 						<Label>Preferred Contact Method</Label>
-						<div>
+						<div
+							style={{
+								border: `1px solid ${errorBorderContactType}`,
+								borderRadius: '3px'
+							}}
+						>
 							<Dropdown
 								controlClassName="myControlClassName"
 								className="dropdown"
@@ -224,7 +452,12 @@ const StudentForm = props => {
 					</div>
 					<div>
 						<Label>Birthdate</Label>
-						<div>
+						<div
+							style={{
+								border: `1px solid ${errorBorderBirthdate}`,
+								borderRadius: '3px'
+							}}
+						>
 							<Input
 								type="date"
 								name="birthdate"
@@ -236,7 +469,12 @@ const StudentForm = props => {
 					</div>
 					<div>
 						<Label>School Name</Label>
-						<div>
+						<div
+							style={{
+								border: `1px solid ${errorBorderSchoolName}`,
+								borderRadius: '3px'
+							}}
+						>
 							<Input
 								type="text"
 								name="school_name"
@@ -248,7 +486,12 @@ const StudentForm = props => {
 					</div>
 					<div>
 						<Label>School Grade</Label>
-						<div>
+						<div
+							style={{
+								border: `1px solid ${errorBorderSchoolGrade}`,
+								borderRadius: '3px'
+							}}
+						>
 							<Dropdown
 								controlClassName="myControlClassName"
 								className="dropdown"
@@ -260,7 +503,12 @@ const StudentForm = props => {
 					</div>
 					<div>
 						<Label>Location</Label>
-						<div>
+						<div
+							style={{
+								border: `1px solid ${errorBorderLocation}`,
+								borderRadius: '3px'
+							}}
+						>
 							<Dropdown
 								controlClassName="myControlClassName"
 								className="dropdown"
@@ -272,7 +520,12 @@ const StudentForm = props => {
 					</div>
 					<div>
 						<Label>Block Code</Label>
-						<div>
+						<div
+							style={{
+								border: `1px solid ${errorBorderBlock}`,
+								borderRadius: '3px'
+							}}
+						>
 							<Dropdown
 								controlClassName="myControlClassName"
 								className="dropdown"
@@ -284,7 +537,12 @@ const StudentForm = props => {
 					</div>
 					<div>
 						<Label>Road</Label>
-						<div>
+						<div
+							style={{
+								border: `1px solid ${errorBorderRoad}`,
+								borderRadius: '3px'
+							}}
+						>
 							<Input
 								type="text"
 								name="road"
@@ -296,7 +554,12 @@ const StudentForm = props => {
 					</div>
 					<div>
 						<Label>Building</Label>
-						<div>
+						<div
+							style={{
+								border: `1px solid ${errorBorderBuilding}`,
+								borderRadius: '3px'
+							}}
+						>
 							<Input
 								type="text"
 								name="building"
@@ -308,7 +571,12 @@ const StudentForm = props => {
 					</div>
 					<div>
 						<Label>Flat</Label>
-						<div>
+						<div
+							style={{
+								border: `1px solid ${errorBorderFlat}`,
+								borderRadius: '3px'
+							}}
+						>
 							<Input
 								type="text"
 								name="flat"
@@ -320,7 +588,12 @@ const StudentForm = props => {
 					</div>
 					<div style={{ gridColumn: 'span 2' }}>
 						<Label>Primary Emergency Contact Name</Label>
-						<div>
+						<div
+							style={{
+								border: `1px solid ${errorBorderPrimaryEmergencyContactName}`,
+								borderRadius: '3px'
+							}}
+						>
 							<Input
 								type="text"
 								name="primary_emergency_contact_name"
@@ -333,7 +606,12 @@ const StudentForm = props => {
 					</div>
 					<div>
 						<Label>Relationship</Label>
-						<div>
+						<div
+							style={{
+								border: `1px solid ${errorBorderPrimaryEmergencyRelationship}`,
+								borderRadius: '3px'
+							}}
+						>
 							<Input
 								type="text"
 								name="primary_emergency_relationship"
@@ -345,7 +623,12 @@ const StudentForm = props => {
 					</div>
 					<div>
 						<Label>Phone Number</Label>
-						<div>
+						<div
+							style={{
+								border: `1px solid ${errorBorderPrimaryEmergencyPhone}`,
+								borderRadius: '3px'
+							}}
+						>
 							<Input
 								type="text"
 								name="primary_emergency_phone"
@@ -357,7 +640,12 @@ const StudentForm = props => {
 					</div>
 					<div style={{ gridColumn: 'span 2' }}>
 						<Label>Emergency Contact Name</Label>
-						<div>
+						<div
+							style={{
+								border: `1px solid ${errorBorderEmergencyContactName}`,
+								borderRadius: '3px'
+							}}
+						>
 							<Input
 								type="text"
 								name="emergency_contact_name"
@@ -370,7 +658,12 @@ const StudentForm = props => {
 					</div>
 					<div>
 						<Label>Relationship</Label>
-						<div>
+						<div
+							style={{
+								border: `1px solid ${errorBorderEmergencyRelationship}`,
+								borderRadius: '3px'
+							}}
+						>
 							<Input
 								type="text"
 								name="emergency_relationship"
@@ -382,7 +675,12 @@ const StudentForm = props => {
 					</div>
 					<div>
 						<Label>Phone Number</Label>
-						<div>
+						<div
+							style={{
+								border: `1px solid ${errorBorderEmergencyPhone}`,
+								borderRadius: '3px'
+							}}
+						>
 							<Input
 								type="text"
 								name="emergency_phone"
@@ -394,7 +692,12 @@ const StudentForm = props => {
 					</div>
 					<div>
 						<Label>Grade Updated</Label>
-						<div>
+						<div
+							style={{
+								border: `1px solid ${errorBorderGradeUpdated}`,
+								borderRadius: '3px'
+							}}
+						>
 							<Input
 								type="date"
 								name="grade_updated"
@@ -417,7 +720,12 @@ const StudentForm = props => {
                         </div> */}
 						<div>
 							<Label>No Call</Label>
-							<div>
+							<div
+								style={{
+									border: `1px solid ${errorBorderNoCall}`,
+									borderRadius: '3px'
+								}}
+							>
 								<Dropdown
 									controlClassName="myControlClassName"
 									className="dropdown"
@@ -430,7 +738,12 @@ const StudentForm = props => {
 						</div>
 						<div>
 							<Label>Delinquent</Label>
-							<div>
+							<div
+								style={{
+									border: `1px solid ${errorBorderDelinquent}`,
+									borderRadius: '3px'
+								}}
+							>
 								<Dropdown
 									controlClassName="myControlClassName"
 									className="dropdown"
@@ -443,7 +756,12 @@ const StudentForm = props => {
 						</div>
 						<div>
 							<Label>Expelled</Label>
-							<div>
+							<div
+								style={{
+									border: `1px solid ${errorBorderExpelled}`,
+									borderRadius: '3px'
+								}}
+							>
 								<Dropdown
 									controlClassName="myControlClassName"
 									className="dropdown"
@@ -457,7 +775,12 @@ const StudentForm = props => {
 					</div>
 					<div style={{ gridColumn: 'span 4' }}>
 						<Label>Notes</Label>
-						<div>
+						<div
+							style={{
+								border: `1px solid ${errorBorderNotes}`,
+								borderRadius: '3px'
+							}}
+						>
 							<textarea
 								style={{
 									width: '100%',

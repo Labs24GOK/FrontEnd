@@ -99,8 +99,8 @@ const StudentRegistrationForm = props => {
 	const [errorBorderBuilding, setErrorBorderBuilding] = useState('transparent'); //error #C73642
 	const [errorBorderFlat, setErrorBorderFlat] = useState('transparent'); //error #C73642
 	const [
-		errorBorderprimaryEmergencyContactName,
-		setErrorBorderprimaryEmergencyContactName
+		errorBorderPrimaryEmergencyContactName,
+		setErrorBorderPrimaryEmergencyContactName
 	] = useState('transparent'); //error #C73642
 	const [
 		errorBorderPrimaryEmergencyRelationship,
@@ -136,67 +136,67 @@ const StudentRegistrationForm = props => {
 		// check for required fields
 		if (
 			student.cpr === '' ||
-			student.firstName === '' ||
-			student.additionalNames === '' ||
+			student.first_name === '' ||
+			student.additional_names === '' ||
 			student.gender === '' ||
-			student.homeTelephone === '' ||
-			student.mobileTelephone === '' ||
+			student.home_telephone === '' ||
+			// student.mobile_telephone === '' ||
 			student.email === '' ||
-			student.contactTypeId === '' ||
+			student.preferred_contact_type_id === '' ||
 			student.birthdate === '' ||
-			student.schoolName === '' ||
-			student.schoolGradeId === '' ||
-			student.locationId === '' ||
-			student.block === '' ||
+			student.school_name === '' ||
+			student.school_grade_id === '' ||
+			student.location_id === '' ||
+			student.block_code === '' ||
 			student.road === '' ||
 			student.building === '' ||
 			student.flat === '' ||
-			student.primaryEmergencyContactName === '' ||
-			student.primaryEmergencyRelationship === '' ||
-			student.primaryEmergencyPhone === '' ||
-			student.EmergencyContactName === '' ||
-			student.emergencyRelationship === '' ||
-			student.emergencyPhone === '' ||
-			student.notes === ''
+			student.primary_emergency_contact_name === '' ||
+			student.primary_emergency_relationship === '' ||
+			student.primary_emergency_phone === ''
+			// student.emergency_contact_name === '' ||
+			// student.emergency_relationship === '' ||
+			// student.emergency_phone === '' ||
+			// student.notes === ''
 		) {
 			// highlight all that were missed
 			if (student.cpr === '') {
 				setErrorBorderCpr('#ef6570');
 			}
-			if (student.firstName === '') {
+			if (student.first_name === '') {
 				setErrorBorderFirstName('#ef6570');
 			}
-			if (student.additionalNames === '') {
+			if (student.additional_names === '') {
 				setErrorBorderAdditionalNames('#ef6570');
 			}
 			if (student.gender === '') {
 				setErrorBorderGender('#ef6570');
 			}
-			if (student.homeTelephone === '') {
+			if (student.home_telephone === '') {
 				setErrorBorderHomeTelephone('#ef6570');
 			}
-			if (student.mobileTelephone === '') {
-				setErrorBorderMobileTelephone('#ef6570');
-			}
+			// if (student.mobile_telephone === '') {
+			// 	setErrorBorderMobileTelephone('#ef6570');
+			// }
 			if (student.email === '') {
 				setErrorBorderEmail('#ef6570');
 			}
-			if (student.contactTypeId === '') {
+			if (student.preferred_contact_type_id === '') {
 				setErrorBorderContactType('#ef6570');
 			}
 			if (student.birthdate === '') {
 				setErrorBorderBirthdate('#ef6570');
 			}
-			if (student.schoolName === '') {
+			if (student.school_name === '') {
 				setErrorBorderSchoolName('#ef6570');
 			}
-			if (student.schoolGradeId === '') {
+			if (student.school_grade_id === '') {
 				setErrorBorderSchoolGrade('#ef6570');
 			}
-			if (student.locationId === '') {
+			if (student.location_id === '') {
 				setErrorBorderLocation('#ef6570');
 			}
-			if (student.block === '') {
+			if (student.block_code === '') {
 				setErrorBorderBlock('#ef6570');
 			}
 			if (student.road === '') {
@@ -208,27 +208,27 @@ const StudentRegistrationForm = props => {
 			if (student.flat === '') {
 				setErrorBorderFlat('#ef6570');
 			}
-			if (student.primaryEmergencyContactName === '') {
-				setErrorBorderprimaryEmergencyContactName('ef6570');
+			if (student.primary_emergency_contact_name === '') {
+				setErrorBorderPrimaryEmergencyContactName('#ef6570');
 			}
-			if (student.primaryEmergencyRelationship === '') {
-				setErrorBorderPrimaryEmergencyRelationship('ef6570');
+			if (student.primary_emergency_relationship === '') {
+				setErrorBorderPrimaryEmergencyRelationship('#ef6570');
 			}
-			if (student.primaryEmergencyPhone === '') {
-				setErrorBorderPrimaryEmergencyPhone('ef6570');
+			if (student.primary_emergency_phone === '') {
+				setErrorBorderPrimaryEmergencyPhone('#ef6570');
 			}
-			if (student.EmergencyContactName === '') {
-				setErrorBorderEmergencyContactName('ef6570');
-			}
-			if (student.EmergencyRelationship === '') {
-				setErrorBorderEmergencyRelationship('ef6570');
-			}
-			if (student.EmergencyPhone === '') {
-				setErrorBorderEmergencyPhone('ef6570');
-			}
-			if (student.notes === '') {
-				setErrorBorderNotes('#ef6570');
-			}
+			// if (student.emergency_contact_name === '') {
+			// 	setErrorBorderEmergencyContactName('ef6570');
+			// }
+			// if (student.emergency_relationship === '') {
+			// 	setErrorBorderEmergencyRelationship('ef6570');
+			// }
+			// if (student.emergency_phone === '') {
+			// 	setErrorBorderEmergencyPhone('ef6570');
+			// }
+			// if (student.notes === '') {
+			// 	setErrorBorderNotes('#ef6570');
+			// }
 		} else {
 			//console.log("Student request body", student)
 			// const birthdateDate = moment(student.birthdate).toDate();
@@ -527,7 +527,7 @@ const StudentRegistrationForm = props => {
 						<Label>Primary Emergency Contact Name</Label>
 						<div
 							style={{
-								border: `1px solid ${errorBorderprimaryEmergencyContactName}`,
+								border: `1px solid ${errorBorderPrimaryEmergencyContactName}`,
 								borderRadius: '3px'
 							}}
 						>
