@@ -8,7 +8,7 @@ import { dateConverter } from '../../../../../utils/helpers.js';
 import '../../students/studentCard/studentTable.scss'
 
 const ViewAttendanceModule = props => {
-
+console.log(props.info)
     const tableColumns = [
         {
           title: 'Date',
@@ -44,7 +44,7 @@ const ViewAttendanceModule = props => {
                 <>
                     <Modal
                         width= "30%"
-                        title={`Attendance Records - ${props.info.term} / Section ${props.info.section} / ${props.info.term}`}
+                        title={`Attendance Records - ${props.studentById.first_name} ${props.studentById.additional_names}`}
                         visible={props.modalVisible.visible}
                         onOk={handleOk}
                         onCancel={handleCancel}
@@ -53,7 +53,7 @@ const ViewAttendanceModule = props => {
                                 Return
                         </Button>,
                         ]}>
-                        <p>{`Student - ${props.studentById.first_name} ${props.studentById.additional_names}`}</p>
+                        <p>{`${props.info.term} - Section ${props.info.section} - ${props.info.course_level}`}</p>
                         <Table dataSource={attendanceData} 
                             columns={tableColumns} 
                           />
