@@ -49,7 +49,6 @@ const StudentTable = props => {
     {
       title: 'Gender',
       dataIndex: 'gender',
-      filters: [{ text: 'M', value: 'male' }, { text: 'F', value: 'female' }],
       key: 5,
     },
     {
