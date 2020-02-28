@@ -4,4 +4,4 @@ exclude_patterns:
   - "spec/"
   - "**/vendor/"
   - "**/node_modules/"
-  - "**/adminDashboardReducers/*.test.js"
+  - "**/src/reducers/adminDashboardReducers/*.test.js"
