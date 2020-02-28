@@ -1,11 +1,11 @@
-import React, { useState,useEffect } from 'react';
+import '../../students/studentCard/studentTable.scss'
+
+import { Button, Icon, Input, Modal, Spin, Table, } from 'antd';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { getStudentAttendanceTable, getStudentById } from '../../../../../actions';
-import { Table, Button, Modal, Spin, Input, Icon,  } from 'antd';
 import { dateConverter } from '../../../../../utils/helpers.js';
-
-import '../../students/studentCard/studentTable.scss'
 
 const ViewAttendanceModule = props => {
 console.log(props.info)
@@ -36,7 +36,7 @@ console.log(props.info)
     };
   
     const attendanceData = props.attendanceList.attendanceList;
-    
+    console.log('attendanceData', attendanceData);
     return (
         <>
             {props.isLoading ? <Spin style={{ marginTop: '150px' }} size="large" />
