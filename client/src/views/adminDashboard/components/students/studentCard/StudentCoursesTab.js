@@ -32,16 +32,16 @@ const [state, setState] = useState({
 });
 
 const statusArr = [
-  { value: -3, label: 'Unconfirmed'},
-  { value: -2, label: 'No Show'},
-  { value: -1, label: 'Unenrolled'},
-  { value: 0, label: 'Dropped'},
-  { value: 1, label: 'Transferred'},
-  { value: 2, label: 'Failed'},
-  {value: 3, label: 'Incomplete'},
-  {value: 4, label: 'No Exam'},
-  {value: 5, label: 'Passed'},
-  {value: 6, label: 'Confirmed'},
+  {value: -3, label: 'unconfirmed'},
+  {value: -2, label: 'no show'},
+  {value: -1, label: 'cancelled enrollment'},
+  {value: 0, label: 'drop'},
+  {value: 1, label: 'transfer out'},
+  {value: 2, label: 'fail'},
+  {value: 3, label: 'incomplete'},
+  {value: 4, label: 'no exam'},
+  {value: 5, label: 'pass'},
+  {value: 6, label: 'confirm'},
 ];
 
 const areYouSureYouWantToDelete = e => {
@@ -102,41 +102,51 @@ const deleteStudentInfo = async () => {
 
   const studentCourseColumns = [
     {
-      title: 'Course ID',
-      dataIndex: 'course_id',
-      key: 1,
-    },
-    {
       title: 'Term',
       dataIndex: 'term',
-      key: 2
-    },
-    {
-      title: 'Group Type',
-      dataIndex: 'group_type',
-      key: 3
-    },
-    {
-      title: 'Level',
-      dataIndex: 'course_level',
-      key: 4
-    },
-    {
-      title: 'Section',
-      dataIndex: 'section',
-      key: 5
-    },
-    {
-      title: 'Course Type',
-      dataIndex: 'course_type',
-      key: 6,
-      sortDirections: ['descend']
+      key: 1,
     },
     {
       title: 'Days',
       dataIndex: 'course_days',
-      key: 7,
+      key: 2,
       sortDirections: ['descend']
+    },
+    {
+    title: 'Type',
+    dataIndex: 'course_type',
+    key: 3,
+    sortDirections: ['descend']
+    },
+    {
+      title: 'Group Type',
+      dataIndex: 'group_type',
+      key: 4,
+    },
+    {
+      title: 'Level',
+      dataIndex: 'course_level',
+      key: 5,
+    },
+    {
+      title: 'Section',
+      dataIndex: 'section',
+      key: 6,
+    },
+    {
+      title: 'Status',
+      dataIndex: 'result_type_code',
+      key: 7,
+      render: (value) => {
+        return  <Dropdown
+        controlClassName='myControlClassName'
+        className='dropdown'
+        name='result_type_code'
+        onChange={(e) => editStudentStatus(e)}
+        value={statusArr[value+3]}
+        options={statusArr}
+    />
+      }
     },
     {
       title: 'First Day',
@@ -155,24 +165,9 @@ const deleteStudentInfo = async () => {
       }
     },
     {
-      title: 'Status',
-      dataIndex: 'result_type_code',
-      key: 10,
-      render: (value) => {
-        return  <Dropdown
-        controlClassName='myControlClassName'
-        className='dropdown'
-        name='result_type_code'
-        onChange={(e) => editStudentStatus(e)}
-        value={statusArr[value+3]}
-        options={statusArr}
-    />
-      }
-    },
-    {
       title: 'Attendance',
       dataIndex: 'attendance',
-      key: 11,
+      key: 10,
       render: () => {
         return  <Button onClick={() => {
           props.getStudentAttendanceTable(courseID)
@@ -184,7 +179,7 @@ const deleteStudentInfo = async () => {
     {
       title: 'Unenroll',
       dataIndex: 'unenroll',
-      key: 12,
+      key: 11,
       render: () => {
         return          <Button
         onClick={areYouSureYouWantToDelete}
@@ -198,7 +193,6 @@ const deleteStudentInfo = async () => {
   return (
     <>
     <div className='row-above'>
-      <div></div>
         <div
           className='create-new-entry'
           style={{ cursor: 'pointer', color: '#26ABBD' }}
