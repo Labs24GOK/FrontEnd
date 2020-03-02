@@ -69,7 +69,6 @@ if (props.staffById.active === false){
   };
 
   const formSubmit = e => {
-    //console.log("THIS IS STATE", state)
     e.preventDefault();
     props.editStaffById(staffID, state);
   };
@@ -139,7 +138,7 @@ if (props.staffById.active === false){
             <Label>Mobile Number</Label>
             <div>
               <Input
-                type="text" //use date for calendar
+                type="text"
                 name="mobile_number"
                 placeholder="Mobile Number"
                 onChange={handleChange}

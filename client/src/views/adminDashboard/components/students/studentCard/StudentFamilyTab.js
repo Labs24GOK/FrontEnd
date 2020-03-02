@@ -12,7 +12,6 @@ import {
 } from '../../mainStyle/styledComponent';
 
 const StudentFamilyTab = props => {
-	console.log(props);
 	useEffect(() => {
 		props.getStudentById(props.studentID);
 	}, []);

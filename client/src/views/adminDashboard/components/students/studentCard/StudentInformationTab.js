@@ -22,7 +22,6 @@ import {
 import Modal from '../../modals/DeleteModal';
 
 const StudentInformationTab = props => {
-	console.log(props);
 	useEffect(() => {
 		props.getStudentById(props.studentID);
 	}, []);

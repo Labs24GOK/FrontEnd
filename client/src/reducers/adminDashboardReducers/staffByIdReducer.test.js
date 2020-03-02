@@ -19,7 +19,6 @@ describe('Staff By ID Reducer', () => {
       payload: expectedState
     });
     newState = store.getState();
-    //console.log(newState.staffByIdReducer);
     expect(
       Object.keys(newState.staffByIdReducer.staffById).length
     ).toBeGreaterThan(0);

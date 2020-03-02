@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { getStudentByFamilyId } from '../../../../actions';
@@ -14,7 +14,6 @@ const StudentInfo = props => {
         props.getStudentByFamilyId();
     },[])
 
-//console.log('student info props', props)
  //create a fn or statement for full name
 
 //   if(!props.studentByFamilyId) {
@@ -53,7 +52,6 @@ const StudentInfo = props => {
         </>
     )
 }
-
 
 
 

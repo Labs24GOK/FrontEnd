@@ -10,7 +10,6 @@ function NavBar(props) {
   const [selected, setSelected] = useState(false);
 
   useEffect(() => {
-    //console.log('NAVBAR HEREEE: ', props)
     if (props.location.pathname === "/about-us") {
       setSelected('about');
     }

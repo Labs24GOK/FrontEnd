@@ -1,6 +1,5 @@
 import 'react-dropdown/style.css';
 import '../StaffTable.scss';
-
 import { Button, DatePicker, Modal, Spin, Table } from 'antd';
 import axios from 'axios';
 import moment from 'moment';
@@ -20,11 +19,9 @@ import {
   RightTopDiv,
   TopSection,
 } from '../../mainStyle/styledComponent.js';
-// import { dateConverter } from '../../../../../utils/helpers';
 
 const AttendanceModal = props => {
   //set initial State
-  console.log('props', props);
   const [state, setState] = useState({
     meeting: {
       teacher_id: props.staffID,
@@ -45,7 +42,6 @@ const AttendanceModal = props => {
   const [attendees, setAttendees] = useState([]);
 
   useEffect(() => {
-    console.log('props.courseID', props.courseID);
 
     setState(state => ({
       ...state,
@@ -57,15 +53,9 @@ const AttendanceModal = props => {
   }, [props.courseID]);
 
   useEffect(() => {
-    console.log('state.meeting.teacher_id', state.meeting.teacher_id);
-  }, [state.meeting.teacher_id]);
-
-  useEffect(() => {
-    console.log('state', state);
   
     //AXIOS call to get all necessary information and (by not being in a Redux action) gives the ability to manipulate student array more effectively.
     if (state.meeting.meeting_date && state.meeting.course_id) {
-      console.log('inside axios call');
 
       axios
         .get(
@@ -139,7 +129,6 @@ const AttendanceModal = props => {
         attendance: each.attendance,
       };
     });
-    console.log('attendance', { ...state, students: studentsArr });
     props.postStudentAttendance({ ...state, students: studentsArr });
     //Closes modal
     props.setModalVisible({ loading: false, visible: false });
@@ -184,13 +173,6 @@ const AttendanceModal = props => {
   //dateFormat for moment()
   const dateFormat = 'YYYY-MM-DD';
 
-  // const disabledDates = date => {
-  //   console.log("STARTING DATE", `${moment(props.startDate).format('YYYY-MM-DD')}`)
-  //   const beginDate = moment(props.startDate).format('YYYY-MM-DD')
-  //   const lastDate = moment(props.endDate).format('YYYY-MM-DD')
-  //   return date < moment(`${beginDate}`) 
-  // }
-
   //actual Rendering on web page
   return (
     <>
@@ -219,7 +201,6 @@ const AttendanceModal = props => {
                 <DatePicker
                   size='default'
                   className='attendanceDate'
-                  // disabledDate={disabledDates}
                   onChange={changeHandler}
                   defaultValue={moment()}
                   style={{ width: 120 }}
