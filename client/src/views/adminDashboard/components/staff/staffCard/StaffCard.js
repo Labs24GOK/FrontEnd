@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getStaffById, toggleEditComponent } from '../../../../../actions';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import StaffInformationTab from './StaffInformationTab';
 import StaffCoursesTab from './StaffCoursesTab';
 import { Header, Image, Icon, Tab } from 'semantic-ui-react';
@@ -11,10 +11,7 @@ import '../../mainStyle/mainCard.scss';
 const StaffCard = props => {
   useEffect(() => {
     props.getStaffById(props.staffID);
-    //console.log("it's running");
   }, [props.staffID]);
-
-  //console.log('STAFF BY ID', props.staffById);
 
   const panes = [
     {

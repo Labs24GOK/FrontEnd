@@ -8,7 +8,6 @@ import { getStudentAttendanceTable, getStudentById } from '../../../../../action
 import { dateConverter } from '../../../../../utils/helpers.js';
 
 const ViewAttendanceModule = props => {
-console.log(props.info)
     const tableColumns = [
         {
           title: 'Date',
@@ -36,7 +35,6 @@ console.log(props.info)
     };
   
     const attendanceData = props.attendanceList.attendanceList;
-    console.log('attendanceData', attendanceData);
     return (
         <>
             {props.isLoading ? <Spin style={{ marginTop: '150px' }} size="large" />

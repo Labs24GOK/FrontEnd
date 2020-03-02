@@ -22,7 +22,6 @@ import {
 } from '../../mainStyle/styledComponent';
 
 const StudentForm = props => {
-	console.log('STUDENT EDIT FORM PROPS', props);
 
 	const { studentID } = props;
 
@@ -144,7 +143,6 @@ const StudentForm = props => {
 	}
 
 	const handleSubmit = e => {
-		console.log('THIS IS STUDENT SUBMIT STATE:', state);
 		e.preventDefault();
 		// check for required fields
 		if (
@@ -259,7 +257,6 @@ const StudentForm = props => {
 			// 	setErrorBorderNotes('#ef6570');
 			// }
 		} else {
-			//console.log("Student request body", student)
 			// const birthdateDate = moment(student.birthdate).toDate();
 			// const birthdateISO = birthdateDate.toISOString()
 			props.editStudentById(studentID, state);
@@ -303,7 +300,6 @@ const StudentForm = props => {
 		{ label: 'Yes', value: true },
 		{ label: 'No', value: false }
 	];
-	console.log(props.locationsTable);
 	return (
 		<FormWrap onSubmit={handleSubmit}>
 			<FormSet>

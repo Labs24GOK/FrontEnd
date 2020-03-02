@@ -16,7 +16,6 @@ export const getPlacementTests = () => dispatch => {
 			});
 		})
 		.catch(err => {
-			//console.log('err', err);
 			dispatch({ type: FETCH_PLACEMENTTESTS_FAILURE, payload: err.payload });
 		});
 };
@@ -59,7 +58,6 @@ export const editPlacementTestById = (id, state) => dispatch => {
 	axios
 		.put(`${API_URL}/api/?table=student&where=student_id=${id}`, state)
 		.then(res => {
-			//console.log('res for editPlacementById', res);
 			dispatch({
 				type: EDIT_PLACEMENTTESTTBYID_SUCCESS,
 				payload: res.data

@@ -14,7 +14,6 @@ ReactGA.pageview(window.location.pathname + window.location.search);
 function AboutUs(props) {
   useEffect(() => {
     props.toggle()
-    //console.log('ABOUT US', props)
   }, [])
 
   return (

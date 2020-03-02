@@ -11,7 +11,7 @@ import StaffRegistrationForm from './StaffRegistrationForm';
 import SearchStaffTable from './SearchStaffTable';
 
 const StaffTable = props => {
-  //console.log(props.staffList);
+
   const { availableID } = props;
   const [form, setForm] = useState(false);
   useEffect(() => {

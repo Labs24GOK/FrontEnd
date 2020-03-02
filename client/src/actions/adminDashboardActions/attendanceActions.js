@@ -36,7 +36,6 @@ export const postStudentAttendance = state => dispatch => {
   axios
     .post(`${API_URL}/attendance`, state)
     .then(res => {
-      //console.log(res);
       if (res.status === 201) {
         openSuccessNotification('success')
         dispatch({

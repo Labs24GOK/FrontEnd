@@ -12,7 +12,6 @@ export const getCourseTable = () => dispatch => {
   axios
     .get(`${API_URL}/course`)
     .then(res => {
-      //console.log('RES FOR COURSE TABLE', res);
       dispatch({
         type: FETCH_COURSES_SUCCESS,
         payload: res.data
@@ -38,7 +37,6 @@ export const getCourseById = id => dispatch => {
   axios
     .get(`${API_URL}/course/${id}`)
     .then(res => {
-      //console.log('RES FROM FETCH COURSEBYID', res);
       dispatch({
         type: FETCH_COURSEBYID_SUCCESS,
         payload: res.data
@@ -64,7 +62,6 @@ export const getDropDownCourses = () => dispatch => {
   axios
     .get(`${API_URL}/course/dropdowns`)
     .then(res => {
-      //console.log('RES FOR DROPDOWNCOURSES', res);
       dispatch({
         type: FETCH_DROPDOWNCOURSES_SUCCESS,
         payload: res.data
@@ -83,7 +80,6 @@ export const ADD_COURSE_SUCCESS = 'ADD_COURSE_SUCCESS';
 export const ADD_COURSE_FAILURE = 'ADD_COURSE_FAILURE';
 
 export const addCourse = course => dispatch => {
-  // console.log(course)
   let {
     course_schedule_id,
     course_type_id,
@@ -106,19 +102,16 @@ export const addCourse = course => dispatch => {
     term_id: term_id.value
   };
 
-  //console.log(newCourse);
   dispatch({ type: ADD_COURSE_START });
   axios
     .post(`${API_URL}/course`, newCourse)
     .then(res => {
-      //console.log('res from AddCourse', res);
       dispatch({
         type: ADD_COURSE_SUCCESS,
         payload: res.data
       });
     })
     .catch(err => {
-      //console.log('err', err);
       dispatch({ type: ADD_COURSE_FAILURE, payload: err });
     });
 };
@@ -203,7 +196,6 @@ export const getStudentTableByCourseID = course_id => dispatch => {
   axios
     .get(`${API_URL}/course/${course_id}/students`)
     .then(res => {
-      //console.log('res in courseAction.js', res);
       dispatch({
         type: DISPLAY_STUDENTSBYCOURSEID_SUCCESS,
         payload: res.data
@@ -227,7 +219,6 @@ export const filterCourseTable = searchTerm => dispatch => {
   axios
     .get(`${API_URL}/course`)
     .then(res => {
-      //console.log('Set filter courses filter get', res);
       searchTerm = searchTerm.toLowerCase();
       let courseList = res.data;
       courseList = courseList.filter(course => {
@@ -291,7 +282,6 @@ export const filterCourseTable = searchTerm => dispatch => {
       });
     })
     .catch(err => {
-      //console.log('err', err);
       dispatch({
         type: FETCH_COURSES_FAILURE,
         payload: err.payload
