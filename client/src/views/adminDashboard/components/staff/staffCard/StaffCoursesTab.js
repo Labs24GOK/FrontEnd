@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import '../../students/studentCard/studentTable.scss';
+
+import { Button, Spin, Table } from 'antd';
+import moment from 'moment'
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { getStaffCourses, getStudentsByCourseID } from '../../../../../actions';
-import AttendanceModal from './AttendanceModal';
-import { Table, Button, Spin } from 'antd';
 import { timeConverter } from '../../../../../utils/helpers.js';
-import moment from 'moment'
-import '../../students/studentCard/studentTable.scss';
+import AttendanceModal from './AttendanceModal';
 
 const StaffCoursesTab = props => {
 
@@ -40,24 +41,18 @@ const StaffCoursesTab = props => {
       key: 2,
     },
     {
-      title: 'Start Time',
-      dataIndex: 'start_time',
-      key: 3,
-      render: (value, row, index) => {
-        return <span>{timeConverter(value)}</span>;
-      },
-    },
-    {
-      title: 'End Time',
-      dataIndex: 'end_time',
-      key: 4,
-      render: (value, row, index) => {
-        return <span>{timeConverter(value)}</span>;
-      },
-    },
-    {
       title: 'Group Type',
       dataIndex: 'group_type',
+      key: 3,
+    },
+    {
+      title: 'Level',
+      dataIndex: 'level',
+      key: 4,
+    },
+    {
+      title: 'Section',
+      dataIndex: 'section',
       key: 5,
     },
     {
@@ -66,23 +61,34 @@ const StaffCoursesTab = props => {
       key: 6,
     },
     {
-      title: 'Level',
-      dataIndex: 'level',
+      title: 'Course Schedule',
+      dataIndex: 'course_schedule',
       key: 7,
     },
     {
-      title: 'Section',
-      dataIndex: 'section',
+      title: 'Start Time',
+      dataIndex: 'start_time',
       key: 8,
+      render: (value, row, index) => {
+        return <span>{timeConverter(value)}</span>;
+      },
+    },
+    {
+      title: 'End Time',
+      dataIndex: 'end_time',
+      key: 9,
+      render: (value, row, index) => {
+        return <span>{timeConverter(value)}</span>;
+      },
     },
     {
       title: 'Status',
       dataIndex: 'status',
-      key: 9,
+      key: 10,
     },
     {
       title: 'Attendance',
-      key: 10,
+      key: 11,
       render: (text, record) => {
         return (
           <Button
