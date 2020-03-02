@@ -70,12 +70,6 @@ const EnrollStudentForm = props => {
   }
 
   function handleSubmit(event) {
-    console.log(
-      'this is state',
-      state,
-      props.studentById.student_id,
-      course.course_id
-    );
     event.preventDefault();
     props.setForm(false);
     props.enrollStudent(

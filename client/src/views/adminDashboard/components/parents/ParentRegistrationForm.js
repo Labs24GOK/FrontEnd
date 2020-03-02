@@ -8,7 +8,6 @@ import '../mainStyle/mainTable.scss'
 
 
 const ParentRegistrationForm = (props) => {
-// console.log ( 'parent registry props', props)
 
   const [state, setState] = useState({
     id: props.parentList.id,
@@ -35,7 +34,6 @@ const ParentRegistrationForm = (props) => {
 
 
 const formSubmit = e => {
-    // console.log('add parent state sent', state)
   e.preventDefault();
   props.addParent(state)
 }

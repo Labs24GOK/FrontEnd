@@ -32,7 +32,6 @@ const DeleteModal = props => {
 };
 
 const mapStateToProps = state => {
-  //console.log(state);
   return {
     isVisible: state.deleteModalReducer.isVisible
   };

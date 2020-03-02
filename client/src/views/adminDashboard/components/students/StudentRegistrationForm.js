@@ -25,7 +25,6 @@ import {
 } from '../mainStyle/styledComponent';
 
 const StudentRegistrationForm = props => {
-	//console.log("STUDENT REGISTRATION FORM PROPS", props)
 	const [student, setStudent] = useState({
 		cpr: '',
 		registration_date: '',
@@ -217,20 +216,7 @@ const StudentRegistrationForm = props => {
 			if (student.primary_emergency_phone === '') {
 				setErrorBorderPrimaryEmergencyPhone('#ef6570');
 			}
-			// if (student.emergency_contact_name === '') {
-			// 	setErrorBorderEmergencyContactName('ef6570');
-			// }
-			// if (student.emergency_relationship === '') {
-			// 	setErrorBorderEmergencyRelationship('ef6570');
-			// }
-			// if (student.emergency_phone === '') {
-			// 	setErrorBorderEmergencyPhone('ef6570');
-			// }
-			// if (student.notes === '') {
-			// 	setErrorBorderNotes('#ef6570');
-			// }
 		} else {
-			//console.log("Student request body", student)
 			// const birthdateDate = moment(student.birthdate).toDate();
 			// const birthdateISO = birthdateDate.toISOString()
 			props.createNewStudent(student);

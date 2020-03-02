@@ -52,7 +52,6 @@ const statusArr = [
   };
 
   function handleSubmit(event) {
-    console.log("this is state", state, props.info.student_id, props.info.course_id )
     event.preventDefault();
     props.setEditForm(false);
     props.editEnrollStudent( props.info.student_id, props.info.course_id, state)

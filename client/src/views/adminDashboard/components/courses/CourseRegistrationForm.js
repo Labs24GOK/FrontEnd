@@ -40,7 +40,6 @@ const CourseRegistrationForm = props => {
   });
 
   const [grade, setGrade] = useState(0);
-  console.log('GRADE', grade);
 
   const status = ['Active', 'Completed', 'Waitlist', 'Cancelled'];
   const section = ['A', 'B', 'C'];
@@ -52,7 +51,7 @@ const CourseRegistrationForm = props => {
     });
   }
 
-  //validation
+  //validation state
   const [errorBorderTerm, setErrorBorderTerm] = useState('transparent'); //error #C73642
   const [errorBorderCourse, setErrorBorderCourse] = useState('transparent'); //error #C73642
   const [errorBorderGroup, setErrorBorderGroup] = useState('transparent'); //error #C73642
@@ -77,10 +76,9 @@ const CourseRegistrationForm = props => {
   const [errorBorderStatus, setErrorBorderStatus] = useState('transparent'); //error #C73642
 
   function handleSubmit(event) {
-    console.log('CREATE COURSE BODY', course);
     event.preventDefault();
 
-    //check for required fields
+    //check for required fields and set border
     if (
       course.term_id === '' ||
       course.course_type_id === '' ||

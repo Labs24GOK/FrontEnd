@@ -105,7 +105,6 @@ export const studentByIdReducer = (
         error: null
       };
     case EDIT_DROPDOWN_SUCCESS:
-      //console.log("ACTION.PAYLOAD", action.payload)
       let grade = action.payload.school_grades.map(each => {
         let obj = { value: each.id, label: each.name };
         return obj;
@@ -144,7 +143,6 @@ export const studentByIdReducer = (
       };
 
     // Delete by ID
-
     case DELETE_STUDENTBYID_START:
       return {
         ...state,
@@ -254,12 +252,3 @@ export const studentByIdReducer = (
       return state;
   }
 };
-
-/*
-  EDIT_ENROLL_STUDENT_START,
-  EDIT_ENROLL_STUDENT_SUCCESS,
-  EDIT_ENROLL_STUDENT_CANCELLED,
-  EDIT_ENROLL_STUDENT_FAILURE
-
-
-*/

@@ -22,7 +22,6 @@ import {
 } from '../../mainStyle/styledComponent';
 
 const CourseEditForm = props => {
-  console.log('COURSE EDIT FORM PROPS', props);
 
   const { courseID } = props;
 
@@ -74,7 +73,6 @@ const CourseEditForm = props => {
   ); //error #C73642
 
   const handleSubmit = e => {
-    console.log('THIS IS SUBMIT COURSE STATE', state);
     e.preventDefault();
     //check for required fields
     if (

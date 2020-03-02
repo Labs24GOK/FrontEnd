@@ -231,14 +231,12 @@ export const editStudentDropDown = () => dispatch => {
   axios
     .get(`${API_URL}/student/dropdowns`)
     .then(res => {
-      //console.log('RES FOR EDIT STUDENT DROPDOWN', res);
       dispatch({
         type: EDIT_DROPDOWN_SUCCESS,
         payload: res.data
       });
     })
     .catch(err => {
-      //console.log('err', err);
       dispatch({
         type: EDIT_DROPDOWN_FAILURE,
         payload: err.payload
