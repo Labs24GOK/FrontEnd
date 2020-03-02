@@ -58,15 +58,12 @@ export const toggleEditProgressComponent = () => dispatch => {
 };
 
 export const editStudentProgress = (student_id, state) => dispatch => {
-	//console.log('student_id', student_id);
-	//console.log('state', state);
 	axios
 		.put(
 			`${API_URL}/api/?table=progress_report&where=student_id=${student_id}`,
 			state
 		)
 		.then(res => {
-			//console.log('EDIT ACTION:', res);
 			dispatch({
 				type: EDIT_STUDENTPROGRESS_SUCCESS,
 				payload: res.data
