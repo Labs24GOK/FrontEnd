@@ -1,5 +1,6 @@
 import 'react-dropdown/style.css';
 import '../StaffTable.scss';
+
 import { Button, DatePicker, Modal, Spin, Table } from 'antd';
 import axios from 'axios';
 import moment from 'moment';
@@ -42,13 +43,13 @@ const AttendanceModal = props => {
   const [attendees, setAttendees] = useState([]);
 
   useEffect(() => {
-
     setState(state => ({
       ...state,
       meeting: {
         ...state.meeting,
         course_id: props.courseID,
       },
+      students: []
     }));
   }, [props.courseID]);
 
@@ -147,16 +148,6 @@ const AttendanceModal = props => {
 
   //Handles the "Return" button (closes modal and resets state as seen below)
   const handleCancel = () => {
-    setState({
-      meeting: {
-        teacher_id: '',
-        course_id: '',
-        meeting_date: moment().format('YYYY-MM-DD'),
-        notes: '',
-        material_covered: '',
-      },
-      students: [],
-    });
     props.setModalVisible({ visible: false });
   };
 
