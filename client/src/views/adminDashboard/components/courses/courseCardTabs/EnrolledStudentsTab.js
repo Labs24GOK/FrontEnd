@@ -104,14 +104,6 @@ const EnrolledStudentsTab = props => {
             columns={courseColumns}
             pagination={{ pageSize: 15 }}
             rowKey="id"
-            onRow={(record, rowIndex) => {
-              return {
-                onClick: event => {
-                  props.setCourseView('courseCardView');
-                  props.setCourseID(record.student_id);
-                }
-              };
-            }}
           />}
     </div>
   );
