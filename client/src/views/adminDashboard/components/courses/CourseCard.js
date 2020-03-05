@@ -11,6 +11,7 @@ import 'antd/dist/antd.css';
 import 'semantic-ui-css/semantic.min.css';
 
 const CourseCard = props => {
+  
   useEffect(() => {
     props.getCourseById(props.courseID);
   }, []);

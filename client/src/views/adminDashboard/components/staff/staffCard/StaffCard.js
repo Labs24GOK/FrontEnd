@@ -9,9 +9,12 @@ import 'antd/dist/antd.css';
 import '../../mainStyle/mainCard.scss';
 
 const StaffCard = props => {
+
+  const { staffID } = props
+
   useEffect(() => {
-    props.getStaffById(props.staffID);
-  }, [props.staffID]);
+    props.getStaffById(staffID);
+  }, [staffID]);
 
   const panes = [
     {
@@ -20,7 +23,7 @@ const StaffCard = props => {
         <Tab.Pane attached={false}>
           <StaffInformationTab
             setStaffView={props.setStaffView}
-            staffID={props.staffID}
+            staffID={staffID}
           />
         </Tab.Pane>
       )
@@ -31,7 +34,7 @@ const StaffCard = props => {
         <Tab.Pane attached={false}>
           {
             <StaffCoursesTab
-              staffID={props.staffID}
+              staffID={staffID}
               teacher={props.staffById.name}
             />
           }

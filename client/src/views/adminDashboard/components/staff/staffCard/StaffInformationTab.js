@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import {
   getStaffById,
@@ -19,18 +19,15 @@ import {
   Label
 } from '../../mainStyle/styledComponent';
 import Modal from '../../modals/DeleteModal';
+import { dateConverter } from  '../../../../../utils/helpers.js'
 
 const StaffInformationTab = props => {
-  //const [birthdate, setBirthdate] = useState(new Date().toLocaleDateString());
 
   useEffect(() => {
     props.getStaffById(props.staffID);
   }, [props.staffID]);
 
-  let options = { year: 'numeric', month: 'numeric', day: 'numeric' }; //'long'
-  let birthdate = new Date(
-    props.staffById && props.staffById.birthdate
-  ).toLocaleDateString('en-GB', options);
+  let birthdate = dateConverter(props.staffById.birthdate)
 
   const editStaffInfo = e => {
     e.preventDefault();
