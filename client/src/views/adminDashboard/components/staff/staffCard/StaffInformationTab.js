@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import {
   getStaffById,
   toggleStaffEditComponent,
   deleteStaffById,
-  toggleDeleteModel
+  toggleDeleteModel,
 } from '../../../../../actions';
 import { withRouter } from 'react-router-dom';
 import StaffForm from './StaffForm';
@@ -16,21 +16,17 @@ import {
   DeleteButton,
   FormSet,
   ButtonDiv,
-  Label
+  Label,
 } from '../../mainStyle/styledComponent';
 import Modal from '../../modals/DeleteModal';
+import { dateConverter } from '../../../../../utils/helpers.js';
 
 const StaffInformationTab = props => {
-  //const [birthdate, setBirthdate] = useState(new Date().toLocaleDateString());
-
   useEffect(() => {
     props.getStaffById(props.staffID);
   }, [props.staffID]);
 
-  let options = { year: 'numeric', month: 'numeric', day: 'numeric' }; //'long'
-  let birthdate = new Date(
-    props.staffById && props.staffById.birthdate
-  ).toLocaleDateString('en-GB', options);
+  let birthdate = dateConverter(props.staffById.birthdate);
 
   const editStaffInfo = e => {
     e.preventDefault();
@@ -141,10 +137,10 @@ const StaffInformationTab = props => {
               </Div>
             </FormSet>
             <ButtonDiv>
-              <SaveButton type="submit" onClick={editStaffInfo}>
+              <SaveButton type='submit' onClick={editStaffInfo}>
                 Edit
               </SaveButton>
-              <DeleteButton type="submit" onClick={areYouSureYouWantToDelete}>
+              <DeleteButton type='submit' onClick={areYouSureYouWantToDelete}>
                 Delete
               </DeleteButton>
             </ButtonDiv>
@@ -160,9 +156,8 @@ const StaffInformationTab = props => {
 
 const mapStateToProps = state => {
   return {
-    isLoading: state.staffByIdReducer.isLoading,
     staffById: state.staffByIdReducer.staffById,
-    isEditing: state.staffByIdReducer.isEditing
+    isEditing: state.staffByIdReducer.isEditing,
   };
 };
 
@@ -171,6 +166,6 @@ export default withRouter(
     getStaffById,
     toggleStaffEditComponent,
     deleteStaffById,
-    toggleDeleteModel
+    toggleDeleteModel,
   })(StaffInformationTab)
 );

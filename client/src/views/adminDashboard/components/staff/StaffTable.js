@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { getStaffTable } from '../../../../actions';
 import { Table, Spin } from 'antd';
 import 'antd/dist/antd.css';
@@ -88,13 +88,8 @@ const StaffTable = props => {
       return b.id - a.id;
     })
     .map(item => {
-      let options = { year: 'numeric', month: 'numeric', day: 'numeric' };
       item.birthdate = new Date(item.birthdate)
-        .toLocaleDateString
-        // BREAKING THE TABLE
-        // 'en-GB',
-        // options
-        ();
+        .toLocaleDateString();
       // TABLE DOES NOT SHOW TRUE OR FALSE VALUES
       item.user_type === 'admin'
         ? (item.isAdmin = 'Yes')
@@ -166,7 +161,6 @@ const mapStateToProps = state => {
   return {
     isLoading: state.staffTableReducer.isLoading,
     staffList: state.staffTableReducer.staffList,
-    error: state.staffTableReducer.error,
     availableID: state.staffTableReducer.availableID
   };
 };

@@ -39,8 +39,7 @@ const CourseRegistrationForm = props => {
     notes: ''
   });
 
-  const [grade, setGrade] = useState(0);
-
+  //Arrays for dropdown menus
   const status = ['Active', 'Completed', 'Waitlist', 'Cancelled'];
   const section = ['A', 'B', 'C'];
 
@@ -51,14 +50,13 @@ const CourseRegistrationForm = props => {
     });
   }
 
-  //validation state
+  //Set state for validation
   const [errorBorderTerm, setErrorBorderTerm] = useState('transparent'); //error #C73642
   const [errorBorderCourse, setErrorBorderCourse] = useState('transparent'); //error #C73642
   const [errorBorderGroup, setErrorBorderGroup] = useState('transparent'); //error #C73642
   const [errorBorderGrade, setErrorBorderGrade] = useState('transparent'); //error #C73642
   const [errorBorderLevel, setErrorBorderLevel] = useState('transparent'); //error #C73642
   const [errorBorderSection, setErrorBorderSection] = useState('transparent'); //error #C73642
-  // const [errorBorderGrade, setErrorBorderGrade] = useState('transparent'); //error #C73642
   const [errorBorderSchedule, setErrorBorderSchedule] = useState('transparent'); //error #C73642
   const [errorBorderStartDate, setErrorBorderStartDate] = useState(
     'transparent'
@@ -83,9 +81,10 @@ const CourseRegistrationForm = props => {
       course.term_id === '' ||
       course.course_type_id === '' ||
       course.group_type_id === '' ||
-      course.course_type_id &&
+      //in the below 3 lines the validation on the school_grade is set to block submission only if the course_type is government
+      (course.course_type_id && 
       course.course_type_id.value === 2 &&
-      course.school_grade_id === '' ||
+      course.school_grade_id === '') ||
       course.level_id === '' ||
       course.section === '' ||
       course.course_schedule_id === '' ||
@@ -113,6 +112,7 @@ const CourseRegistrationForm = props => {
       } else {
         setErrorBorderGroup('transparent');
       }
+      //in the below 3 lines the validation on the school_grade is set appear only if the course_type is government
       if (
         course.course_type_id &&
         course.course_type_id.value === 2 &&
@@ -477,7 +477,6 @@ const mapStateToProps = state => {
     courseScheduleDropdown: state.coursesTableReducer.courseScheduleTable,
     roomDropdown: state.coursesTableReducer.roomTable,
     teacherDropdown: state.coursesTableReducer.teacherTable,
-    isPosting: state.coursesTableReducer.isPosting,
   };
 };
 

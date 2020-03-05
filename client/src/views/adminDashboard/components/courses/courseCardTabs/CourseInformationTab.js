@@ -171,7 +171,6 @@ const CourseInformationTab = props => {
 
 const mapStateToProps = state => {
   return {
-    isLoading: state.coursesTableReducer.isLoading,
     courseById: state.coursesTableReducer.courseById,
     isEditing: state.coursesTableReducer.isEditing
   };

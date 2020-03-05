@@ -1,16 +1,15 @@
 import '../../students/studentCard/studentTable.scss';
 
 import { Button, Spin, Table } from 'antd';
-import moment from 'moment'
+import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { getStaffCourses, getStudentsByCourseID } from '../../../../../actions';
+import { getStaffCourses } from '../../../../../actions';
 import { timeConverter } from '../../../../../utils/helpers.js';
 import AttendanceModal from './AttendanceModal';
 
 const StaffCoursesTab = props => {
-
   const { staffID, teacher } = props;
 
   useEffect(() => {
@@ -22,10 +21,10 @@ const StaffCoursesTab = props => {
     loading: false,
   });
 
-  const [courseID, setCourseID] = useState(0)
+  const [courseID, setCourseID] = useState(0);
 
-  const [startDate, setStartDate] = useState(moment().format('YYYY-MM-DD'))
-  const [endDate, setEndDate] = useState(moment().format('YYYY-MM-DD'))
+  const [startDate, setStartDate] = useState(moment().format('YYYY-MM-DD'));
+  const [endDate, setEndDate] = useState(moment().format('YYYY-MM-DD'));
 
   const staffCourseColumns = [
     {
@@ -91,9 +90,9 @@ const StaffCoursesTab = props => {
         return (
           <Button
             onClick={() => {
-              setCourseID(record.course_id)
-              setStartDate(record.start_date)
-              setEndDate(record.end_date)
+              setCourseID(record.course_id);
+              setStartDate(record.start_date);
+              setEndDate(record.end_date);
               setModalVisible({ visible: true });
             }}
           >
@@ -135,12 +134,9 @@ const mapStateToProps = state => {
   return {
     isLoading: state.staffCourseReducer.isLoading,
     coursesByStaffId: state.staffCourseReducer.coursesByStaffId,
-    studentList: state.studentsByCourseIDReducer.studentByCourseId,
   };
 };
 
 export default withRouter(
-  connect(mapStateToProps, { getStaffCourses, getStudentsByCourseID })(
-    StaffCoursesTab
-  )
+  connect(mapStateToProps, { getStaffCourses })(StaffCoursesTab)
 );
