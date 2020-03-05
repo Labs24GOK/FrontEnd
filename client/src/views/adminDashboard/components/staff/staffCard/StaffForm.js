@@ -2,46 +2,51 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import {
   editStaffById,
-  toggleStaffEditComponent
+  toggleStaffEditComponent,
 } from '../../../../../actions';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import {
   FormWrap,
   Input,
-  Button,
   Div,
   FormSet,
   ButtonDiv,
   CancelButton,
   SaveButton,
-  Label
+  Label,
 } from '../../mainStyle/styledComponent';
 
 const StaffForm = props => {
   const { staffID } = props;
-  let birthdate = new Date(props.staffById.birthdate).toISOString().split("T")[0];
-  //('STAFF EDIT', props.staffById);
 
-  const genderArr = ['F', 'M']
+  //Using dateConverter function here results in date NOT populating in edit form
+  let birthdate = new Date(props.staffById.birthdate)
+    .toISOString()
+    .split('T')[0];
 
+  //Array for dropdown gender menu
+  const genderArr = ['F', 'M'];
+
+  //allows proper state to populat edit form for admin and active states
   let adminNum = 0;
-if (props.staffById.user_type === 'staff'){
-  adminNum = 1;
-}
+  if (props.staffById.user_type === 'staff') {
+    adminNum = 1;
+  }
 
-let activeNum = 0;
-if (props.staffById.active === false){
-  activeNum = 1;
-}
+  let activeNum = 0;
+  if (props.staffById.active === false) {
+    activeNum = 1;
+  }
+  //Arrays for dropdown menu
   const admin = [
     { label: 'Yes', value: true },
-    { label: 'No', value: false }
+    { label: 'No', value: false },
   ];
   const active = [
     { label: 'Yes', value: true },
-    { label: 'No', value: false }
+    { label: 'No', value: false },
   ];
 
   const [state, setState] = useState({
@@ -51,20 +56,18 @@ if (props.staffById.active === false){
     cpr: props.staffById.cpr,
     mobile_number: props.staffById.mobile_number,
     email: props.staffById.email,
-    gender: props.staffById.gender,
     accent: props.staffById.accent,
     gender: props.staffById.gender,
     birthdate: birthdate,
-    mobile_number: props.staffById.mobile_number,
     teaching_rate: props.staffById.teaching_rate,
     admin: props.staffById.user_type,
-    active: props.staffById.active
+    active: props.staffById.active,
   });
 
   const handleChange = e => {
     setState({
       ...state,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -86,9 +89,9 @@ if (props.staffById.active === false){
             <Label>Name</Label>
             <div>
               <Input
-                type="text"
-                name="name"
-                placeholder="Name"
+                type='text'
+                name='name'
+                placeholder='Name'
                 onChange={handleChange}
                 value={state.name}
               />
@@ -99,9 +102,9 @@ if (props.staffById.active === false){
             <Label>Short Name</Label>
             <div>
               <Input
-                type="text"
-                name="short_name"
-                placeholder="Short Name"
+                type='text'
+                name='short_name'
+                placeholder='Short Name'
                 onChange={handleChange}
                 value={state.short_name}
               />
@@ -112,9 +115,9 @@ if (props.staffById.active === false){
             <Label>Username</Label>
             <div>
               <Input
-                type="text"
-                name="username"
-                placeholder="Username"
+                type='text'
+                name='username'
+                placeholder='Username'
                 onChange={handleChange}
                 value={state.username}
               />
@@ -125,9 +128,9 @@ if (props.staffById.active === false){
             <Label>CPR</Label>
             <div>
               <Input
-                type="text"
-                name="cpr"
-                placeholder="CPR"
+                type='text'
+                name='cpr'
+                placeholder='CPR'
                 onChange={handleChange}
                 value={state.cpr}
               />
@@ -138,9 +141,9 @@ if (props.staffById.active === false){
             <Label>Mobile Number</Label>
             <div>
               <Input
-                type="text"
-                name="mobile_number"
-                placeholder="Mobile Number"
+                type='text'
+                name='mobile_number'
+                placeholder='Mobile Number'
                 onChange={handleChange}
                 value={state.mobile_number}
               />
@@ -151,9 +154,9 @@ if (props.staffById.active === false){
             <Label>Accent</Label>
             <div>
               <Input
-                type="text"
-                name="accent"
-                placeholder="Accent"
+                type='text'
+                name='accent'
+                placeholder='Accent'
                 onChange={handleChange}
                 value={state.accent}
               />
@@ -166,9 +169,9 @@ if (props.staffById.active === false){
               <Dropdown
                 onChange={e => setState({ ...state, gender: e.value })}
                 value={state.gender}
-                controlClassName="myControlClassName"
+                controlClassName='myControlClassName'
                 options={genderArr}
-                className="dropdown"
+                className='dropdown'
               />
             </div>
           </div>
@@ -177,9 +180,9 @@ if (props.staffById.active === false){
             <Label>Birthdate</Label>
             <div>
               <Input
-                type="date"
-                name="birthdate"
-                placeholder="birthdate"
+                type='date'
+                name='birthdate'
+                placeholder='birthdate'
                 onChange={handleChange}
                 value={state.birthdate}
               />
@@ -190,9 +193,9 @@ if (props.staffById.active === false){
             <Label>Teaching Rate</Label>
             <div>
               <Input
-                type="text"
-                name="teaching_rate"
-                placeholder="Teaching Rate"
+                type='text'
+                name='teaching_rate'
+                placeholder='Teaching Rate'
                 onChange={handleChange}
                 value={state.teaching_rate}
               />
@@ -205,8 +208,8 @@ if (props.staffById.active === false){
               <Dropdown
                 value={admin[adminNum].label}
                 onChange={e => setState({ ...state, admin: e.value })}
-                controlClassName="myControlClassName"
-                className="dropdown"
+                controlClassName='myControlClassName'
+                className='dropdown'
                 options={admin}
               />
             </div>
@@ -218,8 +221,8 @@ if (props.staffById.active === false){
               <Dropdown
                 value={active[activeNum].label}
                 onChange={e => setState({ ...state, active: e.value })}
-                controlClassName="myControlClassName"
-                className="dropdown"
+                controlClassName='myControlClassName'
+                className='dropdown'
                 options={active}
               />
             </div>
@@ -228,7 +231,7 @@ if (props.staffById.active === false){
       </FormSet>
       <ButtonDiv>
         <CancelButton onClick={closeBtn}>Cancel</CancelButton>
-        <SaveButton type="submit">Save</SaveButton>
+        <SaveButton type='submit'>Save</SaveButton>
       </ButtonDiv>
     </FormWrap>
   );

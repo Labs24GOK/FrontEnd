@@ -199,7 +199,6 @@ const mapStateToProps = state => {
     isLoading: state.coursesTableReducer.isLoading,
     isPosted: state.coursesTableReducer.isPosted,
     courseList: state.coursesTableReducer.courseList,
-    error: state.coursesTableReducer.error
   };
 };
 

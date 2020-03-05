@@ -3,7 +3,7 @@ import CourseTable from './CourseTable.js';
 import CourseCard from './CourseCard.js';
 
 const Course = () => {
-  const [clickedTabs, setClickedTab] = useState([]);
+  const [clickedTabs, setClickedTabs] = useState([]);
   const [courseView, setCourseView] = useState('courseTableView');
   const [courseID, setCourseID] = useState('');
 
@@ -13,7 +13,7 @@ const Course = () => {
         <CourseTable
           setCourseView={setCourseView}
           setCourseID={setCourseID}
-          setClickedTabs={setClickedTab}
+          setClickedTabs={setClickedTabs}
         />
       ) : courseView === 'courseCardView' ? (
         <CourseCard

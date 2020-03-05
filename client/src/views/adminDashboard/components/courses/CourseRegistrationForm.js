@@ -39,6 +39,7 @@ const CourseRegistrationForm = props => {
     notes: ''
   });
 
+  //Arrays for dropdown menus
   const status = ['Active', 'Completed', 'Waitlist', 'Cancelled'];
   const section = ['A', 'B', 'C'];
 
@@ -49,14 +50,13 @@ const CourseRegistrationForm = props => {
     });
   }
 
-  //validation state
+  //Set state for validation
   const [errorBorderTerm, setErrorBorderTerm] = useState('transparent'); //error #C73642
   const [errorBorderCourse, setErrorBorderCourse] = useState('transparent'); //error #C73642
   const [errorBorderGroup, setErrorBorderGroup] = useState('transparent'); //error #C73642
   const [errorBorderGrade, setErrorBorderGrade] = useState('transparent'); //error #C73642
   const [errorBorderLevel, setErrorBorderLevel] = useState('transparent'); //error #C73642
   const [errorBorderSection, setErrorBorderSection] = useState('transparent'); //error #C73642
-  // const [errorBorderGrade, setErrorBorderGrade] = useState('transparent'); //error #C73642
   const [errorBorderSchedule, setErrorBorderSchedule] = useState('transparent'); //error #C73642
   const [errorBorderStartDate, setErrorBorderStartDate] = useState(
     'transparent'
@@ -477,7 +477,6 @@ const mapStateToProps = state => {
     courseScheduleDropdown: state.coursesTableReducer.courseScheduleTable,
     roomDropdown: state.coursesTableReducer.roomTable,
     teacherDropdown: state.coursesTableReducer.teacherTable,
-    isPosting: state.coursesTableReducer.isPosting,
   };
 };
 

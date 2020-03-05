@@ -260,8 +260,5 @@ const mapStateToProps = state => {
 };
 
 export default withRouter(
-  connect(mapStateToProps, {
-    addStaff,
-    getStaffTable,
-  })(StaffRegistrationForm)
+  connect(mapStateToProps, { addStaff, getStaffTable })(StaffRegistrationForm)
 );

@@ -9,8 +9,7 @@ import 'antd/dist/antd.css';
 import '../../mainStyle/mainCard.scss';
 
 const StaffCard = props => {
-
-  const { staffID } = props
+  const { staffID } = props;
 
   useEffect(() => {
     props.getStaffById(staffID);
@@ -26,21 +25,16 @@ const StaffCard = props => {
             staffID={staffID}
           />
         </Tab.Pane>
-      )
+      ),
     },
     {
       menuItem: 'COURSES',
       render: () => (
         <Tab.Pane attached={false}>
-          {
-            <StaffCoursesTab
-              staffID={staffID}
-              teacher={props.staffById.name}
-            />
-          }
+          {<StaffCoursesTab staffID={staffID} teacher={props.staffById.name} />}
         </Tab.Pane>
-      )
-    }
+      ),
+    },
   ];
 
   const goBack = () => {
@@ -51,30 +45,30 @@ const StaffCard = props => {
 
   return (
     <div>
-      <div className="card">
+      <div className='card'>
         <div
-          className="back-button"
+          className='back-button'
           onClick={goBack}
           style={{ cursor: 'pointer', width: '10%' }}
         >
-          <Icon name="angle left" />
+          <Icon name='angle left' />
           Back
         </div>
-        <div className="card-title">
+        <div className='card-title'>
           <Image
-            src="https://react.semantic-ui.com/images/wireframe/square-image.png"
+            src='https://react.semantic-ui.com/images/wireframe/square-image.png'
             circular
-            size="small"
+            size='small'
           />
 
-          <Header as="h2">
+          <Header as='h2'>
             {props.staffById && props.staffById.name}
-            <div className="headerDiv">
+            <div className='headerDiv'>
               <div>
-                <div className="headerSeparateDiv">
+                <div className='headerSeparateDiv'>
                   CPR # {props.staffById && props.staffById.cpr}
                 </div>
-                <div className="headerSeparateDiv">
+                <div className='headerSeparateDiv'>
                   Staff ID: {props.staffById && props.staffById.staff_id}
                 </div>
               </div>
@@ -91,7 +85,7 @@ const mapStateToProps = state => {
   return {
     isLoading: state.staffByIdReducer.isLoading,
     staffById: state.staffByIdReducer.staffById,
-    error: state.staffByIdReducer.error
+    error: state.staffByIdReducer.error,
   };
 };
 

@@ -4,7 +4,7 @@ import {
   getStaffById,
   toggleStaffEditComponent,
   deleteStaffById,
-  toggleDeleteModel
+  toggleDeleteModel,
 } from '../../../../../actions';
 import { withRouter } from 'react-router-dom';
 import StaffForm from './StaffForm';
@@ -16,18 +16,17 @@ import {
   DeleteButton,
   FormSet,
   ButtonDiv,
-  Label
+  Label,
 } from '../../mainStyle/styledComponent';
 import Modal from '../../modals/DeleteModal';
-import { dateConverter } from  '../../../../../utils/helpers.js'
+import { dateConverter } from '../../../../../utils/helpers.js';
 
 const StaffInformationTab = props => {
-
   useEffect(() => {
     props.getStaffById(props.staffID);
   }, [props.staffID]);
 
-  let birthdate = dateConverter(props.staffById.birthdate)
+  let birthdate = dateConverter(props.staffById.birthdate);
 
   const editStaffInfo = e => {
     e.preventDefault();
@@ -138,10 +137,10 @@ const StaffInformationTab = props => {
               </Div>
             </FormSet>
             <ButtonDiv>
-              <SaveButton type="submit" onClick={editStaffInfo}>
+              <SaveButton type='submit' onClick={editStaffInfo}>
                 Edit
               </SaveButton>
-              <DeleteButton type="submit" onClick={areYouSureYouWantToDelete}>
+              <DeleteButton type='submit' onClick={areYouSureYouWantToDelete}>
                 Delete
               </DeleteButton>
             </ButtonDiv>
@@ -157,9 +156,8 @@ const StaffInformationTab = props => {
 
 const mapStateToProps = state => {
   return {
-    isLoading: state.staffByIdReducer.isLoading,
     staffById: state.staffByIdReducer.staffById,
-    isEditing: state.staffByIdReducer.isEditing
+    isEditing: state.staffByIdReducer.isEditing,
   };
 };
 
@@ -168,6 +166,6 @@ export default withRouter(
     getStaffById,
     toggleStaffEditComponent,
     deleteStaffById,
-    toggleDeleteModel
+    toggleDeleteModel,
   })(StaffInformationTab)
 );

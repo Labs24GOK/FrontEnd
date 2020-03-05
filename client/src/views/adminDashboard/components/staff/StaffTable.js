@@ -161,7 +161,6 @@ const mapStateToProps = state => {
   return {
     isLoading: state.staffTableReducer.isLoading,
     staffList: state.staffTableReducer.staffList,
-    error: state.staffTableReducer.error,
     availableID: state.staffTableReducer.availableID
   };
 };

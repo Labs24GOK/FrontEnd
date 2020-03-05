@@ -100,7 +100,6 @@ const mapStateToProps = state => {
     isLoading: state.coursesTableReducer.isLoading,
     enrolledStudents: state.coursesTableReducer.studentsById,
     courseID: state.coursesTableReducer.courseById.course_id,
-    error: state.coursesTableReducer.error,
   };
 };
 
