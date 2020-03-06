@@ -64,7 +64,7 @@ const StudentRegistrationForm = props => {
 	// set arrays of foreign key values to use in the dropdown (except 'gender' array it's not a foreign key)
 	const genderArr = ['F', 'M'];
 
-	// handle required fields (make them all required for now)
+	// handle required fields (mobileTelephone, emergencyContactName, emergencyRelationship, emergencyPhone, and notes were asked to not be required)
 	const [errorBorderCpr, setErrorBorderCpr] = useState('transparent'); //error #C73642
 	const [errorBorderFirstName, setErrorBorderFirstName] = useState(
 		'transparent'
@@ -132,7 +132,8 @@ const StudentRegistrationForm = props => {
 	function handleSubmit(event) {
 		event.preventDefault();
 
-		// check for required fields
+		// check for required fields, commented out fields indicate those that are not required
+		// those can be uncommented if stakeholder wants to require those fields in the future
 		if (
 			student.cpr === '' ||
 			student.first_name === '' ||
