@@ -17,25 +17,11 @@ export function timeConverter(time) {
 }
 
 export function dateConverter(date) {
-  // const tzAbbreviation = moment
-  //   .tz(date, currentTimeZone)
-  //   .format('z');
-
-  // const options = {
-  //   year: 'numeric',
-  //   month: 'numeric',
-  //   day: 'numeric',
-  //   timeZone: tzAbbreviation
-  // };
 
   let changedDate = moment
     .tz(date, currentTimeZone)
     .add(1, 'd')
     .format('DD/MM/YYYY');
 
-  // const changedDate = new Date(date).toLocaleDateString(
-  //   'en-GB',
-  //   options
-  // );
   return changedDate;
 }

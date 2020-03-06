@@ -9,7 +9,6 @@ import {
   getDropDownCourses,
   toggleEditCourse,
 } from '../../../../../actions';
-// import {  Icon } from 'semantic-ui-react'
 import {
   ButtonDiv,
   CancelButton,
@@ -22,7 +21,6 @@ import {
 } from '../../mainStyle/styledComponent';
 
 const CourseEditForm = props => {
-
   const { courseID } = props;
 
   let startdate = new Date(props.courseById.start_date)
@@ -62,19 +60,19 @@ const CourseEditForm = props => {
   //state for validation
   const [errorBorderStartDate, setErrorBorderStartDate] = useState(
     'transparent'
-  ); //error #C73642
-  const [errorBorderEndDate, setErrorBorderEndDate] = useState('transparent'); //error #C73642
+  );
+  const [errorBorderEndDate, setErrorBorderEndDate] = useState('transparent');
   const [errorBorderStartTime, setErrorBorderStartTime] = useState(
     'transparent'
-  ); //error #C73642
-  const [errorBorderEndTime, setErrorBorderEndTime] = useState('transparent'); //error #C73642
+  );
+  const [errorBorderEndTime, setErrorBorderEndTime] = useState('transparent');
   const [errorBorderHourlyRate, setErrorBorderHourlyRate] = useState(
     'transparent'
   ); //error #C73642
 
   const handleSubmit = e => {
     e.preventDefault();
-    //check for required fields
+    //check for required fields & set border colors depending on state
     if (
       state.start_date === '' ||
       state.end_date === '' ||
@@ -116,6 +114,7 @@ const CourseEditForm = props => {
     props.toggleEditCourse('false', 'false');
   };
 
+  //Arrays for dropdown menus
   const status = ['Active', 'Completed', 'Waitlist', 'Cancelled'];
   const section = ['A', 'B', 'C'];
 
@@ -329,10 +328,7 @@ const CourseEditForm = props => {
 
 const mapStateToProps = state => {
   return {
-    isLoading: state.coursesTableReducer.isLoading,
     courseById: state.coursesTableReducer.courseById,
-    isEdited: state.coursesTableReducer.isEdited,
-    isEditing: state.coursesTableReducer.isEditing,
     termDropdown: state.coursesTableReducer.termTable,
     courseTypeDropdown: state.coursesTableReducer.courseTypeTable,
     groupTypeDropdown: state.coursesTableReducer.groupTypeTable,

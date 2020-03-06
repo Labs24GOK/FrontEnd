@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { faSort } from '@fortawesome/free-solid-svg-icons';
 import API_URL from '../../config/apiUrl';
 
 

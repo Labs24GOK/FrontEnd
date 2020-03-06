@@ -4,7 +4,7 @@ import '../mainStyle/mainCard.scss';
 import { Spin, Table } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -199,7 +199,6 @@ const mapStateToProps = state => {
     isLoading: state.coursesTableReducer.isLoading,
     isPosted: state.coursesTableReducer.isPosted,
     courseList: state.coursesTableReducer.courseList,
-    error: state.coursesTableReducer.error
   };
 };
 
