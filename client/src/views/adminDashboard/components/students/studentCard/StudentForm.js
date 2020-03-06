@@ -22,7 +22,6 @@ import {
 } from '../../mainStyle/styledComponent';
 
 const StudentForm = props => {
-
 	const { studentID } = props;
 
 	let birthdate = new Date(props.studentById.birthdate)
@@ -69,7 +68,7 @@ const StudentForm = props => {
 		props.editStudentDropDown();
 	}, []);
 
-	// handle required fields (make them all required for now)
+	// handle required fields (mobileTelephone, emergencyContactName, emergencyRelationship, emergencyPhone, and notes were asked to not be required)
 	const [errorBorderCpr, setErrorBorderCpr] = useState('transparent'); //error #C73642
 	const [errorBorderFirstName, setErrorBorderFirstName] = useState(
 		'transparent'
@@ -144,7 +143,8 @@ const StudentForm = props => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		// check for required fields
+		// check for required fields, commented out fields indicate those that are not required
+		// those can be uncommented if stakeholder wants to require those fields in the future
 		if (
 			state.cpr === '' ||
 			state.first_name === '' ||
