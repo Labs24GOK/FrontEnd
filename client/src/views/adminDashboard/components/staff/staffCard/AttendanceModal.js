@@ -49,15 +49,13 @@ const AttendanceModal = props => {
         ...state.meeting,
         course_id: props.courseID,
       },
-      students: []
+      students: [],
     }));
   }, [props.courseID]);
 
   useEffect(() => {
-  
     //AXIOS call to get all necessary information and (by not being in a Redux action) gives the ability to manipulate student array more effectively.
     if (state.meeting.meeting_date && state.meeting.course_id) {
-
       axios
         .get(
           `${API_URL}/attendance/date/${state.meeting.meeting_date}/course/${state.meeting.course_id}`

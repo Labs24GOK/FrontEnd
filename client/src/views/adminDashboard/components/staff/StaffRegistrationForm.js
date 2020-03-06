@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import {
-  addStaff,
-  toggleAddStaffComponent,
-  getStaffTable
-} from '../../../../actions';
+import { addStaff, getStaffTable } from '../../../../actions';
 import { withRouter } from 'react-router-dom';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
@@ -15,19 +11,21 @@ import {
   Div,
   FormSet,
   Label,
-  ButtonDiv
+  ButtonDiv,
 } from '../mainStyle/styledComponent';
 
 const StaffRegistrationForm = props => {
+  //Dropdown Menu Arrays -> the Boolean Dropdowns must be in below format to submit a true boolean
   const gender = ['M', 'F'];
   const admin = [
     { label: 'True', value: true },
-    { label: 'False', value: false }
+    { label: 'False', value: false },
   ];
   const active = [
     { label: 'True', value: true },
-    { label: 'False', value: false }
+    { label: 'False', value: false },
   ];
+  //initial state
   const [state, setState] = useState({
     name: '',
     username: '',
@@ -39,17 +37,15 @@ const StaffRegistrationForm = props => {
     email: '',
     accent: '',
     birthdate: '',
-    mobile_number: '',
     teaching_rate: '',
     admin: '',
-    active: ''
+    active: '',
   });
-  //admin and active ar booleans that need to be added for post to work
 
   const handleChange = e => {
     setState({
       ...state,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -72,14 +68,13 @@ const StaffRegistrationForm = props => {
       <FormSet>
         <Div>
           {/* row 1 */}
-
           <div>
             <Label>Name</Label>
             <div>
               <Input
-                type="text"
-                name="name"
-                placeholder="Name"
+                type='text'
+                name='name'
+                placeholder='Name'
                 onChange={handleChange}
                 value={state.name}
               />
@@ -90,9 +85,9 @@ const StaffRegistrationForm = props => {
             <Label>Short Name</Label>
             <div>
               <Input
-                type="text"
-                name="short_name"
-                placeholder="Short Name"
+                type='text'
+                name='short_name'
+                placeholder='Short Name'
                 onChange={handleChange}
                 value={state.short_name}
               />
@@ -103,9 +98,9 @@ const StaffRegistrationForm = props => {
             <Label>Username</Label>
             <div>
               <Input
-                type="text"
-                name="username"
-                placeholder="Username"
+                type='text'
+                name='username'
+                placeholder='Username'
                 onChange={handleChange}
                 value={state.username}
               />
@@ -116,9 +111,9 @@ const StaffRegistrationForm = props => {
             <Label>Password</Label>
             <div>
               <Input
-                type="password"
-                name="password"
-                placeholder="Password"
+                type='password'
+                name='password'
+                placeholder='Password'
                 onChange={handleChange}
                 value={state.password}
               />
@@ -129,9 +124,9 @@ const StaffRegistrationForm = props => {
             <Label>CPR</Label>
             <div>
               <Input
-                type="text"
-                name="cpr"
-                placeholder="CPR"
+                type='text'
+                name='cpr'
+                placeholder='CPR'
                 onChange={handleChange}
                 value={state.cpr}
               />
@@ -143,9 +138,9 @@ const StaffRegistrationForm = props => {
             <Label>Mobile Number</Label>
             <div>
               <Input
-                type="text" //use date for calendar
-                name="mobile_number"
-                placeholder="Mobile Number"
+                type='text'
+                name='mobile_number'
+                placeholder='Mobile Number'
                 onChange={handleChange}
                 value={state.mobile_number}
               />
@@ -153,13 +148,12 @@ const StaffRegistrationForm = props => {
           </div>
 
           <div>
-            {/* needs to be dropdown */}
             <Label>Accent</Label>
             <div>
               <Input
-                type="text" //use date for calendar
-                name="accent"
-                placeholder="Accent"
+                type='text'
+                name='accent'
+                placeholder='Accent'
                 onChange={handleChange}
                 value={state.accent}
               />
@@ -167,14 +161,13 @@ const StaffRegistrationForm = props => {
           </div>
 
           <div>
-            {/* needs to be dropdown */}
             <Label>Gender</Label>
             <div>
               <Dropdown
                 value={state.gender}
                 onChange={e => setState({ ...state, gender: e.value })}
-                controlClassName="myControlClassName"
-                className="dropdown"
+                controlClassName='myControlClassName'
+                className='dropdown'
                 options={gender}
               />
             </div>
@@ -184,37 +177,36 @@ const StaffRegistrationForm = props => {
             <Label>Birthdate</Label>
             <div>
               <Input
-                type="date"
-                name="birthdate"
-                placeholder="birthdate"
+                type='date'
+                name='birthdate'
+                placeholder='birthdate'
                 onChange={handleChange}
                 value={state.birthdate}
               />
             </div>
           </div>
 
+          {/* row3 */}
           <div>
             <Label>Teaching Rate</Label>
             <div>
               <Input
-                type="text"
-                name="teaching_rate"
-                placeholder="Teaching Rate"
+                type='text'
+                name='teaching_rate'
+                placeholder='Teaching Rate'
                 onChange={handleChange}
                 value={state.teaching_rate}
               />
             </div>
           </div>
-          {/* row3 */}
-
           <div>
             <Label>Admin</Label>
             <div>
               <Dropdown
                 value={state.admin}
                 onChange={e => setState({ ...state, admin: e })}
-                controlClassName="myControlClassName"
-                className="dropdown"
+                controlClassName='myControlClassName'
+                className='dropdown'
                 options={admin}
               />
             </div>
@@ -226,32 +218,19 @@ const StaffRegistrationForm = props => {
               <Dropdown
                 value={state.active}
                 onChange={e => setState({ ...state, active: e })}
-                controlClassName="myControlClassName"
-                className="dropdown"
+                controlClassName='myControlClassName'
+                className='dropdown'
                 options={active}
               />
             </div>
           </div>
-
-          {/* <div>
-                    <Label>User Id</Label>
-                    <div>
-                    <Input 
-                        type='text'
-                        name='user_id'
-                        placeholder='User Id'
-                        onChange={handleChange}
-                        value={state.user_id}
-                    />
-                    </div>
-                </div> */}
           <div>
             <Label>Email</Label>
             <div>
               <Input
-                type="email" //use date for calendar
-                name="email"
-                placeholder="Email"
+                type='email'
+                name='email'
+                placeholder='Email'
                 onChange={handleChange}
                 value={state.email}
               />
@@ -261,33 +240,25 @@ const StaffRegistrationForm = props => {
       </FormSet>
       <ButtonDiv>
         <Button
-          type="button"
-          value="cancel"
+          type='button'
+          value='cancel'
           onClick={cancelBtn}
           style={{ background: '#C73642', width: '80px' }}
         >
           Cancel
         </Button>
-        <Button type="submit">Add Staff</Button>
+        <Button type='submit'>Add Staff</Button>
       </ButtonDiv>
-      {/* <h3  onTimeout={props.isPosted}  timeout={3000}> Hey </h3> */}
     </FormWrap>
   );
 };
 
 const mapStateToProps = state => {
   return {
-    isLoading: state.staffTableReducer.isLoading,
     staffList: state.staffTableReducer.staff,
-    isPosting: state.staffTableReducer.isPosting,
-    isPosted: state.staffTableReducer.isPosted
   };
 };
 
 export default withRouter(
-  connect(mapStateToProps, {
-    addStaff,
-    toggleAddStaffComponent,
-    getStaffTable
-  })(StaffRegistrationForm)
+  connect(mapStateToProps, { addStaff, getStaffTable })(StaffRegistrationForm)
 );

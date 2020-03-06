@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { getCourseById, toggleEditCourse } from '../../../../actions';
+import { getCourseById } from '../../../../actions';
 import CourseInformationTab from './courseCardTabs/CourseInformationTab.js';
 import EnrolledStudentsTab from './courseCardTabs/EnrolledStudentsTab.js';
 import { Tab, Image, Header, Icon } from 'semantic-ui-react';
@@ -11,6 +11,7 @@ import 'antd/dist/antd.css';
 import 'semantic-ui-css/semantic.min.css';
 
 const CourseCard = props => {
+  
   useEffect(() => {
     props.getCourseById(props.courseID);
   }, []);
@@ -46,7 +47,7 @@ const CourseCard = props => {
   };
 
   //working
-  //had to add empy string b/c it was returning empty string and toUpperCase undefined
+  //had to add empdy string b/c it was returning empty string and toUpperCase undefined
   let courseProps = props.courseById.course_type || '';
   let course_type = courseProps.charAt(0).toUpperCase() + courseProps.slice(1);
 
@@ -86,12 +87,10 @@ const CourseCard = props => {
 
 const mapStateToProps = state => {
   return {
-    isLoading: state.coursesTableReducer.isLoading,
     courseById: state.coursesTableReducer.courseById,
-    error: state.coursesTableReducer.error
   };
 };
 
 export default withRouter(
-  connect(mapStateToProps, { getCourseById, toggleEditCourse })(CourseCard)
+  connect(mapStateToProps, { getCourseById })(CourseCard)
 );
