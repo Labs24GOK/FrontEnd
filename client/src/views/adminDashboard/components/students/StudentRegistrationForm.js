@@ -12,6 +12,8 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import '../mainStyle/mainTable.scss';
 
+import { useForm } from 'react-hook-form';
+
 import {
 	FormWrap,
 	Input,
@@ -25,6 +27,19 @@ import {
 } from '../mainStyle/styledComponent';
 
 const StudentRegistrationForm = props => {
+	console.log(props)
+	const { register, errors, handleSubmit } = useForm();
+
+	const submitNow = value => {
+		console.log(value)
+		props.createNewStudent(value);
+		props.setForm(false);
+	}
+
+	const onSubmit = data => {
+		console.log(data);
+	  }
+
 	const [student, setStudent] = useState({
 		cpr: '',
 		registration_date: '',
@@ -129,7 +144,7 @@ const StudentRegistrationForm = props => {
 		});
 	}
 
-	function handleSubmit(event) {
+	function handlesSubmit(event) {
 		event.preventDefault();
 
 		// check for required fields, commented out fields indicate those that are not required
@@ -160,9 +175,9 @@ const StudentRegistrationForm = props => {
 			// student.notes === ''
 		) {
 			// highlight all that were missed
-			if (student.cpr === '') {
-				setErrorBorderCpr('#ef6570');
-			}
+			// if (student.cpr === '') {
+			// 	setErrorBorderCpr('#ef6570');
+			// }
 			if (student.first_name === '') {
 				setErrorBorderFirstName('#ef6570');
 			}
@@ -239,58 +254,44 @@ const StudentRegistrationForm = props => {
 	// } else {
 
 	return (
-		<FormWrap onSubmit={handleSubmit}>
+		<FormWrap onSubmit={handleSubmit(submitNow)}>
 			<FormSet>
 				<Div>
 					<div>
 						<Label>CPR</Label>
-						<div
+						{/* <div
 							style={{
 								border: `1px solid ${errorBorderCpr}`,
 								borderRadius: '3px'
 							}}
-						>
-							<Input
-								type="text"
-								name="cpr"
-								value={student.cpr}
-								onChange={handleChange}
-							/>
-						</div>
+						> */}
+							<Input type="text" name="cpr" ref={register({required: true })}/>
+							{errors.cpr && 'CPR is Required'}
+						
 					</div>
 					<div>
 						<Label>First Name</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderFirstName}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderFirstName}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Input
-								type="text"
-								name="first_name"
-								value={student.first_name}
-								onChange={handleChange}
-							/>
+							<Input type="text" name="first_name" ref={register({required: true})}/>
 						</div>
 					</div>
 					<div>
 						<Label>Additional names</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderAdditionalNames}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderAdditionalNames}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Input
-								type="text"
-								name="additional_names"
-								value={student.additional_names}
-								onChange={handleChange}
-							/>
+							<Input type="text" name="additional_names" ref={register({required: true})} />
 						</div>
 					</div>
-					<div>
+					{/* <div>
 						<Label>Gender</Label>
 						<div
 							style={{
@@ -629,8 +630,8 @@ const StudentRegistrationForm = props => {
 								value={student.notes}
 								onChange={handleChange}
 							/>
-						</div>
-					</div>
+						</div> */}
+					{/* </div> */}
 				</Div>
 			</FormSet>
 			<ButtonDiv>
