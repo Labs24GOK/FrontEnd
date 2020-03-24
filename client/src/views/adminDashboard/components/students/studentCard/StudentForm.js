@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import {
 	editStudentById,
 	editStudentDropDown,
-	toggleEditComponent
+	toggleEditComponent,
 } from '../../../../../actions';
 import { withRouter } from 'react-router-dom';
 import Dropdown from 'react-dropdown';
@@ -22,16 +22,16 @@ import {
 } from '../../mainStyle/styledComponent';
 
 import { useForm } from 'react-hook-form';
+import './formStyles.scss';
 
 const StudentForm = props => {
 	const { studentID } = props;
 
-	const { errors, register, handleSubmit } = useForm();
-	const submitNow = (e, value) => {
-		e.preventDefault();
+	const { errors, register, handleSubmit, setValue } = useForm();
+	const submitNow = (value) => {
 		const student = props.studentById;
 		console.log(student);
-		// props.editStudentById(studentID, value);
+		props.editStudentById(studentID, value);
 	}
 
 	let birthdate = new Date(props.studentById.birthdate)
@@ -42,8 +42,8 @@ const StudentForm = props => {
 		.split('T')[0];
 
 	const [state, setState] = useState({
-		cpr: props.studentById.cpr,
-		first_name: props.studentById.first_name,
+		// cpr: props.studentById.cpr,
+		// first_name: props.studentById.first_name,
 		additional_names: props.studentById.additional_names,
 		gender: props.studentById.gender,
 		home_telephone: props.studentById.home_telephone,
@@ -79,10 +79,10 @@ const StudentForm = props => {
 	}, []);
 
 	// handle required fields (mobileTelephone, emergencyContactName, emergencyRelationship, emergencyPhone, and notes were asked to not be required)
-	const [errorBorderCpr, setErrorBorderCpr] = useState('transparent'); //error #C73642
-	const [errorBorderFirstName, setErrorBorderFirstName] = useState(
-		'transparent'
-	); //error #C73642
+	// const [errorBorderCpr, setErrorBorderCpr] = useState('transparent'); //error #C73642
+	// const [errorBorderFirstName, setErrorBorderFirstName] = useState(
+	// 	'transparent'
+	// ); //error #C73642
 	const [errorBorderAdditionalNames, setErrorBorderAdditionalNames] = useState(
 		'transparent'
 	); //error #C73642
@@ -145,10 +145,7 @@ const StudentForm = props => {
 	); //error #C73642
 
 	function handleChange(event) {
-		setState({
-			...state,
-			[event.target.name]: event.target.value
-		});
+		setValue(event.target.value);
 	}
 
 	// const handleSubmit = e => {
@@ -311,7 +308,7 @@ const StudentForm = props => {
 		{ label: 'No', value: false }
 	];
 	return (
-		<FormWrap onSubmit={submitNow}>
+		<FormWrap onSubmit={handleSubmit(submitNow)}>
 			<FormSet>
 				<Div>
 					<div>
@@ -329,26 +326,27 @@ const StudentForm = props => {
 								onChange={handleChange}
 								value={state.cpr}
 							/> */}
-							    <input name="cpr" value={props.studentById.cpr} ref={register({ required: true })} />
-								{/* errors will return when field validation fails  */}
-								{errors.cpr && <span>This field is required</span>}
+							<Input name="cpr" defaultValue={props.studentById.cpr} onChange={handleChange} ref={register({ required: true })} />
+							{errors.cpr && <span>This field is required</span>}
 						</div>
 					</div>
 					<div>
 						<Label>First Name</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderFirstName}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderFirstName}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Input
+							{/* <Input
 								type="text"
 								name="first_name"
 								placeholder="First Name"
 								onChange={handleChange}
 								value={state.first_name}
-							/>
+							/> */}
+							<Input type="text" defaultValue={props.studentById.first_name} name="first_name" ref={register({ required: true })} />
+							{errors.first_name && <span className="form-error">This field is required</span>}
 						</div>
 					</div>
 					<div>
@@ -810,7 +808,7 @@ const StudentForm = props => {
 			</FormSet>
 			<ButtonDiv>
 				<CancelButton onClick={handleCancel}>Cancel</CancelButton>
-				<SaveButton type="submit" onClick={submitNow}>
+				<SaveButton type="submit" onClick={handleSubmit(submitNow)}>
 					Save
 				</SaveButton>
 			</ButtonDiv>
@@ -836,6 +834,6 @@ export default withRouter(
 	connect(mapStateToProps, {
 		editStudentById,
 		toggleEditComponent,
-		editStudentDropDown
+		editStudentDropDown,
 	})(StudentForm)
 );
