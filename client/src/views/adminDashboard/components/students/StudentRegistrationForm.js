@@ -524,12 +524,7 @@ const StudentRegistrationForm = props => {
 							// 	borderRadius: '3px'
 							// }}
 						>
-							<Input
-								type="text"
-								name="emergency_relationship"
-								value={student.emergency_relationship}
-								onChange={handleChange}
-							/>
+							<Input type="text"  name="emergency_relationship" ref={register} />
 						</div>
 					</div>
 					<div>
