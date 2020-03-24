@@ -334,17 +334,12 @@ const StudentRegistrationForm = props => {
 					<div>
 						<Label>Email</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderEmail}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderEmail}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Input
-								type="email"
-								name="email"
-								value={student.email}
-								onChange={handleChange}
-							/>
+							<Input type="text"  name="email" ref={register({required: true, pattern: /^\S+@\S+$/i})} />
 						</div>
 					</div>
 					<div>
