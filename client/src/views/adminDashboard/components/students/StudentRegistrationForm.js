@@ -535,12 +535,7 @@ const StudentRegistrationForm = props => {
 							// 	borderRadius: '3px'
 							// }}
 						>
-							<Input
-								type="text"
-								name="emergency_phone"
-								value={student.emergency_phone}
-								onChange={handleChange}
-							/>
+							<Input type="text" name="emergency_phone" ref={register} />
 						</div>
 					</div>
 					<div style={{ gridColumn: 'span 4' }}>
