@@ -13,6 +13,7 @@ import 'react-dropdown/style.css';
 import '../mainStyle/mainTable.scss';
 
 import { useForm } from 'react-hook-form';
+import { createDropdown } from '../../../../utils/helpers.js';
 
 import {
 	FormWrap,
@@ -307,6 +308,12 @@ const StudentRegistrationForm = props => {
 								options={genderArr}
 								className="dropdown"
 							/> */}
+							<select name="gender" ref={register({ required: true })}>
+        						<option value="F">F</option>
+        						<option value="M">M</option>
+      						</select>
+
+
 						</div>
 					</div>
 					<div>
@@ -359,6 +366,10 @@ const StudentRegistrationForm = props => {
 								options={props.contactTypesTable}
 								className="dropdown"
 							/> */}
+
+								<select name="preferred_contact_type_id" ref={register({ required: true })}>
+        						{createDropdown(props.contactTypesTable)}
+      							</select>
 						</div>
 					</div>
 					<div>
