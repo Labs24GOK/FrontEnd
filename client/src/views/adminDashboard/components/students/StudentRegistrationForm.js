@@ -380,7 +380,7 @@ const StudentRegistrationForm = props => {
 								borderRadius: '3px'
 							}}
 						>
-							<Input type="text" placeholder="school_name" name="school_name" ref={register({required: true})} />
+							<Input type="text"  name="school_name" ref={register({required: true})} />
 						</div>
 					</div>
 					<div>
@@ -458,7 +458,7 @@ const StudentRegistrationForm = props => {
 							// 	borderRadius: '3px'
 							// }}
 						>
-							<Input type="text" placeholder="building" name="building" ref={register({required: true})} />
+							<Input type="text"  name="building" ref={register({required: true})} />
 						</div>
 					</div>
 					<div>
@@ -469,7 +469,7 @@ const StudentRegistrationForm = props => {
 							// 	borderRadius: '3px'
 							// }}
 						>
-							<Input type="text" placeholder="flat" name="flat" ref={register({required: true})} />
+							<Input type="text"  name="flat" ref={register({required: true})} />
 						</div>
 					</div>
 					<div style={{ gridColumn: 'span 2' }}>
@@ -480,13 +480,7 @@ const StudentRegistrationForm = props => {
 							// 	borderRadius: '3px'
 							// }}
 						>
-							<Input
-								style={{ width: '100%' }}
-								type="text"
-								name="primary_emergency_contact_name"
-								value={student.primary_emergency_contact_name}
-								onChange={handleChange}
-							/>
+							<Input type="text" name="primary_emergency_contact_name" ref={register({required: true})} />
 						</div>
 					</div>
 					<div>
