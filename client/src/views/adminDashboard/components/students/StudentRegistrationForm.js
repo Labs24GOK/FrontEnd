@@ -289,7 +289,7 @@ const StudentRegistrationForm = props => {
 							// 	borderRadius: '3px'
 							// }}
 						>
-							<Input type="text" name="additional_names" ref={register({required: true})} />
+							<Input type="text" name="additional_names" ref={register({required: true, maxLength: 100})} />
 						</div>
 					</div>
 					{/* <div>
