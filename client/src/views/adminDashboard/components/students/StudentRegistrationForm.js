@@ -292,46 +292,41 @@ const StudentRegistrationForm = props => {
 							<Input type="text" name="additional_names" ref={register({required: true, maxLength: 100})} />
 						</div>
 					</div>
-					{/* <div>
+					<div>
 						<Label>Gender</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderGender}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderGender}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Dropdown
+							{/* <Dropdown
 								value={student.gender}
 								onChange={e => setStudent({ ...student, gender: e.value })}
 								controlClassName="myControlClassName"
 								options={genderArr}
 								className="dropdown"
-							/>
+							/> */}
 						</div>
 					</div>
 					<div>
 						<Label>Home Telephone</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderHomeTelephone}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderHomeTelephone}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Input
-								type="text"
-								name="home_telephone"
-								value={student.home_telephone}
-								onChange={handleChange}
-							/>
+							<Input type="text" placeholder="home_telephone" name="home_telephone" ref={register({required: true, maxLength: 12})} />
 						</div>
 					</div>
 					<div>
 						<Label>Mobile Telephone</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderMobileTelephone}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderMobileTelephone}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
 							<Input
 								type="text"
@@ -631,8 +626,8 @@ const StudentRegistrationForm = props => {
 								value={student.notes}
 								onChange={handleChange}
 							/>
-						</div> */}
-					{/* </div> */}
+						</div>
+					</div>
 				</Div>
 			</FormSet>
 			<ButtonDiv>
