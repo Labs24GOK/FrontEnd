@@ -27,12 +27,10 @@ import './formStyles.scss';
 const StudentForm = props => {
 	const { studentID } = props;
 
-	const { errors, register, handleSubmit, setValue } = useForm();
-	const submitNow = (e, value) => {
-		// e.preventDefault();
-		const student = props.studentById;
-		console.log(student);
-		props.editStudentById(studentID, value);
+	const { errors, register, handleSubmit } = useForm();
+	const submitNow = () => {
+		console.log(props.studentById);
+		props.editStudentById(studentID, state);
 	}
 
 	let birthdate = new Date(props.studentById.birthdate)
@@ -43,8 +41,8 @@ const StudentForm = props => {
 		.split('T')[0];
 
 	const [state, setState] = useState({
-		// cpr: props.studentById.cpr,
-		// first_name: props.studentById.first_name,
+		cpr: props.studentById.cpr,
+		first_name: props.studentById.first_name,
 		additional_names: props.studentById.additional_names,
 		gender: props.studentById.gender,
 		home_telephone: props.studentById.home_telephone,
@@ -146,7 +144,10 @@ const StudentForm = props => {
 	); //error #C73642
 
 	function handleChange(event) {
-		setValue(event.target.value);
+		setState({
+			...state,
+			[event.target.name]: event.target.value
+		});
 	}
 
 	// const handleSubmit = e => {
@@ -327,8 +328,8 @@ const StudentForm = props => {
 								onChange={handleChange}
 								value={state.cpr}
 							/> */}
-							<Input name="cpr" defaultValue={props.studentById.cpr} onChange={handleChange} ref={register({ required: true })} />
-							{errors.cpr && <span>This field is required</span>}
+							<Input type="text" name="cpr" value={state.cpr} onChange={handleChange} ref={register({ required: true })} />
+							{errors.cpr && <span className="form-error">This field is required</span>}
 						</div>
 					</div>
 					<div>
@@ -346,7 +347,7 @@ const StudentForm = props => {
 								onChange={handleChange}
 								value={state.first_name}
 							/> */}
-							<Input type="text" defaultValue={props.studentById.first_name} name="first_name" ref={register({ required: true })} />
+							<Input type="text" value={state.first_name} onChange={handleChange} name="first_name" ref={register({ required: true })} />
 							{errors.first_name && <span className="form-error">This field is required</span>}
 						</div>
 					</div>
