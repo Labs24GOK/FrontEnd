@@ -28,7 +28,8 @@ const StudentForm = props => {
 	const { studentID } = props;
 
 	const { errors, register, handleSubmit, setValue } = useForm();
-	const submitNow = (value) => {
+	const submitNow = (e, value) => {
+		// e.preventDefault();
 		const student = props.studentById;
 		console.log(student);
 		props.editStudentById(studentID, value);
