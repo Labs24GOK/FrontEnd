@@ -412,6 +412,9 @@ const StudentRegistrationForm = props => {
 								options={props.schoolGradeTable}
 								className="dropdown"
 							/> */}
+							<select name="school_grade_id" ref={register({ required: true })}>
+        						{createDropdown(props.schoolGradeTable)}
+      						</select>
 						</div>
 					</div>
 					<div>
@@ -429,6 +432,9 @@ const StudentRegistrationForm = props => {
 								options={props.locationsTable}
 								className="dropdown"
 							/> */}
+							<select name="location_id" ref={register({ required: true })}>
+        						{createDropdown(props.locationsTable)}
+      							</select>
 						</div>
 					</div>
 					<div>
@@ -448,6 +454,9 @@ const StudentRegistrationForm = props => {
 								value={student.block_code}
 								className="dropdown"
 							/> */}
+							<select name="block_code" ref={register({ required: true })}>
+        						{createDropdown(props.blocksTable)}
+      							</select>
 						</div>
 					</div>
 					<div>
