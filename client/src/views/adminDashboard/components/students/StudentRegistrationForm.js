@@ -469,12 +469,7 @@ const StudentRegistrationForm = props => {
 							// 	borderRadius: '3px'
 							// }}
 						>
-							<Input
-								type="text"
-								name="flat"
-								value={student.flat}
-								onChange={handleChange}
-							/>
+							<Input type="text" placeholder="flat" name="flat" ref={register({required: true})} />
 						</div>
 					</div>
 					<div style={{ gridColumn: 'span 2' }}>
