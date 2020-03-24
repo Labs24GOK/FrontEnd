@@ -317,7 +317,7 @@ const StudentRegistrationForm = props => {
 							// 	borderRadius: '3px'
 							// }}
 						>
-							<Input type="text" placeholder="home_telephone" name="home_telephone" ref={register({required: true, maxLength: 12})} />
+							<Input type="text" name="home_telephone" ref={register({required: true, maxLength: 12})} />
 						</div>
 					</div>
 					<div>
@@ -328,12 +328,7 @@ const StudentRegistrationForm = props => {
 							// 	borderRadius: '3px'
 							// }}
 						>
-							<Input
-								type="text"
-								name="mobile_telephone"
-								value={student.mobile_telephone}
-								onChange={handleChange}
-							/>
+							<Input type="tel" name="mobile_telephone" ref={register({required: true, maxLength: 12})} />
 						</div>
 					</div>
 					<div>
