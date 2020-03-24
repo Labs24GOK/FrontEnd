@@ -546,20 +546,8 @@ const StudentRegistrationForm = props => {
 							// 	borderRadius: '3px'
 							// }}
 						>
-							{/* <textarea
-								style={{
-									width: '100%',
-									height: '80px',
-									outline: 'none',
-									border: '1px solid transparent',
-									borderRadius: '3px'
-								}}
-								type="text"
-								name="notes"
-								value={student.notes}
-								onChange={handleChange}
-							/> */}
-
+							<textarea type="text" name="notes" ref={register}
+								style={{width: '100%', height: '80px', outline: 'none', border: '1px solid transparent', borderRadius: '3px'}}/>
 
 						</div>
 					</div>
