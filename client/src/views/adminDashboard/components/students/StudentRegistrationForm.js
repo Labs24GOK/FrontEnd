@@ -30,9 +30,15 @@ import {
 const StudentRegistrationForm = props => {
 	console.log(props)
 	const { register, errors, handleSubmit } = useForm();
-
+	const dropDowns = ['block_code', 'preferred_contact_type_id', 'school_grade_id', 'location_id']
 	const submitNow = data => {
 		console.log(data)
+		
+		for (const property of dropDowns) {
+			// if the string should/could be converted to a number
+				data[property] = parseInt(data[property])
+		}
+		
 		props.createNewStudent(data);
 		props.setForm(false);
 	}
