@@ -491,12 +491,7 @@ const StudentRegistrationForm = props => {
 							// 	borderRadius: '3px'
 							// }}
 						>
-							<Input
-								type="text"
-								name="primary_emergency_relationship"
-								value={student.primary_emergency_relationship}
-								onChange={handleChange}
-							/>
+							<Input type="text" name="primary_emergency_relationship" ref={register({required: true})} />
 						</div>
 					</div>
 					<div>
