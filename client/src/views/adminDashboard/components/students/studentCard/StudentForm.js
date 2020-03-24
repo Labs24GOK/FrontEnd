@@ -21,9 +21,18 @@ import {
 	Label
 } from '../../mainStyle/styledComponent';
 
+import { useForm } from 'react-hook-form';
 
 const StudentForm = props => {
 	const { studentID } = props;
+
+	const { errors, register, handleSubmit } = useForm();
+	const submitNow = (e, value) => {
+		e.preventDefault();
+		const student = props.studentById;
+		console.log(student);
+		// props.editStudentById(studentID, value);
+	}
 
 	let birthdate = new Date(props.studentById.birthdate)
 		.toISOString()
@@ -142,131 +151,131 @@ const StudentForm = props => {
 		});
 	}
 
-	const handleSubmit = e => {
-		e.preventDefault();
-		// check for required fields, commented out fields indicate those that are not required
-		// those can be uncommented if stakeholder wants to require those fields in the future
-		if (
-			state.cpr === '' ||
-			state.first_name === '' ||
-			state.additional_names === '' ||
-			state.gender === '' ||
-			state.home_telephone === '' ||
-			// state.mobile_telephone === '' ||
-			state.email === '' ||
-			state.preferred_contact_type_id === '' ||
-			state.birthdate === '' ||
-			state.school_name === '' ||
-			state.school_grade_id === '' ||
-			state.location_id === '' ||
-			state.block_code === '' ||
-			state.road === '' ||
-			state.building === '' ||
-			state.flat === '' ||
-			state.primary_emergency_contact_name === '' ||
-			state.primary_emergency_relationship === '' ||
-			state.primary_emergency_phone === '' ||
-			// state.emergency_contact_name === '' ||
-			// state.emergency_relationship === '' ||
-			// state.emergency_phone === '' ||
-			state.no_call === '' ||
-			state.delinquent === '' ||
-			state.expelled === '' ||
-			state.grade_updated === ''
-			// state.notes === ''
-		) {
-			// highlight all that were missed
-			if (state.cpr === '') {
-				setErrorBorderCpr('#ef6570');
-			}
-			if (state.first_name === '') {
-				setErrorBorderFirstName('#ef6570');
-			}
-			if (state.additional_names === '') {
-				setErrorBorderAdditionalNames('#ef6570');
-			}
-			if (state.gender === '') {
-				setErrorBorderGender('#ef6570');
-			}
-			if (state.home_telephone === '') {
-				setErrorBorderHomeTelephone('#ef6570');
-			}
-			// if (state.mobile_telephone === '') {
-			// 	setErrorBorderMobileTelephone('#ef6570');
-			// }
-			if (state.email === '') {
-				setErrorBorderEmail('#ef6570');
-			}
-			if (state.preferred_contact_type_id === '') {
-				setErrorBorderContactType('#ef6570');
-			}
-			if (state.birthdate === '') {
-				setErrorBorderBirthdate('#ef6570');
-			}
-			if (state.school_name === '') {
-				setErrorBorderSchoolName('#ef6570');
-			}
-			if (state.school_grade_id === '') {
-				setErrorBorderSchoolGrade('#ef6570');
-			}
-			if (state.location_id === '') {
-				setErrorBorderLocation('#ef6570');
-			}
-			if (state.block_code === '') {
-				setErrorBorderBlock('#ef6570');
-			}
-			if (state.road === '') {
-				setErrorBorderRoad('#ef6570');
-			}
-			if (state.building === '') {
-				setErrorBorderBuilding('#ef6570');
-			}
-			if (state.flat === '') {
-				setErrorBorderFlat('#ef6570');
-			}
-			if (state.primary_emergency_contact_name === '') {
-				setErrorBorderPrimaryEmergencyContactName('#ef6570');
-			}
-			if (state.primary_emergency_relationship === '') {
-				setErrorBorderPrimaryEmergencyRelationship('#ef6570');
-			}
-			if (state.primary_emergency_phone === '') {
-				setErrorBorderPrimaryEmergencyPhone('#ef6570');
-			}
-			// if (state.emergency_contact_name === '') {
-			// 	setErrorBorderEmergencyContactName('#ef6570');
-			// }
-			// if (state.emergency_relationship === '') {
-			// 	setErrorBorderEmergencyRelationship('#ef6570');
-			// }
-			// if (state.emergency_phone === '') {
-			// 	setErrorBorderEmergencyPhone('#ef6570');
-			// }
-			if (state.no_call === '') {
-				setErrorBorderNoCall('#ef6570');
-			}
-			if (state.delinquent === '') {
-				setErrorBorderDelinquent('#ef6570');
-			}
-			if (state.expelled === '') {
-				setErrorBorderExpelled('#ef6570');
-			}
-			if (state.grade_updated === '') {
-				setErrorBorderGradeUpdated('#ef6570');
-			}
-			// if (state.notes === '') {
-			// 	setErrorBorderNotes('#ef6570');
-			// }
-		} else {
-			// const birthdateDate = moment(student.birthdate).toDate();
-			// const birthdateISO = birthdateDate.toISOString()
-			props.editStudentById(studentID, state);
-			// if(props.createNewStudentSuccessMessage === 'Student has been successfuly added')
-			// setTimeout(()=>{
-			//   props.getStudentTable()
-			// },1000)
-		}
-	};
+	// const handleSubmit = e => {
+	// 	e.preventDefault();
+	// 	// check for required fields, commented out fields indicate those that are not required
+	// 	// those can be uncommented if stakeholder wants to require those fields in the future
+	// 	if (
+	// 		state.cpr === '' ||
+	// 		state.first_name === '' ||
+	// 		state.additional_names === '' ||
+	// 		state.gender === '' ||
+	// 		state.home_telephone === '' ||
+	// 		// state.mobile_telephone === '' ||
+	// 		state.email === '' ||
+	// 		state.preferred_contact_type_id === '' ||
+	// 		state.birthdate === '' ||
+	// 		state.school_name === '' ||
+	// 		state.school_grade_id === '' ||
+	// 		state.location_id === '' ||
+	// 		state.block_code === '' ||
+	// 		state.road === '' ||
+	// 		state.building === '' ||
+	// 		state.flat === '' ||
+	// 		state.primary_emergency_contact_name === '' ||
+	// 		state.primary_emergency_relationship === '' ||
+	// 		state.primary_emergency_phone === '' ||
+	// 		// state.emergency_contact_name === '' ||
+	// 		// state.emergency_relationship === '' ||
+	// 		// state.emergency_phone === '' ||
+	// 		state.no_call === '' ||
+	// 		state.delinquent === '' ||
+	// 		state.expelled === '' ||
+	// 		state.grade_updated === ''
+	// 		// state.notes === ''
+	// 	) {
+	// 		// highlight all that were missed
+	// 		if (state.cpr === '') {
+	// 			setErrorBorderCpr('#ef6570');
+	// 		}
+	// 		if (state.first_name === '') {
+	// 			setErrorBorderFirstName('#ef6570');
+	// 		}
+	// 		if (state.additional_names === '') {
+	// 			setErrorBorderAdditionalNames('#ef6570');
+	// 		}
+	// 		if (state.gender === '') {
+	// 			setErrorBorderGender('#ef6570');
+	// 		}
+	// 		if (state.home_telephone === '') {
+	// 			setErrorBorderHomeTelephone('#ef6570');
+	// 		}
+	// 		// if (state.mobile_telephone === '') {
+	// 		// 	setErrorBorderMobileTelephone('#ef6570');
+	// 		// }
+	// 		if (state.email === '') {
+	// 			setErrorBorderEmail('#ef6570');
+	// 		}
+	// 		if (state.preferred_contact_type_id === '') {
+	// 			setErrorBorderContactType('#ef6570');
+	// 		}
+	// 		if (state.birthdate === '') {
+	// 			setErrorBorderBirthdate('#ef6570');
+	// 		}
+	// 		if (state.school_name === '') {
+	// 			setErrorBorderSchoolName('#ef6570');
+	// 		}
+	// 		if (state.school_grade_id === '') {
+	// 			setErrorBorderSchoolGrade('#ef6570');
+	// 		}
+	// 		if (state.location_id === '') {
+	// 			setErrorBorderLocation('#ef6570');
+	// 		}
+	// 		if (state.block_code === '') {
+	// 			setErrorBorderBlock('#ef6570');
+	// 		}
+	// 		if (state.road === '') {
+	// 			setErrorBorderRoad('#ef6570');
+	// 		}
+	// 		if (state.building === '') {
+	// 			setErrorBorderBuilding('#ef6570');
+	// 		}
+	// 		if (state.flat === '') {
+	// 			setErrorBorderFlat('#ef6570');
+	// 		}
+	// 		if (state.primary_emergency_contact_name === '') {
+	// 			setErrorBorderPrimaryEmergencyContactName('#ef6570');
+	// 		}
+	// 		if (state.primary_emergency_relationship === '') {
+	// 			setErrorBorderPrimaryEmergencyRelationship('#ef6570');
+	// 		}
+	// 		if (state.primary_emergency_phone === '') {
+	// 			setErrorBorderPrimaryEmergencyPhone('#ef6570');
+	// 		}
+	// 		// if (state.emergency_contact_name === '') {
+	// 		// 	setErrorBorderEmergencyContactName('#ef6570');
+	// 		// }
+	// 		// if (state.emergency_relationship === '') {
+	// 		// 	setErrorBorderEmergencyRelationship('#ef6570');
+	// 		// }
+	// 		// if (state.emergency_phone === '') {
+	// 		// 	setErrorBorderEmergencyPhone('#ef6570');
+	// 		// }
+	// 		if (state.no_call === '') {
+	// 			setErrorBorderNoCall('#ef6570');
+	// 		}
+	// 		if (state.delinquent === '') {
+	// 			setErrorBorderDelinquent('#ef6570');
+	// 		}
+	// 		if (state.expelled === '') {
+	// 			setErrorBorderExpelled('#ef6570');
+	// 		}
+	// 		if (state.grade_updated === '') {
+	// 			setErrorBorderGradeUpdated('#ef6570');
+	// 		}
+	// 		// if (state.notes === '') {
+	// 		// 	setErrorBorderNotes('#ef6570');
+	// 		// }
+	// 	} else {
+	// 		// const birthdateDate = moment(student.birthdate).toDate();
+	// 		// const birthdateISO = birthdateDate.toISOString()
+	// 		props.editStudentById(studentID, state);
+	// 		// if(props.createNewStudentSuccessMessage === 'Student has been successfuly added')
+	// 		// setTimeout(()=>{
+	// 		//   props.getStudentTable()
+	// 		// },1000)
+	// 	}
+	// };
 
 	const handleCancel = e => {
 		props.toggleEditComponent('false', 'false');
@@ -302,24 +311,27 @@ const StudentForm = props => {
 		{ label: 'No', value: false }
 	];
 	return (
-		<FormWrap onSubmit={handleSubmit}>
+		<FormWrap onSubmit={submitNow}>
 			<FormSet>
 				<Div>
 					<div>
 						<Label>CPR</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderCpr}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderCpr}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Input
+							{/* <Input
 								type="text"
 								name="cpr"
 								placeholder="CPR"
 								onChange={handleChange}
 								value={state.cpr}
-							/>
+							/> */}
+							    <input name="cpr" value={props.studentById.cpr} ref={register({ required: true })} />
+								{/* errors will return when field validation fails  */}
+								{errors.cpr && <span>This field is required</span>}
 						</div>
 					</div>
 					<div>
@@ -798,7 +810,7 @@ const StudentForm = props => {
 			</FormSet>
 			<ButtonDiv>
 				<CancelButton onClick={handleCancel}>Cancel</CancelButton>
-				<SaveButton type="submit" onClick={handleSubmit}>
+				<SaveButton type="submit" onClick={submitNow}>
 					Save
 				</SaveButton>
 			</ButtonDiv>
