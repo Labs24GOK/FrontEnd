@@ -391,7 +391,7 @@ const StudentRegistrationForm = props => {
 								borderRadius: '3px'
 							}}
 						>
-							<Dropdown
+							{/* <Dropdown
 								onChange={e => {
 									setStudent({ ...student, school_grade_id: e });
 								}}
@@ -400,7 +400,7 @@ const StudentRegistrationForm = props => {
 								className="dropdownRoot"
 								options={props.schoolGradeTable}
 								className="dropdown"
-							/>
+							/> */}
 						</div>
 					</div>
 					<div>
@@ -411,13 +411,13 @@ const StudentRegistrationForm = props => {
 								borderRadius: '3px'
 							}}
 						>
-							<Dropdown
+							{/* <Dropdown
 								value={student.location_id}
 								onChange={e => setStudent({ ...student, location_id: e })}
 								controlClassName="myControlClassName"
 								options={props.locationsTable}
 								className="dropdown"
-							/>
+							/> */}
 						</div>
 					</div>
 					<div>
@@ -428,7 +428,7 @@ const StudentRegistrationForm = props => {
 								borderRadius: '3px'
 							}}
 						>
-							<Dropdown
+							{/* <Dropdown
 								onChange={e => {
 									setStudent({ ...student, block_code: e });
 								}}
@@ -436,7 +436,7 @@ const StudentRegistrationForm = props => {
 								options={props.blocksTable}
 								value={student.block_code}
 								className="dropdown"
-							/>
+							/> */}
 						</div>
 					</div>
 					<div>
@@ -447,12 +447,7 @@ const StudentRegistrationForm = props => {
 								borderRadius: '3px'
 							}}
 						>
-							<Input
-								type="text"
-								name="road"
-								value={student.road}
-								onChange={handleChange}
-							/>
+							<Input type="text"  name="road" ref={register({required: true})} />
 						</div>
 					</div>
 					<div>
