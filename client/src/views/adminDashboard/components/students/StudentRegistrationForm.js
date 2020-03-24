@@ -13,6 +13,7 @@ import 'react-dropdown/style.css';
 import '../mainStyle/mainTable.scss';
 
 import { useForm } from 'react-hook-form';
+import { createDropdown } from '../../../../utils/helpers.js';
 
 import {
 	FormWrap,
@@ -30,9 +31,9 @@ const StudentRegistrationForm = props => {
 	console.log(props)
 	const { register, errors, handleSubmit } = useForm();
 
-	const submitNow = value => {
-		console.log(value)
-		props.createNewStudent(value);
+	const submitNow = data => {
+		console.log(data)
+		props.createNewStudent(data);
 		props.setForm(false);
 	}
 
@@ -259,14 +260,15 @@ const StudentRegistrationForm = props => {
 				<Div>
 					<div>
 						<Label>CPR</Label>
-						{/* <div
-							style={{
-								border: `1px solid ${errorBorderCpr}`,
-								borderRadius: '3px'
-							}}
-						> */}
-							<Input type="text" name="cpr" ref={register({required: true })}/>
+						<div
+							// style={{
+							// 	border: `1px solid ${errorBorderCpr}`,
+							// 	borderRadius: '3px'
+							// }}
+						>
+							 <Input type="text" name="cpr" ref={register({required: true})} />
 							{errors.cpr && 'CPR is Required'}
+							</div>
 						
 					</div>
 					<div>
@@ -277,7 +279,7 @@ const StudentRegistrationForm = props => {
 							// 	borderRadius: '3px'
 							// }}
 						>
-							<Input type="text" name="first_name" ref={register({required: true})}/>
+							 <Input type="text" name="first_name" ref={register({required: true, maxLength: 80})} />
 						</div>
 					</div>
 					<div>
@@ -288,83 +290,74 @@ const StudentRegistrationForm = props => {
 							// 	borderRadius: '3px'
 							// }}
 						>
-							<Input type="text" name="additional_names" ref={register({required: true})} />
+							<Input type="text" name="additional_names" ref={register({required: true, maxLength: 100})} />
 						</div>
 					</div>
-					{/* <div>
+					<div>
 						<Label>Gender</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderGender}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderGender}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Dropdown
+							{/* <Dropdown
 								value={student.gender}
 								onChange={e => setStudent({ ...student, gender: e.value })}
 								controlClassName="myControlClassName"
 								options={genderArr}
 								className="dropdown"
-							/>
+							/> */}
+							<select name="gender" ref={register({ required: true })}>
+        						<option value="F">F</option>
+        						<option value="M">M</option>
+      						</select>
+
+
 						</div>
 					</div>
 					<div>
 						<Label>Home Telephone</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderHomeTelephone}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderHomeTelephone}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Input
-								type="text"
-								name="home_telephone"
-								value={student.home_telephone}
-								onChange={handleChange}
-							/>
+							<Input type="text" name="home_telephone" ref={register({required: true, maxLength: 12})} />
 						</div>
 					</div>
 					<div>
 						<Label>Mobile Telephone</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderMobileTelephone}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderMobileTelephone}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Input
-								type="text"
-								name="mobile_telephone"
-								value={student.mobile_telephone}
-								onChange={handleChange}
-							/>
+							<Input type="tel" name="mobile_telephone" ref={register({required: true, maxLength: 12})} />
 						</div>
 					</div>
 					<div>
 						<Label>Email</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderEmail}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderEmail}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Input
-								type="email"
-								name="email"
-								value={student.email}
-								onChange={handleChange}
-							/>
+							<Input type="text"  name="email" ref={register({required: true, pattern: /^\S+@\S+$/i})} />
 						</div>
 					</div>
 					<div>
 						<Label>Preferred Contact Method</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderContactType}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderContactType}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Dropdown
+							{/* <Dropdown
 								onChange={e =>
 									setStudent({ ...student, preferred_contact_type_id: e })
 								}
@@ -372,23 +365,22 @@ const StudentRegistrationForm = props => {
 								controlClassName="myControlClassName"
 								options={props.contactTypesTable}
 								className="dropdown"
-							/>
+							/> */}
+
+								<select name="preferred_contact_type_id" ref={register({ required: true })}>
+        						{createDropdown(props.contactTypesTable)}
+      							</select>
 						</div>
 					</div>
 					<div>
 						<Label>Birth date</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderBirthdate}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderBirthdate}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Input
-								type="date"
-								name="birthdate"
-								value={student.birthdate}
-								onChange={handleChange}
-							/>
+							<Input type="date" name="birthdate" ref={register({required: true})} />
 						</div>
 					</div>
 					<div>
@@ -399,12 +391,7 @@ const StudentRegistrationForm = props => {
 								borderRadius: '3px'
 							}}
 						>
-							<Input
-								type="text"
-								name="school_name"
-								value={student.school_name}
-								onChange={handleChange}
-							/>
+							<Input type="text"  name="school_name" ref={register({required: true})} />
 						</div>
 					</div>
 					<div>
@@ -415,7 +402,7 @@ const StudentRegistrationForm = props => {
 								borderRadius: '3px'
 							}}
 						>
-							<Dropdown
+							{/* <Dropdown
 								onChange={e => {
 									setStudent({ ...student, school_grade_id: e });
 								}}
@@ -424,7 +411,10 @@ const StudentRegistrationForm = props => {
 								className="dropdownRoot"
 								options={props.schoolGradeTable}
 								className="dropdown"
-							/>
+							/> */}
+							<select name="school_grade_id" ref={register({ required: true })}>
+        						{createDropdown(props.schoolGradeTable)}
+      						</select>
 						</div>
 					</div>
 					<div>
@@ -435,13 +425,16 @@ const StudentRegistrationForm = props => {
 								borderRadius: '3px'
 							}}
 						>
-							<Dropdown
+							{/* <Dropdown
 								value={student.location_id}
 								onChange={e => setStudent({ ...student, location_id: e })}
 								controlClassName="myControlClassName"
 								options={props.locationsTable}
 								className="dropdown"
-							/>
+							/> */}
+							<select name="location_id" ref={register({ required: true })}>
+        						{createDropdown(props.locationsTable)}
+      							</select>
 						</div>
 					</div>
 					<div>
@@ -452,7 +445,7 @@ const StudentRegistrationForm = props => {
 								borderRadius: '3px'
 							}}
 						>
-							<Dropdown
+							{/* <Dropdown
 								onChange={e => {
 									setStudent({ ...student, block_code: e });
 								}}
@@ -460,178 +453,124 @@ const StudentRegistrationForm = props => {
 								options={props.blocksTable}
 								value={student.block_code}
 								className="dropdown"
-							/>
+							/> */}
+							<select name="block_code" ref={register({ required: true })}>
+        						{createDropdown(props.blocksTable)}
+      							</select>
 						</div>
 					</div>
 					<div>
 						<Label>Road</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderRoad}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderRoad}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Input
-								type="text"
-								name="road"
-								value={student.road}
-								onChange={handleChange}
-							/>
+							<Input type="text"  name="road" ref={register({required: true})} />
 						</div>
 					</div>
 					<div>
 						<Label>Building</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderBuilding}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderBuilding}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Input
-								type="text"
-								name="building"
-								value={student.building}
-								onChange={handleChange}
-							/>
+							<Input type="text"  name="building" ref={register({required: true})} />
 						</div>
 					</div>
 					<div>
 						<Label>Flat</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderFlat}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderFlat}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Input
-								type="text"
-								name="flat"
-								value={student.flat}
-								onChange={handleChange}
-							/>
+							<Input type="text"  name="flat" ref={register({required: true})} />
 						</div>
 					</div>
 					<div style={{ gridColumn: 'span 2' }}>
 						<Label>Primary Emergency Contact Name</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderPrimaryEmergencyContactName}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderPrimaryEmergencyContactName}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Input
-								style={{ width: '100%' }}
-								type="text"
-								name="primary_emergency_contact_name"
-								value={student.primary_emergency_contact_name}
-								onChange={handleChange}
-							/>
+							<Input type="text" name="primary_emergency_contact_name" ref={register({required: true})} />
 						</div>
 					</div>
 					<div>
 						<Label>Relationship</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderPrimaryEmergencyRelationship}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderPrimaryEmergencyRelationship}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Input
-								type="text"
-								name="primary_emergency_relationship"
-								value={student.primary_emergency_relationship}
-								onChange={handleChange}
-							/>
+							<Input type="text" name="primary_emergency_relationship" ref={register({required: true})} />
 						</div>
 					</div>
 					<div>
 						<Label>Phone Number</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderPrimaryEmergencyPhone}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderPrimaryEmergencyPhone}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Input
-								type="text"
-								name="primary_emergency_phone"
-								value={student.primary_emergency_phone}
-								onChange={handleChange}
-							/>
+							<Input type="text"  name="primary_emergency_phone" ref={register({required: true})} />
 						</div>
 					</div>
 					<div style={{ gridColumn: 'span 2' }}>
 						<Label>Emergency Contact Name</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderEmergencyContactName}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderEmergencyContactName}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Input
-								style={{ width: '100%' }}
-								type="text"
-								name="emergency_contact_name"
-								value={student.emergency_contact_name}
-								onChange={handleChange}
-							/>
+							<Input style={{ width: '100%' }} type="text" name="emergency_contact_name" ref={register} />
 						</div>
 					</div>
 					<div>
 						<Label>Relationship</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderEmergencyRelationship}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderEmergencyRelationship}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Input
-								type="text"
-								name="emergency_relationship"
-								value={student.emergency_relationship}
-								onChange={handleChange}
-							/>
+							<Input type="text"  name="emergency_relationship" ref={register} />
 						</div>
 					</div>
 					<div>
 						<Label>Phone Number</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderEmergencyPhone}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderEmergencyPhone}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Input
-								type="text"
-								name="emergency_phone"
-								value={student.emergency_phone}
-								onChange={handleChange}
-							/>
+							<Input type="text" name="emergency_phone" ref={register} />
 						</div>
 					</div>
 					<div style={{ gridColumn: 'span 4' }}>
 						<Label>Notes</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderNotes}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderNotes}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<textarea
-								style={{
-									width: '100%',
-									height: '80px',
-									outline: 'none',
-									border: '1px solid transparent',
-									borderRadius: '3px'
-								}}
-								type="text"
-								name="notes"
-								value={student.notes}
-								onChange={handleChange}
-							/>
-						</div> */}
-					{/* </div> */}
+							<textarea type="text" name="notes" ref={register}
+								style={{width: '100%', height: '80px', outline: 'none', border: '1px solid transparent', borderRadius: '3px'}}/>
+
+						</div>
+					</div>
 				</Div>
 			</FormSet>
 			<ButtonDiv>

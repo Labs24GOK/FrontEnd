@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { addCourse, getDropDownCourses, getDropDown } from '../../../../actions';
 import { useForm } from 'react-hook-form';
+import { createDropdown } from '../../../../utils/helpers.js';
 import {
   Button,
   ButtonDiv,
@@ -19,7 +20,8 @@ import {
 
 
 const CourseRegistrationForm = props => {
-  const { register, errors, handleSubmit } = useForm();
+  console.log("Props", props)
+  const { register, errors } = useForm();
 
   const submitNow = value => {
 		console.log(value)
@@ -95,8 +97,7 @@ const CourseRegistrationForm = props => {
 	}
 
   
-  // function handleSubmit(event) {
-  //   event.preventDefault();
+
 
   //   //check for required fields and set border
   //   if (
@@ -204,6 +205,12 @@ const CourseRegistrationForm = props => {
   //     props.setForm(false);
   //   }
   // }
+
+    function handleSubmit(event) {
+    event.preventDefault();
+    props.addCourse(course);
+    props.setForm(false);
+    };
 
   const handleCancel = event => {
     event.preventDefault();
@@ -476,15 +483,15 @@ const CourseRegistrationForm = props => {
     //       </div>
     //     </Div>
     //   </FormSet>
-    //   <ButtonDiv>
-    //     <Button
-    //       onClick={handleCancel}
-    //       style={{ background: '#C73642', width: '80px' }}
-    //     >
-    //       Cancel
-    //     </Button>
-    //     <Button type='submit'>Add Course</Button>
-    //   </ButtonDiv>
+      // <ButtonDiv>
+      //   <Button
+      //     onClick={handleCancel}
+      //     style={{ background: '#C73642', width: '80px' }}
+      //   >
+      //     Cancel
+      //   </Button>
+      //   <Button type='submit'>Add Course</Button>
+      // </ButtonDiv>
     // </FormWrap>
 
     
@@ -495,35 +502,38 @@ const CourseRegistrationForm = props => {
         <Div>
           <div>
         <Label>Term</Label>
-        <Input type="text" name="term" ref={register({required: true })}/>
+        <Input type="dropdown" name="term" ref={register({required: true })}/>
 							{errors.term && 'Term is Required'}
+              {/* {createDropdown(props.termTable)} */}
+               
          </div>
              
             <div>
             <Label>Course Type</Label>
 						<div>
-              <Input type="text" name="course_type_id" ref={register({required: true})}/>
-						</div>
+              <Input type="dropdown" name="course_type_id"ref={register({required: true})}/>
+							{errors.course_type_id && 'Course Type is Required'}
+          	</div>
            
             </div>  
             <div>
             <Label>Group Type</Label>
 						<div>
-              <Input type="text" name="group_type_id" ref={register({required: true})}/>
+              <Input type="dropdown" name="group_type_id" ref={register({required: true})}/>
 						</div>
        
             </div>  
             <div>
             <Label>School Grade</Label>
 						<div>
-              <Input type="text" name="school_grade_id" ref={register({required: true})}/>
+              <Input type="dropdown" name="school_grade_id" ref={register({required: true})}/>
 						</div>
            
             </div>  
             <div>
             <Label>Level</Label>
 						<div>
-              <Input type="text" name="level_id" ref={register({required: true})}/>
+              <Input type="dropdown" name="level_id" ref={register({required: true})}/>
 						</div>
          
             </div> 
@@ -531,7 +541,7 @@ const CourseRegistrationForm = props => {
             <div>
             <Label>Section</Label>
 						<div>
-              <Input type="text" name="section" ref={register({required: true})}/>
+              <Input type="dropdown" name="section" ref={register({required: true})}/>
 						</div>
           
             </div> 
@@ -545,15 +555,78 @@ const CourseRegistrationForm = props => {
             </div> 
 
             <div>
-            <Label>Course Schedule</Label>
+            <Label>Start Date</Label>
 						<div>
-              <Input type="text" name="course_schedule_id" ref={register({required: true})}/>
+              <Input type="date" name="start_date" ref={register({required: true})}/>
 						</div>
-          
-            </div> 
-          
+            </div>
+
+            <div>
+            <Label>End Date</Label>
+						<div>
+              <Input type="date" name="end_date" ref={register({required: true})}/>
+						</div>
+            </div>
+
+            <div>
+            <Label>Start Time</Label>
+						<div>
+              <Input type="time" name="start_time" ref={register({required: true})}/>
+						</div>
+            </div>
+
+            <div>
+            <Label>End Time</Label>
+						<div>
+              <Input type="time" name="End_time" ref={register({required: true})}/>
+						</div>
+            </div>
+
+            <div>
+            <Label>Room</Label>
+						<div>
+              <Input type="dropdown" name="room_id" ref={register({required: true})}/>
+						</div>
+            </div>
+
+            <div>
+            <Label>Teacher</Label>
+						<div>
+              <Input type="dropdown" name="teacher_id" ref={register({required: true})}/>
+						</div>
+            </div>
+
+            <div>
+            <Label>Hourly Rate</Label>
+						<div>
+              <Input type="text" name="hourly_rate" ref={register({required: true})}/>
+						</div>
+            </div>
+
+            <div>
+            <Label>Status</Label>
+						<div>
+              <Input type="dropdown" name="status" ref={register({required: true})}/>
+						</div>
+            </div>
+
+            <div>
+            <Label>Notes</Label>
+						<div>
+              <Input type="text" name="notes" ref={register({required: true})}/>
+						</div>
+            </div>    
         </Div>
       </FormSet>
+      <ButtonDiv>
+        <Button
+          onClick={handleCancel}
+          style={{ background: '#C73642', width: '80px' }}
+        >
+          Cancel
+        </Button>
+        <Button onClick={handleSubmit} type='submit'>Add Course</Button>
+      </ButtonDiv>
     </FormWrap>
   )
 };

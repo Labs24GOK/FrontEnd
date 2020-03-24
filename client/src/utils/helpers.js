@@ -1,3 +1,4 @@
+import React from 'react';
 import moment from 'moment-timezone';
 const currentTimeZone = moment.tz.guess();
 
@@ -24,4 +25,12 @@ export function dateConverter(date) {
     .format('DD/MM/YYYY');
 
   return changedDate;
+}
+
+export function createDropdown (options) {
+  return options.map(opt => {
+    return(
+      <option value={opt.value}>{opt.label}</option>
+    )
+  })
 }
