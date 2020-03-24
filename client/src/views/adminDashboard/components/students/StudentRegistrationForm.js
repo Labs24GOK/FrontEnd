@@ -380,12 +380,7 @@ const StudentRegistrationForm = props => {
 								borderRadius: '3px'
 							}}
 						>
-							<Input
-								type="text"
-								name="school_name"
-								value={student.school_name}
-								onChange={handleChange}
-							/>
+							<Input type="text" placeholder="school_name" name="school_name" ref={register({required: true})} />
 						</div>
 					</div>
 					<div>
