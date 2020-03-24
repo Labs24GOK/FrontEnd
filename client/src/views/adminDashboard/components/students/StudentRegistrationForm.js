@@ -345,12 +345,12 @@ const StudentRegistrationForm = props => {
 					<div>
 						<Label>Preferred Contact Method</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderContactType}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderContactType}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Dropdown
+							{/* <Dropdown
 								onChange={e =>
 									setStudent({ ...student, preferred_contact_type_id: e })
 								}
@@ -358,23 +358,18 @@ const StudentRegistrationForm = props => {
 								controlClassName="myControlClassName"
 								options={props.contactTypesTable}
 								className="dropdown"
-							/>
+							/> */}
 						</div>
 					</div>
 					<div>
 						<Label>Birth date</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderBirthdate}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderBirthdate}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Input
-								type="date"
-								name="birthdate"
-								value={student.birthdate}
-								onChange={handleChange}
-							/>
+							<Input type="date" name="birthdate" ref={register({required: true})} />
 						</div>
 					</div>
 					<div>
