@@ -30,9 +30,9 @@ const StudentRegistrationForm = props => {
 	console.log(props)
 	const { register, errors, handleSubmit } = useForm();
 
-	const submitNow = value => {
-		console.log(value)
-		props.createNewStudent(value);
+	const submitNow = data => {
+		console.log(data)
+		props.createNewStudent(data);
 		props.setForm(false);
 	}
 
@@ -259,14 +259,15 @@ const StudentRegistrationForm = props => {
 				<Div>
 					<div>
 						<Label>CPR</Label>
-						{/* <div
-							style={{
-								border: `1px solid ${errorBorderCpr}`,
-								borderRadius: '3px'
-							}}
-						> */}
-							<Input type="text" name="cpr" ref={register({required: true })}/>
+						<div
+							// style={{
+							// 	border: `1px solid ${errorBorderCpr}`,
+							// 	borderRadius: '3px'
+							// }}
+						>
+							 <Input type="text" name="cpr" ref={register({required: true})} />
 							{errors.cpr && 'CPR is Required'}
+							</div>
 						
 					</div>
 					<div>
