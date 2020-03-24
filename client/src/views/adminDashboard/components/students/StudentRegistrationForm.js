@@ -442,10 +442,10 @@ const StudentRegistrationForm = props => {
 					<div>
 						<Label>Road</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderRoad}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderRoad}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
 							<Input type="text"  name="road" ref={register({required: true})} />
 						</div>
@@ -453,10 +453,10 @@ const StudentRegistrationForm = props => {
 					<div>
 						<Label>Building</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderBuilding}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderBuilding}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
 							<Input
 								type="text"
@@ -469,10 +469,10 @@ const StudentRegistrationForm = props => {
 					<div>
 						<Label>Flat</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderFlat}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderFlat}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
 							<Input
 								type="text"
@@ -485,10 +485,10 @@ const StudentRegistrationForm = props => {
 					<div style={{ gridColumn: 'span 2' }}>
 						<Label>Primary Emergency Contact Name</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderPrimaryEmergencyContactName}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderPrimaryEmergencyContactName}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
 							<Input
 								style={{ width: '100%' }}
@@ -502,10 +502,10 @@ const StudentRegistrationForm = props => {
 					<div>
 						<Label>Relationship</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderPrimaryEmergencyRelationship}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderPrimaryEmergencyRelationship}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
 							<Input
 								type="text"
@@ -518,10 +518,10 @@ const StudentRegistrationForm = props => {
 					<div>
 						<Label>Phone Number</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderPrimaryEmergencyPhone}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderPrimaryEmergencyPhone}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
 							<Input
 								type="text"
@@ -534,10 +534,10 @@ const StudentRegistrationForm = props => {
 					<div style={{ gridColumn: 'span 2' }}>
 						<Label>Emergency Contact Name</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderEmergencyContactName}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderEmergencyContactName}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
 							<Input
 								style={{ width: '100%' }}
@@ -551,10 +551,10 @@ const StudentRegistrationForm = props => {
 					<div>
 						<Label>Relationship</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderEmergencyRelationship}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderEmergencyRelationship}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
 							<Input
 								type="text"
@@ -567,10 +567,10 @@ const StudentRegistrationForm = props => {
 					<div>
 						<Label>Phone Number</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderEmergencyPhone}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderEmergencyPhone}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
 							<Input
 								type="text"
@@ -583,12 +583,12 @@ const StudentRegistrationForm = props => {
 					<div style={{ gridColumn: 'span 4' }}>
 						<Label>Notes</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderNotes}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderNotes}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<textarea
+							{/* <textarea
 								style={{
 									width: '100%',
 									height: '80px',
@@ -600,7 +600,9 @@ const StudentRegistrationForm = props => {
 								name="notes"
 								value={student.notes}
 								onChange={handleChange}
-							/>
+							/> */}
+
+							
 						</div>
 					</div>
 				</Div>
