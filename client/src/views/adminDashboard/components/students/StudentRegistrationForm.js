@@ -458,12 +458,7 @@ const StudentRegistrationForm = props => {
 							// 	borderRadius: '3px'
 							// }}
 						>
-							<Input
-								type="text"
-								name="building"
-								value={student.building}
-								onChange={handleChange}
-							/>
+							<Input type="text" placeholder="building" name="building" ref={register({required: true})} />
 						</div>
 					</div>
 					<div>
@@ -602,7 +597,7 @@ const StudentRegistrationForm = props => {
 								onChange={handleChange}
 							/> */}
 
-							
+
 						</div>
 					</div>
 				</Div>
