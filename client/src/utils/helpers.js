@@ -26,11 +26,10 @@ export function dateConverter(date) {
 
   return changedDate;
 }
-
 export function createDropdown (options) {
-    return options.map(opt => {
-      return(
-        <option value={parseInt(opt.value)}>{opt.label}</option>
-      )
-    })
+  return options.map(opt => {
+    return(
+      <option value={opt.value}>{opt.label}</option>
+    )
+  })
 }
