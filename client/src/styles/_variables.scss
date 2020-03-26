@@ -29,3 +29,6 @@ $tablet: 'only screen and (max-width:1200px)';
 $tablet-small: 'only screen and (max-width:800px)';
 $tablet-short: 'only screen and (max-height:550px)';
 $desktop: 'only screen and (min-width:1200px)';
+
+//error color - outline input fields for errors
+$error:  $deep-red 
