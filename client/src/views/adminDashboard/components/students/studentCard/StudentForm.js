@@ -28,21 +28,6 @@ import { useForm } from 'react-hook-form';
 const StudentForm = props => {
 	const { studentID } = props;
 
-	const { errors, register, handleSubmit, setValue } = useForm({
-		defaultValues: {
-			cpr: props.studentById.cpr
-		}
-	});
-	const dropDowns = ['block_code', 'preferred_contact_type_id', 'school_grade_id', 'location_id', "family_id"];
-	const submitNow = (data) => {
-		console.log("studentById", props.studentById);
-		console.log("data", data);
-		for (const property of dropDowns) {
-			data[property] = parseInt(data[property])
-		}
-		props.editStudentById(studentID, state);
-	}
-
 	let birthdate = new Date(props.studentById.birthdate)
 		.toISOString()
 		.split('T')[0];
@@ -50,38 +35,83 @@ const StudentForm = props => {
 		.toISOString()
 		.split('T')[0];
 
-	const [state, setState] = useState({
-		cpr: props.studentById.cpr,
-		first_name: props.studentById.first_name,
-		additional_names: props.studentById.additional_names,
-		gender: props.studentById.gender,
-		home_telephone: props.studentById.home_telephone,
-		mobile_telephone: props.studentById.mobile_telephone,
-		email: props.studentById.email,
-		preferred_contact_type_id: props.studentById.preferred_contact_type_id,
-		birthdate: birthdate,
-		school_name: props.studentById.school_name,
-		school_grade_id: props.studentById.school_grade_id,
-		location_id: props.studentById.location_id,
-		block_code: props.studentById.block_code,
-		road: props.studentById.road,
-		building: props.studentById.building,
-		flat: props.studentById.flat,
-		primary_emergency_contact_name:
-			props.studentById.primary_emergency_contact_name,
-		primary_emergency_relationship:
-			props.studentById.primary_emergency_relationship,
-		primary_emergency_phone: props.studentById.primary_emergency_phone,
-		emergency_contact_name: props.studentById.emergency_contact_name,
-		emergency_relationship: props.studentById.emergency_relationship,
-		emergency_phone: props.studentById.emergency_phone,
-		notes: props.studentById.notes,
-		no_call: props.studentById.no_call,
-		delinquent: props.studentById.delinquent,
-		expelled: props.studentById.expelled,
-		grade_updated: grade_updated,
-		family_id: props.studentById.family_id
+	const { errors, register, handleSubmit } = useForm({
+		defaultValues: {
+			cpr: props.studentById.cpr,
+			first_name: props.studentById.first_name,
+			additional_names: props.studentById.additional_names,
+			gender: props.studentById.gender,
+			home_telephone: props.studentById.home_telephone,
+			mobile_telephone: props.studentById.mobile_telephone,
+			email: props.studentById.email,
+			preferred_contact_type_id: props.studentById.preferred_contact_type_id,
+			birthdate: birthdate,
+			school_name: props.studentById.school_name,
+			school_grade_id: props.studentById.school_grade_id,
+			location_id: props.studentById.location_id,
+			block_code: props.studentById.block_code,
+			road: props.studentById.road,
+			building: props.studentById.building,
+			flat: props.studentById.flat,
+			primary_emergency_contact_name:
+				props.studentById.primary_emergency_contact_name,
+			primary_emergency_relationship:
+				props.studentById.primary_emergency_relationship,
+			primary_emergency_phone: props.studentById.primary_emergency_phone,
+			emergency_contact_name: props.studentById.emergency_contact_name,
+			emergency_relationship: props.studentById.emergency_relationship,
+			emergency_phone: props.studentById.emergency_phone,
+			notes: props.studentById.notes,
+			no_call: props.studentById.no_call,
+			delinquent: props.studentById.delinquent,
+			expelled: props.studentById.expelled,
+			grade_updated: grade_updated,
+			family_id: props.studentById.family_id
+		}
 	});
+	const dropDowns = ['block_code', 'preferred_contact_type_id', 'school_grade_id', 'location_id', "family_id"];
+
+	const submitNow = (data) => {
+		// console.log("studentById", props.studentById);
+		// console.log("data", data);
+		for (const property of dropDowns) {
+			data[property] = parseInt(data[property])
+		}
+		props.editStudentById(studentID, data);
+	}
+
+	// const [state, setState] = useState({
+	// 	// cpr: props.studentById.cpr,
+	// 	first_name: props.studentById.first_name,
+	// 	additional_names: props.studentById.additional_names,
+	// 	gender: props.studentById.gender,
+	// 	home_telephone: props.studentById.home_telephone,
+	// 	mobile_telephone: props.studentById.mobile_telephone,
+	// 	email: props.studentById.email,
+	// 	preferred_contact_type_id: props.studentById.preferred_contact_type_id,
+	// 	birthdate: birthdate,
+	// 	school_name: props.studentById.school_name,
+	// 	school_grade_id: props.studentById.school_grade_id,
+	// 	location_id: props.studentById.location_id,
+	// 	block_code: props.studentById.block_code,
+	// 	road: props.studentById.road,
+	// 	building: props.studentById.building,
+	// 	flat: props.studentById.flat,
+	// 	primary_emergency_contact_name:
+	// 		props.studentById.primary_emergency_contact_name,
+	// 	primary_emergency_relationship:
+	// 		props.studentById.primary_emergency_relationship,
+	// 	primary_emergency_phone: props.studentById.primary_emergency_phone,
+	// 	emergency_contact_name: props.studentById.emergency_contact_name,
+	// 	emergency_relationship: props.studentById.emergency_relationship,
+	// 	emergency_phone: props.studentById.emergency_phone,
+	// 	notes: props.studentById.notes,
+	// 	no_call: props.studentById.no_call,
+	// 	delinquent: props.studentById.delinquent,
+	// 	expelled: props.studentById.expelled,
+	// 	grade_updated: grade_updated,
+	// 	family_id: props.studentById.family_id
+	// });
 
 	useEffect(() => {
 		props.editStudentDropDown();
@@ -160,9 +190,9 @@ const StudentForm = props => {
 	// 	});
 	// }
 
-	function handleChange(e) {
-		setValue("name", e.target.value);
-	}
+	// function handleChange(e) {
+	// 	setValue("name", e.target.value);
+	// }
 
 	// const handleSubmit = e => {
 	// 	e.preventDefault();
@@ -342,8 +372,11 @@ const StudentForm = props => {
 								onChange={handleChange}
 								value={state.cpr}
 							/> */}
-							<Input type="text" name="cpr" ref={register({ required: true })} />
-							{errors.cpr && <span className="form-error">This field is required</span>}
+							{/* <Input type="text" name="cpr" ref={register({ required: true })} /> */}
+							{/* {errors.cpr && <span className="form-error">This field is required</span>} */}
+							<Input type="text" placeholder = "xxxxxxxxxx" className= {errors.cpr && "input-error"}  name="cpr" ref={register({required: true, minLength: 9})} />
+							{errors.cpr && errors.cpr.type === "required" && 'CPR is Required'}
+							{errors.cpr && errors.cpr.type === "minLength" && 'CPR needs to be 9 characters'}
 						</div>
 					</div>
 					<div>
@@ -361,8 +394,8 @@ const StudentForm = props => {
 								onChange={handleChange}
 								value={state.first_name}
 							/> */}
-							<Input type="text" defaultValue={state.first_name} name="first_name" ref={register({ required: true })} />
-							{errors.first_name && <span className="form-error">This field is required</span>}
+							 <Input type="text" className= {errors.first_name && "input-error"} name="first_name" ref={register({required: true, maxLength: 80})} />
+							 {errors.first_name && errors.first_name.type === "required" && (<span>Please enter a name</span>)}
 						</div>
 					</div>
 					<div>
@@ -380,7 +413,8 @@ const StudentForm = props => {
 								onChange={handleChange}
 								value={state.additional_names}
 							/> */}
-							<Input type="text" name="additional_names" value={state.additional_names} onChange={handleChange} ref={register({required: true, maxLength: 100})} />
+							<Input type="text" className={errors.additional_names && "input-error"}name="additional_names" ref={register({required: true, maxLength: 100})} />
+							{errors.additional_names && errors.additional_names.type === "required" && 'Additional Names is Required'}	
 						</div>
 					</div>
 					<div>
@@ -398,14 +432,14 @@ const StudentForm = props => {
 								onChange={e => setState({ ...state, gender: e.value })}
 								options={genderArr}
 							/> */}
-							<select name="gender" value={state.gender} ref={register({ required: true })}>
+							<select name="gender" ref={register({ required: true })}>
         						<option value="F">F</option>
         						<option value="M">M</option>
       						</select>
 						</div>
 					</div>
 					<div>
-						<Label>Home Phone</Label>
+						<Label>Home Telephone</Label>
 						<div
 							// style={{
 							// 	border: `1px solid ${errorBorderHomeTelephone}`,
@@ -419,329 +453,131 @@ const StudentForm = props => {
 								onChange={handleChange}
 								value={state.home_telephone}
 							/> */}
-							<Input type="text" name="home_telephone" value={state.home_telephone} onChange={handleChange} ref={register({required: true, maxLength: 12})} />
+							<Input type="tel" className={errors.home_telephone && "input-error"}name="home_telephone" ref={register({required: true, maxLength: 100})} />
+							{errors.home_telephone && errors.home_telephone.type === "required" && 'Home Telephone is Required'}	
 						</div>
 					</div>
 					<div>
-						<Label>Mobile</Label>
-						<div
-							// style={{
-							// 	border: `1px solid ${errorBorderMobileTelephone}`,
-							// 	borderRadius: '3px'
-							// }}
-						>
-							{/* <Input
-								type="text"
-								name="mobile_telephone"
-								placeholder="Mobile Telephone"
-								onChange={handleChange}
-								value={state.mobile_telephone}
-								error={{
-									content: 'Please enter mobile telephone.',
-									pointing: 'above'
-								}}
-							/> */}
-							<Input type="tel" name="mobile_telephone" value={state.mobile_telephone} onChange={handleChange} ref={register({required: true, maxLength: 12})} />
+						<Label>Mobile Telephone</Label>
+						<div>
+							<Input type="tel" className={errors.mobile_telephone && "input-error"}name="mobile_telephone" ref={register({required: true, maxLength: 100})} />
+							{errors.mobile_telephone && errors.mobile_telephone.type === "required" && 'Mobile Telephone is Required'}			
 						</div>
 					</div>
 					<div>
-						<Label>Email</Label>
-						<div
-							// style={{
-							// 	border: `1px solid ${errorBorderEmail}`,
-							// 	borderRadius: '3px'
-							// }}
-						>
-							{/* <Input
-								type="text"
-								name="email"
-								placeholder="email"
-								onChange={handleChange}
-								value={state.email}
-							/> */}
-							<Input type="text" name="email" value={state.email} onChange={handleChange} ref={register({required: true, pattern: /^\S+@\S+$/i})} />
+					<Label>Email</Label>
+						<div>
+							<Input type="text" className={errors.email && "input-error"} name="email" ref={register({required: true, pattern: /^\S+@\S+$/i})} />
+							{errors.email && 'Email is Required'}
 						</div>
 					</div>
 					<div>
 						<Label>Preferred Contact Method</Label>
-						<div
-							// style={{
-							// 	border: `1px solid ${errorBorderContactType}`,
-							// 	borderRadius: '3px'
-							// }}
-						>
-							{/* <Dropdown
-								controlClassName="myControlClassName"
-								className="dropdown"
-								onChange={e => {
-									setState({ ...state, preferred_contact_type_id: e.value });
-								}}
-								value={props.studentById.preferred_contact_type}
-								options={props.contactTypesTable}
-							/> */}
-							<select name="preferred_contact_type_id" value={state.preferred_contact_type_id} ref={register({ required: true })}>
+						<div>	
+								<select name="preferred_contact_type_id" ref={register({ required: true })}>
         						{createDropdown(props.contactTypesTable)}
-      						</select>
+      							</select>
 						</div>
 					</div>
 					<div>
-						<Label>Birthdate</Label>
-						<div
-							// style={{
-							// 	border: `1px solid ${errorBorderBirthdate}`,
-							// 	borderRadius: '3px'
-							// }}
-						>
-							{/* <Input
-								type="date"
-								name="birthdate"
-								placeholder="Birthdate"
-								onChange={handleChange}
-								value={state.birthdate}
-							/> */}
-							<Input type="date" name="birthdate" value={state.birthdate} ref={register({required: true})} />
+						<Label>Birth date</Label>
+						<div>
+							<Input type="date" className={errors.birthdate && "input-error"} name="birthdate" ref={register({required: true})} />
+							{errors.birthdate && 'Birth Date is Required'}
 						</div>
 					</div>
 					<div>
 						<Label>School Name</Label>
-						<div
-							// style={{
-							// 	border: `1px solid ${errorBorderSchoolName}`,
-							// 	borderRadius: '3px'
-							// }}
-						>
-							{/* <Input
-								type="text"
-								name="school_name"
-								placeholder="School Name"
-								onChange={handleChange}
-								value={state.school_name}
-							/> */}
-							<Input type="text" name="school_name" value={state.school_name} ref={register({required: true})} />
+						<div>
+							<Input type="text" className={errors.school_name && "input-error"}  name="school_name" ref={register({required: true})} />
+							{errors.school_name && 'School Name is Required'}
 						</div>
 					</div>
 					<div>
 						<Label>School Grade</Label>
-						<div
-							// style={{
-							// 	border: `1px solid ${errorBorderSchoolGrade}`,
-							// 	borderRadius: '3px'
-							// }}
-						>
-							{/* <Dropdown
-								controlClassName="myControlClassName"
-								className="dropdown"
-								onChange={e => setState({ ...state, school_grade_id: e.value })}
-								options={props.schoolGradeTable}
-								value={props.studentById.school_grade}
-							/> */}
-							<select name="school_grade_id" value={state.school_grade_id} ref={register({ required: true })}>
+						<div>
+							
+							<select name="school_grade_id" ref={register({ required: true })}>
         						{createDropdown(props.schoolGradeTable)}
       						</select>
 						</div>
 					</div>
 					<div>
 						<Label>Location</Label>
-						<div
-							// style={{
-							// 	border: `1px solid ${errorBorderLocation}`,
-							// 	borderRadius: '3px'
-							// }}
-						>
-							{/* <Dropdown
-								controlClassName="myControlClassName"
-								className="dropdown"
-								onChange={e => setState({ ...state, location_id: e.value })}
-								value={props.studentById.location}
-								options={props.locationsTable}
-							/> */}
-							<select name="location_id" value={state.location_id} ref={register({ required: true })}>
+						<div>					
+							<select name="location_id" ref={register({ required: true })}>
         						{createDropdown(props.locationsTable)}
-      						</select>
+      							</select>
 						</div>
 					</div>
 					<div>
-						<Label>Block Code</Label>
-						<div
-							// style={{
-							// 	border: `1px solid ${errorBorderBlock}`,
-							// 	borderRadius: '3px'
-							// }}
-						>
-							{/* <Dropdown
-								controlClassName="myControlClassName"
-								className="dropdown"
-								options={props.blocksTable}
-								onChange={e => setState({ ...state, block_code: e.value })}
-								value={`${state.block_code}`}
-							/> */}
-							<select name="block_code" value={state.block_code} ref={register({ required: true })}>
+						<Label>Block</Label>
+						<div>
+							<select name="block_code" ref={register({ required: true })}>
         						{createDropdown(props.blocksTable)}
-      						</select>
+								{errors.block_code && 'Block code is Required'}
+      							</select>
 						</div>
 					</div>
 					<div>
 						<Label>Road</Label>
-						<div
-							// style={{
-							// 	border: `1px solid ${errorBorderRoad}`,
-							// 	borderRadius: '3px'
-							// }}
-						>
-							{/* <Input
-								type="text"
-								name="road"
-								placeholder="road"
-								onChange={handleChange}
-								value={state.road}
-							/> */}
-							<Input type="text" name="road" value={state.road} ref={register({required: true})} />
+						<div>
+							<Input type="text" className={errors.road && "input-error"} name="road" ref={register({required: true})}/>
+							{errors.road && 'Road is Required'}
 						</div>
 					</div>
 					<div>
 						<Label>Building</Label>
-						<div
-							// style={{
-							// 	border: `1px solid ${errorBorderBuilding}`,
-							// 	borderRadius: '3px'
-							// }}
-						>
-							{/* <Input
-								type="text"
-								name="building"
-								placeholder="building"
-								onChange={handleChange}
-								value={state.building}
-							/> */}
-							<Input type="text" name="building" value={state.building} ref={register({required: true})} />
+						<div>
+							<Input type="text" className={errors.building && "input-error"} name="building" ref={register({required: true})} />
+							{errors.building && 'Building is Required'}
 						</div>
 					</div>
 					<div>
 						<Label>Flat</Label>
-						<div
-							// style={{
-							// 	border: `1px solid ${errorBorderFlat}`,
-							// 	borderRadius: '3px'
-							// }}
-						>
-							{/* <Input
-								type="text"
-								name="flat"
-								placeholder="flat"
-								onChange={handleChange}
-								value={state.flat}
-							/> */}
-							<Input type="text" name="flat" value={state.flat} ref={register({required: true})} />
+						<div>
+							<Input type="text" className={errors.flat && "input-error"} name="flat" ref={register({required: true})}/>
+							{errors.flat && 'Flat is Required'}
 						</div>
 					</div>
 					<div style={{ gridColumn: 'span 2' }}>
 						<Label>Primary Emergency Contact Name</Label>
-						<div
-							// style={{
-							// 	border: `1px solid ${errorBorderPrimaryEmergencyContactName}`,
-							// 	borderRadius: '3px'
-							// }}
-						>
-							{/* <Input
-								type="text"
-								name="primary_emergency_contact_name"
-								placeholder="Primary Emergency Contact Name"
-								onChange={handleChange}
-								value={state.primary_emergency_contact_name}
-								style={{ width: '100%' }}
-							/> */}
-							<Input type="text" name="primary_emergency_contact_name" value={state.primary_emergency_contact_name} ref={register({required: true})} />
+						<div>
+							<Input type="text" className={errors.primary_emergency_contact_name && "input-error"} name="primary_emergency_contact_name" ref={register({required: true})} />
+							{errors.primary_emergency_contact_name && 'Primary Emergency Contact Name is Required'}
 						</div>
 					</div>
 					<div>
 						<Label>Relationship</Label>
-						<div
-							// style={{
-							// 	border: `1px solid ${errorBorderPrimaryEmergencyRelationship}`,
-							// 	borderRadius: '3px'
-							// }}
-						>
-							{/* <Input
-								type="text"
-								name="primary_emergency_relationship"
-								placeholder="Primary Emergency Relationship"
-								onChange={handleChange}
-								value={state.primary_emergency_relationship}
-							/> */}
-							<Input type="text" name="primary_emergency_relationship" value={state.primary_emergency_relationship} ref={register({required: true})} />
+						<div>
+							<Input type="text" className={errors.primary_emergency_relationship && "input-error"} name="primary_emergency_relationship" ref={register({required: true})} />
+							{errors.primary_emergency_relationship && 'Primary Emergency Relationship is Required'}
 						</div>
 					</div>
 					<div>
 						<Label>Phone Number</Label>
-						<div
-							// style={{
-							// 	border: `1px solid ${errorBorderPrimaryEmergencyPhone}`,
-							// 	borderRadius: '3px'
-							// }}
-						>
-							{/* <Input
-								type="text"
-								name="primary_emergency_phone"
-								placeholder="Primary Emergency Number"
-								onChange={handleChange}
-								value={state.primary_emergency_phone}
-							/> */}
-							<Input type="text"  name="primary_emergency_phone" value={state.primary_emergency_phone} ref={register({required: true})} />
+						<div>
+							<Input type="tel" className={errors.primary_emergency_phone && "input-error"} name="primary_emergency_phone" ref={register({required: true})} />
+							{errors.primary_emergency_phone && errors.primary_emergency_phone.type === "required" && 'Primary Emergency Phone is Required'}					
 						</div>
 					</div>
 					<div style={{ gridColumn: 'span 2' }}>
 						<Label>Emergency Contact Name</Label>
-						<div
-							// style={{
-							// 	border: `1px solid ${errorBorderEmergencyContactName}`,
-							// 	borderRadius: '3px'
-							// }}
-						>
-							{/* <Input
-								type="text"
-								name="emergency_contact_name"
-								placeholder="Emergency Contact Name"
-								onChange={handleChange}
-								value={state.emergency_contact_name}
-								style={{ width: '100%' }}
-							/> */}
-							<Input style={{ width: '100%' }} type="text" name="emergency_contact_name" value={state.emergency_contact_name} ref={register} />
+						<div>
+							<Input style={{ width: '100%' }} type="text" name="emergency_contact_name" ref={register} />
+							
 						</div>
 					</div>
 					<div>
 						<Label>Relationship</Label>
-						<div
-							// style={{
-							// 	border: `1px solid ${errorBorderEmergencyRelationship}`,
-							// 	borderRadius: '3px'
-							// }}
-						>
-							{/* <Input
-								type="text"
-								name="emergency_relationship"
-								placeholder="Emergency Relationship"
-								onChange={handleChange}
-								value={state.emergency_relationship}
-							/> */}
-							<Input type="text"  name="emergency_relationship" value={state.emergency_relationship} ref={register} />
+						<div>
+							<Input type="text"  name="emergency_relationship" ref={register} />
 						</div>
 					</div>
 					<div>
-						<Label>Phone Number</Label>
-						<div
-							// style={{
-							// 	border: `1px solid ${errorBorderEmergencyPhone}`,
-							// 	borderRadius: '3px'
-							// }}
-						>
-							{/* <Input
-								type="text"
-								name="emergency_phone"
-								placeholder="Emergency Number"
-								onChange={handleChange}
-								value={state.emergency_phone}
-							/> */}
-							<Input type="text" name="emergency_phone" value={state.emergency_phone} ref={register} />
+					<	Label>Phone Number</Label>
+						<div>
+							<Input type="tel" name="emergency_phone" ref={register} />
 						</div>
 					</div>
 					<div>
@@ -759,7 +595,7 @@ const StudentForm = props => {
 								onChange={handleChange}
 								value={state.grade_updated}
 							/> */}
-							<Input type="hidden" value="1" name="family_id" value={state.family_id} ref={register({required: true})} />
+							<Input type="hidden" value="1" name="family_id" ref={register({required: true})} />
 						</div>
 						{/* <div>
                         <Label>Registration Date</Label>
@@ -773,7 +609,7 @@ const StudentForm = props => {
                                 />
                             </div>
                         </div> */}
-						<div>
+						{/* <div>
 							<Label>No Call</Label>
 							<div
 								style={{
@@ -790,8 +626,8 @@ const StudentForm = props => {
 									options={no_call}
 								/>
 							</div>
-						</div>
-						<div>
+						</div> */}
+						{/* <div>
 							<Label>Delinquent</Label>
 							<div
 								style={{
@@ -808,8 +644,8 @@ const StudentForm = props => {
 									options={delinquent}
 								/>
 							</div>
-						</div>
-						<div>
+						</div> */}
+						{/* <div>
 							<Label>Expelled</Label>
 							<div
 								style={{
@@ -826,30 +662,16 @@ const StudentForm = props => {
 									options={expelled}
 								/>
 							</div>
-						</div>
+						</div> */}
 					</div>
 					<div style={{ gridColumn: 'span 4' }}>
 						<Label>Notes</Label>
-						<div
-							style={{
-								border: `1px solid ${errorBorderNotes}`,
-								borderRadius: '3px'
-							}}
-						>
-							<textarea
-								style={{
-									width: '100%',
-									height: '80px',
-									outline: 'none',
-									border: '1px solid transparent',
-									borderRadius: '3px'
-								}}
-								type="text"
-								name="notes"
-								placeholder="Notes"
-								onChange={handleChange}
-								value={state.notes}
-							/>
+						<div>
+							<textarea type="text" name="notes" ref={register}
+								style={{width: '100%', height: '80px', outline: 'none', border: '1px solid transparent', borderRadius: '3px'}}/>
+						</div>
+						<div>
+							<Input type="hidden" value="1" name="family_id" ref={register({required: true})} />
 						</div>
 					</div>
 				</Div>
