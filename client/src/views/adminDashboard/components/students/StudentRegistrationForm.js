@@ -1,38 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import {
-	createNewStudent,
-	getDropDown,
-	getStudentTable
-} from '../../../../actions';
-import { Spin } from 'antd';
-import moment from 'moment';
-import Dropdown from 'react-dropdown';
+import {createNewStudent,getDropDown,getStudentTable} from '../../../../actions';
 import 'react-dropdown/style.css';
 import '../mainStyle/mainTable.scss';
-
+import '../../../../styles/table.scss'
 import { useForm } from 'react-hook-form';
 import { createDropdown } from '../../../../utils/helpers.js';
 
-import {
-	FormWrap,
-	Input,
-	Button,
-	Div,
-	FormSet,
-	ButtonDiv,
-	CancelButton,
-	AddButton,
-	Label
-} from '../mainStyle/styledComponent';
+import {FormWrap, Input, Div, FormSet, ButtonDiv, CancelButton, AddButton, Label} from '../mainStyle/styledComponent';
 
 const StudentRegistrationForm = props => {
 
 	const { register, errors, handleSubmit } = useForm();
 	const dropDowns = ['block_code', 'preferred_contact_type_id', 'school_grade_id', 'location_id', "family_id"]
 	const submitNow = data => {
-		
 		for (const property of dropDowns) {
 			// if the string should/could be converted to a number
 				data[property] = parseInt(data[property])
@@ -57,8 +39,7 @@ const StudentRegistrationForm = props => {
 					<div>
 						<Label>CPR</Label>
 						<div>
-							 <Input type="text" placeholder = "xxxxxxxxxx"style={errors.cpr && {border:"solid red 2px"}} name="cpr" ref={register({required: true, minLength: 9})} />
-							
+							 <Input type="text" placeholder = "xxxxxxxxxx" className= {errors.cpr && "input-error"}  name="cpr" ref={register({required: true, minLength: 9})} />
 							{errors.cpr && errors.cpr.type === "required" && 'CPR is Required'}
 							{errors.cpr && errors.cpr.type === "minLength" && 'CPR needs to be 9 characters'}
 							</div>				
@@ -66,7 +47,7 @@ const StudentRegistrationForm = props => {
 					<div>
 						<Label>First Name</Label>
 						<div>
-							 <Input type="text" style={errors.first_name && {border:"solid red 2px"}} name="first_name" ref={register({required: true, maxLength: 80})} />
+							 <Input type="text" className= {errors.first_name && "input-error"} name="first_name" ref={register({required: true, maxLength: 80})} />
 							 {errors.first_name && errors.first_name.type === "required" && (<span>Please enter a name</span>)}
 						
 						</div>
@@ -74,9 +55,8 @@ const StudentRegistrationForm = props => {
 					<div>
 						<Label>Additional names</Label>
 						<div>
-							<Input type="text" style={errors.additional_names && {border:"solid red 2px"}}name="additional_names" ref={register({required: true, maxLength: 100})} />
-							{errors.additional_names && errors.additional_names.type === "required" && 'Additional Names is Required'}
-							
+							<Input type="text" className={errors.additional_names && "input-error"}name="additional_names" ref={register({required: true, maxLength: 100})} />
+							{errors.additional_names && errors.additional_names.type === "required" && 'Additional Names is Required'}			
 						</div>
 					</div>
 					<div>
@@ -91,23 +71,21 @@ const StudentRegistrationForm = props => {
 					<div>
 						<Label>Home Telephone</Label>
 						<div>
-							<Input type="text"  name="home_telephone" ref={register} />
-						
-						
+							<Input type="tel" className={errors.home_telephone && "input-error"}name="home_telephone" ref={register({required: true, maxLength: 100})} />
+							{errors.home_telephone && errors.home_telephone.type === "required" && 'Home Telephone is Required'}			
 						</div>
 					</div>
 					<div>
 						<Label>Mobile Telephone</Label>
 						<div>
-							<Input type="tel" name="mobile_telephone" ref={register} />
-							
-							
+							<Input type="tel" className={errors.mobile_telephone && "input-error"}name="mobile_telephone" ref={register({required: true, maxLength: 100})} />
+							{errors.mobile_telephone && errors.mobile_telephone.type === "required" && 'Mobile Telephone is Required'}			
 						</div>
 					</div>
 					<div>
 						<Label>Email</Label>
 						<div>
-							<Input type="text" style={errors.email && {border:"solid red 2px"}} name="email" ref={register({required: true, pattern: /^\S+@\S+$/i})} />
+							<Input type="text" className={errors.email && "input-error"} name="email" ref={register({required: true, pattern: /^\S+@\S+$/i})} />
 							{errors.email && 'Email is Required'}
 						</div>
 					</div>
@@ -122,14 +100,14 @@ const StudentRegistrationForm = props => {
 					<div>
 						<Label>Birth date</Label>
 						<div>
-							<Input type="date" style={errors.birthdate && {border:"solid red 2px"}} name="birthdate" ref={register({required: true})} />
+							<Input type="date" className={errors.birthdate && "input-error"} name="birthdate" ref={register({required: true})} />
 							{errors.birthdate && 'Birth Date is Required'}
 						</div>
 					</div>
 					<div>
 						<Label>School Name</Label>
 						<div>
-							<Input type="text" style={errors.school_name && {border:"solid red 2px"}}  name="school_name" ref={register({required: true})} />
+							<Input type="text" className={errors.school_name && "input-error"}  name="school_name" ref={register({required: true})} />
 							{errors.school_name && 'School Name is Required'}
 						</div>
 					</div>
@@ -162,44 +140,43 @@ const StudentRegistrationForm = props => {
 					<div>
 						<Label>Road</Label>
 						<div>
-							<Input type="text" style={errors.road && {border:"solid red 2px"}} name="road" ref={register({required: true})}/>
+							<Input type="text" className={errors.road && "input-error"} name="road" ref={register({required: true})}/>
 							{errors.road && 'Road is Required'}
 						</div>
 					</div>
 					<div>
 						<Label>Building</Label>
 						<div>
-							<Input type="text" style={errors.building && {border:"solid red 2px"}} name="building" ref={register({required: true})} />
+							<Input type="text" className={errors.building && "input-error"} name="building" ref={register({required: true})} />
 							{errors.building && 'Building is Required'}
 						</div>
 					</div>
 					<div>
 						<Label>Flat</Label>
 						<div>
-							<Input type="text" style={errors.flat && {border:"solid red 2px"}} name="flat" ref={register({required: true})}/>
+							<Input type="text" className={errors.flat && "input-error"} name="flat" ref={register({required: true})}/>
 							{errors.flat && 'Flat is Required'}
 						</div>
 					</div>
 					<div style={{ gridColumn: 'span 2' }}>
 						<Label>Primary Emergency Contact Name</Label>
 						<div>
-							<Input type="text" style={errors.primary_emergency_contact_name && {border:"solid red 2px"}} name="primary_emergency_contact_name" ref={register({required: true})} />
+							<Input type="text" className={errors.primary_emergency_contact_name && "input-error"} name="primary_emergency_contact_name" ref={register({required: true})} />
 							{errors.primary_emergency_contact_name && 'Primary Emergency Contact Name is Required'}
 						</div>
 					</div>
 					<div>
 						<Label>Relationship</Label>
 						<div>
-							<Input type="text" style={errors.primary_emergency_relationship && {border:"solid red 2px"}} name="primary_emergency_relationship" ref={register({required: true})} />
+							<Input type="text" className={errors.primary_emergency_relationship && "input-error"} name="primary_emergency_relationship" ref={register({required: true})} />
 							{errors.primary_emergency_relationship && 'Primary Emergency Relationship is Required'}
 						</div>
 					</div>
 					<div>
 						<Label>Phone Number</Label>
 						<div>
-							<Input type="text" style={errors.primary_emergency_phone && {border:"solid red 2px"}} name="primary_emergency_phone" ref={register({required: true})} />
-							{errors.primary_emergency_phone && errors.primary_emergency_phone.type === "required" && 'Primary Emergency Phone is Required'}
-							
+							<Input type="tel" className={errors.primary_emergency_phone && "input-error"} name="primary_emergency_phone" ref={register({required: true})} />
+							{errors.primary_emergency_phone && errors.primary_emergency_phone.type === "required" && 'Primary Emergency Phone is Required'}					
 						</div>
 					</div>
 					<div style={{ gridColumn: 'span 2' }}>
@@ -218,7 +195,7 @@ const StudentRegistrationForm = props => {
 					<div>
 						<Label>Phone Number</Label>
 						<div>
-							<Input type="text" name="emergency_phone" ref={register} />
+							<Input type="tel" name="emergency_phone" ref={register} />
 						</div>
 					</div>
 					<div style={{ gridColumn: 'span 4' }}>
