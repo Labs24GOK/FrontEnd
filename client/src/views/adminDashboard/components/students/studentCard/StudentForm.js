@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-// import { Icon} from 'semantic-ui-react'
 import {
 	editStudentById,
 	editStudentDropDown,
 	toggleEditComponent,
 } from '../../../../../actions';
 import { withRouter } from 'react-router-dom';
-import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import '../../mainStyle/mainTable.scss';
 import {
@@ -72,253 +70,15 @@ const StudentForm = props => {
 	const dropDowns = ['block_code', 'preferred_contact_type_id', 'school_grade_id', 'location_id', "family_id"];
 
 	const submitNow = (data) => {
-		// console.log("studentById", props.studentById);
-		// console.log("data", data);
 		for (const property of dropDowns) {
 			data[property] = parseInt(data[property])
 		}
 		props.editStudentById(studentID, data);
 	}
 
-	// const [state, setState] = useState({
-	// 	// cpr: props.studentById.cpr,
-	// 	first_name: props.studentById.first_name,
-	// 	additional_names: props.studentById.additional_names,
-	// 	gender: props.studentById.gender,
-	// 	home_telephone: props.studentById.home_telephone,
-	// 	mobile_telephone: props.studentById.mobile_telephone,
-	// 	email: props.studentById.email,
-	// 	preferred_contact_type_id: props.studentById.preferred_contact_type_id,
-	// 	birthdate: birthdate,
-	// 	school_name: props.studentById.school_name,
-	// 	school_grade_id: props.studentById.school_grade_id,
-	// 	location_id: props.studentById.location_id,
-	// 	block_code: props.studentById.block_code,
-	// 	road: props.studentById.road,
-	// 	building: props.studentById.building,
-	// 	flat: props.studentById.flat,
-	// 	primary_emergency_contact_name:
-	// 		props.studentById.primary_emergency_contact_name,
-	// 	primary_emergency_relationship:
-	// 		props.studentById.primary_emergency_relationship,
-	// 	primary_emergency_phone: props.studentById.primary_emergency_phone,
-	// 	emergency_contact_name: props.studentById.emergency_contact_name,
-	// 	emergency_relationship: props.studentById.emergency_relationship,
-	// 	emergency_phone: props.studentById.emergency_phone,
-	// 	notes: props.studentById.notes,
-	// 	no_call: props.studentById.no_call,
-	// 	delinquent: props.studentById.delinquent,
-	// 	expelled: props.studentById.expelled,
-	// 	grade_updated: grade_updated,
-	// 	family_id: props.studentById.family_id
-	// });
-
 	useEffect(() => {
 		props.editStudentDropDown();
 	}, []);
-
-	// handle required fields (mobileTelephone, emergencyContactName, emergencyRelationship, emergencyPhone, and notes were asked to not be required)
-	// const [errorBorderCpr, setErrorBorderCpr] = useState('transparent'); //error #C73642
-	// const [errorBorderFirstName, setErrorBorderFirstName] = useState(
-	// 	'transparent'
-	// ); //error #C73642
-	const [errorBorderAdditionalNames, setErrorBorderAdditionalNames] = useState(
-		'transparent'
-	); //error #C73642
-	const [errorBorderGender, setErrorBorderGender] = useState('transparent'); //error #C73642
-	const [errorBorderHomeTelephone, setErrorBorderHomeTelephone] = useState(
-		'transparent'
-	); //error #C73642
-	const [errorBorderMobileTelephone, setErrorBorderMobileTelephone] = useState(
-		'transparent'
-	); //error #C73642
-	const [errorBorderEmail, setErrorBorderEmail] = useState('transparent'); //error #C73642
-	const [errorBorderContactType, setErrorBorderContactType] = useState(
-		'transparent'
-	); //error #C73642
-	const [errorBorderBirthdate, setErrorBorderBirthdate] = useState(
-		'transparent'
-	); //error #C73642
-	const [errorBorderSchoolName, setErrorBorderSchoolName] = useState(
-		'transparent'
-	); //error #C73642
-	const [errorBorderSchoolGrade, setErrorBorderSchoolGrade] = useState(
-		'transparent'
-	); //error #C73642
-	const [errorBorderLocation, setErrorBorderLocation] = useState('transparent'); //error #C73642
-	const [errorBorderBlock, setErrorBorderBlock] = useState('transparent'); //error #C73642
-	const [errorBorderRoad, setErrorBorderRoad] = useState('transparent'); //error #C73642
-	const [errorBorderBuilding, setErrorBorderBuilding] = useState('transparent'); //error #C73642
-	const [errorBorderFlat, setErrorBorderFlat] = useState('transparent'); //error #C73642
-	const [
-		errorBorderPrimaryEmergencyContactName,
-		setErrorBorderPrimaryEmergencyContactName
-	] = useState('transparent'); //error #C73642
-	const [
-		errorBorderPrimaryEmergencyRelationship,
-		setErrorBorderPrimaryEmergencyRelationship
-	] = useState('transparent'); //error #C73642
-	const [
-		errorBorderPrimaryEmergencyPhone,
-		setErrorBorderPrimaryEmergencyPhone
-	] = useState('transparent'); //error #C73642
-	const [
-		errorBorderEmergencyContactName,
-		setErrorBorderEmergencyContactName
-	] = useState('transparent'); //error #C73642
-	const [
-		errorBorderEmergencyRelationship,
-		setErrorBorderEmergencyRelationship
-	] = useState('transparent'); //error #C73642
-	const [errorBorderEmergencyPhone, setErrorBorderEmergencyPhone] = useState(
-		'transparent'
-	); //error #C73642
-	const [errorBorderNotes, setErrorBorderNotes] = useState('transparent'); //error #C73642
-	const [errorBorderNoCall, setErrorBorderNoCall] = useState('transparent'); //error #C73642
-	const [errorBorderDelinquent, setErrorBorderDelinquent] = useState(
-		'transparent'
-	); //error #C73642
-	const [errorBorderExpelled, setErrorBorderExpelled] = useState('transparent'); //error #C73642
-	const [errorBorderGradeUpdated, setErrorBorderGradeUpdated] = useState(
-		'transparent'
-	); //error #C73642
-
-	// function handleChange(event) {
-	// 	setState({
-	// 		...state,
-	// 		[event.target.name]: event.target.value
-	// 	});
-	// }
-
-	// function handleChange(e) {
-	// 	setValue("name", e.target.value);
-	// }
-
-	// const handleSubmit = e => {
-	// 	e.preventDefault();
-	// 	// check for required fields, commented out fields indicate those that are not required
-	// 	// those can be uncommented if stakeholder wants to require those fields in the future
-	// 	if (
-	// 		state.cpr === '' ||
-	// 		state.first_name === '' ||
-	// 		state.additional_names === '' ||
-	// 		state.gender === '' ||
-	// 		state.home_telephone === '' ||
-	// 		// state.mobile_telephone === '' ||
-	// 		state.email === '' ||
-	// 		state.preferred_contact_type_id === '' ||
-	// 		state.birthdate === '' ||
-	// 		state.school_name === '' ||
-	// 		state.school_grade_id === '' ||
-	// 		state.location_id === '' ||
-	// 		state.block_code === '' ||
-	// 		state.road === '' ||
-	// 		state.building === '' ||
-	// 		state.flat === '' ||
-	// 		state.primary_emergency_contact_name === '' ||
-	// 		state.primary_emergency_relationship === '' ||
-	// 		state.primary_emergency_phone === '' ||
-	// 		// state.emergency_contact_name === '' ||
-	// 		// state.emergency_relationship === '' ||
-	// 		// state.emergency_phone === '' ||
-	// 		state.no_call === '' ||
-	// 		state.delinquent === '' ||
-	// 		state.expelled === '' ||
-	// 		state.grade_updated === ''
-	// 		// state.notes === ''
-	// 	) {
-	// 		// highlight all that were missed
-	// 		if (state.cpr === '') {
-	// 			setErrorBorderCpr('#ef6570');
-	// 		}
-	// 		if (state.first_name === '') {
-	// 			setErrorBorderFirstName('#ef6570');
-	// 		}
-	// 		if (state.additional_names === '') {
-	// 			setErrorBorderAdditionalNames('#ef6570');
-	// 		}
-	// 		if (state.gender === '') {
-	// 			setErrorBorderGender('#ef6570');
-	// 		}
-	// 		if (state.home_telephone === '') {
-	// 			setErrorBorderHomeTelephone('#ef6570');
-	// 		}
-	// 		// if (state.mobile_telephone === '') {
-	// 		// 	setErrorBorderMobileTelephone('#ef6570');
-	// 		// }
-	// 		if (state.email === '') {
-	// 			setErrorBorderEmail('#ef6570');
-	// 		}
-	// 		if (state.preferred_contact_type_id === '') {
-	// 			setErrorBorderContactType('#ef6570');
-	// 		}
-	// 		if (state.birthdate === '') {
-	// 			setErrorBorderBirthdate('#ef6570');
-	// 		}
-	// 		if (state.school_name === '') {
-	// 			setErrorBorderSchoolName('#ef6570');
-	// 		}
-	// 		if (state.school_grade_id === '') {
-	// 			setErrorBorderSchoolGrade('#ef6570');
-	// 		}
-	// 		if (state.location_id === '') {
-	// 			setErrorBorderLocation('#ef6570');
-	// 		}
-	// 		if (state.block_code === '') {
-	// 			setErrorBorderBlock('#ef6570');
-	// 		}
-	// 		if (state.road === '') {
-	// 			setErrorBorderRoad('#ef6570');
-	// 		}
-	// 		if (state.building === '') {
-	// 			setErrorBorderBuilding('#ef6570');
-	// 		}
-	// 		if (state.flat === '') {
-	// 			setErrorBorderFlat('#ef6570');
-	// 		}
-	// 		if (state.primary_emergency_contact_name === '') {
-	// 			setErrorBorderPrimaryEmergencyContactName('#ef6570');
-	// 		}
-	// 		if (state.primary_emergency_relationship === '') {
-	// 			setErrorBorderPrimaryEmergencyRelationship('#ef6570');
-	// 		}
-	// 		if (state.primary_emergency_phone === '') {
-	// 			setErrorBorderPrimaryEmergencyPhone('#ef6570');
-	// 		}
-	// 		// if (state.emergency_contact_name === '') {
-	// 		// 	setErrorBorderEmergencyContactName('#ef6570');
-	// 		// }
-	// 		// if (state.emergency_relationship === '') {
-	// 		// 	setErrorBorderEmergencyRelationship('#ef6570');
-	// 		// }
-	// 		// if (state.emergency_phone === '') {
-	// 		// 	setErrorBorderEmergencyPhone('#ef6570');
-	// 		// }
-	// 		if (state.no_call === '') {
-	// 			setErrorBorderNoCall('#ef6570');
-	// 		}
-	// 		if (state.delinquent === '') {
-	// 			setErrorBorderDelinquent('#ef6570');
-	// 		}
-	// 		if (state.expelled === '') {
-	// 			setErrorBorderExpelled('#ef6570');
-	// 		}
-	// 		if (state.grade_updated === '') {
-	// 			setErrorBorderGradeUpdated('#ef6570');
-	// 		}
-	// 		// if (state.notes === '') {
-	// 		// 	setErrorBorderNotes('#ef6570');
-	// 		// }
-	// 	} else {
-	// 		// const birthdateDate = moment(student.birthdate).toDate();
-	// 		// const birthdateISO = birthdateDate.toISOString()
-	// 		props.editStudentById(studentID, state);
-	// 		// if(props.createNewStudentSuccessMessage === 'Student has been successfuly added')
-	// 		// setTimeout(()=>{
-	// 		//   props.getStudentTable()
-	// 		// },1000)
-	// 	}
-	// };
 
 	const handleCancel = e => {
 		props.toggleEditComponent('false', 'false');
@@ -359,21 +119,7 @@ const StudentForm = props => {
 				<Div>
 					<div>
 						<Label>CPR</Label>
-						<div
-							// style={{
-							// 	border: `1px solid ${errorBorderCpr}`,
-							// 	borderRadius: '3px'
-							// }}
-						>
-							{/* <Input
-								type="text"
-								name="cpr"
-								placeholder="CPR"
-								onChange={handleChange}
-								value={state.cpr}
-							/> */}
-							{/* <Input type="text" name="cpr" ref={register({ required: true })} /> */}
-							{/* {errors.cpr && <span className="form-error">This field is required</span>} */}
+						<div>
 							<Input type="text" placeholder = "xxxxxxxxxx" className= {errors.cpr && "input-error"}  name="cpr" ref={register({required: true, minLength: 9})} />
 							{errors.cpr && errors.cpr.type === "required" && 'CPR is Required'}
 							{errors.cpr && errors.cpr.type === "minLength" && 'CPR needs to be 9 characters'}
@@ -381,57 +127,21 @@ const StudentForm = props => {
 					</div>
 					<div>
 						<Label>First Name</Label>
-						<div
-							// style={{
-							// 	border: `1px solid ${errorBorderFirstName}`,
-							// 	borderRadius: '3px'
-							// }}
-						>
-							{/* <Input
-								type="text"
-								name="first_name"
-								placeholder="First Name"
-								onChange={handleChange}
-								value={state.first_name}
-							/> */}
+						<div>
 							 <Input type="text" className= {errors.first_name && "input-error"} name="first_name" ref={register({required: true, maxLength: 80})} />
 							 {errors.first_name && errors.first_name.type === "required" && (<span>Please enter a name</span>)}
 						</div>
 					</div>
 					<div>
 						<Label>Additional Names</Label>
-						<div
-							// style={{
-							// 	border: `1px solid ${errorBorderAdditionalNames}`,
-							// 	borderRadius: '3px'
-							// }}
-						>
-							{/* <Input
-								type="text"
-								name="additional_names"
-								placeholder="Additional Names"
-								onChange={handleChange}
-								value={state.additional_names}
-							/> */}
+						<div>
 							<Input type="text" className={errors.additional_names && "input-error"}name="additional_names" ref={register({required: true, maxLength: 100})} />
 							{errors.additional_names && errors.additional_names.type === "required" && 'Additional Names is Required'}	
 						</div>
 					</div>
 					<div>
 						<Label>Gender</Label>
-						<div
-							// style={{
-							// 	border: `1px solid ${errorBorderGender}`,
-							// 	borderRadius: '3px'
-							// }}
-						>
-							{/* <Dropdown
-								controlClassName="myControlClassName"
-								className="dropdown"
-								value={state.gender}
-								onChange={e => setState({ ...state, gender: e.value })}
-								options={genderArr}
-							/> */}
+						<div>
 							<select name="gender" ref={register({ required: true })}>
         						<option value="F">F</option>
         						<option value="M">M</option>
@@ -440,19 +150,7 @@ const StudentForm = props => {
 					</div>
 					<div>
 						<Label>Home Telephone</Label>
-						<div
-							// style={{
-							// 	border: `1px solid ${errorBorderHomeTelephone}`,
-							// 	borderRadius: '3px'
-							// }}
-						>
-							{/* <Input
-								type="text"
-								name="home_telephone"
-								placeholder="Home Telephone"
-								onChange={handleChange}
-								value={state.home_telephone}
-							/> */}
+						<div>
 							<Input type="tel" className={errors.home_telephone && "input-error"}name="home_telephone" ref={register({required: true, maxLength: 100})} />
 							{errors.home_telephone && errors.home_telephone.type === "required" && 'Home Telephone is Required'}	
 						</div>
@@ -474,9 +172,9 @@ const StudentForm = props => {
 					<div>
 						<Label>Preferred Contact Method</Label>
 						<div>	
-								<select name="preferred_contact_type_id" ref={register({ required: true })}>
-        						{createDropdown(props.contactTypesTable)}
-      							</select>
+							<select name="preferred_contact_type_id" ref={register({ required: true })}>
+							{createDropdown(props.contactTypesTable)}
+							</select>
 						</div>
 					</div>
 					<div>
@@ -496,7 +194,6 @@ const StudentForm = props => {
 					<div>
 						<Label>School Grade</Label>
 						<div>
-							
 							<select name="school_grade_id" ref={register({ required: true })}>
         						{createDropdown(props.schoolGradeTable)}
       						</select>
@@ -565,7 +262,6 @@ const StudentForm = props => {
 						<Label>Emergency Contact Name</Label>
 						<div>
 							<Input style={{ width: '100%' }} type="text" name="emergency_contact_name" ref={register} />
-							
 						</div>
 					</div>
 					<div>
@@ -582,19 +278,7 @@ const StudentForm = props => {
 					</div>
 					<div>
 						<Label>Grade Updated</Label>
-						<div
-							// style={{
-							// 	border: `1px solid ${errorBorderGradeUpdated}`,
-							// 	borderRadius: '3px'
-							// }}
-						>
-							{/* <Input
-								type="date"
-								name="grade_updated"
-								placeholder="Grade Updated"
-								onChange={handleChange}
-								value={state.grade_updated}
-							/> */}
+						<div>
 							<Input type="hidden" value="1" name="family_id" ref={register({required: true})} />
 						</div>
 						{/* <div>
