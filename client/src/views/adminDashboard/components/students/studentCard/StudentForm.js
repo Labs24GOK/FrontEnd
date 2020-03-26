@@ -21,15 +21,26 @@ import {
 	Label
 } from '../../mainStyle/styledComponent';
 
+import {createDropdown} from '../../../../../utils/helpers';
+
 import { useForm } from 'react-hook-form';
 import './formStyles.scss';
 
 const StudentForm = props => {
 	const { studentID } = props;
 
-	const { errors, register, handleSubmit } = useForm();
-	const submitNow = () => {
+	const { errors, register, handleSubmit, setValue } = useForm({
+		defaultValues: {
+			cpr: props.studentById.cpr
+		}
+	});
+	const dropDowns = ['block_code', 'preferred_contact_type_id', 'school_grade_id', 'location_id', "family_id"];
+	const submitNow = (data) => {
 		console.log(props.studentById);
+		console.log(data);
+		// for (const property of dropDowns) {
+		// 	data[property] = parseInt(data[property])
+		// }
 		props.editStudentById(studentID, state);
 	}
 
@@ -143,11 +154,15 @@ const StudentForm = props => {
 		'transparent'
 	); //error #C73642
 
-	function handleChange(event) {
-		setState({
-			...state,
-			[event.target.name]: event.target.value
-		});
+	// function handleChange(event) {
+	// 	setState({
+	// 		...state,
+	// 		[event.target.name]: event.target.value
+	// 	});
+	// }
+
+	function handleChange(e) {
+		setValue("name", e.target.value);
 	}
 
 	// const handleSubmit = e => {
@@ -328,7 +343,7 @@ const StudentForm = props => {
 								onChange={handleChange}
 								value={state.cpr}
 							/> */}
-							<Input type="text" name="cpr" value={state.cpr} onChange={handleChange} ref={register({ required: true })} />
+							<Input type="text" name="cpr" onChange={handleChange} ref={register({ required: true })} />
 							{errors.cpr && <span className="form-error">This field is required</span>}
 						</div>
 					</div>
@@ -347,70 +362,76 @@ const StudentForm = props => {
 								onChange={handleChange}
 								value={state.first_name}
 							/> */}
-							<Input type="text" value={state.first_name} onChange={handleChange} name="first_name" ref={register({ required: true })} />
+							<Input type="text" defaultValue={state.first_name} name="first_name" ref={register({ required: true })} />
 							{errors.first_name && <span className="form-error">This field is required</span>}
 						</div>
 					</div>
 					<div>
 						<Label>Additional Names</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderAdditionalNames}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderAdditionalNames}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Input
+							{/* <Input
 								type="text"
 								name="additional_names"
 								placeholder="Additional Names"
 								onChange={handleChange}
 								value={state.additional_names}
-							/>
+							/> */}
+							<Input type="text" name="additional_names" value={state.additional_names} onChange={handleChange} ref={register({required: true, maxLength: 100})} />
 						</div>
 					</div>
 					<div>
 						<Label>Gender</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderGender}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderGender}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Dropdown
+							{/* <Dropdown
 								controlClassName="myControlClassName"
 								className="dropdown"
 								value={state.gender}
 								onChange={e => setState({ ...state, gender: e.value })}
 								options={genderArr}
-							/>
+							/> */}
+							<select name="gender" value={state.gender} ref={register({ required: true })}>
+        						<option value="F">F</option>
+        						<option value="M">M</option>
+      						</select>
 						</div>
 					</div>
 					<div>
 						<Label>Home Phone</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderHomeTelephone}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderHomeTelephone}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Input
+							{/* <Input
 								type="text"
 								name="home_telephone"
 								placeholder="Home Telephone"
 								onChange={handleChange}
 								value={state.home_telephone}
-							/>
+							/> */}
+							<Input type="text" name="home_telephone" value={state.home_telephone} onChange={handleChange} ref={register({required: true, maxLength: 12})} />
 						</div>
 					</div>
 					<div>
 						<Label>Mobile</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderMobileTelephone}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderMobileTelephone}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Input
+							{/* <Input
 								type="text"
 								name="mobile_telephone"
 								placeholder="Mobile Telephone"
@@ -420,35 +441,37 @@ const StudentForm = props => {
 									content: 'Please enter mobile telephone.',
 									pointing: 'above'
 								}}
-							/>
+							/> */}
+							<Input type="tel" name="mobile_telephone" value={state.mobile_telephone} onChange={handleChange} ref={register({required: true, maxLength: 12})} />
 						</div>
 					</div>
 					<div>
 						<Label>Email</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderEmail}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderEmail}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Input
+							{/* <Input
 								type="text"
 								name="email"
 								placeholder="email"
 								onChange={handleChange}
 								value={state.email}
-							/>
+							/> */}
+							<Input type="text" name="email" value={state.email} onChange={handleChange} ref={register({required: true, pattern: /^\S+@\S+$/i})} />
 						</div>
 					</div>
 					<div>
 						<Label>Preferred Contact Method</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderContactType}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderContactType}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Dropdown
+							{/* <Dropdown
 								controlClassName="myControlClassName"
 								className="dropdown"
 								onChange={e => {
@@ -456,24 +479,28 @@ const StudentForm = props => {
 								}}
 								value={props.studentById.preferred_contact_type}
 								options={props.contactTypesTable}
-							/>
+							/> */}
+							<select name="preferred_contact_type_id" value={state.preferred_contact_type_id} ref={register({ required: true })}>
+        						{createDropdown(props.contactTypesTable)}
+      						</select>
 						</div>
 					</div>
 					<div>
 						<Label>Birthdate</Label>
 						<div
-							style={{
-								border: `1px solid ${errorBorderBirthdate}`,
-								borderRadius: '3px'
-							}}
+							// style={{
+							// 	border: `1px solid ${errorBorderBirthdate}`,
+							// 	borderRadius: '3px'
+							// }}
 						>
-							<Input
+							{/* <Input
 								type="date"
 								name="birthdate"
 								placeholder="Birthdate"
 								onChange={handleChange}
 								value={state.birthdate}
-							/>
+							/> */}
+							<Input type="date" name="birthdate" value={state.birthdate} ref={register({required: true})} />
 						</div>
 					</div>
 					<div>
