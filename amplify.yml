@@ -1,0 +1,20 @@
+version: 0.1
+frontend:
+  phases:
+    preBuild:
+        commands:
+            - cd client
+            - yarn install
+    # IMPORTANT - Please verify your build commands
+    build:
+      commands: 
+        - yarn run build
+
+  artifacts:
+    # IMPORTANT - Please verify your build output directory
+    baseDirectory: /client/build
+    files:
+      - '**/*'
+  cache:
+    paths: 
+        - node_modules
