@@ -24,7 +24,6 @@ import {
 import {createDropdown} from '../../../../../utils/helpers';
 
 import { useForm } from 'react-hook-form';
-import './formStyles.scss';
 
 const StudentForm = props => {
 	const { studentID } = props;
