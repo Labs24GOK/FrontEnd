@@ -96,23 +96,23 @@ export const CREATE_NEW_STUDENT_FAILURE =
   'CREATE_NEW_STUDENT_FAILURE';
 
 export const createNewStudent = student => dispatch => {
-  let {
-    school_grade_id,
-    block_code,
-    preferred_contact_type_id,
-    location_id
-  } = student;
-  let newStudent = {
-    ...student,
-    school_grade_id: school_grade_id.value,
-    block_code: block_code.label,
-    preferred_contact_type_id:
-      preferred_contact_type_id.value,
-    location_id: location_id.value
-  };
+  // let {
+  //   school_grade_id,
+  //   block_code,
+  //   preferred_contact_type_id,
+  //   location_id
+  // } = student;
+  // let newStudent = {
+  //   ...student,
+  //   school_grade_id: school_grade_id.value,
+  //   block_code: block_code.label,
+  //   preferred_contact_type_id:
+  //     preferred_contact_type_id.value,
+  //   location_id: location_id.value
+  // };
   dispatch({ type: CREATE_NEW_STUDENT_START });
   axios
-    .post(`${API_URL}/student`, newStudent)
+    .post(`${API_URL}/student`, student)
     .then(res => {
       dispatch({
         type: CREATE_NEW_STUDENT_SUCCESS,

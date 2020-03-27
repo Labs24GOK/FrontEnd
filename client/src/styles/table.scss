@@ -1,3 +1,4 @@
+@import "./variables";
 .rowHover tr {
     cursor: pointer;
   }
@@ -52,4 +53,16 @@
   }
   .react-calendar__navigation button {
     min-width: 0px;
+  }
+  .input-error {
+    border: $error 2px solid
+  }
+  .dropDown {
+    outline: none;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    background: white;
+    width: 100%;
+    padding: 6px;
+
   }

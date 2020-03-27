@@ -26,7 +26,6 @@ export function dateConverter(date) {
 
   return changedDate;
 }
-
 export function createDropdown (options) {
   return options.map(opt => {
     return(
