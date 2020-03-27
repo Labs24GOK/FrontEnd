@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux';
 import { postStudentProgress, togglePostComponent } from '../../../../../actions';
 import 'react-dropdown/style.css';
-import '../mainStyle/mainTable.scss';
+import '../../mainStyle/mainTable.scss';
 import { FormWrap, Input, SaveButton, Label, FormSet, Div, ButtonDiv } from '../../mainStyle/styledComponent';
 import { useForm } from 'react-hook-form';
 
@@ -10,26 +10,26 @@ const StudentProgressForm = props => {
 
 	const { register, errors, handleSubmit } = useForm();
 
-    // const [state, setState] = useState({
-    //     speaking_fluency: '',
-    //     speaking_accuracy: '',
-    //     vocabulary: '',
-    //     pronunciation: '',
-    //     grammar: '',
-    //     listening: '',
-    //     writing: '',
-    //     reading: '',
-    //     interest: '',
-    //     participation: '',
-    //     submitting_homework: '',
-    //     homework_effort: '',
-    //     notes: '',
-    //     course_id: '',
-    //     student_id: '',
-    //     teacher_id: '',
-    //     report_date: '',
-    //     id: props.id,
-    // })
+    const [state, setState] = useState({
+        speaking_fluency: '',
+        speaking_accuracy: '',
+        vocabulary: '',
+        pronunciation: '',
+        grammar: '',
+        listening: '',
+        writing: '',
+        reading: '',
+        interest: '',
+        participation: '',
+        submitting_homework: '',
+        homework_effort: '',
+        notes: '',
+        course_id: '',
+        student_id: '',
+        teacher_id: '',
+        report_date: '',
+        id: props.id,
+    })
     
     const formSubmit = e => {
         e.preventDefault()

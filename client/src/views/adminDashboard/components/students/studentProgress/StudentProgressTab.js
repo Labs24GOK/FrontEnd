@@ -29,11 +29,14 @@ const StudentProgressTab = props => {
                     {/* Categories: Speaking fluency, Speaking accuracy, vocabulary, pronunciation, grammar, listening, writing, reading, interest, participation, submitting homework, homework accuracy, homework effort, notes, report date */ }
 
                     { props.progressByStudentId.map(area => {
-                        <div>
-                            {/* need to get readable text for label */}
-                            <Label>{area}</Label> 
-                            <Progress type="circle" percent={area * 10} width={80} />
-                        </div>
+
+                        return (
+                            <div>
+                                {/* need to get readable text for label */}
+                                <Label>{area}</Label> 
+                                <Progress type="circle" percent={area * 10} width={80} />
+                            </div>
+                        );
                     }) }
                     
                         <div>
