@@ -24,7 +24,7 @@ export const loggedIn = (history, location) => {
 			.then(res => {
 				dispatch({ type: LOGGEDIN_SUCCESS, payload: res.data });
 				if (!res.data.authenticated && location.pathname === '/dashboard') {
-					history.push('/login');
+					history.push('/api/auth/login');
 				} else if (res.data.authenticated) {
 					history.push('/dashboard');
 				}
@@ -41,7 +41,7 @@ export const logIn = (user, history) => {
 		dispatch({ type: LOGIN_START });
 
 		axios
-			.post(`${API_URL}/login`, user)
+			.post(`${API_URL}/api/auth/login`, user)
 			.then(res => {
 				// SETTING THE USER TYPE TO LOCAL STORAGE SO THAT IT DOES NOT GET LOST IF USER RELOADS THE PAGE
 				localStorage.setItem('userType', res.data.user_type);

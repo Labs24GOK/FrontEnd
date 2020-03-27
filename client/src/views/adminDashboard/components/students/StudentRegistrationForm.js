@@ -62,7 +62,7 @@ const StudentRegistrationForm = props => {
 					<div>
 						<Label>Gender</Label>
 						<div>
-							<select name="gender" ref={register({ required: true })}>
+							<select className="dropDown" name="gender" ref={register({ required: true })}>
         						<option value="F">F</option>
         						<option value="M">M</option>
       						</select>
@@ -92,7 +92,7 @@ const StudentRegistrationForm = props => {
 					<div>
 						<Label>Preferred Contact Method</Label>
 						<div>	
-								<select name="preferred_contact_type_id" ref={register({ required: true })}>
+								<select className="dropDown" name="preferred_contact_type_id" ref={register({ required: true })}>
         						{createDropdown(props.contactTypesTable)}
       							</select>
 						</div>
@@ -115,7 +115,7 @@ const StudentRegistrationForm = props => {
 						<Label>School Grade</Label>
 						<div>
 							
-							<select name="school_grade_id" ref={register({ required: true })}>
+							<select className="dropDown" name="school_grade_id" ref={register({ required: true })}>
         						{createDropdown(props.schoolGradeTable)}
       						</select>
 						</div>
@@ -123,7 +123,7 @@ const StudentRegistrationForm = props => {
 					<div>
 						<Label>Location</Label>
 						<div>					
-							<select name="location_id" ref={register({ required: true })}>
+							<select className="dropDown" name="location_id" ref={register({ required: true })}>
         						{createDropdown(props.locationsTable)}
       							</select>
 						</div>
@@ -131,7 +131,7 @@ const StudentRegistrationForm = props => {
 					<div>
 						<Label>Block</Label>
 						<div>
-							<select name="block_code" ref={register({ required: true })}>
+							<select className="dropDown" name="block_code" ref={register({ required: true })}>
         						{createDropdown(props.blocksTable)}
 								{errors.block_code && 'Block code is Required'}
       							</select>
