@@ -204,7 +204,7 @@ const StudentForm = props => {
 						<div>					
 							<select name="location_id" ref={register({ required: true })}>
         						{createDropdown(props.locationsTable)}
-      							</select>
+      						</select>
 						</div>
 					</div>
 					<div>
@@ -213,7 +213,7 @@ const StudentForm = props => {
 							<select name="block_code" ref={register({ required: true })}>
         						{createDropdown(props.blocksTable)}
 								{errors.block_code && 'Block code is Required'}
-      							</select>
+      						</select>
 						</div>
 					</div>
 					<div>
@@ -279,75 +279,39 @@ const StudentForm = props => {
 					<div>
 						<Label>Grade Updated</Label>
 						<div>
-							<Input type="hidden" value="1" name="family_id" ref={register({required: true})} />
+							<Input type="date" name="grade_updated" ref={register({required: true})} />
 						</div>
-						{/* <div>
-                        <Label>Registration Date</Label>
-                            <div>
-                                <Input
-                                    type='date'
-                                    name='registration_date'
-                                    placeholder='Registration Date'
-                                    onChange={handleChange}
-                                    value={state.registration_date}
-                                />
-                            </div>
-                        </div> */}
-						{/* <div>
-							<Label>No Call</Label>
-							<div
-								style={{
-									border: `1px solid ${errorBorderNoCall}`,
-									borderRadius: '3px'
-								}}
-							>
-								<Dropdown
-									controlClassName="myControlClassName"
-									className="dropdown"
-									name="no_call"
-									onChange={e => setState({ ...state, no_call: e.value })}
-									value={no_call[no_callNum].label}
-									options={no_call}
-								/>
-							</div>
-						</div> */}
-						{/* <div>
-							<Label>Delinquent</Label>
-							<div
-								style={{
-									border: `1px solid ${errorBorderDelinquent}`,
-									borderRadius: '3px'
-								}}
-							>
-								<Dropdown
-									controlClassName="myControlClassName"
-									className="dropdown"
-									name="delinquent"
-									onChange={e => setState({ ...state, delinquent: e.value })}
-									value={delinquent[delinquentNum].label}
-									options={delinquent}
-								/>
-							</div>
-						</div> */}
-						{/* <div>
-							<Label>Expelled</Label>
-							<div
-								style={{
-									border: `1px solid ${errorBorderExpelled}`,
-									borderRadius: '3px'
-								}}
-							>
-								<Dropdown
-									controlClassName="myControlClassName"
-									className="dropdown"
-									name="expelled"
-									onChange={e => setState({ ...state, expelled: e.value })}
-									value={expelled[expelledNum].label}
-									options={expelled}
-								/>
-							</div>
-						</div> */}
 					</div>
+					<div>
+						<Label>Registration Date</Label>
+						<div>
+							<Input type='date' name='registration_date' ref={register({required: true})} />
+						</div>
+					</div>
+						<div>
+							<Label>No Call</Label>
+							<div>
+								<select name="no_call" ref={register({ required: true })}>
+        							{/* {createDropdown(no_call[no_callNum].label)} */}
+      							</select>
+							</div>
+						</div>
+						<div>
+							<Label>Delinquent</Label>
+							<div>
+								<select name="delinquent" ref={register({ required: true })}>
+        							{/* {createDropdown(delinquent[delinquentNum].label} */}
+      							</select>
+							</div>
+						</div>
+						<div>
+							<Label>Expelled</Label>
+							<div>
+								<select name="delinquent" ref={register({ required: true })}>
+        							{/* {createDropdown(expelled[expelledNum].label} */}
+      							</select>
+							</div>
+						</div>
 					<div style={{ gridColumn: 'span 4' }}>
 						<Label>Notes</Label>
 						<div>
