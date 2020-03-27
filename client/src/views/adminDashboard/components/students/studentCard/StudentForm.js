@@ -300,7 +300,7 @@ const StudentForm = props => {
 							<Label>Delinquent</Label>
 							<div>
 								<select name="delinquent" ref={register({ required: true })}>
-        							{createDropdown(delinquent)}
+        							{createDropdown(delinquent[delinquentNum])}
       							</select>
 							</div>
 						</div>
