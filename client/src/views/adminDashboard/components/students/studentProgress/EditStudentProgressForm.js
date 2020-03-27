@@ -4,9 +4,7 @@ import { toggleEditProgressComponent, editStudentProgress, getStudentProgress } 
 import { Spin } from 'antd';
 import { FormWrap, FormSet, Label, Div, SaveButton, ButtonDiv, CancelButton, Input } from '../../mainStyle/styledComponent';
 import StudentProgressTab from './StudentProgressTab';
-
-
-
+import { useForm } from 'react-hook-form';
 
 const EditStudentProgressForm = props => {
     const { studentID } = props
@@ -53,9 +51,6 @@ const EditStudentProgressForm = props => {
             <StudentProgressTab  {...props} setCancelEdit={setCancelEdit} cancelEdit={cancelEdit}/>
         )
     } else {
-       
-
-        
     
     return (
         <FormWrap >
@@ -306,19 +301,4 @@ const mapStateToProps = state => {
         error: state.studentProgressReducer.error
     };
 };
-export default
-    connect(
-        mapStateToProps,
-        { editStudentProgress, toggleEditProgressComponent, getStudentProgress }
-    )(EditStudentProgressForm)
-
-
-
-
-
-
-
-
-
-
-
+export default connect( mapStateToProps, { editStudentProgress, toggleEditProgressComponent, getStudentProgress } )(EditStudentProgressForm)

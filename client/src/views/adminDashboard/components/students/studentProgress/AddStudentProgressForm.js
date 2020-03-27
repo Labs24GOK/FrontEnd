@@ -1,37 +1,36 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
-import { Icon } from 'semantic-ui-react';
 import { postStudentProgress, togglePostComponent } from '../../../../../actions';
-import { Table, Spin } from 'antd';
-import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
+import '../mainStyle/mainTable.scss';
 import { FormWrap, Input, SaveButton, Label, FormSet, Div, ButtonDiv } from '../../mainStyle/styledComponent';
-
+import { useForm } from 'react-hook-form';
 
 const StudentProgressForm = props => {
-    const [state, setState] = useState({
-        speaking_fluency: '',
-        speaking_accuracy: '',
-        vocabulary: '',
-        pronunciation: '',
-        grammar: '',
-        listening: '',
-        writing: '',
-        reading: '',
-        interest: '',
-        participation: '',
-        submitting_homework: '',
-        homework_effort: '',
-        notes: '',
-        course_id: '',
-        student_id: '',
-        teacher_id: '',
-        report_date: '',
-        id: props.id,
-    })
-    const handleChange = e => {
-        setState({ ...state, [e.target.name]: e.target.value })
-    }
+
+	const { register, errors, handleSubmit } = useForm();
+
+    // const [state, setState] = useState({
+    //     speaking_fluency: '',
+    //     speaking_accuracy: '',
+    //     vocabulary: '',
+    //     pronunciation: '',
+    //     grammar: '',
+    //     listening: '',
+    //     writing: '',
+    //     reading: '',
+    //     interest: '',
+    //     participation: '',
+    //     submitting_homework: '',
+    //     homework_effort: '',
+    //     notes: '',
+    //     course_id: '',
+    //     student_id: '',
+    //     teacher_id: '',
+    //     report_date: '',
+    //     id: props.id,
+    // })
+    
     const formSubmit = e => {
         e.preventDefault()
         props.postStudentProgress(state)
@@ -41,226 +40,134 @@ const StudentProgressForm = props => {
     //    arr.reduce(( a, b) => a + b, 0) / arr.length
     // }
     return (
-        <FormWrap onSubmit={formSubmit}>
+        <FormWrap onSubmit={handleSubmit(formSubmit)}>
             <FormSet>
                 <Div>
                     <div>
                         <Label>Speaking Fluency</Label>
                         <div>
-                            <Input
-                                type='number'
-                                name='speaking_fluency'
-                                placeholder="Speaking Fluency"
-                                onChange={handleChange}
-                                value={state.speaking_fluency}
-                            />
-                        </div>
+							 <Input type="number" className={errors.speaking_fluency && "input-error"}  name="speaking_fluency" ref={register({required: true})} />
+							    {errors.cpr && 'Speaking Fluency Score is Required'}
+                        </div>				
                     </div>
                     <div>
                         <Label>Speaking Accuracy</Label>
                         <div>
-                            <Input
-                                type='number'
-                                name='speaking_accuracy'
-                                placeholder="Speaking Accuracy"
-                                onChange={handleChange}
-                                value={state.speaking_accuracy}
-                            />
-                        </div>
+							 <Input type="number" className={errors.speaking_accuracy && "input-error"}  name="speaking_accuracy" ref={register({required: true})} />
+							    {errors.cpr && 'Speaking Accuracy Score is Required'}
+                        </div>				
                     </div>
                     <div>
                         <Label>Vocabulary</Label>
                         <div>
-                            <Input
-                                type='number'
-                                name='vocabulary'
-                                placeholder="Vocabulary"
-                                onChange={handleChange}
-                                value={state.vocabulary}
-                            />
-                        </div>
+							 <Input type="number" className={errors.vocabulary && "input-error"}  name="vocabulary" ref={register({required: true})} />
+							    {errors.cpr && 'Vocabulary Score is Required'}
+                        </div>				
                     </div>
                     <div>
                         <Label>Pronunciation</Label>
                         <div>
-                            <Input
-                                type='number'
-                                name='pronunciation'
-                                placeholder="Pronunciation"
-                                onChange={handleChange}
-                                value={state.pronunciation}
-                            />
-                        </div>
+							 <Input type="number" className={errors.pronunciation && "input-error"}  name="pronunciation" ref={register({required: true})} />
+							    {errors.cpr && 'Pronunciation Score is Required'}
+                        </div>				
                     </div>
-                    
                     <div>
                         <Label>Grammar</Label>
                         <div>
-                            <Input
-                                type='number'
-                                name='grammar'
-                                placeholder="Grammar"
-                                onChange={handleChange}
-                                value={state.grammar}
-                            />
-                        </div>
+							 <Input type="number" className={errors.grammar && "input-error"}  name="grammar" ref={register({required: true})} />
+							    {errors.cpr && 'Grammar Score is Required'}
+                        </div>				
                     </div>
                     <div>
                         <Label>Listening</Label>
                         <div>
-                            <Input
-                                type='number'
-                                name='listening'
-                                placeholder="Listening"
-                                onChange={handleChange}
-                                value={state.listening}
-                            />
-                        </div>
+							 <Input type="number" className={errors.listening && "input-error"}  name="listening" ref={register({required: true})} />
+							    {errors.cpr && 'Listening Score is Required'}
+                        </div>				
                     </div>
                     <div>
                         <Label>Writing</Label>
                         <div>
-                            <Input
-                                type='number'
-                                name='writing'
-                                placeholder="Writing"
-                                onChange={handleChange}
-                                value={state.writing}
-                            />
-                        </div>
+							 <Input type="number" className={errors.writing && "input-error"}  name="writing" ref={register({required: true})} />
+							    {errors.cpr && 'Writing Score is Required'}
+                        </div>				
                     </div>
                     <div>
                         <Label>Reading</Label>
                         <div>
-                            <Input
-                                type='number'
-                                name='reading'
-                                placeholder="Reading"
-                                onChange={handleChange}
-                                value={state.reading}
-                            />
-                        </div>
+							 <Input type="number" className={errors.reading && "input-error"}  name="reading" ref={register({required: true})} />
+							    {errors.cpr && 'Reading Score is Required'}
+                        </div>				
                     </div>
                     <div>
                         <Label>Interest</Label>
                         <div>
-                            <Input
-                                type='number'
-                                name='interest'
-                                placeholder="Interest"
-                                onChange={handleChange}
-                                value={state.interest}
-                            />
-                        </div>
+							 <Input type="number" className={errors.interest && "input-error"}  name="interest" ref={register({required: true})} />
+							    {errors.cpr && 'Interest Score is Required'}
+                        </div>				
                     </div>
-                    {/* row 3 */}
                     <div>
                         <Label>Participation</Label>
                         <div>
-                            <Input
-                                type='number'
-                                name='participation'
-                                placeholder="Participation"
-                                onChange={handleChange}
-                                value={state.participation}
-                            />
-                        </div>
+							 <Input type="number" className={errors.participation && "input-error"}  name="participation" ref={register({required: true})} />
+							    {errors.cpr && 'Participation Score is Required'}
+                        </div>				
                     </div>
                     <div>
                         <Label>Submitting Homework</Label>
                         <div>
-                            <Input
-                                type='number'
-                                name='submitting_homework'
-                                placeholder="Submitting Homework"
-                                onChange={handleChange}
-                                value={state.submitting_homework}
-                            />
-                        </div>
+							 <Input type="number" className={errors.submitting_homework && "input-error"}  name="submitting_homework" ref={register({required: true})} />
+							    {errors.cpr && 'Submitting Homework Score is Required'}
+                        </div>				
                     </div>
                     <div>
                         <Label>Homework Effort</Label>
                         <div>
-                            <Input
-                                type='number'
-                                name='homework_effort'
-                                placeholder="Homework Effort"
-                                onChange={handleChange}
-                                value={state.homework_effort}
-                            />
-                        </div>
+							 <Input type="number" className={errors.homework_effort && "input-error"}  name="homework_effort" ref={register({required: true})} />
+							    {errors.cpr && 'Homework Effort Score is Required'}
+                        </div>				
                     </div>
                     <div>
                         <Label>Notes</Label>
                         <div>
-                            <Input
-                                type='text'
-                                name='notes'
-                                placeholder="Notes"
-                                onChange={handleChange}
-                                value={state.notes}
-                            />
-                        </div>
+							 <Input type="number" className={errors.notes && "input-error"}  name="notes" ref={register({required: true})} />
+							    {errors.cpr && 'Notes are Required'}
+                        </div>				
                     </div>
                     <div>
                         <Label>Overall</Label>
                         <div>
-                            <Input
-                                type='number'
-                                name='overall'
-                                placeholder="Overall"
-                                onChange={handleChange}
-                                value={state.overall}
-                            />
-                        </div>
+							 <Input type="number" className={errors.overall && "input-error"}  name="overall" ref={register({required: true})} />
+							    {errors.cpr && 'Overall Score is Required'}
+                        </div>				
                     </div>
                     <div>
-                        <Label>Course Id</Label>
+                        <Label>Course ID</Label>
                         <div>
-                            <Input
-                                type='number'
-                                name='course_id'
-                                placeholder="Course Id"
-                                onChange={handleChange}
-                                value={state.course_id}
-                            />
-                        </div>
+							 <Input type="number" className={errors.course_id && "input-error"}  name="course_id" ref={register({required: true})} />
+							    {errors.cpr && 'Course ID is Required'}
+                        </div>				
                     </div>
                     <div>
-                        <Label>Student Id</Label>
+                        <Label>Student ID</Label>
                         <div>
-                            <Input
-                                type='number'
-                                name='student_id'
-                                placeholder="Student Id"
-                                onChange={handleChange}
-                                value={state.student_id}
-                            />
-                        </div>
+							 <Input type="number" className={errors.student_id && "input-error"}  name="student_id" ref={register({required: true})} />
+							    {errors.cpr && 'Student ID is Required'}
+                        </div>				
                     </div>
                     <div>
-                        <Label>Teacher Id</Label>
+                        <Label>Teacher ID</Label>
                         <div>
-                            <Input
-                                type='number'
-                                name='teacher_id'
-                                placeholder="Teacher Id"
-                                onChange={handleChange}
-                                value={state.teacher_id}
-                            />
-                        </div>
+							 <Input type="number" className={errors.teacher_id && "input-error"}  name="teacher_id" ref={register({required: true})} />
+							    {errors.cpr && 'Teacher ID is Required'}
+                        </div>				
                     </div>
                     <div>
                         <Label>Report Date</Label>
                         <div>
-                            <Input
-                                type='date'
-                                name='report_date'
-                                placeholder="Report Date"
-                                onChange={handleChange}
-                                value={state.report_date}
-                            />
-                        </div>
+							 <Input type="number" className={errors.report_date && "input-error"}  name="report_date" ref={register({required: true})} />
+							    {errors.cpr && 'Report Date is Required'}
+                        </div>				
                     </div>
                     </Div>
             </FormSet>
@@ -281,8 +188,5 @@ const mapStateToProps = state => {
         error: state.studentProgressReducer.error
     };
 };
-export default
-    connect(
-        mapStateToProps,
-        { postStudentProgress, togglePostComponent }
-    )(StudentProgressForm)
+
+export default connect( mapStateToProps, { postStudentProgress, togglePostComponent } )(StudentProgressForm)
