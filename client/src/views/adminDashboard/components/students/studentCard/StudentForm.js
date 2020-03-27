@@ -285,14 +285,14 @@ const StudentForm = props => {
 					<div>
 						<Label>Registration Date</Label>
 						<div>
-							<Input type='date' name='registration_date' ref={register({required: true})} />
+							<Input type='date' name='registration_date' ref={register} />
 						</div>
 					</div>
 						<div>
 							<Label>No Call</Label>
 							<div>
 								<select name="no_call" ref={register({ required: true })}>
-        							{/* {createDropdown(no_call[no_callNum].label)} */}
+        							{createDropdown(no_call)}
       							</select>
 							</div>
 						</div>
@@ -300,7 +300,7 @@ const StudentForm = props => {
 							<Label>Delinquent</Label>
 							<div>
 								<select name="delinquent" ref={register({ required: true })}>
-        							{/* {createDropdown(delinquent[delinquentNum].label} */}
+        							{createDropdown(delinquent)}
       							</select>
 							</div>
 						</div>
@@ -308,7 +308,7 @@ const StudentForm = props => {
 							<Label>Expelled</Label>
 							<div>
 								<select name="delinquent" ref={register({ required: true })}>
-        							{/* {createDropdown(expelled[expelledNum].label} */}
+        							{createDropdown(expelled)}
       							</select>
 							</div>
 						</div>
