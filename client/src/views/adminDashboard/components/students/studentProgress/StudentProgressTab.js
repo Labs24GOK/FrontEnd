@@ -9,8 +9,6 @@ import { FormWrap, FormSet, Label, Div, SaveButton, ButtonDiv } from '../../main
 
 const StudentProgressTab = props => {
 
-    console.log("props in studentprogresstab:", props)
-
     // let options = { year: 'numeric', month: 'numeric', day: 'numeric' }; //'long'
     // let report_date = new Date(props.progressByStudentId.report_date).toLocaleDateString('en-GB', options)
     useEffect(() => {
@@ -25,16 +23,14 @@ const StudentProgressTab = props => {
         )
     } else if (props.progressByStudentId) {
 
-        console.log("after loading progress:", props)
+        const categories = ["speaking_fluency", "speaking_accuracy", "vocabulary", "pronunciation", "grammar", "listening", "writing", "reading", "interest", "participation", "submitting_homework", "homework_accuracy", "homework_effort", "notes", "report_date"];
 
         return (
             <FormWrap>
                 <FormSet>
                     <Div>
 
-                    {/* Categories: Speaking fluency, Speaking accuracy, vocabulary, pronunciation, grammar, listening, writing, reading, interest, participation, submitting homework, homework accuracy, homework effort, notes, report date */ }
-
-                    { props.progressByStudentId.map((area, id) => {
+                    { categories.map((area, id) => {
 
                         return (
                             <div key={id}>
