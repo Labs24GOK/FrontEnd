@@ -86,23 +86,6 @@ const StudentForm = props => {
 		props.toggleEditComponent('false', 'false');
 	};
 
-	const genderArr = ['F', 'M'];
-
-	let delinquentNum = 0;
-	if (props.studentById.delinquent === false) {
-		delinquentNum = 1;
-	}
-
-	let expelledNum = 0;
-	if (props.studentById.expelled === false) {
-		expelledNum = 1;
-	}
-
-	let no_callNum = 0;
-	if (props.studentById.expelled === false) {
-		expelledNum = 1;
-	}
-
 	const delinquent = [
 		{ label: 'Yes', value: true },
 		{ label: 'No', value: false }
@@ -338,10 +321,7 @@ const StudentForm = props => {
 
 const mapStateToProps = state => {
 	return {
-		isLoading: state.studentByIdReducer.isLoading,
 		studentById: state.studentByIdReducer.studentById,
-		isEdited: state.studentByIdReducer.isEdited,
-		isEditing: state.studentByIdReducer.isEditing,
 		error: state.studentByIdReducer.error,
 		schoolGradeTable: state.studentByIdReducer.schoolGradeTable,
 		blocksTable: state.studentByIdReducer.blocksTable,
