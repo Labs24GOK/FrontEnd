@@ -13,7 +13,7 @@ import { Button, ButtonDiv, Div, FormSet, FormWrap, Input,Label,} from '../mainS
 const CourseRegistrationForm = props => {
 
   const { register, errors, handleSubmit } = useForm();
-  const dropDowns = ['term', 'course_type', 'group_type', 'school_grade_id', 'level_id','section', 'course_schedule_id',  'room_id', 'teacher_id','status']
+  const dropDowns = ['term', 'course_type', 'group_type', 'school_grade_id', 'level_id', 'course_schedule_id',  'room_id', 'teacher_id']
   const submitNow = data => {
     for (const property of dropDowns) {
         data[property] = parseInt(data[property])    
@@ -56,7 +56,7 @@ const CourseRegistrationForm = props => {
             <div>
             <Label>Group Type</Label>
 						<div>
-              <select name="group_type_id" ref={register({required: true})}>
+              <select name="group_type_id" className="dropDown" ref={register({required: true})}>
               {createDropdown(props.groupTypeDropdown)}
               </select>
 						</div>
@@ -122,7 +122,7 @@ const CourseRegistrationForm = props => {
             <div>
             <Label>Start Time</Label>
 						<div>
-              <Input type="time" className={errors.start_time && "input-error"}name="mobile_telephone" name="start_time" ref={register({required: true})}/>
+              <Input type="time" className={errors.start_time && "input-error"} name="start_time" ref={register({required: true})}/>
               {errors.start_time && errors.start_time.type === "required" && 'Start Time is Required'}	
 						</div>
             </div>
