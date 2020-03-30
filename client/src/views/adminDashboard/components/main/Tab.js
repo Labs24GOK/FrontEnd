@@ -3,21 +3,22 @@ import { resetForm } from '../../../../actions/adminDashboardActions/studentTabl
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserGraduate, faMap, faUserFriends} from '@fortawesome/free-solid-svg-icons';
+import { faUserGraduate, faMap, faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import { TabWrap } from '../mainStyle/styledComponent';
 
 
 function Tab(props) {
+
+  const tabIconMapping = {
+    "Students": faUserGraduate,
+    "Courses": faMap,
+    "Staff": faUserFriends
+  }
+
   const [icon, setIcon] = useState();
-  useEffect(() => {
-    if (props.tab.key === 'Students') {
-      setIcon(faUserGraduate);
-    } else if (props.tab.key === 'Courses') {
-      setIcon(faMap);
-    } else if (props.tab.key === 'Staff') {
-      setIcon(faUserFriends);
-    } 
-  }, [])
+  
+  useEffect(() => {setIcon(tabIconMapping[props.tab.key]); }, [])
+  
   const handleClick = (tab) => {
     props.setSelected(tab.toLowerCase())
     props.setNavigation(tab.toLowerCase())
