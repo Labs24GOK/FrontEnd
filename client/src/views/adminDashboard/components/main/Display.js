@@ -40,15 +40,6 @@ function Display({ navigation }) {
       return (
         <Staff />
       )
-    } else if (navigation === 'reports') {
-      return (
-        <>
-          <Reports />
-          <AddReport />
-          {/* <EditReport /> */}
-        </>
-
-      )
     }
 
   }

@@ -3,7 +3,7 @@ import { resetForm } from '../../../../actions/adminDashboardActions/studentTabl
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserGraduate, faMap, faUserFriends, faNewspaper} from '@fortawesome/free-solid-svg-icons';
+import { faUserGraduate, faMap, faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import { TabWrap } from '../mainStyle/styledComponent';
 
 
@@ -12,8 +12,7 @@ function Tab(props) {
   const tabIconMapping = {
     "Students": faUserGraduate,
     "Courses": faMap,
-    "Staff": faUserFriends,
-    "Reports": faNewspaper
+    "Staff": faUserFriends
   }
 
   const [icon, setIcon] = useState();
