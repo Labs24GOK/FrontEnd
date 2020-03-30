@@ -131,9 +131,6 @@ function Routes(props) {
             <MiddleAndSecondary />
             <Footer />
           </>}/> 
-        <Route exact path="/dashboard/student-progress" render={() => 
-                <StudentProgressForm />
-            } /> 
       </Switch>
     </div>
   );

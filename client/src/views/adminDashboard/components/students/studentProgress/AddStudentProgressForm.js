@@ -10,35 +10,25 @@ const StudentProgressForm = props => {
 
 	const { register, errors, handleSubmit } = useForm();
 
-    const [state, setState] = useState({
-        speaking_fluency: '',
-        speaking_accuracy: '',
-        vocabulary: '',
-        pronunciation: '',
-        grammar: '',
-        listening: '',
-        writing: '',
-        reading: '',
-        interest: '',
-        participation: '',
-        submitting_homework: '',
-        homework_effort: '',
-        notes: '',
-        course_id: '',
-        student_id: '',
-        teacher_id: '',
-        report_date: '',
-        id: props.id,
-    })
-    
-    const formSubmit = e => {
-        e.preventDefault()
-        props.postStudentProgress(state)
+    const formSubmit = data => {
+
+        let average = 0;
+        let length = 0;
+
+        // change all form inputs to a number (int or float)
+        for (let property in data)
+            {
+                data[property] = Number(data[property]);
+                average += data[property];
+                length += 1;
+            }
+
+        // round to one decimal place
+        data.average = (average / length).toFixed(1);
+
+        props.postStudentProgress(data);
     }
-    // const overallAverage = arr => {
-    //     arr = [state.speaking_fluency, state.speaking_accuracy, state.vocabulary, state.pronunciation, state.grammar, state.listening, state.writing, state.reading, state.interest, state.participation]
-    //    arr.reduce(( a, b) => a + b, 0) / arr.length
-    // }
+    
     return (
         <FormWrap onSubmit={handleSubmit(formSubmit)}>
             <FormSet>
@@ -172,7 +162,7 @@ const StudentProgressForm = props => {
                     </Div>
             </FormSet>
                 <ButtonDiv>
-                    <SaveButton onClick={formSubmit} >
+                    <SaveButton onClick={handleSubmit} type="submit">
                         Add Report
                     </SaveButton>
                 </ButtonDiv>
