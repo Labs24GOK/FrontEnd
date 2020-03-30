@@ -57,3 +57,12 @@
   .input-error {
     border: $error 2px solid
   }
+  .dropDown {
+    outline: none;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    background: white;
+    width: 100%;
+    padding: 6px;
+
+  }
