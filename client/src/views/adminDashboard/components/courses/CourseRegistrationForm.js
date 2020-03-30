@@ -13,7 +13,7 @@ import { Button, ButtonDiv, Div, FormSet, FormWrap, Input,Label,} from '../mainS
 const CourseRegistrationForm = props => {
 
   const { register, errors, handleSubmit } = useForm();
-  const dropDowns = ['term', 'course_type', 'group_type', 'school_grade_id', 'level_id', 'course_schedule_id',  'room_id', 'teacher_id']
+  const dropDowns = ['term', 'course_type_id', 'group_type_id', 'school_grade_id', 'level_id', 'course_schedule_id',  'room_id', 'teacher_id']
   const submitNow = data => {
     for (const property of dropDowns) {
         data[property] = parseInt(data[property])    
@@ -110,7 +110,7 @@ const CourseRegistrationForm = props => {
               {errors.start_date && errors.start_date.type === "required" && 'Start Date is Required'}
 						</div>
             </div>
-
+{/* 
             <div>
             <Label>End Date</Label>
 						<div>
@@ -180,6 +180,7 @@ const CourseRegistrationForm = props => {
               <Input type="text" name="notes" ref={register({required: true})}/>
 						</div>
             </div>    
+             */}
         </Div>
       </FormSet>
       <ButtonDiv>
