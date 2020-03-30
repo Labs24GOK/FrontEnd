@@ -284,12 +284,12 @@ const StudentForm = props => {
 							<Input type="date" name="grade_updated" ref={register({required: true})} />
 						</div>
 					</div>
-					<div>
+					{/* <div>
 						<Label>Registration Date</Label>
 						<div>
 							<Input type='date' name='registration_date' ref={register} />
 						</div>
-					</div>
+					</div> */}
 						<div>
 							<Label>No Call</Label>
 							<div>
