@@ -8,6 +8,9 @@ import EditStudentProgressForm from './EditStudentProgressForm'
 import { FormWrap, FormSet, Label, Div, SaveButton, ButtonDiv } from '../../mainStyle/styledComponent';
 
 const StudentProgressTab = props => {
+
+    console.log("props in studentprogresstab:", props)
+
     // let options = { year: 'numeric', month: 'numeric', day: 'numeric' }; //'long'
     // let report_date = new Date(props.progressByStudentId.report_date).toLocaleDateString('en-GB', options)
     useEffect(() => {
@@ -21,6 +24,9 @@ const StudentProgressTab = props => {
             < EditStudentProgressForm {...props} setEdit={setEdit} edit={edit} />
         )
     } else if (props.progressByStudentId) {
+
+        console.log("after loading progress:", props)
+
         return (
             <FormWrap>
                 <FormSet>

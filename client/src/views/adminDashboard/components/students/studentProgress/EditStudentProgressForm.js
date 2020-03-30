@@ -2,43 +2,27 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux';
 import { toggleEditProgressComponent, editStudentProgress, getStudentProgress } from '../../../../../actions';
 import { Spin } from 'antd';
+import '../../mainStyle/mainTable.scss';
 import { FormWrap, FormSet, Label, Div, SaveButton, ButtonDiv, CancelButton, Input } from '../../mainStyle/styledComponent';
 import StudentProgressTab from './StudentProgressTab';
 import { useForm } from 'react-hook-form';
 
 const EditStudentProgressForm = props => {
-    const { studentID } = props
-    let reportDate = new Date(props.progressByStudentId.report_date).toISOString().split("T")[0];
-    const [state, setState] = useState({
-        id: props.progressByStudentId.id,
-        speaking_fluency: props.progressByStudentId.speaking_fluency,
-        speaking_accuracy: props.progressByStudentId.speaking_accuracy,
-        vocabulary: props.progressByStudentId.vocabulary,
-        pronunciation: props.progressByStudentId.pronunciation,
-        grammar: props.progressByStudentId.grammar,
-        listening: props.progressByStudentId.listening,
-        writing: props.progressByStudentId.writing,
-        reading: props.progressByStudentId.reading,
-        interest: props.progressByStudentId.interest,
-        participation: props.progressByStudentId.participation,
-        submitting_homework: props.progressByStudentId.submitting_homework,
-        homework_effort: props.progressByStudentId.homework_effort,
-        notes: props.progressByStudentId.notes,
-        course_id: props.progressByStudentId.course_id,
-        student_id: props.progressByStudentId.student_id,
-        teacher_id: props.progressByStudentId.teacher_id,
-        report_date: reportDate
-    })
+    
+    // set date to today's date if no date from props
+    let reportDate = Date.now();
+
+    if (props.progressByStudentId.report_date)
+        { reportDate = new Date(props.progressByStudentId.report_date).toISOString().split("T")[0]; }
 
     const [cancelEdit, setCancelEdit] = useState(false)
 
+	const { register, errors, handleSubmit } = useForm();
 
-    const handleChange = e => {
-        setState({ ...state, [e.target.name]: e.target.value })
-    }
-    const formSubmit = e => {
-        e.preventDefault()
-        props.editStudentProgress(studentID, state)
+    const formSubmit = data => {
+        
+        props.editStudentProgress(props.studentID, data)
+
         if (props.isEdited) {
             setTimeout(() => {
                 props.setEdit(false)
@@ -53,236 +37,146 @@ const EditStudentProgressForm = props => {
     } else {
     
     return (
-        <FormWrap >
-            {props.isLoading ? (
+                <FormWrap onSubmit={handleSubmit(formSubmit)}>
+                {props.isLoading ? (
                 <Spin style={{ marginTop: '150px' }} size="large" />
             ) : (
                 <>
-                    <FormSet onSubmit={formSubmit}>
-                        <Div>
-                            <div>
-                                <Label>Speaking Fluency</Label>
-                                <div>
-                                    <Input
-                                        type='number'
-                                        name='speaking_fluency'
-                                        placeholder="Speaking Fluency"
-                                        onChange={handleChange}
-                                        value={state.speaking_fluency}
-                                    />
-                                </div>
-                            </div>
-                            <div>
-                                <Label>Speaking Accuracy</Label>
-                                <div>
-                                    <Input
-                                        type='number'
-                                        name='speaking_accuracy'
-                                        placeholder="Speaking Accuracy"
-                                        onChange={handleChange}
-                                        value={state.speaking_accuracy}
-                                    />
-                                </div>
-                            </div>
-                            <div>
-                                <Label>Vocabulary</Label>
-                                <div>
-                                    <Input
-                                        type='number'
-                                        name='vocabulary'
-                                        placeholder="Vocabulary"
-                                        onChange={handleChange}
-                                        value={state.vocabulary}
-                                    />
-                                </div>
-                            </div>
-                            <div>
-                                <Label>Pronunciation</Label>
-                                <div>
-                                    <Input
-                                        type='number'
-                                        name='pronunciation'
-                                        placeholder="Pronunciation"
-                                        onChange={handleChange}
-                                        value={state.pronunciation}
-                                    />
-                                </div>
-                            </div>
-                            <div>
-                                <Label>Grammar</Label>
-                                <div>
-                                    <Input
-                                        type='number'
-                                        name='grammar'
-                                        placeholder="Grammar"
-                                        onChange={handleChange}
-                                        value={state.grammar}
-                                    />
-                                </div>
-                            </div>
-                            <div>
-                                <Label>Listening</Label>
-                                <div>
-                                    <Input
-                                        type='number'
-                                        name='listening'
-                                        placeholder="Listening"
-                                        onChange={handleChange}
-                                        value={state.listening}
-                                    />
-                                </div>
-                            </div>
-                            <div>
-                                <Label>Writing</Label>
-                                <div>
-                                    <Input
-                                        type='number'
-                                        name='writing'
-                                        placeholder="Writing"
-                                        onChange={handleChange}
-                                        value={state.writing}
-                                    />
-                                </div>
-                            </div>
-                            <div>
-                                <Label>Reading</Label>
-                                <div>
-                                    <Input
-                                        type='number'
-                                        name='reading'
-                                        placeholder="Reading"
-                                        onChange={handleChange}
-                                        value={state.reading}
-                                    />
-                                </div>
-                            </div>
-                            <div>
-                                <Label>Interest</Label>
-                                <div>
-                                    <Input
-                                        type='number'
-                                        name='interest'
-                                        placeholder="Interest"
-                                        onChange={handleChange}
-                                        value={state.interest}
-                                    />
-                                </div>
-                            </div>
-                            <div>
-                                <Label>Participation</Label>
-                                <div>
-                                    <Input
-                                        type='number'
-                                        name='participation'
-                                        placeholder="Participation"
-                                        onChange={handleChange}
-                                        value={state.participation}
-                                    />
-                                </div>
-                            </div>
-                            <div>
-                                <Label>Submitting Homework</Label>
-                                <div>
-                                    <Input
-                                        type='number'
-                                        name='submitting_homework'
-                                        placeholder="Submitting Homework"
-                                        onChange={handleChange}
-                                        value={state.submitting_homework}
-                                    />
-                                </div>
-                            </div>
-                            <div>
-                                <Label>Homework Effort</Label>
-                                <div>
-                                    <Input
-                                        type='number'
-                                        name='homework_effort'
-                                        placeholder="Homework Effort"
-                                        onChange={handleChange}
-                                        value={state.homework_effort}
-                                    />
-                                </div>
-                            </div>
-                            <div>
-                                <Label>Notes</Label>
-                                <div>
-                                    <Input
-                                        type='text'
-                                        name='notes'
-                                        placeholder="Notes"
-                                        onChange={handleChange}
-                                        value={state.notes}
-                                    />
-                                </div>
-                            </div>
-                            <div>
-                                <Label>Overall</Label>
-                                <div>
-                                    <Input
-                                        type='number'
-                                        name='overall'
-                                        placeholder="Overall"
-                                        onChange={handleChange}
-                                        value={state.overall}
-                                    />
-                                </div>
-                            </div>
-                            <div>
-                                <Label>Course Id</Label>
-                                <div>
-                                    <Input
-                                        type='number'
-                                        name='course_id'
-                                        placeholder="Course Id"
-                                        onChange={handleChange}
-                                        value={state.course_id}
-                                    />
-                                </div>
-                            </div>
-                            <div>
-                                <Label>Student Id</Label>
-                                <div>
-                                    <Input
-                                        type='number'
-                                        name='student_id'
-                                        placeholder="Student Id"
-                                        onChange={handleChange}
-                                        value={state.student_id}
-                                    />
-                                </div>
-                            </div>
-                            <div>
-                                <Label>Teacher Id</Label>
-                                <div>
-                                    <Input
-                                        type='number'
-                                        name='teacher_id'
-                                        placeholder="Teacher Id"
-                                        onChange={handleChange}
-                                        value={state.teacher_id}
-                                    />
-                                </div>
-                            </div>
-                            <div>
-                                <Label>Report Date</Label>
-                                <div>
-                                    <Input
-                                        type='text'
-                                        name='report_date'
-                                        placeholder="Report Date"
-                                        onChange={handleChange}
-                                        value={reportDate}
-                                    />
-                                </div>
-                            </div>
-                        </Div>
-                    </FormSet>
+                    <FormSet>
+                <Div>
+                    <div>
+                        <Label>Speaking Fluency</Label>
+                        <div>
+							 <Input type="number" className={errors.speaking_fluency && "input-error"} name="speaking_fluency" defaultValue={props.progressByStudentId.speaking_fluency} ref={register({required: true})} />
+							    {errors.cpr && 'Speaking Fluency Score is Required'}
+                        </div>				
+                    </div>
+                    <div>
+                        <Label>Speaking Accuracy</Label>
+                        <div>
+							 <Input type="number" className={errors.speaking_accuracy && "input-error"} name="speaking_accuracy" defaultValue={props.progressByStudentId.speaking_accuracy} ref={register({required: true})} />
+							    {errors.cpr && 'Speaking Accuracy Score is Required'}
+                        </div>				
+                    </div>
+                    <div>
+                        <Label>Vocabulary</Label>
+                        <div>
+							 <Input type="number" className={errors.vocabulary && "input-error"} name="vocabulary" defaultValue={props.progressByStudentId.vocabulary} ref={register({required: true})} />
+							    {errors.cpr && 'Vocabulary Score is Required'}
+                        </div>				
+                    </div>
+                    <div>
+                        <Label>Pronunciation</Label>
+                        <div>
+							 <Input type="number" className={errors.pronunciation && "input-error"} name="pronunciation" defaultValue={props.progressByStudentId.pronunciation} ref={register({required: true})} />
+							    {errors.cpr && 'Pronunciation Score is Required'}
+                        </div>				
+                    </div>
+                    <div>
+                        <Label>Grammar</Label>
+                        <div>
+							 <Input type="number" className={errors.grammar && "input-error"} name="grammar"defaultValue={props.progressByStudentId.grammar} ref={register({required: true})} />
+							    {errors.cpr && 'Grammar Score is Required'}
+                        </div>				
+                    </div>
+                    <div>
+                        <Label>Listening</Label>
+                        <div>
+							 <Input type="number" className={errors.listening && "input-error"} name="listening" defaultValue={props.progressByStudentId.listening} ref={register({required: true})} />
+							    {errors.cpr && 'Listening Score is Required'}
+                        </div>				
+                    </div>
+                    <div>
+                        <Label>Writing</Label>
+                        <div>
+							 <Input type="number" className={errors.writing && "input-error"} name="writing"defaultValue={props.progressByStudentId.writing} ref={register({required: true})} />
+							    {errors.cpr && 'Writing Score is Required'}
+                        </div>				
+                    </div>
+                    <div>
+                        <Label>Reading</Label>
+                        <div>
+							 <Input type="number" className={errors.reading && "input-error"} name="reading"defaultValue={props.progressByStudentId.reading} ref={register({required: true})} />
+							    {errors.cpr && 'Reading Score is Required'}
+                        </div>				
+                    </div>
+                    <div>
+                        <Label>Interest</Label>
+                        <div>
+							 <Input type="number" className={errors.interest && "input-error"} name="interest" defaultValue={props.progressByStudentId.interest} ref={register({required: true})} />
+							    {errors.cpr && 'Interest Score is Required'}
+                        </div>				
+                    </div>
+                    <div>
+                        <Label>Participation</Label>
+                        <div>
+							 <Input type="number" className={errors.participation && "input-error"} name="participation" defaultValue={props.progressByStudentId.participation} ref={register({required: true})} />
+							    {errors.cpr && 'Participation Score is Required'}
+                        </div>				
+                    </div>
+                    <div>
+                        <Label>Submitting Homework</Label>
+                        <div>
+							 <Input type="number" className={errors.submitting_homework && "input-error"} name="submitting_homework" defaultValue={props.progressByStudentId.submitting_homework} ref={register({required: true})} />
+							    {errors.cpr && 'Submitting Homework Score is Required'}
+                        </div>				
+                    </div>
+                    <div>
+                        <Label>Homework Effort</Label>
+                        <div>
+							 <Input type="number" className={errors.homework_effort && "input-error"} name="homework_effort" defaultValue={props.progressByStudentId.homework_effort} ref={register({required: true})} />
+							    {errors.cpr && 'Homework Effort Score is Required'}
+                        </div>				
+                    </div>
+                    <div>
+                        <Label>Notes</Label>
+                        <div>
+							 <Input type="number" className={errors.notes && "input-error"} name="notes"defaultValue={props.progressByStudentId.notes} ref={register({required: true})} />
+							    {errors.cpr && 'Notes are Required'}
+                        </div>				
+                    </div>
+                    <div>
+                        <Label>Overall</Label>
+                        <div>
+							 <Input type="number" className={errors.overall && "input-error"} name="overall"defaultValue={props.progressByStudentId.overall} ref={register({required: true})} />
+							    {errors.cpr && 'Overall Score is Required'}
+                        </div>				
+                    </div>
+                    <div>
+                        <Label>Course ID</Label>
+                        <div>
+							 <Input type="number" className={errors.course_id && "input-error"} name="course_id" defaultValue={props.progressByStudentId.course_id} ref={register({required: true})} />
+							    {errors.cpr && 'Course ID is Required'}
+                        </div>				
+                    </div>
+                    <div>
+                        <Label>Student ID</Label>
+                        <div>
+							 <Input type="number" className={errors.student_id && "input-error"} name="student_id" defaultValue={props.student_id} ref={register({required: true})} />
+							    {errors.cpr && 'Student ID is Required'}
+                        </div>				
+                    </div>
+                    <div>
+                        <Label>Teacher ID</Label>
+                        <div>
+							 <Input type="number" className={errors.teacher_id && "input-error"} name="teacher_id" defaultValue={props.progressByStudentId.teacher_id} ref={register({required: true})} />
+							    {errors.cpr && 'Teacher ID is Required'}
+                        </div>				
+                    </div>
+                    <div>
+                        <Label>Report Date</Label>
+                        <div>
+							 <Input type="date" className={errors.report_date && "input-error"} name="report_date" defaultValue={reportDate} ref={register({required: true})} />
+							    {errors.cpr && 'Report Date is Required'}
+                        </div>				
+                    </div>
+                    </Div>
+            </FormSet>
                     <ButtonDiv>
                         <CancelButton onClick={() => { setCancelEdit(true)}}>
                             Cancel
                         </CancelButton>
-                        <SaveButton style={{width: '120px'}} >
+                        <SaveButton onClick={handleSubmit} style={{width: '120px'}}>
                             Save Report
                         </SaveButton>
                     </ButtonDiv>
