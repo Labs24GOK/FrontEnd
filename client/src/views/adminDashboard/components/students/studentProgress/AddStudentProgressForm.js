@@ -120,8 +120,8 @@ const StudentProgressForm = props => {
                     <div>
                         <Label>Notes</Label>
                         <div>
-							 <Input type="number" className={errors.notes && "input-error"}  name="notes" ref={register({required: true})} />
-							    {errors.cpr && 'Notes are Required'}
+							 <Input type="text" className={errors.notes && "input-error"}  name="notes" ref={register({required: true})} />
+							    
                         </div>				
                     </div>
                     <div>
