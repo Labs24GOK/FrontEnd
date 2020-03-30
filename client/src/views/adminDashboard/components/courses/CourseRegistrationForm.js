@@ -19,10 +19,8 @@ const CourseRegistrationForm = props => {
         data[property] = parseInt(data[property])    
     }
     props.addCourse(data);
-    console.log("data",data)
-    console.log("props.addCourse", props.addCourse)
-    console.log("props.addCourse(data)", props.addCourse(data))
-		props.setForm(false);
+    
+    props.setForm(false);
 	}
 	useEffect(() => {
 		props.getDropDownCourses();
