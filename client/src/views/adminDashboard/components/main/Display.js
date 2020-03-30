@@ -11,6 +11,9 @@ import Parents from '../parents/Parents';
 import Courses from '../courses/Courses';
 import Staff from '../staff/Staff';
 
+import Reports from "../students/studentProgress/StudentProgressTab";
+import AddReport from "../students/studentProgress/AddStudentProgressForm";
+import EditReport from "../students/studentProgress/EditStudentProgressForm";
 
 function Display({ navigation }) {
   {
@@ -38,6 +41,7 @@ function Display({ navigation }) {
         <Staff />
       )
     }
+
   }
 }
 
