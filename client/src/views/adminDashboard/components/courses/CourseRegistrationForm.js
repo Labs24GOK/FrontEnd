@@ -156,13 +156,13 @@ const CourseRegistrationForm = props => {
           <div>
             <Label>Notes</Label>
               <div>
-                <Input type="text" name="notes" ref={register({required: true})}/>
+                <Input type="text" name="notes" ref={register}/>
               </div>
           </div>     
         </Div>
       </FormSet>
         <ButtonDiv>
-          <CancelButton onClick={handleCancel} style={{ background: '#C73642', width: '80px' }}>
+          <CancelButton onClick={handleCancel}>
             Cancel
           </CancelButton>
           <AddButton onClick={handleSubmit} type='submit'>Add Course</AddButton>
