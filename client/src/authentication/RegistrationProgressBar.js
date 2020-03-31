@@ -1,6 +1,6 @@
 import React from "react";
 
-const RegistrationProgressBar = (step) => {
+const RegistrationProgressBar = ({step}) => {
     return (
         <>
             <div className='horiz-line' />
