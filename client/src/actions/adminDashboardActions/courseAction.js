@@ -80,31 +80,10 @@ export const ADD_COURSE_SUCCESS = 'ADD_COURSE_SUCCESS';
 export const ADD_COURSE_FAILURE = 'ADD_COURSE_FAILURE';
 
 export const addCourse = course => dispatch => {
-  let {
-    course_schedule_id,
-    course_type_id,
-    group_type_id,
-    level_id,
-    room_id,
-    school_grade_id,
-    teacher_id,
-    term_id
-  } = course;
-  const newCourse = {
-    ...course,
-    course_schedule_id: course_schedule_id.value,
-    course_type_id: course_type_id.value,
-    group_type_id: group_type_id.value,
-    level_id: level_id.value,
-    room_id: room_id.value,
-    school_grade_id: school_grade_id.value,
-    teacher_id: teacher_id.value,
-    term_id: term_id.value
-  };
-
+ 
   dispatch({ type: ADD_COURSE_START });
   axios
-    .post(`${API_URL}/course`, newCourse)
+    .post(`${API_URL}/course`, course)
     .then(res => {
       dispatch({
         type: ADD_COURSE_SUCCESS,
