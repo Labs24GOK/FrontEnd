@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { familyRegister } from '../actions/registrationActions';
 import Dropdown from 'react-dropdown';
@@ -472,7 +471,7 @@ function Register(props) {
         </div>
       );
     } else
-      { return (<RegistrationSuccessMessage studentName={studentName} />); }
+      { return (<RegistrationSuccessMessage studentName={props.studentName} />); }
   }
 }
 
