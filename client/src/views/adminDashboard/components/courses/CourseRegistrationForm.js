@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { addCourse, getDropDownCourses, getDropDown } from '../../../../actions';
 import { useForm } from 'react-hook-form';
 import { createDropdown } from '../../../../utils/helpers.js';
-import { Button, ButtonDiv, Div, FormSet, FormWrap, Input,Label,} from '../mainStyle/styledComponent.js';
+import { CancelButton, AddButton, ButtonDiv, Div, FormSet, FormWrap, Input,Label,} from '../mainStyle/styledComponent.js';
 
 import 'react-dropdown/style.css';
 import '../../../../styles/table.scss';
@@ -60,7 +60,7 @@ const CourseRegistrationForm = props => {
           <div>
             <Label>School Grade</Label>
               <div>
-                <select className="dropDown"  name="school_grade_id" disabled={currentlySelectedCourse !== "2"} ref={register({required: true})}>
+                <select className="dropDown grey" name="school_grade_id" disabled={currentlySelectedCourse !== "2"} ref={register({required: true})}>
                   {createDropdown(props.schoolGradeDropdown)}
                 </select>  
               </div>
@@ -68,7 +68,7 @@ const CourseRegistrationForm = props => {
             <div>
               <Label>Level</Label>
               <div>
-                <select className="dropDown"  name="level_id" ref={register({required: true})}>
+                <select className="dropDown" name="level_id" ref={register({required: true})}>
                   {createDropdown(props.levelDropdown)}
                 </select>  
 						  </div>
@@ -162,10 +162,10 @@ const CourseRegistrationForm = props => {
         </Div>
       </FormSet>
         <ButtonDiv>
-          <Button onClick={handleCancel} style={{ background: '#C73642', width: '80px' }}>
+          <CancelButton onClick={handleCancel} style={{ background: '#C73642', width: '80px' }}>
             Cancel
-          </Button>
-          <Button onClick={handleSubmit} type='submit'>Add Course</Button>
+          </CancelButton>
+          <AddButton onClick={handleSubmit} type='submit'>Add Course</AddButton>
         </ButtonDiv>
     </FormWrap>
   )
