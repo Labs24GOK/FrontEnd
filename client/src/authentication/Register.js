@@ -7,8 +7,12 @@ import Dropdown from 'react-dropdown';
 import './register.scss';
 import { toggle } from '../actions/landingPageActions/landingPageActions';
 import ReactGA from 'react-ga';
+
+import RegistrationInstructions from "./RegistrationInstructions";
+
 ReactGA.initialize('UA-157968315-1');
 ReactGA.pageview(window.location.pathname + window.location.search);
+
 
 function Register(props) {
   const [step, setStep] = useState(1);
@@ -196,41 +200,7 @@ function Register(props) {
     if (!props.success) {
       return (
         <div className='parent-reg'>
-          <div className='top-section'>
-            <div className='top-left'>
-              <h1>Register With Speak Out</h1>
-              <p>How to Register with Speak Out</p>
-              <p>
-                1. Enter your information
-                <br />
-                2. Enter student information
-                <br />
-                3. Review &amp; Submit Registration
-              </p>
-              <p className='top-left-end'>
-                After submitting registration, you will choose <br />
-                options for the student placement test(s).
-              </p>
-            </div>
-            <div className='top-right'>
-              <h4>Register in Person</h4>
-              <div className='contact-container'>
-                <div className='address'>
-                  <p className='contact-first'>Address</p>
-                  <p className='contact-second'>
-                    Rd No 3949, Bani Jamra, Bahrain
-                    <br />
-                    6F66+65 Bani Jamra, Bahrain
-                  </p>
-                </div>
-                <div className='telephone'>
-                  <p className='contact-first'>Telephone</p>
-                  <p className='contact-second'>+973 3561 7635</p>
-                </div>
-                <button>Schedule Appointment</button>
-              </div>
-            </div>
-          </div>
+          <RegistrationInstructions />
           <div className='horiz-line' />
           <div className='progress-bar'>
             <div className='circles'>
