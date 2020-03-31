@@ -9,6 +9,7 @@ import { toggle } from '../actions/landingPageActions/landingPageActions';
 import ReactGA from 'react-ga';
 
 import RegistrationInstructions from "./RegistrationInstructions";
+import RegistrationProgressBar from './RegistrationProgressBar';
 
 ReactGA.initialize('UA-157968315-1');
 ReactGA.pageview(window.location.pathname + window.location.search);
@@ -201,25 +202,7 @@ function Register(props) {
       return (
         <div className='parent-reg'>
           <RegistrationInstructions />
-          <div className='horiz-line' />
-          <div className='progress-bar'>
-            <div className='circles'>
-              <div className={step >= 1 ? 'active-register' : ''}>
-                {step >= 1 ? '✔' : ''}
-              </div>
-              <div className={step >= 2 ? 'active-register' : ''}>
-                {step >= 2 ? '✔' : ''}
-              </div>
-              <div className={step >= 3 ? 'active-register' : ''}>
-                {step >= 3 ? '✔' : ''}
-              </div>
-            </div>
-            <div className='circle-labels'>
-              <p>Your Information</p>
-              <p>Student Information</p>
-              <p>Submit Registration</p>
-            </div>
-          </div>
+          <RegistrationProgressBar step={step} />
           <div className='reg-form'>
             {step === 1 && <h4>Your Information</h4>}
             {step === 2 && <h4>Student Information</h4>}
