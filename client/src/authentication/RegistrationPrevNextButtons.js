@@ -1,35 +1,39 @@
 import React from "react";
 
-const RegistrationPrevNextButtons = ({step}) => {
+const RegistrationPrevNextButtons = ({step, prevStep, nextStep}) => {
+
+    let buttons;
+
+    switch (step) {
+        case 1:
+            buttons = (
+                <>
+                    <button style={{ visibility: 'hidden' }}></button>
+                    <button onClick={nextStep}>Next: Student Information</button>
+                </>
+            );
+            break;
+        case 2:
+            buttons = (
+                <>
+                    <button onClick={prevStep}>Back: Your Information </button>
+                    <button onClick={nextStep}>Next: Review Registration</button>
+                </>
+            );
+            break;
+        case 3:
+                buttons = (
+                    <>
+                        <button style={{ visibility: 'hidden' }}></button>
+                        <button onClick={nextStep}>Next: Submit Registration</button>
+                    </>
+                );
+            break;
+    }
+
     return (
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                {step === 2 && (
-                  <button onClick={prevStep}>Back: Your Information </button>
-                )}
-
-                {step === 3 && (
-                  <button onClick={prevStep}>Back: Student Information </button>
-                )}
-
-                {step === 1 && (
-                  <button style={{ visibility: 'hidden' }}></button>
-                )}
-
-                {step === 1 && (
-                  <button onClick={nextStepStudentInfoBtn}>
-                    Next: Student Information
-                  </button>
-                )}
-
-                {step === 2 && (
-                  <button onClick={nextStepReviewRegistrationBtn}>
-                    Next: Review Registration{' '}
-                  </button>
-                )}
-
-                {step === 3 && (
-                  <button onClick={handleSubmit}>Submit Registration </button>
-                )}
+                {buttons}
             </div>
     )
 }
