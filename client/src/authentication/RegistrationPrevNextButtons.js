@@ -1,6 +1,6 @@
 import React from "react";
 
-const RegistrationPrevNextButtons = ({step, prevStep, nextStep}) => {
+const RegistrationPrevNextButtons = ({step, prevStep, nextStep, handleSubmit}) => {
 
     let buttons;
 
@@ -25,7 +25,7 @@ const RegistrationPrevNextButtons = ({step, prevStep, nextStep}) => {
                 buttons = (
                     <>
                         <button style={{ visibility: 'hidden' }}></button>
-                        <button onClick={nextStep}>Next: Submit Registration</button>
+                        <button onClick={handleSubmit}>Next: Submit Registration</button>
                     </>
                 );
             break;

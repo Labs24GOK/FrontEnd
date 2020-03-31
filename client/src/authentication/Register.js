@@ -465,7 +465,7 @@ function Register(props) {
                   </div>
                 </fieldset>
               )}
-              <RegistrationPrevNextButtons step={step} prevStep={prevStep} nextStep={nextStep}/>
+              <RegistrationPrevNextButtons step={step} prevStep={prevStep} nextStep={nextStep} handleSubmit={handleSubmit} />
             </form>
           </div>
         </div>
