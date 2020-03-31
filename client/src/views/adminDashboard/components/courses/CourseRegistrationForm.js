@@ -12,16 +12,18 @@ import { Button, ButtonDiv, Div, FormSet, FormWrap, Input,Label,} from '../mainS
 
 const CourseRegistrationForm = props => {
 
-  const { register, errors, handleSubmit } = useForm();
+  const { register, errors, handleSubmit, watch } = useForm();
   const dropDowns = ['term_id', 'course_type_id', 'group_type_id', 'school_grade_id', 'level_id', 'course_schedule_id',  'room_id', 'teacher_id']
   const submitNow = data => {
     for (const property of dropDowns) {
         data[property] = parseInt(data[property])    
     }
     props.addCourse(data);
-    
     props.setForm(false);
-	}
+  }
+  
+  const currentlySelectedCourse = watch("course_type_id");
+
 	useEffect(() => {
 		props.getDropDownCourses();
   }, []);
@@ -45,7 +47,7 @@ const CourseRegistrationForm = props => {
             
             <div>
             <Label>Course Type</Label>
-              <select name="group_type_id" className="dropDown" name="course_type_id"ref={register({required: true})}>
+              <select name="course_type_id" className="dropDown" name="course_type_id"ref={register({required: true})}>
               {createDropdown(props.courseTypeDropdown)}
               </select>	 
           	</div>
@@ -63,7 +65,7 @@ const CourseRegistrationForm = props => {
             <div>
             <Label>School Grade</Label>
 						<div>
-              <select className="dropDown"  name="school_grade_id" disabled={props.course_type_id !== 2} ref={register({required: true})}>
+              <select className="dropDown"  name="school_grade_id" disabled={currentlySelectedCourse !== "2"} ref={register({required: true})}>
               {createDropdown(props.schoolGradeDropdown)}
               </select>  
 						</div>
