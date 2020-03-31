@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { familyRegister } from '../actions/registrationActions';
-import Dropdown from 'react-dropdown';
 import './register.scss';
 import { toggle } from '../actions/landingPageActions/landingPageActions';
 import ReactGA from 'react-ga';
+
+import { useForm } from 'react-hook-form';
 
 import RegistrationInstructions from "./RegistrationInstructions";
 import RegistrationProgressBar from './RegistrationProgressBar';
@@ -15,94 +16,17 @@ import RegistrationSuccessMessage from "./RegistrationSuccessMessage";
 ReactGA.initialize('UA-157968315-1');
 ReactGA.pageview(window.location.pathname + window.location.search);
 
-
 function Register(props) {
+  
   const [step, setStep] = useState(1);
-  const [confirmPassword, setConfirmPassword] = useState('');
 
-  const locationArr = ['Select Location', 'Bani Jamra', 'Hamad Town'];
-  const [location, setLocation] = useState(locationArr[0]);
+	const { register, errors, handleSubmit } = useForm();
 
-  // handle required fields
-  const [errorBorderUsername, setErrorBorderUsername] = useState('#595759'); //error #C73642
-  const [errorBorderPassword, setErrorBorderPassword] = useState('#595759'); //error #C73642
-  const [errorBorderConfirmPassword, setErrorBorderConfirmPassword] = useState(
-    '#595759'
-  ); //error #C73642
-  const [errorBorderEmail, setErrorBorderEmail] = useState('#595759'); //error #C73642
-  const [errorBorderFatherName, setErrorBorderFatherName] = useState('#595759'); //error #C73642
-  const [errorBorderMotherName, setErrorBorderMotherName] = useState('#595759'); //error #C73642
-  const [
-    errorBorderPrimaryTelephone,
-    setErrorBorderPrimaryTelephone,
-  ] = useState('#595759'); //error #C73642
-  const [
-    errorBorderSecondaryTelephone,
-    setErrorBorderSecondaryTelephone,
-  ] = useState('#595759'); //error #C73642
-  const [errorBorderFirstName, setErrorBorderFirstName] = useState('#595759'); //error #C73642
-  const [errorBorderAdditionalNames, setErrorBorderAdditionalNames] = useState(
-    '#595759'
-  ); //error #C73642
-  const [errorBorderCpr, setErrorBorderCpr] = useState('#595759'); //error #C73642
-  const [errorBorderStudentEmail, setErrorBorderStudentEmail] = useState(
-    '#595759'
-  ); //error #C73642
-  const [errorBorderBirthdate, setErrorBorderBirthdate] = useState('#595759'); //error #C73642
-  const [errorLocation, setErrorLocation] = useState('#595759'); //error
+  useEffect(() => { props.toggle(); }, [props.success]);
 
-  useEffect(() => {
-    props.toggle();
-  }, [props.success]);
-
-  const [user, setUser] = useState({
-    username: '',
-    password: '',
-    email: '',
-    user_type: 'parent',
-  });
-
-  const [family, setFamily] = useState({
-    father_name: '',
-    mother_name: '',
-    primary_telephone: '',
-    secondary_telephone: '',
-  });
-
-  const [student, setStudent] = useState({
-    first_name: '',
-    additional_names: '',
-    cpr: '',
-    email: '',
-    birthdate: '',
-    location_id: '',
-  });
-
-  function handleLocationDropdown(e) {
-    let index;
-    for (let i = 0; i < locationArr.length; i++) {
-      if (locationArr[i] === e.value) {
-        index = i;
-      }
-    }
-    setStudent({ ...student, location_id: index });
-    setLocation(locationArr[index]);
-  }
-
-  const handleUserChange = e => {
-    setUser({ ...user, [e.target.name]: e.target.value });
-  };
-
-  const handleFamilyChange = e => {
-    setFamily({ ...family, [e.target.name]: e.target.value });
-  };
-
-  const handleStudentChange = e => {
-    setStudent({ ...student, [e.target.name]: e.target.value });
-  };
-
-  const handlePasswordChange = e => {
-    setConfirmPassword(e.target.value);
+  const prevStep = e => {
+    e.preventDefault();
+    setStep(step - 1);
   };
 
   const nextStep = e => {
@@ -110,96 +34,10 @@ function Register(props) {
     setStep(step + 1);
   };
 
-  const nextStepStudentInfoBtn = e => {
-    e.preventDefault();
-    //check for required fields
-    if (
-      user.username === '' ||
-      user.password === '' ||
-      confirmPassword === '' ||
-      user.email === '' ||
-      family.father_name === '' ||
-      family.primary_telephone === ''
-    ) {
-      if (user.username === '') {
-        setErrorBorderUsername('#C73642');
-      }
-      if (user.password === '') {
-        setErrorBorderPassword('#C73642');
-      }
-      if (confirmPassword === '') {
-        setErrorBorderConfirmPassword('#C73642');
-      }
-      if (user.email === '') {
-        setErrorBorderEmail('#C73642');
-      }
-      if (family.father_name === '' && family.mother_name === '') {
-        setErrorBorderFatherName('#C73642');
-        setErrorBorderMotherName('#C73642');
-      }
-      if (
-        family.primary_telephone === '' &&
-        family.secondary_telephone === ''
-      ) {
-        setErrorBorderPrimaryTelephone('#C73642');
-      }
-    } else if (user.password !== confirmPassword) {
-      setErrorBorderPassword('#C73642');
-      setErrorBorderConfirmPassword('#C73642');
-    } else {
-      setStep(step + 1);
-    }
-  };
+  // const formSubmit = data => { props.familyRegister({ user, family, student }, props.history ); };
+  const formSubmit = data => { props.familyRegister({}, props.history ); };
 
-  const nextStepReviewRegistrationBtn = e => {
-    e.preventDefault();
-    //check for required fields and set border
-    if (
-      student.first_name === '' ||
-      student.additional_names === '' ||
-      student.cpr === '' ||
-      student.email === '' ||
-      student.birthdate === '' ||
-      student.location_id === ''
-    ) {
-      if (student.first_name === '') {
-        setErrorBorderFirstName('#C73642');
-      }
-      if (student.additional_names === '') {
-        setErrorBorderAdditionalNames('#C73642');
-      }
-      if (student.cpr === '') {
-        setErrorBorderCpr('#C73642');
-      }
-      if (student.email === '') {
-        setErrorBorderStudentEmail('#C73642');
-      }
-      if (student.birthdate === '') {
-        setErrorBorderBirthdate('#C73642');
-      }
-      if (student.location_id === '') {
-        setErrorLocation('#C73642');
-      }
-    } else {
-      setStep(step + 1);
-    }
-  };
-
-  const prevStep = e => {
-    e.preventDefault();
-    setStep(step - 1);
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    props.familyRegister(
-      { user: user, family: family, student: student },
-      props.history
-    );
-  };
-
-  {
-    if (!props.success) {
+  if (!props.success) {
       return (
         <div className='parent-reg'>
           <RegistrationInstructions />
@@ -208,261 +46,34 @@ function Register(props) {
             {step === 1 && <h4>Your Information</h4>}
             {step === 2 && <h4>Student Information</h4>}
 
-            <form>
-              {step === 1 && (
-                <fieldset>
-                  <input
-                    style={{ borderBottom: `1px solid ${errorBorderUsername}` }}
-                    type='text'
-                    name='username'
-                    placeholder='Username'
-                    value={user.username}
-                    onChange={handleUserChange}
-                  />
+            <form onSubmit={handleSubmit(formSubmit)}>
 
-                  <input
-                    style={{
-                      borderBottom: `1px solid ${errorBorderFatherName}`,
-                    }}
-                    type='text'
-                    name='father_name'
-                    placeholder="Father's Name"
-                    value={family.father_name}
-                    onChange={handleFamilyChange}
-                  />
-                  <input
-                    style={{
-                      borderBottom: `1px solid ${errorBorderMotherName}`,
-                    }}
-                    type='text'
-                    name='mother_name'
-                    placeholder="Mother's Name"
-                    value={family.mother_name}
-                    onChange={handleFamilyChange}
-                  />
-                  <input
-                    style={{ borderBottom: `1px solid ${errorBorderEmail}` }}
-                    type='email'
-                    name='email'
-                    placeholder='Email'
-                    value={user.email}
-                    onChange={handleUserChange}
-                  />
-                  <input
-                    style={{
-                      borderBottom: `1px solid ${errorBorderPrimaryTelephone}`,
-                    }}
-                    type='text'
-                    name='primary_telephone'
-                    placeholder='Primary Telephone'
-                    value={family.primary_telephone}
-                    onChange={handleFamilyChange}
-                  />
-                  <input
-                    style={{
-                      borderBottom: `1px solid ${errorBorderSecondaryTelephone}`,
-                    }}
-                    type='text'
-                    name='secondary_telephone'
-                    placeholder='Secondary Telephone'
-                    value={family.secondary_telephone}
-                    onChange={handleFamilyChange}
-                  />
-                  <input
-                    style={{ borderBottom: `1px solid ${errorBorderPassword}` }}
-                    type='password'
-                    name='password'
-                    placeholder='Password'
-                    value={user.password}
-                    onChange={handleUserChange}
-                  />
-                  <input
-                    style={{
-                      borderBottom: `1px solid ${errorBorderConfirmPassword}`,
-                    }}
-                    type='password'
-                    name='confirmPassword'
-                    placeholder='Confirm Password'
-                    value={confirmPassword}
-                    onChange={handlePasswordChange}
-                  />
+              {(step === 1 || step === 3) && (
+                <fieldset>              
+                    <input type="text" name="username" placeholder="Username" ref={register({required: true})} />
+                    <input type="text" name="father_name" placeholder="Father's Name" ref={register({required: true})} />
+                    <input type="text" name="mother_name" placeholder="Mother's Name" ref={register({required: true})} />
+                    <input type="email" name="email" placeholder="Email" ref={register({required: true})} />
+
+                    <input type="text" name="primary_telephone" placeholder="Primary Telephone" ref={register({required: true})} />
+                    <input type="text" name="secondary_telephone" placeholder="Secondary Telephone" ref={register({required: true})} />
+                    <input type="password" name="password" placeholder="Password" ref={register({required: true})} />
+                    <input type="password" name="confirmPassword" placeholder="Confirm Password" ref={register({required: true})} />
                 </fieldset>
               )}
-              {step === 2 && (
-                <fieldset>
-                  <input
-                    style={{
-                      borderBottom: `1px solid ${errorBorderFirstName}`,
-                    }}
-                    type='text'
-                    name='first_name'
-                    placeholder='First Name'
-                    value={student.first_name}
-                    onChange={handleStudentChange}
-                  />
-                  <input
-                    style={{
-                      borderBottom: `1px solid ${errorBorderAdditionalNames}`,
-                    }}
-                    type='text'
-                    name='additional_names'
-                    placeholder='Surname'
-                    value={student.additional_names}
-                    onChange={handleStudentChange}
-                  />
-                  <input
-                    style={{ borderBottom: `1px solid ${errorBorderCpr}` }}
-                    type='text'
-                    name='cpr'
-                    placeholder='Student CPR ID'
-                    value={student.cpr}
-                    onChange={handleStudentChange}
-                  />
-                  <input
-                    style={{
-                      borderBottom: `1px solid ${errorBorderStudentEmail}`,
-                    }}
-                    type='email'
-                    name='email'
-                    placeholder='Email'
-                    value={student.email}
-                    onChange={handleStudentChange}
-                  />
-                  <input
-                    style={{
-                      borderBottom: `1px solid ${errorBorderBirthdate}`,
-                    }}
-                    type='date'
-                    name='birthdate'
-                    placeholder='Student Birthday'
-                    value={student.birthdate}
-                    onChange={handleStudentChange}
-                  />
-                  <div
-                    style={{
-                      borderBottom: `1px solid ${errorLocation}`,
-                      width: '250px',
-                    }}
-                  >
-                    <Dropdown
-                      onChange={handleLocationDropdown}
-                      controlClassName='myControlClassName'
-                      className='dropdownRoot'
-                      options={locationArr}
-                      value={location}
-                    />
-                  </div>
-                </fieldset>
-              )}
-              {step === 3 && (
-                <fieldset>
-                  <h4>Your Information</h4>
-                  <input
-                    type='text'
-                    name='username'
-                    placeholder='Username'
-                    value={user.username}
-                    onChange={handleUserChange}
-                  />
-                  <input
-                    type='text'
-                    name='father_name'
-                    placeholder="Father's Name"
-                    value={family.father_name}
-                    onChange={handleFamilyChange}
-                  />
-                  <input
-                    type='text'
-                    name='mother_name'
-                    placeholder="Mother's Name"
-                    value={family.mother_name}
-                    onChange={handleFamilyChange}
-                  />
-                  <input
-                    type='email'
-                    name='email'
-                    placeholder='Email'
-                    value={user.email}
-                    onChange={handleUserChange}
-                  />
-                  <input
-                    type='text'
-                    name='primary_telephone'
-                    placeholder='Primary Telephone'
-                    value={family.primary_telephone}
-                    onChange={handleFamilyChange}
-                  />
-                  <input
-                    type='text'
-                    name='secondary_telephone'
-                    placeholder='Secondary Telephone'
-                    value={family.secondary_telephone}
-                    onChange={handleFamilyChange}
-                  />
-                  <input
-                    type='password'
-                    name='password'
-                    placeholder='Password'
-                    value={user.password}
-                    onChange={handleUserChange}
-                  />
-                  <input
-                    type='password'
-                    name='confirmPassword'
-                    placeholder='Confirm Password'
-                    value={confirmPassword}
-                    onChange={handlePasswordChange}
-                  />
-                  <h4>Student Information</h4>
-                  <input
-                    type='text'
-                    name='first_name'
-                    placeholder='First Name'
-                    value={student.first_name}
-                    onChange={handleStudentChange}
-                  />
-                  <input
-                    type='text'
-                    name='additional_names'
-                    placeholder='Surname'
-                    value={student.additional_names}
-                    onChange={handleStudentChange}
-                  />
-                  <input
-                    type='text'
-                    name='cpr'
-                    placeholder='Student CPR ID'
-                    value={student.cpr}
-                    onChange={handleStudentChange}
-                  />
-                  <input
-                    type='email'
-                    name='email'
-                    placeholder='Email'
-                    value={student.email}
-                    onChange={handleStudentChange}
-                  />
-                  <input
-                    type='date'
-                    name='birthdate'
-                    placeholder='Student Birthday'
-                    value={student.birthdate}
-                    onChange={handleStudentChange}
-                  />
-                  <div
-                    style={{
-                      borderBottom: `1px solid ${errorLocation}`,
-                      width: '250px',
-                    }}
-                  >
-                    <Dropdown
-                      onChange={handleLocationDropdown}
-                      controlClassName='myControlClassName'
-                      className='dropdownRoot'
-                      options={locationArr}
-                      value={location}
-                    />
-                  </div>
+              {(step === 2 || step === 3) && (
+                <fieldset>              
+                  <input type="text" name="first_name" placeholder="First Name" ref={register({required: true})} />
+                  <input type="text" name="additional_names" placeholder="Additional Names (at least 3)" ref={register({required: true})} />
+                  <input type="text" name="cpr" placeholder="Student CPR" ref={register({required: true})} />
+                  <input type="email" name="email" placeholder="Email" ref={register({required: true})} />
+
+                  <select name="location" ref={register}>
+                    <option value="0">Select Location</option>
+                    <option value="1">Bani Jamra</option>
+                    <option value="2">Hamad Town</option>
+                  </select>
+
                 </fieldset>
               )}
               <RegistrationPrevNextButtons step={step} prevStep={prevStep} nextStep={nextStep} handleSubmit={handleSubmit} />
@@ -470,9 +81,8 @@ function Register(props) {
           </div>
         </div>
       );
-    } else
+  } else
       { return (<RegistrationSuccessMessage studentName={props.studentName} />); }
-  }
 }
 
 const mapStateToProps = state => {
