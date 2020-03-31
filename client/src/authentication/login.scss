@@ -107,10 +107,18 @@
         height: 40px;
         border: 1px solid #c73642;
         border-radius: 7px;
-        color: #c73642;
+        color: white;
+        background-color: #c73642;
         margin-left: 65px;
         margin-top: 30px;
         font-weight: bold;
+      }
+
+      // button should be white with red border and text if the user hasn't entered all the info
+      // button becomes red with white text when ready to submit
+      .disabled {
+        color: #c73642;
+        background-color: white;
       }
 
       button:focus {
