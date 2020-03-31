@@ -1,6 +1,6 @@
 import 'react-dropdown/style.css';
 
-import React, { useEffect} from 'react';
+import React, { useEffect, useState} from 'react';
 import { useForm } from 'react-hook-form';
 import { createDropdown } from '../../../../../utils/helpers.js';
 import { connect } from 'react-redux';
@@ -27,7 +27,7 @@ const CourseEditForm = props => {
     for (const property of dropDowns) {
         data[property] = parseInt(data[property])    
     }
-    props.editCourseById(data);
+    props.editCourse(data);
     // props.setForm(false);
   }
 
@@ -52,9 +52,13 @@ const CourseEditForm = props => {
     props.toggleEditCourse('false', 'false');
   };
 
+  const handleChange = e => {
+    console.log("new value", e.target.value);
+  }
+
   //Arrays for dropdown menus
-  const status = ['Active', 'Completed', 'Waitlist', 'Cancelled'];
-  const section = ['A', 'B', 'C'];
+  // const status = ['Active', 'Completed', 'Waitlist', 'Cancelled'];
+  // const section = ['A', 'B', 'C'];
 
   // const [state, setState] = useState({
   //   term_id: props.courseById.term_id,
@@ -83,6 +87,7 @@ const CourseEditForm = props => {
   //     [e.target.name]: e.target.value,
   //   });
   // };
+
   //state for validation
   // const [errorBorderStartDate, setErrorBorderStartDate] = useState(
   //   'transparent'
@@ -330,7 +335,8 @@ return (
                  value={props.courseById.status}
                 className="dropDown"  
                 name="status" 
-                ref={register({required: true})}>
+                ref={register({required: true})}
+                onChange={handleChange}>
                   <option value="Active">Active</option>
                   <option value="Completed">Completed</option>
                   <option value="Waitlist">Waitlist</option>
@@ -346,7 +352,8 @@ return (
           
           className="dropDown" 
           name="term_id" 
-          ref={register({required: true})} >
+          ref={register({required: true})}
+          onChange={handleChange} >
           {createDropdown(props.termDropdown)}
           </select>
         </div>
@@ -357,7 +364,8 @@ return (
            value={props.courseById.course_type_id}
            className="dropDown" 
            name="course_type_id" 
-           ref={register({required: true})}>
+           ref={register({required: true})}
+           onChange={handleChange}>
            {createDropdown(props.courseTypeDropdown)}
           </select>   
         </div>
@@ -368,7 +376,8 @@ return (
               value={props.courseById.group_type_id}
               name="group_type_id" 
               className="dropDown" 
-              ref={register({required: true})}>
+              ref={register({required: true})}
+              onChange={handleChange}>
                 {createDropdown(props.groupTypeDropdown)}
               </select>
 					  </div>
@@ -382,7 +391,8 @@ return (
                 value= {props.courseById.level_id}
                 className="dropDown" 
                 name="level_id" 
-                ref={register({required: true})}>
+                ref={register({required: true})}
+                onChange={handleChange}>
                   {createDropdown(props.levelDropdown)}
                 </select>  
 						  </div>
@@ -395,7 +405,8 @@ return (
                 value ={props.courseById.section}
                 className="dropDown"  
                 name="section" 
-                ref={register({required: true})}>
+                ref={register({required: true})}
+                onChange={handleChange}>
                   <option value="A">A</option>
                   <option value="B">B</option>
                   <option value="C">C</option>
@@ -410,8 +421,8 @@ return (
             className="dropDown grey" 
             name="school_grade" 
             disabled={currentlySelectedCourse !== "2"} 
-            ref={register({required: true})
-            }>
+            ref={register({required: true})}
+            onChange={handleChange}>
               {createDropdown(props.schoolGradeDropdown)}
           </select>  
         </div>
@@ -424,7 +435,8 @@ return (
                 <select className="dropDown" 
                 value={props.courseById.course_schedule} 
                 name="course_schedule" 
-                ref={register({required: true})}>
+                ref={register({required: true})}
+                onChange={handleChange}>
                   {createDropdown(props.courseScheduleDropdown)}
                 </select>
               </div>
@@ -436,7 +448,8 @@ return (
                 <Input type="date" 
                 value={startdate} 
                 className={errors.start_date && "input-error"} 
-                name="start_date" ref={register({required: true})}/>
+                name="start_date" ref={register({required: true})}
+                onChange={handleChange}/>
                   {errors.start_date && errors.start_date.type === "required" && 'Start Date is Required'}
               </div>
           </div>
@@ -448,7 +461,8 @@ return (
                 type="date" 
                 value={enddate} 
                 className={errors.end_date && "input-error"} 
-                name="end_date" ref={register({required: true})}/>
+                name="end_date" ref={register({required: true})}
+                onChange={handleChange}/>
                   {errors.end_date && errors.end_date.type === "required" && 'End Date is Required'}
               </div>
           </div>
@@ -459,7 +473,8 @@ return (
                 type="time" 
                 value={props.courseById.start_time}
                 className={errors.start_time && "input-error"} 
-                name="start_time" ref={register({required: true})}/>
+                name="start_time" ref={register({required: true})}
+                onChange={handleChange}/>
                   {errors.start_time && errors.start_time.type === "required" && 'Start Time is Required'}	
               </div>
           </div>
@@ -471,7 +486,8 @@ return (
                  value={props.courseById.end_time}
                 type="time" 
                 className={errors.end_time && "input-error"} 
-                name="end_time" ref={register({required: true})}/>
+                name="end_time" ref={register({required: true})}
+                onChange={handleChange}/>
                   {errors.end_time && errors.end_time.type === "required" && 'End Time is Required'}
               </div>
           </div>
@@ -512,7 +528,8 @@ return (
                 type="text" 
                 className={errors.hourly_rate && "input-error"} 
                 name="hourly_rate" 
-                ref={register({required: true})}/>
+                ref={register({required: true})}
+                onChange={handleChange}/>
                   {errors.hourly_rate && errors.hourly_rate.type === "required" && 'Hourly Rate is Required'}
               </div>
           </div>
@@ -523,7 +540,8 @@ return (
                 <Input 
                 value = {props.courseById.notes}
                 type="text" 
-                name="notes" ref={register}/>
+                name="notes" ref={register}
+                onChange={handleChange}/>
               </div>
           </div>   
 
