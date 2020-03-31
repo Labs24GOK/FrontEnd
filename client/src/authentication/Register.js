@@ -11,6 +11,7 @@ import ReactGA from 'react-ga';
 import RegistrationInstructions from "./RegistrationInstructions";
 import RegistrationProgressBar from './RegistrationProgressBar';
 import RegistrationPrevNextButtons from './RegistrationPrevNextButtons';
+import RegistrationSuccessMessage from "./RegistrationSuccessMessage";
 
 ReactGA.initialize('UA-157968315-1');
 ReactGA.pageview(window.location.pathname + window.location.search);
@@ -470,27 +471,8 @@ function Register(props) {
           </div>
         </div>
       );
-    } else {
-      return (
-        <div
-          className='success-message'
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            textAlign: 'left',
-            margin: '40px',
-            alignItems: 'center',
-            height: 'calc(100vh - 282px)',
-          }}
-        >
-          <h1>Congratulations, {props.student}!</h1>
-          <h2>You've registered for Speak Out. Thank you!</h2>
-          <Link to='/login' className='button'>
-            Sign In
-          </Link>
-        </div>
-      );
-    }
+    } else
+      { return (<RegistrationSuccessMessage studentName={studentName} />); }
   }
 }
 
