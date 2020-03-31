@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Redirect, Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
@@ -34,7 +34,7 @@ function Login(props) {
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" placeholder="Password" ref={register({required: true, minLength: 1})} />
 
-                <button type="submit" className={(errors.username || errors.password || props.state.authenticationReducer.logIn.error) ? "disabled" : ""}>
+                <button type="submit" className={(errors.username || errors.password) ? "disabled" : ""}>
                   Sign in
                 </button>
               </fieldset>
@@ -47,6 +47,9 @@ function Login(props) {
               <div>
                 {(errors.username || errors.password) && <p>Username and Password are required.</p> && console.log(errors)}
                 {props.state.authenticationReducer.logIn.error && <p>Login credentials incorrect.</p>}
+
+                {/* <p>Need to reset button color/status once the input is changed after an unsuccessful login attempt</p> */}
+
               </div>
             </form>
           </div>
