@@ -19,8 +19,8 @@ import {
 
 const CourseEditForm = props => {
   console.log("props", props)
-  console.log("status", props.courseById.status)
-  console.log("term", props.courseById.term)
+  // console.log("status", props.courseById.status)
+  // console.log("term", props.courseById.term_id)
   const { register, errors, handleSubmit, watch } = useForm();
   const dropDowns = ['term_id', 'course_type_id', 'group_type_id', 'school_grade_id', 'level_id', 'course_schedule_id',  'room_id', 'teacher_id']
   const submitNow = data => {
@@ -39,6 +39,9 @@ const CourseEditForm = props => {
     .toISOString()
     .split('T')[0];
   let enddate = new Date(props.courseById.end_date).toISOString().split('T')[0];
+
+  // console.log("start date", startdate)
+  // console.log("end date", enddate)
   
   useEffect(() => {
     props.getDropDownCourses();
@@ -339,7 +342,7 @@ return (
         <div>
           <Label>Term</Label>
           <select 
-          value={props.courseById.term} 
+          value={props.courseById.term_id} 
           
           className="dropDown" 
           name="term_id" 
@@ -351,7 +354,7 @@ return (
         <div>
           <Label>Course Type</Label>
           <select 
-           value={props.course_type_id}
+           value={props.courseById.course_type_id}
            className="dropDown" 
            name="course_type_id" 
            ref={register({required: true})}>
@@ -362,7 +365,7 @@ return (
               <Label>Group Type</Label>
 						<div>
               <select 
-              value={props.group_type}
+              value={props.courseById.group_type_id}
               name="group_type_id" 
               className="dropDown" 
               ref={register({required: true})}>
@@ -376,7 +379,7 @@ return (
               <Label>Level</Label>
               <div>
                 <select 
-                value= {props.level_id}
+                value= {props.courseById.level_id}
                 className="dropDown" 
                 name="level_id" 
                 ref={register({required: true})}>
@@ -388,8 +391,11 @@ return (
         <div>
             <Label>Section</Label>
               <div>
-                <select className="dropDown"  
-                name="section" ref={register({required: true})}>
+                <select 
+                value ={props.courseById.section}
+                className="dropDown"  
+                name="section" 
+                ref={register({required: true})}>
                   <option value="A">A</option>
                   <option value="B">B</option>
                   <option value="C">C</option>
@@ -400,11 +406,12 @@ return (
         <div>
           <Label>School Grade</Label>
           <select 
-            value={props.school_grade} 
+            value={props.courseById.school_grade_id} 
             className="dropDown grey" 
             name="school_grade" 
             disabled={currentlySelectedCourse !== "2"} 
-            ref={register({required: true})}>
+            ref={register({required: true})
+            }>
               {createDropdown(props.schoolGradeDropdown)}
           </select>  
         </div>
@@ -415,7 +422,7 @@ return (
             <Label>Course Schedule</Label>
               <div>
                 <select className="dropDown" 
-                value={props.course_schedule} 
+                value={props.courseById.course_schedule} 
                 name="course_schedule" 
                 ref={register({required: true})}>
                   {createDropdown(props.courseScheduleDropdown)}
@@ -426,7 +433,10 @@ return (
           <div>
             <Label>Start Date</Label>
               <div>
-                <Input type="date" value={props.start_date} className={errors.start_date && "input-error"} name="start_date" ref={register({required: true})}/>
+                <Input type="date" 
+                value={startdate} 
+                className={errors.start_date && "input-error"} 
+                name="start_date" ref={register({required: true})}/>
                   {errors.start_date && errors.start_date.type === "required" && 'Start Date is Required'}
               </div>
           </div>
@@ -436,7 +446,7 @@ return (
               <div>
                 <Input 
                 type="date" 
-                value={props.end_date} 
+                value={enddate} 
                 className={errors.end_date && "input-error"} 
                 name="end_date" ref={register({required: true})}/>
                   {errors.end_date && errors.end_date.type === "required" && 'End Date is Required'}
@@ -447,7 +457,7 @@ return (
               <div>
                 <Input 
                 type="time" 
-                value={props.start_time}
+                value={props.courseById.start_time}
                 className={errors.start_time && "input-error"} 
                 name="start_time" ref={register({required: true})}/>
                   {errors.start_time && errors.start_time.type === "required" && 'Start Time is Required'}	
@@ -458,7 +468,7 @@ return (
             <Label>End Time</Label>
               <div>
                 <Input 
-                 value={props.start_time}
+                 value={props.courseById.end_time}
                 type="time" 
                 className={errors.end_time && "input-error"} 
                 name="end_time" ref={register({required: true})}/>
@@ -498,7 +508,7 @@ return (
             <Label>Hourly Rate</Label>
               <div>
                 <Input 
-                value = {props.hourly_rate}
+                value = {props.courseById.hourly_rate}
                 type="text" 
                 className={errors.hourly_rate && "input-error"} 
                 name="hourly_rate" 
@@ -511,7 +521,7 @@ return (
             <Label>Notes</Label>
               <div>
                 <Input 
-                value = {props.notes}
+                value = {props.courseById.notes}
                 type="text" 
                 name="notes" ref={register}/>
               </div>
