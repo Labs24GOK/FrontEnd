@@ -1,7 +1,8 @@
 import React from "react";
 import { useForm } from 'react-hook-form';
+import RegistrationPrevNextButtons from './RegistrationPrevNextButtons';
 
-const RegistrationStudentInfoForm = ({setStudentInfo}) => {
+const RegistrationStudentInfoForm = ({setStudentInfo, step}) => {
 
 	const { register, errors, handleSubmit } = useForm();
     const formSubmit = data => { setStudentInfo(data); };
@@ -21,6 +22,7 @@ const RegistrationStudentInfoForm = ({setStudentInfo}) => {
                     <option value="2">Hamad Town</option>
                 </select>
             </fieldset>
+            <RegistrationPrevNextButtons step={step} />
          </form>
     )
 }

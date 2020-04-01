@@ -1,7 +1,8 @@
 import React from "react";
 import { useForm } from 'react-hook-form';
+import RegistrationPrevNextButtons from './RegistrationPrevNextButtons';
 
-const RegistrationFamilyInfoForm = ({setFamilyInfo}) => {
+const RegistrationFamilyInfoForm = ({setFamilyInfo, step}) => {
 
     const { register, errors, handleSubmit } = useForm();
     const formSubmit = data => { setFamilyInfo(data); };
@@ -20,6 +21,7 @@ const RegistrationFamilyInfoForm = ({setFamilyInfo}) => {
                 <input type="password" name="password" placeholder="Password" ref={register({required: true})} />
                 <input type="password" name="confirmPassword" placeholder="Confirm Password" ref={register({required: true})} />
             </fieldset>
+            <RegistrationPrevNextButtons step={step} />
          </form>
     )
 }

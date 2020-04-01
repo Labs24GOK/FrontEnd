@@ -12,7 +12,6 @@ import RegistrationInstructions from "./RegistrationInstructions";
 import RegistrationProgressBar from './RegistrationProgressBar';
 import RegistrationFamilyInfoForm from "./RegistrationFamilyInfoForm";
 import RegistrationStudentInfoForm from "./RegistrationStudentInfoForm";
-import RegistrationPrevNextButtons from './RegistrationPrevNextButtons';
 import RegistrationSuccessMessage from "./RegistrationSuccessMessage";
 
 ReactGA.initialize('UA-157968315-1');
@@ -45,9 +44,8 @@ function Register(props) {
           <RegistrationInstructions />
           <RegistrationProgressBar step={step} />
           <div className='reg-form'>
-              {(step === 1 || step === 3) && <RegistrationFamilyInfoForm />}
-              {(step === 2 || step === 3) && <RegistrationStudentInfoForm />}
-              <RegistrationPrevNextButtons step={step} prevStep={prevStep} nextStep={nextStep} handleSubmit={handleSubmit} />
+              {(step === 1 || step === 3) && <RegistrationFamilyInfoForm step={step} />}
+              {(step === 2 || step === 3) && <RegistrationStudentInfoForm step={step} />}
           </div>
         </div>
       );
