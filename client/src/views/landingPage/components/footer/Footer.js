@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router";
+import { Link } from "react-router-dom";
 import "./footer.scss";
 import Email from "../../../../assets/Email.png";
 import Facebook from "../../../../assets/Facebook.png";
@@ -22,9 +23,9 @@ const Footer = () => {
           <a href="https://twitter.com/speakoutbh" target="_blank" rel="noopener noreferrer">
             <img src={Twitter} alt="Twitter link"/>
           </a>
-          <a href="#">
+          <Link to="/">
             <img src={Home} alt="Speak Out homepage link"/>
-          </a>
+          </Link>
         </div>
         <div className="address">
           <a href="https://www.google.com/maps/place/Rd+No+3949,+Bani+Jamra,+Bahrain/@26.2109242,50.4587409,17z/data=!3m1!4b1!4m5!3m4!1s0x3e49ba6f42294655:0xff144caac5b9e0cc!8m2!3d26.2109194!4d50.4609296"
