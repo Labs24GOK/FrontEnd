@@ -13,7 +13,7 @@ const RegistrationFamilyInfoForm = ({step, setStep, familyInfo, setFamilyInfo}) 
                 <input type="text" name="username" placeholder="Username" defaultValue={familyInfo.username || ""} ref={register({required: true})} />
                 <input type="text" name="father_name" placeholder="Father's Name" defaultValue={familyInfo.father_name || ""} ref={register({required: true})} />
                 <input type="text" name="mother_name" placeholder="Mother's Name" defaultValue={familyInfo.mother_name || ""} ref={register({required: true})} />
-                <input type="email" name="email" placeholder="Email" defaultValue={familyInfo.email || "a@b.com"} ref={register({required: true})} />
+                <input type="email" name="email" placeholder="Email" defaultValue={familyInfo.email || ""} ref={register({required: true})} />
 
                 <input type="text" name="primary_telephone" placeholder="Primary Telephone" defaultValue={familyInfo.primary_telephone || ""} ref={register({required: true})} />
                 <input type="text" name="secondary_telephone" placeholder="Secondary Telephone" defaultValue={familyInfo.secondary_telephone || ""} ref={register({required: true})} />

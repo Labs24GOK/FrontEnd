@@ -23,8 +23,6 @@ function Register(props) {
 
   useEffect(() => { props.toggle(); }, [props.success]);
 
-  // const formSubmit = data => { props.familyRegister({ user, family, student }, props.history ); };
- 
   if (!props.success) {
       return (
         <div className='parent-reg'>
@@ -32,7 +30,7 @@ function Register(props) {
           <RegistrationProgressBar step={step} />
           <div className='reg-form'>
               {(step === 1 || step === 3) && <RegistrationFamilyInfoForm step={step} setStep={setStep} familyInfo={familyInfo} setFamilyInfo={setFamilyInfo} />}
-              {(step === 2 || step === 3) && <RegistrationStudentInfoForm step={step} setStep={setStep} studentInfo={studentInfo} setStudentInfo={setStudentInfo} />}
+              {(step === 2 || step === 3) && <RegistrationStudentInfoForm step={step} setStep={setStep} studentInfo={studentInfo} setStudentInfo={setStudentInfo} familyInfo={familyInfo} familyRegister={props.familyRegister} history={props.history} />}
           </div>
         </div>
       );
