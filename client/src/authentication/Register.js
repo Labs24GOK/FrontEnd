@@ -40,6 +40,8 @@ function Register(props) {
   // const formSubmit = data => { props.familyRegister({ user, family, student }, props.history ); };
   const formSubmit = data => { props.familyRegister({}, props.history ); };
 
+  console.log("info:", familyInfo, studentInfo);
+
   if (!props.success) {
       return (
         <div className='parent-reg'>
@@ -51,6 +53,7 @@ function Register(props) {
           </div>
         </div>
       );
+
   } else
       { return (<RegistrationSuccessMessage studentName={props.studentName} />); }
 }
