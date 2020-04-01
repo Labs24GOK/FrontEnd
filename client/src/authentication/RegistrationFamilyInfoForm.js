@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from 'react-hook-form';
 import RegistrationPrevNextButtons from './RegistrationPrevNextButtons';
 
-const RegistrationFamilyInfoForm = ({setFamilyInfo, step}) => {
+const RegistrationFamilyInfoForm = ({step, familyInfo, setFamilyInfo}) => {
 
     const { register, errors, handleSubmit } = useForm();
     const formSubmit = data => { setFamilyInfo(data); };

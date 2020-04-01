@@ -20,6 +20,8 @@ ReactGA.pageview(window.location.pathname + window.location.search);
 function Register(props) {
   
   const [step, setStep] = useState(1);
+  const [familyInfo, setFamilyInfo] = useState({});
+  const [studentInfo, setStudentInfo] = useState({});
 
 	const { register, errors, handleSubmit } = useForm();
 
@@ -44,8 +46,8 @@ function Register(props) {
           <RegistrationInstructions />
           <RegistrationProgressBar step={step} />
           <div className='reg-form'>
-              {(step === 1 || step === 3) && <RegistrationFamilyInfoForm step={step} />}
-              {(step === 2 || step === 3) && <RegistrationStudentInfoForm step={step} />}
+              {(step === 1 || step === 3) && <RegistrationFamilyInfoForm step={step} familyInfo={familyInfo} setFamilyInfo={setFamilyInfo} />}
+              {(step === 2 || step === 3) && <RegistrationStudentInfoForm step={step} studentInfo={studentInfo} setStudentInfo={setStudentInfo} />}
           </div>
         </div>
       );
