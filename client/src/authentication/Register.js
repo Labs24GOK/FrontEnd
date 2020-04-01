@@ -10,6 +10,8 @@ import { useForm } from 'react-hook-form';
 
 import RegistrationInstructions from "./RegistrationInstructions";
 import RegistrationProgressBar from './RegistrationProgressBar';
+import RegistrationFamilyInfoForm from "./RegistrationFamilyInfoForm";
+import RegistrationStudentInfoForm from "./RegistrationStudentInfoForm";
 import RegistrationPrevNextButtons from './RegistrationPrevNextButtons';
 import RegistrationSuccessMessage from "./RegistrationSuccessMessage";
 
@@ -43,41 +45,9 @@ function Register(props) {
           <RegistrationInstructions />
           <RegistrationProgressBar step={step} />
           <div className='reg-form'>
-            {step === 1 && <h4>Your Information</h4>}
-            {step === 2 && <h4>Student Information</h4>}
-
-            <form onSubmit={handleSubmit(formSubmit)}>
-
-              {(step === 1 || step === 3) && (
-                <fieldset>              
-                    <input type="text" name="username" placeholder="Username" ref={register({required: true})} />
-                    <input type="text" name="father_name" placeholder="Father's Name" ref={register({required: true})} />
-                    <input type="text" name="mother_name" placeholder="Mother's Name" ref={register({required: true})} />
-                    <input type="email" name="email" placeholder="Email" ref={register({required: true})} />
-
-                    <input type="text" name="primary_telephone" placeholder="Primary Telephone" ref={register({required: true})} />
-                    <input type="text" name="secondary_telephone" placeholder="Secondary Telephone" ref={register({required: true})} />
-                    <input type="password" name="password" placeholder="Password" ref={register({required: true})} />
-                    <input type="password" name="confirmPassword" placeholder="Confirm Password" ref={register({required: true})} />
-                </fieldset>
-              )}
-              {(step === 2 || step === 3) && (
-                <fieldset>              
-                  <input type="text" name="first_name" placeholder="First Name" ref={register({required: true})} />
-                  <input type="text" name="additional_names" placeholder="Additional Names (at least 3)" ref={register({required: true})} />
-                  <input type="text" name="cpr" placeholder="Student CPR" ref={register({required: true})} />
-                  <input type="email" name="email" placeholder="Email" ref={register({required: true})} />
-
-                  <select name="location" ref={register}>
-                    <option value="0">Select Location</option>
-                    <option value="1">Bani Jamra</option>
-                    <option value="2">Hamad Town</option>
-                  </select>
-
-                </fieldset>
-              )}
+              {(step === 1 || step === 3) && <RegistrationFamilyInfoForm />}
+              {(step === 2 || step === 3) && <RegistrationStudentInfoForm />}
               <RegistrationPrevNextButtons step={step} prevStep={prevStep} nextStep={nextStep} handleSubmit={handleSubmit} />
-            </form>
           </div>
         </div>
       );
