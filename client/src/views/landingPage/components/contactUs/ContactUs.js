@@ -26,15 +26,15 @@ function ContactUs(props) {
       <div className="body">
         <div className="body-left">
           <div className="contact-container">
-            <img src={WhatsApp} />
+            <img src={WhatsApp} alt="Whatsapp" />
             <p>+973 35617635</p>
           </div>
           <div className="contact-container">
-            <img src={ContactEmail} />
+            <img src={ContactEmail} alt="email" />
             <p>speakout.info.bh@gmail.com</p>
           </div>
           <div className="contact-container">
-            <img src={PinLarge} />
+            <img src={PinLarge} alt="Street address" />
             <p>
               Rd No 3949 <br />
               Bani Jamra, Bahrain
@@ -44,22 +44,22 @@ function ContactUs(props) {
         <div className="body-right">
           <h2>Social Media</h2>
           <div className="contact-container">
-            <img src={Instagram} />
+            <img src={Instagram} alt="Instagram" />
             <p>speak_out_program</p>
           </div>
           <div className="contact-container">
-            <img src={Facebook} />
+            <img src={Facebook} alt="Facebook" />
             <p>speakoutinfobh</p>
           </div>
           <div className="contact-container">
-            <img src={Twitter} />
+            <img src={Twitter} alt="Twitter" />
             <p>speakoutbh</p>
           </div>
         </div>
         
       </div>
       <div className="img-container">
-            <img src={Map} />
+            <img src={Map} alt="Screenshot from Google Maps with The Garden of Knowledge's school site marked. />
           </div>
     </div>
   );
