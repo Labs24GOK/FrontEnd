@@ -59,7 +59,7 @@ function ContactUs(props) {
         
       </div>
       <div className="img-container">
-            <img src={Map} alt="Screenshot from Google Maps with The Garden of Knowledge's school site marked. />
+            <img src={Map} alt="Screenshot from Google Maps with The Garden of Knowledge's school site marked." />
           </div>
     </div>
   );
