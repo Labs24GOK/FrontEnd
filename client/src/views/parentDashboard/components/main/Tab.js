@@ -10,18 +10,18 @@ const TabWrap = styled.div`
   margin: 0 0 30px 0;
 `
 
-function Tab({ tab, navigation, setNavigation, tabColor, setTabColor, selected, setSelected }) {
+function Tab(props) {
 
   const handleClick = (tab) => {
-    setSelected(tab.toLowerCase())
-    setNavigation(tab.toLowerCase())
+    props.setSelected(tab.toLowerCase())
+    props.setNavigation(tab.toLowerCase())
   }
   return (
-    <a style={{cursor: "pointer"}} onClick={() => handleClick(tab.key)}>
-    <TabWrap style={{backgroundColor: `${tab.key.toLowerCase() === selected ? "#DD3B58" : "transparent"}`}}>
-      {tab.key}
-    </TabWrap>
-    </a>
+    <div style={{cursor: "pointer"}} onClick={() => handleClick(props.tab.key)}>
+      <TabWrap className={`sidebarLink ${props.tab.key.toLowerCase() === props.selected ? 'active-tab': ''}`}>
+        {props.tab.key}
+      </TabWrap>
+    </div>
   )
 }
 
