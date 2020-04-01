@@ -38,7 +38,7 @@ function Primary(props) {
             sounds or divergent sounds and help to highligh the strengths and
             rhythm of English.
           </p>
-          <img src={Victoria} alt="Garden of Knowledge founder, Victoria Labdon" />
+          <img src={Victoria} alt="The Garden of Knowledge founder, Victoria Labdon" />
         </div>
         <div className="body-right">
           <h2>General English for 6-12 years</h2>
