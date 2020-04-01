@@ -21,7 +21,7 @@
         line-height: 62px;
         white-space: nowrap;
       }
-      p {
+      p, li {
         color: #335366;
         font-weight: bold;
         font-size: 24px;
@@ -190,6 +190,14 @@
     border-radius: 7px;
     margin-top: 20px;
   }
+
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin: 40px;
+    align-items: center;
+    height: calc(100vh - 282px);
+
 }
 
 /* ====================== 
@@ -217,3 +225,16 @@
 
 
 /* ========================== */
+
+.registration-button-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.single-button-left {
+  justify-content: flex-start;
+}
+
+.single-button-right {
+  justify-content: flex-end;
+}
