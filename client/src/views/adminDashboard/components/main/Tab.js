@@ -26,7 +26,7 @@ function Tab(props) {
   }
 
   return (
-    <a  onClick={() => handleClick(props.tab.key)}>
+    <div onClick={() => handleClick(props.tab.key)}>
     <TabWrap className={`sidebarLink ${props.tab.key.toLowerCase() === props.selected ? 'active-tab': ''}`}>
       <FontAwesomeIcon 
           icon={icon} 
@@ -36,7 +36,7 @@ function Tab(props) {
       />
       {props.tab.key}
     </TabWrap>
-    </a>
+    </div>
   )
 }
 const mapStateToProps = state => {
