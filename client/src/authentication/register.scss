@@ -225,3 +225,16 @@
 
 
 /* ========================== */
+
+.registration-button-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.single-button-left {
+  justify-content: flex-start;
+}
+
+.single-button-right {
+  justify-content: flex-end;
+}

@@ -1,11 +1,10 @@
 import React from "react";
 import { useForm } from 'react-hook-form';
-import RegistrationPrevNextButtons from './RegistrationPrevNextButtons';
 
-const RegistrationStudentInfoForm = ({step, studentInfo, setStudentInfo}) => {
+const RegistrationStudentInfoForm = ({step, setStep, studentInfo, setStudentInfo}) => {
 
 	const { register, errors, handleSubmit } = useForm();
-    const formSubmit = data => { setStudentInfo(data); };
+    const formSubmit = (data, direction) => { setStudentInfo(data); setStep(step + direction)};
 
     return (
         <form onSubmit={handleSubmit(formSubmit)}>
@@ -22,7 +21,18 @@ const RegistrationStudentInfoForm = ({step, studentInfo, setStudentInfo}) => {
                     <option value="2">Hamad Town</option>
                 </select>
             </fieldset>
-            <RegistrationPrevNextButtons step={step} />
+
+            { step === 2 &&
+            <div className="registration-button-div">
+                <button onClick={data => formSubmit(data, -1)}>Back: Your Information </button>
+                <button onClick={data => formSubmit(data, 1)}>Next: Review Registration</button>
+            </div>}
+
+            { step === 3 &&
+            <div className="registration-button-div single-button-right">
+                <button onClick={data => formSubmit(data, 1)}>Next: Submit Registration</button>
+            </div>}
+                
          </form>
     )
 }

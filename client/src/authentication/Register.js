@@ -48,8 +48,8 @@ function Register(props) {
           <RegistrationInstructions />
           <RegistrationProgressBar step={step} />
           <div className='reg-form'>
-              {(step === 1 || step === 3) && <RegistrationFamilyInfoForm step={step} familyInfo={familyInfo} setFamilyInfo={setFamilyInfo} />}
-              {(step === 2 || step === 3) && <RegistrationStudentInfoForm step={step} studentInfo={studentInfo} setStudentInfo={setStudentInfo} />}
+              {(step === 1 || step === 3) && <RegistrationFamilyInfoForm step={step} setStep={setStep} familyInfo={familyInfo} setFamilyInfo={setFamilyInfo} />}
+              {(step === 2 || step === 3) && <RegistrationStudentInfoForm step={step} setStep={setStep} studentInfo={studentInfo} setStudentInfo={setStudentInfo} />}
           </div>
         </div>
       );
