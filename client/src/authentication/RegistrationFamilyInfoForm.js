@@ -2,10 +2,9 @@ import React from "react";
 import { useForm } from 'react-hook-form';
 
 const RegistrationFamilyInfoForm = ({step, setStep, familyInfo, setFamilyInfo}) => {
-
     const { register, errors, handleSubmit, getValues } = useForm();
     const formSubmit = data => { setFamilyInfo(getValues()); setStep(step + 1); };
-
+    
     return (
         <form onSubmit={handleSubmit(formSubmit)}>
             <fieldset>
@@ -20,12 +19,10 @@ const RegistrationFamilyInfoForm = ({step, setStep, familyInfo, setFamilyInfo}) 
                 <input type="password" name="password" placeholder="Password" defaultValue={familyInfo.password || ""} ref={register({required: true})} />
                 <input type="password" name="confirmPassword" placeholder="Confirm Password" defaultValue={familyInfo.confirmPassword || ""} ref={register({required: true})} />
             </fieldset>
-
             { step === 1 &&
             <div className="registration-button-div single-button-right">
                 <button onClick={formSubmit}>Next: Student Information</button>
-            </div>}
-                
+            </div>}           
          </form>
     )
 }
