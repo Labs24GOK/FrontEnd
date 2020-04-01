@@ -1,6 +1,9 @@
 @import "../../../../styles/_variables";
 @import "../../../../styles/_mixins";
 
+/* check for inconsistencies with adminDashboard's version of navbar.scss
+   are separate files really needed? */
+   
 .nav {
   height: 100px;
   display: flex;
