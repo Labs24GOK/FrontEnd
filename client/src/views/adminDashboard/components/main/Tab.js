@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserGraduate, faMap, faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import { TabWrap } from '../mainStyle/styledComponent';
 
-
 function Tab(props) {
 
   const tabIconMapping = {
@@ -15,8 +14,7 @@ function Tab(props) {
     "Staff": faUserFriends
   }
 
-  const [icon, setIcon] = useState();
-  
+  const [icon, setIcon] = useState(faUserGraduate);
   useEffect(() => {setIcon(tabIconMapping[props.tab.key]); }, [])
   
   const handleClick = (tab) => {
@@ -27,26 +25,15 @@ function Tab(props) {
 
   return (
     <div onClick={() => handleClick(props.tab.key)}>
-    <TabWrap className={`sidebarLink ${props.tab.key.toLowerCase() === props.selected ? 'active-tab': ''}`}>
-      <FontAwesomeIcon 
-          icon={icon} 
-          size='lg' 
-          color='#ffffff' 
-          style={{marginRight: '10px', width: '15px'}}
-      />
-      {props.tab.key}
-    </TabWrap>
+      <TabWrap className={`sidebarLink ${props.tab.key.toLowerCase() === props.selected ? 'active-tab': ''}`}>
+        <FontAwesomeIcon icon={icon} size='lg' className="tab-icon" /> {props.tab.key}
+      </TabWrap>
     </div>
   )
 }
+
 const mapStateToProps = state => {
-  return {
-      state: state
-  };
+  return { state };
 };
-export default withRouter(
-  connect(
-      mapStateToProps,
-      { resetForm }
-  )(Tab)
-)
+
+export default withRouter(connect( mapStateToProps, { resetForm } )(Tab) )

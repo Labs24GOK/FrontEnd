@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserGraduate, faMap, faUserFriends, faUserAlt} from '@fortawesome/free-solid-svg-icons';
 
-
+/* Check how tabs are styled in the admin dashboard! Cleaner JSX, SASS code there. */
 
 const TabWrap = styled.div`
   width: 100%;
@@ -18,22 +18,22 @@ const TabWrap = styled.div`
   color: white;
   margin: 0 0 20px 0;
   font-size: 18px;
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center'
 `
 
-function Tab(props) {
-  const [icon, setIcon] = useState();
+const iconStyle = {marginRight: '10px', height: '15px', width: '15px'}
 
-  useEffect(() => {
-    if (props.tab.key === 'Students') {
-      setIcon(faUserGraduate);
-    } else if (props.tab.key === 'Courses') {
-      setIcon(faMap);
-    } else if (props.tab.key === 'Staff') {
-      setIcon(faUserFriends);
-    }  else if (props.tab.key === 'family') {
-      setIcon(faUserAlt)
-    }
-  }, [])
+function Tab(props) {
+  const [icon, setIcon] = useState(faUserGraduate);
+
+  const tabIconMapping = {
+    "Students": faUserGraduate, "Courses": faMap,
+    "Staff": faUserFriends, "Family": faUserAlt
+  }
+
+  useEffect(() => {setIcon(tabIconMapping[props.tab.key]); }, [])
 
   const handleClick = (tab) => {
     props.setSelected(tab.toLowerCase())
@@ -42,27 +42,16 @@ function Tab(props) {
   }
 
   return (
-    <a style={{cursor: "pointer"}} onClick={() => handleClick(props.tab.key)}>
-    <TabWrap style={{color: `${props.tab.key.toLowerCase() === props.selected ? "#269FB0" : "#89878a"}`, 
-                     display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-      <FontAwesomeIcon icon={icon} size='lg' color='gray' style={{marginRight: '10px', 
-                       color: `${props.tab.key.toLowerCase() === props.selected ? "#269FB0" : "#89878a"}`,
-                       height: '15px', width: '15px'}}/>
-      {props.tab.key}
-    </TabWrap>
-    </a>
+    <div onClick={() => handleClick(props.tab.key)}>
+      <TabWrap className={`sidebarLink ${props.tab.key.toLowerCase() === props.selected ? 'active-tab': ''}`}>
+        <FontAwesomeIcon icon={icon} size='lg' style={iconStyle}/> {props.tab.key}
+      </TabWrap>
+    </div>
   )
 }
 
 const mapStateToProps = state => {
-  return {
-      state: state
-  };
+  return { state };
 };
 
-export default withRouter(
-  connect(
-      mapStateToProps,
-      { resetForm }
-  )(Tab)
-)
+export default withRouter(connect( mapStateToProps, { resetForm } )(Tab) )
