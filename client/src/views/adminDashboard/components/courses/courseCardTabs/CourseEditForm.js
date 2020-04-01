@@ -4,28 +4,22 @@ import { createDropdown } from '../../../../../utils/helpers.js';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { editCourseById, getDropDownCourses, toggleEditCourse } from '../../../../../actions';
+
 import { ButtonDiv,  CancelButton,  Div,  FormSet,  FormWrap,  Input,  Label,  SaveButton,} from '../../mainStyle/styledComponent';
 
 const CourseEditForm = props => {
   const { courseID } = props;
-
-  console.log("props", props)
-  // console.log("status", props.courseById.status)
-  // console.log("term", props.courseById.term_id)
   const { register, errors, handleSubmit, watch } = useForm();
   const dropDowns = ['term_id', 'course_type_id', 'group_type_id', 'school_grade_id', 'level_id', 'course_schedule_id',  'room_id', 'teacher_id']
+  
   const submitNow = data => {
     for (const property of dropDowns) {
         data[property] = parseInt(data[property])    
     }
     props.editCourseById(courseID, data);
-    console.log(data);
-    // props.setForm(false);
   }
 
   const currentlySelectedCourse = watch("course_type_id");
-
-  
 
   let startdate = new Date(props.courseById.start_date)
     .toISOString()
@@ -45,132 +39,80 @@ return (
   <FormWrap onSubmit={handleSubmit(submitNow)}>
     <FormSet>
       <Div>
-      <div>
-            <Label>Status</Label>
-              <div>
-                <select
-                defaultValue={props.courseById.status}
-                className="dropDown"  
-                name="status" 
-                ref={register({required: true})}
-               >
-                  <option value="Active">Active</option>
-                  <option value="Completed">Completed</option>
-                  <option value="Waitlist">Waitlist</option>
-                  <option value="Cancelled">Cancelled</option>
-                </select>
-              </div>
-          </div>
-
+        <div>
+          <Label>Status</Label>
+            <div>
+              <select name="status" defaultValue={props.courseById.status} className="dropDown" ref={register({required: true})}>
+                <option value="Active">Active</option>
+                <option value="Completed">Completed</option>
+                <option value="Waitlist">Waitlist</option>
+                <option value="Cancelled">Cancelled</option>
+              </select>
+            </div>
+        </div>
         <div>
           <Label>Term</Label>
-          <select 
-        defaultValue={props.courseById.term_id} 
-          
-          className="dropDown" 
-          name="term_id" 
-          ref={register({required: true})}
-           >
-          {createDropdown(props.termDropdown)}
-          </select>
+            <select name="term_id" defaultValue={props.courseById.term_id} className="dropDown" ref={register({required: true})}>
+              {createDropdown(props.termDropdown)}
+            </select>
         </div>
-
         <div>
           <Label>Course Type</Label>
-          <select 
-          defaultValue ={props.courseById.course_type_id}
-           className="dropDown" 
-           name="course_type_id" 
-           ref={register({required: true})}
-           >
-           {createDropdown(props.courseTypeDropdown)}
-          </select>   
+            <select name="course_type_id" defaultValue ={props.courseById.course_type_id} className="dropDown" ref={register({required: true})}>
+              {createDropdown(props.courseTypeDropdown)}
+            </select>   
         </div>
         <div>
               <Label>Group Type</Label>
 						<div>
-              <select 
-              defaultValue={props.courseById.group_type_id}
-              name="group_type_id" 
-              className="dropDown" 
-              ref={register({required: true})}
-              >
+              <select name="group_type_id" defaultValue={props.courseById.group_type_id} className="dropDown" ref={register({required: true})}>
                 {createDropdown(props.groupTypeDropdown)}
               </select>
 					  </div>
         </div>  
-
-
         <div>
               <Label>Level</Label>
               <div>
-                <select 
-                defaultValue= {props.courseById.level_id}
-                className="dropDown" 
-                name="level_id" 
-                ref={register({required: true})}
-                >
+                <select name="level_id" defaultValue= {props.courseById.level_id} className="dropDown" ref={register({required: true})}>
                   {createDropdown(props.levelDropdown)}
                 </select>  
 						  </div>
         </div> 
-
         <div>
             <Label>Section</Label>
               <div>
-                <select 
-                defaultValue ={props.courseById.section}
-                className="dropDown"  
-                name="section" 
-                ref={register({required: true})}
-                >
+                <select name="section"  defaultValue ={props.courseById.section} className="dropDown" ref={register({required: true})}>
                   <option value="A">A</option>
                   <option value="B">B</option>
                   <option value="C">C</option>
                 </select>  
               </div>
         </div>   
-
         <div>
           <Label>School Grade</Label>
-          <select 
-            defaultValue={props.courseById.school_grade_id} 
-            className={"dropDown " + (currentlySelectedCourse !== "2" ? "grey" : "")}
-            name="school_grade_id" 
-            disabled={currentlySelectedCourse !== "2"} 
-            ref={register({required: true})}
-            >
+          <select className={"dropDown " + (currentlySelectedCourse !== "2" ? "grey" : "")} name="school_grade_id" defaultValue={props.courseById.school_grade_id} disabled={currentlySelectedCourse !== "2"} ref={register({required: true})}>
               {createDropdown(props.schoolGradeDropdown)}
           </select>  
         </div>
-         
-
-
         <div>
             <Label>Course Schedule</Label>
               <div>
-                <select className="dropDown" 
-                defaultValue={props.courseById.course_schedule} 
-                name="course_schedule_id" 
-                ref={register({required: true})}
-                >
+                <select name="course_schedule_id"  className="dropDown" defaultValue={props.courseById.course_schedule} ref={register({required: true})}>
                   {createDropdown(props.courseScheduleDropdown)}
                 </select>
               </div>
           </div> 
-
           <div>
             <Label>Start Date</Label>
               <div>
-                <Input type="date" 
+                <Input name="start_date" type="date" 
                 defaultValue={startdate} 
                 className={errors.start_date && "input-error"} 
-                name="start_date" ref={register({required: true})}
+                 ref={register({required: true})}
                 />
                   {errors.start_date && errors.start_date.type === "required" && 'Start Date is Required'}
               </div>
           </div>
-
           <div>
             <Label>End Date</Label>
               <div>
@@ -182,8 +124,7 @@ return (
                 />
                   {errors.end_date && errors.end_date.type === "required" && 'End Date is Required'}
               </div>
-          </div>
-        
+          </div>     
           <div>
             <Label>Start Time</Label>
               <div>
@@ -196,7 +137,6 @@ return (
                   {errors.start_time && errors.start_time.type === "required" && 'Start Time is Required'}	
               </div>
           </div>
-
           <div>
             <Label>End Time</Label>
               <div>
@@ -209,7 +149,6 @@ return (
                   {errors.end_time && errors.end_time.type === "required" && 'End Time is Required'}
               </div>
           </div>
-
           <div>
             <Label>Room</Label>
               <div>
@@ -223,8 +162,6 @@ return (
                 </select>
               </div>
           </div>
-
-
           <div>
             <Label>Teacher</Label>
               <div>
@@ -238,8 +175,6 @@ return (
                 </select>
               </div>
           </div>
-
-
           <div>
             <Label>Hourly Rate</Label>
               <div>
@@ -253,7 +188,6 @@ return (
                   {errors.hourly_rate && errors.hourly_rate.type === "required" && 'Hourly Rate is Required'}
               </div>
           </div>
-
           <div>
             <Label>Notes</Label>
               <div>
@@ -266,16 +200,12 @@ return (
           </div>   
           </Div>
     </FormSet>
-
-
         <ButtonDiv>
         <CancelButton onClick={handleCancel}>Cancel</CancelButton>
         <SaveButton type='submit' onClick={handleSubmit}>
           Save
         </SaveButton>
       </ButtonDiv>
-      
-     
   </FormWrap>
 );
 };
