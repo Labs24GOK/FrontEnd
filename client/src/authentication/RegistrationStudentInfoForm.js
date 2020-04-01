@@ -3,8 +3,8 @@ import { useForm } from 'react-hook-form';
 
 const RegistrationStudentInfoForm = ({step, setStep, studentInfo, setStudentInfo}) => {
 
-	const { register, errors, handleSubmit } = useForm();
-    const formSubmit = (data, direction) => { setStudentInfo(data); setStep(step + direction)};
+	const { register, errors, handleSubmit, getValues } = useForm();
+    const formSubmit = (data, direction) => { setStudentInfo(getValues()); setStep(step + direction)};
 
     return (
         <form onSubmit={handleSubmit(formSubmit)}>
@@ -15,7 +15,7 @@ const RegistrationStudentInfoForm = ({step, setStep, studentInfo, setStudentInfo
                 <input type="text" name="cpr" placeholder="Student CPR" defaultValue={studentInfo.cpr || ""} ref={register({required: true})} />
                 <input type="email" name="email" placeholder="Email" defaultValue={studentInfo.email || ""} ref={register({required: true})} />
 
-                <select name="location" ref={register}>
+                <select name="location" defaultValue={studentInfo.location || "0"}ref={register}>
                     <option value="0">Select Location</option>
                     <option value="1">Bani Jamra</option>
                     <option value="2">Hamad Town</option>

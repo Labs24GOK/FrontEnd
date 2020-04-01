@@ -6,8 +6,6 @@ import './register.scss';
 import { toggle } from '../actions/landingPageActions/landingPageActions';
 import ReactGA from 'react-ga';
 
-import { useForm } from 'react-hook-form';
-
 import RegistrationInstructions from "./RegistrationInstructions";
 import RegistrationProgressBar from './RegistrationProgressBar';
 import RegistrationFamilyInfoForm from "./RegistrationFamilyInfoForm";
@@ -23,25 +21,10 @@ function Register(props) {
   const [familyInfo, setFamilyInfo] = useState({});
   const [studentInfo, setStudentInfo] = useState({});
 
-	const { register, errors, handleSubmit } = useForm();
-
   useEffect(() => { props.toggle(); }, [props.success]);
 
-  const prevStep = e => {
-    e.preventDefault();
-    setStep(step - 1);
-  };
-
-  const nextStep = e => {
-    e.preventDefault();
-    setStep(step + 1);
-  };
-
   // const formSubmit = data => { props.familyRegister({ user, family, student }, props.history ); };
-  const formSubmit = data => { props.familyRegister({}, props.history ); };
-
-  console.log("info:", familyInfo, studentInfo);
-
+ 
   if (!props.success) {
       return (
         <div className='parent-reg'>
