@@ -21,7 +21,7 @@ function Login(props) {
       <div className="login">
         <div className="login-body">
           <div className="img-container">
-            <img src={LoginGroup} />
+            <img src={LoginGroup} alt="Illustration of a man, woman, and child walking together." />
           </div>
           <div className="form-container">
             <h1>Welcome back!</h1>
