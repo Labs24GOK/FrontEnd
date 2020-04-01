@@ -25,7 +25,7 @@ function Kindergarten(props) {
               <br />
               English for kindergarten for the age group 4-6 years
             </p>
-            <img src={KindergartenPic} />
+            <img src={KindergartenPic} alt="Children on floor solving puzzles involving animal names" />
           </div>
           <div className="body-right">
             <h2>KG English for 4-6 year olds</h2>
