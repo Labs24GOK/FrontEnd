@@ -9,12 +9,10 @@ import "../../../../../styles/table.scss"
 
 const StaffForm = props => {
   const { staffID } = props;
-
   const { register, errors, handleSubmit} = useForm();
 
   const submitNow = data => {
     props.editStaffById(staffID, data);
-    console.log("data that is being submitted", data)
   }
 
   let birthdate = new Date(props.staffById.birthdate)
@@ -49,7 +47,6 @@ const StaffForm = props => {
                {errors.short_name && errors.short_name.type === "required" && 'Short name is Required'}
             </div>
           </div>
-
           <div>
             <Label>Username</Label>
             <div>
@@ -57,7 +54,6 @@ const StaffForm = props => {
               {errors.username && errors.username.type === "required" && 'Username is Required'}
             </div>
           </div>
-
           <div>
             <Label>CPR</Label>
             <div>
@@ -66,7 +62,6 @@ const StaffForm = props => {
               {errors.cpr && errors.cpr.type === "required" && 'CPR is Required'}
             </div>
           </div>
-
           <div>
             <Label>Mobile Number</Label>
             <div>
@@ -88,7 +83,6 @@ const StaffForm = props => {
               {errors.accent && errors.accent.type === "required" && 'Accent is Required'}
             </div>
           </div>
-
           <div>
             <Label>Gender</Label>
             <div>
@@ -98,7 +92,6 @@ const StaffForm = props => {
               </select>
             </div>
           </div>
-
           <div>
             <Label>Birthdate</Label>
             <div>
@@ -108,7 +101,6 @@ const StaffForm = props => {
               {errors.birthdate && errors.birthdate.type === "required" && 'Birthdate is Required'}
             </div>
           </div>
-
           <div>
             <Label>Teaching Rate</Label>
             <div>
