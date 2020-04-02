@@ -5,11 +5,8 @@ import { withRouter } from 'react-router-dom';
 import 'react-dropdown/style.css';
 import '../../mainStyle/mainTable.scss';
 import { FormWrap, Input, Div, FormSet, ButtonDiv, CancelButton, SaveButton, Label } from '../../mainStyle/styledComponent';
-
 import '../../../../../styles/table.scss';
-
 import {createDropdown} from '../../../../../utils/helpers';
-
 import { useForm } from 'react-hook-form';
 
 const StudentForm = props => {
