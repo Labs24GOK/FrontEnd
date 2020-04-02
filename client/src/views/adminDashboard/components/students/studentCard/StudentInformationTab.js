@@ -6,6 +6,7 @@ import StudentForm from './StudentForm';
 import { FormWrap, Div, TextDiv, SaveButton, DeleteButton, FormSet, ButtonDiv, Label } from '../../mainStyle/styledComponent';
 import Modal from '../../modals/DeleteModal';
 import getDateStringENGBFormat from "../../../../../utils/helpers";
+import StudentInformationTabLabels from "./StudentInformationTabLabels";
 
 const StudentInformationTab = props => {
 	useEffect(() => {
@@ -28,9 +29,7 @@ const StudentInformationTab = props => {
 
 	const deleteStudentInfo = async () => {
 		await props.deleteStudentById(props.studentById.student_id);
-		setTimeout(() => {
-			props.setStudentView('studentTableView');
-		}, 500);
+		setTimeout(() => { props.setStudentView('studentTableView'); }, 500);
 	};
 
 	return (
@@ -260,11 +259,5 @@ const mapStateToProps = state => {
 };
 
 export default withRouter(
-	connect(mapStateToProps, {
-		getStudentById,
-		toggleEditComponent,
-		toggleEditPlacement,
-		toggleDeleteModel,
-		deleteStudentById
-	})(StudentInformationTab)
+	connect(mapStateToProps, { getStudentById, toggleEditComponent, toggleEditPlacement, toggleDeleteModel, deleteStudentById })(StudentInformationTab)
 );
