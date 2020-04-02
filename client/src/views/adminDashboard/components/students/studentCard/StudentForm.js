@@ -63,7 +63,10 @@ const StudentForm = props => {
 					<div>
 						<Label>Additional Names</Label>
 						<div>
-							<Input type="text" className={errors.additional_names && "input-error"}name="additional_names" defaultValue={student.additional_names} ref={register({required: true, minLength: 10, maxLength: 10})} />
+							{/* regex pattern: 3 or more words, separated by spaces. Optional space at end so error border doesn't come up while typing more names.*/}
+							<Input type="text" className={errors.additional_names && "input-error"}name="additional_names" defaultValue={student.additional_names} ref={register({required: true, pattern: /^([a-zA-Z]+ +){2,}([a-zA-Z]+ ?)$/i })} />
+							{errors.additional_names && errors.additional_names.type === "required" && 'Additional Names are Required.'}
+							{errors.additional_names && errors.additional_names.type === "pattern" && 'Enter at least 3 additional names.'}
 						</div>
 					</div>
 					<div>
