@@ -48,9 +48,9 @@ const StudentForm = props => {
 					<div>
 						<Label>CPR</Label>
 						<div>
-							<Input type="text" placeholder="xxxxxxxxxx" className={errors.cpr && "input-error"} name="cpr" defaultValue={student.cpr} ref={register({required: true, minLength: 9})} />
+							<Input type="text" placeholder="xxxxxxxxxx" className={errors.cpr && "input-error"} name="cpr" defaultValue={student.cpr} ref={register({required: true, minLength: 9, maxLength: 9})} />
 							{errors.cpr && errors.cpr.type === "required" && 'CPR is Required'}
-							{errors.cpr && errors.cpr.type === "minLength" && 'CPR needs to be 9 characters'}
+							{errors.cpr && (errors.cpr.type === "minLength" || errors.cpr.type === "maxLength") && 'CPR needs to be 9 characters'}
 						</div>
 					</div>
 					<div>
