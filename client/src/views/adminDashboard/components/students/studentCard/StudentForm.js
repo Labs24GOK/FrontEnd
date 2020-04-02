@@ -40,7 +40,37 @@ const StudentForm = props => {
 		{ label: 'Yes', value: true },
 		{ label: 'No', value: false }
 	];
+
+	// create inputs for form below
+	const StudentFormInput = ({label, name, defaultValue, type, colspan, validation, placeholder}) => {
+
+		let colspanStyle = {};
 		
+		if (colspan > 1)
+			{ colspanStyle={ gridColumn: "span " + colspan }; }
+
+		// customize error message if minLength and maxLength are the same
+		let errorMessageSingleLength;
+		if (validation && validation.minLength && validation.maxLength && (validation.minLength === validation.maxLength))
+			{ errorMessageSingleLength = "must be exactly " + validation.minLength + " characters long."}
+		
+		let errorMessageInputTooShort = "must be at least " + validation.minLength + " characters long."
+		let errorMessageInputTooLong = "must be at most " + validation.maxLength + " characters long."
+
+		return (
+			<div style={colspanStyle}>
+				<Label>{label}</Label>
+				<div>
+					<Input type={type} placeholder={placeholder} className={errors[name] && "input-error"} name={name} defaultValue={defaultValue} ref={register(validation)} />
+
+					{errors[name] && errors[name].type === "required" && label + ' is required.'}
+					{errors[name] && errors[name].type === "minLength" && label + (errorMessageSingleLength || errorMessageInputTooShort)}
+					{errors[name] && errors[name].type === "maxLength" && label + (errorMessageSingleLength || errorMessageInputTooLong)}
+				</div>
+			</div>
+		)
+	}
+
 	return (
 		<FormWrap onSubmit={handleSubmit(submitNow)}>
 			<FormSet>
@@ -53,20 +83,21 @@ const StudentForm = props => {
 							{errors.cpr && (errors.cpr.type === "minLength" || errors.cpr.type === "maxLength") && 'CPR needs to be 9 characters'}
 						</div>
 					</div>
-					<div>
+					<StudentFormInput label="First Name" name="first_name" defaultValue={student.first_name} type="text" colspan="1" validation={{required: true, minLength: 5, maxLength: 10}} />
+					<StudentFormInput label="Additional Names" name="additional_names" defaultValue={student.additional_names} type="text" colspan="1" validation={{required: true, minLength: 5, maxLength: 10}} />
+					{/* <div>
 						<Label>First Name</Label>
 						<div>
 							 <Input type="text" className={errors.first_name && "input-error"} name="first_name" defaultValue={student.first_name} ref={register({required: true, maxLength: 80})} />
 							 {errors.first_name && errors.first_name.type === "required" && 'First name is Required'}
 						</div>
-					</div>
-					<div>
+					</div> */}
+					{/* <div>
 						<Label>Additional Names</Label>
 						<div>
-							<Input type="text" className={errors.additional_names && "input-error"}name="additional_names" defaultValue={student.additional_names} ref={register({required: true, maxLength: 100})} />
-							{errors.additional_names && errors.additional_names.type === "required" && 'Additional Names is Required'}	
+							<Input type="text" className={errors.additional_names && "input-error"}name="additional_names" defaultValue={student.additional_names} ref={register({required: true, minLength: 10, maxLength: 10})} />
 						</div>
-					</div>
+					</div> */}
 					<div>
 						<Label>Gender</Label>
 						<div>
