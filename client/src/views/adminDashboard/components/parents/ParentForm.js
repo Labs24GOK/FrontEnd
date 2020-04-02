@@ -1,148 +1,95 @@
-import React, {useState, useEffect } from 'react'
+import React from 'react'
 import { connect } from 'react-redux';
 import { editParentById, toggleEditParent } from '../../../../actions';
 import { withRouter } from 'react-router-dom';
-import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
+import { useForm } from 'react-hook-form';
 import { FormWrap, Input, CancelButton, SaveButton, ButtonDiv, Div, FormSet, Label} from '../mainStyle/styledComponent';
+
 const ParentForm = props => {
     
-    const [state, setState] = useState({
-        id: props.parentById.id,
-        father_name: props.parentById.father_name,
-        mother_name: props.parentById.mother_name,
-        primary_telephone: props.parentById.primary_telephone,
-        secondary_telephone: props.parentById.secondary_telephone,
-        block_code: props.parentById.block_code,
-        building: props.parentById.building,
-        flat: props.parentById.flat,
-        road: props.parentById.road
-    })
-    const handleChange = e => {
-        setState({
-            ...state,
-            [e.target.name]: e.target.value
-        })
+    const parent = props.parentById;
+    const { register, errors, handleSubmit } = useForm();
+
+    const submitNow = data => {
+        props.editParentById(props.parentId, data)
     }
-    const handleSubmit = e => {
-        e.preventDefault();
-        props.editParentById(props.parentId, state)
-    }
+    
     const handleCancel = e => {
         props.toggleEditParent();
     }
+    
     return(
-       <FormWrap onSubmit={handleSubmit}>
-                <FormSet>
+        <FormWrap onSubmit={handleSubmit(submitNow)}>
+            <FormSet>
                  <Div>              
+                    <div>
+                        <Label>Father Name</Label>
                         <div>
-                           <Label>Father Name</Label>
-                           <div>
-                            <Input
-                                type='text'
-                                name='father_name'
-                                placeholder='Father Name'
-                                onChange={handleChange}
-                                value={state.father_name}
-                            />
-                            </div>
+                            <Input type='text' name='father_name' placeholder='Father Name' defaultValue={parent.father_name} ref={register({required: true})} />
+                            {errors.father_name && errors.father_name.type === "required" && 'Father Name is Required'}
                         </div>
+                    </div>
+                    <div>
+                        <Label>Mother Name</Label>
                         <div>
-                            <Label>Mother Name</Label>
-                            <div>
-                            <Input
-                                type='text'
-                                name='mother_name'
-                                placeholder='Mother Name'
-                                onChange={handleChange}
-                                value={state.mother_name}
-                            />
-                            </div>
+                            <Input type='text' name='mother_name' placeholder='Mother Name' defaultValue={parent.mother_name} ref={register({required: true})} />
+                            {errors.mother_name && errors.mother_name.type === "required" && 'Mother Name is Required'}
                         </div>
+                    </div>
+                    <div>
+                        <Label>Primary Telephone</Label>
                         <div>
-                            <Label>Primary Telephone</Label>
-                            <div>
-                            <Input
-                                type='text'
-                                name='primary_telephone'
-                                placeholder='Primary Telephone'
-                                onChange={handleChange}
-                                value={state.primary_telephone}
-                            />
-                            </div>
+                            <Input type='text' name='primary_telephone' placeholder='Primary Telephone' defaultValue={parent.primary_telephone} ref={register({required: true})} />
+                            {errors.primary_telephone && errors.primary_telephone.type === "required" && 'Primary Telephone is Required'}
                         </div>
+                    </div>
+                    <div>
+                        <Label>Secondary Telephone</Label>
                         <div>
-                            <Label>Secondary Telephone</Label>
-                            <div>
-                            <Input
-                                type='text'
-                                name='secondary_telephone'
-                                placeholder='Secondary Telephone'
-                                onChange={handleChange}
-                                value={state.secondary_telephone}
-                            />
-                            </div>
+                            <Input type='text' name='secondary_telephone' placeholder='Secondary Telephone' defaultValue={parent.secondary_telephone} ref={register({required: true})} />
+                            {errors.secondary_telephone && errors.secondary_telephone.type === "required" && 'Secondary Telephone is Required'}
                         </div>
+                    </div>
                     <div>
                         <Label>Block Code</Label>
                         <div>
-                        <Input
-                                type='text'
-                                name='block_code'
-                                placeholder='Block Code'
-                                onChange={handleChange}
-                                value={state.block_code}
-                            />
+                            <Input type='text' name='block_code' placeholder='Block Code' defaultValue={parent.block_code} ref={register({required: true})} />
+                            {errors.block_code && errors.block_code.type === "required" && 'Block Code is Required'}
                         </div>
                     </div>
                     <div>
                         <Label>Building</Label>
                         <div>
-                        <Input
-                                type='text'
-                                name='building'
-                                placeholder='Building'
-                                onChange={handleChange}
-                                value={state.building}
-                            />
+                            <Input type='text' name='building' placeholder='Building' defaultValue={parent.building} ref={register({required: true})} />
+                            {errors.building && errors.building.type === "required" && 'Building is Required'}
                         </div>
                     </div>
                     <div>
                         <Label>Flat</Label>
                         <div>
-                        <Input
-                                type='text'
-                                name='flat'
-                                placeholder='Flat'
-                                onChange={handleChange}
-                                value={state.flat}
-                            />
+                            <Input type='text' name='flat' placeholder='Flat' defaultValue={parent.flat} ref={register({required: true})} />
+                            {errors.flat && errors.flat.type === "required" && 'Flat is Required'}
                         </div>
                     </div>
                     <div>
                         <Label>Road</Label>
                         <div>
-                        <Input
-                                type='text'
-                                name='road'
-                                placeholder='Road'
-                                onChange={handleChange}
-                                value={state.road}
-                            />
+                            <Input type='text' name='road' placeholder='Road' defaultValue={parent.road} ref={register({required: true})} />
+                            {errors.road && errors.road.type === "required" && 'Road is Required'}
                         </div>
                     </div>                 
                </Div>
             </FormSet>
-             <ButtonDiv style={{ alignSelf: 'flex-end', paddingRight: '15px' }}>
-             <CancelButton onClick={handleCancel} >
-                 Cancel
-             </CancelButton>
-             <SaveButton type="submit" onClick={handleSubmit}> 
-                  Save
-             </SaveButton>
+            <ButtonDiv style={{ alignSelf: 'flex-end', paddingRight: '15px' }}>
+                <CancelButton onClick={handleCancel} >
+                    Cancel
+                </CancelButton>
+                <SaveButton type="submit" onClick={handleSubmit}> 
+                    Save
+                </SaveButton>
          </ButtonDiv>
        </FormWrap> 
-                
     )
 }
 const mapStateToProps = state => {
@@ -152,9 +99,5 @@ const mapStateToProps = state => {
         isEditing: state.parentReducer.isEditing,
     };
   };
-export default withRouter(
-    connect(
-        mapStateToProps,
-        { editParentById, toggleEditParent }
-    )(ParentForm)
-) 
+
+export default withRouter( connect( mapStateToProps, { editParentById, toggleEditParent } )(ParentForm) )
