@@ -1,23 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import {
-	editStudentById,
-	editStudentDropDown,
-	toggleEditComponent,
-} from '../../../../../actions';
+import { editStudentById, editStudentDropDown, toggleEditComponent, } from '../../../../../actions';
 import { withRouter } from 'react-router-dom';
 import 'react-dropdown/style.css';
 import '../../mainStyle/mainTable.scss';
-import {
-	FormWrap,
-	Input,
-	Div,
-	FormSet,
-	ButtonDiv,
-	CancelButton,
-	SaveButton,
-	Label
-} from '../../mainStyle/styledComponent';
+import { FormWrap, Input, Div, FormSet, ButtonDiv, CancelButton, SaveButton, Label } from '../../mainStyle/styledComponent';
 
 import '../../../../../styles/table.scss';
 
@@ -28,45 +15,43 @@ import { useForm } from 'react-hook-form';
 const StudentForm = props => {
 	const { studentID } = props;
 
-	let birthdate = new Date(props.studentById.birthdate)
-		.toISOString()
-		.split('T')[0];
-	let grade_updated = new Date(props.studentById.grade_updated)
-		.toISOString()
-		.split('T')[0];
+	const student = props.studentById;
+
+	let birthdate = new Date(student.birthdate).toISOString().split('T')[0];
+	let grade_updated = new Date(student.grade_updated) .toISOString().split('T')[0];
 
 	const { errors, register, handleSubmit } = useForm({
 		defaultValues: {
-			cpr: props.studentById.cpr,
-			first_name: props.studentById.first_name,
-			additional_names: props.studentById.additional_names,
-			gender: props.studentById.gender,
-			home_telephone: props.studentById.home_telephone,
-			mobile_telephone: props.studentById.mobile_telephone,
-			email: props.studentById.email,
-			preferred_contact_type_id: props.studentById.preferred_contact_type_id,
+			cpr: student.cpr,
+			first_name: student.first_name,
+			additional_names: student.additional_names,
+			gender: student.gender,
+			home_telephone: student.home_telephone,
+			mobile_telephone: student.mobile_telephone,
+			email: student.email,
+			preferred_contact_type_id: student.preferred_contact_type_id,
 			birthdate: birthdate,
-			school_name: props.studentById.school_name,
-			school_grade_id: props.studentById.school_grade_id,
-			location_id: props.studentById.location_id,
-			block_code: props.studentById.block_code,
-			road: props.studentById.road,
-			building: props.studentById.building,
-			flat: props.studentById.flat,
+			school_name: student.school_name,
+			school_grade_id: student.school_grade_id,
+			location_id: student.location_id,
+			block_code: student.block_code,
+			road: student.road,
+			building: student.building,
+			flat: student.flat,
 			primary_emergency_contact_name:
-				props.studentById.primary_emergency_contact_name,
+				student.primary_emergency_contact_name,
 			primary_emergency_relationship:
-				props.studentById.primary_emergency_relationship,
-			primary_emergency_phone: props.studentById.primary_emergency_phone,
-			emergency_contact_name: props.studentById.emergency_contact_name,
-			emergency_relationship: props.studentById.emergency_relationship,
-			emergency_phone: props.studentById.emergency_phone,
-			notes: props.studentById.notes,
-			no_call: props.studentById.no_call,
-			delinquent: props.studentById.delinquent,
-			expelled: props.studentById.expelled,
+				student.primary_emergency_relationship,
+			primary_emergency_phone: student.primary_emergency_phone,
+			emergency_contact_name: student.emergency_contact_name,
+			emergency_relationship: student.emergency_relationship,
+			emergency_phone: student.emergency_phone,
+			notes: student.notes,
+			no_call: student.no_call,
+			delinquent: student.delinquent,
+			expelled: student.expelled,
 			grade_updated: grade_updated,
-			family_id: props.studentById.family_id
+			family_id: student.family_id
 		}
 	});
 	const dropDowns = ['block_code', 'preferred_contact_type_id', 'school_grade_id', 'location_id', "family_id"];
@@ -78,9 +63,7 @@ const StudentForm = props => {
 		props.editStudentById(studentID, data);
 	}
 
-	useEffect(() => {
-		props.editStudentDropDown();
-	}, []);
+	useEffect(() => { props.editStudentDropDown(); }, []);
 
 	const handleCancel = e => {
 		props.toggleEditComponent('false', 'false');
@@ -114,7 +97,7 @@ const StudentForm = props => {
 						<Label>First Name</Label>
 						<div>
 							 <Input type="text" className= {errors.first_name && "input-error"} name="first_name" ref={register({required: true, maxLength: 80})} />
-							 {errors.first_name && errors.first_name.type === "required" && (<span>Please enter a name</span>)}
+							 {errors.first_name && errors.first_name.type === "required" && 'First name is Required'}
 						</div>
 					</div>
 					<div>
