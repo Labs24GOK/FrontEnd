@@ -69,7 +69,7 @@ function NavBar(props) {
   return (
     <div className="nav">
       <div className="navbar-left">
-        <a onClick={handleLogo} className="logo"><img className="logo-image" src={Logo}></img></a>
+        <div onClick={handleLogo} className="logo" alt="Speak Out logo"><img className="logo-image" src={Logo}></img></div>
       </div>
       <div className="navbar-right">
         <Link to='/course-structure' onClick={handleCourse} style={{borderBottom: `${selected === 'course' && selected !== 'signin' ? '2px solid #C73642' : '2px solid transparent'}`}}>Course Structure</Link>

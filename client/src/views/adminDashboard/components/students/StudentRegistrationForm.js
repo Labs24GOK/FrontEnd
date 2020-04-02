@@ -2,11 +2,11 @@ import React, { useEffect} from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import {createNewStudent,getDropDown,getStudentTable} from '../../../../actions';
+import { useForm } from 'react-hook-form';
+import { createDropdown } from '../../../../utils/helpers.js';
 import 'react-dropdown/style.css';
 import '../mainStyle/mainTable.scss';
 import '../../../../styles/table.scss'
-import { useForm } from 'react-hook-form';
-import { createDropdown } from '../../../../utils/helpers.js';
 
 import {FormWrap, Input, Div, FormSet, ButtonDiv, CancelButton, AddButton, Label} from '../mainStyle/styledComponent';
 
@@ -42,14 +42,13 @@ const StudentRegistrationForm = props => {
 							 <Input type="text" placeholder = "xxxxxxxxxx" className= {errors.cpr && "input-error"}  name="cpr" ref={register({required: true, minLength: 9})} />
 							{errors.cpr && errors.cpr.type === "required" && 'CPR is Required'}
 							{errors.cpr && errors.cpr.type === "minLength" && 'CPR needs to be 9 characters'}
-							</div>				
+						</div>				
 					</div>
 					<div>
 						<Label>First Name</Label>
 						<div>
-							 <Input type="text" className= {errors.first_name && "input-error"} name="first_name" ref={register({required: true, maxLength: 80})} />
-							 {errors.first_name && errors.first_name.type === "required" && (<span>Please enter a name</span>)}
-						
+							<Input type="text" className= {errors.first_name && "input-error"} name="first_name" ref={register({required: true, maxLength: 80})} />
+							{errors.first_name && errors.first_name.type === "required" && (<span>Please enter a name</span>)}
 						</div>
 					</div>
 					<div>
@@ -92,9 +91,9 @@ const StudentRegistrationForm = props => {
 					<div>
 						<Label>Preferred Contact Method</Label>
 						<div>	
-								<select className="dropDown" name="preferred_contact_type_id" ref={register({ required: true })}>
-        						{createDropdown(props.contactTypesTable)}
-      							</select>
+							<select className="dropDown" name="preferred_contact_type_id" ref={register({ required: true })}>
+							{createDropdown(props.contactTypesTable)}
+							</select>
 						</div>
 					</div>
 					<div>
@@ -114,7 +113,6 @@ const StudentRegistrationForm = props => {
 					<div>
 						<Label>School Grade</Label>
 						<div>
-							
 							<select className="dropDown" name="school_grade_id" ref={register({ required: true })}>
         						{createDropdown(props.schoolGradeTable)}
       						</select>
@@ -125,7 +123,7 @@ const StudentRegistrationForm = props => {
 						<div>					
 							<select className="dropDown" name="location_id" ref={register({ required: true })}>
         						{createDropdown(props.locationsTable)}
-      							</select>
+      						</select>
 						</div>
 					</div>
 					<div>
@@ -134,7 +132,7 @@ const StudentRegistrationForm = props => {
 							<select className="dropDown" name="block_code" ref={register({ required: true })}>
         						{createDropdown(props.blocksTable)}
 								{errors.block_code && 'Block code is Required'}
-      							</select>
+      						</select>
 						</div>
 					</div>
 					<div>
@@ -183,7 +181,6 @@ const StudentRegistrationForm = props => {
 						<Label>Emergency Contact Name</Label>
 						<div>
 							<Input style={{ width: '100%' }} type="text" name="emergency_contact_name" ref={register} />
-							
 						</div>
 					</div>
 					<div>
@@ -203,12 +200,11 @@ const StudentRegistrationForm = props => {
 						<div>
 							<textarea type="text" name="notes" ref={register}
 								style={{width: '100%', height: '80px', outline: 'none', border: '1px solid transparent', borderRadius: '3px'}}/>
-
 						</div>
 						<div>
 							<Input type="hidden" value="1" name="family_id" ref={register({required: true})} />
 						</div>
-						</div>
+					</div>
 				</Div>
 			</FormSet>
 			<ButtonDiv>

@@ -34,7 +34,7 @@ function AboutUs(props) {
             people's wants and needs. Our students will have a measurable
             output, both in the center and at school or work.
           </p>
-          <img src={Garden} />
+          <img src={Garden} alt="The Garden of Knowledge"/>
         </div>
         <div className="body-right">
           <h2>About Us</h2>

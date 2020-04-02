@@ -10,7 +10,7 @@ function RegistrationInformation() {
       <div>
         <h2>Ready to get started?</h2>
         <Link to="/registration-information" className="button">Registration Information</Link>
-        <img src={couple} />
+        <img src={couple} alt="Illustration of a man and woman facing each other with arms extended."/>
       </div>
     </section>
   )

@@ -7,11 +7,8 @@ import AddStudentProgressForm from './AddStudentProgressForm';
 import EditStudentProgressForm from './EditStudentProgressForm'
 import { FormWrap, FormSet, Label, Div, SaveButton, ButtonDiv } from '../../mainStyle/styledComponent';
 
-
-
-
-
 const StudentProgressTab = props => {
+
     // let options = { year: 'numeric', month: 'numeric', day: 'numeric' }; //'long'
     // let report_date = new Date(props.progressByStudentId.report_date).toLocaleDateString('en-GB', options)
     useEffect(() => {
@@ -25,107 +22,25 @@ const StudentProgressTab = props => {
             < EditStudentProgressForm {...props} setEdit={setEdit} edit={edit} />
         )
     } else if (props.progressByStudentId) {
+
+        const categories = ["speaking_fluency", "speaking_accuracy", "vocabulary", "pronunciation", "grammar", "listening", "writing", "reading", "interest", "participation", "submitting_homework", "homework_accuracy", "homework_effort", "notes", "report_date"];
+
         return (
             <FormWrap>
                 <FormSet>
                     <Div>
-                        <div>
-                            <Label>Speaking Fluency</Label>
-                            <Progress
-                                type="circle"
-                                percent={props.progressByStudentId.speaking_fluency * 10}
-                                width={80}
-                            />
-                        </div>
-                        <div>
-                            <Label>Speaking Accuracy</Label>
-                            <Progress
-                                type="circle"
-                                percent={props.progressByStudentId.speaking_accuracy * 10}
-                                width={80}
-                            />
-                        </div>
-                        <div>
-                            <Label>Vocabulary</Label>
-                            <Progress
-                                type="circle"
-                                percent={props.progressByStudentId.vocabulary * 10}
-                                width={80}
-                            />
-                        </div>
-                        <div>
-                            <Label>Pronunciation</Label>
-                            <Progress
-                                type="circle"
-                                percent={props.progressByStudentId.pronunciation * 10}
-                                width={80}
-                            />
-                        </div>
-                        <div>
-                            <Label>Grammar</Label>
-                            <Progress
-                                type="circle"
-                                percent={props.progressByStudentId.grammar * 10}
-                                width={80}
-                            />
-                        </div>
-                        <div>
-                            <Label>Listening</Label>
-                            <Progress
-                                type="circle"
-                                percent={props.progressByStudentId.listening * 10}
-                                width={80}
-                            />
-                        </div>
-                        <div>
-                            <Label>Writing</Label>
-                            <Progress
-                                type="circle"
-                                percent={props.progressByStudentId.writing * 10}
-                                width={80}
-                            />
-                        </div>
-                        <div>
-                            <Label>Reading</Label>
-                            <Progress
-                                type="circle"
-                                percent={props.progressByStudentId.reading * 10}
-                                width={80}
-                            />
-                        </div>
-                        <div>
-                            <Label>Interest</Label>
-                            <Progress
-                                type="circle"
-                                percent={props.progressByStudentId.interest * 10}
-                                width={80}
-                            />
-                        </div>
-                       
-                        <div>
-                            <Label>Participation</Label>
-                            <Progress
-                                type="circle"
-                                percent={props.progressByStudentId.participation * 10}
-                                width={80}
-                            />
-                        </div>
-                        <div>
-                            <Label>Submitting Homework</Label>
-                            <Progress
-                                type="circle"
-                                percent={props.progressByStudentId.submitting_homework * 10}
-                                width={80}
-                            />
-                        </div>
-                        <div>
-                            <Label>Homework Effort</Label>
-                            <Progress
-                                type="circle"
-                                percent={props.progressByStudentId.homework_effort * 10}
-                                width={80}
-                            />
-                        </div>
+
+                    { categories.map((area, id) => {
+
+                        return (
+                            <div key={id}>
+                                {/* need to get readable text for label */}
+                                <Label>{area}</Label> 
+                                <Progress type="circle" percent={area * 10} width={80} />
+                            </div>
+                        );
+                    }) }
+                    
                         <div>
                             <Label>Notes</Label>
                             <Label>{props.progressByStudentId.notes}</Label>
@@ -138,7 +53,8 @@ const StudentProgressTab = props => {
                         <div>                        
                             <Progress
                                 type="circle"
-                                percent={props.progressByStudentId.speaking_fluency * 10}
+                                // percent={props.progressByStudentId.speaking_fluency * 10}
+                                percent={2 * 10}
                                 strokeColor='green'
                                 label= 'Overall'
                                 width={200}
@@ -146,6 +62,7 @@ const StudentProgressTab = props => {
                                 className='overall-circle'
                                 />
                         </div>
+
                     </Div>
                 </FormSet>
                     <ButtonDiv>

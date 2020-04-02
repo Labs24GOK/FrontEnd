@@ -30,7 +30,7 @@ function MiddleSecondary(props) {
             as a means of gaining a more disciplined and balanced approach in
             all language skills: reading, writing, listening and speaking.
           </p>
-          <img src={Picnic} />
+          <img src={Picnic} alt="Girls having a picnic outdoors."/>
         </div>
         <div className="body-right">
           <h2>Preparatory English for 13-15 years</h2>

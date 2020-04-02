@@ -18,24 +18,17 @@ function NavBar(props) {
   return (
     <div className="nav">
       <div className="navbar-left">
-        <a onClick={pushToHome} className="logo"><img className="logo-image" src={Logo}></img></a>
+        <a onClick={pushToHome} className="logo"><img className="logo-image" src={Logo} alt="Speak Out logo"></img></a>
       </div>
       <div className="navbar-right">
-        <button 
-        onClick={logout} 
-        >Sign Out</button>
+        <button onClick={logout}>Sign Out</button>
       </div>
     </div>
   )
 }
 
 const mapStateToProps = state => {
-  return {
-    state: state
-  };
+  return { state };
 };
 
-export default withRouter(connect(
-  mapStateToProps,
-  { logOut }
-)(NavBar));
+export default withRouter(connect( mapStateToProps, { logOut } )(NavBar) );
