@@ -1,41 +1,20 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import {
-	getStudentById,
-	toggleEditComponent,
-	toggleEditPlacement,
-	toggleDeleteModel,
-	deleteStudentById
-} from '../../../../../actions';
+import { getStudentById, toggleEditComponent, toggleEditPlacement, toggleDeleteModel, deleteStudentById } from '../../../../../actions';
 import { withRouter } from 'react-router-dom';
 import StudentForm from './StudentForm';
-import {
-	FormWrap,
-	Div,
-	TextDiv,
-	SaveButton,
-	DeleteButton,
-	FormSet,
-	ButtonDiv,
-	Label
-} from '../../mainStyle/styledComponent';
+import { FormWrap, Div, TextDiv, SaveButton, DeleteButton, FormSet, ButtonDiv, Label } from '../../mainStyle/styledComponent';
 import Modal from '../../modals/DeleteModal';
+import getDateStringENGBFormat from "../../../../../utils/helpers";
 
 const StudentInformationTab = props => {
 	useEffect(() => {
 		props.getStudentById(props.studentID);
 	}, []);
 
-	let options = { year: 'numeric', month: 'numeric', day: 'numeric' }; //'long'
-	let birthdate = new Date(
-		props.studentById && props.studentById.birthdate
-	).toLocaleDateString('en-GB', options);
-	let registration_date = new Date(
-		props.studentById && props.studentById.registration_date
-	).toLocaleDateString('en-GB', options);
-	let grade_updated = new Date(
-		props.studentById && props.studentById.grade_updated
-	).toLocaleDateString('en-GB', options);
+	let birthdate = getDateStringENGBFormat(props.studentById.birthdate);
+	let registration_date = getDateStringENGBFormat(props.studentById.registration_date);
+	let grade_updated = getDateStringENGBFormat(props.studentById.grade_updated);
 
 	const editStudentInfo = e => {
 		e.preventDefault();
