@@ -43,3 +43,7 @@ export function getDateStringENGBFormat(date) {
 export function booleanToYesNo(booleanValue) {
   return booleanValue ? "Yes" : "No";
 }
+
+export function yesNoToBoolean(text) {
+  return text === "Yes";
+}
