@@ -9,8 +9,6 @@ const StudentInformationTabCategory = ({category, value, colspan}) => {
     if (colspan > 1)
         { colspanStyle={ gridColumn: "span " + colspan }; }
 
-    console.log(category, "value is", value);
-
     if (value === "")
         { value = "N/A"; }
 
