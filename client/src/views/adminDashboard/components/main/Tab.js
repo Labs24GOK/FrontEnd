@@ -11,7 +11,8 @@ function Tab(props) {
   const tabIconMapping = {
     "Students": faUserGraduate,
     "Courses": faMap,
-    "Staff": faUserFriends
+    "Staff": faUserFriends,
+    "Family": faUserFriends
   }
 
   const [icon, setIcon] = useState(faUserGraduate);
