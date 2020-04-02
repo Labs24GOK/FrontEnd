@@ -210,12 +210,12 @@ const StudentForm = props => {
 							<Input type="date" name="grade_updated" defaultValue={grade_updated} ref={register({required: true})} />
 						</div>
 					</div>
-					<div>
+					{/* <div>
 						<Label>Registration Date</Label>
 						<div>
-							<Input type='date' name='registration_date' defaultValue={student.registration_date} ref={register({required: true})} />
+							<Input type='date' name='registration_date' defaultValue={student.registration_date} ref={register()} />
 						</div>
-					</div>
+					</div> */}
 					<div>
 						<Label>No Call</Label>
 						<div>
@@ -243,7 +243,7 @@ const StudentForm = props => {
 					<div style={{ gridColumn: 'span 4' }}>
 						<Label>Notes</Label>
 						<div>
-							<textarea type="text" name="notes" defaultValue={student.notes} ref={register} style={{width: '100%', height: '80px', outline: 'none', border: '1px solid transparent', borderRadius: '3px'}}/>
+							<textarea type="text" name="notes" defaultValue={student.notes} ref={register} className="student-form-notes"/>
 						</div>
 						<div>
 							<Input type="hidden" value="1" name="family_id" defaultValue={student.family_id} ref={register({required: true})} />
