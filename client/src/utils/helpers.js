@@ -39,3 +39,7 @@ export function getDateStringENGBFormat(date) {
   let options = { year: 'numeric', month: 'numeric', day: 'numeric' };
   return new Date(date).toLocaleDateString('en-GB', options);
 }
+
+export function booleanToYesNo(booleanValue) {
+  return booleanValue ? "Yes" : "No";
+}
