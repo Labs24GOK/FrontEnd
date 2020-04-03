@@ -14,6 +14,8 @@ const StaffRegistrationForm = props => {
   const submitNow = data => {
     props.addStaff(data);
     props.setForm(false);
+    console.log("data", data)
+    console.log("props.addstaff(data)", props.addStaff(data))
   }
 
 	useEffect(() => {
@@ -370,7 +372,7 @@ const StaffRegistrationForm = props => {
           <div>
             <Label>Email</Label>
             <div>
-              <Input type="email" name="email" className={errors.mobile_number && "input-error"}  ref={register({required:true})}/>
+              <Input type="email" name="email" className={errors.email && "input-error"}  ref={register({required:true})}/>
               {errors.email && errors.email.type === "required" && 'Email is Required'}
             </div>
           </div>

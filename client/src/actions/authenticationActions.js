@@ -59,7 +59,7 @@ export const logOut = history => {
 		dispatch({ type: LOGOUT_START });
 
 		axios
-			.get(`${API_URL}/logout`)
+			.get(`${API_URL}/api/auth/logout`)
 			.then(res => {
 				dispatch({ type: LOGOUT_SUCCESS, payload: res.data });
 				localStorage.removeItem('userType');
