@@ -11,21 +11,14 @@ import '../mainStyle/mainTable.scss';
 const StaffRegistrationForm = props => {
   const { register, errors, handleSubmit } = useForm();
 
-
-
-
   const submitNow = data => {
-
   if (data.active === "true") {
     data.active = true
   } else {
     data.active = false
   }
-
     props.addStaff(data);
     props.setForm(false);
-    console.log("data", data)
-    console.log("props.addstaff(data)", props.addStaff(data))
   }
 
 	useEffect(() => {
@@ -49,7 +42,6 @@ const StaffRegistrationForm = props => {
               {errors.name && errors.name.type === "required" && 'Name is Required'}
             </div>
             </div>
-
             <div>
             <Label>Short Name</Label>
             <div>
@@ -57,7 +49,6 @@ const StaffRegistrationForm = props => {
                {errors.short_name && errors.short_name.type === "required" && 'Short name is Required'}
             </div>
           </div>
-
           <div>
             <Label>Username</Label>
             <div>
@@ -65,7 +56,6 @@ const StaffRegistrationForm = props => {
                {errors.username  && errors.username.type === "required" && 'Username is Required'}
             </div>
           </div>
-
           <div>
             <Label>Password</Label>
             <div>
@@ -73,15 +63,13 @@ const StaffRegistrationForm = props => {
                {errors.password  && errors.password.type === "required" && 'Password is Required'}
             </div>
           </div>
-
           <div>
             <Label>CPR</Label>
             <div>
               <Input type='text' name= 'cpr' className={errors.cpr&& "input-error"}  ref={register({required:true})} />
-               {errors.username  && errors.cpr.type === "required" && 'CPR is Required'}
+               {errors.cpr  && errors.cpr.type === "required" && 'CPR is Required'}
             </div>
           </div>
-
           <div>
             <Label>Mobile Number</Label>
             <div>
@@ -89,7 +77,6 @@ const StaffRegistrationForm = props => {
                {errors.mobile_number && errors.mobile_number.type === "required" && 'Mobile Number is Required'}
             </div>
           </div>
-
           <div>
             <Label>Accent</Label>
             <div>
@@ -97,7 +84,6 @@ const StaffRegistrationForm = props => {
                {errors.accent && errors.accent.type === "required" && 'Accent is Required'}
             </div>
           </div>
-
           <div>
             <Label>Gender</Label>
             <div>
@@ -107,7 +93,6 @@ const StaffRegistrationForm = props => {
               </select>
             </div>
           </div>
-
           <div>
             <Label>Birthdate</Label>
             <div>
@@ -115,7 +100,6 @@ const StaffRegistrationForm = props => {
                {errors.birthdate && errors.birthdate.type === "required" && 'Birthdate is Required'}
             </div>
           </div>
-
           <div>
             <Label>Teaching Rate</Label>
             <div>
@@ -123,8 +107,6 @@ const StaffRegistrationForm = props => {
                {errors.teaching_rate && errors.teaching_rate.type === "required" && 'Teaching Rate is Required'}
             </div>
           </div>
-
-
           <div>
             <Label>Admin</Label>
             <div>
@@ -134,7 +116,6 @@ const StaffRegistrationForm = props => {
               </select>
             </div>
           </div>
-
           <div>
             <Label>Active</Label>
             <div>
@@ -144,7 +125,6 @@ const StaffRegistrationForm = props => {
               </select>
             </div>
           </div>
-
           <div>
             <Label>Email</Label>
             <div>
@@ -152,18 +132,6 @@ const StaffRegistrationForm = props => {
               {errors.email && errors.email.type === "required" && 'Email is Required'}
             </div>
           </div>
-  {/* 
-          <div>
-                <Input type="hidden" defaultValue= "1" name="user_id" ref={register}/>
-              
-
-            </div> */}
-
-
-
-
-
-
         </Div>
       </FormSet>
       <ButtonDiv>
