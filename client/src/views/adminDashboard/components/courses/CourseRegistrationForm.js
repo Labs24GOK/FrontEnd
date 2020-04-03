@@ -6,7 +6,6 @@ import { useForm } from 'react-hook-form';
 import { createDropdown } from '../../../../utils/helpers.js';
 import { CancelButton, AddButton, ButtonDiv, Div, FormSet, FormWrap, Input,Label,} from '../mainStyle/styledComponent.js';
 
-import 'react-dropdown/style.css';
 import '../../../../styles/table.scss';
 import '../mainStyle/mainTable.scss';
 
