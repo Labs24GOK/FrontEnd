@@ -7,7 +7,7 @@ import Tables from '../tables/Tables';
 import Queries from '../queries/Queries';
 import Documents from '../documents/Documents';
 import MainUserPage from '../mainUserPage/Main';
-import Parents from '../parents/Parents';
+
 import Courses from '../courses/Courses';
 import Staff from '../staff/Staff';
 
@@ -28,10 +28,7 @@ function Display({ navigation }) {
           <Student /> 
         </div>
       )
-    } else if (navigation === 'family') {
-      return (
-        <Parents />
-      )
+
     } else if (navigation === 'courses') {
       return (
         <Courses />
