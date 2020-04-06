@@ -60,7 +60,7 @@ const CourseRegistrationForm = props => {
           <div>
             <Label>School Grade</Label>
               <div>
-                <select className="dropDown grey" name="school_grade_id" disabled={currentlySelectedCourse !== "2"} ref={register({required: true})}>
+                <select className={"dropDown " + (currentlySelectedCourse !== "2" ? "grey" : "")} name="school_grade_id" disabled={currentlySelectedCourse !== "2"} ref={register({required: true})}>
                   {createDropdown(props.schoolGradeDropdown)}
                 </select>  
               </div>

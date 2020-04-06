@@ -105,59 +105,35 @@ return (
           <div>
             <Label>Start Date</Label>
               <div>
-                <Input name="start_date" type="date" 
-                defaultValue={startdate} 
-                className={errors.start_date && "input-error"} 
-                 ref={register({required: true})}
-                />
+                <Input name="start_date" type="date" defaultValue={startdate} className={errors.start_date && "input-error"} ref={register({required: true})}/>
                   {errors.start_date && errors.start_date.type === "required" && 'Start Date is Required'}
               </div>
           </div>
           <div>
             <Label>End Date</Label>
               <div>
-                <Input 
-                type="date" 
-                defaultValue={enddate} 
-                className={errors.end_date && "input-error"} 
-                name="end_date" ref={register({required: true})}
-                />
+                <Input name="end_date" type="date" defaultValue={enddate} className={errors.end_date && "input-error"} ref={register({required: true})}/>
                   {errors.end_date && errors.end_date.type === "required" && 'End Date is Required'}
               </div>
           </div>     
           <div>
             <Label>Start Time</Label>
               <div>
-                <Input 
-                type="time" 
-              defaultValue={props.courseById.start_time}
-                className={errors.start_time && "input-error"} 
-                name="start_time" ref={register({required: true})}
-                />
+                <Input name="start_time" type="time" defaultValue={props.courseById.start_time} className={errors.start_time && "input-error"} ref={register({required: true})} />
                   {errors.start_time && errors.start_time.type === "required" && 'Start Time is Required'}	
               </div>
           </div>
           <div>
             <Label>End Time</Label>
               <div>
-                <Input 
-                 defaultValue={props.courseById.end_time}
-                type="time" 
-                className={errors.end_time && "input-error"} 
-                name="end_time" ref={register({required: true})}
-                />
+                <Input name="end_time" defaultValue={props.courseById.end_time} type="time" className={errors.end_time && "input-error"} ref={register({required: true})}/>
                   {errors.end_time && errors.end_time.type === "required" && 'End Time is Required'}
               </div>
           </div>
           <div>
             <Label>Room</Label>
               <div>
-                <select 
-                defaultValue={`${props.courseById.room}`}
-                className="dropDown"  
-                name="room_id"
-                ref={register({required: true})}
-                >
+                <select name="room_id" defaultValue={`${props.courseById.room}`} className="dropDown" ref={register({required: true})}>
                   {createDropdown(props.roomDropdown)}
                 </select>
               </div>
@@ -165,12 +141,7 @@ return (
           <div>
             <Label>Teacher</Label>
               <div>
-                <select 
-                defaultValue ={props.courseById.teacher}
-                className="dropDown"  
-                name="teacher_id" 
-                ref={register({required: true})}
-                >
+                <select name="teacher_id" defaultValue ={props.courseById.teacher} className="dropDown" ref={register({required: true})}>
                   {createDropdown(props.teacherDropdown)}
                 </select>
               </div>
@@ -178,24 +149,14 @@ return (
           <div>
             <Label>Hourly Rate</Label>
               <div>
-                <Input 
-                defaultValue = {props.courseById.hourly_rate}
-                type="text" 
-                className={errors.hourly_rate && "input-error"} 
-                name="hourly_rate" 
-                ref={register({required: true})}
-                />
+                <Input name="hourly_rate" defaultValue = {props.courseById.hourly_rate} type="text" className={errors.hourly_rate && "input-error"} ref={register({required: true})} />
                   {errors.hourly_rate && errors.hourly_rate.type === "required" && 'Hourly Rate is Required'}
               </div>
           </div>
           <div>
             <Label>Notes</Label>
               <div>
-                <Input 
-                defaultValue = {props.courseById.notes}
-                type="text" 
-                name="notes" ref={register}
-                />
+                <Input name="notes" defaultValue = {props.courseById.notes} type="text" ref={register} />
               </div>
           </div>   
           </Div>
