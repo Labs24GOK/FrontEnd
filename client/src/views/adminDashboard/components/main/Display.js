@@ -31,14 +31,6 @@ function Display({ navigation }) {
           <Student /> 
         </div>
       )
-    }
-    if (navigation === 'placement') {
-      return (
-        <div>
-          <PlacementTest studentID="1" placementTestById={{}}  /> 
-          <PlacementForm studentID="1" placementTestById={{}} /> 
-        </div>
-      )  
     } else if (navigation === 'courses') {
       return (
         <Courses />
