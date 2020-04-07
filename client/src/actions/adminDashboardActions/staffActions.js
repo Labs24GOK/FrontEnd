@@ -83,14 +83,10 @@ export const toggleAddStaffComponent = () => dispatch => {
 };
 
 export const addStaff = staff => dispatch => {
-  const { admin, active } = staff;
-  const staffNew = {
-    ...staff,
-    admin: admin.value,
-    active: active.value
-  };
+
+
   axios
-    .post(`${API_URL}/staff`, staffNew)
+    .post(`${API_URL}/staff`, staff)
     .then(res => {
       const staffAdded = res.data;
       dispatch({ type: ADD_STAFF_SUCCESS, payload: staffAdded });
