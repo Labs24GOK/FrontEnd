@@ -1,15 +1,7 @@
 import React from 'react';
-import NavBar from './header/NavBar';
-import Dashboard from './main/Dashboard';
 
 function Index() {
-
-  return (
-    <div>
-      <NavBar />
-      <Dashboard />
-    </div>
-  )
+  return (<h1>The parent dashboard will be redesigned according to the UX hi-fidelity mockup.</h1>)
 }
 
 export default Index;
