@@ -36,7 +36,7 @@ const PlacementTest = props => {
                             { data = getDateStringENGBFormat(data); }
 
                         return (
-                            <div>
+                            <div key={"testCategory" + id}>
                                 <Label>{categoryNames[id]}</Label>
                                 <TextDiv>{data}</TextDiv>
                             </div>
