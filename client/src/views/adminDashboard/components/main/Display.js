@@ -15,6 +15,9 @@ import Reports from "../students/studentProgress/StudentProgressTab";
 import AddReport from "../students/studentProgress/AddStudentProgressForm";
 import EditReport from "../students/studentProgress/EditStudentProgressForm";
 
+import PlacementTest from "../students/placementTest/placementTest";
+import PlacementForm from "../students/placementTest/placementForm";
+
 function Display({ navigation }) {
   {
     if (navigation === 'main') {
@@ -28,7 +31,6 @@ function Display({ navigation }) {
           <Student /> 
         </div>
       )
-
     } else if (navigation === 'courses') {
       return (
         <Courses />
