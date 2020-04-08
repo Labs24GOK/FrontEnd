@@ -5,6 +5,8 @@ import { withRouter } from 'react-router-dom';
 import StudentInformationTab from './StudentInformationTab';
 import StudentCoursesTab from './StudentCoursesTab';
 import StudentFamilyTab from './StudentFamilyTab';
+import PlacementTest from '../placementTest/placementTest';
+import PlacementForm from '../placementTest/placementForm';
 import { Tab } from 'semantic-ui-react';
 import { Header, Image, Icon } from 'semantic-ui-react';
 import StudentProgressTab from '../studentProgress/StudentProgressTab';
@@ -50,6 +52,15 @@ const StudentCard = props => {
 			render: () => (
 				<Tab.Pane attached={false}>
 					<StudentFamilyTab studentID={props.studentID} />
+				</Tab.Pane>
+			)
+		},
+		{
+			menuItem: 'PLACEMENT TEST',
+			render: () => (
+				<Tab.Pane attached={false}>
+					<PlacementTest studentID={props.studentID} placementTestById={{}} />
+					<PlacementForm studentID={props.studentID} placementTestById={{}} />
 				</Tab.Pane>
 			)
 		}
