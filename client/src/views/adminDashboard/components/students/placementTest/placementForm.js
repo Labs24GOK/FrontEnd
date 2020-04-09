@@ -1,196 +1,111 @@
-import React, {useState, useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { editPlacementTestById, toggleEditPlacement } from '../../../../../actions';
-import { withRouter, Link } from 'react-router-dom';
-import { Icon } from 'semantic-ui-react'
-import { Input, Row, Col} from 'antd';
+import { withRouter } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { CancelButton, AddButton, ButtonDiv, Div, FormSet, FormWrap, Input, Label, TextDiv} from '../../mainStyle/styledComponent.js';
+import { getDateStringENGBFormat } from "../../../../../utils/helpers";
+
+import '../../mainStyle/mainTable.scss';
 import './placementTest.scss';
 
-const { TextArea } = Input;
-const PlacementTest = props => {
-    const [state, setState] = useState({
-        id: props.placementTestById.id,
-        placement_id: props.placementTestById.placement_id,
-        student_id: props.placementTestById.student_id,
-        test_date: props.placementTestById.test_date,
-        test: props.placementTestById.test,
-        overall_level: props.placementTestById.overall_level,
-        speaking_fluency:props.placementTestById.speaking_fluency,
-        spoken_accuracy: props.placementTestById.spoken_accuracy,
-        oral_level: props.placementTestById.oral_level,
-        listening_comprehension: props.placementTestById.listening_comprehension,
-        mc_correct: props.placementTestById.mc_correct,
-        mc_level: props.placementTestById.mc_level,
-        mc_marked: props.placementTestById.mc_marked,
-        writing_level: props.placementTestById.writing_level,
-    })
 
-    const handleChange = e => {
-        setState({
-            ...state,
-            [e.target.name]: e.target.value
-        })
+const PlacementForm = props => {
+
+    const { register, errors, handleSubmit } = useForm();
+
+    const submitNow = data => {
+        props.editPlacementTestById(props.studentID, data)
     }
-    const handleSubmit = e => {
-        e.preventDefault();
-        props.editPlacementTestById(props.studentID, state)
-    }
-    const cancal = e => {
+    
+    const handleCancel = e => {
         e.preventDefault();
         props.toggleEditPlacement()
     }
-    let options = { year: 'numeric', month: 'numeric', day: 'numeric' }; //'long'
-    let test_date = new Date(props.placementTestById.test_date).toLocaleDateString('en-GB', options) 
-    return(
-        <>
-        <form onSubmit={handleSubmit}>
-        <Row type="flex" justify="end">
-           <Col>
-                <Icon name="save"  onClick={handleSubmit} style={{ color: "#26ABBD", cursor: "pointer" }} /> 
-           </Col>
-           <Col>
-                <Icon name="cancel"  onClick={cancal} style={{ color: "#C73642", cursor: "pointer" }} />
-           </Col>
-        </Row>
-        {/* row1 */}
-        <Row className="evenHeight" type="flex" justify="space-around" >
-            <Col span={4}><h4>Student ID</h4></Col>
-            <Col span={4}><h4>Test Date</h4></Col>
-            <Col span={4}><h4>Test</h4></Col>
-            <Col span={4}><h4>Overall Lavel</h4></Col>
-        </Row>
-        <Row className="evenHeight" type="flex" justify="space-around" >
-            <Col span={4}>{props.placementTestById.student_id || "-"}</Col>
-            <Col span={4}>{test_date || "-" }</Col>
-            <Col span={4}>
-                <Input size="small"
-                    type='text'
-                    name='test'
-                    placeholder='Test'
-                    onChange={handleChange}
-                    value={state.test}
-                />
-            </Col>
-            <Col span={4}>
-                <Input size="small" 
-                    type='text'
-                    name='overall_level'
-                    placeholder='Overall Level'
-                    onChange={handleChange}
-                    value={state.overall_level}
-                />
-            </Col>
-        </Row>
-        {/* row2 */}
-        <Row className="evenHeight" type="flex" justify="space-around" >
-            <Col span={4}><h4>Speaking Fluency</h4></Col>
-            <Col span={4}><h4>Spoken Accuracy</h4></Col>
-            <Col span={4}><h4>Oral Level</h4></Col>
-            <Col span={4}><h4>Listening</h4></Col>
-        </Row>
-        <Row className="evenHeight" type="flex" justify="space-around" >
-            <Col span={4}>
-                <Input size="small" 
-                    type='text'
-                    name='speaking_fluency'
-                    placeholder='Speaking_Fluency'
-                    onChange={handleChange}
-                    value={state.speaking_fluency}
-                />
-            </Col>
-            <Col span={4}>
-                <Input size="small" 
-                    type='text'
-                    name='spoken_accuracy'
-                    placeholder='Spoken Accuracy'
-                    onChange={handleChange}
-                    value={state.spoken_accuracy}
-                />
-            </Col>
-            <Col span={4}>
-            <Input size="small" 
-                type='text'
-                name='oral_level'
-                placeholder='Oral Level'
-                onChange={handleChange}
-                value={state.oral_level}
-            />
-            </Col>
-            <Col span={4}>
-            <Input size="small" 
-                type='text'
-                name='listening_comprehension'
-                placeholder='Listening Comprehension'
-                onChange={handleChange}
-                value={state.listening_comprehension}
-            />
-            </Col>
-        </Row>
-        {/* row3 */}
-        <Row className="evenHeight" type="flex" justify="space-around" >
-            <Col span={4}><h4>MC Correct</h4></Col>
-            <Col span={4}><h4>MC Lavel</h4></Col>
-            <Col span={4}><h4>MC Marked</h4></Col>
-            <Col span={4}><h4>Writing Lavel</h4></Col>
-        </Row>
-        <Row className="evenHeight" type="flex" justify="space-around" >
-            <Col span={4}>
-                <Input size="small" 
-                    type='text'
-                    name='mc_correct'
-                    placeholder='MC Correct'
-                    onChange={handleChange}
-                    value={state.mc_correct}
-                />
-            </Col>
-            <Col span={4}>
-                <Input size="small" 
-                    type='text'
-                    name='mc_level'
-                    placeholder='MC Lavel'
-                    onChange={handleChange}
-                    value={state.mc_level}
-                />
-            </Col>
-            <Col span={4}>
-                <Input size="small" 
-                    type='text'
-                    name='mc_marked'
-                    placeholder='MC Marked'
-                    onChange={handleChange}
-                    value={state.mc_marked}
-                />  
-            </Col>
-            <Col span={4}>
-                <Input size="small" 
-                    type='text'
-                    name='writing_level'
-                    placeholder='Writing Lavel'
-                    onChange={handleChange}
-                    value={state.writing_level}
-                />
-            </Col>
-        </Row>
-        {/* row4 */}
-        <Row className="evenHeight" type="flex" justify="space-around" >
-            <Col span={4}><h4>Notes</h4></Col>
-            <Col span={4}><div></div></Col>
-            <Col span={4}><div></div></Col>
-            <Col span={4}><div></div></Col>
-        </Row>
-        <Row >
-            <Col span={22} offset={1}>
-                <TextArea
-                    type='text'
-                    name='notes'
-                    placeholder='Notes'
-                    onChange={handleChange}
-                    value={state.notes}
-                /></Col>
 
-        </Row>
-        </form>
-        </>
+    const testData = props.placementTestById;
+
+    // temp; get from props in finished form
+    const categoryNames = ["Student ID", "Test Date", "Test", "Overall Level", "Speaking Fluency", "Spoken Accuracy", "Oral Level", "Listening Comprehension", "MC Correct", "MC Level", "MC Marked", "Writing Level", "Notes"];
+    const categories = ["student_id", "test_date", "test", "overall_level", "speaking_fluency", "spoken_accuracy", "oral_level", "listening_comprehension", "mc_correct", "mc_level", "mc_marked", "writing_level", "notes"];
+   
+    return(
+        <FormWrap onSubmit={handleSubmit(submitNow)}>
+            <FormSet>
+                <Div>
+                <div>
+                    <Label>Student ID</Label>
+                    <TextDiv>{testData.studentID}</TextDiv>
+                </div>
+                <div>
+                    <Label>Test Date</Label>
+                    <TextDiv>{getDateStringENGBFormat(testData.test_date)}</TextDiv>
+                </div>
+                <div>
+                    <Label>Test</Label>
+                    <Input type="text" name="test" className={errors.test && "input-error"} ref={register({required: true })} />
+                        {errors.test && errors.test.type === "required" && 'Test is Required'}	
+                </div> 
+                <div>
+                    <Label>Overall Level</Label>
+                    <Input type="text" name="overall_level" className={errors.overall_level && "input-error"} ref={register({required: true })} />
+                        {errors.overall_level && errors.overall_level.type === "required" && 'Overall Level is Required'}	
+                </div> 
+                <div>
+                    <Label>Speaking Fluency</Label>
+                    <Input type="text" name="speaking_fluency" className={errors.speaking_fluency && "input-error"} ref={register({required: true })} />
+                        {errors.speaking_fluency && errors.speaking_fluency.type === "required" && 'Speaking Fluency is Required'}	
+                </div> 
+                <div>
+                    <Label>Spoken Accuracy</Label>
+                    <Input type="text" name="spoken_accuracy" className={errors.spoken_accuracy && "input-error"} ref={register({required: true })} />
+                        {errors.spoken_accuracy && errors.spoken_accuracy.type === "required" && 'Spoken Accuracy is Required'}	
+                </div> 
+                <div>
+                    <Label>Oral Level</Label>
+                    <Input type="text" name="oral_level" className={errors.oral_level && "input-error"} ref={register({required: true })} />
+                        {errors.oral_level && errors.oral_level.type === "required" && 'Oral Level is Required'}	
+                </div> 
+                <div>
+                    <Label>Listening Comprehension</Label>
+                    <Input type="text" name="listening_comprehension" className={errors.listening_comprehension && "input-error"} ref={register({required: true })} />
+                        {errors.listening_comprehension && errors.listening_comprehension.type === "required" && 'Listening Comprehension is Required'}	
+                </div> 
+                <div>
+                    <Label>MC Correct</Label>
+                    <Input type="text" name="mc_correct" className={errors.mc_correct && "input-error"} ref={register({required: true })} />
+                        {errors.mc_correct && errors.mc_correct.type === "required" && 'MC Correct is Required'}	
+                </div> 
+                <div>
+                    <Label>MC Level</Label>
+                    <Input type="text" name="ASDF" className={errors.ASDF && "input-error"} ref={register({required: true })} />
+                        {errors.ASDF && errors.ASDF.type === "required" && 'MC Level is Required'}	
+                </div> 
+                <div>
+                    <Label>MC Marked</Label>
+                    <Input type="text" name="mc_marked" className={errors.mc_marked && "input-error"} ref={register({required: true })} />
+                        {errors.mc_marked && errors.mc_marked.type === "required" && 'MC Marked is Required'}	
+                </div> 
+                <div>
+                    <Label>Writing Level</Label>
+                    <Input type="text" name="writing_level" className={errors.writing_level && "input-error"} ref={register({required: true })} />
+                        {errors.writing_level && errors.writing_level.type === "required" && 'Writing Level is Required'}	
+                </div> 
+                <div style={{ gridColumn: 'span 4' }}>
+                    <Label>Notes</Label>
+                    <div>
+                        <Input type="textarea" name="notes" ref={register} />
+                    </div>
+                </div>     
+                </Div>
+            </FormSet>
+            <ButtonDiv>
+                <CancelButton onClick={handleCancel}>
+                    Cancel
+                </CancelButton>
+                <AddButton onClick={handleSubmit} type='submit'>Add Test Results</AddButton>
+            </ButtonDiv>
+        </FormWrap>
     )
 }
 
@@ -206,5 +121,5 @@ const mapStateToProps = state => {
     connect(
       mapStateToProps,
       { editPlacementTestById, toggleEditPlacement }
-  )(PlacementTest)
+  )(PlacementForm)
   )

@@ -16,7 +16,6 @@ function Display({ navigation }) {
           <Student /> 
         </div>
       )
-
     } else if (navigation === 'courses') {
       return (
         <Courses />

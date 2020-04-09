@@ -1,15 +1,7 @@
 import React from 'react';
-import NavBar from './header/NavBar';
-import Dashboard from './main/Dashboard';
 
 function Index() {
-
-  return (
-    <div>
-      <NavBar />
-      <Dashboard />
-    </div>
-  )
+  return (<h1>The staff dashboard will be redesigned soon.</h1>)
 }
 
 export default Index;
