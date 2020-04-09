@@ -28,6 +28,7 @@ section.hero {
             position: absolute;
             right: 0;
             top: 50%;
+            width: 25vw;
 
             @media #{$tablet-small} {
                 top: initial;
