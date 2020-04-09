@@ -18,47 +18,18 @@ function Primary(props) {
         <div className="body-left">
           <h2>What We Offer</h2>
           <p>
-            Primary school children have a high ability to learn English because
-            of their social tendency, curiosity and natural enthusiasm. They
-            tend to work very actively and tend quickly if they are sitting for
-            long periods without activity. Therefore, physical movement,
-            gestures and activities are important parts of the learning process
-            for this group.
-          </p>
-          <p>
-            We use a good balance between motor and quiet activities to help
-            keep these energetic minds awake and excited. Primary school
-            children also interact well with imagination, so story-reading is a
-            good way to improve or increase their ability to learn.
-          </p>
-          <p>
-            Since good pronunciation and confidence are key features of learning
-            English at an early age, we optimize the use of rhyming songs,
-            poems, repetitve exercises, and activities that focus on individual
-            sounds or divergent sounds and help to highligh the strengths and
-            rhythm of English.
+          Primary school children have a high abiliy to learn because of their social tendency, curiosity and natural enthusiasm. They to work very actively and lose focus quickly if they are sitting for long periods without activity. Therefore, physical movement, gestures and activities are important parts of the learning process. We use a variety of activities such as crafts, role plays and games, always related to the topic of the day tp keep these energetic minds awake and excited. You'll soon find that our students are confident in all they do and learn.
           </p>
           <img src={Victoria} alt="The Garden of Knowledge founder, Victoria Labdon" />
         </div>
         <div className="body-right">
-          <h2>General English for 6-12 years</h2>
+          <h2>General English</h2>
           <p>
-            With Cambridge Children's Books, we are confident that children will
-            enjoy their lessons and achieve their goals.
+          Kid's Box is a course that gives children a confident start to learning English, and also fully covers the syllabus of the Cambridge Young Learners English (YLE) tests. New language is presented through amusing stories that your students will adore and practised with fantastic songs and activities, making the learning process a delight. Key language is continuously revised and recycled, helping to build children's confidence, and a focus on communicative activities ensures that children use the language they have learned in a fun. The course will delight young learners through all the activities, crafts, role plays and simulations while alwas focused on the topic.
           </p>
-          <h2>Literacy for 4-8 years</h2>
+          <h2>Public School &amp; Exam Support</h2>
           <p>
-            Fun Sounds, the world's leading way of literacy for children, your
-            child will be able to recognize letters, sounds and reading as never
-            before. Ideal for children coming to school or those wandering in
-            reading and writing in English.
-          </p>
-          <h2>Government Curriculum: English language for 6-12 years</h2>
-          <p>
-            Jolly Phonics, the world leader in child literacy will have your
-            child recognizing letter, sounds, and reading in no time at all.
-            Perfect for children going into school or those who are struggling
-            with their English literacy.
+          The Garden of Knowledge hand picked government school teachers that adore what they do and have a superior knowledge of their subjects. We offer support in English, Arabic, maths and Science.
           </p>
           <Link to="/register" className="button">Register Now</Link>
         </div>

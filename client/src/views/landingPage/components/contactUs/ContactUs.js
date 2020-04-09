@@ -24,6 +24,7 @@ function ContactUs(props) {
       </header>
       <div className="body">
         <div className="body-left">
+          <h2>Contact Info</h2>
           <div className="contact-container">
             <img src={WhatsApp} alt="Whatsapp" />
             <p>+973 35617635</p>
@@ -44,7 +45,7 @@ function ContactUs(props) {
           <h2>Social Media</h2>
           <div className="contact-container">
             <img src={Instagram} alt="Instagram" />
-            <p>speak_out_program</p>
+            <p>the_garden_of_knowledge</p>
           </div>
           <div className="contact-container">
             <img src={Facebook} alt="Facebook" />

@@ -19,28 +19,25 @@ function RegistrationInformation(props) {
         <div className="body-left">
           <h2>Personal Information</h2>
           <p>
-            To register a student, parents must provide the name and surname,
-            CPR, and date of birth of both a parent and the child.
+          To register a student, parents must provide personal information, such as school grade, contact information and CPR.
           </p>
+          <h2>Placement Test</h2>
+          <p>All students must take a minimum of a multiple choice placement test and spoken placement test.</p>
           <h2>Terms and Conditions</h2>
           <p>
-            The parent and student will be required to sign a document
-            containing legal information about the school and student behavior
-            requirements.
+          A parent will be required to sign a document containing course information and student behaviour guide, as well as commiting them to finish a 3 month section once they have started classes.
           </p>
         </div>
         <div className="body-right">
-          <h2>Fee Schedules</h2>
+          <h2>Fees</h2>
           <h3>Kindergarten</h3>
-          <p>122 BHD: General Courses</p>
-          <p>104 BHD: Literacy &amp; Learn to Write</p>
+          <p>122BHD</p>
           <h3>Primary</h3>
-          <p>117 BHD: General Courses</p>
-          <p>104 BHD: Literacy &amp; Learn to Write</p>
-          <h3>Middle and Secondary</h3>
-          <p>121.5 BHD: General Courses</p>
+          <p>122BHD</p>
+          <h3>Intermediate and Secondary</h3>
+          <p>127BHD</p>
           <p>
-            Cost includes registration, books, stationery, and three sessions.
+            Cost includes registration, books, stationery, and 24 classes.
           </p>
           <Link to="/register" className="button">Register Now</Link>
         </div>

@@ -42,7 +42,7 @@ function NavBar(props) {
 
   const handleMiddleAndSecondary = () => {
     setSelected('middle-and-secondary');
-    setHeader('Middle & Secondary');
+    setHeader('Intermediate and Secondary');
     // use resetNav (true/false) to handle resetting of inner tabs when the outer 'course' tab is clicked/unclicked
     props.resetNav(false);
   }
@@ -54,7 +54,7 @@ function NavBar(props) {
         <div className="link-container">
           <Link exact to='/course-structure/kindergarten' onClick={handleKindergarten} className="link" style={{color: `${selected === 'kindergarten' && props.reset !== true ? '#e71829' : '#2b2b2b'}`}}>Kindergarten</Link>
           <Link exact to='/course-structure/primary' onClick={handlePrimary} className="link" style={{color: `${selected === 'primary' && props.reset !== true  ? '#e71829' : '#2b2b2b'}`}}>Primary</Link>
-          <Link exact to='/course-structure/middle-and-secondary' onClick={handleMiddleAndSecondary} className="link" style={{color: `${selected === 'middle-and-secondary' && props.reset !== true ? '#e71829' : '#2b2b2b'}`}}>Middle and Secondary</Link>
+          <Link exact to='/course-structure/middle-and-secondary' onClick={handleMiddleAndSecondary} className="link" style={{color: `${selected === 'middle-and-secondary' && props.reset !== true ? '#e71829' : '#2b2b2b'}`}}>Intermediate and Secondary</Link>
         </div>
       </header>
     </div>
