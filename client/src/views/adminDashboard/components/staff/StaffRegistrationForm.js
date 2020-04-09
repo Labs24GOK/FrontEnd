@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { addStaff, getStaffTable } from '../../../../actions';
 import { withRouter } from 'react-router-dom';

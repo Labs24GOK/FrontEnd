@@ -30,7 +30,6 @@ import {
         isEditing: false,
         isEdited: false,
         isPosting: false,
-        isPosting: false,
         searchTerm:""
   }
   

@@ -28,15 +28,11 @@ function NavBar(props) {
     if (props.location.pathname === "/register") {
       setSelected(false);
     }
-  }, [selected, props.toggle])
+  }, [selected, props.toggle, props.location.pathname])
 
   const handleLogo = () => {
     props.history.push('/')
     setSelected(false);
-  }
-
-  const signIn = () => {
-    // props.history.push('/login');
   }
 
   const handleCourse = () => {
@@ -69,7 +65,7 @@ function NavBar(props) {
   return (
     <div className="nav">
       <div className="navbar-left">
-        <div onClick={handleLogo} className="logo" alt="Speak Out logo"><img className="logo-image" src={Logo}></img></div>
+        <div onClick={handleLogo} className="logo" alt="Speak Out logo"><img className="logo-image" alt="" src={Logo}></img></div>
       </div>
       <div className="navbar-right">
         <Link to='/course-structure' onClick={handleCourse} style={{borderBottom: `${selected === 'course' && selected !== 'signin' ? '2px solid #C73642' : '2px solid transparent'}`}}>Course Structure</Link>

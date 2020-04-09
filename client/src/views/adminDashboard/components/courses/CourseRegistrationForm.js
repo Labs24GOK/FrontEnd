@@ -44,7 +44,7 @@ const CourseRegistrationForm = props => {
           </div> 
           <div>
               <Label>Course Type</Label>
-                <select name="course_type_id" className="dropDown" name="course_type_id"ref={register({required: true})}>
+                <select name="course_type_id" className="dropDown" ref={register({required: true})}>
                   {createDropdown(props.courseTypeDropdown)}
                 </select>	 
         	</div>

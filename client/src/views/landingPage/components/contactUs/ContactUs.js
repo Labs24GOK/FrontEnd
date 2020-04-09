@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { withRouter } from "react-router";
-import { Link } from "react-router-dom";
 import "./contactUs.scss";
 import WhatsApp from "../../../../assets/whatsapp.png";
 import ContactEmail from "../../../../assets/ContactEmail.png";
