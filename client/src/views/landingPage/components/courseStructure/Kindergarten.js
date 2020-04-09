@@ -18,31 +18,19 @@ function Kindergarten(props) {
         <div className="body">
           <div className="body-left">
             <h2>What We Offer</h2>
-            <p>
-              Songs, stories, games and movement
-              <br />
-              4-year-olds will love learning at SpeakOut!
-              <br />
-              English for kindergarten for the age group 4-6 years
-            </p>
+            <p>Movement, stories, activities,
+            discussions, games and crafts, all 
+            centered around their topic of the day.</p>
             <img src={KindergartenPic} alt="Children on floor solving puzzles involving animal names" />
           </div>
           <div className="body-right">
-            <h2>KG English for 4-6 year olds</h2>
+            <h2>Super Safari</h2>
             <p>
-              Here students will be learning an age-appropriate general English
-              course.
+            Join Polly, Leo, Mike and Gina on an exciting adventure that welcomes very young children to English through exciting stories, action songs, arts and crafts, and plenty of playtime. With children’s developmental needs in mind Super Safari introduces the new language through play while improving memory and concentration; practising motor-sensory skills and developing thinking and creativity. Together with their animal friends children also discover the fascinating world around them and the joy of playing together, the importance of sharing and other social values.
             </p>
-            <h2>English Fun for 4-5 year olds</h2>
+            <h2>Jolly Phonics</h2>
             <p>
-              Students will play vocabulary, grammar and literacy word games.
-            </p>
-            <h2>Literacy for 4-8 year olds</h2>
-            <p>
-              Jolly Phonics, the world leader in child literacy will have your
-              child recognizing letter, sounds, and reading in no time at all.
-              Perfect for children going into school or those who are struggling
-              with their English literacy.
+            Jolly Phonics, the world leader in child literacy will have your child recognizing letters, sounds, and reading in no time at all. Perfect for children going into school or kindergarten, or those who are struggling with their English literacy. The special thing about Jolly Phonics is the alphabet is NOT taught in order, don't worry, there is wisdom to this, your child will be able to read whole, real words very quickly.
             </p>
             <Link to="/register" className="button">Register Now</Link>
           </div>
