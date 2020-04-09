@@ -1,8 +1,7 @@
 import 'react-dropdown/style.css';
 
-import { Button as Button2, Spin, Table } from 'antd';
-import React, { useEffect, useState } from 'react';
-import Dropdown from 'react-dropdown';
+import { Button as Button2 } from 'antd';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';

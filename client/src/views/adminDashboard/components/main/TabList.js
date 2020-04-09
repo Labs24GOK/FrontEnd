@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Tab from './Tab';
-import { Link } from 'react-router-dom';
 import {TabsWrapColumn} from '../mainStyle/styledComponent.js';
 import './TabStyle.scss';
 

@@ -1,11 +1,10 @@
 import './studentTable.scss'
 
 import { Button, Table } from 'antd';
-import _ from 'lodash';
 import React, { useEffect, useState } from 'react';
 import Dropdown from 'react-dropdown';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { editEnrollStudent, getStudentAttendanceTable, getStudentCourses, toggleDeleteModel, unenrollEnrollStudent } from '../../../../../actions';
@@ -71,13 +70,13 @@ const deleteStudentInfo = async () => {
     if(props.studentID) {
       props.getStudentCourses(props.studentID)
     }
-  }, [props.studentID])
+  }, [props, props.studentID])
 
   useEffect(() => {
     if(props.isEdited && props.studentID) {
       props.getStudentCourses(props.studentID)
     }
-  }, [props.isEdited, props.studentID])
+  }, [props, props.isEdited, props.studentID])
 
   useEffect(() => {
     // !isNaN() handles occurrence of falsey value when 
@@ -88,13 +87,13 @@ const deleteStudentInfo = async () => {
       props.editEnrollStudent(info.student_id, info.course_id, state)
     }
 
-  }, [state.result_type_code])
+  }, [props, info.course_id, info.student_id, state, state.result_type_code])
 
   useEffect(() => {
     if (courseID) {
       props.getStudentAttendanceTable(courseID)
     }
-  }, [courseID])
+  }, [props, courseID])
 
   /* End Use Effects */
 

@@ -4,7 +4,6 @@ import ParentDashboard from './parentDashboard/components/index';
 import StaffDashboard from './staffDashboard/components/index';
 
 function Index() {
-  {
     // USER TYPE THAT WAS SAVED WHEN USER LOGGED IN
     const userType = localStorage.getItem('userType');
     if (userType === 'admin') {
@@ -16,7 +15,6 @@ function Index() {
     } else {
       return;
     }
-  }
 }
 
 export default Index;

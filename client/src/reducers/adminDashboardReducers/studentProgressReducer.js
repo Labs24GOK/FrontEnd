@@ -61,7 +61,6 @@ export const studentProgressReducer = (state = initialState, action) => {
                     isLoading: false,
                     error: null,
                     isPosting: false,
-                    isPosting: true,
                     progressByStudentId: action.payload
                 };
             case CREATE_STUDENTPROGRESS_FAILURE:

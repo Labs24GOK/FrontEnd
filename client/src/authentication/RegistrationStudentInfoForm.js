@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 
 const RegistrationStudentInfoForm = ({step, setStep, studentInfo, setStudentInfo, familyInfo, familyRegister, history}) => {
 
-	const { register, errors, handleSubmit, getValues } = useForm();
+	const { register, handleSubmit, getValues } = useForm();
     const formSubmit = (data, direction) => { setStudentInfo(getValues()); setStep(step + direction)};
 
     return (
