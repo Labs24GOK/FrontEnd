@@ -29,8 +29,8 @@ const CourseSearchModule = props => {
     [props.studentStatusUpdated]
   );
 
-  const [searchText, setSearchText] = useState('');
-  const [searchedColumn, setSearchedColumn] = useState('');
+  const [setSearchText] = useState('');
+  const [setSearchedColumn] = useState('');
 
   const handleSearch = (
     selectedKeys,

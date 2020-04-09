@@ -60,7 +60,6 @@ import Primary from '../views/landingPage/components/courseStructure/Primary';
 import MiddleAndSecondary from '../views/landingPage/components/courseStructure/MiddleAndSecondary';
 import Register from '../authentication/Register';
 
-import StudentProgressForm from "../views/adminDashboard/components/students/studentProgress/AddStudentProgressForm";
 
 function Routes(props) {
   useEffect(() => {

@@ -23,7 +23,7 @@ function NavBar(props) {
       setSelected('middle-and-secondary')
     }
 
-  }, [selected, props.toggle])
+  }, [selected, props.toggle, props.location.pathname])
 
   const handleKindergarten = () => {
     setSelected('kindergarten');
