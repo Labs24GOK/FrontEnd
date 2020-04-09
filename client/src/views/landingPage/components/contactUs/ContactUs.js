@@ -45,7 +45,7 @@ function ContactUs(props) {
           <h2>Social Media</h2>
           <div className="contact-container">
             <img src={Instagram} alt="Instagram" />
-            <p>speak_out_program</p>
+            <p>the_garden_of_knowledge</p>
           </div>
           <div className="contact-container">
             <img src={Facebook} alt="Facebook" />
