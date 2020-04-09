@@ -25,6 +25,7 @@ function ContactUs(props) {
       </header>
       <div className="body">
         <div className="body-left">
+          <h2>Contact Info</h2>
           <div className="contact-container">
             <img src={WhatsApp} alt="Whatsapp" />
             <p>+973 35617635</p>

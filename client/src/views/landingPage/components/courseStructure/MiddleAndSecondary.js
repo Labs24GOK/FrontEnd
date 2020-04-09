@@ -19,7 +19,7 @@ function MiddleSecondary(props) {
         <div className="body-left">
           <h2>What We Offer</h2>
           <p>
-          Students in this age range become very successful language learners. They have increased ability to analyse and learn, and have a greater independence. AT At these ages we offer more real life scenarios, encouraging our students to go out in the real world and apply what they have learnt. 
+          Students in this age range become very successful language learners. They have increased ability to analyse and learn, and have a greater independence. At at these ages we offer more real life scenarios, encouraging our students to go out in the real world and apply what they have learnt. 
           </p>
           <img src={Picnic} alt="Girls having a picnic outdoors."/>
         </div>
