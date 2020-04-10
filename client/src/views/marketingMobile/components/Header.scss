@@ -1,7 +1,16 @@
-$peacock: #00A79D;
-$lightGreen: #70BF44;
-$green: #006838;
-$brown: #523428;
+@use ".././../../styles/variables" as *;
+
+// * {
+//     font-family: $font-family;
+// }
+
+
+// The Garden of Knowledge logo colors
+// remove when @use is working
+$tree-peacock: #00A79D;
+$tree-light-green: #70BF44;
+$tree-green: #006838;
+$tree-brown: #523428;
 
 header.mobile {
     height: 100px;
@@ -10,7 +19,7 @@ header.mobile {
     justify-content: space-between;
     align-items: center;
 
-    border-bottom: 2px solid $peacock;
+    border-bottom: 2px solid $tree-peacock;
 
     img {
 
@@ -26,17 +35,26 @@ header.mobile {
     display: flex;
     flex-direction: column;
     
+    font-size: 1.25rem;
+    line-height: 2.5rem;
+
     background-color: rgba(0, 0, 0, 0.05);
+
+    position: absolute;
+    right: 0;
 
     .hamburger-link {
         display: block;
 
-        color: $green;
+        color: $tree-green;
+
+        text-align: right;
+        padding-right: 0.5rem;
 
         &:hover {
-            background-color: rgba(0, 0, 0, 0.1);
+            // background-color: rgba(0, 0, 0, 0.1);
 
-            color: $lightGreen;
+            color: $tree-light-green;
         }
 
     }

@@ -1,0 +1,28 @@
+$footer-bg-color: #042943;
+
+footer {
+    position: absolute;
+    bottom: 0;
+
+    height: 100px;
+
+    background-color: $footer-bg-color;
+
+    .social-media-icons {
+
+        width: 50vw;
+        height: 100%;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+    
+    img {
+        width: 32px;
+
+        
+    }
+}
+
