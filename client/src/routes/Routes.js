@@ -68,7 +68,7 @@ function Routes(props) {
   }, [])
   return (
     <div>
-      {props.location.pathname !== '/dashboard' && <LandingHeader /> }
+      {props.location.pathname !== '/dashboard' && !props.location.pathname.includes('mobile') && <LandingHeader /> }
       <Switch>
         {props.state.authenticationReducer.user.authenticated && 
               <Route exact path='/dashboard' render={() => 

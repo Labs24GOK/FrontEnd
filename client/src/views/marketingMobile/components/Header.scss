@@ -1,0 +1,43 @@
+$peacock: #00A79D;
+$lightGreen: #70BF44;
+$green: #006838;
+$brown: #523428;
+
+header.mobile {
+    height: 100px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 2px solid $peacock;
+
+    img {
+
+        height: 80px;
+        margin: 10px;
+    }
+}
+
+.hamburger-menu {
+
+    width: 50vw;
+
+    display: flex;
+    flex-direction: column;
+    
+    background-color: rgba(0, 0, 0, 0.05);
+
+    .hamburger-link {
+        display: block;
+
+        color: $green;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+
+            color: $lightGreen;
+        }
+
+    }
+}
