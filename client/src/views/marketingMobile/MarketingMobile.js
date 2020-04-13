@@ -6,6 +6,9 @@ function MarketingMobile() {
     return (
         <div>
             <Header />
+            <div className="content">
+                
+            </div>
             <Footer />
         </div>
     )

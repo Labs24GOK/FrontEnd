@@ -1,16 +1,4 @@
-@use ".././../../styles/variables" as *;
-
-// * {
-//     font-family: $font-family;
-// }
-
-
-// The Garden of Knowledge logo colors
-// remove when @use is working
-$tree-peacock: #00A79D;
-$tree-light-green: #70BF44;
-$tree-green: #006838;
-$tree-brown: #523428;
+@import ".././../../styles/variables";
 
 header.mobile {
     height: 100px;
