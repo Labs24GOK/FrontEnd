@@ -1,0 +1,23 @@
+//Imports
+
+@import '../../styles/variables';
+
+
+// Footer
+@import './components/Footer.scss';
+
+// Header
+@import './components/Header.scss';
+
+
+
+// Global Styles
+.section-even{
+    background-color: $heading-bg-one;
+    text-align: center;
+}
+
+.section-odd{
+    background-color: $heading-bg-two;
+    text-align: center;
+}
