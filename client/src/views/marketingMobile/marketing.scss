@@ -1,3 +1,5 @@
+//Imports
+
 @import '../../styles/variables';
 
 
@@ -9,3 +11,13 @@
 
 
 
+// Global Styles
+.section-even{
+    background-color: $heading-bg-one;
+    text-align: center;
+}
+
+.section-odd{
+    background-color: $heading-bg-two;
+    text-align: center;
+}
