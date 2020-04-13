@@ -9,15 +9,38 @@
 // Header
 @import './components/Header.scss';
 
-
+@import './components/CourseStructure.scss';
 
 // Global Styles
+
+section {
+    text-align: left;
+    padding: 1rem;
+}
+
+.section-even, .section-odd {
+    text-align: center;
+
+    width: 100vw;
+    margin-left: -1rem;
+}
+
 .section-even{
     background-color: $heading-bg-one;
-    text-align: center;
 }
 
 .section-odd{
     background-color: $heading-bg-two;
-    text-align: center;
+}
+
+.two-column {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    margin-bottom: 1rem;
+}
+
+.two-column-left, .two-column-right {
+    width: 45vw;
 }

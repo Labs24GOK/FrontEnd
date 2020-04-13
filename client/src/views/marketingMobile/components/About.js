@@ -7,8 +7,6 @@ function About() {
             <h1>About Us</h1>
             
             <section>
-                <h2 className="section-odd">About Us</h2>
-
                 <div className="two-column">
                     <div className="two-column-left">
                         <h3>Our Vision</h3>
