@@ -60,6 +60,7 @@ import Primary from '../views/landingPage/components/courseStructure/Primary';
 import MiddleAndSecondary from '../views/landingPage/components/courseStructure/MiddleAndSecondary';
 import Register from '../authentication/Register';
 
+import MarketingMobile from "../views/marketingMobile/MarketingMobile";
 
 function Routes(props) {
   useEffect(() => {
@@ -67,7 +68,7 @@ function Routes(props) {
   }, [])
   return (
     <div>
-      {props.location.pathname !== '/dashboard' && <LandingHeader /> }
+      {props.location.pathname !== '/dashboard' && !props.location.pathname.includes('mobile') && <LandingHeader /> }
       <Switch>
         {props.state.authenticationReducer.user.authenticated && 
               <Route exact path='/dashboard' render={() => 
@@ -129,6 +130,10 @@ function Routes(props) {
             <CourseStructureHeader />
             <MiddleAndSecondary />
             <Footer />
+          </>}/> 
+        <Route exact path="/mobile" render={() => 
+          <>
+            <MarketingMobile />
           </>}/> 
       </Switch>
     </div>
