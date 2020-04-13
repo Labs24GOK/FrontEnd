@@ -7,13 +7,42 @@ import CourseStructure from "./components/CourseStructure";
 
 import "./marketing.scss";
 
-function MarketingMobile() {
+function MarketingMobile({page}) {
+
+    let componentToRender;
+
+    switch(page) {
+
+        case "home":
+            // componentToRender = Home;
+            componentToRender = About;
+            break;
+        case "course_structure":
+            componentToRender = CourseStructure;
+            break;
+        case "courses":
+            // componentToRender = Courses;
+            break;
+        case "registration":
+            // componentToRender = Registration;
+            break;
+        case "about":
+            componentToRender = About;
+            break;
+        case "contact":
+            // componentToRender = Contact;
+            break;
+        default:
+            componentToRender = About;
+            // componentToRender = Home;
+            break;
+    }
+
     return (
         <div>
             <Header />
             <div className="content">
-                <About />
-                <CourseStructure />
+                {componentToRender()}
             </div>
             <Footer />
         </div>
