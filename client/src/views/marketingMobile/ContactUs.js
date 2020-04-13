@@ -15,7 +15,7 @@ function ContactUs() {
                 <section className="contact-section">
                     <img src = {WhatsApp} alt="whatsapp"/>
                     <div classname="info">              
-                        <p>WhatsApp </p>
+                        <p>WhatsApp: </p>
                         <p>+973 3561 7635</p>
                     </div>
                 </section>
@@ -29,7 +29,7 @@ function ContactUs() {
                 <section className="contact-section">
                     <img src ={Pin} alt="address"/> 
                     <div classname="info">
-                        <p>Street Address</p> 
+                        <p>Street Address:</p> 
                         <p>Rd No 3949</p>
                         <p>Bani Jamra, Bahrain</p>
                     </div>
