@@ -1,14 +1,13 @@
 import React from 'react'
+import './marketing.scss'
 
 
 function CourseOfferings() {
     return (
         <div>
-           
             <div className="content">
                 <h1>Course Offerings </h1>
             </div>
-
             <section>
                 <h2 className="section-odd">Kindergarten</h2>
                     <h3>What We Offer</h3>
@@ -18,7 +17,6 @@ function CourseOfferings() {
                     <h3>Jolly Phonics</h3>
                     <p>Jolly Phonics is a world leader in children's literacy that will have them reading in no time.</p>
             </section>
-
             <section>
                 <h2 className="section-even">Primary</h2>
                     <h3>What We Offer</h3>
@@ -28,8 +26,6 @@ function CourseOfferings() {
                     <h3>Public School and Exam Support</h3>
                          <p>The Garden of Knowledge hand picked government school teachers that adore what they do and have a superior knowledge of their subjects. We offer support in English, Arabic, maths and Science.</p>
             </section>
-                 
-
             <section>
                <h2 className="section-odd">Intermediate and Secondary</h2> 
                     <h3>What We Offer</h3>
@@ -38,8 +34,7 @@ function CourseOfferings() {
                         <p>Through various activities, such as role plays, simulations, research projects and public speaking the  students will develop a great independence and confidence in their language abilities.</p>
                     <h3>Public School and Exam Support</h3>
                         <p>The Garden of Knowledge hand picked government school teachers that adore what they do and have a superior knowledge of their subjects. We offer support in English, Arabic, maths, chemistry, biology and physics. We also offer 'night before the exam' revision classes.</p>
-            </section>
-           
+            </section>     
         </div>
     )
 }
