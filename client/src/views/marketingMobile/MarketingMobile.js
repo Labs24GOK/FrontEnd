@@ -20,8 +20,8 @@ function MarketingMobile({page}) {
     switch(page) {
 
         case "home":
-            // componentToRender = Home;
-            componentToRender = About;
+            componentToRender = Home;
+            // componentToRender = About;
             break;
         case "course_structure":
             componentToRender = CourseStructure;
@@ -48,11 +48,7 @@ function MarketingMobile({page}) {
         <div>
             <Header />
             <div className="content">
-<<<<<<< HEAD
-                <Home />
-=======
                 {componentToRender()}
->>>>>>> 14d617837ae40874cf6d278c8f401954699edf83
             </div>
             {/* <Footer /> */}
         </div>
