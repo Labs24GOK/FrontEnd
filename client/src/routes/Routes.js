@@ -61,6 +61,7 @@ import MiddleAndSecondary from '../views/landingPage/components/courseStructure/
 import Register from '../authentication/Register';
 
 import MarketingMobile from "../views/marketingMobile/MarketingMobile";
+import Registration from "../views/marketingMobile/components/Registration";
 
 function Routes(props) {
   useEffect(() => {
@@ -134,7 +135,7 @@ function Routes(props) {
         <Route exact path="/mobile" render={() => <MarketingMobile page="home" />}/>
         <Route exact path="/mobile/course_structure" render={() => <MarketingMobile page="course_structure" />}/>
         <Route exact path="/mobile/courses" render={() => <MarketingMobile page="courses" />}/>
-        <Route exact path="/mobile/registration" render={() => <MarketingMobile page="registration" />}/>
+        <Route exact path="/mobile/registration" render={() => <Registration page="registration" />}/>
         <Route exact path="/mobile/about" render={() => <MarketingMobile page="about" />}/>
         <Route exact path="/mobile/contact" render={() => <MarketingMobile page="contact" />}/>
         
