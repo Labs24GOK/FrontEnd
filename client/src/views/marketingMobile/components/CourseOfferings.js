@@ -1,3 +1,4 @@
+
 import React from 'react'
 import '../marketing.scss'
 import './CourseOfferings.scss'
@@ -41,3 +42,4 @@ function CourseOfferings() {
 }
 
 export default CourseOfferings;
+
