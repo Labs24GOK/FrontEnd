@@ -10,6 +10,7 @@ import About from "./components/About";
 import CourseStructure from "./components/CourseStructure";
 import Courses from "./components/CourseOfferings";
 import Contact from "./components/ContactUs";
+import Registration from './components/Registration';
 
 import "./marketing.scss";
 
@@ -30,7 +31,7 @@ function MarketingMobile({page}) {
             componentToRender = Courses;
             break;
         case "registration":
-            // componentToRender = Registration;
+            componentToRender = Registration;
             break;
         case "about":
             componentToRender = About;
