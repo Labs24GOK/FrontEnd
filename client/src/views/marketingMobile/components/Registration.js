@@ -1,13 +1,9 @@
 import React from 'react';
-import './Registration.scss';
-import Header from './Header';
-import Footer from './Footer';
 
-function About() {
+function Registration() {
 
     return (
         <div className='registration-container'>
-            {/* <Header />s */}
             <h1>Registration Information</h1>
 
             <section className="top-content">
@@ -37,4 +33,4 @@ function About() {
     )
 }
 
-export default About;
+export default Registration;
