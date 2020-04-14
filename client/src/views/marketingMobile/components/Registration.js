@@ -33,8 +33,6 @@ function About() {
                 <p>Intermediate and Secondary: 127BHD</p>
                 <p>Cost includes registration, books, stationery, and 24 classes.</p>
             </section>
-
-            <Footer />
         </div>
     )
 }
