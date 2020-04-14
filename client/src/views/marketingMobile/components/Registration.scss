@@ -1,17 +1,12 @@
-.top-content {
+.placement-test {
     display: flex;
     justify-content: space-around;
-    background: url(../../../assets/plant-growing-from-jar-of-coins.jpg);
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 4% 0;
 
     img {
         width: 40%;
     }
 
-    .placement-test {
+    div {
         width: 40%;
 
         h2 {
@@ -29,10 +24,6 @@
 .terms {
     display: flex;
     justify-content: space-around;
-    background: linear-gradient(rgba(1, 115, 159, 0.50) 100%, transparent 50%), url('../../../assets/hero-image.jpg');
-    background-position: 50% 40%;
-    background-repeat: no-repeat;
-    background-size: cover;
 
     img {
         width: 40%;
@@ -43,23 +34,32 @@
 
         h2 {
             text-align: center;
-            color: white;
         }
     
         p {
             text-align: center;
-            color: white;
         }
     }
 
 }
 
 .fees {
-    h2 {
-        text-align: center;
+    display: flex;
+    justify-content: space-around;
+
+    img {
+        width: 40%;
+        margin: 2%;
     }
 
-    p {
-        text-align: center;
+    div {
+        h2 {
+            text-align: center;
+        }
+    
+        p {
+            text-align: center; 
+        }
     }
+
 }
