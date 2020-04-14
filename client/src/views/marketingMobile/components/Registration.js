@@ -14,11 +14,6 @@ function About() {
             <section className="top-content">
                 <div>
                     <img src={Registration} />
-                    <h2>Personal Information</h2>
-                    <p>To register a student, parents must provide personal information, such as school grade, contact information and CPR.</p>
-                </div>
-                <div>
-                    <img src={Registration} />
                     <h2>Placement Test</h2>
                     <p>All students must take a minimum of a multiple choice placement test and spoken placement test.</p>
                 </div>

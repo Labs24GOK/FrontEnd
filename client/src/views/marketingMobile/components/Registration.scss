@@ -3,12 +3,14 @@
     justify-content: space-around;
 
     img {
-        width: 90%;
-        margin: 5%;
+        width: 70%;
+        text-align: center;
+        margin: 0% 15%;
     }
 
     h2 {
         text-align: center;
+        background-color: #99CC66;
     }
 
     p {
@@ -17,10 +19,10 @@
 }
 
 .terms {
-    background-color: rgba(0,0,0,.1);
 
     h2 {
         text-align: center;
+        background-color: #00A79D;
     }
 
     p {
@@ -31,6 +33,7 @@
 .fees {
     h2 {
         text-align: center;
+        background-color: #99CC66;
     }
 
     p {
