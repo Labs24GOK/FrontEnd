@@ -1,5 +1,7 @@
 import React from 'react'
 import teacher from '../../../assets/native-english-speaker.jpg'
+import kids from '../../../assets/Kindergarten.jpg'
+import Affordability from '../../../assets/plant-growing-from-jar-of-coins.jpg'
 
 export default function Home() {
 
@@ -19,15 +21,18 @@ export default function Home() {
 
                 <h3>Learn from the best</h3>
 
-                <div clssnam="why-flex">
+                <div className="learn-from-best">
                     <p>Qualified, passionate teachers, including native speaker teachers when learning a language.</p>
 
-                    <img href={teacher} alt="A native english speaking woman"/>
+                    <img src={teacher} alt="A native english speaking woman"/>
                 </div>
 
-                <div>
+                <div className="fun">
                     <h3>Learning is Fun</h3>
-                    <img href="" alt="placeholder"/>
+                    <div>
+                        <img src={kids} alt="kids having fun while learning"/>
+                    </div>
+                        
                 </div>
             </section>
 
@@ -37,17 +42,17 @@ export default function Home() {
             </section>
             <section>
                 <div>
-                    <image href="" alt="kindergarten"/>
+                    <image src="" alt="kindergarten"/>
                     <h2>Kindergarten</h2>
                 </div>
 
                 <div>
                     <h2>Primary School</h2>
-                    <image href="" alt="Primary School"/>
+                    <image src="" alt="Primary School"/>
                 </div>
 
                 <div>
-                    <image href="" alt="Middle School"/>
+                    <image src="" alt="Middle School"/>
                     <h2>Middle School & Secondary School</h2>
                 </div>
 
