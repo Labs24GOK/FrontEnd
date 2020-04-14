@@ -46,19 +46,19 @@ export default function Home() {
             </section>
             <section>
                 <div className="kinder">
-                <img src={kindergarten} alt="this it a picture"/>
+                <img src={kindergarten} alt="kindergarten"/>
                 <h2>Kindergarten</h2>
                 </div>
             </section>
             <section >
                 <div className="kinder">
                 <h2>Primary</h2>
-                <img src={primary} alt="this it a picture"/>
+                <img src={primary} alt="primary"/>
 
                 </div>
             </section>
             <section className="kinder">
-                <img src={secondary} alt="this it a picture"/>
+                <img src={secondary} alt="secondary and middle school"/>
                 <h2>Secondary & Middle School</h2>
             </section>
 
