@@ -12,16 +12,22 @@ function About() {
             <h1>Registration Information</h1>
 
             <section className="top-content">
-                <div>
-                    <img src={Registration} />
+                {/* <img src={Registration} /> */}
+                <div></div>
+                <div className="placement-test">
                     <h2>Placement Test</h2>
                     <p>All students must take a minimum of a multiple choice placement test and spoken placement test.</p>
                 </div>
             </section>
 
             <section className="terms">
-                <h2>Terms and Condition</h2>
+            
+            <div>
+                <h2>Terms and Conditions</h2>
                 <p>A parent will be required to sign a document containing course information and student behaviour guide, as well as commiting them to finish a 3 month section once they have started classes.</p>
+            </div>
+            {/* <img src={Registration} /> */}
+            <div></div>
             </section>
 
             <section className="fees">

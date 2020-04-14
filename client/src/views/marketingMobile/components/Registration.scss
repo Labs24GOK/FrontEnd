@@ -1,39 +1,70 @@
 .top-content {
     display: flex;
     justify-content: space-around;
+    // // background-color: #99CC66;
+    // background: url('../../../../../assets/plant-growing-from-jar-of-coins.jpg');
+    background: url(../../../assets/plant-growing-from-jar-of-coins.jpg);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 4% 0;
+
 
     img {
-        width: 70%;
-        text-align: center;
-        margin: 0% 15%;
+        width: 40%;
     }
 
-    h2 {
-        text-align: center;
-        background-color: #99CC66;
+    .placement-test {
+        width: 40%;
+        h2 {
+            text-align: center;
+        }
+    
+        p {
+            text-align: center;
+        }
     }
 
-    p {
-        text-align: center;
-    }
+
 }
 
 .terms {
+    display: flex;
+    justify-content: space-around;
+    // background-color: #00A79D;
+    background: linear-gradient(rgba(1, 115, 159, 0.50) 100%, transparent 50%), url('../../../assets/hero-image.jpg');
+    background-position: 50% 40%;
+    background-repeat: no-repeat;
+    background-size: cover;
 
-    h2 {
-        text-align: center;
-        background-color: #00A79D;
+
+    img {
+        width: 40%;
     }
 
-    p {
-        text-align: center;
+    div {
+        width: 50%;
+
+        h2 {
+            text-align: center;
+        color: white;
+
+        }
+    
+        p {
+            text-align: center;
+        color: white;
+
+        }
     }
+
 }
 
 .fees {
+    // background-color: #99CC66;
+
     h2 {
         text-align: center;
-        background-color: #99CC66;
     }
 
     p {
