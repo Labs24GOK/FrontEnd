@@ -131,10 +131,13 @@ function Routes(props) {
             <MiddleAndSecondary />
             <Footer />
           </>}/> 
-        <Route exact path="/mobile" render={() => 
-          <>
-            <MarketingMobile />
-          </>}/> 
+        <Route exact path="/mobile" render={() => <MarketingMobile page="home" />}/>
+        <Route exact path="/mobile/course_structure" render={() => <MarketingMobile page="course_structure" />}/>
+        <Route exact path="/mobile/courses" render={() => <MarketingMobile page="courses" />}/>
+        <Route exact path="/mobile/registration" render={() => <MarketingMobile page="registration" />}/>
+        <Route exact path="/mobile/about" render={() => <MarketingMobile page="about" />}/>
+        <Route exact path="/mobile/contact" render={() => <MarketingMobile page="contact" />}/>
+        
       </Switch>
     </div>
   );

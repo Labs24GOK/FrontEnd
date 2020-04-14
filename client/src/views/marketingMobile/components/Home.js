@@ -1,7 +1,7 @@
 import React from 'react'
 import teacher from '../../../assets/native-english-speaker.jpg'
 import kids from '../../../assets/Kindergarten.jpg'
-
+import kindergarten from '../../../assets/teacher-and-students-illustration.png'
 
 export default function Home() {
 
@@ -43,10 +43,10 @@ export default function Home() {
                  </div>
             </section>
             <section>
-                <div>
-                    <image src="" alt="kindergarten"/>
+                
+                    <image src={kindergarten} alt="kindergarten"/>
                     <h2>Kindergarten</h2>
-                </div>
+                
 
                 <div>
                     <h2>Primary School</h2>
