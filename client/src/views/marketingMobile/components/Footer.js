@@ -6,8 +6,6 @@ import Twitter from "../../../assets/Twitter2.png";
 import Home from "../../../assets/Home2.png";
 import Tree from "../../../assets/Garden_tree_only.png";
 
-import "./Footer.scss";
-
 function Footer() {
     return (
         <>
