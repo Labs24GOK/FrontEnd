@@ -1,10 +1,7 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import Instagram from "../../../assets/Instagram2.png";
 import Facebook from "../../../assets/Facebook2.png";
 import Twitter from "../../../assets/Twitter2.png";
-import Home from "../../../assets/Home2.png";
-import WhatsApp from "../../../assets/whatsapp2.png";
 import Tree from "../../../assets/Garden_tree_only.png";
 
 function Footer() {
