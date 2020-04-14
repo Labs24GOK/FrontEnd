@@ -21,13 +21,13 @@ function Header() {
             </header>
 
             <div className={"hamburger-menu " + menuDisplayStatus}>
-                <NavLink to='/mobile' className="hamburger-link">Home</NavLink>
-                <NavLink to='/mobile/courses' className="hamburger-link">Courses</NavLink>
-                <NavLink to='/mobile/course_structure' className="hamburger-link">Course Structure</NavLink>
-                <NavLink to='/mobile/registration' className="hamburger-link"> Registration Information</NavLink>
-                <NavLink to='/mobile/about' className="hamburger-link">About Us</NavLink>
-                <NavLink to='/mobile/contact' className="hamburger-link">Contact Us</NavLink>
-                <NavLink to='/login' className="hamburger-link">Sign In</NavLink>
+                <NavLink to='/mobile' className="hamburger-link" onClick={toggleMenu} >Home</NavLink>
+                <NavLink to='/mobile/courses' className="hamburger-link" onClick={toggleMenu} >Courses</NavLink>
+                <NavLink to='/mobile/course_structure' className="hamburger-link" onClick={toggleMenu} >Course Structure</NavLink>
+                <NavLink to='/mobile/registration' className="hamburger-link" onClick={toggleMenu} > Registration Information</NavLink>
+                <NavLink to='/mobile/about' className="hamburger-link" onClick={toggleMenu} >About Us</NavLink>
+                <NavLink to='/mobile/contact' className="hamburger-link" onClick={toggleMenu} >Contact Us</NavLink>
+                <NavLink to='/login' className="hamburger-link"onClick={toggleMenu} >Sign In</NavLink>
             </div>
         </>
     )
