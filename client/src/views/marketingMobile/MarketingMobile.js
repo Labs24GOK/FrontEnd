@@ -5,7 +5,6 @@ import Home from "./components/Home";
 
 import './marketing.scss'
 
-
 import About from "./components/About";
 import CourseStructure from "./components/CourseStructure";
 import Courses from "./components/CourseOfferings";
@@ -22,7 +21,6 @@ function MarketingMobile({page}) {
 
         case "home":
             componentToRender = Home;
-            // componentToRender = About;
             break;
         case "course_structure":
             componentToRender = CourseStructure;
@@ -40,8 +38,7 @@ function MarketingMobile({page}) {
             componentToRender = Contact;
             break;
         default:
-            componentToRender = About;
-            // componentToRender = Home;
+            componentToRender = Home;
             break;
     }
 

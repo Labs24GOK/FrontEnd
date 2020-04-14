@@ -3,7 +3,7 @@ import './Registration.scss';
 import Header from './Header';
 import Footer from './Footer';
 
-function About() {
+function Registration() {
 
     return (
         <div className='registration-container'>
@@ -37,4 +37,4 @@ function About() {
     )
 }
 
-export default About;
+export default Registration;
