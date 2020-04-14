@@ -1,7 +1,7 @@
 import React from 'react'
 import teacher from '../../../assets/native-english-speaker.jpg'
 import kids from '../../../assets/Kindergarten.jpg'
-import Affordability from '../../../assets/plant-growing-from-jar-of-coins.jpg'
+
 
 export default function Home() {
 
@@ -36,9 +36,11 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className=''>
-                <h2>Affordability</h2>
-                <p>Created with families in mind</p>
+            <section className="afford">
+                <div className="afford-text">
+                    <h2>Affordability</h2>
+                    <p>Created with families in mind</p>
+                 </div>
             </section>
             <section>
                 <div>

@@ -80,4 +80,22 @@
     }
 }
 
+section.afford{
+    background: url('../../../assets/plant-growing-from-jar-of-coins.jpg');
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 8% 0;
+    text-align: left;
+
+    p{
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+    .afford-text{
+        width: 30%;
+        margin-left: 55%;
+    }
+}
+
 
