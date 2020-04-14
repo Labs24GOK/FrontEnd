@@ -2,9 +2,6 @@ import React from 'react';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
-
-import './marketing.scss'
-
 import About from "./components/About";
 import CourseStructure from "./components/CourseStructure";
 import Courses from "./components/CourseOfferings";

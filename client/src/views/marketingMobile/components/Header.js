@@ -3,8 +3,6 @@ import { NavLink } from "react-router-dom";
 import LogoTree from "../../../assets/Garden_tree_only.png";
 import HamburgerMenu from "../../../assets/hamburger_menu_icon.png";
 
-import "./Header.scss";
-
 function Header() {
 
     const [menuDisplayStatus, setMenuDisplayStatus] = useState("hamburger-menu-hidden");
