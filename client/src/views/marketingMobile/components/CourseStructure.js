@@ -13,8 +13,7 @@ function CourseStructure() {
                 <div className="two-column">
                     <div className="two-column-left">
                         <h3>Placement Test</h3>
-                        <p>We ask all students to take a placement test before they register. The test has two oral and written sections and the results are approved for six months.</p>
-                        <p>Based on the test results, the student will be placed at the appropriate level. Takes into account age and ability to complete the level efficiently.</p>
+                        <p>We ask all students to take a written and verbal placement test.</p>
                     </div>
                     <div className="two-column-right">
                         <h3>Progress</h3>
