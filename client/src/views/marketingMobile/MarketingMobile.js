@@ -1,6 +1,10 @@
 import React from 'react';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Home from "./components/Home";
+
+import './marketing.scss'
+
 
 import About from "./components/About";
 import CourseStructure from "./components/CourseStructure";
@@ -16,8 +20,8 @@ function MarketingMobile({page}) {
     switch(page) {
 
         case "home":
-            // componentToRender = Home;
-            componentToRender = About;
+            componentToRender = Home;
+            // componentToRender = About;
             break;
         case "course_structure":
             componentToRender = CourseStructure;
