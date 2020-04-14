@@ -23,12 +23,6 @@ function Footer() {
                     <a href="https://twitter.com/speakoutbh" target="_blank" rel="noopener noreferrer">
                         <img src={Twitter} alt="Twitter link"/>
                     </a>
-                    <a href="https://api.whatsapp.com/send?phone=97335617635&text=Hello,%20Garden%20of%20Knowledge,%20I%20was%20browsing%20your%20website.%20I%20am%20interested%20in%20your%20course" target="_blank" rel="noopener noreferre" target="_blank" rel="noopener noreferrer">
-                        <img src={WhatsApp} alt="WhatsApp link"/>
-                    </a>
-                    <Link to="/">
-                        <img src={Home} alt="Speak Out homepage link"/>
-                    </Link>
                 </div>
             </footer>
         </>
