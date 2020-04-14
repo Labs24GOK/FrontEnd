@@ -21,7 +21,6 @@ function ContactUs() {
                     </a>       
                     </div>
                 </section>
-
                 <section className="contact-section">
                 <img src = {phone} alt="phone"/>
                 <div className="info">
@@ -30,11 +29,7 @@ function ContactUs() {
                     <p>+973 3561 7635</p>
                     </a>
                 </div>
-
                 </section>
-
-
-
                 <section className="contact-section">
                     <img src = {Email} alt="email"/> 
                     <div classname="info"> 
@@ -69,8 +64,7 @@ function ContactUs() {
                 <section className="contact-section">
                     <img src ={Facebook} alt="Facebook"/> 
                     <div classname="info">
-                    <a href="https://www.facebook.com/speakoutinfobh/" target="_blank" >
-                    
+                    <a href="https://www.facebook.com/speakoutinfobh/" target="_blank" >               
                         <p>Facebook:</p>
                         <p>speakoutinfobh</p>
                     </a>
