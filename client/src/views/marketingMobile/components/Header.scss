@@ -1,6 +1,6 @@
 @import ".././../../styles/variables";
 
-header.mobile {
+header {
     height: 100px;
     
     display: flex;
@@ -13,6 +13,40 @@ header.mobile {
 
         height: 80px;
         margin: 10px;
+    }
+}
+
+header.mobile {
+
+    @media #{$desktop} {
+        display: none;
+    }
+}
+
+header.desktop {
+    
+    display: none;
+
+    @media #{$desktop} {
+        display: flex;
+    }
+
+    .desktop-header-link {
+
+        display: inline-block;
+        
+        font-size: 1.5rem;
+        line-height: 3rem;
+
+        padding: 0 1rem;
+
+        color: $tree-green;
+
+        border-bottom: 3px solid transparent;
+
+        &:hover {
+            border-bottom: 3px solid $tree-peacock;
+        }
     }
 }
 
@@ -31,6 +65,10 @@ header.mobile {
 
     position: absolute;
     right: 0;
+
+    @media #{$desktop} {
+        display: none;
+    }
 
     .hamburger-link {
         display: block;

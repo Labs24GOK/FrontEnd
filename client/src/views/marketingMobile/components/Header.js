@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from "react-router-dom";
 import LogoTree from "../../../assets/Garden_tree_only.png";
+import Logo from "../../../assets/Garden.png";
 import HamburgerMenu from "../../../assets/hamburger_menu_icon.png";
 
 function Header() {
@@ -16,6 +17,19 @@ function Header() {
             <header className="mobile">
                 <img src={LogoTree} alt="The Garden of Knowledge" />
                 <img src={HamburgerMenu} alt="Mobile Menu Icon" className="hamburger-menu-icon" onClick={toggleMenu} />
+            </header>
+
+            <header className="desktop">
+                <img src={Logo} alt="The Garden of Knowledge" />
+                <div className="desktop-header-links">
+                    <NavLink to='/mobile' className="desktop-header-link" >Home</NavLink>
+                    <NavLink to='/mobile/courses' className="desktop-header-link" >Courses</NavLink>
+                    <NavLink to='/mobile/course_structure' className="desktop-header-link" >Course Structure</NavLink>
+                    <NavLink to='/mobile/registration' className="desktop-header-link" > Registration Information</NavLink>
+                    <NavLink to='/mobile/about' className="desktop-header-link" >About Us</NavLink>
+                    <NavLink to='/mobile/contact' className="desktop-header-link" >Contact Us</NavLink>
+                    <NavLink to='/login' className="desktop-header-link">Sign In</NavLink>
+                </div>
             </header>
 
             <div className={"hamburger-menu " + menuDisplayStatus}>
