@@ -1,8 +1,8 @@
 @import ".././../../styles/variables";
 
-header.mobile {
+header {
     height: 100px;
-
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -16,20 +16,59 @@ header.mobile {
     }
 }
 
+header.mobile {
+
+    @media #{$desktop} {
+        display: none;
+    }
+}
+
+header.desktop {
+    
+    display: none;
+
+    @media #{$desktop} {
+        display: flex;
+    }
+
+    .desktop-header-link {
+
+        display: inline-block;
+        
+        font-size: 1.5rem;
+        line-height: 3rem;
+
+        padding: 0 1rem;
+
+        color: $tree-green;
+
+        border-bottom: 3px solid transparent;
+
+        &:hover {
+            border-bottom: 3px solid $tree-peacock;
+        }
+    }
+}
+
 .hamburger-menu {
 
-    width: 50vw;
+    min-width: 250px;
 
     display: flex;
     flex-direction: column;
     
-    font-size: 1.25rem;
-    line-height: 2.5rem;
+    font-size: 1.5rem;
+    line-height: 3rem;
 
-    background-color: rgba(0, 0, 0, 0.05);
+    // background-color: color.scale($tree-light-green, $lightness: -10%);
+    background-color: lighten($tree-light-green, 30%);
 
     position: absolute;
     right: 0;
+
+    @media #{$desktop} {
+        display: none;
+    }
 
     .hamburger-link {
         display: block;
@@ -40,10 +79,18 @@ header.mobile {
         padding-right: 0.5rem;
 
         &:hover {
-            // background-color: rgba(0, 0, 0, 0.1);
 
-            color: $tree-light-green;
+            background-color: lighten($tree-light-green, 15%);
+
         }
 
     }
+}
+
+.hamburger-menu-icon {
+    cursor: pointer;
+}
+
+.hamburger-menu-hidden {
+    display: none;
 }

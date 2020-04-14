@@ -5,8 +5,6 @@ import Facebook from "../../../assets/Facebook.png";
 import Twitter from "../../../assets/Twitter.png";
 import Home from "../../../assets/Home.png";
 
-import "./Footer.scss";
-
 function Footer() {
     return (
         <>
