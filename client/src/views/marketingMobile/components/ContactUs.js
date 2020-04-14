@@ -1,16 +1,15 @@
 import React from 'react'
-import WhatsApp from '../../assets/whatsapp.png'
-import Email from '../../assets/Email.png'
-import Pin from '../../assets/PinLarge.png'
-import Instagram from '../../assets/Instagram.png'
-import Facebook from '../../assets/Facebook.png'
-import Twitter from '../../assets/Twitter.png'
+import WhatsApp from '../../../assets/whatsapp.png'
+import Email from '../../../assets/Email.png'
+import Pin from '../../../assets/PinLarge.png'
+import Instagram from '../../../assets/Instagram.png'
+import Facebook from '../../../assets/Facebook.png'
+import Twitter from '../../../assets/Twitter.png'
 
 
 function ContactUs() {
     return (
-        <div>         
-            <div className="content">             
+            <div className="contact-container">
                 <h1>Contact Us</h1>        
                 <section className="contact-section">
                     <img src = {WhatsApp} alt="whatsapp"/>
@@ -56,8 +55,7 @@ function ContactUs() {
                         <p>speakoutbh</p>
                     </div>
                 </section>
-            </div>      
-        </div>
+            </div>
     )
 }
 

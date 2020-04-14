@@ -9,9 +9,15 @@
 // Header
 @import './components/Header.scss';
 
-
+@import './components/CourseStructure.scss';
+@import './components/ContactUs.scss';
 
 // Global Styles
+
+.content {
+    min-height: calc(100vh - 300px); // determine exact value later
+}
+
 section {
     text-align: left;
     padding: 1rem;
@@ -42,29 +48,4 @@ section {
 
 .two-column-left, .two-column-right {
     width: 45vw;
-}
-
-.content {
-   text-align:left;
-   padding:1rem;
-
-
-}
-.contact-section {
-    padding-bottom: 2rem;
-    display: flex;
-    align-items: center;
-    width: 90vw;
-    img {
-        width: 32px;
-        height: auto;
-        margin-right: 1rem;
-    }
-    p {
-        margin:0
-    }
-}
-
-.info {
-    width:50vw
 }

@@ -1,9 +1,12 @@
 @import ".././../../styles/variables";
 
-footer {
-    position: absolute;
-    bottom: 0;
+.footer-grass {
+    margin: 0;
+    border: 5px solid $tree-light-green;
+}
 
+footer {
+    
     height: 100px;
 
     background-color: $footer-bg-color;
@@ -21,7 +24,5 @@ footer {
     
     img {
         width: 32px;
-
-        
     }
 }
