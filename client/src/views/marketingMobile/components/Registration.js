@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import PlacementTest from '../../../assets/placement-test.jpg';
 import Terms from '../../../assets/terms.jpg';
 import Fees from '../../../assets/fees.jpg';
@@ -6,6 +7,11 @@ import Fees from '../../../assets/fees.jpg';
 import './Registration.scss';
 
 function About() {
+=======
+
+function Registration() {
+
+>>>>>>> master
     return (
         <div className='registration-container'>
             <h1>Registration Information</h1>
@@ -42,4 +48,4 @@ function About() {
     )
 }
 
-export default About;
+export default Registration;
