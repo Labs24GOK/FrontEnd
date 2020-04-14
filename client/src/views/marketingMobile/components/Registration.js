@@ -1,33 +1,29 @@
 import React from 'react';
 import './Registration.scss';
-import Registration from '../../../assets/registration.jpg';
 import Header from './Header';
 import Footer from './Footer';
 
 function About() {
 
     return (
-        <div>
-            <Header />
+        <div className='registration-container'>
+            {/* <Header />s */}
             <h1>Registration Information</h1>
 
             <section className="top-content">
-                {/* <img src={Registration} /> */}
                 <div></div>
                 <div className="placement-test">
                     <h2>Placement Test</h2>
-                    <p>All students must take a minimum of a multiple choice placement test and spoken placement test.</p>
+                    <p>This can be taken online or at the center and will help us find the student's level when taking a language course.</p>
                 </div>
             </section>
 
             <section className="terms">
-            
-            <div>
-                <h2>Terms and Conditions</h2>
-                <p>A parent will be required to sign a document containing course information and student behaviour guide, as well as commiting them to finish a 3 month section once they have started classes.</p>
-            </div>
-            {/* <img src={Registration} /> */}
-            <div></div>
+                <div>
+                    <h2>Terms and Conditions</h2>
+                    <p>A parent will be required to sign a document containing course information and student behaviour guide, as well as commiting them to finish a 3 month section once they have started classes.</p>
+                </div>
+                <div></div>
             </section>
 
             <section className="fees">
