@@ -4,6 +4,8 @@ import Footer from "./components/Footer";
 
 import About from "./components/About";
 import CourseStructure from "./components/CourseStructure";
+import Courses from "./components/CourseOfferings";
+import Contact from "./components/ContactUs";
 
 import "./marketing.scss";
 
@@ -21,7 +23,7 @@ function MarketingMobile({page}) {
             componentToRender = CourseStructure;
             break;
         case "courses":
-            // componentToRender = Courses;
+            componentToRender = Courses;
             break;
         case "registration":
             // componentToRender = Registration;
@@ -30,7 +32,7 @@ function MarketingMobile({page}) {
             componentToRender = About;
             break;
         case "contact":
-            // componentToRender = Contact;
+            componentToRender = Contact;
             break;
         default:
             componentToRender = About;

@@ -10,8 +10,13 @@
 @import './components/Header.scss';
 
 @import './components/CourseStructure.scss';
+@import './components/ContactUs.scss';
 
 // Global Styles
+
+.content {
+    min-height: calc(100vh - 300px); // determine exact value later
+}
 
 section {
     text-align: left;
