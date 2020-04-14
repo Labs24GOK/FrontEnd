@@ -13,7 +13,7 @@ function MarketingMobile() {
             <div className="content">
                 <Home />
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     )
 }
