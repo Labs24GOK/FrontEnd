@@ -50,7 +50,7 @@ function MarketingMobile({page}) {
             <div className="content">
                 {componentToRender()}
             </div>
-            {/* <Footer /> */}
+            <Footer />
         </div>
     )
 }
