@@ -32,7 +32,7 @@ function About() {
             </section>
 
             <section>
-            <div className="contact-container">
+            <div className="contact-container" id="contact-us">
                 <h1>Contact Us</h1>        
                 <section className="contact-section">
                     <img src = {WhatsApp} alt="whatsapp"/>
