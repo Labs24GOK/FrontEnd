@@ -1,7 +1,8 @@
-
 import React from 'react'
 
-import teacher from "../../../assets/Victoria_teaching.jpg"
+import PlacementTest from '../../../assets/placement-test.jpg';
+import Terms from '../../../assets/terms.jpg';
+import Fees from '../../../assets/kids-drawing.jpg';
 
 
 function CourseOfferings() {
@@ -31,7 +32,42 @@ function CourseOfferings() {
                             <p>Through various activities, such as role plays, simulations, research projects and public speaking the  students will develop a great independence and confidence in their language abilities.</p>
                         <h3>Public School and Exam Support</h3>
                             <p>The Garden of Knowledge hand picked government school teachers that adore what they do and have a superior knowledge of their subjects. We offer support in English, Arabic, maths, chemistry, biology and physics. We also offer 'night before the exam' revision classes.</p>
-                </section>     
+            </section>     
+            <section>
+            <div className='registration-container'>
+            <h2 className="section-even">Registration Information</h2>
+
+            <section className="placement-test">
+                <img src={PlacementTest} />
+
+                <div>
+                    <h2>Placement Test</h2>
+                    <p>This can be taken online or at the center and will help us find the student's level when taking a language course.</p>
+                </div>
+            </section>
+
+            <section className="terms">
+                <div>
+                    <h2>Terms and Conditions</h2>
+                    <p>A parent will be required to sign a document containing course information and student behaviour guide, as well as commiting them to finish a 3 month section once they have started classes.</p>
+                </div>
+                <img src={Terms} />
+            </section>
+
+            <section className="fees">
+            <img src={Fees} />
+            <div>
+                <h2>Fees</h2>
+                <p>Kindergarten: 122BHD</p>
+                <p>Primary: 122BHD</p>
+                <p>Intermediate and Secondary: 127BHD</p>
+                <p>Cost includes registration, books, stationery, and 24 classes.</p>
+            </div>
+
+            </section>
+        </div>
+            </section>
+
             </>
     )
 }
