@@ -7,7 +7,7 @@ import Login from '../authentication/Login';
 import DashboardView from '../views';
 import Register from '../authentication/Register';
 
-import MarketingMobile from "../views/marketingMobile/MarketingMobile";
+import Marketing from "../views/marketing/Marketing";
 
 function Routes(props) {
   useEffect(() => {
@@ -17,10 +17,10 @@ function Routes(props) {
     <>
       <Switch>
         {props.state.authenticationReducer.user.authenticated && <Route exact path='/dashboard' render={() => <DashboardView /> } />  }
-        <Route exact path="/" render={() => <MarketingMobile page="home" />}/>
-        <Route path="/schedules" render={() => <MarketingMobile page="course_structure" />}/>
-        <Route path="/courses" render={() => <MarketingMobile page="courses" />}/>
-        <Route path="/about" render={() => <MarketingMobile page="about" />}/>
+        <Route exact path="/" render={() => <Marketing page="home" />}/>
+        <Route path="/schedules" render={() => <Marketing page="course_structure" />}/>
+        <Route path="/courses" render={() => <Marketing page="courses" />}/>
+        <Route path="/about" render={() => <Marketing page="about" />}/>
         <Route path="/login" render={() => <Login />}/>
       </Switch>
     </>

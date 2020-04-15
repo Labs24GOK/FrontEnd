@@ -5,7 +5,7 @@ import Terms from '../../../assets/terms.jpg';
 import Fees from '../../../assets/kids-drawing.jpg';
 
 
-function CourseOfferings() {
+function CoursesAndRegistration() {
     return (
             <>
                 <h1>Course Offerings </h1>
@@ -72,5 +72,5 @@ function CourseOfferings() {
     )
 }
 
-export default CourseOfferings;
+export default CoursesAndRegistration;
 

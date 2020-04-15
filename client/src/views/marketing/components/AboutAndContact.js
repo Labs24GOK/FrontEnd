@@ -6,9 +6,8 @@ import Instagram from '../../../assets/instagram-peacock.png'
 import Facebook from '../../../assets/facebook-peacock.png'
 import Twitter from '../../../assets/twitter-peacock.png'
 import phone from '../../../assets/phone-peacock.png'
-import './About.scss';
 
-function About() {
+function AboutAndContact() {
 
     return (
         <>
@@ -107,4 +106,4 @@ function About() {
     )
 }
 
-export default About;
+export default AboutAndContact;

@@ -2,23 +2,20 @@ import React from 'react';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
-import About from "./components/About";
+import About from "./components/AboutAndContact";
 import CourseStructure from "./components/CourseStructure";
-import Courses from "./components/CourseOfferings";
+import Courses from "./components/CoursesAndRegistration";
 import Contact from "./components/ContactUs";
 import Registration from './components/Registration';
 
 import "./marketing.scss";
 
-function MarketingMobile({page}) {
+function Marketing({page}) {
 
-    let componentToRender;
+    let componentToRender = Home;
 
     switch(page) {
 
-        case "home":
-            componentToRender = Home;
-            break;
         case "course_structure":
             componentToRender = CourseStructure;
             break;
@@ -34,9 +31,6 @@ function MarketingMobile({page}) {
         case "contact":
             componentToRender = Contact;
             break;
-        default:
-            componentToRender = Home;
-            break;
     }
 
     return (
@@ -50,4 +44,4 @@ function MarketingMobile({page}) {
     )
 }
 
-export default MarketingMobile;
+export default Marketing;
