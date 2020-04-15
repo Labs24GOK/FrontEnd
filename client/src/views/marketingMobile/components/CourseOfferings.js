@@ -1,7 +1,6 @@
 
 import React from 'react'
-import '../marketing.scss'
-import './CourseOfferings.scss'
+import "./CourseOfferings.scss"
 import teacher from "../../../assets/Victoria_teaching.jpg"
 
 
