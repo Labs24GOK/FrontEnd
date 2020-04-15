@@ -1,5 +1,7 @@
+
 import React from 'react'
-import '../marketing.scss'
+
+import teacher from "../../../assets/Victoria_teaching.jpg"
 
 
 function CourseOfferings() {
@@ -35,3 +37,4 @@ function CourseOfferings() {
 }
 
 export default CourseOfferings;
+

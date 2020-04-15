@@ -1,0 +1,28 @@
+.contact-container {
+    width: 50vw;
+    max-width: 500px;
+    margin: 0 auto;
+    h1 {
+        text-align: center;
+    }
+}
+
+
+.contact-section {
+    padding-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    width: 90vw;
+    img {
+        width: 32px;
+        height: auto;
+        margin-right: 1rem;
+    }
+    p {
+        margin:0
+    }
+}
+
+.info {
+    width:100%
+}
