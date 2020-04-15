@@ -1,7 +1,7 @@
 import React from 'react';
 
 import sectionsABC from "../../../assets/course_structure_sectionsABC.png";
-import sessions from "../../../assets/course_structure_sessions.png";
+import sessions from "../../../assets/section_chart.png";
 
 function CourseStructure() {
 
@@ -15,10 +15,7 @@ function CourseStructure() {
                         <h3>Placement Test</h3>
                         <p>We ask all students to take a written and verbal placement test.</p>
                     </div>
-                    <div className="two-column-right">
-                        <h3>Progress</h3>
-                        <p>Learning is a wonderful. We encourage life long learning by inspiring our students to be the best versions of themselves. Everyone can reach their goal when the team working with them believes in them.</p>
-                    </div>
+                   
                 </div>
             </section>
 
@@ -31,10 +28,7 @@ function CourseStructure() {
                         <h3>Successful and Above</h3>
                         <p>The student will continue at the same level but the next section, unless in the third section of the course in this case the student will go to the next level.</p>
                     </div>
-                    <div className="two-column-right">
-                        <h3>Failure</h3>
-                        <p>The student must repeat the section where he failed.</p>
-                    </div>
+                   
                 </div>
 
                 <p>* In case the student excels in his current level with the recommendation of the teacher may take the student to the next level.</p>
@@ -64,7 +58,7 @@ function CourseStructure() {
                     <h4>What does a class look like?</h4>
                     <p>Each class is 90 minutes long.</p>
                     <p>The first class of each section will begin with a pretest to verify the skill level of the student.</p>
-                    <p>For secondary and intermediate students, the last class of each section will include a final exam to verify that the student is eligible to continue on to the next section.</p>
+                    <p>All students will have a final exam</p>
                 </section>
 
             </section>                

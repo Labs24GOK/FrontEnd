@@ -1,9 +1,7 @@
 import React from 'react'
 import teacher from '../../../assets/native-english-speaker.jpg'
 import kids from '../../../assets/Kindergarten.jpg'
-import kindergarten from '../../../assets/teacher-and-students-illustration.png'
-import primary from '../../../assets/Vector.jpg'
-import secondary from '../../../assets/woman-and-man-interacting-illustration.png'
+
 
 export default function Home() {
 
@@ -43,23 +41,6 @@ export default function Home() {
                     <h2>Affordability</h2>
                     <p>Created with families in mind</p>
                  </div>
-            </section>
-            <section>
-                <div className="kinder">
-                <img src={kindergarten} alt="kindergarten"/>
-                <h2>Kindergarten</h2>
-                </div>
-            </section>
-            <section >
-                <div className="kinder">
-                <h2>Primary</h2>
-                <img src={primary} alt="primary"/>
-
-                </div>
-            </section>
-            <section className="kinder">
-                <img src={secondary} alt="secondary and middle school"/>
-                <h2>Secondary & Middle School</h2>
             </section>
 
             
