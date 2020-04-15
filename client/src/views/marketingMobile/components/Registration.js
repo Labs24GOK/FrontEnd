@@ -24,9 +24,9 @@ function Registration() {
 
             <section className="fees">
                 <h2>Fees</h2>
-                <p>Kindergarten: 122BHD</p>
-                <p>Primary: 122BHD</p>
-                <p>Intermediate and Secondary: 127BHD</p>
+                <p>Kindergarten: 122BHD / $323.10 USD</p>
+                <p>Primary: 122BHD / $323.10 USD</p>
+                <p>Intermediate and Secondary: 127BHD / $336.34 USD</p>
                 <p>Cost includes registration, books, stationery, and 24 classes.</p>
             </section>
         </div>
