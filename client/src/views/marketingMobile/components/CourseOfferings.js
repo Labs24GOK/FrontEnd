@@ -4,9 +4,6 @@ import PlacementTest from '../../../assets/placement-test.jpg';
 import Terms from '../../../assets/terms.jpg';
 import Fees from '../../../assets/kids-drawing.jpg';
 
-import './CourseOfferings.scss';
-
-
 
 function CourseOfferings() {
     return (
