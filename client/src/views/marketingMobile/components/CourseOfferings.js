@@ -1,6 +1,6 @@
 
 import React from 'react'
-import "./CourseOfferings.scss"
+
 import teacher from "../../../assets/Victoria_teaching.jpg"
 
 
@@ -8,7 +8,6 @@ function CourseOfferings() {
     return (
             <>
                 <h1>Course Offerings </h1>
-                <img className="img" src = {teacher}></img>
                 <section>
                     <h2 className="section-odd">Kindergarten</h2>
                         <h3>What We Offer</h3>
