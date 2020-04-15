@@ -1,13 +1,11 @@
-
 import React from 'react'
 
 import PlacementTest from '../../../assets/placement-test.jpg';
 import Terms from '../../../assets/terms.jpg';
 import Fees from '../../../assets/kids-drawing.jpg';
 
-import './Registration.scss';
+import './CourseOfferings.scss';
 
-import teacher from "../../../assets/Victoria_teaching.jpg"
 
 
 function CourseOfferings() {
