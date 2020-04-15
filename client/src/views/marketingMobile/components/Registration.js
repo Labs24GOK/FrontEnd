@@ -15,7 +15,7 @@ function Registration() {
 
                 <div>
                     <h2>Placement Test</h2>
-                    <p>This can be taken online or at the center and will help us find the student's level when taking a language course.</p>
+                    <p>This will help us find the student's level when taking a language course.</p>
                 </div>
             </section>
 
