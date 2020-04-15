@@ -15,7 +15,7 @@ function Registration() {
 
                 <div>
                     <h2>Placement Test</h2>
-                    <p>This can be taken online or at the center and will help us find the student's level when taking a language course.</p>
+                    <p>This will help us find the student's level when taking a language course.</p>
                 </div>
             </section>
 
@@ -31,9 +31,9 @@ function Registration() {
             <img src={Fees} />
             <div>
                 <h2>Fees</h2>
-                <p>Kindergarten: 122BHD</p>
-                <p>Primary: 122BHD</p>
-                <p>Intermediate and Secondary: 127BHD</p>
+                <p>Kindergarten: 122BHD / $323.10 USD</p>
+                <p>Primary: 122BHD / $323.10 USD</p>
+                <p>Intermediate and Secondary: 127BHD / $336.34 USD</p>
                 <p>Cost includes registration, books, stationery, and 24 classes.</p>
             </div>
 
