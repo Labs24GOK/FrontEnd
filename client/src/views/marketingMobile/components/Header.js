@@ -23,22 +23,18 @@ function Header() {
                 <img src={Logo} alt="The Garden of Knowledge" />
                 <div className="desktop-header-links">
                     <NavLink to='/' className="desktop-header-link" >Home</NavLink>
-                    <NavLink to='/courses' className="desktop-header-link" >Courses</NavLink>
+                    <NavLink to='/courses' className="desktop-header-link" >Courses and Registration</NavLink>
                     <NavLink to='/schedules' className="desktop-header-link" >Schedules</NavLink>
-                    <NavLink to='/registration' className="desktop-header-link" > Registration Information</NavLink>
-                    <NavLink to='/about' className="desktop-header-link" >About Us</NavLink>
-                    <NavLink to='/contact' className="desktop-header-link" >Contact Us</NavLink>
+                    <NavLink to='/about' className="desktop-header-link" >About and Contact</NavLink>
                     <NavLink to='/login' className="desktop-header-link">Sign In</NavLink>
                 </div>
             </header>
 
             <div className={"hamburger-menu " + menuDisplayStatus}>
                 <NavLink to='/' className="hamburger-link" onClick={toggleMenu} >Home</NavLink>
-                <NavLink to='/courses' className="hamburger-link" onClick={toggleMenu} >Courses</NavLink>
+                <NavLink to='/courses' className="hamburger-link" onClick={toggleMenu} >Courses and Registration</NavLink>
                 <NavLink to='/schedules' className="hamburger-link" onClick={toggleMenu} >Schedules</NavLink>
-                <NavLink to='/registration' className="hamburger-link" onClick={toggleMenu} > Registration Information</NavLink>
-                <NavLink to='/about' className="hamburger-link" onClick={toggleMenu} >About Us</NavLink>
-                <NavLink to='/contact' className="hamburger-link" onClick={toggleMenu} >Contact Us</NavLink>
+                <NavLink to='/about' className="hamburger-link" onClick={toggleMenu} >About and Contact</NavLink>
                 <NavLink to='/login' className="hamburger-link"onClick={toggleMenu} >Sign In</NavLink>
             </div>
         </>

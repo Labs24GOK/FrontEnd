@@ -20,9 +20,7 @@ function Routes(props) {
         <Route exact path="/" render={() => <MarketingMobile page="home" />}/>
         <Route path="/schedules" render={() => <MarketingMobile page="course_structure" />}/>
         <Route path="/courses" render={() => <MarketingMobile page="courses" />}/>
-        <Route path="/registration" render={() => <MarketingMobile page="registration" />}/>
         <Route path="/about" render={() => <MarketingMobile page="about" />}/>
-        <Route path="/contact" render={() => <MarketingMobile page="contact" />}/>
         <Route path="/login" render={() => <Login />}/>
       </Switch>
     </>
