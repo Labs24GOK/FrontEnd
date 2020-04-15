@@ -33,7 +33,7 @@ function ContactUs() {
                 <section className="contact-section">
                     <img src = {Email} alt="email"/> 
                     <div classname="info"> 
-                    <a href="mailto:speakout.info.bh@gmail.com?subject=Hello&body=Hello%20Garden%20of%20Knowledge,%0D%0A%0D%0AI%20was%20browsing%20your%20website.%20I%20am%20interested%20in%20your%20courses">
+                    <a href="mailto:speakout.info.bh@gmail.com?subject=Hello&body=Hello%20Garden%20of%20Knowledge,%0D%0A%0D%0AI%20was%20browsing%20your%20website.%20I%20am%20interested%20in%20your%20courses.%20">
                         <p>Email: </p>
                         <p>speakout.info.bh@gmail.com</p>
                         </a>    
