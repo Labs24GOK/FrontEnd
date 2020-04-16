@@ -26,21 +26,21 @@ function CourseStructure() {
                 
 
                 <section>
-                    <h4>What does a level look like?</h4>
+                    <h3>What does a level look like?</h3>
                     <p>Each level is 9 months long (one academic year).</p>
                     <img src={sectionsABC} className="level-flowchart" alt="Flowchart showing that sections A, B, and C are each 3 months long." />
                     <p>Each level is divided into 3 sections (A, B, and C) that are each 3 months long.</p>
                 </section>
 
                 <section>
-                    <h4>What does a section look like?</h4>
+                    <h3>What does a section look like?</h3>
                     <p>A section consists of 24 classes.</p>
                     <p>A student will receive a progress report at the end of every 8 classes (3 progress reports in total).</p>
                     <img src={sessions} className="section-flowchart" alt="Flowchart showing division of each section into 8 classes each, with progress reports after each one" />
                 </section>
 
                 <section>
-                    <h4>What does a class look like?</h4>
+                    <h3>What does a class look like?</h3>
                     <p>Each class is 90 minutes long.</p>
                     <p>The first class of each section will begin with a pretest to verify the skill level of the student.</p>
                     <p>All students will have a final exam</p>
