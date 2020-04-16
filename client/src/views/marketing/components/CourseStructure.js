@@ -2,6 +2,7 @@ import React from 'react';
 
 import sectionsABC from "../../../assets/course_structure_sectionsABC.png";
 import sessions from "../../../assets/section_chart.png";
+import headerPic from '../../../assets/placement-test-h.jpg';
 
 function CourseStructure() {
 
@@ -10,11 +11,14 @@ function CourseStructure() {
             <h1>Schedules</h1>
             
             <section>
-                <div className="two-column">
-                    <div className="two-column-left">
+                <div className="place-test">
+                    <div>
                         <h3>Placement Test</h3>
                         <p>We ask all students to take a written and verbal placement test.</p>
                     </div>
+                    
+                    <img className="test-pic" src={headerPic} alt='Person taking a test' />   
+                    
                    
                 </div>
             </section>
@@ -43,7 +47,7 @@ function CourseStructure() {
                     <h3>What does a class look like?</h3>
                     <p>Each class is 90 minutes long.</p>
                     <p>The first class of each section will begin with a pretest to verify the skill level of the student.</p>
-                    <p>All students will have a final exam</p>
+                    <p>All students will have a final exam.</p>
                 </section>
 
             </section>                
