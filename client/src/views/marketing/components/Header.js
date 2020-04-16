@@ -25,8 +25,7 @@ function Header() {
             <Link to='/' >
                     <img src={Logo} alt="The Garden of Knowledge" />
              </Link>       
-                <div className="desktop-header-links">
-                    
+                <div className="desktop-header-links">     
                     <NavLink to='/courses' activeClassName ="activeNavButton" className="desktop-header-link" >Courses & Registration</NavLink>
                     <NavLink to='/schedules' activeClassName ="activeNavButton"className="desktop-header-link" >Schedules</NavLink>
                     <NavLink to='/about' activeClassName ="activeNavButton"className="desktop-header-link" >About & Contact</NavLink>
@@ -35,7 +34,6 @@ function Header() {
             </header>
 
             <div className={"hamburger-menu " + menuDisplayStatus}>
-               
                 <NavLink to='/courses' className="hamburger-link" onClick={toggleMenu} >Courses & Registration</NavLink>
                 <NavLink to='/schedules' className="hamburger-link" onClick={toggleMenu} >Schedules</NavLink>
                 <NavLink to='/about' className="hamburger-link" onClick={toggleMenu} >About & Contact</NavLink>
