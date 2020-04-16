@@ -40,7 +40,7 @@ function Login(props) {
                   Register now.
                 </Link>
               </div>
-              <div>
+              <div className="login-errors">
                 {(errors.username || errors.password) && <p>Username and Password are required.</p> && console.log(errors)}
                 {props.state.authenticationReducer.logIn.error && <p>Login credentials incorrect.</p>}
 

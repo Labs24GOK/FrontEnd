@@ -54,7 +54,7 @@
         }
       }
 
-      .register {
+      .register, .login-errors {
         
         text-align: center;
 
@@ -68,6 +68,14 @@
           text-decoration: underline;
           color: $tree-green;
         }
+      }
+
+      .login-errors {
+
+        margin-top: 1rem;
+
+        color: $tree-brown;
+        font-weight: bold;
       }
 
       button {
