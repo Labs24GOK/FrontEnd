@@ -43,7 +43,7 @@ function CourseStructure() {
                     <h3>What does a class look like?</h3>
                     <p>Each class is 90 minutes long.</p>
                     <p>The first class of each section will begin with a pretest to verify the skill level of the student.</p>
-                    <p>All students will have a final exam</p>
+                    <p>All students will have a final exam.</p>
                 </section>
 
             </section>                
