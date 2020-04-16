@@ -42,9 +42,11 @@ section {
 .two-column {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
+    
 
     margin-bottom: 1rem;
+    
 }
 
 .two-column-left, .two-column-right {
