@@ -23,15 +23,17 @@ header.mobile {
     }
 }
 
-header.desktop {
+
+header.desktop  {
     
     display: none;
 
     @media #{$desktop} {
         display: flex;
     }
+   
 
-    .desktop-header-link {
+    .desktop-header-link    {
 
         display: inline-block;
         
@@ -47,8 +49,15 @@ header.desktop {
         &:hover {
             border-bottom: 3px solid $tree-peacock;
         }
+     
     }
+    .activeNavButton {
+        border-bottom: 3px solid $tree-peacock;
+       
+   }
 }
+
+
 
 .hamburger-menu {
 
