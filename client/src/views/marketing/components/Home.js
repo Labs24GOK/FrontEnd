@@ -22,7 +22,7 @@ export default function Home() {
                 <h3>Learn from the best</h3>
 
                 <div className="learn-from-best">
-                    <p>Qualified, passionate teachers, including native speaking teachers.</p>
+                    <p>Qualified, passionate teachers, including native speaking teachers when learning a language.</p>
 
                     <img src={teacher} alt="A native english speaking woman"/>
                 </div>
