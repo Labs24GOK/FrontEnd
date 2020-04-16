@@ -1,30 +1,23 @@
 @import "../styles/variables";
 
-* {border: 1px solid purple; }
+
+// * {border: 1px solid purple; }
 
     .form-container {
-      // background: #ffffff;
-      // height: 443px;
-      // width: 450px;
-      // border-radius: 10px;
-      // margin-top: 80px;
-      // margin: 40px 40px 40px 0px;
+
+      margin: 0 auto;
+      padding-top: 3rem;
 
       width: 90vw;
+      max-width: 800px;
       
       h1 {
-        font-family: "Mada", sans-serif;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 48px;
-        line-height: 62px;
-        color: #0c435a;
-        margin-top: 1rem;
-
+        font-size: 3rem;
         text-align: center;
 
       }
     }
+    
     form {
       fieldset {
         display: flex;
@@ -33,58 +26,69 @@
         flex-direction: column;
 
         label {
-          display: none;
+
+          font-size: 1.5rem;
+
+          font-weight: bold;
+          color: $tree-green;
+
+          display: block;
+          text-align: left;
         }
 
         input {
           border: none;
-          border-bottom: 1px solid black;
-          border-radius: 0;
-          width: 298px;
-          height: 27px;
-          padding-bottom: 5px;
-          margin-top: 5%;
+
+          font-size: 1.5rem;
+          line-height: 2rem;
+
+          margin-top: 1rem;
+          margin-bottom: 2rem;
           
+          border-bottom: 3px solid #999999;
+
         }
 
         input:focus {
-          border-bottom: 1px solid #197380;
-          outline-width: 0;
+          border-bottom: 3px solid $tree-light-green;
         }
       }
 
       .register {
-        display: flex;
-        justify-content: center;
         
-        color: #197380;
+        text-align: center;
+
+        color: $tree-green;
 
         p {
-          margin-right: 5px;
+          margin: 0;
         }
 
         .reg-link {
           text-decoration: underline;
-          color: #197380;
+          color: $tree-green;
         }
       }
 
       button {
-        width: 298px;
-        height: 40px;
-        border: 1px solid #c73642;
+        width: 200px;
+        
+        font-size: 1.5rem;
+        line-height: 3rem;
+
+        border: 1px solid transparent;
+
         border-radius: 7px;
         color: white;
-        background-color: #c73642;
+        background-color: $tree-green;
         
-        margin-top: 5%;
-        font-weight: bold;
+        margin-top: 2rem 0;
       }
 
       // button should be white with red border and text if the user hasn't entered all the info
       // button becomes red with white text when ready to submit
       .disabled {
-        color: #c73642;
+        color: $tree-light-green;
         background-color: white;
       }
 
@@ -94,5 +98,7 @@
 
       button:hover {
         cursor: pointer;
+
+        background-color: lighten($tree-light-green, 10%);
       }
     }

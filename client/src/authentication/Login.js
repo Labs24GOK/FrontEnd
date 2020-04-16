@@ -25,10 +25,10 @@ function Login(props) {
               
               <fieldset>
                 <label htmlFor="username">Username</label>
-                <input type="text" name="username" placeholder="Username" ref={register({required: true, minLength: 1})} />
+                <input type="text" name="username" ref={register({required: true, minLength: 1})} />
 
                 <label htmlFor="password">Password</label>
-                <input type="password" name="password" placeholder="Password" ref={register({required: true, minLength: 1})} />
+                <input type="password" name="password"  ref={register({required: true, minLength: 1})} />
 
                 <button type="submit" className={(errors.username || errors.password) ? "disabled" : ""}>
                   Sign in
