@@ -2,7 +2,6 @@
 @import '../../../styles/mixins';
 
 
-
 .knowledge{
     height: 30vh;
     background:linear-gradient(rgba(8, 46, 62, 0.75) 10%, rgba(11, 71, 97, 0.3) 30%), url('../../../assets/hero-image.jpg');
@@ -29,6 +28,7 @@
 
 .knowledge-buttons{
         margin: 5% 0;
+        
 
         a {
             font-family: $font-family;
@@ -37,7 +37,7 @@
             font-weight: 600;
             border: none;
             background-color: $button-green;
-            padding: 11px 7%;
+            padding: 11px 5%;
             border-radius: 7px;
             margin: 0 6%;
         }
@@ -56,8 +56,6 @@
     h2{
         font-size: 3.5rem;
         text-align: center;
-
-        // text-decoration: underline solid $tree-peacock;
     }
 
     h3{
@@ -110,7 +108,9 @@
         }
     }
     img{
-        width: 40%;
+        margin-top: 10%;
+        width: 40vw;
+        height: 20vh;
         border-radius: 10px;
 
         @media #{$desktop} {
