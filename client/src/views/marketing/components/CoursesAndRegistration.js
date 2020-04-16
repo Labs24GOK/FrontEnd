@@ -26,7 +26,7 @@ function CoursesAndRegistration() {
                         <h3>General English</h3>
                             <p>Kids Box by Cambridge University Press will delight young learners through all the activities, crafts, role plays and simulations while alwas focused on the topic.</p>
                         <h3>Public School and Exam Support</h3>
-                            <p>The Garden of Knowledge hand picked government school teachers that adore what they do and have a superior knowledge of their subjects. We offer support in English, Arabic, maths and Science.</p>
+                            <p>The Garden of Knowledge hand picked government school teachers that adore what they do and have a superior knowledge of their subjects. We offer support in English, Arabic, Math and Science.</p>
                 </section>
                 <section className="class-levels">
                 <h2 className="section-odd">Intermediate and Secondary</h2> 
@@ -38,8 +38,9 @@ function CoursesAndRegistration() {
                 </section>    
                 </div>    
             <section>
-            <div className='registration-container'>
             <h2 className="section-even">Registration Information</h2>
+
+            <div className='registration-container'>
 
             <section className="placement-test">
                 <img src={PlacementTest} />
