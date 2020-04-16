@@ -1,3 +1,17 @@
+.sections{
+   
+    @media #{$desktop} {
+       
+        display: flex;
+        justify-content: space-between;
+    .class-levels {
+            width:30%;
+        }
+    }
+    }
+  
+
+
 .img {
     height:30vh;
     width: auto;
@@ -7,23 +21,26 @@ address {
     margin: 0;
 }
 
-.registration-container {
-    h1 {
-        text-align: center;
-    }
-}
+
 
 .placement-test {
     display: flex;
     justify-content: space-around;
 
+   
     img {
         width: 40%;
     }
 
     div {
         width: 40%;
+        @media #{$desktop} {
+            font-size: 1.5rem;
+            
+        
+        }
 
+    
         h2 {
             text-align: center;
         }
@@ -39,7 +56,8 @@ address {
 .terms {
     display: flex;
     justify-content: space-around;
-
+    
+ 
     img {
         width: 40%;
     }
@@ -61,6 +79,10 @@ address {
 .fees {
     display: flex;
     justify-content: space-around;
+    
+    @media #{$desktop} {
+        height: 100vh;
+    }
 
     img {
         width: 40%;

@@ -8,7 +8,7 @@ export default function Home() {
     return(
         <div className='home'>
             <div className='knowledge'>
-                <h1>Knowledge For all</h1>
+                <h1>Knowledge For All</h1>
             </div>
 
             <div className="knowledge-buttons">
