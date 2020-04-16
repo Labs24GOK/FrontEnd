@@ -1,7 +1,7 @@
 import React from 'react'
 import teacher from '../../../assets/native-english-speaker.jpg'
-import kids from '../../../assets/Kindergarten.jpg'
-
+import diorama from '../../../assets/girls-holding-diorama-cropped.jpg'
+import family from '../../../assets/family-in-mind-small.jpg'
 
 export default function Home() {
 
@@ -13,26 +13,23 @@ export default function Home() {
 
             <div className="knowledge-buttons">
                 <a>Register Now</a>
-                <a> Learn More</a>
+                <a>Learn More</a>
             </div>
 
             <section className='why-special'>
                 <h2>Why we're special</h2>
 
-
                 <div className='special-container'>
                     <div className="learn-from-best">
                         <h3>Learn from the best</h3>             
-                        <img src={teacher} alt="A native english speaking woman"/>
-
+                        <img src={teacher} alt="A native English speaking teacher"/>
                         <p>Qualified, passionate teachers, including native speaker teachers when learning a language.</p>
                     </div>
 
                     <div className="fun">
                         <h3>Learning is Fun</h3>
-                        <div>
-                            <img src={kids} alt="kids having fun while learning"/>
-                        </div> 
+                        <img src={diorama} alt="Girls showing off the diorama they made"/>
+                        <p>Students actively learn through role plays, hands-on activities, and topic- and age-appropriate games.</p>
                     </div>
                 </div>
             </section>
@@ -40,7 +37,8 @@ export default function Home() {
             <section className="afford">
                 <div className="afford-text">
                     <h2>Affordability</h2>
-                    <p>Created with families in mind</p>
+                    <img src={family} alt="Picture of a father and two smiling sons"/>
+                    <p>Created with families in mind.</p>
                  </div>
             </section>
 
