@@ -8,11 +8,21 @@
     background-position: 50% 40%;
     background-repeat: no-repeat;
     background-size: cover;
+
+    @media #{$desktop} {
+        height: 80vh;
+    }
     
     h1{
         padding-top: 3%;
         font-size: 2.5rem;
         color:white;
+
+        @media #{$desktop} {
+            font-size: 5.5rem;
+            padding: 2% 5%;
+            text-align: left !important;
+        }
     }
 }
 
@@ -31,10 +41,18 @@
             border-radius: 7px;
             margin: 0 6%;
         }
+
+        @media #{$desktop} {
+            text-align: center;
+            a {
+                padding: 20px 7%;
+            }
+        }
     }
 
 .why-special{
     margin-top: 3%;
+    
     h2{
         font-size: 3.5rem;
         text-align: center;
@@ -53,33 +71,75 @@
         color: black;
     }
 
+    .special-container {
+        @media #{$desktop} {
+            display: flex;
+        }
+    }
+
 }
 
 .learn-from-best{
     display: flex;
     justify-content: space-evenly;
+    flex-direction: column;
     align-items: center;
+
+    @media #{$desktop} {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h3 {
+        @media #{$desktop} {
+            margin: 3%;
+        }
+    }
+    
     p{
-        padding-top: 11%;
-        width: 50%;
+        padding-top: 1%;
+        width: 40%;
         text-align: left;
+
+        @media #{$desktop} {
+            text-align: center;
+            width: 50%;
+            margin: 1%;
+        }
     }
     img{
         margin-top: 10%;
         width: 40vw;
         height: 20vh;
         border-radius: 10px;
+
+        @media #{$desktop} {
+            width: 50%;
+        }
     }
 }
 
-.fun{
+.fun {
+    @media #{$desktop} {
+        text-align: center;
+    }
+
     h3{
         margin: 3% 0;
+        @media #{$desktop} {
+            margin-bottom: 3%;
+        }
     }
+
     img{
         width: 100%;
         margin: 3% 0;
         border-radius: 10px;
+
+        @media #{$desktop} {
+            width: 50%;
+            margin: 0%;
+        }
     }
 }
 
@@ -91,9 +151,29 @@
     padding: 8% 0;
     text-align: left;
 
+    @media #{$desktop} {
+        background: url('../../../assets/plant-growing-from-jar-of-coins.jpg');
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 10% 0;
+        text-align: left;
+        height: 60vh;
+    }
+
+    h2 {
+        @media #{$desktop} {
+            font-size: 4rem;
+        }
+    }
+
     p{
         font-size: 1.5rem;
         font-weight: 700;
+
+        @media #{$desktop} {
+            font-size: 2.5rem;
+        }
     }
     .afford-text{
         width: 30%;
