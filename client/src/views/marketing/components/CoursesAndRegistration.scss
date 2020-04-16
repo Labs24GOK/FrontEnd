@@ -1,3 +1,18 @@
+.sections{
+   
+    @media #{$desktop} {
+       
+        display: flex;
+        justify-content: space-between;
+        
+        .class-levels {
+            width:30%;
+        }
+    }
+    }
+  
+
+
 .img {
     height:30vh;
     width: auto;
@@ -8,28 +23,50 @@ address {
 }
 
 .registration-container {
-    h1 {
-        text-align: center;
+    @media #{$desktop} {
+        display: flex;
+    }
+    
+    section div {
+        @media #{$desktop} {
+            width: 70%;
+        }
     }
 }
+
 
 .placement-test {
     display: flex;
     justify-content: space-around;
 
+    @media #{$desktop} {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+   
     img {
         width: 40%;
+        @media #{$desktop} {
+            width: 70%;
+        }
     }
 
     div {
         width: 40%;
 
+        @media #{$desktop} {
+            font-size: 1.5rem;
+        }
+
+    
         h2 {
             text-align: center;
         }
     
         p {
-            text-align: center;
+            text-align: left;
         }
     }
 
@@ -39,9 +76,20 @@ address {
 .terms {
     display: flex;
     justify-content: space-around;
-
+    
+    @media #{$desktop} {
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+        align-items: center;
+        font-size: 1.5rem;
+    }
+ 
     img {
         width: 40%;
+
+        @media #{$desktop} {
+            width: 70%;
+        }
     }
 
     div {
@@ -52,7 +100,7 @@ address {
         }
     
         p {
-            text-align: center;
+            text-align: left;
         }
     }
 
@@ -61,10 +109,22 @@ address {
 .fees {
     display: flex;
     justify-content: space-around;
+    
+    @media #{$desktop} {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: 1.5rem;
+    }
 
     img {
         width: 40%;
         margin: 2%;
+
+        @media #{$desktop} {
+            width: 70%;
+            margin: 0%;
+        }
     }
 
     div {
@@ -73,7 +133,7 @@ address {
         }
     
         p {
-            text-align: center; 
+            text-align: left;
         }
     }
 

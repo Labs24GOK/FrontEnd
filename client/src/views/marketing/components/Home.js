@@ -8,7 +8,7 @@ export default function Home() {
     return(
         <div className='home'>
             <div className='knowledge'>
-                <h1>Knowledge For all</h1>
+                <h1>Knowledge For All</h1>
             </div>
 
             <div className="knowledge-buttons">
@@ -19,20 +19,21 @@ export default function Home() {
             <section className='why-special'>
                 <h2>Why we're special</h2>
 
-                <h3>Learn from the best</h3>
 
-                <div className="learn-from-best">
-                    <p>Qualified, passionate teachers, including native speaker teachers when learning a language.</p>
+                <div className='special-container'>
+                    <div className="learn-from-best">
+                        <h3>Learn from the best</h3>             
+                        <img src={teacher} alt="A native english speaking woman"/>
 
-                    <img src={teacher} alt="A native english speaking woman"/>
-                </div>
-
-                <div className="fun">
-                    <h3>Learning is Fun</h3>
-                    <div>
-                        <img src={kids} alt="kids having fun while learning"/>
+                        <p>Qualified, passionate teachers, including native speaker teachers when learning a language.</p>
                     </div>
-                        
+
+                    <div className="fun">
+                        <h3>Learning is Fun</h3>
+                        <div>
+                            <img src={kids} alt="kids having fun while learning"/>
+                        </div> 
+                    </div>
                 </div>
             </section>
 
