@@ -12,15 +12,13 @@ function CourseStructure() {
             
             <section>
                 <div className="place-test">
-                    <div className="">
+                    <div>
                         <h3>Placement Test</h3>
                         <p>We ask all students to take a written and verbal placement test.</p>
                     </div>
-                    <div className="">
-                        <div className="">
-                        <img className="test-pic" src={headerPic} alt='Person taking a test' />
-                        </div>
-                    </div>
+                    
+                    <img className="test-pic" src={headerPic} alt='Person taking a test' />   
+                    
                    
                 </div>
             </section>
