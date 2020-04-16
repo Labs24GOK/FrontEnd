@@ -1,123 +1,102 @@
 @import "../styles/variables";
-// @import "../styles//global.scss";
 
-.login {
-  // height: 1208px;
-  // width: 1440px;
-  // background: #ffffff;
-  display: flex;
-  justify-content: center;
-  // width: 100%;
 
-  // .nav {
-  //   box-shadow: none;
-  //   background: #ffffff;
-  // }
-
-  .login-body {
-    height: 625px;
-    // width: 1029px;
-    // position: absolute;
-    // left: 204px;
-    // margin-left: 14.7%;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    top: 223px;
-    background: #e0ebf0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    border-top: 5px solid #c73642;
-    align-items: center;
-
-    
-
-    .img-container {
-      // margin-top: 175px;
-      padding: 40px;
-
-      img {
-        width: 100%;
-        height: auto;
-      }
-    }
+// * {border: 1px solid purple; }
 
     .form-container {
-      background: #ffffff;
-      height: 443px;
-      width: 450px;
-      border-radius: 10px;
-      margin-top: 80px;
-      margin: 40px 40px 40px 0px;
 
+      margin: 0 auto;
+      padding-top: 3rem;
+
+      width: 90vw;
+      max-width: 800px;
+      
       h1 {
-        font-family: "Mada", sans-serif;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 48px;
-        line-height: 62px;
-        color: #0c435a;
-        margin-top: 80px;
+        font-size: 3rem;
+        text-align: center;
+
       }
     }
+    
     form {
       fieldset {
         display: flex;
+        justify-content: center;
+        align-items: center;
         flex-direction: column;
 
         label {
-          display: none;
+
+          font-size: 1.5rem;
+
+          font-weight: bold;
+          color: $tree-green;
+
+          display: block;
+          text-align: left;
         }
 
         input {
           border: none;
-          border-bottom: 1px solid black;
-          border-radius: 0;
-          width: 298px;
-          height: 27px;
-          padding-bottom: 5px;
-          margin-top: 30px;
-          margin-left: 65px;
+
+          font-size: 1.5rem;
+          line-height: 2rem;
+
+          margin-top: 1rem;
+          margin-bottom: 2rem;
+          
+          border-bottom: 3px solid #999999;
+
         }
 
         input:focus {
-          border-bottom: 1px solid #197380;
-          outline-width: 0;
+          border-bottom: 3px solid $tree-light-green;
         }
       }
 
-      .register {
-        display: flex;
-        flex-direction: row;
-        margin-left: 75px;
-        color: #197380;
+      .register, .login-errors {
+        
+        text-align: center;
+
+        color: $tree-green;
 
         p {
-          margin-right: 5px;
+          margin: 0;
         }
 
         .reg-link {
           text-decoration: underline;
-          color: #197380;
+          color: $tree-green;
         }
       }
 
+      .login-errors {
+
+        margin-top: 1rem;
+
+        color: $tree-brown;
+        font-weight: bold;
+      }
+
       button {
-        width: 298px;
-        height: 40px;
-        border: 1px solid #c73642;
+        width: 200px;
+        
+        font-size: 1.5rem;
+        line-height: 3rem;
+
+        border: 1px solid transparent;
+
         border-radius: 7px;
         color: white;
-        background-color: #c73642;
-        margin-left: 65px;
-        margin-top: 30px;
-        font-weight: bold;
+        background-color: $tree-green;
+        
+        margin-top: 2rem 0;
       }
 
       // button should be white with red border and text if the user hasn't entered all the info
       // button becomes red with white text when ready to submit
       .disabled {
-        color: #c73642;
+        color: $tree-light-green;
         background-color: white;
       }
 
@@ -127,7 +106,7 @@
 
       button:hover {
         cursor: pointer;
+
+        background-color: lighten($tree-green, 10%);
       }
     }
-  }
-}

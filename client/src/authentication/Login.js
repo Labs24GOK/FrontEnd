@@ -18,21 +18,17 @@ function Login(props) {
     return <Redirect to="/dashboard" />;
   } else {
     return (
-      <div className="login">
-        <div className="login-body">
-          <div className="img-container">
-            <img src={LoginGroup} alt="Illustration of a man, woman, and child walking together." />
-          </div>
+      
           <div className="form-container">
             <h1>Welcome back!</h1>
             <form onSubmit={handleSubmit(formSubmit)}>
               
               <fieldset>
                 <label htmlFor="username">Username</label>
-                <input type="text" name="username" placeholder="Username" ref={register({required: true, minLength: 1})} />
+                <input type="text" name="username" ref={register({required: true, minLength: 1})} />
 
                 <label htmlFor="password">Password</label>
-                <input type="password" name="password" placeholder="Password" ref={register({required: true, minLength: 1})} />
+                <input type="password" name="password"  ref={register({required: true, minLength: 1})} />
 
                 <button type="submit" className={(errors.username || errors.password) ? "disabled" : ""}>
                   Sign in
@@ -44,7 +40,7 @@ function Login(props) {
                   Register now.
                 </Link>
               </div>
-              <div>
+              <div className="login-errors">
                 {(errors.username || errors.password) && <p>Username and Password are required.</p> && console.log(errors)}
                 {props.state.authenticationReducer.logIn.error && <p>Login credentials incorrect.</p>}
 
@@ -53,8 +49,7 @@ function Login(props) {
               </div>
             </form>
           </div>
-        </div>
-      </div>
+
     );
   }
 }
