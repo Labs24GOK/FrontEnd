@@ -1,55 +1,17 @@
 @import "../styles/variables";
-// @import "../styles//global.scss";
 
-.login {
-  // height: 1208px;
-  // width: 1440px;
-  // background: #ffffff;
-  display: flex;
-  justify-content: center;
-  // width: 100%;
-
-  // .nav {
-  //   box-shadow: none;
-  //   background: #ffffff;
-  // }
-
-  .login-body {
-    height: 625px;
-    // width: 1029px;
-    // position: absolute;
-    // left: 204px;
-    // margin-left: 14.7%;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    top: 223px;
-    background: #e0ebf0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    border-top: 5px solid #c73642;
-    align-items: center;
-
-    
-
-    .img-container {
-      // margin-top: 175px;
-      padding: 40px;
-
-      img {
-        width: 100%;
-        height: auto;
-      }
-    }
+* {border: 1px solid purple; }
 
     .form-container {
-      background: #ffffff;
-      height: 443px;
-      width: 450px;
-      border-radius: 10px;
-      margin-top: 80px;
-      margin: 40px 40px 40px 0px;
+      // background: #ffffff;
+      // height: 443px;
+      // width: 450px;
+      // border-radius: 10px;
+      // margin-top: 80px;
+      // margin: 40px 40px 40px 0px;
 
+      width: 90vw;
+      
       h1 {
         font-family: "Mada", sans-serif;
         font-style: normal;
@@ -57,12 +19,17 @@
         font-size: 48px;
         line-height: 62px;
         color: #0c435a;
-        margin-top: 80px;
+        margin-top: 1rem;
+
+        text-align: center;
+
       }
     }
     form {
       fieldset {
         display: flex;
+        justify-content: center;
+        align-items: center;
         flex-direction: column;
 
         label {
@@ -76,8 +43,8 @@
           width: 298px;
           height: 27px;
           padding-bottom: 5px;
-          margin-top: 30px;
-          margin-left: 65px;
+          margin-top: 5%;
+          
         }
 
         input:focus {
@@ -88,8 +55,8 @@
 
       .register {
         display: flex;
-        flex-direction: row;
-        margin-left: 75px;
+        justify-content: center;
+        
         color: #197380;
 
         p {
@@ -109,8 +76,8 @@
         border-radius: 7px;
         color: white;
         background-color: #c73642;
-        margin-left: 65px;
-        margin-top: 30px;
+        
+        margin-top: 5%;
         font-weight: bold;
       }
 
@@ -129,5 +96,3 @@
         cursor: pointer;
       }
     }
-  }
-}

@@ -18,11 +18,7 @@ function Login(props) {
     return <Redirect to="/dashboard" />;
   } else {
     return (
-      <div className="login">
-        <div className="login-body">
-          <div className="img-container">
-            <img src={LoginGroup} alt="Illustration of a man, woman, and child walking together." />
-          </div>
+      
           <div className="form-container">
             <h1>Welcome back!</h1>
             <form onSubmit={handleSubmit(formSubmit)}>
@@ -53,8 +49,7 @@ function Login(props) {
               </div>
             </form>
           </div>
-        </div>
-      </div>
+
     );
   }
 }
