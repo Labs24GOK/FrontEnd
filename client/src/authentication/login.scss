@@ -7,23 +7,31 @@
 
       margin: 0 auto;
       padding-top: 3rem;
+      text-align: center;
+
 
       width: 90vw;
       max-width: 800px;
       
       h1 {
         font-size: 3rem;
-        text-align: center;
 
       }
     }
     
     form {
+        display: flex;
+        justify-content: center !important;
+        align-items: center !important;
+        flex-direction: column;
+        text-align: center;
+
       fieldset {
         display: flex;
-        justify-content: center;
-        align-items: center;
+        justify-content: center !important;
+        align-items: center !important;
         flex-direction: column;
+        text-align: center;
 
         label {
 
@@ -31,9 +39,7 @@
 
           font-weight: bold;
           color: $tree-green;
-
           display: block;
-          text-align: left;
         }
 
         input {
@@ -90,6 +96,7 @@
         color: white;
         background-color: $tree-green;
         
+        margin: 0 auto;
         margin-top: 2rem 0;
       }
 
