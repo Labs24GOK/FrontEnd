@@ -7,6 +7,9 @@ import Login from '../authentication/Login';
 import DashboardView from '../views';
 import Register from '../authentication/Register';
 
+import Header from "../views/marketing/components/Header";
+import Footer from "../views/marketing/components/Footer";
+
 import Marketing from "../views/marketing/Marketing";
 
 function Routes(props) {
@@ -21,7 +24,7 @@ function Routes(props) {
         <Route path="/schedules" render={() => <Marketing page="course_structure" />}/>
         <Route path="/courses" render={() => <Marketing page="courses" />}/>
         <Route path="/about" render={() => <Marketing page="about" />}/>
-        <Route path="/login" render={() => <Login />}/>
+        <Route path="/login" render={() => <><Header /><Login /><Footer /></>}/>
       </Switch>
     </>
   );
