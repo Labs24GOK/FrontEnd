@@ -11,7 +11,9 @@
     }
     }
   
-
+img {
+    border-radius: 10px;
+}
 
 .img {
     height:30vh;
@@ -48,14 +50,14 @@ address {
 
    
     img {
-        width: 70%;
+        width: 100%;
         @media #{$desktop} {
             width: 70%;
         }
     }
 
     div {
-        width: 70%;
+        width: 100%;
         h2 {
             text-align: center;
         }
@@ -85,7 +87,7 @@ address {
     }
  
     img {
-        width: 70%;
+        width: 100%;
 
         @media #{$desktop} {
             width: 70%;
@@ -93,7 +95,7 @@ address {
     }
 
     div {
-        width: 70%;
+        width: 100%;
         h2 {
             text-align: center;
         }
@@ -117,7 +119,7 @@ address {
     }
 
     img {
-        width: 70%;
+        width: 100%;
         margin: 2%;
 
         @media #{$desktop} {
@@ -127,7 +129,7 @@ address {
     }
 
     div {
-        width: 70%;
+        width: 100%;
         h2 {
             text-align: center;
         }
