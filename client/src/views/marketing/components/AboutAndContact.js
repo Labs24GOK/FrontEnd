@@ -7,14 +7,12 @@ import Facebook from '../../../assets/facebook-peacock.png'
 import Twitter from '../../../assets/twitter-peacock.png'
 import phone from '../../../assets/phone-peacock.png'
 
-import children from '../../../assets/children.jpg'
+import children from '../../../assets/about-pic.jpg'
 
 function AboutAndContact() {
 
     return (
         <>
-   
-            
             <div className="wrapper">
 
                 <section className="about-container" >
