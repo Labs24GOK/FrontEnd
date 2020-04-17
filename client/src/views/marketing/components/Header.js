@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import LogoTree from "../../../assets/Garden_tree_only.png";
 import Logo from "../../../assets/Garden.png";
 import HamburgerMenu from "../../../assets/hamburger_menu_icon.png";
@@ -15,26 +15,28 @@ function Header() {
     return (
         <>
             <header className="mobile">
-                <img src={LogoTree} alt="The Garden of Knowledge" />
+            <Link to='/' >
+                     <img src={LogoTree} alt="The Garden of Knowledge" /> 
+            </Link>        
                 <img src={HamburgerMenu} alt="Mobile Menu Icon" className="hamburger-menu-icon" onClick={toggleMenu} />
             </header>
 
             <header className="desktop">
-                <img src={Logo} alt="The Garden of Knowledge" />
-                <div className="desktop-header-links">
-                    <NavLink to='/' className="desktop-header-link" >Home</NavLink>
-                    <NavLink to='/courses' className="desktop-header-link" >Courses and Registration</NavLink>
-                    <NavLink to='/schedules' className="desktop-header-link" >Schedules</NavLink>
-                    <NavLink to='/about' className="desktop-header-link" >About and Contact</NavLink>
-                    <NavLink to='/login' className="desktop-header-link">Sign In</NavLink>
+            <Link to='/' >
+                    <img src={Logo} alt="The Garden of Knowledge" />
+             </Link>       
+                <div className="desktop-header-links">     
+                    <NavLink to='/courses' activeClassName ="activeNavButton" className="desktop-header-link" >Courses & Registration</NavLink>
+                    <NavLink to='/schedules' activeClassName ="activeNavButton"className="desktop-header-link" >Schedules</NavLink>
+                    <NavLink to='/about' activeClassName ="activeNavButton"className="desktop-header-link" >About & Contact</NavLink>
+                    <NavLink to='/login' activeClassName ="activeNavButton" className="desktop-header-link">Sign In</NavLink>
                 </div>
             </header>
 
             <div className={"hamburger-menu " + menuDisplayStatus}>
-                <NavLink to='/' className="hamburger-link" onClick={toggleMenu} >Home</NavLink>
-                <NavLink to='/courses' className="hamburger-link" onClick={toggleMenu} >Courses and Registration</NavLink>
+                <NavLink to='/courses' className="hamburger-link" onClick={toggleMenu} >Courses & Registration</NavLink>
                 <NavLink to='/schedules' className="hamburger-link" onClick={toggleMenu} >Schedules</NavLink>
-                <NavLink to='/about' className="hamburger-link" onClick={toggleMenu} >About and Contact</NavLink>
+                <NavLink to='/about' className="hamburger-link" onClick={toggleMenu} >About & Contact</NavLink>
                 <NavLink to='/login' className="hamburger-link"onClick={toggleMenu} >Sign In</NavLink>
             </div>
         </>
