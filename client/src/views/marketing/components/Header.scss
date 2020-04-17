@@ -23,32 +23,36 @@ header.mobile {
     }
 }
 
-header.desktop {
+
+header.desktop  {
     
     display: none;
 
     @media #{$desktop} {
         display: flex;
     }
+   
 
-    .desktop-header-link {
-
+    .desktop-header-link    {
         display: inline-block;
-        
+
         font-size: 1.5rem;
         line-height: 3rem;
-
+        
         padding: 0 1rem;
-
         color: $tree-green;
-
         border-bottom: 3px solid transparent;
 
         &:hover {
             border-bottom: 3px solid $tree-peacock;
         }
     }
+    .activeNavButton {
+        border-bottom: 3px solid $tree-peacock;
+   }
 }
+
+
 
 .hamburger-menu {
 

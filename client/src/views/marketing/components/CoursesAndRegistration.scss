@@ -11,7 +11,9 @@
     }
     }
   
-
+img {
+    border-radius: 10px;
+}
 
 .img {
     height:30vh;
@@ -37,7 +39,8 @@ address {
 
 .placement-test {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column-reverse;
+    align-items: center;
 
     @media #{$desktop} {
         flex-direction: column;
@@ -47,27 +50,25 @@ address {
 
    
     img {
-        width: 40%;
+        width: 100%;
         @media #{$desktop} {
             width: 70%;
         }
     }
 
     div {
-        width: 40%;
-
-        @media #{$desktop} {
-            font-size: 1.5rem;
-        }
-
-    
+        width: 100%;
         h2 {
             text-align: center;
         }
-    
         p {
             text-align: left;
         }
+        
+        @media #{$desktop} {
+            font-size: 1.5rem;
+        }
+        
     }
 
 
@@ -75,7 +76,8 @@ address {
 
 .terms {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
     
     @media #{$desktop} {
         flex-direction: column-reverse;
@@ -85,7 +87,7 @@ address {
     }
  
     img {
-        width: 40%;
+        width: 100%;
 
         @media #{$desktop} {
             width: 70%;
@@ -93,12 +95,10 @@ address {
     }
 
     div {
-        width: 50%;
-
+        width: 100%;
         h2 {
             text-align: center;
         }
-    
         p {
             text-align: left;
         }
@@ -108,7 +108,8 @@ address {
 
 .fees {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column-reverse;
+    align-items: center;
     
     @media #{$desktop} {
         flex-direction: column;
@@ -118,7 +119,7 @@ address {
     }
 
     img {
-        width: 40%;
+        width: 100%;
         margin: 2%;
 
         @media #{$desktop} {
@@ -128,10 +129,10 @@ address {
     }
 
     div {
+        width: 100%;
         h2 {
             text-align: center;
         }
-    
         p {
             text-align: left;
         }
