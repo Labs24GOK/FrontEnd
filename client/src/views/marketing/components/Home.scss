@@ -50,14 +50,12 @@
         }
     }
 
-.why-special{
+.why-special, .afford {
     margin-top: 3%;
     
     h2{
         font-size: 3.5rem;
         text-align: center;
-
-        // text-decoration: underline solid $tree-peacock;
     }
 
     h3{
@@ -81,84 +79,50 @@
 
 }
 
-.learn-from-best{
+.special-container {
+
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
     align-items: center;
 
     @media #{$desktop} {
+        flex-direction: row;
+    }
+
+    .learn-from-best, .fun {
+
+        display: flex;
+        justify-content: space-evenly;
         flex-direction: column;
         align-items: center;
-    }
 
-    h3 {
-        @media #{$desktop} {
-            margin: 3%;
+        h3 {
+            font-size: 2rem;
         }
-    }
-    
-    p{
-        padding-top: 1%;
-        width: 40%;
-        text-align: left;
 
-        @media #{$desktop} {
+        p {
             text-align: center;
-            width: 50%;
-            margin: 1%;
+            margin: 1rem;
+
+            width: 90%;
+
+            @media #{$desktop} {
+                width: 50%;
+            }
         }
-    }
-    img{
-        width: 40%;
-        border-radius: 10px;
 
-        @media #{$desktop} {
-            width: 50%;
+        img {
+            border-radius: 5px;
         }
-    }
-}
 
-.fun {
-    @media #{$desktop} {
-        text-align: center;
-    }
-
-    h3{
-        margin: 3% 0;
-        @media #{$desktop} {
-            margin-bottom: 3%;
-        }
-    }
-
-    img{
-        width: 100%;
-        margin: 3% 0;
-        border-radius: 10px;
-
-        @media #{$desktop} {
-            width: 50%;
-            margin: 0%;
-        }
     }
 }
 
 .afford{
-    background: url('../../../assets/plant-growing-from-jar-of-coins.jpg');
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 8% 0;
-    text-align: left;
 
     @media #{$desktop} {
-        background: url('../../../assets/plant-growing-from-jar-of-coins.jpg');
-        background-position: 50% 50%;
-        background-repeat: no-repeat;
-        background-size: cover;
-        padding: 10% 0;
-        text-align: left;
-        height: 60vh;
+        
     }
 
     h2 {
@@ -168,29 +132,18 @@
     }
 
     p{
-        font-size: 1.5rem;
-        font-weight: 700;
 
         @media #{$desktop} {
             font-size: 2.5rem;
         }
     }
+
+    
+    img {
+        border-radius: 5px;
+    }
+
     .afford-text{
-        width: 30%;
-        margin-left: 55%;
+        
     }
 }
-
-.kinder{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-    img{
-        width: 45%;
-    }
-    h2{
-        width: 45%;
-    }
-}
-

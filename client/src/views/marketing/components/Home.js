@@ -1,6 +1,6 @@
 import React from 'react'
 import teacher from '../../../assets/native-english-speaker.jpg'
-import diorama from '../../../assets/girls-holding-diorama-cropped.jpg'
+import learningFun from '../../../assets/learning-is-fun-small.jpg'
 import family from '../../../assets/family-in-mind-small.jpg'
 
 export default function Home() {
@@ -23,13 +23,13 @@ export default function Home() {
                     <div className="learn-from-best">
                         <h3>Learn from the best</h3>             
                         <img src={teacher} alt="A native English speaking teacher"/>
-                        <p>Qualified, passionate teachers, including native speaker teachers when learning a language.</p>
+                        <p>Qualified, passionate teachers, including native speakers for language courses.</p>
                     </div>
 
                     <div className="fun">
-                        <h3>Learning is Fun</h3>
-                        <img src={diorama} alt="Girls showing off the diorama they made"/>
-                        <p>Students actively learn through role plays, hands-on activities, and topic- and age-appropriate games.</p>
+                        <h3>Learning is fun</h3>
+                        <img src={learningFun} alt="A smiling girl holding a notebook"/>
+                        <p>Students actively learn through role plays, hands-on activities, and age-appropriate games.</p>
                     </div>
                 </div>
             </section>
