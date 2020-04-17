@@ -29,8 +29,8 @@ function AboutAndContact() {
                     <img className="children" src={children} />
                 </section>
                  
-                <section>
-                    <div className="contact-container" id="contact-us">
+                <section className="contact-container">
+                    <div id="contact-us">
                         <h1>Contact Us</h1>        
                         <section className="contact-section">
                             <img src = {WhatsApp} alt="whatsapp"/>
