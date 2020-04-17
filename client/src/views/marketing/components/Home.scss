@@ -70,15 +70,14 @@
         color: black;
     }
 
-    .special-container {
-        @media #{$desktop} {
-            display: flex;
-        }
-    }
-
 }
 
 .special-container {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
 
     @media #{$desktop} {
         flex-direction: row;
@@ -91,6 +90,10 @@
         justify-content: flex-start;
         align-items: center;
         
+        @media #{$desktop} {
+            width: 45%;
+        }
+
         h3 {
             font-size: 2rem;
         }
@@ -99,11 +102,7 @@
             text-align: center;
             margin: 1rem;
 
-            width: 90%;
-
-            @media #{$desktop} {
-                width: 70%;
-            }
+            width: 70%;
         }
 
         img {
