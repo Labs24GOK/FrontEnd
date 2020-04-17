@@ -2,11 +2,9 @@ import React from 'react';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
-import About from "./components/AboutAndContact";
+import AboutAndContact from "./components/AboutAndContact";
 import CourseStructure from "./components/CourseStructure";
-import Courses from "./components/CoursesAndRegistration";
-import Contact from "./components/ContactUs";
-import Registration from './components/Registration';
+import CoursesAndRegistration from "./components/CoursesAndRegistration";
 
 import "./marketing.scss";
 
@@ -20,16 +18,10 @@ function Marketing({page}) {
             componentToRender = CourseStructure;
             break;
         case "courses":
-            componentToRender = Courses;
-            break;
-        case "registration":
-            componentToRender = Registration;
+            componentToRender = CoursesAndRegistration;
             break;
         case "about":
-            componentToRender = About;
-            break;
-        case "contact":
-            componentToRender = Contact;
+            componentToRender = AboutAndContact;
             break;
     }
 

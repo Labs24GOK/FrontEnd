@@ -38,39 +38,39 @@ function CoursesAndRegistration() {
                 </section>    
                 </div>    
             <section>
-            <h2 className="section-even">Registration Information</h2>
+                <h2 className="section-even">Registration Information</h2>
 
-            <div className='registration-container'>
+                <div className='registration-container'>
 
-            <section className="placement-test">
-                <img src={PlacementTest} />
+                    <section className="placement-test">
+                        <img src={PlacementTest} />
 
-                <div>
-                    <h2>Placement Test</h2>
-                    <p>This can be taken online or at the center and will help us find the student's level when taking a language course.</p>
+                        <div>
+                            <h2>Placement Test</h2>
+                            <p>This can be taken online or at the center and will help us find the student's level when taking a language course.</p>
+                        </div>
+                    </section>
+
+                    <section className="terms">
+                        <div>
+                            <h2>Terms and Conditions</h2>
+                            <p>A parent will be required to sign a document containing course information and student behaviour guide, as well as commiting them to finish a 3 month section once they have started classes.</p>
+                        </div>
+                        <img src={Terms} />
+                    </section>
+
+                    <section className="fees">
+                    <img src={Fees} />
+                    <div>
+                        <h2>Fees</h2>
+                        <p>Kindergarten: 122BHD</p>
+                        <p>Primary: 122BHD</p>
+                        <p>Intermediate and Secondary: 127BHD</p>
+                        <p>Cost includes registration, books, stationery, and 24 classes.</p>
+                    </div>
+
+                    </section>
                 </div>
-            </section>
-
-            <section className="terms">
-                <div>
-                    <h2>Terms and Conditions</h2>
-                    <p>A parent will be required to sign a document containing course information and student behaviour guide, as well as commiting them to finish a 3 month section once they have started classes.</p>
-                </div>
-                <img src={Terms} />
-            </section>
-
-            <section className="fees">
-            <img src={Fees} />
-            <div>
-                <h2>Fees</h2>
-                <p>Kindergarten: 122BHD</p>
-                <p>Primary: 122BHD</p>
-                <p>Intermediate and Secondary: 127BHD</p>
-                <p>Cost includes registration, books, stationery, and 24 classes.</p>
-            </div>
-
-            </section>
-        </div>
             </section>
 
             </>

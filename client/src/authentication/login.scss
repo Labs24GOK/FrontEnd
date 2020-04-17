@@ -1,18 +1,20 @@
 @import "../styles/variables";
 
-
-// * {border: 1px solid purple; }
-
     .form-container {
 
       margin: 0 auto;
       padding-top: 3rem;
       text-align: center;
 
-
       width: 90vw;
       max-width: 800px;
+
+      min-height: calc(100vh - 295px);
       
+      @media #{$desktop} {
+        min-height: calc(100vh - 443px);
+      }
+
       h1 {
         font-size: 3rem;
 
