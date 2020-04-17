@@ -16,9 +16,17 @@
 // Global Styles
 
 .content {
-    min-height: calc(100vh - 265px); // determine exact value later
+
+    // accounts for header (100 px) and footer (165 px, including tree)
+    min-height: calc(100vh - 265px);
+
     h1 {
         text-align: center;
+    }
+
+    // tree is smaller on desktop after jump in size
+    @media #{$desktop} {
+        min-height: calc(100vh);
     }
 }
 
