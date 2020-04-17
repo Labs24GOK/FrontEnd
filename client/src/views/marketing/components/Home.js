@@ -37,8 +37,8 @@ export default function Home() {
             <section className="afford">
                 <div className="afford-text">
                     <h2>Affordability</h2>
-                    <img src={family} alt="Picture of a father and two smiling sons"/>
                     <p>Created with families in mind.</p>
+                    <img src={family} alt="Picture of a father and two smiling sons"/>
                  </div>
             </section>
 
