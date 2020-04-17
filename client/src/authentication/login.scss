@@ -9,8 +9,12 @@
       width: 90vw;
       max-width: 800px;
 
-      min-height: calc(100vh - 265px);
+      min-height: calc(100vh - 295px);
       
+      @media #{$desktop} {
+        min-height: calc(100vh - 443px);
+      }
+
       h1 {
         font-size: 3rem;
 
