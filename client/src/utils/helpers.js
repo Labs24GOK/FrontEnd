@@ -47,3 +47,9 @@ export function booleanToYesNo(booleanValue) {
 export function yesNoToBoolean(text) {
   return text === "Yes";
 }
+
+// scroll to top to page
+// add to onClick when you need the top of a React component to be visible
+export function scrollToTop() {
+  window.scrollTo(0, 0);
+}
