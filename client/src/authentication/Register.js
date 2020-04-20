@@ -4,7 +4,7 @@ import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import { logIn, loggedIn } from "../actions/authenticationActions.js";
 import { useForm } from 'react-hook-form';
-import "./login.scss";
+import "./loginAndRegister.scss";
 
 function Register(props) {
 
