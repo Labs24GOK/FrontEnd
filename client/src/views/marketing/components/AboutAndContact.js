@@ -84,18 +84,18 @@ function AboutAndContact() {
                         <section className="contact-section">
                             <img src ={Facebook} alt="Facebook"/> 
                             <div classname="info">
-                            <a href="https://www.facebook.com/speakoutinfobh/" target="_blank" >               
+                            <a href="https://www.facebook.com/thegardenofknowledgeedu" target="_blank" >               
                                 <p>Facebook:</p>
-                                <p>speakoutinfobh</p>
+                                <p>thegardenofknowledgeedu</p>
                             </a>
                             </div>
                         </section>
                         <section className="contact-section">
                             <img src ={Twitter} alt="Twitter" /> 
                             <div classname="info">
-                            <a href="https://twitter.com/speakoutbh" target="_blank" rel="noopener noreferrer" >
+                            <a href="https://twitter.com/thegardenedu" target="_blank" rel="noopener noreferrer" >
                                 <p>Twitter:</p>
-                                <p>speakoutbh</p>
+                                <p>thegardenedu</p>
                             </a>    
                             </div>
                         </section>

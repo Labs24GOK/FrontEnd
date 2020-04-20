@@ -25,6 +25,7 @@ function Routes(props) {
         <Route path="/courses" render={() => <Marketing page="courses" />}/>
         <Route path="/about" render={() => <Marketing page="about" />}/>
         <Route path="/login" render={() => <><Header /><Login /><Footer /></>}/>
+        <Route path="/register" render={() => <><Header /><Register /><Footer /></>}/>
       </Switch>
     </>
   );
