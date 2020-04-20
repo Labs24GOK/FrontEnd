@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
+import { Link } from "react-router-dom";
 import teacher from '../../../assets/native-english-speaker.jpg'
 import learningFun from '../../../assets/learning-is-fun-small.jpg'
 import family from '../../../assets/family-in-mind-small.jpg'
 
 export default function Home() {
+
+    function scrollToTop() {
+        window.scrollTo(0, 0);
+    }
 
     return(
         <div className='home'>
@@ -13,7 +18,7 @@ export default function Home() {
 
             <div className="knowledge-buttons">
                 <a>Register Now</a>
-                <a>Learn More</a>
+                <Link to='/courses' onClick={scrollToTop}>Learn More</Link>
             </div>
 
             <section className='why-special'>
