@@ -84,9 +84,9 @@ function AboutAndContact() {
                         <section className="contact-section">
                             <img src ={Facebook} alt="Facebook"/> 
                             <div classname="info">
-                            <a href="https://www.facebook.com/speakoutinfobh/" target="_blank" >               
+                            <a href="https://www.facebook.com/thegardenofknowledgeedu" target="_blank" >               
                                 <p>Facebook:</p>
-                                <p>speakoutinfobh</p>
+                                <p>thegardenofknowledgeedu</p>
                             </a>
                             </div>
                         </section>
