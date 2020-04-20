@@ -27,7 +27,7 @@ function Register(props) {
               <fieldset>
                 <label htmlFor="name">Name</label>
                 <input type="text" name="name" ref={register({required: true, minLength: 1})} />
-
+                
                 <label htmlFor="email">Email</label>
                 <input type="email" name="email" ref={register({required: true, minLength: 1})} />
 
@@ -43,7 +43,7 @@ function Register(props) {
               </fieldset>
               
               <div className="register-errors">
-                {(errors.name || errors.email || errors.username || errors.password) && <p>All fields are required.</p> && console.log(errors)}
+                {(errors.name || errors.email || errors.username || errors.password) && <p>All fields are required.</p>}
               </div>
             </form>
           </div>
