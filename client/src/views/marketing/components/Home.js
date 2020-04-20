@@ -17,7 +17,7 @@ export default function Home() {
             </div>
 
             <div className="knowledge-buttons">
-                <a>Register Now</a>
+                <Link to='/register' onClick={scrollToTop}>Register Now</Link>
                 <Link to='/courses' onClick={scrollToTop}>Learn More</Link>
             </div>
 
