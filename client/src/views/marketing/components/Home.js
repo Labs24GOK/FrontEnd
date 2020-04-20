@@ -4,11 +4,9 @@ import teacher from '../../../assets/native-english-speaker.jpg'
 import learningFun from '../../../assets/learning-is-fun-small.jpg'
 import family from '../../../assets/family-in-mind-small.jpg'
 
-export default function Home() {
+import { scrollToTop } from "../../../utils/helpers";
 
-    function scrollToTop() {
-        window.scrollTo(0, 0);
-    }
+export default function Home() {
 
     return(
         <div className='home'>
