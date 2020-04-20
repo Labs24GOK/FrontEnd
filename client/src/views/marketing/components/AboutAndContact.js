@@ -93,9 +93,9 @@ function AboutAndContact() {
                         <section className="contact-section">
                             <img src ={Twitter} alt="Twitter" /> 
                             <div classname="info">
-                            <a href="https://twitter.com/speakoutbh" target="_blank" rel="noopener noreferrer" >
+                            <a href="https://twitter.com/thegardenedu" target="_blank" rel="noopener noreferrer" >
                                 <p>Twitter:</p>
-                                <p>speakoutbh</p>
+                                <p>thegardenedu</p>
                             </a>    
                             </div>
                         </section>
