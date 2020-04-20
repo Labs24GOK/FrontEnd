@@ -18,6 +18,8 @@
       h1 {
         font-size: 3rem;
 
+        margin-bottom: 2rem;
+
       }
     }
     
@@ -78,7 +80,7 @@
         }
       }
 
-      .login-errors {
+      .login-errors, .register-errors {
 
         margin-top: 1rem;
 
@@ -100,17 +102,6 @@
         
         margin: 0 auto;
         margin-top: 2rem 0;
-      }
-
-      // button should be white with red border and text if the user hasn't entered all the info
-      // button becomes red with white text when ready to submit
-      .disabled {
-        color: $tree-light-green;
-        background-color: white;
-      }
-
-      button:focus {
-        outline-width: 0;
       }
 
       button:hover {
