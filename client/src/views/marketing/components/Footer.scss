@@ -8,10 +8,11 @@
 .tree {
     width: 30%;
     display: flex;
+    margin-top: 20px;
     margin-bottom: -2%;
 
     @media #{$desktop} {
-        width: 10%;
+        width: 329px;
         margin-bottom: -.5%;
     }
 }

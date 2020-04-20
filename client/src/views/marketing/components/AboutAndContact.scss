@@ -55,6 +55,7 @@
 .about-container {
     @media #{$desktop} {
         width: 40%;
+        margin: 0 auto;
     }
 
 }
@@ -62,7 +63,9 @@
 .two-column {
     div {
         @media #{$desktop} { 
-            margin: 3% 0%
+            margin: 3% 0%;
+            margin-left: 20%;
+            padding-right: 20%;
         }
     }
     @media #{$desktop} {
@@ -77,5 +80,6 @@
         display: inline-block;
        width: 40vw;
        border-radius: 10px;
+       margin-right: 10%;
     }
 }

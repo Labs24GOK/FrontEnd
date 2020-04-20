@@ -10,10 +10,6 @@
         }
     }
     }
-  
-img {
-    border-radius: 10px;
-}
 
 .img {
     height:30vh;
@@ -25,10 +21,15 @@ address {
 }
 
 .registration-container {
+
     @media #{$desktop} {
         display: flex;
     }
     
+    img {
+        border-radius: 10px;
+    }
+
     section div {
         @media #{$desktop} {
             width: 70%;
