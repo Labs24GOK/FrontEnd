@@ -12,7 +12,8 @@ function UserDashboard({messages}) {
     })
 
     return (
-        <div className="content">
+        <div className="userDashboard content">
+            <h1>Welcome, {userData.name}.</h1>
             <MessageBox messages={userData.messages} />
         </div>
     )
