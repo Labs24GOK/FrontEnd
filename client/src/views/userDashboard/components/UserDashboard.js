@@ -63,7 +63,7 @@ function UserDashboard({messages}) {
         <div className="userDashboard content">
             <h1>Welcome, {userData.name}.</h1>
             <MessageBox messages={userData.messages} />
-
+            <button className="addStudent">+ Add a Student</button>
         </div>
     )
 }

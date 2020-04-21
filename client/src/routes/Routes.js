@@ -19,7 +19,9 @@ function Routes(props) {
   return (
     <>
       <Switch>
-        <Route exact path='/dashboard' render={() => <DashboardView /> } /> {/* temp; to test without having to log in */}
+        {/* temp; to test without having to log in */}
+        <Route exact path='/dashboard' render={() => <DashboardView /> } />
+
         {props.state.authenticationReducer.user.authenticated && <Route exact path='/dashboard' render={() => <DashboardView /> } />  }
         <Route exact path="/" render={() => <Marketing page="home" />}/>
         <Route path="/schedules" render={() => <Marketing page="course_structure" />}/>

@@ -18,20 +18,46 @@
 
 }
 
-.userDashboard h1 {
-    margin: 2rem;
-    text-align: left;
-}
+.userDashboard {
 
-.userDashboard .messageBox {
-    width: 90%;
-    margin: 0 auto;
-
-    border: 2px solid black;
-    padding: 1rem;
-
-    li {
-        font-size: 1rem;
-        line-height: 2rem;
+    h1 {
+        margin: 2rem;
+        text-align: left;
     }
+
+    .messageBox {
+        width: 90%;
+        margin: 0 auto;
+
+        border: 2px solid black;
+        padding: 1rem;
+
+        li {
+            font-size: 1rem;
+            line-height: 2rem;
+        }
+    }
+
+    .addStudent {
+
+        display: block;
+
+        margin: 2rem 5% 2rem auto;
+        
+        line-height: 2rem;
+        padding: 0 1rem;
+
+        color: black;
+        background-color: white;
+
+        border: 2px solid black;
+        border-radius: 5px;
+
+        cursor: pointer;
+
+        &:hover {
+            background-color: #CCCCCC;
+        }
+    }
+
 }
