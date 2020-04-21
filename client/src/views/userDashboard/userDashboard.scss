@@ -98,6 +98,19 @@
 
             margin-bottom: 5rem;
 
+            .logoAndProgram {
+
+                display: flex;
+                align-items: center;
+
+                img {
+                    width: 64px;
+                    height: auto;
+
+                    margin-right: 1rem;
+                }
+            }
+
             h3 {
                 font-size: 2rem;
                 font-weight: bold;

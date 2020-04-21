@@ -1,6 +1,19 @@
 import React from 'react';
 import hamburgerMenuIcon from "../../../assets/hamburger_menu_icon.png";
 
+import abacusLogo from "../../../assets/demo_logo_abacus.png";
+import frenchLogo from "../../../assets/demo_logo_french.png";
+import speakOutLogo from "../../../assets/speakOut_logo_only.png";
+
+function getLogo(program) {
+    if (program === "Abacus Maths")
+        { return abacusLogo; }
+    else if (program === "French")
+        { return frenchLogo; }
+    else
+        { return speakOutLogo; }
+}
+
 function StudentCourseCard({student}) {
   return (
     <div className="studentCourseCard">
@@ -17,7 +30,11 @@ function StudentCourseCard({student}) {
         <>
             {student.courses.map(course =>
                 <div className="courseData">
-                    <h3>{course.program}: {course.course}</h3>
+
+                    <div className="logoAndProgram">
+                        <img src={getLogo(course.program)} />
+                        <h3>{course.program}: {course.course}</h3>
+                    </div>
                     <table className="dateAndPayment">
                         <thead>
                             <tr>

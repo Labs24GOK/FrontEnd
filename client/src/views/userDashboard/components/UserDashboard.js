@@ -6,9 +6,9 @@ function UserDashboard({messages}) {
 
     const [userData, setUserData] = useState({
         name: "Mohammed",
-        messages: ["Make a payment so that [student] can continue enrolling for [course].",
-        "The latest progress report for [student]’s [course] is now available. View report.",
-        "Great news! [student] has been moved off the waitlist and is now enrolled in [course]."],
+        messages: ["Make a payment so that Mariam can continue enrolling for Counting II (Abacus Maths).",
+        "The latest progress report for Fatima’s Parle-t-on! course is now available. View report.",
+        "Great news! Fatima has been moved off the waitlist and is now enrolled in Parle-t-on!."],
         students: [
             {
                 "first_name": "Mariam",
