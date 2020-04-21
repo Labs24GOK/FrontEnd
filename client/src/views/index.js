@@ -1,6 +1,6 @@
 import React from 'react';
 import AdminDashboard from './adminDashboard/components/index';
-import ParentDashboard from './parentDashboard/components/index';
+import UserDashboard from './userDashboard/components/index';
 import StaffDashboard from './staffDashboard/components/index';
 
 function Index() {
@@ -9,7 +9,7 @@ function Index() {
     if (userType === 'admin') {
       return <AdminDashboard />;
     } else if (userType === 'parent') {
-      return <ParentDashboard />;
+      return <UserDashboard />;
     } else if (userType === 'staff') {
       return <StaffDashboard />;
     } else {
