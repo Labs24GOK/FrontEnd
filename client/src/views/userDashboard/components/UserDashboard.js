@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import MessageBox from "./MessageBox";
+import StudentCourseCard from "./StudentCourseCard";
 
 function UserDashboard({messages}) {
 
@@ -64,6 +65,7 @@ function UserDashboard({messages}) {
             <h1>Welcome, {userData.name}.</h1>
             <MessageBox messages={userData.messages} />
             <button className="addStudent">+ Add a Student</button>
+            {userData.students.map((student, id) => <StudentCourseCard student={student} />)}
         </div>
     )
 }

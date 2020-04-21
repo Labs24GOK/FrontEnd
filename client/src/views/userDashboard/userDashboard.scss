@@ -20,29 +20,31 @@
 
 .userDashboard {
 
+    width: 90%;
+    margin: 0 auto;
+
+
     h1 {
-        margin: 2rem;
+        margin: 2rem 0;
         text-align: left;
     }
 
     .messageBox {
-        width: 90%;
-        margin: 0 auto;
-
+        
         border: 2px solid black;
         padding: 1rem;
 
         li {
-            font-size: 1rem;
-            line-height: 2rem;
+            font-size: 1.25rem;
+            line-height: 2.5rem;
         }
     }
 
-    .addStudent {
+    button {
 
         display: block;
 
-        margin: 2rem 5% 2rem auto;
+        margin: 2rem 0 2rem auto;
         
         line-height: 2rem;
         padding: 0 1rem;
@@ -58,6 +60,83 @@
         &:hover {
             background-color: #CCCCCC;
         }
+    }
+
+    .studentCourseCard {
+
+        border: 2px solid black;
+        padding: 1rem;
+
+        margin-bottom: 2rem;
+
+        .nameAndHamburgerMenu {
+
+            display: flex;
+            justify-content: space-between;
+
+            margin-bottom: 2rem;
+
+
+            img {
+                width: 32px;
+                height: 32px;
+
+                cursor: pointer;
+            }
+        }
+
+        .firstName {
+            font-size: 2rem;
+            margin-bottom: 0;
+        }
+
+        .additionalNames {
+            margin: 0;
+        }
+
+        .courseData {
+
+            margin-bottom: 5rem;
+
+            h3 {
+                font-size: 2rem;
+                font-weight: bold;
+            }
+
+            table {
+                margin: 2rem 0 2rem auto;
+
+                thead {
+                    border-bottom: 2px solid black;
+                }
+
+                td, th {
+                    font-size: 1.25rem;
+                    line-height: 2.5rem;
+
+                    padding: 0 1rem;
+                }
+
+                .startEndDatesTimes {
+                    line-height: 2rem;
+                }
+            }
+
+            button {
+                margin: 0;
+                padding: 0 0.5rem;
+            }
+        }
+
+        .noCourses {
+            font-size: 1.5rem;
+            font-style: oblique;
+
+            text-align: center;
+
+            margin: 5rem;
+        }
+
     }
 
 }
