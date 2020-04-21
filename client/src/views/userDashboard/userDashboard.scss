@@ -17,3 +17,21 @@
     }
 
 }
+
+.userDashboard h1 {
+    margin: 2rem;
+    text-align: left;
+}
+
+.userDashboard .messageBox {
+    width: 90%;
+    margin: 0 auto;
+
+    border: 2px solid black;
+    padding: 1rem;
+
+    li {
+        font-size: 1rem;
+        line-height: 2rem;
+    }
+}
