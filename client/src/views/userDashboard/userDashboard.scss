@@ -25,18 +25,21 @@
 
 
     h1 {
-        margin: 2rem 0;
+        font-size: 2.5rem;
+        margin: 3rem 0;
         text-align: left;
     }
 
     .messageBox {
         
-        border: 2px solid black;
+        border: 3px solid black;
         padding: 1rem;
+
+        background-color: #EEEEEE;
 
         li {
             font-size: 1.25rem;
-            line-height: 2.5rem;
+            margin-bottom: 1rem;
         }
     }
 
@@ -46,13 +49,14 @@
 
         margin: 2rem 0 2rem auto;
         
-        line-height: 2rem;
+        font-size: 1.5rem;
+        line-height: 3rem;
         padding: 0 1rem;
 
         color: black;
-        background-color: white;
+        background-color: #EEEEEE;
 
-        border: 2px solid black;
+        border: 3px solid black;
         border-radius: 5px;
 
         cursor: pointer;
@@ -64,10 +68,12 @@
 
     .studentCourseCard {
 
-        border: 2px solid black;
+        border: 3px solid black;
         padding: 1rem;
 
         margin-bottom: 2rem;
+
+        background-color: #EEEEEE;
 
         .nameAndHamburgerMenu {
 
@@ -138,6 +144,13 @@
             button {
                 margin: 0;
                 padding: 0 0.5rem;
+
+                font-size: 1rem;
+                line-height: 1.5rem;
+
+                border: 2px solid;
+
+                background-color: #CCCCCC;
             }
         }
 
