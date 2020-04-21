@@ -22,7 +22,7 @@ function UserDashboard({messages}) {
                         "enrollment_status": "Waitlisted",
                         "payment_status": "Paid",
                         "progress_report_last_date": "2 June, 2020",
-                        "progress_report_last_month_number": "2 June, 2020",
+                        "progress_report_last_month_number": 1,
                     },
                     {
                         "program": "Abacus Maths",
@@ -32,7 +32,7 @@ function UserDashboard({messages}) {
                         "enrollment_status": "Not Enrolled",
                         "payment_status": "Not Paid",
                         "progress_report_last_date": "2 June, 2020",
-                        "progress_report_last_month_number": "2 June, 2020",
+                        "progress_report_last_month_number": 1,
                     }
                 ]
             },
@@ -48,7 +48,7 @@ function UserDashboard({messages}) {
                         "enrollment_status": "Enrolled",
                         "payment_status": "Paid",
                         "progress_report_last_date": "2 June, 2020",
-                        "progress_report_last_month_number": "2 June, 2020",
+                        "progress_report_last_month_number": 1,
                     }
                 ]
             },

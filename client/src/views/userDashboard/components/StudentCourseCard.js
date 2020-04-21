@@ -60,7 +60,7 @@ function StudentCourseCard({student}) {
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{course.progress_report_last_date} ({course.progress_report_last_month_number})</td>
+                                <td>{course.progress_report_last_date} (Month {course.progress_report_last_month_number})</td>
                                 <td><button>View</button></td>
                             </tr>
                         </tbody>
