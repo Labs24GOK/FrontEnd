@@ -1,0 +1,19 @@
+@import "../../styles/variables";
+
+.userDashboardHeader .logOut {
+
+    // copied from marketing/Header.scss for now; change to a mixin later
+    display: inline-block;
+
+    font-size: 1.5rem;
+    line-height: 3rem;
+    
+    padding: 0 1rem;
+    color: $tree-green;
+    border-bottom: 3px solid transparent;
+
+    &:hover {
+        border-bottom: 3px solid $tree-peacock;
+    }
+
+}
