@@ -4,8 +4,7 @@ import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import { logIn, loggedIn } from "../actions/authenticationActions.js";
 import { useForm } from 'react-hook-form';
-import LoginGroup from "../assets/LoginGroup.png";
-import "./login.scss";
+import "./loginAndRegister.scss";
 
 function Login(props) {
 
@@ -41,10 +40,8 @@ function Login(props) {
                 </Link>
               </div>
               <div className="login-errors">
-                {(errors.username || errors.password) && <p>Username and Password are required.</p> && console.log(errors)}
+                {(errors.username || errors.password) && <p>Username and Password are required.</p>}
                 {props.state.authenticationReducer.logIn.error && <p>Login credentials incorrect.</p>}
-
-                {/* <p>Need to reset button color/status once the input is changed after an unsuccessful login attempt</p> */}
 
               </div>
             </form>

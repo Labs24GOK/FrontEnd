@@ -16,6 +16,9 @@ import {
   export const registrationReducer = (state = initialState, action) => {
     switch (action.type) {
       case FAMILY_REGISTER_START:
+
+        console.log("Registration started in reducer.");
+
         return {
           ...state,
           familyRegister: {
@@ -24,6 +27,9 @@ import {
           }
         };
       case FAMILY_REGISTER_SUCCESS:
+
+        console.log("Registration succeeded in reducer.");
+
         return {
           ...state,
           familyRegister: {
@@ -36,6 +42,9 @@ import {
           }
         };
       case FAMILY_REGISTER_FAILURE:
+
+        console.log("Registration failed in reducer.");
+
         return {
           ...state,
           familyRegister: {
