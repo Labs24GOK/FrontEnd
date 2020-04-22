@@ -17,13 +17,21 @@ function Register(props) {
       user.user_type = "parent";
       
       // use old familyRegister action creator to register (for now)
-      await props.familyRegister({user: user, family: null}, props.history);
+      await props.familyRegister(user, props.history);
 
-      // use logIn action creator to log in. Only send username and password data.
+      // log in user
       await props.logIn({username: user.username, password: user.password}, props.history);
 
+      // use logIn action creator to log in. Only send username and password data.
+      // if (props.state.registrationReducer.familyRegister.success)
+      //   {
+
+      //     console.log("trying to log in with newly created account...")
+
+      //     await props.logIn({username: user.username, password: user.password}, props.history);
+      //   }
+
       // unfinished; allowed existing accounts to be accessed to log in
-      // can't log in with newly created account (even though 201 is returned).
   };
 
   if (props.state.authenticationReducer.user.authenticated) {
@@ -40,7 +48,7 @@ function Register(props) {
                 <input type="text" name="name" ref={register({required: true, minLength: 1})} defaultValue="New User"/>
                 
                 <label htmlFor="email">Email</label>
-                <input type="email" name="email" ref={register({required: true, minLength: 1})}  defaultValue="user@gmail.com"/>
+                <input type="email" name="email" ref={register({required: true, minLength: 1})}  defaultValue={Date.now() + "@gmail.com"}/>
 
                 <label htmlFor="username">Username</label>
                 <input type="text" name="username" ref={register({required: true, minLength: 1})}  defaultValue={Date.now()}/>
