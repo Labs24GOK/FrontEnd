@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import MessageBox from "./MessageBox";
+import AddStudentModal from "./AddStudentModal";
 import StudentCourseCard from "./StudentCourseCard";
 
 function UserDashboard({messages}) {
@@ -7,8 +8,8 @@ function UserDashboard({messages}) {
     const [userData, setUserData] = useState({
         name: "Mohammed",
         messages: ["Make a payment so that Mariam can continue enrolling for Counting II (Abacus Maths).",
-        "The latest progress report for Fatima’s Parle-t-on! course is now available. View report.",
-        "Great news! Fatima has been moved off the waitlist and is now enrolled in Parle-t-on!."],
+        "The latest progress report for Fatima’s 1er Niveau course is now available. View report.",
+        "Great news! Fatima has been moved off the waitlist and is now enrolled in 1er Niveau."],
         students: [
             {
                 "first_name": "Mariam",
@@ -42,7 +43,7 @@ function UserDashboard({messages}) {
                 "courses": [
                     {
                         "program": "French",
-                        "course": "Parle-t-on!",
+                        "course": "1er Niveau",
                         "start_end_times": "M Th 19:00 - 20:30",
                         "start_end_dates": "11 May, 2020 - 30 July, 2020",
                         "enrollment_status": "Enrolled",
@@ -60,11 +61,14 @@ function UserDashboard({messages}) {
         ]
     })
 
+    const [displayAddStudentModal, setDisplayAddStudentModal] = useState(false);
+
     return (
         <div className="userDashboard content">
             <h1>Welcome, {userData.name}.</h1>
             <MessageBox messages={userData.messages} />
-            <button className="addStudent">+ Add a Student</button>
+            <button className="addStudent" onClick={() => setDisplayAddStudentModal(true)}>+ Add a Student</button>
+            <AddStudentModal displayModal={displayAddStudentModal} setDisplayAddStudentModal={setDisplayAddStudentModal}/>
             {userData.students.map((student, id) => <StudentCourseCard student={student} />)}
         </div>
     )
