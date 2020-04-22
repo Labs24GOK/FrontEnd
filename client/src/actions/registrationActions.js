@@ -8,7 +8,7 @@ export const familyRegister = (register, history) => {
 	return dispatch => {
 		dispatch({ type: FAMILY_REGISTER_START });
 		axios
-			.post(`${API_URL}/parent-register`, register)
+			.post(`${API_URL}/api/auth/register`, register)
 			.then(res => {
 				console.log("Parent register", res)
 				dispatch({ type: FAMILY_REGISTER_SUCCESS, payload: res.data });
