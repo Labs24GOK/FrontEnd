@@ -1,5 +1,4 @@
-import axios from 'axios';
-import API_URL from '../../config/apiUrl';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 export const FETCH_STUDENTPROGESS_START = 'FETCH_STUDENTPROGESS_START';
 export const FETCH_STUDENTPROGESS_SUCCESS = 'FETCH_STUDENTPROGESS_SUCCESS';
@@ -7,8 +6,8 @@ export const FETCH_STUDENTPROGESS_FAILURE = 'FETCH_STUDENTPROGESS_FAILURE';
 
 export const getStudentProgress = student_id => dispatch => {
 	dispatch({ type: FETCH_STUDENTPROGESS_START });
-	axios
-		.get(`${API_URL}/api/?table=progress_report&where=student_id=${student_id}`)
+	axiosWithAuth()
+		.get(`/api/?table=progress_report&where=student_id=${student_id}`)
 		.then(res => {
 			dispatch({
 				type: FETCH_STUDENTPROGESS_SUCCESS,
@@ -32,8 +31,8 @@ export const togglePostComponent = () => dispatch => {
 };
 
 export const postStudentProgress = student => dispatch => {
-	axios
-		.post(`${API_URL}/api/?table=progress_report`, student)
+	axiosWithAuth()
+		.post(`/api/?table=progress_report`, student)
 		.then(res => {
 			//('POST ACTION:', res.data);
 			dispatch({
@@ -58,9 +57,9 @@ export const toggleEditProgressComponent = () => dispatch => {
 };
 
 export const editStudentProgress = (student_id, state) => dispatch => {
-	axios
+	axiosWithAuth()
 		.put(
-			`${API_URL}/api/?table=progress_report&where=student_id=${student_id}`,
+			`/api/?table=progress_report&where=student_id=${student_id}`,
 			state
 		)
 		.then(res => {

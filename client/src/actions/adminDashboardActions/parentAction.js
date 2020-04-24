@@ -1,5 +1,4 @@
-import axios from 'axios';
-import API_URL from '../../config/apiUrl';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 export const FETCH_PARENTS_START = 'FETCH_PARENTS_START';
 export const FETCH_PARENTS_SUCCESS = 'FETCH_PARENTS_SUCCESS';
@@ -7,8 +6,8 @@ export const FETCH_PARENTS_FAILURE = 'FETCH_PARENTS_FAILURE';
 
 export const getParentTable = () => dispatch => {
 	dispatch({ type: FETCH_PARENTS_START });
-	axios
-		.get(`${API_URL}/api?table=family`)
+	axiosWithAuth()
+		.get(`/api?table=family`)
 		.then(res => {
 			dispatch({ type: FETCH_PARENTS_SUCCESS, payload: res.data.tableData });
 		})
@@ -23,8 +22,8 @@ export const FETCH_PARENTBYID_FAILURE = 'FETCH_PARENTBYID_FAILURE';
 
 export const getParentById = id => dispatch => {
 	dispatch({ type: FETCH_PARENTBYID_START });
-	axios
-		.get(`${API_URL}/api/?table=family&where=id=${id}`)
+	axiosWithAuth()
+		.get(`/api/?table=family&where=id=${id}`)
 		.then(res => {
 			dispatch({
 				type: FETCH_PARENTBYID_SUCCESS,
@@ -48,8 +47,8 @@ export const toggleEditParent = () => dispatch => {
 };
 
 export const editParentById = (id, state) => dispatch => {
-	axios
-		.put(`${API_URL}/api/?table=family&where=id=${id}`, state)
+	axiosWithAuth()
+		.put(`/api/?table=family&where=id=${id}`, state)
 		.then(res => {
 			dispatch({
 				type: EDIT_PARENTBYID_SUCCESS,
@@ -73,8 +72,8 @@ export const FETCH_STUDENTBYFAMILYID_FAILURE =
 export const getStudentByFamilyId = family_id => dispatch => {
 
 	dispatch({ type: FETCH_STUDENTBYFAMILYID_START });
-	axios
-		.get(`${API_URL}/api/?table=student&where=family_id=${family_id}`)
+	axiosWithAuth()
+		.get(`/api/?table=student&where=family_id=${family_id}`)
 		.then(res => {
 			dispatch({
 				type: FETCH_STUDENTBYFAMILYID_SUCCESS,
@@ -98,9 +97,8 @@ export const toggleAddParentComponent = () => dispatch => {
 };
 
 export const addParent = parent => dispatch => {
-
-	axios
-		.post(`${API_URL}/api?table=family`, parent)
+	axiosWithAuth()
+		.post(`/api?table=family`, parent)
 		.then(res => {
 			dispatch({ type: ADD_PARENT_SUCCESS });
 		})
@@ -113,8 +111,8 @@ export const SET_FILTER_PARENT = 'SET_FILTER_PARENT';
 export const filterParentTable = searchTerm => dispatch => {
 	dispatch({ type: SET_FILTER_PARENT, payload: searchTerm });
 	dispatch({ type: FETCH_PARENTS_START });
-	axios
-		.get(`${API_URL}/api?table=family`)
+	axiosWithAuth()
+		.get(`/api?table=family`)
 		.then(res => {
 			searchTerm = searchTerm.toLowerCase();
 			let parentList = res.data.tableData;

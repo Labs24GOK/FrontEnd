@@ -1,8 +1,8 @@
 import React from "react";
-import { Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
-import { logIn, loggedIn } from "../actions/authenticationActions.js";
+import { logIn } from "../actions/authenticationActions.js";
 import { useForm } from 'react-hook-form';
 import "./loginAndRegister.scss";
 
@@ -55,4 +55,4 @@ const mapStateToProps = state => {
   return { state: state };
 };
 
-export default withRouter(connect( mapStateToProps, { logIn, loggedIn } )(Login));
+export default withRouter(connect( mapStateToProps, { logIn } )(Login));

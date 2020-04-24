@@ -1,6 +1,4 @@
-import axios from 'axios';
-import API_URL from '../../config/apiUrl';
-
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 export const FETCH_STAFF_START = 'FETCH_STAFF_START';
 export const FETCH_STAFF_SUCCESS = 'FETCH_STAFF_SUCCESS';
@@ -9,8 +7,8 @@ export const FETCH_NEXTAVAILABLEID = 'FETCH_NEXTAVAILABLEID';
 
 export const getStaffTable = () => dispatch => {
   dispatch({ type: FETCH_STAFF_START });
-  axios
-    .get(`${API_URL}/staff`)
+  axiosWithAuth()
+    .get(`/staff`)
     .then(res => {
       const ids = res.data.map(each => {
         return each.id;
@@ -33,8 +31,8 @@ export const FETCH_STAFFBYID_FAILURE = 'FETCH_STAFFBYID_FAILURE';
 
 export const getStaffById = id => dispatch => {
   dispatch({ type: FETCH_STAFFBYID_START });
-  axios
-    .get(`${API_URL}/staff/${id}`)
+  axiosWithAuth()
+    .get(`/staff/${id}`)
     .then(res => {
       dispatch({
         type: FETCH_STAFFBYID_SUCCESS,
@@ -58,8 +56,8 @@ export const toggleStaffEditComponent = () => dispatch => {
 };
 
 export const editStaffById = (id, state) => dispatch => {
-  axios
-    .put(`${API_URL}/staff/${id}`, state)
+  axiosWithAuth()
+    .put(`/staff/${id}`, state)
     .then(res => {
       dispatch({
         type: EDIT_STAFFBYID_SUCCESS,
@@ -83,10 +81,8 @@ export const toggleAddStaffComponent = () => dispatch => {
 };
 
 export const addStaff = staff => dispatch => {
-
-
-  axios
-    .post(`${API_URL}/staff`, staff)
+  axiosWithAuth()
+    .post(`/staff`, staff)
     .then(res => {
       const staffAdded = res.data;
       dispatch({ type: ADD_STAFF_SUCCESS, payload: staffAdded });
@@ -102,8 +98,8 @@ export const DELETE_STAFF_FAILURE = 'DELETE_STAFF_FAILURE';
 
 export const deleteStaffById = id => dispatch => {
   dispatch({ type: DELETE_STAFF_START });
-  axios
-    .delete(`${API_URL}/staff/${id}`)
+  axiosWithAuth()
+    .delete(`/staff/${id}`)
     .then(res => {
 
 			dispatch({ type: DELETE_STAFF_SUCCESS });
@@ -119,8 +115,8 @@ export const SET_FILTER_STAFF = 'SET_FILTER_STAFF';
 export const filterStaffTable = searchTerm => dispatch => {
   dispatch({ type: SET_FILTER_STAFF, payload: searchTerm });
   dispatch({ type: FETCH_STAFF_START });
-  axios
-    .get(`${API_URL}/staff`)
+  axiosWithAuth()
+    .get(`/staff`)
     .then(res => {
       searchTerm = searchTerm.toLowerCase();
       let staffList = res.data;
