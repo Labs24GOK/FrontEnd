@@ -1,16 +1,18 @@
 import React, { useEffect} from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import {createNewStudent,getDropDown,getStudentTable} from '../../../../actions';
+import { createNewStudent, getDropDown } from '../../../actions/adminDashboardActions/studentTableActions';
 import { useForm } from 'react-hook-form';
-import { createDropdown } from '../../../../utils/helpers.js';
-import 'react-dropdown/style.css';
-import '../mainStyle/mainTable.scss';
-import '../../../../styles/table.scss'
+import { createDropdown } from '../../../utils/helpers';
 
-import {FormWrap, Input, Div, FormSet, ButtonDiv, CancelButton, AddButton, Label} from '../mainStyle/styledComponent';
 
-const StudentRegistrationForm = props => {
+// import 'react-dropdown/style.css';
+// import '../../../styles/';
+// import '../../../../styles/table.scss'
+
+import {FormWrap, Input, Div, FormSet, ButtonDiv, CancelButton, AddButton, Label} from '../../adminDashboard/components/mainStyle/styledComponent';
+
+const UserAddStudentForm = props => {
 
 	const { register, errors, handleSubmit } = useForm();
 	const dropDowns = ['block_code', 'preferred_contact_type_id', 'school_grade_id', 'location_id', "user_id"]
@@ -20,22 +22,15 @@ const StudentRegistrationForm = props => {
 				data[property] = parseInt(data[property])
 		}
 		props.createNewStudent(data);
-		props.setForm(false);
+		props.setDisplayAddStudentModal(false);
 	}
 
 	useEffect(() => {
 		props.getDropDown();
 	}, []);
 
-	  const handleCancel = e => {
-		e.preventDefault();
-		props.setForm(false);
-	};
-	
 	return (
-		<FormWrap onSubmit={handleSubmit(submitNow)}>
-			<FormSet>
-				<Div className="form-parent-container">
+		<form onSubmit={handleSubmit(submitNow)}>
 					<div className="form-input-div">
 						<Label>CPR</Label>
 						<div>
@@ -203,17 +198,16 @@ const StudentRegistrationForm = props => {
 						</div>
 						<div>
 							{/* user_id is a hidden input on user dashboard, but not on admin dashboard */}
-							<Label>User ID (Family ID)</Label>
-							<Input type="text" name="user_id" ref={register({required: true})} />
+							<Input type="hidden" value={props.userID} name="user_id" ref={register({required: true})} />
 						</div>
 					</div>
-				</Div>
-			</FormSet>
-			<ButtonDiv className="form-button-div">
-				<CancelButton onClick={handleCancel}>Cancel</CancelButton>
+			<div className="form-button-div">
+				<CancelButton onClick={() => props.setDisplayAddStudentModal(false)}>Cancel</CancelButton>
 				<AddButton onClick={handleSubmit} type="submit">Add student</AddButton>
-			</ButtonDiv>
-		</FormWrap>
+			</div>
+
+			{(props.createNewStudentSuccessMessage.length > 0) ? <h3>Student successfully created.</h3> : <></> }
+		</form>
 	);
 };
 
@@ -231,7 +225,7 @@ const mapStateToProps = state => {
 };
 
 export default withRouter(
-	connect(mapStateToProps, { createNewStudent, getDropDown, getStudentTable })(
-		StudentRegistrationForm
+	connect(mapStateToProps, { createNewStudent, getDropDown })(
+		UserAddStudentForm
 	)
 );

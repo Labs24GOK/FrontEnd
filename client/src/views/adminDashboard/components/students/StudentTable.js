@@ -90,7 +90,6 @@ const StudentTable = props => {
         <StudentRegistrationForm
           handleCancelButtonOnForm={handleCancelButtonOnForm}
           setForm={setForm}
-          showUserID={true}
         />
       ) : null}
 
