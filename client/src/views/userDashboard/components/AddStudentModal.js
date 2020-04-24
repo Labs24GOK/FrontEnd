@@ -1,26 +1,13 @@
 import React, { useState } from 'react';
-import StudentRegistrationForm from "../../adminDashboard/components/students/StudentRegistrationForm";
+import UserAddStudentForm from "./UserAddStudentForm";
 
 function AddStudentModal({displayModal, setDisplayAddStudentModal, userID}) {
-
-
-    
-    const [form, setForm] = useState(false);
-
-    const handleCancelButtonOnForm = () => {
-      setForm(false);
-    };
-  
-    const handleAddButton = () => {
-      setForm(!form);
-    };
-
 
   return (
     <div className={"addStudentModal " + (displayModal ? "modal-displayed" : "modal-hidden")}>
         <div className="addStudentModalContents">
             <h2>Add a Student</h2>
-            <StudentRegistrationForm handleCancelButtonOnForm={handleCancelButtonOnForm} setForm={setForm} userID={userID} />
+            <UserAddStudentForm userID={userID} setDisplayAddStudentModal={setDisplayAddStudentModal} />
             <div className="modalButtons">
                 <button className="addStudent" onClick={() => setDisplayAddStudentModal(false)}>Return to Dashboard</button>
             </div>
