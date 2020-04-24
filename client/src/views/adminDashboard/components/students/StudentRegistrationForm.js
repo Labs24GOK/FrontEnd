@@ -35,7 +35,7 @@ const StudentRegistrationForm = props => {
 	return (
 		<FormWrap onSubmit={handleSubmit(submitNow)}>
 			<FormSet>
-				<Div>
+				<Div className="form-parent-container">
 					<div className="form-input-div">
 						<Label>CPR</Label>
 						<div>
@@ -207,7 +207,7 @@ const StudentRegistrationForm = props => {
 					</div>
 				</Div>
 			</FormSet>
-			<ButtonDiv>
+			<ButtonDiv className="form-button-div">
 				<CancelButton onClick={handleCancel}>Cancel</CancelButton>
 				<AddButton onClick={handleSubmit} type="submit">Add student</AddButton>
 			</ButtonDiv>
