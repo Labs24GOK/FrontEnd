@@ -14,7 +14,7 @@ function UserDashboard() {
     const [displayAddStudentModal, setDisplayAddStudentModal] = useState(false);
     
     // userID represents the family ID. Will retrieve from JWT once implemeneted
-    let userID = 20;
+    let userID = 5;
 
     useEffect(async () => {
 

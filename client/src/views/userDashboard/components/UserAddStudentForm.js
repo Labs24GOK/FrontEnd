@@ -198,13 +198,15 @@ const UserAddStudentForm = props => {
 						</div>
 						<div>
 							{/* user_id is a hidden input on user dashboard, but not on admin dashboard */}
-							<Input type="hidden" value="1" name="user_id" ref={register({required: true})} />
+							<Input type="hidden" value={props.userID} name="user_id" ref={register({required: true})} />
 						</div>
 					</div>
 			<div className="form-button-div">
 				<CancelButton onClick={() => props.setDisplayAddStudentModal(false)}>Cancel</CancelButton>
 				<AddButton onClick={handleSubmit} type="submit">Add student</AddButton>
 			</div>
+
+			{(props.createNewStudentSuccessMessage.length > 0) ? <h3>Student successfully created.</h3> : <></> }
 		</form>
 	);
 };
