@@ -1,8 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { withRouter } from "react-router";
-import { connect } from 'react-redux';
-import { loggedIn } from '../actions/authenticationActions';
 import Login from '../authentication/Login';
 import DashboardView from '../views';
 import Register from '../authentication/Register';
@@ -13,10 +10,7 @@ import Footer from "../views/marketing/components/Footer";
 
 import Marketing from "../views/marketing/Marketing";
 
-function Routes(props) {
-  useEffect(() => {
-    props.loggedIn(props.history, props.location);
-  }, [])
+function Routes() {
   return (
     <>
       <Switch>
@@ -31,15 +25,7 @@ function Routes(props) {
     </>
   );
 }
-const mapStateToProps = state => {
-  return {
-    state: state
-  };
-};
-export default withRouter(connect(
-  mapStateToProps,
-  { loggedIn }
-)(Routes));
+export default Routes;
 
 
 
