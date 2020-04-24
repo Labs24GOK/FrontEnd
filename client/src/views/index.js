@@ -13,7 +13,8 @@ function Index() {
     } else if (userType === 'staff') {
       return <StaffDashboard />;
     } else {
-      return;
+      // return <h1>Login failed.</h1>;
+      return <UserDashboard />
     }
 }
 

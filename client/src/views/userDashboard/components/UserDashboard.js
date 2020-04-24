@@ -1,9 +1,45 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from "axios";
+import API_URL from "../../../config/apiUrl";
+
 import MessageBox from "./MessageBox";
 import AddStudentModal from "./AddStudentModal";
 import StudentCourseCard from "./StudentCourseCard";
 
+
+import { getStudentsInFamily } from "../getStudentsinFamily";
+
 function UserDashboard({messages}) {
+
+    const [students, setStudents] = useState([]);
+    // const [students, setStudents] = useState(
+    //     [
+    //         {
+    //             "first_name": "Zira",
+    //             "additional_names": "Baliram Jani",
+    //             "cpr": "111111111"
+    //         },
+    //         {
+    //             "first_name": "Mayma",
+    //             "additional_names": "Zinian Maran",
+    //             "cpr": "222222222"
+    //         },
+    //         {
+    //             "first_name": "Esha",
+    //             "additional_names": "Saraz Rarika",
+    //             "cpr": "333333333"
+    //         }
+    //     ]);
+
+    // userID represents the family ID
+    let userID = 1;
+
+    useEffect(async () => {
+        let test = await getStudentsInFamily(userID);
+        setStudents(test);
+
+        console.log(test);
+    }, []);
 
     const [userData, setUserData] = useState({
         name: "Mohammed",
@@ -66,10 +102,21 @@ function UserDashboard({messages}) {
     return (
         <div className="userDashboard content">
             <h1>Welcome, {userData.name}.</h1>
+            <h2>These are the students in your family:</h2>
+
+            {students.length === 0 ? <h3>No students found</h3> : <h3>You have {students.length} students.</h3>}
+            
+            {students.map((student, id) => {
+                return (
+                <div style={{border: "1px solid gray !important;"}}>
+                    <h3>{student.first_name} {student.additional_names} (CPR: #{student.cpr})</h3>
+                </div>
+                )})
+            }
             <MessageBox messages={userData.messages} />
             <button className="addStudent" onClick={() => setDisplayAddStudentModal(true)}>+ Add a Student</button>
             <AddStudentModal displayModal={displayAddStudentModal} setDisplayAddStudentModal={setDisplayAddStudentModal}/>
-            {userData.students.map((student, id) => <StudentCourseCard student={student} />)}
+            {students.map((student, id) => <StudentCourseCard student={student} />)}
         </div>
     )
 }

@@ -24,7 +24,7 @@ function StudentCourseCard({student}) {
             </div>
             <img src={hamburgerMenuIcon} />
         </div>
-      {student.courses.length === 0 ?
+      {!student.courses || (student.courses.length === 0) ?
         <p className="noCourses">{student.first_name} has not registered for any courses yet.</p>
         :
         <>
