@@ -23,11 +23,13 @@ export const loggedIn = (history, location) => {
 			.get(`${API_URL}/user`)
 			.then(res => {
 				dispatch({ type: LOGGEDIN_SUCCESS, payload: res.data });
-				if (!res.data.authenticated && location.pathname === '/dashboard') {
-					history.push('/login');
-				} else if (res.data.authenticated) {
-					history.push('/dashboard');
-				}
+				// if (!res.data.authenticated && location.pathname === '/dashboard') {
+				// 	history.push('/login');
+				// } else if (res.data.authenticated) {
+
+					console.log("action creator is pushing to dashboard (loggedIn)");
+					// history.push('/dashboard');
+				// }
 			})
 			.catch(err => {
 				let wrongCredentials = true;
@@ -44,8 +46,18 @@ export const logIn = (user, history) => {
 			.post(`${API_URL}/api/auth/login`, user)
 			.then(res => {
 				// SETTING THE USER TYPE TO LOCAL STORAGE SO THAT IT DOES NOT GET LOST IF USER RELOADS THE PAGE
-				localStorage.setItem('userType', res.data.user_type);
+
+
+				// temp workaround until JWT is ready: set userType to "admin" if username is "admin"
+				let userType = "parent";
+
+				if (user.username === "admin")
+					{ userType = "admin"; }
+
+				localStorage.setItem('userType', userType);
+				
 				dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+				console.log("action creator is pushing to dashboard (logIn)", res.data);
 				history.push('/dashboard');
 			})
 			.catch(err => {

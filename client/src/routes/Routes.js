@@ -6,6 +6,7 @@ import { loggedIn } from '../actions/authenticationActions';
 import Login from '../authentication/Login';
 import DashboardView from '../views';
 import Register from '../authentication/Register';
+import ProtectedRoute from "./ProtectedRoute";
 
 import Header from "../views/marketing/components/Header";
 import Footer from "../views/marketing/components/Footer";
@@ -19,10 +20,7 @@ function Routes(props) {
   return (
     <>
       <Switch>
-        {/* temp; to test without having to log in */}
-        <Route exact path='/dashboard' render={() => <DashboardView /> } />
-
-        {props.state.authenticationReducer.user.authenticated && <Route exact path='/dashboard' render={() => <DashboardView /> } /> }
+        <ProtectedRoute path='/dashboard' component={DashboardView} />
         <Route exact path="/" render={() => <Marketing page="home" />}/>
         <Route path="/schedules" render={() => <Marketing page="course_structure" />}/>
         <Route path="/courses" render={() => <Marketing page="courses" />}/>

@@ -34,9 +34,9 @@ function Register(props) {
       // unfinished; allowed existing accounts to be accessed to log in
   };
 
-  if (props.state.authenticationReducer.user.authenticated) {
-    return <Redirect to="/dashboard" />;
-  } else {
+  // if (props.state.authenticationReducer.user.authenticated) {
+  //   return <Redirect to="/dashboard" />;
+  // } else {
     return (
       
           <div className="form-container">
@@ -69,7 +69,7 @@ function Register(props) {
 
     );
   }
-}
+// }
 
 const mapStateToProps = state => {
   return { state: state };

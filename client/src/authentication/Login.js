@@ -13,9 +13,9 @@ function Login(props) {
       props.logIn(user, props.history);
   };
 
-  if (props.state.authenticationReducer.user.authenticated) {
-    return <Redirect to="/dashboard" />;
-  } else {
+  // if (props.state.authenticationReducer.user.authenticated) {
+  //   return <Redirect to="/dashboard" />;
+  // } else {
     return (
       
           <div className="form-container">
@@ -49,7 +49,7 @@ function Login(props) {
 
     );
   }
-}
+// }
 
 const mapStateToProps = state => {
   return { state: state };
