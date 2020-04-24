@@ -68,7 +68,7 @@ function UserDashboard() {
             
             <MessageBox messages={userData.messages} />
             <button className="addStudent" onClick={() => setDisplayAddStudentModal(true)}>+ Add a Student</button>
-            <AddStudentModal displayModal={displayAddStudentModal} setDisplayAddStudentModal={setDisplayAddStudentModal}/>
+            <AddStudentModal displayModal={displayAddStudentModal} setDisplayAddStudentModal={setDisplayAddStudentModal} userID={userID} />
             {console.log("what's in userData?", userData)}
             {userData.students.map((student, id) => <StudentCourseCard student={student} />)}
         </div>

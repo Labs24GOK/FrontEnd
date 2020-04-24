@@ -202,7 +202,8 @@ const StudentRegistrationForm = props => {
 								style={{width: '100%', height: '80px', outline: 'none', border: '1px solid transparent', borderRadius: '3px'}}/>
 						</div>
 						<div>
-							<Input type="hidden" value="1" name="family_id" ref={register({required: true})} />
+							{/* user_id is a hidden input on user dashboard, but not on admin dashboard */}
+							<Input type={props.showUserID ? "text" : "hidden"} value={props.userID || 1} name="family_id" ref={register({required: true})} />
 						</div>
 					</div>
 				</Div>
