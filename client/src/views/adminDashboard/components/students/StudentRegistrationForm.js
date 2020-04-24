@@ -203,6 +203,8 @@ const StudentRegistrationForm = props => {
 						</div>
 						<div>
 							{/* user_id is a hidden input on user dashboard, but not on admin dashboard */}
+							{/* may have issues with react-hook-form re-generating a new ref, so input can't be typed in... */}
+							{props.showUserID ? <Label>User ID (Family ID)</Label> : <></> }
 							<Input type={props.showUserID ? "text" : "hidden"} value={props.userID || 1} name="user_id" ref={register({required: true})} />
 						</div>
 					</div>
