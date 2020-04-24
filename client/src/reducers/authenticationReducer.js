@@ -5,9 +5,9 @@ import {
   LOGIN_START,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
-  LOGOUT_START,
-  LOGOUT_SUCCESS,
-  LOGOUT_FAILURE
+  // LOGOUT_START,
+  // LOGOUT_SUCCESS,
+  // LOGOUT_FAILURE
 } from '../actions';
 
 const initialState = {
@@ -23,10 +23,10 @@ const initialState = {
     isLoading: false,
     error: null
   },
-  logOut: {
-    isLoading: false,
-    error: null
-  }
+  // logOut: {
+  //   isLoading: false,
+  //   error: null
+  // }
 };
 
 export const authenticationReducer = (state = initialState, action) => {
@@ -59,34 +59,34 @@ export const authenticationReducer = (state = initialState, action) => {
           error: action.payload //update the be endpoint to return an error
         }
       };
-    case LOGOUT_START:
-      return {
-        ...state,
-        logOut: {
-          isLoading: true,
-          error: null
-        }
-      };
-    case LOGOUT_SUCCESS:
-      return {
-        ...state,
-        logOut: {
-          isLoading: false,
-          error: null
-        },
-        user: {
-          authenticated: false,
-          username: null
-        }
-      };
-    case LOGOUT_FAILURE:
-      return {
-        ...state,
-        logOut: {
-          isLoading: false,
-          error: 'Error' //display proper error
-        }
-      };
+    // case LOGOUT_START:
+    //   return {
+    //     ...state,
+    //     logOut: {
+    //       isLoading: true,
+    //       error: null
+    //     }
+      // };
+    // case LOGOUT_SUCCESS:
+    //   return {
+    //     ...state,
+    //     logOut: {
+    //       isLoading: false,
+    //       error: null
+    //     },
+    //     user: {
+    //       authenticated: false,
+    //       username: null
+    //     }
+    //   };
+    // case LOGOUT_FAILURE:
+    //   return {
+    //     ...state,
+    //     logOut: {
+    //       isLoading: false,
+    //       error: 'Error' //display proper error
+    //     }
+    //   };
     case LOGGEDIN_START:
       return {
         ...state,

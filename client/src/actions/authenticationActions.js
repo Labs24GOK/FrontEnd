@@ -11,9 +11,9 @@ export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
-export const LOGOUT_START = 'LOGOUT_START';
-export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
-export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
+// export const LOGOUT_START = 'LOGOUT_START';
+// export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
+// export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
 
 export const loggedIn = (history, location) => {
 	return dispatch => {
@@ -58,6 +58,7 @@ export const logIn = (user, history) => {
 				
 				dispatch({ type: LOGIN_SUCCESS, payload: res.data });
 				console.log("action creator is pushing to dashboard (logIn)", res.data);
+				localStorage.setItem('token', res.data.token);
 				history.push('/dashboard');
 			})
 			.catch(err => {
@@ -66,19 +67,19 @@ export const logIn = (user, history) => {
 	};
 };
 
-export const logOut = history => {
-	return dispatch => {
-		dispatch({ type: LOGOUT_START });
+// export const logOut = history => {
+// 	return dispatch => {
+// 		dispatch({ type: LOGOUT_START });
 
-		axios
-			.get(`${API_URL}/api/auth/logout`)
-			.then(res => {
-				dispatch({ type: LOGOUT_SUCCESS, payload: res.data });
-				localStorage.removeItem('userType');
-				history.push('/');
-			})
-			.catch(err => {
-				dispatch({ type: LOGOUT_FAILURE, payload: 'Error' });
-			});
-	};
-};
+// 		axios
+// 			.get(`${API_URL}/api/auth/logout`)
+// 			.then(res => {
+// 				dispatch({ type: LOGOUT_SUCCESS, payload: res.data });
+// 				localStorage.removeItem('userType');
+// 				history.push('/');
+// 			})
+// 			.catch(err => {
+// 				dispatch({ type: LOGOUT_FAILURE, payload: 'Error' });
+// 			});
+// 	};
+// };
