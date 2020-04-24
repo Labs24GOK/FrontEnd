@@ -8,13 +8,17 @@ import { logOut } from '../../../actions/authenticationActions';
 
 function UserDashboardHeader(props) {
 
+    const logout = () => {
+        props.logOut(props.history);
+      }
+    
     return (
         <>
             <header className="userDashboardHeader">
                 <Link to='/' >
                     <img src={Logo} alt="The Garden of Knowledge" /> 
                 </Link>
-                <Link className="logOut" onClick={logOut}>Sign Out</Link>
+                <Link className="logOut" onClick={logout}>Sign Out</Link>
             </header>
         </>
     )

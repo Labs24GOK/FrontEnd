@@ -111,15 +111,24 @@ export const createNewStudent = student => dispatch => {
   //   location_id: location_id.value
   // };
   dispatch({ type: CREATE_NEW_STUDENT_START });
+
+  console.log("attempting to create student", student);
+
   axios
     .post(`${API_URL}/student`, student)
     .then(res => {
+
+      console.log("added student", res);
+
       dispatch({
         type: CREATE_NEW_STUDENT_SUCCESS,
         payload: res.data
       });
     })
     .catch(err => {
+
+      console.log("couldn't add student", err);
+
       dispatch({
         type: CREATE_NEW_STUDENT_FAILURE,
         payload: err.data

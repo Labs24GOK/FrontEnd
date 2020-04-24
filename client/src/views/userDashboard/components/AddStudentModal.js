@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import StudentRegistrationForm from "../../adminDashboard/components/students/StudentRegistrationForm";
 
-function AddStudentModal({displayModal, setDisplayAddStudentModal}) {
+function AddStudentModal({displayModal, setDisplayAddStudentModal, userID}) {
 
 
     
@@ -20,7 +20,7 @@ function AddStudentModal({displayModal, setDisplayAddStudentModal}) {
     <div className={"addStudentModal " + (displayModal ? "modal-displayed" : "modal-hidden")}>
         <div className="addStudentModalContents">
             <h2>Add a Student</h2>
-            <StudentRegistrationForm handleCancelButtonOnForm={handleCancelButtonOnForm} setForm={setForm}/>
+            <StudentRegistrationForm handleCancelButtonOnForm={handleCancelButtonOnForm} setForm={setForm} userID={userID} />
             <div className="modalButtons">
                 <button className="addStudent" onClick={() => setDisplayAddStudentModal(false)}>Return to Dashboard</button>
             </div>
