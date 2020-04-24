@@ -65,155 +65,187 @@
             background-color: #CCCCCC;
         }
     }
+}
 
-    .modal-displayed {
-        display: block;
+
+.modal-displayed {
+    display: block;
+}
+
+.modal-hidden {
+    display: none;
+}
+
+.addStudentModal {
+
+    z-index: 2;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+
+    overflow: auto;
+
+}
+
+.addStudentModalContents {
+    width: 80vw;
+    
+    margin: 5vh 10vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+    border: 3px solid black;
+    background-color: #EEEEEE;
+
+    h2 {
+        margin: 1rem auto 0 auto;
     }
 
-    .modal-hidden {
-        display: none;
-    }
-
-    .addStudentModal {
-
-        z-index: 2;
-
-        position: fixed;
-        top: 0;
-        left: 0;
-
-        width: 100vw;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.8);
-
-    }
-
-    .addStudentModalContents {
-        width: 80vw;
-        height: 80vh;
-
-        margin: 10vh 10vw;
+    .modalButtons {
 
         display: flex;
-        flex-direction: column;
         justify-content: flex-end;
-        align-items: center;
 
-        border: 3px solid black;
-        background-color: #EEEEEE;
+        width: 100%;
 
-        .modalButtons {
+        margin: 2rem 0;
 
-            display: flex;
-            justify-content: flex-end;
-
-            width: 100%;
-
-            margin: 2rem 0;
-
-            button {
-                margin: 0 2rem;
-            }
+        button {
+            margin: 0 2rem;
         }
     }
 
-    .studentCourseCard {
+    // new styles for StudentRegistrationForm in adminDashboard
+    .form-parent-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
-        border: 3px solid black;
-        padding: 1rem;
+        div {
+            width: 100%;
+        }
+    }
+
+    .form-button-div {
+
+        display: flex;
+        justify-content: flex-end;
+
+        button {
+            font-size: 1rem;
+            line-height: 1rem;
+            height: 2rem;
+            margin-left: 2rem;
+        }
+    }
+}
+
+
+.studentCourseCard {
+
+    border: 3px solid black;
+    padding: 1rem;
+
+    margin-bottom: 2rem;
+
+    background-color: #EEEEEE;
+
+    .nameAndHamburgerMenu {
+
+        display: flex;
+        justify-content: space-between;
 
         margin-bottom: 2rem;
 
-        background-color: #EEEEEE;
 
-        .nameAndHamburgerMenu {
+        img {
+            width: 32px;
+            height: 32px;
+
+            cursor: pointer;
+        }
+    }
+
+    .firstName {
+        font-size: 2rem;
+        margin-bottom: 0;
+    }
+
+    .additionalNames {
+        margin: 0;
+    }
+
+    .courseData {
+
+        margin-bottom: 5rem;
+
+        .logoAndProgram {
 
             display: flex;
-            justify-content: space-between;
-
-            margin-bottom: 2rem;
-
+            align-items: center;
 
             img {
-                width: 32px;
-                height: 32px;
+                width: 64px;
+                height: auto;
 
-                cursor: pointer;
+                margin-right: 1rem;
             }
         }
 
-        .firstName {
+        h3 {
             font-size: 2rem;
-            margin-bottom: 0;
+            font-weight: bold;
         }
 
-        .additionalNames {
+        table {
+            margin: 2rem 0 2rem auto;
+
+            thead {
+                border-bottom: 2px solid black;
+            }
+
+            td, th {
+                font-size: 1.25rem;
+                line-height: 2.5rem;
+
+                padding: 0 1rem;
+            }
+
+            .startEndDatesTimes {
+                line-height: 2rem;
+            }
+        }
+
+        button {
             margin: 0;
+            padding: 0 0.5rem;
+
+            font-size: 1rem;
+            line-height: 1.5rem;
+
+            border: 2px solid;
+
+            background-color: #CCCCCC;
         }
+    }
 
-        .courseData {
+    .noCourses {
+        font-size: 1.5rem;
+        font-style: oblique;
 
-            margin-bottom: 5rem;
+        text-align: center;
 
-            .logoAndProgram {
-
-                display: flex;
-                align-items: center;
-
-                img {
-                    width: 64px;
-                    height: auto;
-
-                    margin-right: 1rem;
-                }
-            }
-
-            h3 {
-                font-size: 2rem;
-                font-weight: bold;
-            }
-
-            table {
-                margin: 2rem 0 2rem auto;
-
-                thead {
-                    border-bottom: 2px solid black;
-                }
-
-                td, th {
-                    font-size: 1.25rem;
-                    line-height: 2.5rem;
-
-                    padding: 0 1rem;
-                }
-
-                .startEndDatesTimes {
-                    line-height: 2rem;
-                }
-            }
-
-            button {
-                margin: 0;
-                padding: 0 0.5rem;
-
-                font-size: 1rem;
-                line-height: 1.5rem;
-
-                border: 2px solid;
-
-                background-color: #CCCCCC;
-            }
-        }
-
-        .noCourses {
-            font-size: 1.5rem;
-            font-style: oblique;
-
-            text-align: center;
-
-            margin: 5rem;
-        }
-
+        margin: 5rem;
     }
 
 }
+

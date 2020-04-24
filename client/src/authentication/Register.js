@@ -1,8 +1,7 @@
 import React from "react";
-import { Redirect, Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
-import { logIn, loggedIn } from "../actions/authenticationActions.js";
+import { logIn } from "../actions/authenticationActions.js";
 import { familyRegister } from '../actions/registrationActions';
 import { useForm } from 'react-hook-form';
 import "./loginAndRegister.scss";
@@ -34,9 +33,9 @@ function Register(props) {
       // unfinished; allowed existing accounts to be accessed to log in
   };
 
-  if (props.state.authenticationReducer.user.authenticated) {
-    return <Redirect to="/dashboard" />;
-  } else {
+  // if (props.state.authenticationReducer.user.authenticated) {
+  //   return <Redirect to="/dashboard" />;
+  // } else {
     return (
       
           <div className="form-container">
@@ -69,10 +68,10 @@ function Register(props) {
 
     );
   }
-}
+// }
 
 const mapStateToProps = state => {
   return { state: state };
 };
 
-export default withRouter(connect( mapStateToProps, { logIn, loggedIn, familyRegister } )(Register));
+export default withRouter(connect( mapStateToProps, { logIn, familyRegister } )(Register));

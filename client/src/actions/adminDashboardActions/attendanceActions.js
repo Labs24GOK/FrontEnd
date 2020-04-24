@@ -1,6 +1,5 @@
 import { notification } from 'antd';
-import axios from 'axios';
-import API_URL from '../../config/apiUrl';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 export const CREATE_ATTENDANCE_START =
   'CREATE_ATTENDANCE_START';
@@ -36,8 +35,8 @@ export const postStudentAttendance = state => dispatch => {
   };
 
   dispatch({ type: CREATE_ATTENDANCE_START });
-  axios
-    .post(`${API_URL}/attendance`, state)
+  axiosWithAuth()
+    .post(`/attendance`, state)
     .then(res => {
       if (res.status === 201) {
         openSuccessNotification('success');

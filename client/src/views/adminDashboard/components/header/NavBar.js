@@ -1,24 +1,20 @@
 import React from 'react';
 import Logo from '../../../../assets/Logo.png';
 import './navbar.scss';
-import { withRouter } from "react-router";
-import { connect } from 'react-redux';
-import { logOut } from '../../../../actions/authenticationActions';
+import {useHistory} from 'react-router-dom';
 
-function NavBar(props) {
-
+function NavBar() {
+  const history = useHistory();
   const logout = () => {
-    props.logOut(props.history);
-  }
-
-  const pushToHome = () => {
-    props.history.push('/');
+    localStorage.removeItem('token');
+    localStorage.removeItem('userType');
+    history.push('/');
   }
 
   return (
     <div className="nav">
       <div className="navbar-left">
-        <div onClick={pushToHome} className="logo"><img className="logo-image" src={Logo} alt="Speak Out logo"></img></div>
+        <div className="logo"><img className="logo-image" src={Logo} alt="Speak Out logo"></img></div>
       </div>
       <div className="navbar-right">
         <button onClick={logout}>Sign Out</button>
@@ -27,8 +23,4 @@ function NavBar(props) {
   )
 }
 
-const mapStateToProps = state => {
-  return { state };
-};
-
-export default withRouter(connect( mapStateToProps, { logOut } )(NavBar) );
+export default NavBar;
