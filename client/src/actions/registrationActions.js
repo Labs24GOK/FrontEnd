@@ -13,7 +13,7 @@ export const familyRegister = (register, history) => {
 				console.log("Parent register", res);
 				localStorage.setItem("name", register.name);
 				dispatch({ type: FAMILY_REGISTER_SUCCESS, payload: res.data });
-				// history.push('/login');
+				history.push('/dashboard');
 			})
 			.catch(err => {
 				dispatch({ type: FAMILY_REGISTER_FAILURE, payload: err.payload });
