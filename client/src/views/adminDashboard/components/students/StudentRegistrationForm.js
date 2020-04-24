@@ -13,7 +13,7 @@ import {FormWrap, Input, Div, FormSet, ButtonDiv, CancelButton, AddButton, Label
 const StudentRegistrationForm = props => {
 
 	const { register, errors, handleSubmit } = useForm();
-	const dropDowns = ['block_code', 'preferred_contact_type_id', 'school_grade_id', 'location_id', "family_id"]
+	const dropDowns = ['block_code', 'preferred_contact_type_id', 'school_grade_id', 'location_id', "user_id"]
 	const submitNow = data => {
 		for (const property of dropDowns) {
 			// if the string should/could be converted to a number
@@ -203,7 +203,7 @@ const StudentRegistrationForm = props => {
 						</div>
 						<div>
 							{/* user_id is a hidden input on user dashboard, but not on admin dashboard */}
-							<Input type={props.showUserID ? "text" : "hidden"} value={props.userID || 1} name="family_id" ref={register({required: true})} />
+							<Input type={props.showUserID ? "text" : "hidden"} value={props.userID || 1} name="user_id" ref={register({required: true})} />
 						</div>
 					</div>
 				</Div>
