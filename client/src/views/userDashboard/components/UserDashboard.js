@@ -23,34 +23,35 @@ function UserDashboard() {
 
         // retrieve list of students associated with this account (serach by user ID)
         let students = await getStudentsInFamily(userID);
+        // let students = [];
         // setStudents(studentArray);
 
         // determine which messages to display to user upon login
         let messages = [];
 
-        if (students && students.length > 0)
-            {
-                let issues = 0;
+        // if (students && students.length > 0)
+        //     {
+        //         let issues = 0;
 
-                students.forEach(student => {
+        //         students.forEach(student => {
 
-                    if (!student.courses)
-                        {
-                            issues += 1;
-                            messages.push(student.first_name + " has not registered for any courses yet.");
-                        }
-                })
+        //             if (!student.courses)
+        //                 {
+        //                     issues += 1;
+        //                     messages.push(student.first_name + " has not registered for any courses yet.");
+        //                 }
+        //         })
 
-                if (issues === 0)
-                    { messages.push("You're all up to date."); }
-            }
-        else
-            {
-                messages.push("You don't have any students registered with us yet.")
-            }
+        //         if (issues === 0)
+        //             { messages.push("You're all up to date."); }
+        //     }
+        // else
+        //     {
+        //         messages.push("You don't have any students registered with us yet.")
+        //     }
 
         // store all info into state variable
-        await setUserData({name, userID, messages, students});
+        setUserData({name, userID, messages, students});
         
     }, []);
 
@@ -59,8 +60,7 @@ function UserDashboard() {
         {
             return <h2>Loading...</h2>;
         }
-    
-    if (!userData.userID)
+    else if (!userData.userID)
         {
             return <h2>Invalid user ID</h2>;
         }
@@ -69,11 +69,12 @@ function UserDashboard() {
         <div className="userDashboard content">
             <h1>Welcome, {userData.name}.</h1>
             
-            <MessageBox messages={userData.messages} />
+            {/* <MessageBox messages={userData.messages} />
             <button className="addStudent" onClick={() => setDisplayAddStudentModal(true)}>+ Add a Student</button>
             <AddStudentModal displayModal={displayAddStudentModal} setDisplayAddStudentModal={setDisplayAddStudentModal} userID={userData.userID} />
             {console.log("what's in userData?", userData)}
-            {userData.students.map((student, id) => <StudentCourseCard student={student} />)}
+            {userData.students.map((student, id) => <StudentCourseCard student={student} />)} */}
+
         </div>
     )
 }
