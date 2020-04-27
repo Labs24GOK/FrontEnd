@@ -1,8 +1,7 @@
-import axios from "axios";
-import API_URL from "../../config/apiUrl";
+import axiosWithAuth from "../../utils/axiosWithAuth";
 
-export const getStudentsInFamily = async (userID) => {
+export const getStudentsInFamily = async (userID, setUserData) => {
 
-    let result = await axios.get(API_URL + "/users/" + userID + "/students");
+    let result = await axiosWithAuth().get("/users/" + userID + "/students");
     return result.data;
 }

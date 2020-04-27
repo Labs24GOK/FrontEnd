@@ -6,71 +6,75 @@ import StudentCourseCard from "./StudentCourseCard";
 
 
 import { getStudentsInFamily } from "../getStudentsinFamily";
+import { getMessagesForUser } from "../getMessagesForUser";
 
 function UserDashboard() {
 
-    // const [students, setStudents] = useState([]);
-    const [userData, setUserData] = useState({});
+    const [userData, setUserData] = useState({userID: null, name: "", students: [], messages: []});
     const [displayAddStudentModal, setDisplayAddStudentModal] = useState(false);
-    
-    // userID represents the family ID. Will retrieve from JWT once implemeneted
-    let userID = 5;
+    const [needToUpdateStudents, setNeedToUpdateStudents] = useState(false);
 
-    useEffect(async () => {
+    // let userID, name;
 
-        // retrieve list of students associated with this account (serach by user ID)
-        let students = await getStudentsInFamily(userID);
-        // setStudents(studentArray);
+    // Get userID from JWT
+    let token = localStorage.getItem("token");
+    let tokenData = JSON.parse(atob(token.split('.')[1]));;
+
+    console.log("token data contains:", tokenData);
+
+    let userID = tokenData.subject;
+    let name = tokenData.name;
+
+    // let students = [];
+
+    // retrieve list of students associated with this account (serach by user ID)
+    useEffect(() => {
+
+        getStudentsInFamily(userID)
+            .then(result => {
+                setUserData({students: result})
+            })
+            .catch(error => { console.log("Error in retrieving students:", error)})
+
+    }, [needToUpdateStudents]);
+    // }, []);
+
+    // update userData once students have been updated
+    useEffect(() => {
 
         // determine which messages to display to user upon login
-        let messages = [];
-
-        if (students && students.length > 0)
-            {
-                let issues = 0;
-
-                students.forEach(student => {
-
-                    if (!student.courses)
-                        {
-                            issues += 1;
-                            messages.push(student.first_name + " has not registered for any courses yet.");
-                        }
-                })
-
-                if (issues === 0)
-                    { messages.push("You're all up to date."); }
-            }
-        else
-            {
-                messages.push("You don't have any students registered with us yet.")
-            }
-
-        // get first name from JWT
-        let name = localStorage.getItem("name") || "blah";
-
-        console.log("data to be set:", {name, messages, students});
-
+        let messages = getMessagesForUser(userData.students);
+                
         // store all info into state variable
-        await setUserData({name, messages, students});
-        
-    }, []);
+        setUserData({...userData, messages});
+
+    }, [userData.students]);
+
 
     // if userData hasn't loaded yet, return a loading message/icon
-    if (Object.keys(userData).length === 0)
+    if (Object.keys(userData).length === 0 || !userData.students || !userData.messages)
         {
-            return <></>;
+            console.log("userData has nothing inside:", userData)
+
+            return <h2>Loading...</h2>;
+        }
+    else if (!userID)
+        {
+            return <h2>Invalid user ID</h2>;
         }
 
     return (
         <div className="userDashboard content">
-            <h1>Welcome, {userData.name}.</h1>
+            <h1>Welcome, {name}.</h1>
             
+            {console.log("userData:", userData)}
+
             <MessageBox messages={userData.messages} />
             <button className="addStudent" onClick={() => setDisplayAddStudentModal(true)}>+ Add a Student</button>
-            <AddStudentModal displayModal={displayAddStudentModal} setDisplayAddStudentModal={setDisplayAddStudentModal} userID={userID} />
+            <AddStudentModal displayModal={displayAddStudentModal} setDisplayAddStudentModal={setDisplayAddStudentModal} setNeedToUpdateStudents={setNeedToUpdateStudents} userID={userID} />
             {console.log("what's in userData?", userData)}
             {userData.students.map((student, id) => <StudentCourseCard student={student} />)}
+
         </div>
     )
 }
