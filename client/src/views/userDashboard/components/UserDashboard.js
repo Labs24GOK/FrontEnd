@@ -9,14 +9,17 @@ import { getStudentsInFamily } from "../getStudentsinFamily";
 
 function UserDashboard() {
 
-    // const [students, setStudents] = useState([]);
     const [userData, setUserData] = useState({});
     const [displayAddStudentModal, setDisplayAddStudentModal] = useState(false);
     
-    // userID represents the family ID. Will retrieve from JWT once implemeneted
-    let userID = 5;
-
     useEffect(async () => {
+
+        // Get userID from JWT
+        let token = localStorage.getItem("token");
+        let tokenData = JSON.parse(atob(token.split('.')[1]));;
+
+        let userID = tokenData.subject;
+        let name = tokenData.name;
 
         // retrieve list of students associated with this account (serach by user ID)
         let students = await getStudentsInFamily(userID);
@@ -46,20 +49,20 @@ function UserDashboard() {
                 messages.push("You don't have any students registered with us yet.")
             }
 
-        // get first name from JWT
-        let name = localStorage.getItem("name") || "blah";
-
-        console.log("data to be set:", {name, messages, students});
-
         // store all info into state variable
-        await setUserData({name, messages, students});
+        await setUserData({name, userID, messages, students});
         
     }, []);
 
     // if userData hasn't loaded yet, return a loading message/icon
     if (Object.keys(userData).length === 0)
         {
-            return <></>;
+            return <h2>Loading...</h2>;
+        }
+    
+    if (!userData.userID)
+        {
+            return <h2>Invalid user ID</h2>;
         }
 
     return (
@@ -68,7 +71,7 @@ function UserDashboard() {
             
             <MessageBox messages={userData.messages} />
             <button className="addStudent" onClick={() => setDisplayAddStudentModal(true)}>+ Add a Student</button>
-            <AddStudentModal displayModal={displayAddStudentModal} setDisplayAddStudentModal={setDisplayAddStudentModal} userID={userID} />
+            <AddStudentModal displayModal={displayAddStudentModal} setDisplayAddStudentModal={setDisplayAddStudentModal} userID={userData.userID} />
             {console.log("what's in userData?", userData)}
             {userData.students.map((student, id) => <StudentCourseCard student={student} />)}
         </div>
