@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 import API_URL from '../../config/apiUrl';
 
 export const FETCH_PLACEMENTTESTS_START = 'FETCH_PLACEMENTTESTS_START';
@@ -7,8 +7,8 @@ export const FETCH_PLACEMENTTESTS_FAILURE = 'FETCH_PLACEMENTTESTS_FAILURE';
 
 export const getPlacementTests = () => dispatch => {
 	dispatch({ type: FETCH_PLACEMENTTESTS_START });
-	axios
-		.get(`${API_URL}/api?table=placementexam`)
+	axiosWithAuth()
+		.get(`/api?table=placementexam`)
 		.then(res => {
 			dispatch({
 				type: FETCH_PLACEMENTTESTS_SUCCESS,
@@ -28,8 +28,8 @@ export const FETCH_PLACEMENTTESTTBYID_FAILURE =
 
 export const getPlacementTestById = id => dispatch => {
 	dispatch({ type: FETCH_PLACEMENTTESTTBYID_START });
-	axios
-		.get(`${API_URL}/api/?table=placementexam&where=student_id=${id}`)
+	axiosWithAuth()
+		.get(`/api/?table=placementexam&where=student_id=${id}`)
 		.then(res => {
 			dispatch({
 				type: FETCH_PLACEMENTTESTTBYID_SUCCESS,
@@ -55,8 +55,8 @@ export const toggleEditPlacement = () => dispatch => {
 };
 
 export const editPlacementTestById = (id, state) => dispatch => {
-	axios
-		.put(`${API_URL}/api/?table=student&where=student_id=${id}`, state)
+	axiosWithAuth()
+		.put(`/api/?table=student&where=student_id=${id}`, state)
 		.then(res => {
 			dispatch({
 				type: EDIT_PLACEMENTTESTTBYID_SUCCESS,

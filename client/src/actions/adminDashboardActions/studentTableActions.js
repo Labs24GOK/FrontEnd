@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 import API_URL from '../../config/apiUrl';
 
 export const FETCH_STUDENTS_START = 'FETCH_STUDENTS_START';
@@ -9,8 +9,8 @@ export const FETCH_STUDENTS_FAILURE =
 
 export const getStudentTable = () => dispatch => {
   dispatch({ type: FETCH_STUDENTS_START });
-  axios
-    .get(`${API_URL}/students`)
+  axiosWithAuth()
+    .get(`/students`)
     .then(res => {
       dispatch({
         type: FETCH_STUDENTS_SUCCESS,
@@ -33,8 +33,8 @@ export const filterStudentTable = searchTerm => dispatch => {
     payload: searchTerm
   });
   dispatch({ type: FETCH_STUDENTS_START });
-  axios
-    .get(`${API_URL}/students`)
+  axiosWithAuth()
+    .get(`/students`)
     .then(res => {
       searchTerm = searchTerm.toLowerCase();
       let studentList = res.data;
@@ -111,15 +111,24 @@ export const createNewStudent = student => dispatch => {
   //   location_id: location_id.value
   // };
   dispatch({ type: CREATE_NEW_STUDENT_START });
-  axios
-    .post(`${API_URL}/student`, student)
+
+  console.log("attempting to create student", student);
+
+  axiosWithAuth()
+    .post(`/student`, student)
     .then(res => {
+
+      console.log("added student", res);
+
       dispatch({
         type: CREATE_NEW_STUDENT_SUCCESS,
         payload: res.data
       });
     })
     .catch(err => {
+
+      console.log("couldn't add student", err);
+
       dispatch({
         type: CREATE_NEW_STUDENT_FAILURE,
         payload: err.data
@@ -135,8 +144,8 @@ export const FETCH_DROPDOWN_FAILURE =
 
 export const getDropDown = () => dispatch => {
   dispatch({ type: FETCH_DROPDOWN_START });
-  axios
-    .get(`${API_URL}/student/dropdowns`)
+  axiosWithAuth()
+    .get(`/student/dropdowns`)
     .then(res => {
       dispatch({
         type: FETCH_DROPDOWN_SUCCESS,

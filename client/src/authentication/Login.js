@@ -1,8 +1,8 @@
 import React from "react";
-import { Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
-import { logIn, loggedIn } from "../actions/authenticationActions.js";
+import { logIn } from "../actions/authenticationActions.js";
 import { useForm } from 'react-hook-form';
 import "./loginAndRegister.scss";
 
@@ -13,9 +13,9 @@ function Login(props) {
       props.logIn(user, props.history);
   };
 
-  if (props.state.authenticationReducer.user.authenticated) {
-    return <Redirect to="/dashboard" />;
-  } else {
+  // if (props.state.authenticationReducer.user.authenticated) {
+  //   return <Redirect to="/dashboard" />;
+  // } else {
     return (
       
           <div className="form-container">
@@ -49,10 +49,10 @@ function Login(props) {
 
     );
   }
-}
+// }
 
 const mapStateToProps = state => {
   return { state: state };
 };
 
-export default withRouter(connect( mapStateToProps, { logIn, loggedIn } )(Login));
+export default withRouter(connect( mapStateToProps, { logIn } )(Login));

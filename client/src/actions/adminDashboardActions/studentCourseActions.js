@@ -1,5 +1,4 @@
-import axios from 'axios';
-import API_URL from '../../config/apiUrl';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 export const FETCH_STUDENTCOURSES_START =
   'FETCH_STUDENTCOURSES_START';
@@ -11,8 +10,8 @@ export const FETCH_STUDENTCOURSES_FAILURE =
 export const getStudentCourses = student_id => dispatch => {
   //most students are missing the course info so this is the test student that is working
   dispatch({ type: FETCH_STUDENTCOURSES_START });
-  axios
-    .get(`${API_URL}/student/${student_id}/courses`)
+  axiosWithAuth()
+    .get(`/student/${student_id}/courses`)
     .then(res => {
       dispatch({
         type: FETCH_STUDENTCOURSES_SUCCESS,

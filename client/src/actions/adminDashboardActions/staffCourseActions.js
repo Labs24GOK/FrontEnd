@@ -1,5 +1,4 @@
-import axios from 'axios';
-import API_URL from '../../config/apiUrl';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 export const FETCH_STAFFCOURSES_START = 'FETCH_STAFFCOURSES_START';
 export const FETCH_STAFFCOURSES_SUCCESS = 'FETCH_STAFFCOURSES_SUCCESS';
@@ -13,8 +12,8 @@ export const FETCH_STUDENTSBYCOURSEID_FAILURE =
 
 export const getStaffCourses = staff_id => dispatch => {
 	dispatch({ type: FETCH_STAFFCOURSES_START });
-	axios
-		.get(`${API_URL}/staff/${staff_id}/courses`)
+	axiosWithAuth()
+		.get(`/staff/${staff_id}/courses`)
 		.then(res => {
 			dispatch({
 				type: FETCH_STAFFCOURSES_SUCCESS,
@@ -31,8 +30,8 @@ export const getStaffCourses = staff_id => dispatch => {
 
 export const getStudentsByCourseID = course_id => dispatch => {
 	dispatch({ type: FETCH_STUDENTSBYCOURSEID_START });
-	axios
-		.get(`${API_URL}/course/${course_id}/students`)
+	axiosWithAuth()
+		.get(`/course/${course_id}/students`)
 		.then(res => {
 			dispatch({
 				type: FETCH_STUDENTSBYCOURSEID_SUCCESS,

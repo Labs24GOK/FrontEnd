@@ -1,19 +1,23 @@
 import React from 'react';
+import { Redirect } from "react-router-dom";
 import AdminDashboard from './adminDashboard/components/index';
-import ParentDashboard from './parentDashboard/components/index';
+import UserDashboard from './userDashboard/components/index';
 import StaffDashboard from './staffDashboard/components/index';
 
 function Index() {
     // USER TYPE THAT WAS SAVED WHEN USER LOGGED IN
+
+    console.log("dashboardview", localStorage.getItem('userType'));
+
     const userType = localStorage.getItem('userType');
     if (userType === 'admin') {
       return <AdminDashboard />;
     } else if (userType === 'parent') {
-      return <ParentDashboard />;
+      return <UserDashboard />;
     } else if (userType === 'staff') {
       return <StaffDashboard />;
     } else {
-      return;
+      return <Redirect to="/login" />;
     }
 }
 

@@ -1,25 +1,20 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { withRouter } from "react-router";
-import { connect } from 'react-redux';
-import { loggedIn } from '../actions/authenticationActions';
 import Login from '../authentication/Login';
 import DashboardView from '../views';
 import Register from '../authentication/Register';
+import ProtectedRoute from "./ProtectedRoute";
 
 import Header from "../views/marketing/components/Header";
 import Footer from "../views/marketing/components/Footer";
 
 import Marketing from "../views/marketing/Marketing";
 
-function Routes(props) {
-  useEffect(() => {
-    props.loggedIn(props.history, props.location);
-  }, [])
+function Routes() {
   return (
     <>
       <Switch>
-        {props.state.authenticationReducer.user.authenticated && <Route exact path='/dashboard' render={() => <DashboardView /> } />  }
+        <ProtectedRoute path='/dashboard' component={DashboardView} />
         <Route exact path="/" render={() => <Marketing page="home" />}/>
         <Route path="/schedules" render={() => <Marketing page="course_structure" />}/>
         <Route path="/courses" render={() => <Marketing page="courses" />}/>
@@ -30,15 +25,7 @@ function Routes(props) {
     </>
   );
 }
-const mapStateToProps = state => {
-  return {
-    state: state
-  };
-};
-export default withRouter(connect(
-  mapStateToProps,
-  { loggedIn }
-)(Routes));
+export default Routes;
 
 
 

@@ -3,14 +3,11 @@ import API_URL from '../config/apiUrl';
 
 axios.defaults.withCredentials = true;
 
-export const LOGGEDIN_START = 'LOGGEDIN_START';
-export const LOGGEDIN_SUCCESS = 'LOGGEDIN_SUCCESS';
-export const LOGGEDIN_FAILURE = 'LOGGEDIN_FAILURE';
-
 export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
+<<<<<<< HEAD
 export const LOGOUT_START = 'LOGOUT_START';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
@@ -36,6 +33,8 @@ export const loggedIn = (history, location) => {
 	};
 };
 
+=======
+>>>>>>> 44675c75dfad1dc3e2edbd392132fd658f534d9e
 export const logIn = (user, history) => {
 	return dispatch => {
 		dispatch({ type: LOGIN_START });
@@ -43,30 +42,20 @@ export const logIn = (user, history) => {
 		axios
 			.post(`${API_URL}/api/auth/login`, user)
 			.then(res => {
-				// SETTING THE USER TYPE TO LOCAL STORAGE SO THAT IT DOES NOT GET LOST IF USER RELOADS THE PAGE
-				localStorage.setItem('userType', res.data.user_type);
+				let userType = "parent";
+
+				if (user.username === "admin")
+					{ userType = "admin"; }
+
+				localStorage.setItem('userType', userType);
+				
 				dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+				console.log("action creator is pushing to dashboard (logIn)", res.data);
+				localStorage.setItem('token', res.data.token);
 				history.push('/dashboard');
 			})
 			.catch(err => {
 				dispatch({ type: LOGIN_FAILURE, payload: 'Error' });
-			});
-	};
-};
-
-export const logOut = history => {
-	return dispatch => {
-		dispatch({ type: LOGOUT_START });
-
-		axios
-			.get(`${API_URL}/api/auth/logout`)
-			.then(res => {
-				dispatch({ type: LOGOUT_SUCCESS, payload: res.data });
-				localStorage.removeItem('userType');
-				history.push('/');
-			})
-			.catch(err => {
-				dispatch({ type: LOGOUT_FAILURE, payload: 'Error' });
 			});
 	};
 };

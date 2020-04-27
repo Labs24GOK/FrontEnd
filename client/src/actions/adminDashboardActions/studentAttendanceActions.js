@@ -1,5 +1,4 @@
-import axios from 'axios';
-import API_URL from '../../config/apiUrl';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 export const FETCH_STUDENTATTENDANCE_START =
   'FETCH_STUDENTATTENDANCE_START';
@@ -10,8 +9,8 @@ export const FETCH_STUDENTATTENDANCE_FAILURE =
 
 export const getStudentAttendanceTable = course_id => dispatch => {
   dispatch({ type: FETCH_STUDENTATTENDANCE_START });
-  axios
-    .get(`${API_URL}/attendance/courseenrollment/${course_id}`)
+  axiosWithAuth()
+    .get(`/attendance/courseenrollment/${course_id}`)
     .then(res => {
       dispatch({
         type: FETCH_STUDENTATTENDANCE_SUCCESS,

@@ -1,6 +1,5 @@
 import { notification } from 'antd';
-import axios from 'axios';
-import API_URL from '../../config/apiUrl';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 export const FETCH_STUDENTBYID_START =
   'FETCH_STUDENTBYID_START';
@@ -10,8 +9,8 @@ export const FETCH_STUDENTBYID_FAILURE =
   'FETCH_STUDENTBYID_FAILURE';
 export const getStudentById = student_id => dispatch => {
   dispatch({ type: FETCH_STUDENTBYID_START });
-  axios
-    .get(`${API_URL}/student/${student_id}`)
+  axiosWithAuth()
+    .get(`/student/${student_id}`)
     .then(res => {
       dispatch({
         type: FETCH_STUDENTBYID_SUCCESS,
@@ -55,10 +54,9 @@ export const enrollStudent = (
   };
 
   dispatch({ type: ENROLL_STUDENT_START });
-
-  axios
+  axiosWithAuth()
     .post(
-      `${API_URL}/student/${student_id}/course/${course_id}`,
+      `/student/${student_id}/course/${course_id}`,
       state
     )
     .then(res => {
@@ -91,9 +89,9 @@ export const editEnrollStudent = (
   state
 ) => dispatch => {
   dispatch({ type: EDIT_ENROLL_STUDENT_START });
-  axios
+  axiosWithAuth()
     .put(
-      `${API_URL}/student/${student_id}/course/${course_id}`,
+      `/student/${student_id}/course/${course_id}`,
       state
     )
     .then(res => {
@@ -138,9 +136,9 @@ export const unenrollEnrollStudent = (
   };
 
   dispatch({ type: UNENROLL_STUDENT_START });
-  axios
+  axiosWithAuth()
     .delete(
-      `${API_URL}/student/${student_id}/course/${course_id}`
+      `/student/${student_id}/course/${course_id}`
     )
     .then(res => {
       StudentUnenrolledSuccessNotification('success');
@@ -181,8 +179,8 @@ export const editStudentById = (
   student_id,
   state
 ) => dispatch => {
-  axios
-    .put(`${API_URL}/student/${student_id}`, state)
+  axiosWithAuth()
+    .put(`/student/${student_id}`, state)
     .then(res => {
       dispatch({
         type: EDIT_STUDENTBYID_SUCCESS,
@@ -205,8 +203,8 @@ export const DELETE_STUDENTBYID_FAILURE =
 
 export const deleteStudentById = id => dispatch => {
   dispatch({ type: DELETE_STUDENTBYID_START });
-  axios
-    .delete(`${API_URL}/student/${id}`)
+  axiosWithAuth()
+    .delete(`/student/${id}`)
     .then(res => {
       dispatch({
         type: DELETE_STUDENTBYID_SUCCESS,
@@ -228,8 +226,8 @@ export const EDIT_DROPDOWN_FAILURE =
 
 export const editStudentDropDown = () => dispatch => {
   dispatch({ type: EDIT_DROPDOWN_START });
-  axios
-    .get(`${API_URL}/student/dropdowns`)
+  axiosWithAuth()
+    .get(`/student/dropdowns`)
     .then(res => {
       dispatch({
         type: EDIT_DROPDOWN_SUCCESS,

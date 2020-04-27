@@ -1,5 +1,4 @@
-import axios from 'axios';
-import API_URL from '../../config/apiUrl';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 export const FETCH_COURSES_START = 'FETCH_COURSES_START';
 export const FETCH_COURSES_SUCCESS =
@@ -9,8 +8,8 @@ export const FETCH_COURSES_FAILURE =
 
 export const getCourseTable = () => dispatch => {
   dispatch({ type: FETCH_COURSES_START });
-  axios
-    .get(`${API_URL}/course`)
+  axiosWithAuth()
+    .get(`/course`)
     .then(res => {
       dispatch({
         type: FETCH_COURSES_SUCCESS,
@@ -34,8 +33,8 @@ export const FETCH_COURSEBYID_FAILURE =
 
 export const getCourseById = id => dispatch => {
   dispatch({ type: FETCH_COURSEBYID_START });
-  axios
-    .get(`${API_URL}/course/${id}`)
+  axiosWithAuth()
+    .get(`/course/${id}`)
     .then(res => {
       dispatch({
         type: FETCH_COURSEBYID_SUCCESS,
@@ -59,8 +58,8 @@ export const FETCH_DROPDOWNCOURSES_FAILURE =
 
 export const getDropDownCourses = () => dispatch => {
   dispatch({ type: FETCH_DROPDOWNCOURSES_START });
-  axios
-    .get(`${API_URL}/course/dropdowns`)
+  axiosWithAuth()
+    .get(`/course/dropdowns`)
     .then(res => {
       dispatch({
         type: FETCH_DROPDOWNCOURSES_SUCCESS,
@@ -82,8 +81,8 @@ export const ADD_COURSE_FAILURE = 'ADD_COURSE_FAILURE';
 export const addCourse = course => dispatch => {
  
   dispatch({ type: ADD_COURSE_START });
-  axios
-    .post(`${API_URL}/course`, course)
+  axiosWithAuth()
+    .post(`/course`, course)
     .then(res => {
       dispatch({
         type: ADD_COURSE_SUCCESS,
@@ -120,8 +119,8 @@ export const editCourseById = (
   course_id,
   state
 ) => dispatch => {
-  axios
-    .put(`${API_URL}/course/${course_id}`, state)
+  axiosWithAuth()
+    .put(`/course/${course_id}`, state)
     .then(res => {
       dispatch({
         type: EDIT_COURSEBYID_SUCCESS,
@@ -147,8 +146,8 @@ export const deleteCourseById = course_id => dispatch => {
   dispatch({
     type: DELETE_COURSEBYID_START
   });
-  axios
-    .delete(`${API_URL}/course/${course_id}`)
+  axiosWithAuth()
+    .delete(`/course/${course_id}`)
     .then(res => {
       dispatch({
         type: DELETE_COURSEBYID_SUCCESS,
@@ -172,8 +171,8 @@ export const DISPLAY_STUDENTSBYCOURSEID_FAILURE =
 
 export const getStudentTableByCourseID = course_id => dispatch => {
   dispatch({ type: DISPLAY_STUDENTSBYCOURSEID_START });
-  axios
-    .get(`${API_URL}/course/${course_id}/students`)
+  axiosWithAuth()
+    .get(`/course/${course_id}/students`)
     .then(res => {
       dispatch({
         type: DISPLAY_STUDENTSBYCOURSEID_SUCCESS,
@@ -195,8 +194,8 @@ export const filterCourseTable = searchTerm => dispatch => {
     payload: searchTerm
   });
   dispatch({ type: FETCH_COURSES_START });
-  axios
-    .get(`${API_URL}/course`)
+  axiosWithAuth()
+    .get(`/course`)
     .then(res => {
       searchTerm = searchTerm.toLowerCase();
       let courseList = res.data;
