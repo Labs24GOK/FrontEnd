@@ -24,7 +24,7 @@ export const loggedIn = (history, location) => {
 			.then(res => {
 				dispatch({ type: LOGGEDIN_SUCCESS, payload: res.data });
 				if (!res.data.authenticated && location.pathname === '/dashboard') {
-					history.push('/api/auth/login');
+					history.push('/login');
 				} else if (res.data.authenticated) {
 					history.push('/dashboard');
 				}
