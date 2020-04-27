@@ -35,23 +35,22 @@ You can find the deployed project at [speak-out-bh.com](https://speak-out-bh.com
 ## Project Overview
 
 
-|**LABS 20**
+| LABS 20 | LABS 22 |
+| ------- | ------- |
 
-[Trello Board](https://trello.com/b/SJHPrjVM/labs-20-speak-out)
+| [Trello Board](https://trello.com/b/SJHPrjVM/labs-20-speak-out) | [Trello Board](https://trello.com/b/dRZzGnhr/labs-22-speak-out) |
 
-[Product Canvas](https://www.notion.so/Speak-Out-bf0efc0a7c3847a4b3bfc33d9a12c6e9)
+| [Product Canvas](https://www.notion.so/Speak-Out-bf0efc0a7c3847a4b3bfc33d9a12c6e9) | [Product Canvas](https://www.notion.so/Speak-Out-bf0efc0a7c3847a4b3bfc33d9a12c6e9) |
 
-[UX Design files](https://www.figma.com/proto/lAawtUck67YJkPuZQK2Vlo/UX6-Group-Project-Speak-Out.?node-id=746%3A21505&viewport=182%2C561%2C0.0289407130330801&scaling=min-zoom)
-|
+| [UX Design files](https://www.figma.com/proto/lAawtUck67YJkPuZQK2Vlo/UX6-Group-Project-Speak-Out.?node-id=746%3A21505&viewport=182%2C561%2C0.0289407130330801&scaling=min-zoom) | [UX Design files](https://www.figma.com/file/INzI15d34MpvNvy6FN1wVf/Marketing-Page-(Labs-22)?node-id=118%3A0) |
 
-|**LABS 22**
 
-[Trello Board](https://trello.com/b/dRZzGnhr/labs-22-speak-out)
 
-[Product Canvas](https://www.notion.so/Speak-Out-bf0efc0a7c3847a4b3bfc33d9a12c6e9)
 
-[UX Design files](https://www.figma.com/file/INzI15d34MpvNvy6FN1wVf/Marketing-Page-(Labs-22)?node-id=118%3A0)
-|
+
+
+
+
 
 Easy-to-use, ‘cloud application’ that promotes school’s quality education at an affordable price, enables parents to register their children for classes, schedule a placement test (or have a student to take a placement test online), pay tuition, and track their childrens’ success at school.       
 
