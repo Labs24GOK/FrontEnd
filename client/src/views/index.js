@@ -7,12 +7,16 @@ import StaffDashboard from './staffDashboard/components/index';
 function Index() {
     // USER TYPE THAT WAS SAVED WHEN USER LOGGED IN
 
-    console.log("dashboardview", localStorage.getItem('userType'));
+    let token = localStorage.getItem("token");
+    let tokenData = JSON.parse(atob(token.split('.')[1]));;
+    
+    const userType = tokenData.role;
 
-    const userType = localStorage.getItem('userType');
+    console.log("token:", tokenData, userType);
+    
     if (userType === 'admin') {
       return <AdminDashboard />;
-    } else if (userType === 'parent') {
+    } else if (userType === 'user') {
       return <UserDashboard />;
     } else if (userType === 'staff') {
       return <StaffDashboard />;

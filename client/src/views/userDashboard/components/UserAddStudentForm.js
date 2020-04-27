@@ -21,8 +21,12 @@ const UserAddStudentForm = props => {
 			// if the string should/could be converted to a number
 				data[property] = parseInt(data[property])
 		}
+
+		console.log("props are:", props);
+
 		props.createNewStudent(data);
 		props.setDisplayAddStudentModal(false);
+		props.setNeedToUpdateStudents(true);
 	}
 
 	useEffect(() => {
