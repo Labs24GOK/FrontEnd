@@ -24,11 +24,7 @@ You can find the deployed project at [speak-out-bh.com](https://speak-out-bh.com
 |                                                                                                                                                                                                                           |
 |                                           [<img src="./profile-pictures/hiter-harris.png" width = "200" />](https://github.com/hiterharris)        </br>Full Stack Web Developer                                            |                                           [<img src="./profile-pictures/AlvinLin.jpg" width = "200" />](https://github.com/aalvinlin)    </br>Full Stack Web Developer                                           |                                               [<img src="./profile-pictures/AmmonMatthews.jpeg" width = "200" />](https://github.com/AmmonMatthews)   </br>Full Stack Web Developer                                                |                                                 [<img src="./profile-pictures/RichardMachado.gif" width = "200" />](https://github.com/richardmachado)   </br>Full Stack Web Developer                                                 |                                        [<img src="./profile-pictures/jeremy-mcwilliams.jpg" width = "200" />](https://github.com/J2Macwilliams)    </br>Full Stack Web Developer /</br> Team Lead                                         |
 | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/hiterharris)   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/hiter-harris-iv/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/aalvinlin) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/aalvinlin/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/AmmonMatthews)  [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/hamatthews/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/richardmachado)  [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/richardmachado/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/J2Macwilliams)   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jeremy-mcwilliams/) |  |
-<!-- | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/hiterharris)   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/hiter-harris-iv) 
-| [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/aalvinlin) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](www.linkedin.com/in/aalvinlin) 
-| [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/AmmonMatthews)  [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/hamatthews/) 
-| [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/richardmachado)  [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/richardmachado) 
-| [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/J2Macwilliams)   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jeremy-mcwilliams/) |  | -->
+
 
 <br>
 <br>
@@ -67,14 +63,11 @@ Easy-to-use, ‘cloud application’ that promotes school’s quality education 
 -    We also want something that is performant and easy to maintain/extend. 
 
 
-## Material UI - a UI framework that works well with React.
--  For primary styling of the site. Given the number of developers who may work on the app, there could be difficulty achieving stylistic uniformity across all views (the "too many cooks in the kitchen" issue). Material UI would allow for a clean and consistent user interface, and save time, since it is implemented in a standard way regardless of who is using it.
-- Pros: Reusable, prebuilt components save time
 ## Styled Components - an add-on for creating dynamic styles directly in React components.
 - Use Case: Having a base library implemented for overall site styling will cover most use cases, but we may need more flexibility on a per-component basis and the ability to add/alter styles dynamically based user interaction/the state of the application, and Styled Components can provide this.
 - Pros: easy to use, easy to create, can make them custom
 
-#### Front end deployed to Netlify
+#### Front end deployed to AWS Amplify
 
 #### [Back end](https://github.com/Lambda-School-Labs/speak-out-be) built using:
 
