@@ -43,7 +43,7 @@ function Register(props) {
             <form onSubmit={handleSubmit(formSubmit)}>
               
               <fieldset>
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name">Full Name</label>
                 <input type="text" name="name" ref={register({required: true, minLength: 1})} defaultValue="New User"/>
                 
                 <label htmlFor="email">Email</label>

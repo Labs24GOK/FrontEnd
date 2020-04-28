@@ -9,13 +9,20 @@ You can find the deployed project at [speak-out-bh.com](https://speak-out-bh.com
 
 ## Contributors
 
-
+**LABS 20**
 
 |                                                                                       [Pedro Prieto](https://github.com/prietop97)                                                                                        |                                                                                     [Eric S Richards](https://github.com/Chards79)                                                                                     |                                                                                         [Jessica G Cooper](https://github.com/JessicaGCooper)                                                                                         |                                                                                          [Chase Hooper](https://github.com/HoopCha)                                                                                           |                                                                                           [Dave Vazquez](https://github.com/dave-vazquez)                                                                                           |
-| :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|                                                                                                                                                                                                                           |
+| :-------: | :-----------: | :-------: | :--------: | :---------: |
 |                                           [<img src="./profile-pictures/pedro-prieto.png" width = "200" />](https://github.com/prietop97)        </br>Full Stack Web Developer                                            |                                           [<img src="./profile-pictures/eric-s-richards.png" width = "200" />](https://github.com/Chards79)    </br>Full Stack Web Developer                                           |                                               [<img src="./profile-pictures/jessica-g-hooper.png" width = "200" />](https://github.com/JessicaGCooper)   </br>Full Stack Web Developer                                                |                                                 [<img src="./profile-pictures/chase-hooper.png" width = "200" />](https://github.com/HoopCha)   </br>Full Stack Web Developer                                                 |                                        [<img src="./profile-pictures/dave-vazquez.png" width = "200" />](https://github.com/dave-vazquez)    </br>Full Stack Web Developer /</br> Team Lead                                         |
 | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/prietop97)   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/pedroprieto-dev/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Chards79) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/eric-s-richards/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/JessicaGCooper)  [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jessica-cooper-17730748/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/HoopCha)  [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/chase-hooper-5794a5158/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/dave-vazquez)   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/david-vazquez-b6172770/) |  |
+
+**LABS 22**
+
+|  [Hiter Harris](https://github.com/hiterharris)  |  [Alvin Lin](https://github.com/aalvinlin)  |  [Ammon Matthews](https://github.com/AmmonMatthews)|[Richard Machado](https://github.com/richardmachado)  |  [Jeremy McWilliams](https://github.com/J2Macwilliams)|
+| :-------: | :-----------: | :-------: | :--------: | :---------: |
+|                                           [<img src="./profile-pictures/hiter-harris.png" width = "200" />](https://github.com/hiterharris)        </br>Full Stack Web Developer                                            |                                           [<img src="./profile-pictures/AlvinLin.jpg" width = "200" />](https://github.com/aalvinlin)    </br>Full Stack Web Developer                                           |                                               [<img src="./profile-pictures/AmmonMatthews.jpeg" width = "200" />](https://github.com/AmmonMatthews)   </br>Full Stack Web Developer                                                |                                                 [<img src="./profile-pictures/RichardMachado.gif" width = "200" />](https://github.com/richardmachado)   </br>Full Stack Web Developer                                                 |                                        [<img src="./profile-pictures/jeremy-mcwilliams.jpg" width = "200" />](https://github.com/J2Macwilliams)    </br>Full Stack Web Developer /</br> Team Lead                                         |
+| [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/hiterharris)   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/hiter-harris-iv/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/aalvinlin) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/aalvinlin/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/AmmonMatthews)  [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/hamatthews/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/richardmachado)  [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/richardmachado/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/J2Macwilliams)   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jeremy-mcwilliams/) |  |
+
 
 <br>
 <br>
@@ -25,11 +32,12 @@ You can find the deployed project at [speak-out-bh.com](https://speak-out-bh.com
 
 ## Project Overview
 
-[Trello Board](https://trello.com/b/SJHPrjVM/labs-20-speak-out)
 
-[Product Canvas](https://www.notion.so/Speak-Out-bf0efc0a7c3847a4b3bfc33d9a12c6e9)
-
-[UX Design files](https://www.figma.com/proto/lAawtUck67YJkPuZQK2Vlo/UX6-Group-Project-Speak-Out.?node-id=746%3A21505&viewport=182%2C561%2C0.0289407130330801&scaling=min-zoom)
+| LABS 20 | LABS 22 |
+| :-----: | :-----: |
+| [Trello Board](https://trello.com/b/SJHPrjVM/labs-20-speak-out) | [Trello Board](https://trello.com/b/dRZzGnhr/labs-22-speak-out) |
+| [Product Canvas](https://www.notion.so/Speak-Out-bf0efc0a7c3847a4b3bfc33d9a12c6e9) | [Product Canvas](https://www.notion.so/Speak-Out-bf0efc0a7c3847a4b3bfc33d9a12c6e9) |
+| [UX Design files](https://www.figma.com/proto/lAawtUck67YJkPuZQK2Vlo/UX6-Group-Project-Speak-Out.?node-id=746%3A21505&viewport=182%2C561%2C0.0289407130330801&scaling=min-zoom) | [UX Design files](https://www.figma.com/file/INzI15d34MpvNvy6FN1wVf/Marketing-Page-(Labs-22)?node-id=118%3A0) |
 
 
 Easy-to-use, ‘cloud application’ that promotes school’s quality education at an affordable price, enables parents to register their children for classes, schedule a placement test (or have a student to take a placement test online), pay tuition, and track their childrens’ success at school.       
@@ -54,14 +62,11 @@ Easy-to-use, ‘cloud application’ that promotes school’s quality education 
 -    We also want something that is performant and easy to maintain/extend. 
 
 
-## Material UI - a UI framework that works well with React.
--  For primary styling of the site. Given the number of developers who may work on the app, there could be difficulty achieving stylistic uniformity across all views (the "too many cooks in the kitchen" issue). Material UI would allow for a clean and consistent user interface, and save time, since it is implemented in a standard way regardless of who is using it.
-- Pros: Reusable, prebuilt components save time
 ## Styled Components - an add-on for creating dynamic styles directly in React components.
 - Use Case: Having a base library implemented for overall site styling will cover most use cases, but we may need more flexibility on a per-component basis and the ability to add/alter styles dynamically based user interaction/the state of the application, and Styled Components can provide this.
 - Pros: easy to use, easy to create, can make them custom
 
-#### Front end deployed to Netlify
+#### Front end deployed to AWS Amplify
 
 #### [Back end](https://github.com/Lambda-School-Labs/speak-out-be) built using:
 
@@ -78,9 +83,9 @@ List the rest of the back end end features and libraries in the same format as t
 - Popular, well-supported, well-documented and has a free tier for developing environments.
 
 
-## Passport JS - A extremely flexible and modular authentication middleware for express.
-- PassportJS will give us a way to handle authentication in different strategies based on the stakeholders needs.
-- Passport is a well documented authentication library and works very well with node and express
+## JSON Web Tokens - JWT - A extremely flexible and modular authentication middleware for express.
+- JWT will give us a way to handle authentication in different strategies based on the stakeholders needs.
+- JWT is a well documented authentication library and works very well with node and express
 
 
 # Installation Instructions
