@@ -10,13 +10,13 @@ function Index() {
     let token = localStorage.getItem("token");
     let tokenData = JSON.parse(atob(token.split('.')[1]));;
     
-    const userType = tokenData.role;
+    const userType = tokenData.user_type;
 
     console.log("token:", tokenData, userType);
     
     if (userType === 'admin') {
       return <AdminDashboard />;
-    } else if (userType === 'user') {
+    } else if (userType === 'parent') {
       return <UserDashboard />;
     } else if (userType === 'staff') {
       return <StaffDashboard />;

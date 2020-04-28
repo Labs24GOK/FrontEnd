@@ -37,6 +37,7 @@ const initialState = {
     createNewStudentIsLoading: false,
     createNewStudentError: null,
     createNewStudentSuccessMessage: '',
+    needToUpdateStudentList: false
 }
 
 export const studentTableReducer = (state = initialState, action) => {
@@ -69,18 +70,21 @@ export const studentTableReducer = (state = initialState, action) => {
         case CREATE_NEW_STUDENT_START:
             return {
                 ...state,
+                needToUpdateStudentList: false,
                 createNewStudentIsLoading: true
             }
         case CREATE_NEW_STUDENT_SUCCESS:
             return {
                 ...state,
                 createNewStudentIsLoading: false,
-                createNewStudentSuccessMessage: 'Student has been successfuly added',
+                createNewStudentSuccessMessage: 'Student has been successfully added',
+                needToUpdateStudentList: true,
                 studentList: [action.payload, ...state.studentList]
             }
         case CREATE_NEW_STUDENT_FAILURE:
             return {
                 ...state,
+                needToUpdateStudentList: false,
                 createNewStudentError: 'Something went wrong'
             }
             case 'RESET_FORM':
