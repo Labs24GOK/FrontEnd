@@ -47,16 +47,16 @@ function Register(props) {
               
               <fieldset>
                 <label htmlFor="name">Full Name</label>
-                <input type="text" name="name" ref={register({required: true, minLength: 1})} defaultValue="New User"/>
+                <input type="text" name="name" ref={register({required: true, minLength: 1})}/>
                 
                 <label htmlFor="email">Email</label>
-                <input type="email" name="email" ref={register({required: true, minLength: 1})}  defaultValue={Date.now() + "@gmail.com"}/>
+                <input type="email" name="email" ref={register({required: true, minLength: 1})}/>
 
                 <label htmlFor="username">Username</label>
-                <input type="text" name="username" ref={register({required: true, minLength: 1})}  defaultValue={Date.now()}/>
+                <input type="text" name="username" ref={register({required: true, minLength: 1})}/>
 
                 <label htmlFor="password">Password</label>
-                <input type="password" name="password" ref={register({required: true, minLength: 1})} defaultValue="pass" />
+                <input type="password" name="password" ref={register({required: true, minLength: 1})}/>
 
                 <button type="submit" className={errors.name ? "disabled" : ""}>
                   Register
