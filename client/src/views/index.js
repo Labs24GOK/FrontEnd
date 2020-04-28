@@ -16,7 +16,7 @@ function Index() {
     
     if (userType === 'admin') {
       return <AdminDashboard />;
-    } else if (userType === 'user') {
+    } else if (userType === 'parent') {
       return <UserDashboard />;
     } else if (userType === 'staff') {
       return <StaffDashboard />;
