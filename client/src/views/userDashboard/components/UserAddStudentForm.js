@@ -25,8 +25,8 @@ const UserAddStudentForm = props => {
 		console.log("props are:", props);
 
 		props.createNewStudent(data);
+		// setTimeout(props.setNeedToUpdateStudents(true), 5000);
 		props.setDisplayAddStudentModal(false);
-		props.setNeedToUpdateStudents(true);
 	}
 
 	useEffect(() => {
@@ -210,7 +210,7 @@ const UserAddStudentForm = props => {
 				<AddButton onClick={handleSubmit} type="submit">Add student</AddButton>
 			</div>
 
-			{(props.createNewStudentSuccessMessage.length > 0) ? <h3>Student successfully created.</h3> : <></> }
+			{/* {(props.createNewStudentSuccessMessage.length > 0) ? <h3>Student successfully created.</h3> : <></> } */}
 		</form>
 	);
 };
