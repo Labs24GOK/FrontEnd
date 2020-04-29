@@ -34,7 +34,7 @@ const UserAddStudentForm = props => {
 	}, []);
 
 	return (
-		<form onSubmit={handleSubmit(submitNow)}>
+		<form onSubmit={handleSubmit(submitNow)} className="userAddStudentForm">
 					<div className="form-input-div">
 						<Label>CPR</Label>
 						<div>

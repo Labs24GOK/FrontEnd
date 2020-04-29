@@ -124,7 +124,7 @@
     }
 
     // new styles for StudentRegistrationForm in adminDashboard
-    .form-parent-container {
+    .userAddStudentForm {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -132,6 +132,7 @@
 
         div {
             width: 100%;
+            margin: 0.25rem auto;
         }
     }
 
