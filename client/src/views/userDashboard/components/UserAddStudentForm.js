@@ -206,8 +206,8 @@ const UserAddStudentForm = props => {
 						</div>
 					</div>
 			<div className="form-button-div">
-				<CancelButton onClick={() => props.setDisplayAddStudentModal(false)}>Cancel</CancelButton>
-				<AddButton onClick={handleSubmit} type="submit">Add student</AddButton>
+				<button className="cancel" onClick={() => props.setDisplayAddStudentModal(false)}>Cancel</button>
+				<button className="add" onClick={handleSubmit} type="submit">Add student</button>
 			</div>
 
 			{/* {(props.createNewStudentSuccessMessage.length > 0) ? <h3>Student successfully created.</h3> : <></> } */}
