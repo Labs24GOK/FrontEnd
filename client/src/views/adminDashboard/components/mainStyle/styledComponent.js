@@ -119,7 +119,7 @@ export const CardStyle = styled.div`
 
 export const Button = styled.button`
   width: 120px;
-  height: 25px;
+  height: 40px;
   border-radius: 3px;
   margin: 10px 5px 10px 10px;
   background-color: #269FB0;
@@ -131,7 +131,7 @@ export const Button = styled.button`
 export const RedButton = styled.button`
   background-color: #C73642;
   width: 120px;
-  height: 25px;
+  height: 40px;
   border-radius: 3px;
   margin: 10px 5px 10px 10px;
   text-align: center;
@@ -213,7 +213,7 @@ export const CancelButton = styled.button`
 background-color: #C73642; 
 color:#FFFFFF; 
 width: 80px;
-height: 25px;
+height: 40px;
 border-radius: 3px;
 margin: 10px 5px 10px 10px;
 text-align: center;
@@ -223,7 +223,7 @@ cursor: pointer;
 
 export const SaveButton = styled.button`
 width: 80px;
-height: 25px;
+height: 40px;
 border-radius: 3px;
 margin: 10px 5px 10px 10px;
 text-align: center;
@@ -235,7 +235,7 @@ cursor: pointer;
 
 export const DeleteButton = styled.button`
 width: 80px;
-height: 25px;
+height: 40px;
 border-radius: 3px;
 margin: 10px 5px 10px 10px;
 text-align: center;
@@ -247,7 +247,7 @@ cursor: pointer;
 
 export const AddButton = styled.button`
 width: 120px;
-height: 25px;
+height: 40px;
 border-radius: 3px;
 margin: 10px 5px 10px 10px;
 text-align: center;
