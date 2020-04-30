@@ -12,8 +12,6 @@ function Index() {
     
     const userType = tokenData.user_type;
 
-    console.log("token:", tokenData, userType);
-    
     if (userType === 'admin') {
       return <AdminDashboard />;
     } else if (userType === 'parent') {
