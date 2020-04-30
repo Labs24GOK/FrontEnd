@@ -33,7 +33,7 @@ function Register(props) {
                 <input type="text" name="name" ref={register({required: true, minLength: 1})}/>
                 
                 <label htmlFor="email">Email</label>
-                <input type="email" name="email" ref={register({required: true, minLength: 1})}/>
+                <input type="email" name="email" defaultValue="z@z.com" ref={register({required: true, minLength: 1})}/>
 
                 <label htmlFor="username">Username</label>
                 <input type="text" name="username" ref={register({required: true, minLength: 1})}/>
@@ -48,6 +48,10 @@ function Register(props) {
               
               <div className="register-errors">
                 {(errors.name || errors.email || errors.username || errors.password) && <p>All fields are required.</p>}
+
+              {/* if the backend returned an error because the username or email already exists, display that error */}
+              {props.state && props.state.registrationReducer && props.state.registrationReducer.familyRegister && props.state.registrationReducer.familyRegister.error && <p>{props.state.registrationReducer.familyRegister.error}</p>}
+
               </div>
             </form>
           </div>

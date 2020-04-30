@@ -43,13 +43,13 @@ import {
         };
       case FAMILY_REGISTER_FAILURE:
 
-        console.log("Registration failed in reducer.");
+        console.log("Registration failed in reducer.", action.payload.response.data.message);
 
         return {
           ...state,
           familyRegister: {
             isLoading: false,
-            error: action.payload
+            error: action.payload.response.data.message
           }
         };
       default:

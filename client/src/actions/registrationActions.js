@@ -14,7 +14,7 @@ export const familyRegister = (register, history) => {
 				history.push('/dashboard');
 			})
 			.catch(err => {
-				dispatch({ type: FAMILY_REGISTER_FAILURE, payload: err.payload });
+				dispatch({ type: FAMILY_REGISTER_FAILURE, payload: err });
 			});
 	};
 };
