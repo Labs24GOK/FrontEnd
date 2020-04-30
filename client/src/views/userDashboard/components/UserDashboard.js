@@ -48,8 +48,6 @@ function UserDashboard(props) {
     // if userData hasn't loaded yet, return a loading message/icon
     if (Object.keys(userData).length === 0 || !userData.students || !userData.messages)
         {
-            console.log("userData has nothing inside:", userData)
-
             return <h2>Loading...</h2>;
         }
     else if (!userID)
@@ -60,14 +58,13 @@ function UserDashboard(props) {
     return (
         <div className="userDashboard content">
             <h1>Welcome, {name}.</h1>
-            
-            {console.log("userData:", userData)}
 
             <MessageBox messages={userData.messages} />
+
             <button className="addStudent" onClick={() => setDisplayAddStudentModal(true)}>+ Add a Student</button>
 
             <AddStudentModal displayModal={displayAddStudentModal} setDisplayAddStudentModal={setDisplayAddStudentModal} userID={userID} />
-            {console.log("what's in userData?", userData)}
+
             {userData.students.map((student, id) => <StudentCourseCard student={student} />)}
 
         </div>
