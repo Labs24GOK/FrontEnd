@@ -15,7 +15,6 @@ export const logIn = (user, history) => {
 			.post(`${API_URL}/api/auth/login`, user)
 			.then(res => {
 				dispatch({ type: LOGIN_SUCCESS, payload: res.data });
-				console.log("action creator is pushing to dashboard (logIn)", res.data);
 				localStorage.setItem('token', res.data.token);
 				history.push('/dashboard');
 			})

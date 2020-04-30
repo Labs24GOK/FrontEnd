@@ -11,10 +11,10 @@ export const familyRegister = (register, history) => {
 			.post(`${API_URL}/api/auth/register`, register)
 			.then(res => {
 				dispatch({ type: FAMILY_REGISTER_SUCCESS, payload: res.data });
-				history.push('/dashboard');
+				history.push('/login');
 			})
 			.catch(err => {
-				dispatch({ type: FAMILY_REGISTER_FAILURE, payload: err.payload });
+				dispatch({ type: FAMILY_REGISTER_FAILURE, payload: err });
 			});
 	};
 };

@@ -1,5 +1,4 @@
 import axiosWithAuth from '../../utils/axiosWithAuth';
-import API_URL from '../../config/apiUrl';
 
 export const FETCH_STUDENTS_START = 'FETCH_STUDENTS_START';
 export const FETCH_STUDENTS_SUCCESS =
@@ -96,29 +95,12 @@ export const CREATE_NEW_STUDENT_FAILURE =
   'CREATE_NEW_STUDENT_FAILURE';
 
 export const createNewStudent = student => dispatch => {
-  // let {
-  //   school_grade_id,
-  //   block_code,
-  //   preferred_contact_type_id,
-  //   location_id
-  // } = student;
-  // let newStudent = {
-  //   ...student,
-  //   school_grade_id: school_grade_id.value,
-  //   block_code: block_code.label,
-  //   preferred_contact_type_id:
-  //     preferred_contact_type_id.value,
-  //   location_id: location_id.value
-  // };
+  
   dispatch({ type: CREATE_NEW_STUDENT_START });
-
-  console.log("attempting to create student", student);
 
   axiosWithAuth()
     .post(`/student`, student)
     .then(res => {
-
-      console.log("added student", res);
 
       dispatch({
         type: CREATE_NEW_STUDENT_SUCCESS,
@@ -126,8 +108,6 @@ export const createNewStudent = student => dispatch => {
       });
     })
     .catch(err => {
-
-      console.log("couldn't add student", err);
 
       dispatch({
         type: CREATE_NEW_STUDENT_FAILURE,
