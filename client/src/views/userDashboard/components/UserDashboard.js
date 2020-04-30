@@ -14,20 +14,13 @@ function UserDashboard(props) {
 
     const [userData, setUserData] = useState({userID: null, name: "", students: [], messages: []});
     const [displayAddStudentModal, setDisplayAddStudentModal] = useState(false);
-    // const [needToUpdateStudents, setNeedToUpdateStudents] = useState(false);
     
-    // let userID, name;
-
     // Get userID from JWT
     let token = localStorage.getItem("token");
     let tokenData = JSON.parse(atob(token.split('.')[1]));;
 
     let userID = tokenData.subject;
     let name = tokenData.name;
-
-    // let students = [];
-
-    console.log("current state for studentTableReducer:", props.studentTableReducer)
 
     // retrieve list of students associated with this account (serach by user ID)
     useEffect(() => {
@@ -39,7 +32,6 @@ function UserDashboard(props) {
             .catch(error => { console.log("Error in retrieving students:", error)})
             
     }, [props.studentTableReducer.needToUpdateStudentList]);
-    // }, []);
 
     // update userData once students have been updated
     useEffect(() => {

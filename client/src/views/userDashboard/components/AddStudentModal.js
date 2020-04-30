@@ -8,9 +8,6 @@ function AddStudentModal({displayModal, setDisplayAddStudentModal, userID, setNe
         <div className="addStudentModalContents">
             <h2>Add a Student</h2>
             <UserAddStudentForm userID={userID} setDisplayAddStudentModal={setDisplayAddStudentModal}/>
-            {/* <div className="modalButtons">
-                <button className="addStudent" onClick={() => setDisplayAddStudentModal(false)}>Return to Dashboard</button>
-            </div> */}
         </div>
     </div>
   )
