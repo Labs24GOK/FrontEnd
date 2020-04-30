@@ -1,5 +1,4 @@
 import axiosWithAuth from '../../utils/axiosWithAuth';
-import API_URL from '../../config/apiUrl';
 
 export const FETCH_STUDENTS_START = 'FETCH_STUDENTS_START';
 export const FETCH_STUDENTS_SUCCESS =
