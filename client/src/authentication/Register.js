@@ -1,6 +1,5 @@
 import React from "react";
 import { withRouter } from "react-router";
-import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { logIn } from "../actions/authenticationActions.js";
 import { familyRegister } from '../actions/registrationActions';
@@ -18,8 +17,6 @@ function Register(props) {
       
       // use old familyRegister action creator to register (for now)
       await props.familyRegister(user, props.history);
-
-      return <Redirect to="/login" />;
   };
 
     return (
