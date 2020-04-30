@@ -71,6 +71,7 @@ const StudentTable = props => {
           <SearchStundentTable />
         </div>
 
+        {/* Hiding create student button until functionality is fixed */}
         {/* <div
           className='create-new-entry'
           onClick={handleAddButton}
@@ -85,7 +86,7 @@ const StudentTable = props => {
             />
           </div>
         </div> */}
-        
+
       </div>
 
       {form ? (
