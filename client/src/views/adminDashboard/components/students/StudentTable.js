@@ -71,7 +71,7 @@ const StudentTable = props => {
           <SearchStundentTable />
         </div>
 
-        {/* Hiding create student button until functionality is fixed */}
+        {/* Hiding create student button until functionality is fixed, will be moved to the family tab */}
         {/* <div
           className='create-new-entry'
           onClick={handleAddButton}
