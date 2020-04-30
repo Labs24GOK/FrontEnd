@@ -70,7 +70,9 @@ const StudentTable = props => {
         <div>
           <SearchStundentTable />
         </div>
-        <div
+
+        {/* Hiding create student button until functionality is fixed, will be moved to the family tab so a user id which will be passed in through props so that it will autofill the user id field */}
+        {/* <div
           className='create-new-entry'
           onClick={handleAddButton}
           style={{ cursor: 'pointer', color: '#26ABBD' }}
@@ -83,7 +85,8 @@ const StudentTable = props => {
               size='lg'
             />
           </div>
-        </div>
+        </div> */}
+
       </div>
 
       {form ? (
