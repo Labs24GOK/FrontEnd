@@ -20,25 +20,8 @@ function Register(props) {
       await props.familyRegister(user, props.history);
 
       return <Redirect to="/login" />;
-
-      // log in user
-      // await props.logIn({username: user.username, password: user.password}, props.history);
-
-      // use logIn action creator to log in. Only send username and password data.
-      // if (props.state.registrationReducer.familyRegister.success)
-      //   {
-
-      //     console.log("trying to log in with newly created account...")
-
-      //     await props.logIn({username: user.username, password: user.password}, props.history);
-      //   }
-
-      // unfinished; allowed existing accounts to be accessed to log in
   };
 
-  // if (props.state.authenticationReducer.user.authenticated) {
-  //   return <Redirect to="/dashboard" />;
-  // } else {
     return (
       
           <div className="form-container">
@@ -71,7 +54,6 @@ function Register(props) {
 
     );
   }
-// }
 
 const mapStateToProps = state => {
   return { state: state };
