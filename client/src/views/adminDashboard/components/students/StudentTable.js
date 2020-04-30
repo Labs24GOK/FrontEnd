@@ -70,7 +70,8 @@ const StudentTable = props => {
         <div>
           <SearchStundentTable />
         </div>
-        <div
+
+        {/* <div
           className='create-new-entry'
           onClick={handleAddButton}
           style={{ cursor: 'pointer', color: '#26ABBD' }}
@@ -83,7 +84,8 @@ const StudentTable = props => {
               size='lg'
             />
           </div>
-        </div>
+        </div> */}
+        
       </div>
 
       {form ? (
