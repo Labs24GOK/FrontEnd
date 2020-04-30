@@ -14,6 +14,9 @@ function getLogo(program) {
         { return speakOutLogo; }
 }
 
+// This component lists out the student's courses according to the version-3-mobile Figma layout (check Notion document)
+// All info rendered correctly with dummy data passed through props (the dummy data has since been removed)
+
 function StudentCourseCard({student}) {
   return (
     <div className="studentCourseCard">

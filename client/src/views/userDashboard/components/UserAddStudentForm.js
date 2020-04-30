@@ -17,10 +17,7 @@ const UserAddStudentForm = props => {
 				data[property] = parseInt(data[property])
 		}
 
-		console.log("props are:", props);
-
 		props.createNewStudent(data);
-		// setTimeout(props.setNeedToUpdateStudents(true), 5000);
 		props.setDisplayAddStudentModal(false);
 	}
 

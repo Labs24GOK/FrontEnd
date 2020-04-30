@@ -1,6 +1,5 @@
 import React from "react";
 import { withRouter } from "react-router";
-import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { logIn } from "../actions/authenticationActions.js";
 import { familyRegister } from '../actions/registrationActions';
@@ -18,27 +17,8 @@ function Register(props) {
       
       // use old familyRegister action creator to register (for now)
       await props.familyRegister(user, props.history);
-
-      return <Redirect to="/login" />;
-
-      // log in user
-      // await props.logIn({username: user.username, password: user.password}, props.history);
-
-      // use logIn action creator to log in. Only send username and password data.
-      // if (props.state.registrationReducer.familyRegister.success)
-      //   {
-
-      //     console.log("trying to log in with newly created account...")
-
-      //     await props.logIn({username: user.username, password: user.password}, props.history);
-      //   }
-
-      // unfinished; allowed existing accounts to be accessed to log in
   };
 
-  // if (props.state.authenticationReducer.user.authenticated) {
-  //   return <Redirect to="/dashboard" />;
-  // } else {
     return (
       
           <div className="form-container">
@@ -65,13 +45,16 @@ function Register(props) {
               
               <div className="register-errors">
                 {(errors.name || errors.email || errors.username || errors.password) && <p>All fields are required.</p>}
+
+              {/* if the backend returned an error because the username or email already exists, display that error */}
+              {props.state && props.state.registrationReducer && props.state.registrationReducer.familyRegister && props.state.registrationReducer.familyRegister.error && <p>{props.state.registrationReducer.familyRegister.error}</p>}
+
               </div>
             </form>
           </div>
 
     );
   }
-// }
 
 const mapStateToProps = state => {
   return { state: state };
