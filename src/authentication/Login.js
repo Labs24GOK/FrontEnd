@@ -1,54 +1,72 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { withRouter } from "react-router";
-import { connect } from "react-redux";
-import { logIn } from "../actions/authenticationActions.js";
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
+import { connect } from 'react-redux';
+import { logIn } from '../actions/authenticationActions.js';
 import { useForm } from 'react-hook-form';
-import "./loginAndRegister.scss";
+import './loginAndRegister.scss';
 
 function Login(props) {
-
-	const { register, errors, handleSubmit } = useForm();
+  const { register, errors, handleSubmit } = useForm();
   const formSubmit = user => {
-      props.logIn(user, props.history);
+    props.logIn(user, props.history);
   };
 
-    return (
-      
-          <div className="form-container">
-            <h1>Welcome back!</h1>
-            <form onSubmit={handleSubmit(formSubmit)}>
-              
-              <fieldset>
-                <label htmlFor="username">Username</label>
-                <input type="text" name="username" ref={register({required: true, minLength: 1})} />
+  let token = localStorage.getItem('token');
 
-                <label htmlFor="password">Password</label>
-                <input type="password" name="password"  ref={register({required: true, minLength: 1})} />
+  useEffect(() => {
+    if (token) {
+      return props.history.push('/dashboard');
+    }
+  }, []);
 
-                <button type="submit" className={(errors.username || errors.password) ? "disabled" : ""}>
-                  Sign in
-                </button>
-              </fieldset>
-              <div className="register">
-                <p>Don't have an account?</p>
-                <Link className="reg-link" to="/register">
-                  Register now.
-                </Link>
-              </div>
-              <div className="login-errors">
-                {(errors.username || errors.password) && <p>Username and Password are required.</p>}
-                {props.state.authenticationReducer.logIn.error && <p>Login credentials incorrect.</p>}
+  return (
+    <div className="form-container">
+      <h1>Welcome back!</h1>
+      <form onSubmit={handleSubmit(formSubmit)}>
+        <fieldset>
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            name="username"
+            ref={register({ required: true, minLength: 1 })}
+          />
 
-              </div>
-            </form>
-          </div>
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            ref={register({ required: true, minLength: 1 })}
+          />
 
-    );
-  }
+          <button
+            type="submit"
+            className={errors.username || errors.password ? 'disabled' : ''}
+          >
+            Sign in
+          </button>
+        </fieldset>
+        <div className="register">
+          <p>Don't have an account?</p>
+          <Link className="reg-link" to="/register">
+            Register now.
+          </Link>
+        </div>
+        <div className="login-errors">
+          {(errors.username || errors.password) && (
+            <p>Username and Password are required.</p>
+          )}
+          {props.state.authenticationReducer.logIn.error && (
+            <p>Login credentials incorrect.</p>
+          )}
+        </div>
+      </form>
+    </div>
+  );
+}
 
 const mapStateToProps = state => {
   return { state: state };
 };
 
-export default withRouter(connect( mapStateToProps, { logIn } )(Login));
+export default withRouter(connect(mapStateToProps, { logIn })(Login));
