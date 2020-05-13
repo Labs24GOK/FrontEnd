@@ -12,12 +12,12 @@ jobs:
         with:
           node-version: "12"
       - name: Install dependencies
-        run: cd client && npm install
+        run: npm install
 
       - uses: paambaati/codeclimate-action@v2.4.0
         env:
           CI: true
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          coverageCommand: npm run coverage --prefix client
-          coverageLocations: "client/coverage/lcov.info:lcov"
+          coverageCommand: npm run coverage
+          coverageLocations: "/coverage/lcov.info:lcov"
