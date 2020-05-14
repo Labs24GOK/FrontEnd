@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import hamburgerMenuIcon from "../../../assets/hamburger_menu_icon.png";
+
+import { getStudentCourses } from "../getStudentCourses";
 
 import abacusLogo from "../../../assets/demo_logo_abacus.png";
 import frenchLogo from "../../../assets/demo_logo_french.png";
@@ -18,6 +20,12 @@ function getLogo(program) {
 // All info rendered correctly with dummy data passed through props (the dummy data has since been removed)
 
 function StudentCourseCard({student}) {
+
+    useEffect(() => {
+        getStudentCourses(student.id)
+            .then(res => console.log(res))
+    }, [])
+
   return (
     <div className="studentCourseCard">
         <div className="nameAndHamburgerMenu">
@@ -31,7 +39,8 @@ function StudentCourseCard({student}) {
         <p className="noCourses">{student.first_name} has not registered for any courses yet.</p>
         :
         <>
-            {student.courses.map(course =>
+            {student.courses.map(course => 
+            
                 <div className="courseData">
 
                     <div className="logoAndProgram">
