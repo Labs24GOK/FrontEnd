@@ -1,34 +1,29 @@
-import React, { useEffect, useState } from "react";
-import hamburgerMenuIcon from "../../../assets/hamburger_menu_icon.png";
+import React, { useEffect, useState } from 'react';
+// import hamburgerMenuIcon from '../../../assets/hamburger_menu_icon.png';
 
-import { getStudentCourses } from "../getStudentCourses";
+import { getStudentCourses } from '../getStudentCourses';
 
-import abacusLogo from "../../../assets/demo_logo_abacus.png";
-import frenchLogo from "../../../assets/demo_logo_french.png";
-import speakOutLogo from "../../../assets/speakOut_logo_only.png";
+// import abacusLogo from '../../../assets/demo_logo_abacus.png';
+// import frenchLogo from '../../../assets/demo_logo_french.png';
+import speakOutLogo from '../../../assets/speakOut_logo_only.png';
 
-function getLogo(program) {
-  if (program === "Abacus Maths") {
-    return abacusLogo;
-  } else if (program === "French") {
-    return frenchLogo;
-  } else {
-    return speakOutLogo;
-  }
+function getLogo() {
+  //   if (program) {
+  //   {
+  //     return abacusLogo;
+  //   } else if (program === "French") {
+  //     return frenchLogo;
+  //   } else
+  return speakOutLogo;
 }
+// }
 
-// This component lists out the student's courses according to the version-3-mobile Figma layout (check Notion document)
-// All info rendered correctly with dummy data passed through props (the dummy data has since been removed)
-
+// Sets Course state for students
 function StudentCourseCard({ student }) {
-  const [studentCourse, setStudentCourse] = useState();
-
+  const [studentCourse, setStudentCourse] = useState([]);
   useEffect(() => {
     getStudentCourses(student.id)
-      .then(res =>
-        // console.log(res)
-        setStudentCourse(res)
-      )
+      .then(res => setStudentCourse(res))
       .catch(err => console.log(err));
   }, [studentCourse]);
 
@@ -39,7 +34,7 @@ function StudentCourseCard({ student }) {
           <h2 className="firstName">{student.first_name}</h2>
           <h3 className="additionalNames">{student.additional_names}</h3>
         </div>
-        <img src={hamburgerMenuIcon} />
+        {/* <img src={hamburgerMenuIcon} /> */}
       </div>
       {!studentCourse || studentCourse.length === 0 ? (
         <p className="noCourses">
@@ -48,6 +43,12 @@ function StudentCourseCard({ student }) {
       ) : (
         <>
           {studentCourse.map(course => (
+            <div key={course.course_id}>
+              <h3>{course.group_type}</h3>
+              <h5>{course.course_days}</h5>
+            </div>
+          ))}
+          {/* {studentCourse.map(course => (
             <div className="courseData">
               <div className="logoAndProgram">
                 <img src={getLogo(course.program)} />
@@ -72,7 +73,7 @@ function StudentCourseCard({ student }) {
                     </td>
                     <td>{course.enrollment_status}</td>
                     <td>
-                      {course.payment_status === "Paid" ? (
+                      {course.payment_status === 'Paid' ? (
                         course.payment_status
                       ) : (
                         <button>Pay Now</button>
@@ -91,7 +92,7 @@ function StudentCourseCard({ student }) {
                 <tbody>
                   <tr>
                     <td>
-                      {course.progress_report_last_date} (Month{" "}
+                      {course.progress_report_last_date} (Month{' '}
                       {course.progress_report_last_month_number})
                     </td>
                     <td>
@@ -101,7 +102,7 @@ function StudentCourseCard({ student }) {
                 </tbody>
               </table>
             </div>
-          ))}
+          ))} */}
         </>
       )}
     </div>
