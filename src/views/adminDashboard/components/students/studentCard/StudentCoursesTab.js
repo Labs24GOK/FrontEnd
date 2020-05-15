@@ -70,30 +70,29 @@ const deleteStudentInfo = async () => {
     if(props.studentID) {
       props.getStudentCourses(props.studentID)
     }
-  }, [props, props.studentID])
+  }, [props.studentID])
 
   useEffect(() => {
     if(props.isEdited && props.studentID) {
       props.getStudentCourses(props.studentID)
     }
-  }, [props, props.isEdited, props.studentID])
+  }, [props.isEdited, props.studentID])
 
   useEffect(() => {
     // !isNaN() handles occurrence of falsey value when 
     // value of result_type_code is 0
     // it will return false if data-type is not a number, 
     // i.e. when data-type is undefined
-    if (isNaN(state.result_type_code)) {
+    if (!isNaN(state.result_type_code)) {
       props.editEnrollStudent(info.student_id, info.course_id, state)
     }
-
-  }, [props, info.course_id, info.student_id, state, state.result_type_code])
+  }, [info.course_id, info.student_id, state, state.result_type_code])
 
   useEffect(() => {
     if (courseID) {
       props.getStudentAttendanceTable(courseID)
     }
-  }, [props, courseID])
+  }, [courseID])
 
   /* End Use Effects */
 
