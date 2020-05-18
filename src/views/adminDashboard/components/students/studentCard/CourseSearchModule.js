@@ -2,12 +2,12 @@ import '../../students/studentCard/studentTable.scss';
 
 import {
   Button,
-  Icon,
   Input,
   Modal,
   Spin,
   Table
 } from 'antd';
+import Icon from "@ant-design/icons"
 import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
