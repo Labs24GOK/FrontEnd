@@ -20,11 +20,18 @@ function getLogo() {
 
 // Sets Course state for students
 function StudentCourseCard({ student }) {
-  const [studentCourse, setStudentCourse] = useState([]);
+  const [studentCourse, setStudentCourse] = useState([]);  
+  const [courseBool, setCourseBool] = useState(false);  
+
   useEffect(() => {
-    getStudentCourses(student.id)
-      .then(res => setStudentCourse(res))
-      .catch(err => console.log(err));
+    if(!courseBool) {
+      getStudentCourses(student.id)
+        .then(res => {
+          setStudentCourse(res)
+          setCourseBool(true)
+        })
+        .catch(err => console.log(err));
+    }
   }, [studentCourse]);
 
   return (
