@@ -21,7 +21,6 @@ const StudentFamilyTab = props => {
 
 	const handleAddButton = () => {
 		setStudentAddForm(!studentAddForm);
-		console.log(studentAddForm)
   };
 
 	return (
@@ -102,7 +101,7 @@ const StudentFamilyTab = props => {
           </div>
         </div>
 			) : (
-				<StudentForm {...props} />
+				<StudentForm addStudent={studentAddForm} {...props} />
 			)}
 		</div>
 	);
