@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { getStudentById } from '../../../../../actions';
 import { withRouter } from 'react-router-dom';
@@ -10,11 +10,18 @@ import {
 	FormSet,
 	Label
 } from '../../mainStyle/styledComponent';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 const StudentFamilyTab = props => {
+	const [studentAddForm, setStudentAddForm] = useState(false);
 	useEffect(() => {
 		props.getStudentById(props.studentID);
 	}, []);
+
+	const handleAddButton = () => {
+		setStudentAddForm(!studentAddForm);
+  };
 
 	return (
 		<div>
@@ -75,7 +82,26 @@ const StudentFamilyTab = props => {
 					</FormWrap>
 				</>
 			) : (
-				<StudentForm {...props} />
+				// <StudentForm {...props} />
+				null
+			)}
+			{!studentAddForm ? (
+				<div
+          className='create-new-entry'
+          onClick={handleAddButton}
+          style={{ cursor: 'pointer', color: '#26ABBD' }}
+        >
+          <div style={{ marginRight: '10px' }}>Create New Student</div>
+          <div>
+            <FontAwesomeIcon
+              style={{ width: '25px', height: '25px', cursor: 'pointer' }}
+              icon={faPlusCircle}
+              size='lg'
+            />
+          </div>
+        </div>
+			) : (
+				<StudentForm addStudent={studentAddForm} {...props} />
 			)}
 		</div>
 	);
