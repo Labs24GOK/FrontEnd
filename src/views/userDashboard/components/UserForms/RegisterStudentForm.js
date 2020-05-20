@@ -9,7 +9,58 @@ import StudentReview from './StudentReview';
 import StudentSuccess from './StudentSuccess';
 
 const RegisterStudentForm = () => {
-  return <p>WELCOME TO THE STUDENT REGISTRATION THING</p>;
+  const { Step } = Steps;
+
+  const steps = [
+    {
+      title: 'Details',
+    },
+    {
+      title: 'Address',
+    },
+    {
+      title: 'Emergency Contacts',
+    },
+    {
+      title: 'Review',
+    },
+  ];
+
+  const [state, setState] = useState({ current: 0 });
+
+  function next() {
+    const current = state.current + 1;
+    this.setState({ current });
+  }
+
+  function prev() {
+    const current = state.current - 1;
+    setState({ current });
+  }
+
+  const { current } = state;
+
+  return (
+    <div>
+      <Steps current={current}>
+        {steps.map(item => (
+          <Step key={item.title} title={item.title} />
+        ))}
+      </Steps>
+      <div className="form-steps-action">
+        {current < steps.length - 1 && (
+          <Button type="primary" onClick={() => next()}>
+            Next
+          </Button>
+        )}
+        {current > 0 && (
+          <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
+            Previous
+          </Button>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default RegisterStudentForm;
