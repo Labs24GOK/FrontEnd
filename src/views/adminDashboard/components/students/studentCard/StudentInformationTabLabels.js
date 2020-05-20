@@ -1,5 +1,5 @@
 export const StudentInformationTabLabels = {
-    cpr: "CPR",
+    cpr: "ID",
     first_name: "First Name",
     additional_names: "Additional Names",
     gender: "Gender",
@@ -11,10 +11,7 @@ export const StudentInformationTabLabels = {
     school_name: "School Name",
     school_grade: "School Grade",
     location: "Location",
-    block_code: "Block Code",
-    road: "Road",
-    building: "Building",
-    flat: "Flat",
+    address: "Address",
     primary_emergency_contact_name: "Primary Emergency Contact Name",
     primary_emergency_relationship: "Relationship",
     primary_emergency_phone: "Phone Number",
