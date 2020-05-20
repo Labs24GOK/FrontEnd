@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { editStudentById, editStudentDropDown, toggleEditComponent, } from '../../../../../actions';
+import { editStudentById, editStudentDropDown, toggleEditComponent, createNewStudent } from '../../../../../actions';
 import { withRouter } from 'react-router-dom';
 import 'react-dropdown/style.css';
 import '../../mainStyle/mainTable.scss';
@@ -15,16 +15,25 @@ const StudentForm = props => {
 	const student = props.studentById;
 
 	let birthdate = new Date(student.birthdate).toISOString().split('T')[0];
-	let grade_updated = new Date(student.grade_updated) .toISOString().split('T')[0];
+	let grade_updated = new Date(student.grade_updated).toISOString().split('T')[0];
 
 	const { errors, register, handleSubmit } = useForm();
 	const dropDowns = ['block_code', 'preferred_contact_type_id', 'school_grade_id', 'location_id', "family_id"];
 
 	const submitNow = (data) => {
-		for (const property of dropDowns) {
-			data[property] = parseInt(data[property])
+		if(props.addStudentForm) {
+			for (const property of dropDowns) {
+				data[property] = parseInt(data[property])
+			}
+			props.editStudentById(studentID, data);
+		} else {
+			const newStudent = {
+				...data,
+				user_id: props.studentById.user_id
+			}
+			delete newStudent.family_id
+			props.createNewStudent(newStudent)
 		}
-		props.editStudentById(studentID, data);
 	}
 
 	useEffect(() => { props.editStudentDropDown(); }, []);
@@ -42,6 +51,7 @@ const StudentForm = props => {
 		<FormWrap onSubmit={handleSubmit(submitNow)}>
 			<FormSet>
 				<Div>
+					{console.log(props)}
 					<div>
 						<Label>CPR</Label>
 						<div>
@@ -274,6 +284,7 @@ const mapStateToProps = state => {
 export default withRouter(
 	connect(mapStateToProps, {
 		editStudentById,
+		createNewStudent,
 		toggleEditComponent,
 		editStudentDropDown,
 	})(StudentForm)
