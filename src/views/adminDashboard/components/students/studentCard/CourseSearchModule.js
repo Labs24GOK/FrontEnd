@@ -222,9 +222,16 @@ const CourseSearchModule = props => {
     props.setModalVisible({ visible: false });
   };
 
-  const courseData = props.courseList.sort((a, b) => {
-    return b.id - a.id;
-  });
+  const courseData = (courses) => {
+    const list = courses.sort((a, b) => {
+      return b.id - a.id;
+    });
+    const courseList = list.map((course, index) => {
+      console.log(course)
+      return { ...course, key: index }
+    })
+    return courseList;
+  }
 
   const rowSelection = {
     type: 'radio',
@@ -261,13 +268,14 @@ const CourseSearchModule = props => {
               ]}
             >
               <Table
-                dataSource={courseData}
+                dataSource={courseData(props.courseList)}
                 columns={tableColumns}
                 pagination={true}
                 rowSelection={rowSelection}
               />
             </Modal>
           </div>}
+          {console.log(courseData)}
     </div>
   );
 };
