@@ -34,7 +34,6 @@ const EnrollStudentForm = props => {
     section: '',
     group_type_id: '',
     level_id: '',
-    section: '',
     status: ''
   });
 
