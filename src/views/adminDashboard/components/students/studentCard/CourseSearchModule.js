@@ -227,7 +227,6 @@ const CourseSearchModule = props => {
       return b.id - a.id;
     });
     const courseList = list.map((course, index) => {
-      console.log(course)
       return { ...course, key: index }
     })
     return courseList;
@@ -275,7 +274,6 @@ const CourseSearchModule = props => {
               />
             </Modal>
           </div>}
-          {console.log(courseData)}
     </div>
   );
 };
