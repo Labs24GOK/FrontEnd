@@ -1,44 +1,57 @@
-import React, { useState } from 'react';
-import { Steps, Button, message } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Steps, Button } from 'antd';
 
 // Sub component imports
 import StudentDetails from './StudentDetails';
 import StudentAddress from './StudentAddress';
 import StudentContacts from './StudentContacts';
 import StudentReview from './StudentReview';
-import StudentSuccess from './StudentSuccess';
 
 const RegisterStudentForm = () => {
+  const [regState, setRegState] = useState({ current: 0 });
   const { Step } = Steps;
 
   const steps = [
     {
-      title: 'Details',
+      title: 'details',
     },
     {
-      title: 'Address',
+      title: 'address',
     },
     {
-      title: 'Emergency Contacts',
+      title: 'emergency contacts',
     },
     {
-      title: 'Review',
+      title: 'review',
     },
   ];
 
-  const [state, setState] = useState({ current: 0 });
-
   function next() {
-    const current = state.current + 1;
-    this.setState({ current });
+    const current = regState.current + 1;
+    setRegState({ current });
   }
 
   function prev() {
-    const current = state.current - 1;
-    setState({ current });
+    const current = regState.current - 1;
+    setRegState({ current });
   }
 
-  const { current } = state;
+  const { current } = regState;
+
+  function getStep({ current }) {
+    switch ({ current }) {
+      case 0:
+        return <StudentDetails />;
+      case 1:
+        return <StudentAddress />;
+      case 2:
+        return <StudentContacts />;
+      case 3:
+        return <StudentReview />;
+      default:
+        return null;
+    }
+  }
 
   return (
     <div>
@@ -47,6 +60,7 @@ const RegisterStudentForm = () => {
           <Step key={item.title} title={item.title} />
         ))}
       </Steps>
+      <div className="form-steps-content">{getStep({ current })}</div>
       <div className="form-steps-action">
         {current < steps.length - 1 && (
           <Button type="primary" onClick={() => next()}>
