@@ -83,7 +83,7 @@ const deleteStudentInfo = async () => {
     // value of result_type_code is 0
     // it will return false if data-type is not a number, 
     // i.e. when data-type is undefined
-    if (!isNaN(state.result_type_code)) {
+    if (isNaN(state.result_type_code)) {
       props.editEnrollStudent(info.student_id, info.course_id, state)
     }
   }, [info.course_id, info.student_id, state, state.result_type_code])
@@ -219,7 +219,11 @@ const deleteStudentInfo = async () => {
         />
       ) : null}
 
-      <Table dataSource={props.courseByStudentId} className="coursesTable" columns={studentCourseColumns} pagination={false} 
+      <Table 
+      dataSource={props.courseByStudentId}
+      className="coursesTable" 
+      columns={studentCourseColumns} 
+      pagination={false} 
       onRow={record => {
         return {
           onClick: () => {
