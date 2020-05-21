@@ -26,6 +26,13 @@ const RegisterStudentForm = props => {
     console.log(studentForm);
   };
 
+  const formHelper = value => {
+    setStudentForm({
+      ...studentForm,
+      school_grade: value.value,
+    });
+  };
+
   const submitForm = values => {
     props.createNewStudent(studentForm);
   };
@@ -58,13 +65,13 @@ const RegisterStudentForm = props => {
   function getStep(regState) {
     switch (regState) {
       case 0:
-        return <StudentDetails handleChange={handleChange} />;
+        return <StudentDetails handleChange={handleChange} formHelper={formHelper} />;
       case 1:
-        return <StudentAddress handleChange={handleChange} />;
+        return <StudentAddress handleChange={handleChange} formHelper={formHelper}/>;
       case 2:
-        return <StudentContacts handleChange={handleChange} />;
+        return <StudentContacts handleChange={handleChange} formHelper={formHelper}/>;
       case 3:
-        return <StudentReview handleChange={handleChange} />;
+        return <StudentReview handleChange={handleChange} formHelper={formHelper}/>;
       default:
         return null;
     }
