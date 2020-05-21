@@ -4,7 +4,7 @@ import { Form, Input, Checkbox, Typography } from 'antd';
 const StudentContacts = props => {
   const [secondEmergencyContact, setSecondEmergencyContact] = useState(false);
   const [form] = Form.useForm();
-  const { handleChange } = props;
+  const { handleChange, next } = props;
   const { Title } = Typography;
   function onChange(e) {
     setSecondEmergencyContact(!secondEmergencyContact);
@@ -17,6 +17,7 @@ const StudentContacts = props => {
         form={form}
         initialValues={'vertical'}
         onChange={handleChange}
+        onFinish={next}
       >
         <Title level={3}>Emergency Contact</Title>
         <Form.Item

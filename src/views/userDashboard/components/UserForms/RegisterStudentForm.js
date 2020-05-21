@@ -65,13 +65,13 @@ const RegisterStudentForm = props => {
   function getStep(regState) {
     switch (regState) {
       case 0:
-        return <StudentDetails handleChange={handleChange} formHelper={formHelper} />;
+        return <StudentDetails handleChange={handleChange} formHelper={formHelper} next={next}/>;
       case 1:
-        return <StudentAddress handleChange={handleChange} formHelper={formHelper}/>;
+        return <StudentAddress handleChange={handleChange} formHelper={formHelper} next={next}/>;
       case 2:
-        return <StudentContacts handleChange={handleChange} formHelper={formHelper}/>;
+        return <StudentContacts handleChange={handleChange} next={next}/>;
       case 3:
-        return <StudentReview handleChange={handleChange} formHelper={formHelper}/>;
+        return <StudentReview handleChange={handleChange} formHelper={formHelper} next={next}/>;
       default:
         return null;
     }
