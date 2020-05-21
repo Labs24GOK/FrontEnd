@@ -103,21 +103,15 @@ const StudentContacts = props => {
             >
               <Input />
             </Form.Item>
-
-            <Form.Item name={'notes'} label={'Notes'}>
-              <Input.TextArea />
-            </Form.Item>
           </>
         )}
+        <br />
+        <Form.Item name={'notes'} label={'Notes'}>
+          <Input.TextArea />
+        </Form.Item>
       </Form>
     </div>
   );
 };
 
 export default StudentContacts;
-
-//primary_emergency_relationship
-//primary_emergency_phone
-//emergency_contact_name
-//emergency_relationship
-//emergency_phone
