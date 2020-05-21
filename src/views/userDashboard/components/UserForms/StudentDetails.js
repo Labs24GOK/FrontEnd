@@ -46,11 +46,9 @@ const StudentDetails = props => {
       >
         <Input />
       </Form.Item>
-      <DatePicker
+      <Form.Item
         name="birthdate"
         label="Date of Birth"
-        defaultValue={moment('01/04/2014', dateFormat)}
-        format={dateFormat}
         rules={[
           {
             required: true,
@@ -58,13 +56,14 @@ const StudentDetails = props => {
           },
         ]}
       >
-        <Input />
-      </DatePicker>
-      <Select
-        defaultValue="male"
+        <DatePicker
+          defaultValue={moment('01/04/2014', dateFormat)}
+          format={dateFormat}
+        />
+      </Form.Item>
+      <Form.Item
         name="gender"
         label="Gender"
-        style={{ width: 100 }}
         rules={[
           {
             required: true,
@@ -72,9 +71,11 @@ const StudentDetails = props => {
           },
         ]}
       >
-        <Option value="M">Male</Option>
-        <Option value="F">Female</Option>
-      </Select>
+        <Select defaultValue="Male" style={{ width: 100 }}>
+          <Option value="M">Male</Option>
+          <Option value="F">Female</Option>
+        </Select>
+      </Form.Item>
       <Form.Item
         name="mobile_telephone"
         label="Phone"
