@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Checkbox } from 'antd';
+import { Form, Input, Typography } from 'antd';
 
 const StudentAddress = props => {
   const { handleChange } = props;
@@ -8,12 +8,14 @@ const StudentAddress = props => {
   function onChange(e) {
     setSecondAddress(!secondAddress);
   }
+  const { Title } = Typography;
   return (
     <div>
       <Form layout={'vertical'} form={form}>
+        <Title level={3}>Student Address</Title>
         <Form.Item
           name={'address'}
-          label="Student Address"
+          label="Current Address"
           rules={[
             {
               required: true,

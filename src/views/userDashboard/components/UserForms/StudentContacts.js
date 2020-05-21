@@ -1,21 +1,27 @@
 import React, { useState } from 'react';
-import { Form, Input, Checkbox } from 'antd';
+import { Form, Input, Checkbox, Typography } from 'antd';
 
 const StudentContacts = props => {
-  const [secondEmergencyContact, setSecondEmergencyContact] = useState(false)
+  const [secondEmergencyContact, setSecondEmergencyContact] = useState(false);
   const [form] = Form.useForm();
-  const { handleChange } = props
-
+  const { handleChange } = props;
+  const { Title } = Typography;
   function onChange(e) {
-    setSecondEmergencyContact(!secondEmergencyContact)
+    setSecondEmergencyContact(!secondEmergencyContact);
   }
 
   return (
     <div>
-      <Form layout={'vertical'} form={form} initialValues={'vertical'} onChange={handleChange}>
+      <Form
+        layout={'vertical'}
+        form={form}
+        initialValues={'vertical'}
+        onChange={handleChange}
+      >
+        <Title level={3}>Emergency Contact</Title>
         <Form.Item
           name={'primary_emergency_contact_name'}
-          label='Primary Emergency Contact Name'
+          label="Primary Emergency Contact Name"
           rules={[
             {
               required: true,
@@ -27,7 +33,7 @@ const StudentContacts = props => {
         </Form.Item>
         <Form.Item
           name={'primary_emergency_relationship'}
-          label='Primary Emergency Relationship'
+          label="Primary Emergency Relationship"
           rules={[
             {
               required: true,
@@ -39,7 +45,7 @@ const StudentContacts = props => {
         </Form.Item>
         <Form.Item
           name={'primary_emergency_phone'}
-          label='Primary Emergency Phone'
+          label="Primary Emergency Phone"
           rules={[
             {
               required: true,
@@ -50,51 +56,58 @@ const StudentContacts = props => {
           <Input />
         </Form.Item>
 
-        {!secondEmergencyContact ? <Checkbox onChange={onChange}>Second Emergency Contact</Checkbox> :
-        (<>
-          <Checkbox onChange={onChange} defaultChecked={secondEmergencyContact}>Second Emergency Contact</Checkbox>
-          <br />
-          <Form.Item
-            name={'emergency_contact_name'}
-            label='Emergency Contact Name'
-            rules={[
-              {
-                required: secondEmergencyContact,
-                message: 'Please enter a contact',
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            name={'emergency_relationship'}
-            label='Emergency Relationship'
-            rules={[
-              {
-                required: true,
-                message: 'Please enter a contact',
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            name={'emergency_phone'}
-            label='Emergency Phone'
-            rules={[
-              {
-                required: secondEmergencyContact,
-                message: 'Please input your phone number!',
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
+        {!secondEmergencyContact ? (
+          <Checkbox onChange={onChange}>Second Emergency Contact</Checkbox>
+        ) : (
+          <>
+            <Checkbox
+              onChange={onChange}
+              defaultChecked={secondEmergencyContact}
+            >
+              Second Emergency Contact
+            </Checkbox>
+            <br />
+            <Form.Item
+              name={'emergency_contact_name'}
+              label="Emergency Contact Name"
+              rules={[
+                {
+                  required: secondEmergencyContact,
+                  message: 'Please enter a contact',
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              name={'emergency_relationship'}
+              label="Emergency Relationship"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please enter a contact',
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              name={'emergency_phone'}
+              label="Emergency Phone"
+              rules={[
+                {
+                  required: secondEmergencyContact,
+                  message: 'Please input your phone number!',
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
 
-          <Form.Item name={'notes'} label={'Notes'}>
-            <Input.TextArea />
-          </Form.Item>
-        </>
+            <Form.Item name={'notes'} label={'Notes'}>
+              <Input.TextArea />
+            </Form.Item>
+          </>
         )}
       </Form>
     </div>

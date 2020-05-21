@@ -1,16 +1,26 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Form, Input, Button, Select, DatePicker, Tooltip } from 'antd';
+import {
+  Form,
+  Input,
+  Button,
+  Select,
+  DatePicker,
+  Tooltip,
+  Typography,
+} from 'antd';
 import moment from 'moment-timezone';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 
 const StudentDetails = props => {
-  const { handleChange } = props
+  const { Title } = Typography;
+  const { handleChange } = props;
   const { Option } = Select;
   const dateFormat = 'DD/MM/YYYY';
 
   return (
     <Form layout={'vertical'} onChange={handleChange}>
+      <Title level={3}>Student Details</Title>
       <Form.Item
         name="first_name"
         label="Full Name"
