@@ -42,14 +42,11 @@ const StudentInformationTab = props => {
 						<StudentInformationTabCategory category="first_name" value={student.first_name} colspan="1" />
 						<StudentInformationTabCategory category="additional_names" value={student.additional_names} colspan="1" />
 						<StudentInformationTabCategory category="gender" value={student.gender} colspan="1" />
-						<StudentInformationTabCategory category="home_telephone" value={student.home_telephone} colspan="1" />
-						<StudentInformationTabCategory category="mobile_telephone" value={student.mobile_telephone} colspan="1" />
+						<StudentInformationTabCategory category="phone_number" value={student.phone_number} colspan="1" />
 						<StudentInformationTabCategory category="email" value={student.email} colspan="1" />
-						<StudentInformationTabCategory category="preferred_contact_type" value={student.preferred_contact_type} colspan="1" />
 						<StudentInformationTabCategory category="birthdate" value={getDateStringENGBFormat(student.birthdate)} colspan="1" />
 						<StudentInformationTabCategory category="school_name" value={student.school_name} colspan="1" />
 						<StudentInformationTabCategory category="school_grade" value={student.school_grade} colspan="1" />
-						<StudentInformationTabCategory category="location" value={student.location} colspan="1" />
 						<StudentInformationTabCategory category="address" value={student.address} colspan="1" />
 						<StudentInformationTabCategory category="primary_emergency_contact_name" value={student.primary_emergency_contact_name} colspan="2" />
 						<StudentInformationTabCategory category="primary_emergency_relationship" value={student.primary_emergency_relationship} colspan="1" />
