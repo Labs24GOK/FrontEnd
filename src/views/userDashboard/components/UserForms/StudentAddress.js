@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Typography, Row, Col, Layout } from 'antd';
+import { Form, Input, Typography, Row, Col, Layout, Button } from 'antd';
 
 const StudentAddress = props => {
   const { handleChange, next } = props;
@@ -31,6 +31,11 @@ const StudentAddress = props => {
             </Form.Item>
           </Col>
         </Row>
+        <Form.Item>
+          <Button type='primary' htmlType="submit">
+            Next
+          </Button>
+        </Form.Item>
       </Form>
     </Content>
   );

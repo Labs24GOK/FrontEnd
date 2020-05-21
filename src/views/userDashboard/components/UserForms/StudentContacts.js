@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Checkbox, Typography, Row, Col, Layout } from 'antd';
+import { Form, Input, Checkbox, Typography, Row, Col, Layout, Button } from 'antd';
 
 const StudentContacts = props => {
   const [secondEmergencyContact, setSecondEmergencyContact] = useState(false);
@@ -131,6 +131,11 @@ const StudentContacts = props => {
               'Medical conditions, behaviors, and special considerations'
             }
           />
+        </Form.Item>
+        <Form.Item>
+          <Button type='primary' htmlType="submit">
+            Next
+          </Button>
         </Form.Item>
       </Form>
     </Content>
