@@ -10,6 +10,7 @@ import StudentReview from './StudentReview';
 const RegisterStudentForm = () => {
   const [regState, setRegState] = useState(0);
   const { Step } = Steps;
+  const [studentForm, setStudentForm] = useState({});
 
   const steps = [
     {
@@ -39,13 +40,13 @@ const RegisterStudentForm = () => {
   function getStep(regState) {
     switch (regState) {
       case 0:
-        return <StudentDetails />;
+        return <StudentDetails setStudentForm={setStudentForm} />;
       case 1:
-        return <StudentAddress />;
+        return <StudentAddress setStudentForm={setStudentForm} />;
       case 2:
-        return <StudentContacts />;
+        return <StudentContacts setStudentForm={setStudentForm} />;
       case 3:
-        return <StudentReview />;
+        return <StudentReview setStudentForm={setStudentForm} />;
       default:
         return null;
     }
