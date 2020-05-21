@@ -1,6 +1,7 @@
 import React from 'react'
 
-const StudentAddress = () => {
+const StudentAddress = props => {
+  const { handleChange } = props
   return (
     <div>
       

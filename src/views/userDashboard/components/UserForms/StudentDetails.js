@@ -5,17 +5,12 @@ import moment from 'moment-timezone';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 
 const StudentDetails = props => {
-  const { submitForm } = props
+  const { handleChange } = props
   const { Option } = Select;
   const dateFormat = 'DD/MM/YYYY';
 
-  const onFinish = values => {
-    console.log(values)
-    submitForm(values)
-  }
-
   return (
-    <Form layout={'vertical'}>
+    <Form layout={'vertical'} onChange={handleChange}>
       <Form.Item
         name="first_name"
         label="Full Name"

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Form, Input, Checkbox } from 'antd';
 
-const StudentContacts = () => {
+const StudentContacts = props => {
   const [secondEmergencyContact, setSecondEmergencyContact] = useState(false)
   const [form] = Form.useForm();
+  const { handleChange } = props
 
   function onChange(e) {
     setSecondEmergencyContact(!secondEmergencyContact)
@@ -11,7 +12,7 @@ const StudentContacts = () => {
 
   return (
     <div>
-      <Form layout={'vertical'} form={form} initialValues={'vertical'}>
+      <Form layout={'vertical'} form={form} initialValues={'vertical'} onChange={handleChange}>
         <Form.Item
           name={'primary_emergency_contact_name'}
           label='Primary Emergency Contact Name'
