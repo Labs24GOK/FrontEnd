@@ -10,6 +10,7 @@ import {
   Typography,
   Row,
   Col,
+  Layout,
 } from 'antd';
 import moment from 'moment-timezone';
 import { QuestionCircleOutlined } from '@ant-design/icons';
@@ -18,14 +19,15 @@ const StudentDetails = props => {
   const { Title } = Typography;
   const { handleChange, formHelper } = props;
   const { Option } = Select;
+  const { Content } = Layout;
   const dateFormat = 'DD/MM/YYYY';
   return (
-    <>
+    <Content style={{ margin: '1.8rem 0' }}>
       <Form layout={'vertical'} onChange={handleChange}>
         <Title level={3}>Student Details</Title>
         <Form.Item
           name="first_name"
-          label="Full Name"
+          label="First Name"
           rules={[
             {
               required: true,
@@ -33,7 +35,7 @@ const StudentDetails = props => {
             },
           ]}
         >
-          <Input />
+          <Input autoFocus={true} />
         </Form.Item>
         <Form.Item
           name="additional_names"
@@ -119,33 +121,35 @@ const StudentDetails = props => {
           <Input />
         </Form.Item>
       </Form>
-      <Form.Item name="school_grade_id" label="Grade Level">
-        <Select
-          style={{ width: 100 }}
-          defaultValue="Pri 6"
-          onChange={value => formHelper(value)}
-          name="school_grade_id"
-          label="Grade Level"
-        >
-          <Option value="None">None</Option>
-          <Option value="KG 1">KG 1</Option>
-          <Option value="KG 2">KG 2</Option>
-          <Option value="KG 3">KG 3</Option>
-          <Option value="Pri 1">Pri 1</Option>
-          <Option value="Pri 2">Pri 2</Option>
-          <Option value="Pri 3">Pri 3</Option>
-          <Option value="Pri 4">Pri 4</Option>
-          <Option value="Pri 5">Pri 5</Option>
-          <Option value="Pri 6">Pri 6</Option>
-          <Option value="Sec 1">Sec 1</Option>
-          <Option value="Sec 2">Sec 2</Option>
-          <Option value="Sec 3">Sec 3</Option>
-          <Option value="Sec 4">Sec 4</Option>
-          <Option value="Sec 5">Sec 5</Option>
-          <Option value="Sec 6">Sec 6</Option>
-        </Select>
-      </Form.Item>
-    </>
+      <Row justify="space-between">
+        <Col>
+          <Form.Item name="school_grade_id" label="Grade Level">
+            <Select
+              style={{ width: 100 }}
+              defaultValue="Pri 6"
+              onChange={value => formHelper(value)}
+            >
+              <Option value="None">None</Option>
+              <Option value="KG 1">KG 1</Option>
+              <Option value="KG 2">KG 2</Option>
+              <Option value="KG 3">KG 3</Option>
+              <Option value="Pri 1">Pri 1</Option>
+              <Option value="Pri 2">Pri 2</Option>
+              <Option value="Pri 3">Pri 3</Option>
+              <Option value="Pri 4">Pri 4</Option>
+              <Option value="Pri 5">Pri 5</Option>
+              <Option value="Pri 6">Pri 6</Option>
+              <Option value="Sec 1">Sec 1</Option>
+              <Option value="Sec 2">Sec 2</Option>
+              <Option value="Sec 3">Sec 3</Option>
+              <Option value="Sec 4">Sec 4</Option>
+              <Option value="Sec 5">Sec 5</Option>
+              <Option value="Sec 6">Sec 6</Option>
+            </Select>
+          </Form.Item>
+        </Col>
+      </Row>
+    </Content>
   );
 };
 

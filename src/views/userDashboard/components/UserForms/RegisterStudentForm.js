@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Steps, Button, Row, Col } from 'antd';
+import { Steps, Button, Row, Col, Layout } from 'antd';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { createNewStudent } from '../../../../actions/adminDashboardActions/studentTableActions';
@@ -16,6 +16,7 @@ const RegisterStudentForm = props => {
   const tokenData = JSON.parse(atob(token.split('.')[1]));
   const userID = tokenData.subject;
   const { Step } = Steps;
+  const { Content } = Layout;
   const [studentForm, setStudentForm] = useState({ user_id: userID });
 
   const handleChange = e => {
@@ -65,20 +66,31 @@ const RegisterStudentForm = props => {
   function getStep(regState) {
     switch (regState) {
       case 0:
-        return <StudentDetails handleChange={handleChange} formHelper={formHelper} />;
+        return (
+          <StudentDetails handleChange={handleChange} formHelper={formHelper} />
+        );
       case 1:
-        return <StudentAddress handleChange={handleChange} formHelper={formHelper}/>;
+        return (
+          <StudentAddress handleChange={handleChange} formHelper={formHelper} />
+        );
       case 2:
-        return <StudentContacts handleChange={handleChange} formHelper={formHelper}/>;
+        return (
+          <StudentContacts
+            handleChange={handleChange}
+            formHelper={formHelper}
+          />
+        );
       case 3:
-        return <StudentReview handleChange={handleChange} formHelper={formHelper}/>;
+        return (
+          <StudentReview handleChange={handleChange} formHelper={formHelper} />
+        );
       default:
         return null;
     }
   }
 
   return (
-    <div>
+    <Content style={{ margin: '1.8rem 0' }}>
       <Row>
         <Col span={16} offset={4}>
           <Steps current={regState}>
@@ -108,12 +120,15 @@ const RegisterStudentForm = props => {
                 Next
               </Button>
             )}
+            {regState === 3 ? (
+              <Button type="primary" onClick={submitForm}>
+                Submit
+              </Button>
+            ) : null}
           </div>
         </Col>
       </Row>
-
-      {regState === 3 ? <Button onClick={submitForm}>Submit</Button> : null}
-    </div>
+    </Content>
   );
 };
 
