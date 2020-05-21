@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Steps, Button } from 'antd';
+import { Steps, Button, Row, Col, Layout } from 'antd';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { createNewStudent } from '../../../../actions/adminDashboardActions/studentTableActions';
@@ -12,10 +12,11 @@ import StudentReview from './StudentReview';
 
 const RegisterStudentForm = props => {
   const [regState, setRegState] = useState(0);
-  const token = localStorage.getItem("token");
-  const tokenData = JSON.parse(atob(token.split('.')[1]));;
+  const token = localStorage.getItem('token');
+  const tokenData = JSON.parse(atob(token.split('.')[1]));
   const userID = tokenData.subject;
   const { Step } = Steps;
+  const { Content } = Layout;
   const [studentForm, setStudentForm] = useState({ user_id: userID });
 
   const handleChange = e => {
@@ -35,7 +36,7 @@ const RegisterStudentForm = props => {
 
   const submitForm = values => {
     props.createNewStudent(studentForm);
-  }
+  };
 
   const steps = [
     {
@@ -78,27 +79,45 @@ const RegisterStudentForm = props => {
   }
 
   return (
-    <div>
-      <Steps current={regState}>
-        {steps.map(item => (
-          <Step key={item.title} title={item.title} />
-        ))}
-      </Steps>
-      <div className='form-steps-content'>{getStep(regState)}</div>
-      <div className='form-steps-action'>
-        {regState > 0 && (
-          <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
-            Previous
-          </Button>
-        )}
-        {regState < steps.length - 1 && (
-          <Button type='primary' onClick={() => next()}>
-            Next
-          </Button>
-        )}
-      </div>
-      {regState === 3 ? <Button onClick={submitForm}>Submit</Button> : null}
-    </div>
+    <Content style={{ margin: '1.8rem 0' }}>
+      <Row>
+        <Col span={16} offset={4}>
+          <Steps current={regState}>
+            {steps.map(item => (
+              <Step key={item.title} title={item.title} />
+            ))}
+          </Steps>
+        </Col>
+      </Row>
+
+      <Row justify={'center'}>
+        <Col>
+          <div className="form-steps-div">{getStep(regState)}</div>
+        </Col>
+      </Row>
+
+      <Row justify={'center'}>
+        <Col>
+          <div className="form-steps-action">
+            {regState > 0 && (
+              <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
+                Previous
+              </Button>
+            )}
+            {regState < steps.length - 1 && (
+              <Button type="primary" onClick={() => next()}>
+                Next
+              </Button>
+            )}
+            {regState === 3 ? (
+              <Button type="primary" onClick={submitForm}>
+                Submit
+              </Button>
+            ) : null}
+          </div>
+        </Col>
+      </Row>
+    </Content>
   );
 };
 

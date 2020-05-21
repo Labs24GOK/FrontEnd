@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import { Form, Input, Checkbox, Typography } from 'antd';
+import { Form, Input, Checkbox, Typography, Row, Col, Layout } from 'antd';
 
 const StudentContacts = props => {
   const [secondEmergencyContact, setSecondEmergencyContact] = useState(false);
   const [form] = Form.useForm();
   const { handleChange, next } = props;
   const { Title } = Typography;
+  const { Content } = Layout;
   function onChange(e) {
     setSecondEmergencyContact(!secondEmergencyContact);
   }
 
   return (
-    <div>
+    <Content style={{ margin: '1.8rem 0' }}>
       <Form
         layout={'vertical'}
         form={form}
@@ -19,34 +20,49 @@ const StudentContacts = props => {
         onChange={handleChange}
         onFinish={next}
       >
-        <Title level={3}>Emergency Contact</Title>
-        <Form.Item
-          name={'primary_emergency_contact_name'}
-          label="Primary Emergency Contact Name"
-          rules={[
-            {
-              required: true,
-              message: 'Please enter a contact',
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          name={'primary_emergency_relationship'}
-          label="Primary Emergency Relationship"
-          rules={[
-            {
-              required: true,
-              message: 'Please enter relation',
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
+        <Row>
+          <Col span={24}>
+            <Title level={3}>Emergency Contact</Title>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col span={24}>
+            <Form.Item
+              name={'primary_emergency_contact_name'}
+              label="Contact's Name"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please enter a contact',
+                },
+              ]}
+            >
+              <Input autoFocus={true} />
+            </Form.Item>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col span={24}>
+            <Form.Item
+              name={'primary_emergency_relationship'}
+              label="Relation to Student"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please enter relation',
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+          </Col>
+        </Row>
+
         <Form.Item
           name={'primary_emergency_phone'}
-          label="Primary Emergency Phone"
+          label="Contact's Phone"
           rules={[
             {
               required: true,
@@ -70,7 +86,7 @@ const StudentContacts = props => {
             <br />
             <Form.Item
               name={'emergency_contact_name'}
-              label="Emergency Contact Name"
+              label="Contact's Name #2"
               rules={[
                 {
                   required: secondEmergencyContact,
@@ -82,7 +98,7 @@ const StudentContacts = props => {
             </Form.Item>
             <Form.Item
               name={'emergency_relationship'}
-              label="Emergency Relationship"
+              label="Relation to Student"
               rules={[
                 {
                   required: true,
@@ -94,7 +110,7 @@ const StudentContacts = props => {
             </Form.Item>
             <Form.Item
               name={'emergency_phone'}
-              label="Emergency Phone"
+              label="Contact's Phone"
               rules={[
                 {
                   required: secondEmergencyContact,
@@ -107,11 +123,17 @@ const StudentContacts = props => {
           </>
         )}
         <br />
-        <Form.Item name={'notes'} label={'Notes'}>
-          <Input.TextArea />
+        <Form.Item name={'notes'} label="Notes about Student">
+          <Input.TextArea
+            style={{ width: 200 }}
+            rows={3}
+            placeholder={
+              'Medical conditions, behaviors, and special considerations'
+            }
+          />
         </Form.Item>
       </Form>
-    </div>
+    </Content>
   );
 };
 
