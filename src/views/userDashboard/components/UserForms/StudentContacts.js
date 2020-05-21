@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Checkbox, Typography } from 'antd';
+import { Form, Input, Checkbox, Typography, Row, Col } from 'antd';
 
 const StudentContacts = props => {
   const [secondEmergencyContact, setSecondEmergencyContact] = useState(false);
@@ -11,106 +11,122 @@ const StudentContacts = props => {
   }
 
   return (
-    <div>
-      <Form
-        layout={'vertical'}
-        form={form}
-        initialValues={'vertical'}
-        onChange={handleChange}
-      >
-        <Title level={3}>Emergency Contact</Title>
-        <Form.Item
-          name={'primary_emergency_contact_name'}
-          label="Primary Emergency Contact Name"
-          rules={[
-            {
-              required: true,
-              message: 'Please enter a contact',
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          name={'primary_emergency_relationship'}
-          label="Primary Emergency Relationship"
-          rules={[
-            {
-              required: true,
-              message: 'Please enter relation',
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          name={'primary_emergency_phone'}
-          label="Primary Emergency Phone"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your phone number!',
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
+    <Form
+      layout={'vertical'}
+      form={form}
+      initialValues={'vertical'}
+      onChange={handleChange}
+    >
+      <Row>
+        <Col span={24}>
+          <Title level={3}>Emergency Contact</Title>
+        </Col>
+      </Row>
 
-        {!secondEmergencyContact ? (
-          <Checkbox onChange={onChange}>Second Emergency Contact</Checkbox>
-        ) : (
-          <>
-            <Checkbox
-              onChange={onChange}
-              defaultChecked={secondEmergencyContact}
-            >
-              Second Emergency Contact
-            </Checkbox>
-            <br />
-            <Form.Item
-              name={'emergency_contact_name'}
-              label="Emergency Contact Name"
-              rules={[
-                {
-                  required: secondEmergencyContact,
-                  message: 'Please enter a contact',
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              name={'emergency_relationship'}
-              label="Emergency Relationship"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please enter a contact',
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              name={'emergency_phone'}
-              label="Emergency Phone"
-              rules={[
-                {
-                  required: secondEmergencyContact,
-                  message: 'Please input your phone number!',
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-          </>
-        )}
-        <br />
-        <Form.Item name={'notes'} label={'Notes'}>
-          <Input.TextArea />
-        </Form.Item>
-      </Form>
-    </div>
+      <Row>
+        <Col span={24}>
+          <Form.Item
+            name={'primary_emergency_contact_name'}
+            label="Contact's Name"
+            rules={[
+              {
+                required: true,
+                message: 'Please enter a contact',
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col span={24}>
+          <Form.Item
+            name={'primary_emergency_relationship'}
+            label="Relation to Student"
+            rules={[
+              {
+                required: true,
+                message: 'Please enter relation',
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+        </Col>
+      </Row>
+
+      <Form.Item
+        name={'primary_emergency_phone'}
+        label="Contact's Phone"
+        rules={[
+          {
+            required: true,
+            message: 'Please input your phone number!',
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+
+      {!secondEmergencyContact ? (
+        <Checkbox onChange={onChange}>Second Emergency Contact</Checkbox>
+      ) : (
+        <>
+          <Checkbox onChange={onChange} defaultChecked={secondEmergencyContact}>
+            Second Emergency Contact
+          </Checkbox>
+          <br />
+          <Form.Item
+            name={'emergency_contact_name'}
+            label="Contact's Name #2"
+            rules={[
+              {
+                required: secondEmergencyContact,
+                message: 'Please enter a contact',
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            name={'emergency_relationship'}
+            label="Relation to Student"
+            rules={[
+              {
+                required: true,
+                message: 'Please enter a contact',
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            name={'emergency_phone'}
+            label="Contact's Phone"
+            rules={[
+              {
+                required: secondEmergencyContact,
+                message: 'Please input your phone number!',
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+        </>
+      )}
+      <br />
+      <Form.Item name={'notes'} label="Notes about Student">
+        <Input.TextArea
+          style={{ width: 200 }}
+          rows={3}
+          placeholder={
+            'Medical conditions, behaviors, and special considerations'
+          }
+        />
+      </Form.Item>
+    </Form>
   );
 };
 

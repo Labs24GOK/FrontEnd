@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Typography } from 'antd';
+import { Form, Input, Typography, Row, Col } from 'antd';
 
 const StudentAddress = props => {
   const { handleChange } = props;
@@ -10,23 +10,30 @@ const StudentAddress = props => {
   }
   const { Title } = Typography;
   return (
-    <div>
-      <Form layout={'vertical'} form={form}>
-        <Title level={3}>Student Address</Title>
-        <Form.Item
-          name={'address'}
-          label="Current Address"
-          rules={[
-            {
-              required: true,
-              message: "Please enter student's address",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-      </Form>
-    </div>
+    <Form layout={'vertical'} form={form}>
+      <Row justify={'center'}>
+        <Col>
+          <Title level={3}>Student Address</Title>
+        </Col>
+      </Row>
+
+      <Row justify={'center'}>
+        <Col>
+          <Form.Item
+            name={'address'}
+            label="Current Address"
+            rules={[
+              {
+                required: true,
+                message: "Please enter student's address",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+        </Col>
+      </Row>
+    </Form>
   );
 };
 
