@@ -12,6 +12,13 @@ const RegisterStudentForm = () => {
   const { Step } = Steps;
   const [studentForm, setStudentForm] = useState({});
 
+  const submitForm = values => {
+    setStudentForm({
+      ...studentForm,
+      values
+    })
+  }
+
   const steps = [
     {
       title: 'details',
@@ -40,13 +47,13 @@ const RegisterStudentForm = () => {
   function getStep(regState) {
     switch (regState) {
       case 0:
-        return <StudentDetails setStudentForm={setStudentForm} />;
+        return <StudentDetails setStudentForm={submitForm} />;
       case 1:
-        return <StudentAddress setStudentForm={setStudentForm} />;
+        return <StudentAddress setStudentForm={submitForm} />;
       case 2:
-        return <StudentContacts setStudentForm={setStudentForm} />;
+        return <StudentContacts setStudentForm={submitForm} />;
       case 3:
-        return <StudentReview setStudentForm={setStudentForm} />;
+        return <StudentReview setStudentForm={submitForm} />;
       default:
         return null;
     }
