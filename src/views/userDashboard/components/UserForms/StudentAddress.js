@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Form, Input, Checkbox } from 'antd';
 
-const StudentAddress = () => {
+const StudentAddress = props => {
+  const { handleChange } = props;
   const [form] = Form.useForm();
   const [secondAddress, setSecondAddress] = useState(false);
   function onChange(e) {

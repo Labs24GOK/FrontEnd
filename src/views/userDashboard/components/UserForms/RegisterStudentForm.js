@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Steps, Button } from 'antd';
 
 // Sub component imports
@@ -11,6 +11,13 @@ const RegisterStudentForm = () => {
   const [regState, setRegState] = useState(0);
   const { Step } = Steps;
   const [studentForm, setStudentForm] = useState({});
+
+  const handleChange = e => {
+    setStudentForm({
+      ...studentForm,
+       [e.target.id]: e.target.value 
+    });
+  };
 
   const steps = [
     {
@@ -40,13 +47,13 @@ const RegisterStudentForm = () => {
   function getStep(regState) {
     switch (regState) {
       case 0:
-        return <StudentDetails setStudentForm={setStudentForm} />;
+        return <StudentDetails handleChange={handleChange} />;
       case 1:
-        return <StudentAddress setStudentForm={setStudentForm} />;
+        return <StudentAddress handleChange={handleChange} />;
       case 2:
-        return <StudentContacts setStudentForm={setStudentForm} />;
+        return <StudentContacts handleChange={handleChange} />;
       case 3:
-        return <StudentReview setStudentForm={setStudentForm} />;
+        return <StudentReview handleChange={handleChange} />;
       default:
         return null;
     }
@@ -54,6 +61,7 @@ const RegisterStudentForm = () => {
 
   return (
     <div>
+      <button onClick={console.log(studentForm)}>form state</button>
       <Steps current={regState}>
         {steps.map(item => (
           <Step key={item.title} title={item.title} />
