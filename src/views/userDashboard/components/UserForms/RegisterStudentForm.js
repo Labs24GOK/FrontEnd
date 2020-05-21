@@ -68,14 +68,14 @@ const RegisterStudentForm = () => {
       </Steps>
       <div className="form-steps-content">{getStep(regState)}</div>
       <div className="form-steps-action">
-        {regState < steps.length - 1 && (
-          <Button type="primary" onClick={() => next()}>
-            Next
-          </Button>
-        )}
         {regState > 0 && (
           <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
             Previous
+          </Button>
+        )}
+        {regState < steps.length - 1 && (
+          <Button type="primary" onClick={() => next()}>
+            Next
           </Button>
         )}
       </div>
