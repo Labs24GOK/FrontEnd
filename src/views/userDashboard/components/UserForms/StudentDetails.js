@@ -120,20 +120,15 @@ const StudentDetails = props => {
         <Form.Item name="school_name" label="Name of School">
           <Input />
         </Form.Item>
-        <Form.Item
-        >
-          <Button type='primary' htmlType="submit">
-            Next
-          </Button>
-        </Form.Item>
-        
-      </Form>
-      <Row justify="space-between">
+
+        <Row justify="space-between">
         <Col>
           <Form.Item name="school_grade_id" label="Grade Level">
             <Select
+              labelInValue
+              name="school_grade_id"
               style={{ width: 100 }}
-              defaultValue="Pri 6"
+              defaultValue="None"
               onChange={value => formHelper(value)}
             >
               <Option value="None">None</Option>
@@ -156,6 +151,12 @@ const StudentDetails = props => {
           </Form.Item>
         </Col>
       </Row>
+        <Form.Item>
+          <Button type='primary' htmlType="submit">
+            Next
+          </Button>
+        </Form.Item>
+      </Form>
     </Content>
   );
 };

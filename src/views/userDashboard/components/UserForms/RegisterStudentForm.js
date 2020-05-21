@@ -28,9 +28,10 @@ const RegisterStudentForm = props => {
   };
 
   const formHelper = value => {
+    console.log(value)
     setStudentForm({
       ...studentForm,
-      school_grade: value.value,
+      school_grade_id: value.value,
     });
   };
 
@@ -104,11 +105,11 @@ const RegisterStudentForm = props => {
                 Previous
               </Button>
             )}
-            {regState < steps.length - 1 && (
+            {/* {regState < steps.length - 1 && (
               <Button type="primary" onClick={() => next()}>
                 Next
               </Button>
-            )}
+            )} */}
             {regState === 3 ? (
               <Button type="primary" onClick={submitForm}>
                 Submit
