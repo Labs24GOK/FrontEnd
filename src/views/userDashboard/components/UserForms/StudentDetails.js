@@ -9,7 +9,16 @@ const StudentDetails = props => {
   const dateFormat = 'DD/MM/YYYY';
   return (
     <Form layout={'vertical'}>
-      <Form.Item name="first_name" label="Full Name">
+      <Form.Item
+        name="first_name"
+        label="Full Name"
+        rules={[
+          {
+            required: true,
+            message: "Please enter student's name",
+          },
+        ]}
+      >
         <Input />
       </Form.Item>
       <Form.Item
@@ -25,7 +34,16 @@ const StudentDetails = props => {
       >
         <Input />
       </Form.Item>
-      <Form.Item name="cpr" label="Government ID">
+      <Form.Item
+        name="cpr"
+        label="Government ID"
+        rules={[
+          {
+            required: true,
+            message: "Please enter student's CPR number",
+          },
+        ]}
+      >
         <Input />
       </Form.Item>
       <DatePicker
@@ -33,14 +51,40 @@ const StudentDetails = props => {
         label="Date of Birth"
         defaultValue={moment('01/04/2014', dateFormat)}
         format={dateFormat}
+        rules={[
+          {
+            required: true,
+            message: "Please enter student's date of birth",
+          },
+        ]}
       >
         <Input />
       </DatePicker>
-      <Select name="gender" label="Gender" style={{ width: 100 }}>
+      <Select
+        defaultValue="male"
+        name="gender"
+        label="Gender"
+        style={{ width: 100 }}
+        rules={[
+          {
+            required: true,
+            message: "Please enter student's gender",
+          },
+        ]}
+      >
         <Option value="M">Male</Option>
         <Option value="F">Female</Option>
       </Select>
-      <Form.Item name="mobile_telephone" label="Phone">
+      <Form.Item
+        name="mobile_telephone"
+        label="Phone"
+        rules={[
+          {
+            required: true,
+            message: "Please enter student's contact phone number",
+          },
+        ]}
+      >
         <Input />
       </Form.Item>
       <Form.Item name="email" label="Email">
@@ -49,7 +93,16 @@ const StudentDetails = props => {
       <Form.Item name="school_name" label="Name of School">
         <Input />
       </Form.Item>
-      <Form.Item name="school_grade_id" label="Grade Level">
+      <Form.Item
+        name="school_grade_id"
+        label="Grade Level"
+        rules={[
+          {
+            required: true,
+            message: "Please enter student's current grade level",
+          },
+        ]}
+      >
         <Input />
       </Form.Item>
     </Form>
