@@ -6,6 +6,10 @@ const StudentAddress = props => {
   const [form] = Form.useForm();
   const { Title } = Typography;
   const { Content } = Layout;
+  const {
+    address,
+  } = props.studentForm;
+
   return (
     <Content style={{ margin: '1.8rem 0' }}>
       <Form layout={'vertical'} form={form} onChange={handleChange} onFinish={next}>
@@ -20,6 +24,7 @@ const StudentAddress = props => {
             <Form.Item
               name={'address'}
               label="Current Address"
+              initialValue={address}
               rules={[
                 {
                   required: true,
