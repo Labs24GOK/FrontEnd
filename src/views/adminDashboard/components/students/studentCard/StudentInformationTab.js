@@ -47,7 +47,7 @@ const StudentInformationTab = props => {
 						<StudentInformationTabCategory category="birthdate" value={getDateStringENGBFormat(student.birthdate)} colspan="1" />
 						<StudentInformationTabCategory category="school_name" value={student.school_name} colspan="1" />
 						<StudentInformationTabCategory category="school_grade" value={student.school_grade} colspan="1" />
-						<StudentInformationTabCategory category="address" value={student.address} colspan="1" />
+						<StudentInformationTabCategory category="address" value={student.address} colspan="2" />
 						<StudentInformationTabCategory category="primary_emergency_contact_name" value={student.primary_emergency_contact_name} colspan="2" />
 						<StudentInformationTabCategory category="primary_emergency_relationship" value={student.primary_emergency_relationship} colspan="1" />
 						<StudentInformationTabCategory category="primary_emergency_phone" value={student.primary_emergency_phone} colspan="1" />

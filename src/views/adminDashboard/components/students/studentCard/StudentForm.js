@@ -13,25 +13,28 @@ const StudentForm = props => {
 	const { studentID } = props;
 
 	const student = props.studentById;
+	// console.log("StudentForm student", student);
 
 	let birthdate = new Date(student.birthdate).toISOString().split('T')[0];
 	let grade_updated = new Date(student.grade_updated).toISOString().split('T')[0];
 
 	const { errors, register, handleSubmit } = useForm();
-	const dropDowns = ['block_code', 'preferred_contact_type_id', 'school_grade_id', 'location_id', "family_id"];
+	// const dropDowns = ['school_grade_id'];
 
 	const submitNow = (data) => {
+		console.log("submitNow data: ", data);
 		if(props.addStudentForm) {
-			for (const property of dropDowns) {
-				data[property] = parseInt(data[property])
-			}
+			// for (const property of dropDowns) {
+			// 	data[property] = parseInt(data[property])
+			// }
 			props.editStudentById(studentID, data);
 		} else {
 			const newStudent = {
 				...data,
 				user_id: props.studentById.user_id
 			}
-			delete newStudent.family_id
+			delete newStudent.user_id
+			console.log("newStudent in submitNow: ", newStudent);
 			props.createNewStudent(newStudent)
 		}
 	}
@@ -53,125 +56,94 @@ const StudentForm = props => {
 				<Div>
 					{console.log(props)}
 					<div>
-						<Label>CPR</Label>
+						<Label>ID</Label>
 						<div>
-							<Input type="text" placeholder="xxxxxxxxxx" className={errors.cpr && "input-error"} name="cpr" defaultValue={student.cpr} ref={register({required: true, minLength: 9, maxLength: 9})} />
-							{errors.cpr && errors.cpr.type === "required" && 'CPR is required.'}
-							{errors.cpr && (errors.cpr.type === "minLength" || errors.cpr.type === "maxLength") && 'CPR needs to be 9 characters'}
+							<Input type="text" placeholder="xxxxxxxxxx" className={errors.cpr && "input-error"} name="cpr" ref={register({required: true, minLength: 9, maxLength: 9})} />
+							{errors.cpr && errors.cpr.type === "required" && 'ID is required.'}
+							{errors.cpr && (errors.cpr.type === "minLength" || errors.cpr.type === "maxLength") && 'ID needs to be 9 characters'}
 						</div>
 					</div>
 					<div>
 						<Label>First Name</Label>
 						<div>
-							 <Input type="text" className={errors.first_name && "input-error"} name="first_name" defaultValue={student.first_name} ref={register({required: true, maxLength: 80})} />
+							 <Input type="text" className={errors.first_name && "input-error"} name="first_name" ref={register({required: true, maxLength: 80})} />
 							 {errors.first_name && errors.first_name.type === "required" && 'First name is required.'}
 						</div>
 					</div>
 					<div>
 						<Label>Additional Names</Label>
 						<div>
-							{/* regex pattern: 3 or more words, separated by spaces. Optional space at end so error border doesn't come up while typing more names.*/}
-							<Input type="text" className={errors.additional_names && "input-error"}name="additional_names" defaultValue={student.additional_names} ref={register({required: true, pattern: /^([a-zA-Z]+ +){2,}([a-zA-Z]+ ?)$/i })} />
+							{/* regex pattern: 1 or more words, separated by spaces. Optional space at end so error border doesn't come up while typing more names.*/}
+							<Input type="text" className={errors.additional_names && "input-error"} name="additional_names" defaultValue={student.additional_names} ref={register({required: true, pattern: /^([a-zA-Z]+ +){0,}([a-zA-Z]+ ?)$/i })} />
 							{errors.additional_names && errors.additional_names.type === "required" && 'Additional Names are required.'}
-							{errors.additional_names && errors.additional_names.type === "pattern" && 'Enter at least 3 additional names.'}
+							{errors.additional_names && errors.additional_names.type === "pattern" && 'Enter at least 1 additional name.'}
 						</div>
 					</div>
 					<div>
 						<Label>Gender</Label>
 						<div>
-							<select className='dropDown' name="gender" defaultValue={student.gender} ref={register({ required: true })}>
+							<select className='dropDown' name="gender" ref={register({ required: true })}>
         						<option value="F">F</option>
         						<option value="M">M</option>
       						</select>
 						</div>
 					</div>
 					<div>
-						<Label>Home Telephone</Label>
+						<Label>Phone Number</Label>
 						<div>
-							<Input type="tel" className={errors.home_telephone && "input-error"}name="home_telephone" defaultValue={student.home_telephone} ref={register({required: true, maxLength: 100})} />
-							{errors.home_telephone && errors.home_telephone.type === "required" && 'Home Telephone is required.'}	
-						</div>
-					</div>
-					<div>
-						<Label>Mobile Telephone</Label>
-						<div>
-							<Input type="tel" className={errors.mobile_telephone && "input-error"}name="mobile_telephone" defaultValue={student.mobile_telephone} ref={register({required: true, maxLength: 100})} />
-							{errors.mobile_telephone && errors.mobile_telephone.type === "required" && 'Mobile Telephone is required.'}			
+							<Input type="tel" className={errors.phone_number && "input-error"} name="phone_number" defaultValue={student.phone_number} ref={register({required: true, maxLength: 100})} />
+							{errors.phone_number && errors.phone_number.type === "required" && 'Phone Number is required.'}	
 						</div>
 					</div>
 					<div>
 					<Label>Email</Label>
 						<div>
-							<Input type="text" className={errors.email && "input-error"} name="email" defaultValue={student.email} ref={register({required: true, pattern: /^\S+@\S+$/i})} />
+							<Input type="text" className={errors.email && "input-error"} name="email" ref={register({required: true, pattern: /^\S+@\S+$/i})} />
 							{errors.email && 'Email is required.'}
 						</div>
 					</div>
 					<div>
-						<Label>Preferred Contact Method</Label>
-						<div>	
-							<select className='dropDown' name="preferred_contact_type_id" defaultValue={student.preferred_contact_type_id} ref={register({ required: true })}>
-							{createDropdown(props.contactTypesTable)}
-							</select>
-						</div>
-					</div>
-					<div>
-						<Label>Birth date</Label>
+						<Label>Birth Date</Label>
 						<div>
-							<Input type="date" className={errors.birthdate && "input-error"} name="birthdate" defaultValue={birthdate} ref={register({required: true})} />
+							<Input type="date" className={errors.birthdate && "input-error"} name="birthdate" ref={register({required: true})} />
 							{errors.birthdate && 'Birth Date is required.'}
 						</div>
 					</div>
 					<div>
 						<Label>School Name</Label>
 						<div>
-							<Input type="text" className={errors.school_name && "input-error"}  name="school_name" defaultValue={student.school_name} ref={register({required: true})} />
+							<Input type="text" className={errors.school_name && "input-error"}  name="school_name" ref={register({required: true})} />
 							{errors.school_name && 'School Name is required.'}
 						</div>
 					</div>
 					<div>
 						<Label>School Grade</Label>
 						<div>
-							<select className='dropDown' name="school_grade_id" defaultValue={student.school_grade_id} ref={register({ required: true })}>
-        						{createDropdown(props.schoolGradeTable)}
+							<select className='dropDown' name="school_grade_id" ref={register({ required: true })}>
+								<option value="1">None</option>
+								<option value="2">KG 1</option>
+								<option value="3">KG 2</option>
+								<option value="4">KG 3</option>
+								<option value="5">Pri 1</option>
+								<option value="6">Pri 2</option>
+								<option value="7">Pri 3</option>
+								<option value="8">Pri 4</option>
+								<option value="9">Pri 5</option>
+								<option value="10">Pri 6</option>
+								<option value="11">Sec 1</option>
+								<option value="12">Sec 2</option>
+								<option value="13">Sec 3</option>
+								<option value="14">Sec 4</option>
+								<option value="15">Sec 5</option>
+								<option value="16">Sec 6</option>
       						</select>
 						</div>
 					</div>
-					<div>
-						<Label>Location</Label>
-						<div>					
-							<select className='dropDown' name="location_id" defaultValue={student.location_id} ref={register({ required: true })}>
-        						{createDropdown(props.locationsTable)}
-      						</select>
-						</div>
-					</div>
-					<div>
-						<Label>Block</Label>
+					<div style={{ gridColumn: 'span 3' }}>
+						<Label>Address</Label>
 						<div>
-							<select className='dropDown' name="block_code" defaultValue={student.block_code} ref={register({ required: true })}>
-        						{createDropdown(props.blocksTable)}
-								{errors.block_code && 'Block code is required.'}
-      						</select>
-						</div>
-					</div>
-					<div>
-						<Label>Road</Label>
-						<div>
-							<Input type="text" className={errors.road && "input-error"} name="road" defaultValue={student.road} ref={register({required: true})}/>
-							{errors.road && 'Road is required.'}
-						</div>
-					</div>
-					<div>
-						<Label>Building</Label>
-						<div>
-							<Input type="text" className={errors.building && "input-error"} name="building" defaultValue={student.building} ref={register({required: true})} />
-							{errors.building && 'Building is required.'}
-						</div>
-					</div>
-					<div>
-						<Label>Flat</Label>
-						<div>
-							<Input type="text" className={errors.flat && "input-error"} name="flat" defaultValue={student.flat} ref={register({required: true})}/>
-							{errors.flat && 'Flat is required.'}
+							<Input type='text' className={errors.address && "address-error"} name="address" defaultValue={student.address} ref={register({required: true})} />
+							{errors.address && "Address is required."}
 						</div>
 					</div>
 					<div style={{ gridColumn: 'span 2' }}>
@@ -189,10 +161,10 @@ const StudentForm = props => {
 						</div>
 					</div>
 					<div>
-						<Label>Phone Number</Label>
+						<Label>Emergency Number</Label>
 						<div>
 							<Input type="tel" className={errors.primary_emergency_phone && "input-error"} name="primary_emergency_phone" defaultValue={student.primary_emergency_phone} ref={register({required: true})} />
-							{errors.primary_emergency_phone && errors.primary_emergency_phone.type === "required" && 'Primary Emergency Phone is required.'}					
+							{errors.primary_emergency_phone && errors.primary_emergency_phone.type === "required" && 'Primary Emergency Phone is required.'}
 						</div>
 					</div>
 					<div style={{ gridColumn: 'span 2' }}>
@@ -208,7 +180,7 @@ const StudentForm = props => {
 						</div>
 					</div>
 					<div>
-						<Label>Phone Number</Label>
+						<Label>Emergency Number</Label>
 						<div>
 							<Input type="tel" name="emergency_phone" defaultValue={student.emergency_phone} ref={register} />
 						</div>
@@ -216,15 +188,9 @@ const StudentForm = props => {
 					<div>
 						<Label>Grade Updated</Label>
 						<div>
-							<Input type="date" name="grade_updated" defaultValue={grade_updated} ref={register({required: true})} />
+							<Input type="date" name="grade_updated" ref={register()} />
 						</div>
 					</div>
-					{/* <div>
-						<Label>Registration Date</Label>
-						<div>
-							<Input type='date' name='registration_date' defaultValue={student.registration_date} ref={register()} />
-						</div>
-					</div> */}
 					<div>
 						<Label>No Call</Label>
 						<div>
@@ -252,17 +218,17 @@ const StudentForm = props => {
 					<div style={{ gridColumn: 'span 4' }}>
 						<Label>Notes</Label>
 						<div>
-							<textarea type="text" name="notes" defaultValue={student.notes} ref={register} className="student-form-notes"/>
+							<textarea type="text" name="notes" ref={register} className="student-form-notes"/>
 						</div>
 						<div>
-							<Input type="hidden" value="1" name="family_id" defaultValue={student.family_id} ref={register({required: true})} />
+							<Input type="hidden" value="" name="user_id" defaultValue={student.user_id} ref={register({required: true})} />
 						</div>
 					</div>
 				</Div>
 			</FormSet>
 			<ButtonDiv>
 				<CancelButton onClick={handleCancel}>Cancel</CancelButton>
-				<SaveButton type="submit" onClick={handleSubmit(submitNow)}>
+				<SaveButton type="submit">
 					Save
 				</SaveButton>
 			</ButtonDiv>
@@ -275,9 +241,9 @@ const mapStateToProps = state => {
 		studentById: state.studentByIdReducer.studentById,
 		error: state.studentByIdReducer.error,
 		schoolGradeTable: state.studentByIdReducer.schoolGradeTable,
-		blocksTable: state.studentByIdReducer.blocksTable,
-		contactTypesTable: state.studentByIdReducer.contactTypesTable,
-		locationsTable: state.studentByIdReducer.locationsTable
+		// blocksTable: state.studentByIdReducer.blocksTable,
+		// contactTypesTable: state.studentByIdReducer.contactTypesTable,
+		// locationsTable: state.studentByIdReducer.locationsTable
 	};
 };
 
