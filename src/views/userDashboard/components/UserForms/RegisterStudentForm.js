@@ -11,7 +11,7 @@ import StudentContacts from './StudentContacts';
 import StudentReview from './StudentReview';
 
 const RegisterStudentForm = props => {
-  const [regState, setRegState] = useState(3);
+  const [regState, setRegState] = useState(0);
   const token = localStorage.getItem('token');
   const tokenData = JSON.parse(atob(token.split('.')[1]));
   const userID = tokenData.subject;
