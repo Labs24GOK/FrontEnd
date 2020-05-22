@@ -53,7 +53,7 @@ const StudentTable = props => {
     },
     {
       title: 'Phone Number',
-      dataIndex: 'mobile_telephone',
+      dataIndex: 'phone_number',
       key: 6,
     },
   ];
