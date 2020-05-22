@@ -11,7 +11,7 @@ import StudentContacts from './StudentContacts';
 import StudentReview from './StudentReview';
 
 const RegisterStudentForm = props => {
-  const [regState, setRegState] = useState(0);
+  const [regState, setRegState] = useState(3);
   const token = localStorage.getItem('token');
   const tokenData = JSON.parse(atob(token.split('.')[1]));
   const userID = tokenData.subject;
@@ -84,7 +84,7 @@ const RegisterStudentForm = props => {
       case 2:
         return <StudentContacts handleChange={handleChange} next={next}/>;
       case 3:
-        return <StudentReview handleChange={handleChange} formHelper={formHelper} next={next}/>;
+        return <StudentReview studentForm={studentForm} next={next}/>;
       default:
         return null;
     }
@@ -116,11 +116,6 @@ const RegisterStudentForm = props => {
                 Previous
               </Button>
             )}
-            {/* {regState < steps.length - 1 && (
-              <Button type="primary" onClick={() => next()}>
-                Next
-              </Button>
-            )} */}
             {regState === 3 ? (
               <Button type="primary" onClick={submitForm}>
                 Submit
