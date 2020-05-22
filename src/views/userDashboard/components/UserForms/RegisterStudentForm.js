@@ -27,12 +27,23 @@ const RegisterStudentForm = props => {
     console.log(studentForm);
   };
 
-  const formHelper = value => {
-    console.log(value)
-    setStudentForm({
-      ...studentForm,
-      school_grade_id: value.value,
-    });
+  const formHelper = ({value}) => {
+    if(value === "M" || value === "F") {
+      setStudentForm({
+        ...studentForm,
+        gender: value
+      });
+    } else if(value >= 1 && value <= 16) {
+      setStudentForm({
+        ...studentForm,
+        school_grade_id: value
+      });
+    } else {
+      setStudentForm({
+        ...studentForm,
+        birthdate: value
+      });
+    }
   };
 
   const submitForm = values => {
