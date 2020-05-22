@@ -7,6 +7,14 @@ const StudentContacts = props => {
   const { handleChange, next } = props;
   const { Title } = Typography;
   const { Content } = Layout;
+  const {
+    primary_emergency_contact_name,
+    primary_emergency_phone,
+    primary_emergency_relationship,
+    emergency_contact_name,
+    emergency_relationship,
+    emergency_phone,
+    notes } = props.studentForm;
   function onChange(e) {
     setSecondEmergencyContact(!secondEmergencyContact);
   }
@@ -31,6 +39,7 @@ const StudentContacts = props => {
             <Form.Item
               name={'primary_emergency_contact_name'}
               label="Contact's Name"
+              initialValue={primary_emergency_contact_name}
               rules={[
                 {
                   required: true,
@@ -48,6 +57,7 @@ const StudentContacts = props => {
             <Form.Item
               name={'primary_emergency_relationship'}
               label="Relation to Student"
+              initialValue={primary_emergency_relationship}
               rules={[
                 {
                   required: true,
@@ -63,6 +73,7 @@ const StudentContacts = props => {
         <Form.Item
           name={'primary_emergency_phone'}
           label="Contact's Phone"
+          initialValue={primary_emergency_phone}
           rules={[
             {
               required: true,
@@ -87,6 +98,7 @@ const StudentContacts = props => {
             <Form.Item
               name={'emergency_contact_name'}
               label="Contact's Name #2"
+              initialValue={emergency_contact_name}
               rules={[
                 {
                   required: secondEmergencyContact,
@@ -99,6 +111,7 @@ const StudentContacts = props => {
             <Form.Item
               name={'emergency_relationship'}
               label="Relation to Student"
+              initialValue={emergency_relationship}
               rules={[
                 {
                   required: true,
@@ -111,6 +124,7 @@ const StudentContacts = props => {
             <Form.Item
               name={'emergency_phone'}
               label="Contact's Phone"
+              initialValue={emergency_phone}
               rules={[
                 {
                   required: secondEmergencyContact,
@@ -130,6 +144,7 @@ const StudentContacts = props => {
             placeholder={
               'Medical conditions, behaviors, and special considerations'
             }
+            initialValue={notes}
           />
         </Form.Item>
         <Form.Item>

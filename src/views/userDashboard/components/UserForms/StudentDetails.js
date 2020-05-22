@@ -21,6 +21,28 @@ const StudentDetails = props => {
   const { Option } = Select;
   const { Content } = Layout;
   const dateFormat = 'DD/MM/YYYY';
+  const {
+    cpr,
+    first_name,
+    additional_names,
+    birthdate,
+    gender,
+    school_name,
+    school_grade_id,
+    email,
+    phone_number,
+  } = props.studentForm;
+
+  const defaultGender = (val) => {
+    if(val === "M") {
+      return "Male"
+    } else if(val === "F") {
+      return "Female";
+    } else {
+      return "Female";
+    }
+  }
+
   return (
     <Content style={{ margin: '1.8rem 0' }}>
       <Form layout={'vertical'} onChange={handleChange} onFinish={next} scrollToFirstError>
@@ -28,6 +50,7 @@ const StudentDetails = props => {
         <Form.Item
           name="first_name"
           label="First Name"
+          initialValue={first_name}
           rules={[
             {
               required: true,
@@ -39,6 +62,7 @@ const StudentDetails = props => {
         </Form.Item>
         <Form.Item
           name="additional_names"
+          initialValue={additional_names}
           label={
             <span>
               Preferred Name
@@ -54,6 +78,7 @@ const StudentDetails = props => {
         <Form.Item
           name="cpr"
           label="Government ID"
+          initialValue={cpr}
           rules={[
             {
               required: true,
@@ -77,7 +102,7 @@ const StudentDetails = props => {
               ]}
             >
               <DatePicker
-                defaultValue={moment('01/04/2014', dateFormat)}
+                defaultValue={moment(birthdate, dateFormat)}
                 format={dateFormat}
                 style={{ width: 120 }}
                 onChange={value => formHelper({value: moment(value).format('l')})}
@@ -88,6 +113,7 @@ const StudentDetails = props => {
             <Form.Item
               name="gender"
               label="Gender"
+              initialValue={gender}
               rules={[
                 {
                   required: true,
@@ -96,10 +122,11 @@ const StudentDetails = props => {
               ]}
             >
               <Select
-              defaultValue="Male" 
               style={{ width: 80 }} 
               labelInValue 
               onChange={value => formHelper(value)}
+              defaultValue={defaultGender(gender)}
+              
               >
                 <Option value="M">Male</Option>
                 <Option value="F">Female</Option>
@@ -111,6 +138,7 @@ const StudentDetails = props => {
         <Form.Item
           name="phone_number"
           label="Phone"
+          initialValue={phone_number}
           rules={[
             {
               required: true,
@@ -120,10 +148,10 @@ const StudentDetails = props => {
         >
           <Input placeholder={'332-32-1234'} />
         </Form.Item>
-        <Form.Item name="email" label="Email">
+        <Form.Item name="email" label="Email" initialValue={email}>
           <Input />
         </Form.Item>
-        <Form.Item name="school_name" label="Name of School">
+        <Form.Item name="school_name" label="Name of School" initialValue={school_name}>
           <Input />
         </Form.Item>
 
@@ -134,7 +162,6 @@ const StudentDetails = props => {
               labelInValue
               name="school_grade_id"
               style={{ width: 100 }}
-              defaultValue="None"
               onChange={value => formHelper(value)}
             >
               <Option value="1">None</Option>

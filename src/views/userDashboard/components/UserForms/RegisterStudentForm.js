@@ -106,6 +106,7 @@ const RegisterStudentForm = props => {
       case 0:
         return (
           <StudentDetails
+            studentForm={studentForm}
             handleChange={handleChange}
             formHelper={formHelper}
             next={next}
@@ -114,13 +115,20 @@ const RegisterStudentForm = props => {
       case 1:
         return (
           <StudentAddress
+            studentForm={studentForm}
             handleChange={handleChange}
             formHelper={formHelper}
             next={next}
           />
         );
       case 2:
-        return <StudentContacts handleChange={handleChange} next={next} />;
+        return (
+          <StudentContacts
+            studentForm={studentForm}
+            handleChange={handleChange}
+            next={next}
+          />
+        );
       case 3:
         return <StudentReview studentForm={studentForm} next={next} />;
       default:
