@@ -18,8 +18,9 @@ const StudentFamilyTab = props => {
 	const [studentAddForm, setStudentAddForm] = useState(false);
 	const [family, setFamily] = useState([]);
 	let userID = props.studentById.user_id;
+	let studentID = props.studentById.student_id;
 	let filterFamily = family.filter((member) => {
-		return member.id !== props.studentById.student_id;
+		return member.id !== studentID;
 	})
 
 	useEffect(() => {
@@ -34,7 +35,7 @@ const StudentFamilyTab = props => {
 			.catch(err => {
 				console.log("Error in retrieving students: ", err)
 			})
-	}, [userID]);
+	}, [props.studentList]);
 
 	const handleAddButton = () => {
 		setStudentAddForm(!studentAddForm);
@@ -142,7 +143,8 @@ const StudentFamilyTab = props => {
 const mapStateToProps = state => {
 	return {
 		isLoading: state.studentByIdReducer.isLoading,
-		studentById: state.studentByIdReducer.studentById
+		studentById: state.studentByIdReducer.studentById,
+		studentList: state.studentTableReducer.studentList
 	};
 };
 
