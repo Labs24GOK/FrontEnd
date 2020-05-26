@@ -61,6 +61,7 @@ const StudentTable = props => {
   const studentData = props.studentList.sort((a, b) => {
     return b.id - a.id;
   });
+ 
   return (
     <div>
         <h2 style={{textAlign: "left", marginLeft: "1.3rem"}}>
