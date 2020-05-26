@@ -3,6 +3,7 @@ import { Steps, Button, Row, Col, Layout, Modal } from 'antd';
 import { connect } from 'react-redux';
 import { createNewStudent } from '../../../../actions/adminDashboardActions/studentTableActions';
 import { useHistory } from 'react-router-dom';
+import './RegisterStudentForm.scss';
 
 // Sub component imports
 import StudentDetails from './StudentDetails';
@@ -17,10 +18,10 @@ const RegisterStudentForm = props => {
   const userID = tokenData.subject;
   const { Step } = Steps;
   const { Content } = Layout;
-  const [studentForm, setStudentForm] = useState({ 
+  const [studentForm, setStudentForm] = useState({
     user_id: userID,
-    birthdate: '04/01/2010' // default birthday passed into student Registration form
-   });
+    birthdate: '04/01/2010', // default birthday passed into student Registration form
+  });
   const history = useHistory();
 
   const handleChange = e => {
@@ -28,7 +29,6 @@ const RegisterStudentForm = props => {
       ...studentForm,
       [e.target.id]: e.target.value,
     });
-    console.log(studentForm);
   };
 
   const formHelper = ({ value }) => {
@@ -142,10 +142,10 @@ const RegisterStudentForm = props => {
   return (
     <Content style={{ margin: '1.8rem 0' }}>
       <Row>
-        <Col span={16} offset={4}>
+        <Col span={16}>
           <Steps current={regState}>
             {steps.map(item => (
-              <Step key={item.title} title={item.title} />
+              <Step key={item.title} />
             ))}
           </Steps>
         </Col>
