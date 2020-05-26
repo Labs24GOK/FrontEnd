@@ -1,34 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import{ render, fireEvent, getByRole } from '@testing-library/react'
+import{ render } from '@testing-library/react'
 import StudentDetails from './StudentDetails';
 
 const token = localStorage.setItem('token', {
   user_id: 6
 })
 
-// const studentMockData = {
-//   // user_id: 1,
-//   cpr: 37648646,
-//   first_name: 'Timmy',
-//   additional_names: 'Codecs Apple Turn',
-//   birthdate: '03/34/1997',
-//   gender: 'M',
-//   school_name: 'Apple High',
-//   school_grade_id: 1,
-//   email: 'timmy@gmail.com',
-//   address: '223 Apples St, Block 223, route 2',
-//   phone_number: '333228276',
-//   primary_emergency_contact_name: 'Rick',
-//   primary_emergency_relationship: 'Dad',
-//   primary_emergency_phone: '333221826',
-//   notes: 'Peanuts are deadly'
-// }
-
 const studentMockData = {
   // user_id: 1,
   cpr: '',
-  first_name: 'Timy',
+  first_name: '',
   additional_names: '',
   birthdate: '',
   gender: '',
@@ -66,7 +48,7 @@ describe('Details Form', () => {
   test('should have all input Labels', () => {
     const { getByText } = render(<StudentDetails studentForm={studentMockData} />)
     expect(getByText(/First Name/i))
-    expect(getByText(/Preferred Name/i))
+    expect(getByText(/Additional Name/i))
     expect(getByText(/Government ID/i))
     expect(getByText(/Date of Birth/i))
     expect(getByText(/Gender/i))
@@ -77,7 +59,7 @@ describe('Details Form', () => {
   })
   
   test('should show All input textboxes', () => {
-    const { getByText, getAllByRole  } = render(<StudentDetails studentForm={studentMockData} />)
+    const { getAllByRole  } = render(<StudentDetails studentForm={studentMockData} />)
     expect(getAllByRole('textbox')).toHaveLength(6)
   })
 })

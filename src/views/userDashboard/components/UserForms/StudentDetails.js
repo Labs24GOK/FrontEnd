@@ -1,19 +1,16 @@
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import React from 'react';
 import {
   Form,
   Input,
   Button,
   Select,
   DatePicker,
-  Tooltip,
   Typography,
   Row,
   Col,
   Layout,
 } from 'antd';
 import moment from 'moment-timezone';
-import { QuestionCircleOutlined } from '@ant-design/icons';
 
 const StudentDetails = props => {
   const { Title } = Typography;
@@ -28,7 +25,6 @@ const StudentDetails = props => {
     birthdate,
     gender,
     school_name,
-    school_grade_id,
     email,
     phone_number,
   } = props.studentForm;

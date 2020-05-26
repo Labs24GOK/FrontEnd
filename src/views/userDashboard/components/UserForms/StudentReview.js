@@ -3,7 +3,6 @@ import { Typography, Layout, Col, Row } from 'antd';
 
 const StudentReview = props => {
   const {
-    user_id,
     cpr,
     first_name,
     additional_names,
