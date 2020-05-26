@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Steps, Button } from 'antd';
+import React, { useState } from 'react';
+import { Steps, Button, Row, Col, Layout, Modal } from 'antd';
+import { connect } from 'react-redux';
+import { createNewStudent } from '../../../../actions/adminDashboardActions/studentTableActions';
+import { useHistory } from 'react-router-dom';
 
 // Sub component imports
 import StudentDetails from './StudentDetails';
@@ -7,9 +10,74 @@ import StudentAddress from './StudentAddress';
 import StudentContacts from './StudentContacts';
 import StudentReview from './StudentReview';
 
-const RegisterStudentForm = () => {
+const RegisterStudentForm = props => {
   const [regState, setRegState] = useState(0);
+  const token = localStorage.getItem('token');
+  const tokenData = JSON.parse(atob(token.split('.')[1]));
+  const userID = tokenData.subject;
   const { Step } = Steps;
+  const { Content } = Layout;
+  const [studentForm, setStudentForm] = useState({ 
+    user_id: userID,
+    birthdate: '04/01/2010' // default birthday passed into student Registration form
+   });
+  const history = useHistory();
+
+  const handleChange = e => {
+    setStudentForm({
+      ...studentForm,
+      [e.target.id]: e.target.value,
+    });
+    console.log(studentForm);
+  };
+
+  const formHelper = ({ value }) => {
+    if (value === 'M' || value === 'F') {
+      setStudentForm({
+        ...studentForm,
+        gender: value,
+      });
+    } else if (value >= 1 && value <= 16) {
+      setStudentForm({
+        ...studentForm,
+        school_grade_id: value,
+      });
+    } else {
+      setStudentForm({
+        ...studentForm,
+        birthdate: value,
+      });
+    }
+  };
+
+  const submitForm = values => {
+    props.createNewStudent(studentForm);
+  };
+
+  // Success message modal
+  const countDown = () => {
+    let secondsToGo = 5;
+    const modal = Modal.success({
+      title: 'Student Registered!',
+      content: `Returning to Dashboard in ${secondsToGo} seconds.`,
+    });
+    const timer = setInterval(() => {
+      secondsToGo -= 1;
+      modal.update({
+        content: `Returning to Dashboard in ${secondsToGo} seconds.`,
+      });
+    }, 1000);
+    setTimeout(() => {
+      clearInterval(timer);
+      modal.destroy();
+    }, secondsToGo * 1000);
+  };
+
+  const buttonFunctions = () => {
+    submitForm();
+    countDown();
+    history.push('/dashboard');
+  };
 
   const steps = [
     {
@@ -39,40 +107,83 @@ const RegisterStudentForm = () => {
   function getStep(regState) {
     switch (regState) {
       case 0:
-        return <StudentDetails />;
+        return (
+          <StudentDetails
+            studentForm={studentForm}
+            handleChange={handleChange}
+            formHelper={formHelper}
+            next={next}
+          />
+        );
       case 1:
-        return <StudentAddress />;
+        return (
+          <StudentAddress
+            studentForm={studentForm}
+            handleChange={handleChange}
+            formHelper={formHelper}
+            next={next}
+          />
+        );
       case 2:
-        return <StudentContacts />;
+        return (
+          <StudentContacts
+            studentForm={studentForm}
+            handleChange={handleChange}
+            next={next}
+          />
+        );
       case 3:
-        return <StudentReview />;
+        return <StudentReview studentForm={studentForm} next={next} />;
       default:
         return null;
     }
   }
 
   return (
-    <div>
-      <Steps current={regState}>
-        {steps.map(item => (
-          <Step key={item.title} title={item.title} />
-        ))}
-      </Steps>
-      <div className="form-steps-content">{getStep(regState)}</div>
-      <div className="form-steps-action">
-        {regState < steps.length - 1 && (
-          <Button type="primary" onClick={() => next()}>
-            Next
-          </Button>
-        )}
-        {regState > 0 && (
-          <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
-            Previous
-          </Button>
-        )}
-      </div>
-    </div>
+    <Content style={{ margin: '1.8rem 0' }}>
+      <Row>
+        <Col span={16} offset={4}>
+          <Steps current={regState}>
+            {steps.map(item => (
+              <Step key={item.title} title={item.title} />
+            ))}
+          </Steps>
+        </Col>
+      </Row>
+
+      <Row justify={'center'}>
+        <Col>
+          <div className="form-steps-div">{getStep(regState)}</div>
+        </Col>
+      </Row>
+
+      <Row justify={'center'}>
+        <Col>
+          <div className="form-steps-action">
+            {regState > 0 && (
+              <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
+                Previous
+              </Button>
+            )}
+            {regState === 3 ? (
+              <Button type="primary" onClick={buttonFunctions}>
+                Submit
+              </Button>
+            ) : null}
+          </div>
+        </Col>
+      </Row>
+    </Content>
   );
 };
 
-export default RegisterStudentForm;
+const mapStateToProps = state => ({
+  createNewStudentIsLoading:
+    state.studentTableReducer.createNewStudentIsLoading,
+  createNewStudentSuccessMessage:
+    state.studentTableReducer.createNewStudentSuccessMessage,
+});
+
+export default connect(mapStateToProps, { createNewStudent })(
+  RegisterStudentForm
+);
