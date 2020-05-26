@@ -1,17 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import {
-  withRouter,
-  Switch,
-  Route,
-  Link,
-  useHistory,
-  useRouteMatch,
-} from 'react-router-dom';
+import { withRouter, Link, useHistory, useRouteMatch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Button } from 'antd';
-
 import MessageBox from './MessageBox';
-import AddStudentModal from './AddStudentModal';
 import StudentCourseCard from './StudentCourseCard';
 
 import { getStudentsInFamily } from '../getStudentsinFamily';
@@ -72,10 +62,6 @@ function UserDashboard(props) {
 
       <MessageBox messages={userData.messages} />
       <Link to={`${url}/student-register`}>Register a Student</Link>
-
-      {/* <button className="addStudent" onClick={() => setDisplayAddStudentModal(true)}>+ Add a Student</button> */}
-
-      {/* <AddStudentModal displayModal={displayAddStudentModal} setDisplayAddStudentModal={setDisplayAddStudentModal} userID={userID} /> */}
 
       {userData.students.map((student, id) => (
         <StudentCourseCard student={student} />
