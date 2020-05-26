@@ -63,15 +63,7 @@ const StudentDetails = props => {
         <Form.Item
           name="additional_names"
           initialValue={additional_names}
-          label={
-            <span>
-              Preferred Name
-              <Tooltip title="What do you want others to call you?">
-                {' '}
-                <QuestionCircleOutlined />
-              </Tooltip>
-            </span>
-          }
+          label="Additional Names"
         >
           <Input />
         </Form.Item>
