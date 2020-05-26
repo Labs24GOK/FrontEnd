@@ -28,7 +28,6 @@ const StudentRegForm = props => {
 	const { errors, register, handleSubmit } = useForm();
 
 	const submitNow = (data) => {
-		console.log("submitNow data: ", data);
 		props.createNewStudent(data);
 		props.setStudentAddForm(false);
 	}
