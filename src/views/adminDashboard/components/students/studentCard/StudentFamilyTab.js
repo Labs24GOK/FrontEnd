@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { getStudentById } from '../../../../../actions';
 import { withRouter } from 'react-router-dom';
-import StudentForm from './StudentForm';
+import StudentRegForm from './StudentRegForm';
 import {
 	FormWrap,
 	Div,
@@ -80,6 +80,16 @@ const StudentFamilyTab = props => {
 							</Div>
 						</FormSet>
 					</FormWrap>
+					<FormWrap>
+						{/* List all students besides the one at the top for this user ID */}
+						This is where the info goes.
+						<TextDiv>
+							Student1
+						</TextDiv>
+						<TextDiv>
+							Student2
+						</TextDiv>
+					</FormWrap>
 				</>
 			) : (
 				// <StudentForm {...props} />
@@ -101,7 +111,7 @@ const StudentFamilyTab = props => {
           </div>
         </div>
 			) : (
-				<StudentForm addStudent={studentAddForm} {...props} />
+				<StudentRegForm setStudentAddForm={setStudentAddForm} {...props} />
 			)}
 		</div>
 	);

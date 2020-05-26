@@ -9,22 +9,23 @@ import '../../../../../styles/table.scss';
 import {createDropdown} from '../../../../../utils/helpers';
 import { useForm } from 'react-hook-form';
 
-const StudentForm = props => {
+const StudentRegForm = props => {
 	const { studentID } = props;
 
 	const student = props.studentById;
 	// console.log("StudentForm student", student);
 
-	let birthdate = new Date(student.birthdate).toISOString().split('T')[0];
-	let grade_updated = new Date(student.grade_updated).toISOString().split('T')[0];
+	// let birthdate = new Date(student.birthdate).toISOString().split('T')[0];
+	// let grade_updated = new Date(student.grade_updated).toISOString().split('T')[0];
 
 	const { errors, register, handleSubmit } = useForm();
 	// const dropDowns = ['school_grade_id'];
 
 	const submitNow = (data) => {
 		console.log("submitNow data: ", data);
-		props.editStudentById(studentID, data);
-		props.toggleEditComponent('false', 'false');
+		props.createNewStudent(data);
+		props.setStudentAddForm(false);
+		// props.setForm(false);
 
 		// if(props.addStudentForm) {
 		// 	for (const property of dropDowns) {
@@ -45,7 +46,10 @@ const StudentForm = props => {
 	useEffect(() => { props.editStudentDropDown(); }, []);
 
 	const handleCancel = e => {
-		props.toggleEditComponent('false', 'false');
+		// props.toggleEditComponent('false', 'false');
+		// props.setForm(false);
+		e.preventDefault();
+		props.setStudentAddForm(false);
 	};
 
 	const yesNoDropdown = [
@@ -61,7 +65,7 @@ const StudentForm = props => {
 					<div>
 						<Label>ID</Label>
 						<div>
-							<Input type="text" placeholder="xxxxxxxxxx" className={errors.cpr && "input-error"} name="cpr" defaultValue={student.cpr} ref={register({required: true, minLength: 9, maxLength: 9})} />
+							<Input type="text" placeholder="xxxxxxxxxx" className={errors.cpr && "input-error"} name="cpr" ref={register({required: true, minLength: 9, maxLength: 9})} />
 							{errors.cpr && errors.cpr.type === "required" && 'ID is required.'}
 							{errors.cpr && (errors.cpr.type === "minLength" || errors.cpr.type === "maxLength") && 'ID needs to be 9 characters'}
 						</div>
@@ -69,7 +73,7 @@ const StudentForm = props => {
 					<div>
 						<Label>First Name</Label>
 						<div>
-							 <Input type="text" className={errors.first_name && "input-error"} name="first_name" defaultValue={student.first_name} ref={register({required: true, maxLength: 80})} />
+							 <Input type="text" className={errors.first_name && "input-error"} name="first_name" ref={register({required: true, maxLength: 80})} />
 							 {errors.first_name && errors.first_name.type === "required" && 'First name is required.'}
 						</div>
 					</div>
@@ -85,7 +89,7 @@ const StudentForm = props => {
 					<div>
 						<Label>Gender</Label>
 						<div>
-							<select className='dropDown' name="gender" defaultValue={student.gender} ref={register({ required: true })}>
+							<select className='dropDown' name="gender" ref={register({ required: true })}>
         						<option value="F">F</option>
         						<option value="M">M</option>
       						</select>
@@ -101,28 +105,28 @@ const StudentForm = props => {
 					<div>
 					<Label>Email</Label>
 						<div>
-							<Input type="text" className={errors.email && "input-error"} name="email" defaultValue={student.email} ref={register({required: true, pattern: /^\S+@\S+$/i})} />
+							<Input type="text" className={errors.email && "input-error"} name="email" ref={register({required: true, pattern: /^\S+@\S+$/i})} />
 							{errors.email && 'Email is required.'}
 						</div>
 					</div>
 					<div>
 						<Label>Birth Date</Label>
 						<div>
-							<Input type="date" className={errors.birthdate && "input-error"} name="birthdate" defaultValue={birthdate} ref={register({required: true})} />
+							<Input type="date" className={errors.birthdate && "input-error"} name="birthdate" ref={register({required: true})} />
 							{errors.birthdate && 'Birth Date is required.'}
 						</div>
 					</div>
 					<div>
 						<Label>School Name</Label>
 						<div>
-							<Input type="text" className={errors.school_name && "input-error"}  name="school_name" defaultValue={student.school_name} ref={register({required: true})} />
+							<Input type="text" className={errors.school_name && "input-error"}  name="school_name" ref={register({required: true})} />
 							{errors.school_name && 'School Name is required.'}
 						</div>
 					</div>
 					<div>
 						<Label>School Grade</Label>
 						<div>
-							<select className='dropDown' name="school_grade_id" defaultValue={student.school_grade_id} ref={register({ required: true })}>
+							<select className='dropDown' name="school_grade_id" ref={register({ required: true })}>
 								<option value="1">None</option>
 								<option value="2">KG 1</option>
 								<option value="3">KG 2</option>
@@ -191,7 +195,7 @@ const StudentForm = props => {
 					<div>
 						<Label>Grade Updated</Label>
 						<div>
-							<Input type="date" name="grade_updated" defaultValue={grade_updated} ref={register()} />
+							<Input type="date" name="grade_updated" ref={register()} />
 						</div>
 					</div>
 					<div>
@@ -221,7 +225,7 @@ const StudentForm = props => {
 					<div style={{ gridColumn: 'span 4' }}>
 						<Label>Notes</Label>
 						<div>
-							<textarea type="text" name="notes" defaultValue={student.notes} ref={register} className="student-form-notes"/>
+							<textarea type="text" name="notes" ref={register} className="student-form-notes"/>
 						</div>
 						<div>
 							<Input type="hidden" name="user_id" defaultValue={student.user_id} ref={register({required: true})} />
@@ -232,7 +236,7 @@ const StudentForm = props => {
 			<ButtonDiv>
 				<CancelButton onClick={handleCancel}>Cancel</CancelButton>
 				<SaveButton type="submit">
-					Save
+					Create
 				</SaveButton>
 			</ButtonDiv>
 		</FormWrap>
@@ -256,5 +260,5 @@ export default withRouter(
 		createNewStudent,
 		toggleEditComponent,
 		editStudentDropDown,
-	})(StudentForm)
+	})(StudentRegForm)
 );
