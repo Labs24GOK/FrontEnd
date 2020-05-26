@@ -1,53 +1,41 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { editStudentById, editStudentDropDown, toggleEditComponent, createNewStudent } from '../../../../../actions';
+import { 
+	editStudentById, 
+	editStudentDropDown, 
+	toggleEditComponent, 
+	createNewStudent 
+} from '../../../../../actions';
 import { withRouter } from 'react-router-dom';
 import 'react-dropdown/style.css';
 import '../../mainStyle/mainTable.scss';
-import { FormWrap, Input, Div, FormSet, ButtonDiv, CancelButton, SaveButton, Label } from '../../mainStyle/styledComponent';
+import { 
+	FormWrap, 
+	Input, 
+	Div, 
+	FormSet, 
+	ButtonDiv, 
+	CancelButton, 
+	SaveButton, 
+	Label 
+} from '../../mainStyle/styledComponent';
 import '../../../../../styles/table.scss';
 import {createDropdown} from '../../../../../utils/helpers';
 import { useForm } from 'react-hook-form';
 
 const StudentRegForm = props => {
-	const { studentID } = props;
-
 	const student = props.studentById;
-	// console.log("StudentForm student", student);
-
-	// let birthdate = new Date(student.birthdate).toISOString().split('T')[0];
-	// let grade_updated = new Date(student.grade_updated).toISOString().split('T')[0];
-
 	const { errors, register, handleSubmit } = useForm();
-	// const dropDowns = ['school_grade_id'];
 
 	const submitNow = (data) => {
 		console.log("submitNow data: ", data);
 		props.createNewStudent(data);
 		props.setStudentAddForm(false);
-		// props.setForm(false);
-
-		// if(props.addStudentForm) {
-		// 	for (const property of dropDowns) {
-		// 		data[property] = parseInt(data[property])
-		// 	}
-			
-		// } else {
-		// 	const newStudent = {
-		// 		...data,
-		// 		user_id: props.studentById.user_id
-		// 	}
-		// 	delete newStudent.user_id
-		// 	console.log("newStudent in submitNow: ", newStudent);
-		// 	props.createNewStudent(newStudent)
-		// }
 	}
 
 	useEffect(() => { props.editStudentDropDown(); }, []);
 
 	const handleCancel = e => {
-		// props.toggleEditComponent('false', 'false');
-		// props.setForm(false);
 		e.preventDefault();
 		props.setStudentAddForm(false);
 	};
@@ -61,7 +49,6 @@ const StudentRegForm = props => {
 		<FormWrap onSubmit={handleSubmit(submitNow)}>
 			<FormSet>
 				<Div>
-					{/* {console.log(props)} */}
 					<div>
 						<Label>ID</Label>
 						<div>
@@ -248,9 +235,6 @@ const mapStateToProps = state => {
 		studentById: state.studentByIdReducer.studentById,
 		error: state.studentByIdReducer.error,
 		schoolGradeTable: state.studentByIdReducer.schoolGradeTable,
-		// blocksTable: state.studentByIdReducer.blocksTable,
-		// contactTypesTable: state.studentByIdReducer.contactTypesTable,
-		// locationsTable: state.studentByIdReducer.locationsTable
 	};
 };
 
