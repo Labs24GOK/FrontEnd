@@ -101,7 +101,6 @@ export const createNewStudent = student => dispatch => {
   axiosWithAuth()
     .post(`/student`, student)
     .then(res => {
-
       dispatch({
         type: CREATE_NEW_STUDENT_SUCCESS,
         payload: res.data

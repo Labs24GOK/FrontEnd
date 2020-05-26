@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { getStudentById } from '../../../../../actions';
+import { getStudentsInFamily } from '../../../../userDashboard/getStudentsinFamily';
 import { withRouter } from 'react-router-dom';
-import StudentForm from './StudentForm';
+import StudentRegForm from './StudentRegForm';
 import {
 	FormWrap,
 	Div,
@@ -15,9 +16,26 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 const StudentFamilyTab = props => {
 	const [studentAddForm, setStudentAddForm] = useState(false);
+	const [family, setFamily] = useState([]);
+	let userID = props.studentById.user_id;
+	let studentID = props.studentById.student_id;
+	let filterFamily = family.filter((member) => {
+		return member.id !== studentID;
+	})
+
 	useEffect(() => {
 		props.getStudentById(props.studentID);
 	}, []);
+
+	useEffect(() => {
+		getStudentsInFamily(userID)
+			.then(res => {
+				setFamily(res);
+			})
+			.catch(err => {
+				console.log("Error in retrieving students: ", err)
+			})
+	}, [props.studentList]);
 
 	const handleAddButton = () => {
 		setStudentAddForm(!studentAddForm);
@@ -29,6 +47,9 @@ const StudentFamilyTab = props => {
 				<>
 					<FormWrap>
 						<FormSet>
+							<Label>
+								<h3>Family Information</h3>
+							</Label>
 							<Div>
 								<div style={{ gridColumn: 'span 2' }}>
 									<Label>Primary Emergency Contact Name</Label>
@@ -47,7 +68,7 @@ const StudentFamilyTab = props => {
 									</TextDiv>
 								</div>
 								<div>
-									<Label>Phone Number</Label>
+									<Label>Emergency Number</Label>
 									<TextDiv>
 										{(props.studentById &&
 											props.studentById.primary_emergency_phone) ||
@@ -71,7 +92,7 @@ const StudentFamilyTab = props => {
 									</TextDiv>
 								</div>
 								<div>
-									<Label>Phone Number</Label>
+									<Label>Emergency Number</Label>
 									<TextDiv>
 										{(props.studentById && props.studentById.emergency_phone) ||
 											'-'}
@@ -80,9 +101,21 @@ const StudentFamilyTab = props => {
 							</Div>
 						</FormSet>
 					</FormWrap>
+					<FormWrap>
+						{/* List all students besides the selected student for this user_id */}
+						<Label>
+							<h3>Registered Family Members</h3>
+						</Label>
+						{filterFamily.map((member) => (
+							<TextDiv>
+								<b>{member.first_name} {member.additional_names}</b>
+								<br></br>
+								<b>ID:</b> {member.cpr} | <b>Gender:</b> {member.gender} | <b>Birthdate:</b> {new Date(member.birthdate).toISOString().split('T')[0]} | <b>Student ID:</b> {member.id}
+							</TextDiv>
+						))}
+					</FormWrap>
 				</>
 			) : (
-				// <StudentForm {...props} />
 				null
 			)}
 			{!studentAddForm ? (
@@ -101,7 +134,7 @@ const StudentFamilyTab = props => {
           </div>
         </div>
 			) : (
-				<StudentForm addStudent={studentAddForm} {...props} />
+				<StudentRegForm setStudentAddForm={setStudentAddForm} {...props} />
 			)}
 		</div>
 	);
@@ -110,7 +143,8 @@ const StudentFamilyTab = props => {
 const mapStateToProps = state => {
 	return {
 		isLoading: state.studentByIdReducer.isLoading,
-		studentById: state.studentByIdReducer.studentById
+		studentById: state.studentByIdReducer.studentById,
+		studentList: state.studentTableReducer.studentList
 	};
 };
 
