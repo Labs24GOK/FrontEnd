@@ -17,7 +17,10 @@ const RegisterStudentForm = props => {
   const userID = tokenData.subject;
   const { Step } = Steps;
   const { Content } = Layout;
-  const [studentForm, setStudentForm] = useState({ user_id: userID });
+  const [studentForm, setStudentForm] = useState({ 
+    user_id: userID,
+    birthdate: '04/01/2010' // default birthday passed into student Registration form
+   });
   const history = useHistory();
 
   const handleChange = e => {
