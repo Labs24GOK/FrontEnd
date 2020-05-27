@@ -83,6 +83,7 @@ const StudentDetails = props => {
               required: true,
               message: "Please enter student's CPR number",
             },
+            { min: 9, max: 9, message: 'Gov ID must be exactly 9 characters' },
           ]}
         >
           <Input />
