@@ -15,7 +15,9 @@ import {
 } from '../../actions';
 
 const initialState = {
+    listIsLoading: false,
     isLoading: false,
+    listError: null,
     error: null,
     studentList: [],
     searchTerm: "",
