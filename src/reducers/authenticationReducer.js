@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   user: {
-    username: null
+    email: null
   },
   logIn: {
     isLoading: false,
@@ -32,7 +32,7 @@ export const authenticationReducer = (state = initialState, action) => {
           error: null
         },
         user: {
-          username: action.payload.username //update the be login endpoint to return username
+          email: action.payload.email //update the be login endpoint to return email
         }
       };
     case LOGIN_FAILURE:

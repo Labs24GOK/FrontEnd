@@ -29,10 +29,16 @@ function Login(props) {
       <h1>Welcome back!</h1>
       <form onSubmit={handleSubmit(formSubmit)}>
         <fieldset>
-          <label htmlFor="username">Username</label>
+          {/* <label htmlFor="username">Username</label>
           <input
             type="text"
             name="username"
+            ref={register({ required: true, minLength: 1 })}
+          /> */}
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            name="email"
             ref={register({ required: true, minLength: 1 })}
           />
 
@@ -45,7 +51,7 @@ function Login(props) {
 
           <button
             type="submit"
-            className={errors.username || errors.password ? 'disabled' : ''}
+            className={errors.email || errors.password ? 'disabled' : ''}
           >
             Sign in
           </button>
@@ -57,8 +63,8 @@ function Login(props) {
           </Link>
         </div>
         <div className="login-errors">
-          {(errors.username || errors.password) && (
-            <p>Username and Password are required.</p>
+          {(errors.email || errors.password) && (
+            <p>Email and Password are required.</p>
           )}
           {props.state.authenticationReducer.logIn.error && (
             <p>Login credentials incorrect.</p>
