@@ -12,13 +12,17 @@ function Login(props) {
     props.logIn(user, props.history);
   };
 
-  let token = localStorage.getItem('token');
-
   useEffect(() => {
+    const token = localStorage.getItem('token');
+    const currentTime = Date.now().valueOf() / 1000;
     if (token) {
-      return props.history.push('/dashboard');
+    const tokenData = JSON.parse(atob(token.split('.')[1]));
+      if (tokenData.exp > currentTime) {
+        /* check if token is expired */
+        return props.history.push('/dashboard');
+      }
     }
-  }, []);
+  }, [props.history]);
 
   return (
     <div className="form-container">
