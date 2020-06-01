@@ -29,12 +29,6 @@ function Login(props) {
       <h1>Welcome back!</h1>
       <form onSubmit={handleSubmit(formSubmit)}>
         <fieldset>
-          {/* <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            name="username"
-            ref={register({ required: true, minLength: 1 })}
-          /> */}
           <label htmlFor="email">Email</label>
           <input
             type="email"

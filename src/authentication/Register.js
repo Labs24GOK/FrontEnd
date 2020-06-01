@@ -49,7 +49,6 @@ function Register(props) {
             ref={register({ required: true, minLength: 1 })}
           />
 
-          {/* add confirm password input w/ logic */}
           <label>Confirm Password</label>
           <input
             name="confirm_pass"
