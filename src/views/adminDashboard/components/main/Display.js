@@ -15,11 +15,11 @@ function Display() {
       <Route path='/dashboard/students'>
         <Student />
       </Route>
-      <Route path='/dashboard/courses'>
-        <Courses />
-      </Route>
       <Route path='/dashboard/staff'>
         <Staff />
+      </Route>
+      <Route path='/dashboard/courses'>
+        <Courses />
       </Route>
     </Switch>
   );
