@@ -4,6 +4,7 @@ import { Switch, Route, Link, useRouteMatch } from 'react-router-dom';
 import UserDashboardHeader from './UserDashboardHeader';
 import UserDashboard from './UserDashboard';
 import RegisterStudentForm from './UserForms/RegisterStudentForm';
+import UserSettings from './UserSettings';
 import Footer from '../../marketing/components/Footer';
 
 import '../../marketing/marketing.scss';
@@ -20,6 +21,9 @@ function Index() {
         </Route>
         <Route path={`${path}/student-register`}>
           <RegisterStudentForm />
+        </Route>
+        <Route path={`${path}/account-settings`}>
+          <UserSettings />
         </Route>
       </Switch>
       <Footer />
