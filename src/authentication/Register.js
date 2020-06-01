@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { logIn } from '../actions/authenticationActions.js';
@@ -64,7 +65,12 @@ function Register(props) {
             Register
           </button>
         </fieldset>
-
+        <div className="register">
+          <p>Have an account?</p>
+          <Link className="reg-link" to="/login">
+            Login here
+          </Link>
+        </div>
         <div className="register-errors">
           {(errors.name || errors.email || errors.password) && (
             <p>All fields are required.</p>
