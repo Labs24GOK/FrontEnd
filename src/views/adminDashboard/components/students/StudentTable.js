@@ -94,7 +94,7 @@ const StudentTable = props => {
           onRow={(record, rowIndex) => {
             return {
               onClick: event => {
-                push(`/dashboard/Students/${record.student_id}`)
+                push(`/dashboard/students/${record.student_id}`)
               },
             };
           }}

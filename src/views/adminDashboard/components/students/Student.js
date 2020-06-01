@@ -6,10 +6,10 @@ import { Switch, Route } from 'react-router-dom';
 const Student = () => {
   return(
     <Switch>
-      <Route exact path='/dashboard/Students'>
+      <Route exact path='/dashboard/students'>
         <StudentTable />
       </Route>
-      <Route path='/dashboard/Students/:studentID'>
+      <Route path='/dashboard/students/:studentID'>
         <StudentCard />
       </Route>
     </Switch>

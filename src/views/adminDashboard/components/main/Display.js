@@ -10,15 +10,15 @@ function Display() {
   return (
     <Switch>
       <Route exact path='/dashboard'>
-        <Redirect to='/dashboard/Students' />
+        <Redirect to='/dashboard/students' />
       </Route>
-      <Route path='/dashboard/Students'>
+      <Route path='/dashboard/students'>
         <Student />
       </Route>
-      <Route path='/dashboard/Courses'>
+      <Route path='/dashboard/courses'>
         <Courses />
       </Route>
-      <Route path='/dashboard/Staff'>
+      <Route path='/dashboard/staff'>
         <Staff />
       </Route>
     </Switch>

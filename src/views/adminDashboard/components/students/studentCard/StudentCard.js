@@ -69,7 +69,7 @@ const StudentCard = props => {
 	];
 
 	const goBack = () => {
-		push('/dashboard/Students')
+		push('/dashboard/students')
 	};
 
 	return (

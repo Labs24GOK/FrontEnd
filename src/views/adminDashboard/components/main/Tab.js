@@ -25,7 +25,7 @@ function Tab(props) {
   }
 
   return (
-    <NavLink onClick={() => handleClick(props.tab.key)} to={{ pathname: `/dashboard/${props.tab.key}` }}>
+    <NavLink onClick={() => handleClick(props.tab.key)} to={{ pathname: `/dashboard/${props.tab.key.toLowerCase()}` }}>
       <TabWrap className={`sidebarLink ${props.tab.key.toLowerCase() === props.selected ? 'active-tab': ''}`}>
         <FontAwesomeIcon icon={icon} size='lg' className="tab-icon" /> {props.tab.key}
       </TabWrap>
