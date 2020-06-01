@@ -27,8 +27,7 @@ const StudentCard = props => {
 			render: () => (
 				<Tab.Pane attached={false}>
 					<StudentInformationTab
-						studentID={props.studentID}
-						setStudentView={props.setStudentView}
+						studentID={studentID}
 					/>
 				</Tab.Pane>
 			)
@@ -37,7 +36,7 @@ const StudentCard = props => {
 			menuItem: 'COURSES',
 			render: () => (
 				<Tab.Pane attached={false}>
-					{<StudentCoursesTab studentID={props.studentID} />}
+					{<StudentCoursesTab studentID={studentID} />}
 				</Tab.Pane>
 			)
 		},
@@ -45,7 +44,7 @@ const StudentCard = props => {
 			menuItem: 'PROGRESS',
 			render: () => (
 				<Tab.Pane attached={false}>
-					<StudentProgressTab studentID={props.studentID} />
+					<StudentProgressTab studentID={studentID} />
 				</Tab.Pane>
 			)
 		},
@@ -53,7 +52,7 @@ const StudentCard = props => {
 			menuItem: 'FAMILY',
 			render: () => (
 				<Tab.Pane attached={false}>
-					<StudentFamilyTab studentID={props.studentID} />
+					<StudentFamilyTab studentID={studentID} />
 				</Tab.Pane>
 			)
 		},
@@ -61,8 +60,8 @@ const StudentCard = props => {
 			menuItem: 'PLACEMENT TEST',
 			render: () => (
 				<Tab.Pane attached={false}>
-					<PlacementTest studentID={props.studentID} placementTestById={{}} />
-					<PlacementForm studentID={props.studentID} placementTestById={{}} />
+					<PlacementTest studentID={studentID} placementTestById={{}} />
+					<PlacementForm studentID={studentID} placementTestById={{}} />
 				</Tab.Pane>
 			)
 		}
