@@ -66,15 +66,9 @@ const StaffInformationTab = props => {
                   </TextDiv>
                 </div>
 
-                <div>
-                  <Label>Short Name</Label>
-                  <TextDiv>
-                    {(props.staffById && props.staffById.short_name) || '-'}
-                  </TextDiv>
-                </div>
 
                 <div>
-                  <Label>CPR</Label>
+                  <Label>Government ID</Label>
                   <TextDiv>
                     {(props.staffById && props.staffById.cpr) || '-'}
                   </TextDiv>
@@ -128,12 +122,12 @@ const StaffInformationTab = props => {
                       : 'No' || '-'}
                   </TextDiv>
                 </div>
-                <div>
+                {/* <div>
                   <Label>User ID</Label>
                   <TextDiv>
                     {(props.staffById && props.staffById.user_id) || '-'}
                   </TextDiv>
-                </div>
+                </div> */}
               </Div>
             </FormSet>
             <ButtonDiv>
