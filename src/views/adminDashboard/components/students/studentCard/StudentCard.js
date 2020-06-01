@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getStudentById, toggleEditComponent } from '../../../../../actions';
-import { withRouter, useParams } from 'react-router-dom';
+import { withRouter, useParams, useHistory } from 'react-router-dom';
 import StudentInformationTab from './StudentInformationTab';
 import StudentCoursesTab from './StudentCoursesTab';
 import StudentFamilyTab from './StudentFamilyTab';
@@ -15,6 +15,7 @@ import 'antd/dist/antd.css';
 import '../../mainStyle/mainCard.scss';
 
 const StudentCard = props => {
+	const { push } = useHistory()
 	const { studentID } = useParams()
 	useEffect(() => {
 		props.getStudentById(studentID);
@@ -68,9 +69,7 @@ const StudentCard = props => {
 	];
 
 	const goBack = () => {
-		if (props.studentView === 'studentCardView') {
-			props.setStudentView('studentTableView');
-		}
+		push('/dashboard/Students')
 	};
 
 	return (

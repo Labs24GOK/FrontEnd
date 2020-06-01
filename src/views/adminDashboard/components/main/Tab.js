@@ -16,7 +16,7 @@ function Tab(props) {
 
   const [icon, setIcon] = useState(faUserGraduate);
   useEffect(() => {
-    setIcon(tabIconMapping[props.tab.key]); 
+    setIcon(tabIconMapping[props.tab.key]);
   }, [])
   
   const handleClick = (tab) => {

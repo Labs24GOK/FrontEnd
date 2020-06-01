@@ -73,23 +73,6 @@ const StudentTable = props => {
         <div>
           <SearchStundentTable />
         </div>
-
-        {/* Hiding create student button until functionality is fixed, will be moved to the family tab so a user id which will be passed in through props so that it will autofill the user id field */}
-        {/* <div
-          className='create-new-entry'
-          onClick={handleAddButton}
-          style={{ cursor: 'pointer', color: '#26ABBD' }}
-        >
-          <div style={{ marginRight: '10px' }}>Create New Student</div>
-          <div>
-            <FontAwesomeIcon
-              style={{ width: '25px', height: '25px', cursor: 'pointer' }}
-              icon={faPlusCircle}
-              size='lg'
-            />
-          </div>
-        </div> */}
-
       </div>
 
       {form ? (
@@ -112,8 +95,6 @@ const StudentTable = props => {
             return {
               onClick: event => {
                 push(`/dashboard/Students/${record.student_id}`)
-                // props.setStudentView('studentCardView');
-                // props.setStudentID(record.student_id);
               },
             };
           }}
