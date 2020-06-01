@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useHistory } from 'react-router-dom';
 import { getStudentTable } from '../../../../actions';
 import { Table, Spin } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,8 +9,10 @@ import StudentRegistrationForm from './StudentRegistrationForm';
 import SearchStundentTable from './SearchStudentTable';
 import 'antd/dist/antd.css';
 import '../mainStyle/mainTable.scss';
+import StudentCard from './studentCard/StudentCard';
 
 const StudentTable = props => {
+  const { push } = useHistory()
   const [form, setForm] = useState(false);
 
   useEffect(() => {
@@ -109,8 +111,9 @@ const StudentTable = props => {
           onRow={(record, rowIndex) => {
             return {
               onClick: event => {
-                props.setStudentView('studentCardView');
-                props.setStudentID(record.student_id);
+                push(`/dashboard/Students/${record.student_id}`)
+                // props.setStudentView('studentCardView');
+                // props.setStudentID(record.student_id);
               },
             };
           }}

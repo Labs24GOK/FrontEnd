@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { resetForm } from '../../../../actions/adminDashboardActions/studentTableActions';
 import { connect } from 'react-redux';
-import { withRouter, Link, NavLink } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserGraduate, faMap, faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import { TabWrap } from '../mainStyle/styledComponent';
@@ -25,7 +25,7 @@ function Tab(props) {
   }
 
   return (
-    <NavLink onClick={() => handleClick(props.tab.key)} to={{ pathname: `${props.tab.key}` }}>
+    <NavLink onClick={() => handleClick(props.tab.key)} to={{ pathname: `/dashboard/${props.tab.key}` }}>
       <TabWrap className={`sidebarLink ${props.tab.key.toLowerCase() === props.selected ? 'active-tab': ''}`}>
         <FontAwesomeIcon icon={icon} size='lg' className="tab-icon" /> {props.tab.key}
       </TabWrap>

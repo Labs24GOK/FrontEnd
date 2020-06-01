@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getStudentById, toggleEditComponent } from '../../../../../actions';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useParams } from 'react-router-dom';
 import StudentInformationTab from './StudentInformationTab';
 import StudentCoursesTab from './StudentCoursesTab';
 import StudentFamilyTab from './StudentFamilyTab';
@@ -15,9 +15,10 @@ import 'antd/dist/antd.css';
 import '../../mainStyle/mainCard.scss';
 
 const StudentCard = props => {
+	const { studentID } = useParams()
 	useEffect(() => {
-		props.getStudentById(props.studentID);
-	}, []);
+		props.getStudentById(studentID);
+	}, [studentID]);
 
 	const studentPanes = [
 		{

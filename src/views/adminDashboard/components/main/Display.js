@@ -12,13 +12,13 @@ function Display() {
       <Route exact path='/dashboard'>
         <Redirect to='/dashboard/Students' />
       </Route>
-      <Route path={`${match.url}/Students`}>
+      <Route path='/dashboard/Students'>
         <Student />
       </Route>
-      <Route path={`${match.url}/Courses`}>
+      <Route path='/dashboard/Courses'>
         <Courses />
       </Route>
-      <Route path={`${match.url}/Staff`}>
+      <Route path='/dashboard/Staff'>
         <Staff />
       </Route>
     </Switch>
