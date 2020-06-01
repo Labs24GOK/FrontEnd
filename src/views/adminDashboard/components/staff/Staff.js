@@ -14,25 +14,6 @@ const Staff = props => {
       </Route>
     </Switch>
   )
-
-  // return (
-  //   <>
-  //     {staffView === 'staffTableView' ? (
-  //       <StaffTable
-  //         staffView={staffView}
-  //         setStaffView={setStaffView}
-  //         staffID={staffID}
-  //         setStaffID={setStaffID}
-  //       />
-  //     ) : staffView === 'staffCardView' ? (
-  //       <StaffCard
-  //         setStaffView={setStaffView}
-  //         staffID={staffID}
-  //         staffView={staffView}
-  //       />
-  //     ) : null}
-  //   </>
-  // );
 };
 
 export default Staff;
