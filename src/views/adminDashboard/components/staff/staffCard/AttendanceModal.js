@@ -2,7 +2,7 @@ import 'react-dropdown/style.css';
 import '../StaffTable.scss';
 
 import { Button, DatePicker, Modal, Spin, Table } from 'antd';
-import axios from 'axios';
+import axiosWithAuth from '../../../../../utils/axiosWithAuth'
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import Dropdown from 'react-dropdown';
@@ -12,7 +12,7 @@ import {
   getDropDownCourses,
   postStudentAttendance,
 } from '../../../../../actions';
-import API_URL from '../../../../../config/apiUrl';
+
 import {
   CalenderLabel,
   DropdownLabel,
@@ -43,7 +43,9 @@ const AttendanceModal = props => {
   const [attendees, setAttendees] = useState([]);
 
   useEffect(() => {
-    setState(state => ({
+    setState(state => (
+      
+      {
       ...state,
       meeting: {
         ...state.meeting,
@@ -56,9 +58,9 @@ const AttendanceModal = props => {
   useEffect(() => {
     //AXIOS call to get all necessary information and (by not being in a Redux action) gives the ability to manipulate student array more effectively.
     if (state.meeting.meeting_date && state.meeting.course_id) {
-      axios
+      axiosWithAuth()
         .get(
-          `${API_URL}/attendance/date/${state.meeting.meeting_date}/course/${state.meeting.course_id}`
+          `/attendance/date/${state.meeting.meeting_date}/course/${state.meeting.course_id}`
         )
         .then(res => {
           setAttendees(res.data.attendanceRecord);
