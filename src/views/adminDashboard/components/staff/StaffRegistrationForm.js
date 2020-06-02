@@ -17,6 +17,7 @@ const StaffRegistrationForm = props => {
   } else {
     data.active = false
   }
+  
     props.addStaff(data);
     props.setForm(false);
   }
@@ -42,20 +43,6 @@ const StaffRegistrationForm = props => {
               {errors.name && errors.name.type === "required" && 'Name is Required'}
             </div>
             </div>
-            <div>
-            <Label>Short Name</Label>
-            <div>
-              <Input type='text' name= 'short_name' className={errors.short_name && "input-error"}  ref={register({required:true})} />
-               {errors.short_name && errors.short_name.type === "required" && 'Short name is Required'}
-            </div>
-          </div>
-          <div>
-            <Label>Username</Label>
-            <div>
-              <Input type='text' name= 'username' className={errors.username && "input-error"}  ref={register({required:true})} />
-               {errors.username  && errors.username.type === "required" && 'Username is Required'}
-            </div>
-          </div>
           <div>
             <Label>Password</Label>
             <div>
@@ -64,7 +51,7 @@ const StaffRegistrationForm = props => {
             </div>
           </div>
           <div>
-            <Label>CPR</Label>
+            <Label>Government ID</Label>
             <div>
               <Input type='text' name= 'cpr' className={errors.cpr&& "input-error"}  ref={register({required:true})} />
                {errors.cpr  && errors.cpr.type === "required" && 'CPR is Required'}
@@ -111,8 +98,8 @@ const StaffRegistrationForm = props => {
             <Label>Admin</Label>
             <div>
               <select name="admin" className="dropDown" ref={register}>
-                <option value="admin">Yes</option>
                 <option value="staff">No</option>
+                <option value="admin">Yes</option>
               </select>
             </div>
           </div>

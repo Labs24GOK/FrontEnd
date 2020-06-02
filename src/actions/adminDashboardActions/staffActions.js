@@ -47,15 +47,17 @@ export const getStaffById = id => dispatch => {
     });
 };
 
+export const EDIT_TOGGLE_STAFFBYID = 'EDIT_TOGGLE_STAFFBYID'
 export const EDIT_STAFFBYID_START = 'EDIT_STAFFBYID_START';
 export const EDIT_STAFFBYID_SUCCESS = 'EDIT_STAFFBYID_SUCCESS';
 export const EDIT_STAFFBYID_FAILURE = 'EDIT_STAFFBYID_FAILURE';
 
 export const toggleStaffEditComponent = () => dispatch => {
-  dispatch({ type: EDIT_STAFFBYID_START });
+  dispatch({ type: EDIT_TOGGLE_STAFFBYID });
 };
 
 export const editStaffById = (id, state) => dispatch => {
+  dispatch({ type: EDIT_STAFFBYID_START });
   axiosWithAuth()
     .put(`/staff/${id}`, state)
     .then(res => {
@@ -76,11 +78,12 @@ export const ADD_STAFF_START = 'ADD_STAFF_START';
 export const ADD_STAFF_SUCCESS = 'ADD_STAFF_SUCCESS';
 export const ADD_STAFF_FAILURE = 'ADD_STAFF_FAILURE';
 
-export const toggleAddStaffComponent = () => dispatch => {
-  dispatch({ type: ADD_STAFF_START });
-};
+// export const toggleAddStaffComponent = () => dispatch => {
+  
+// };
 
 export const addStaff = staff => dispatch => {
+  dispatch({ type: ADD_STAFF_START });
   axiosWithAuth()
     .post(`/staff`, staff)
     .then(res => {
