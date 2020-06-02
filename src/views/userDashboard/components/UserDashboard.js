@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { withRouter, Link, useHistory, useRouteMatch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import MessageBox from './MessageBox';
-import StudentCourseCard from './StudentCourseCard';
+import StudentCourseCard from './Student/StudentCourseCard';
 
 import { getStudentsInFamily } from '../getStudentsinFamily';
 import { getMessagesForUser } from '../getMessagesForUser';
@@ -55,7 +55,7 @@ function UserDashboard(props) {
   } else if (!userID) {
     return <h2>Invalid user ID</h2>;
   }
-
+console.log("userData.students: ", userData.students);
   return (
     <div className="userDashboard content">
       <h1>Welcome, {name}.</h1>
@@ -64,7 +64,9 @@ function UserDashboard(props) {
       <Link to={`${url}/student-register`}>Register a Student</Link>
 
       {userData.students.map((student, id) => (
-        <StudentCourseCard student={student} />
+        <Link to={`/student/${student.id}`}>
+          <StudentCourseCard student={student} />
+        </Link>
       ))}
     </div>
   );

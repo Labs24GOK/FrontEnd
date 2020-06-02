@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import Login from '../authentication/Login';
 import DashboardView from '../views';
 import Register from '../authentication/Register';
+import Student from '../views/userDashboard/components/Student/Student';
 import ProtectedRoute from "./ProtectedRoute";
 
 import Header from "../views/marketing/components/Header";
@@ -21,6 +22,7 @@ function Routes() {
         <Route path="/about" render={() => <Marketing page="about" />}/>
         <Route path="/login" render={() => <><Header /><Login /><Footer /></>}/>
         <Route path="/register" render={() => <><Header /><Register /><Footer /></>}/>
+        <Route path="/student/:id" component={Student} />
       </Switch>
     </>
   );

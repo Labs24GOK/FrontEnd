@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 // import hamburgerMenuIcon from '../../../assets/hamburger_menu_icon.png';
 
-import { getStudentCourses } from '../getStudentCourses';
+import { getStudentCourses } from '../../getStudentCourses';
 
 // import abacusLogo from '../../../assets/demo_logo_abacus.png';
 // import frenchLogo from '../../../assets/demo_logo_french.png';
-import speakOutLogo from '../../../assets/speakOut_logo_only.png';
+import speakOutLogo from '../../../../assets/speakOut_logo_only.png';
 
 function getLogo() {
   //   if (program) {
