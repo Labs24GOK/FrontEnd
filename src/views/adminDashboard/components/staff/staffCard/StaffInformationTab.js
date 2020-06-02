@@ -80,7 +80,12 @@ const StaffInformationTab = props => {
                     {(props.staffById && props.staffById.mobile_number) || '-'}
                   </TextDiv>
                 </div>
-
+                <div>
+                  <Label>Email</Label>
+                  <TextDiv>
+                    {(props.staffById && props.staffById.email) || '-'}
+                  </TextDiv>
+                </div>
                 <div>
                   <Label>Accent</Label>
                   <TextDiv>
