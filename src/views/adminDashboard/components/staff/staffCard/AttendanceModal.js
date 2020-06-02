@@ -12,7 +12,7 @@ import {
   getDropDownCourses,
   postStudentAttendance,
 } from '../../../../../actions';
-import API_URL from '../../../../../config/apiUrl';
+
 import {
   CalenderLabel,
   DropdownLabel,
