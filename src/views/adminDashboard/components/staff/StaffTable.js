@@ -38,12 +38,7 @@ const StaffTable = props => {
       key: 2
     },
     {
-      title: 'Short Name',
-      dataIndex: 'short_name',
-      key: 3
-    },
-    {
-      title: 'CPR',
+      title: 'Government ID',
       dataIndex: 'cpr',
       key: 4
     },
