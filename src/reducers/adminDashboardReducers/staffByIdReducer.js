@@ -2,6 +2,7 @@ import {
   FETCH_STAFFBYID_START,
   FETCH_STAFFBYID_SUCCESS,
   FETCH_STAFFBYID_FAILURE,
+  EDIT_TOGGLE_STAFFBYID,
   EDIT_STAFFBYID_START,
   EDIT_STAFFBYID_SUCCESS,
   EDIT_STAFFBYID_FAILURE,
@@ -38,16 +39,22 @@ export const staffByIdReducer = (state = initialState, action) => {
         isLoading: false,
         error: action.payload
       };
-    case EDIT_STAFFBYID_START:
+      case EDIT_TOGGLE_STAFFBYID:
       return {
         ...state,
         isEditing: !state.isEditing,
         error: null
       };
+    case EDIT_STAFFBYID_START:
+      return {
+        ...state,
+        isEditing: true,
+        error: null
+      };
     case EDIT_STAFFBYID_SUCCESS:
       return {
         ...state,
-        isEditing: !state.isEditing,
+        isEditing: false,
         isEdited: true,
         staffById: action.payload
       };
