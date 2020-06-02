@@ -1,66 +1,46 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, useRouteMatch, withRouter } from "react-router-dom";
-import { connect } from "react-redux";
+import axiosWithAuth from '../../../utils/axiosWithAuth';
 
-// import StaffMessageBox from '../StaffMessageBox';
-import StaffCourseCard from './StaffCourseCard';
-import Footer from "../../marketing/components/Footer";
-import { getStaffCourses } from "../getStaffCourses";
-import { getMessagesForStaff} from "../getMessagesForStaff";
+function StaffDashboard() {
+    // const [staffData, setStaffData] = useState({});
+    const [staffId, setStaffId] = useState();
 
-
-
-function StaffDashboard(props) {
-
-    const [staffData, setStaffData] = useState({
-        staffID: '',
-        name: '',
-        courses: [],
-        messages: [],
-      });
-
-    // const [displayAddStudentModal, setDisplayAddStudentModal] = useState(false);
-    const history = useHistory();
-    let { path, url } = useRouteMatch();
-
-    // Get staffID from JWT
+    // GetuserId from JWT
     let token = localStorage.getItem('token');
     let tokenData = JSON.parse(atob(token.split('.')[1]));
 
-    let staffID = tokenData.subject;
+    let user = tokenData.subject;
     let name = tokenData.name;
-    // console.log(staffID);
-
-    // update staffData once courses have been updated
+    
+    //Get staffId from userId
     useEffect(() => {
-    // determine which messages to display to staff upon login
-    let messages = getMessagesForStaff(staffData.staff);
+            axiosWithAuth()
+            .get(`/staffdashboard/${user}`)
+            .then(res => {
+                setStaffId(res.data.staff_id);
+            })
+            .catch(err => {
+                console.log(err);
+            })   
+    }, [user]);
 
-    // store all info into state variable
-    setStaffData({ ...staffData, messages });
-    }, [staffData.courses]);
-    console.log(staffData.courses);
+    //Get staff courses with staffId
+    useEffect(() => {
+        if(staffId){
+            axiosWithAuth()
+            .get(`/staff/${staffId}/courses`)
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => console.log(err))
+        }
+    }, [staffId]);
 
     return (
         <div className="staffDashboard content">
-
-            <h1>Welcome {name}. </h1>
-            {/* <StaffMessageBox messages={staffData.messages} /> */}
-
-            {staffData.courses.map((course, staffID) => (
-                <StaffCourseCard course={course} />
-        
-            ))}
-          
-            <Footer />
-        </div>
-          
+            <h1>Welcome {name}. </h1>      
+        </div>         
     );
-
 }
 
-const mapStateToProps = state => {
-    return state;
-};
-
-export default withRouter(connect(mapStateToProps)(StaffDashboard));
+export default StaffDashboard;
