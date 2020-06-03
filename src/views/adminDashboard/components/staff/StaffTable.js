@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useHistory } from 'react-router-dom';
 import { getStaffTable } from '../../../../actions';
 import { Table, Spin } from 'antd';
 import 'antd/dist/antd.css';
@@ -11,7 +11,7 @@ import StaffRegistrationForm from './StaffRegistrationForm';
 import SearchStaffTable from './SearchStaffTable';
 
 const StaffTable = props => {
-
+  const { push } = useHistory()
   const { availableID } = props;
   const [form, setForm] = useState(false);
   useEffect(() => {
@@ -141,8 +141,7 @@ const StaffTable = props => {
           onRow={record => {
             return {
               onClick: () => {
-                props.setStaffID(record.staff_id);
-                props.setStaffView('staffCardView');
+                push(`/dashboard/staff/${record.staff_id}`)
               }
             };
           }}
