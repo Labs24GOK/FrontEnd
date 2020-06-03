@@ -4,7 +4,7 @@ import '../mainStyle/mainCard.scss';
 import { Spin, Table } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useHistory } from 'react-router-dom';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -16,6 +16,7 @@ import CourseRegistrationForm from './CourseRegistrationForm';
 import SearchCourseTable from './SearchCourseTable';
 
 const CourseTable = props => {
+  const { push } = useHistory()
   const [form, setForm] = useState(false);
 
   useEffect(() => {
@@ -184,8 +185,7 @@ const CourseTable = props => {
             onRow={(record, rowIndex) => {
               return {
                 onClick: event => {
-                  props.setCourseView('courseCardView');
-                  props.setCourseID(record.course_id);
+                  push(`/dashboard/courses/${record.course_id}`)
                 }
               };
             }}
