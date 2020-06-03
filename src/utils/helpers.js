@@ -21,7 +21,7 @@ export function dateConverter(date) {
 
   let changedDate = moment
     .tz(date, currentTimeZone)
-    .add(1, 'd')
+    // .add(1, 'd')
     .format('DD/MM/YYYY');
 
   return changedDate;
