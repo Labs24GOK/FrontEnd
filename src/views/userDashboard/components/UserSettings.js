@@ -46,9 +46,11 @@ const UserSettings = () => {
         </Col>
       </Row>
       <Row>
+        <Col>Name: </Col>
         <Col>{`${name}`}</Col>
       </Row>
       <Row>
+        <Col>Email: </Col>
         <Col>{`${email}`}</Col>
       </Row>
       <Row>
