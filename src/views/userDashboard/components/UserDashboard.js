@@ -7,6 +7,8 @@ import StudentCourseCard from './Student/StudentCourseCard';
 import { getStudentsInFamily } from '../getStudentsinFamily';
 import { getMessagesForUser } from '../getMessagesForUser';
 
+import yellowPlus from '../../../assets/yellowPlus.png';
+
 function UserDashboard(props) {
   const [userData, setUserData] = useState({
     userID: null,
@@ -60,8 +62,18 @@ console.log("userData.students: ", userData.students);
     <div className="userDashboard content">
       <h1>Welcome, {name}.</h1>
 
-      <MessageBox messages={userData.messages} />
-      <Link to={`${url}/student-register`}>Register a Student</Link>
+      {/* <MessageBox messages={userData.messages} /> */}
+      {/* <Link to={`${url}/student-register`}>Register a Student</Link> */}
+      <Link to={`${url}/student-register`}>
+        <div className="studentCourseCard">
+          <div className="nameAndHamburgerMenu">
+            <div className="names">
+              <h2>New Student</h2>
+            </div>
+          </div>
+          <img src={yellowPlus} alt="yellow plus sign" />
+        </div>
+      </Link>
 
       {userData.students.map((student, id) => (
         <Link to={`/student/${student.id}`}>
