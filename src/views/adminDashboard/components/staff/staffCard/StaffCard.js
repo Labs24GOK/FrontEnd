@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getStaffById, toggleEditComponent } from '../../../../../actions';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useParams } from 'react-router-dom';
 import StaffInformationTab from './StaffInformationTab';
 import StaffCoursesTab from './StaffCoursesTab';
 import { Header, Image, Icon, Tab } from 'semantic-ui-react';
@@ -9,7 +9,7 @@ import 'antd/dist/antd.css';
 import '../../mainStyle/mainCard.scss';
 
 const StaffCard = props => {
-  const { staffID } = props;
+  const { staffID } = useParams()
 
   useEffect(() => {
     props.getStaffById(staffID);
@@ -21,7 +21,6 @@ const StaffCard = props => {
       render: () => (
         <Tab.Pane attached={false}>
           <StaffInformationTab
-            setStaffView={props.setStaffView}
             staffID={staffID}
           />
         </Tab.Pane>
