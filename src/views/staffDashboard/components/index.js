@@ -11,13 +11,10 @@ function Index() {
 
   return (
   <div className="content">
-    
     <StaffDashboardHeader />
-
       <Route exact path={path}>
         <StaffDashboard />  
     </Route>
-
     <Footer />
   </div>
   )
