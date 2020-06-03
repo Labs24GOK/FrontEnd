@@ -267,3 +267,46 @@
 
 }
 
+.studentTitle {
+    margin: 2%; 
+    font-size: 3rem;
+}
+
+.studentBox {    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    margin: auto 10rem 2rem;
+}
+
+.studentInfoBox {
+    border: 3px solid black;
+    padding: 1rem;
+    margin: auto 3%;   
+    width: 100%;
+    background-color: #EEEEEE;
+
+    .studentSubBox {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: stretch;
+
+        div {
+            padding: 1%;
+            width: 80%;
+        }
+    }
+}
+
+.studentEditButton {
+    width: 25;
+    margin: 0 auto 1%;
+    display: flex;
+    justify-content: center;
+}
+
+.noInfo {
+    text-align: center;
+}

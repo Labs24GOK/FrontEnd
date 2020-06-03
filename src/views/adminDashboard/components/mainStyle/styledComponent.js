@@ -256,3 +256,15 @@ background-color: #26ABBD;
 border: none;
 cursor: pointer;
 `
+
+export const EditButton = styled.button`
+width: 120 px;
+height: 40px;
+border-radius: 3px;
+margin: 10px 5px 10px 10px;
+text-align: center;
+color: #FFFFFF;
+background-color: #26ABBD;
+border: none;
+cursor: pointer;
+`

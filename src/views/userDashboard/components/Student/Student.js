@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch, Link, useParams } from 'react-router-dom';
 
-// import StudentEditForm from './StudentForms/StudentEditForm';
+import UserDashboardHeader from '../UserDashboardHeader';
 import StudentEditDetails from './StudentForms/StudentEditDetails';
 import StudentDetails from './StudentDetails';
 
@@ -9,13 +9,13 @@ import { getStudentCourses } from '../../getStudentCourses';
 import axiosWithAuth from '../../../../utils/axiosWithAuth';
 
 function Student({ student }) {
-
     const {id} = useParams();
 
     const [studentData, setStudentData] = useState(["student"]);
+    const [studentCourse, setStudentCourse] = useState([]);
+    const [noCourse, setNoCourse] = useState()
 
     useEffect(() => {
-
         const getStudent = (id) => {
             axiosWithAuth()
                 .get(`/student/${id}`)
@@ -25,29 +25,36 @@ function Student({ student }) {
         }
         return getStudent(id);
     }, [id])
-    console.log("student-data: ", studentData);
+
+    useEffect(() => {
+        getStudentCourses(id)
+            .then(res => {
+                 setStudentCourse(res);
+            })
+    }, [id]);
+
     return (
         <>
-            <h1>{studentData.first_name} {studentData.additional_names}</h1>
-            <div className='studentInfoBox'>
+            <UserDashboardHeader />
+            <h1 className='studentTitle'>{studentData.first_name} 
+            {studentData.additional_names}</h1>
+            <div>
                 <Switch>
                     <Route 
-                        path="/student/:id" 
-                        render={() => <div>
+                        exact path="/student/:id" 
+                        render={() => <div> 
                             <StudentDetails 
-                                student={studentData} 
+                                student={studentData}
+                                course={studentCourse} 
                             />
-                            <Link 
-                                to={`/student/${studentData.student_id}/edit`}>
-                                <button>Edit</button>    
-                            </Link> 
                         </div>} 
                     />
                     <Route 
-                        path="/student/:id/edit" 
+                        exact path="/student/:id/edit" 
                         render={() => <div>
                             <StudentEditDetails 
                                 student={studentData} 
+                                course={studentCourse}
                             /> 
                         </div>} 
                     />
