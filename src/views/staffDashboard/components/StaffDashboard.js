@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axiosWithAuth from '../../../utils/axiosWithAuth';
-
+import { useHistory } from 'react-router-dom';
 import { Button, Spin, Table } from 'antd';
 import moment from 'moment';
 import { timeConverter } from '../../../utils/helpers';
 import AttendanceModal from '../../adminDashboard/components/staff/staffCard/AttendanceModal';
+import './staffDashboard.scss';
 
 function StaffDashboard() {
     const [staffCourses, setStaffCourses] = useState([]);
     const [staffId, setStaffId] = useState();
-
+    const { push } = useHistory();
+  
 
     // GetuserId from JWT
     let token = localStorage.getItem('token');
@@ -17,6 +19,7 @@ function StaffDashboard() {
 
     let user = tokenData.subject;
     let name = tokenData.name;
+    
     
     //Get staffId from userId
     useEffect(() => {
@@ -36,7 +39,7 @@ function StaffDashboard() {
             axiosWithAuth()
             .get(`/staff/${staffId}/courses`)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 setStaffCourses(res.data);
             })
             .catch(err => console.log(err))
@@ -55,35 +58,35 @@ function StaffDashboard() {
     
       const staffCourseColumns = [
         {
-          title: 'Course ID',
+          title: 'ID',
           dataIndex: 'course_id',
           key: 1,
         },
-        {
-          title: 'Term',
-          dataIndex: 'term',
-          key: 2,
-        },
-        {
-          title: 'Group Type',
-          dataIndex: 'group_type',
-          key: 3,
-        },
-        {
-          title: 'Level',
-          dataIndex: 'level',
-          key: 4,
-        },
-        {
-          title: 'Section',
-          dataIndex: 'section',
-          key: 5,
-        },
-        {
-          title: 'Course Type',
-          dataIndex: 'course_type',
-          key: 6,
-        },
+        // {
+        //   title: 'Term',
+        //   dataIndex: 'term',
+        //   key: 2,
+        // },
+        // {
+        //   title: 'Group Type',
+        //   dataIndex: 'group_type',
+        //   key: 3,
+        // },
+        // {
+        //   title: 'Level',
+        //   dataIndex: 'level',
+        //   key: 4,
+        // },
+        // {
+        //   title: 'Section',
+        //   dataIndex: 'section',
+        //   key: 5,
+        // },
+        // {
+        //   title: 'Course Type',
+        //   dataIndex: 'course_type',
+        //   key: 6,
+        // },
         {
           title: 'Course Schedule',
           dataIndex: 'course_schedule',
@@ -105,11 +108,11 @@ function StaffDashboard() {
             return <span>{timeConverter(value)}</span>;
           },
         },
-        {
-          title: 'Status',
-          dataIndex: 'status',
-          key: 10,
-        },
+        // {
+        //   title: 'Status',
+        //   dataIndex: 'status',
+        //   key: 10,
+        // },
         {
           title: 'Attendance',
           key: 11,
@@ -123,7 +126,7 @@ function StaffDashboard() {
                   setModalVisible({ visible: true });
                 }}
               >
-                Take Attendance
+                Record
               </Button>
             );
           },
@@ -132,7 +135,7 @@ function StaffDashboard() {
     
       return (
         <>
-            <div className="staffDashboard content">
+            <div className="staff">
                 <h1>Welcome {name}. </h1>      
             </div>    
 
@@ -143,6 +146,14 @@ function StaffDashboard() {
                 className='coursesTable'
                 columns={staffCourseColumns}
                 pagination={false}
+                rowKey="course_id"
+                onRow={(record, rowIndex) => {
+                    return {
+                        onClick: event => {
+                            push(`dashboard/staffCourses/${record.course_id}`)
+                        }
+                    };
+                }}
               />
               <AttendanceModal
                 modalVisible={modalVisible}
