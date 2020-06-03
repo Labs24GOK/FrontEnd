@@ -12,23 +12,27 @@ function Login(props) {
     props.logIn(user, props.history);
   };
 
-  let token = localStorage.getItem('token');
-
   useEffect(() => {
+    const token = localStorage.getItem('token');
+    const currentTime = Date.now().valueOf() / 1000;
     if (token) {
-      return props.history.push('/dashboard');
+      const tokenData = JSON.parse(atob(token.split('.')[1]));
+      if (tokenData.exp > currentTime) {
+        /* check if token is expired */
+        return props.history.push('/dashboard');
+      }
     }
-  }, []);
+  }, [props.history]);
 
   return (
     <div className="form-container">
       <h1>Welcome back!</h1>
       <form onSubmit={handleSubmit(formSubmit)}>
         <fieldset>
-          <label htmlFor="username">Username</label>
+          <label htmlFor="email">Email</label>
           <input
-            type="text"
-            name="username"
+            type="email"
+            name="email"
             ref={register({ required: true, minLength: 1 })}
           />
 
@@ -41,7 +45,7 @@ function Login(props) {
 
           <button
             type="submit"
-            className={errors.username || errors.password ? 'disabled' : ''}
+            className={errors.email || errors.password ? 'disabled' : ''}
           >
             Sign in
           </button>
@@ -49,12 +53,12 @@ function Login(props) {
         <div className="register">
           <p>Don't have an account?</p>
           <Link className="reg-link" to="/register">
-            Register now.
+            Register now
           </Link>
         </div>
         <div className="login-errors">
-          {(errors.username || errors.password) && (
-            <p>Username and Password are required.</p>
+          {(errors.email || errors.password) && (
+            <p>Email and Password are required.</p>
           )}
           {props.state.authenticationReducer.logIn.error && (
             <p>Login credentials incorrect.</p>
