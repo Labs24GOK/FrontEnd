@@ -15,11 +15,9 @@ const [tabColor, setTabColor] = useState("transparent");
         <TabList tabs={adminDashboardTabs} navigation={navigation} setNavigation={setNavigation} tabColor={tabColor} setTabColor={setTabColor} />
       </TabsWrap>
 
-      <DisplayWrap>
-          <div>
-              <Display  navigation={navigation}/>
-          </div>
-      </DisplayWrap>
+      {/* <DisplayWrap>
+          <Display  navigation={navigation}/>
+      </DisplayWrap> */}
 
     </DashboardWrap>
   )

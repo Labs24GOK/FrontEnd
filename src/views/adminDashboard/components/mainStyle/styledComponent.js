@@ -148,22 +148,25 @@ export const DropdownContent =  styled.div`
 
 export const DashboardWrap = styled.div`
   display: flex;
-  padding: 0 0 0 0;
-  
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
 `
 export const TabsWrap = styled.div`
-  width: 150px;
   height: 100vh;
-  position: fixed;
-  top: 100px;
+  width: 11rem;
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
   background: #15ADA4;
 `
 export const DisplayWrap = styled.div`
-  width: 85%;
-  height: 100vh;
-  position: relative;
-  top: 30px;
-  left: 200px;
+  width: 80%;
+  height: 100%;
+  /* position: relative; */
+  /* top: 30px; */
+  /* left: 16%; */
 `
 export const TabWrap = styled.div``
 
