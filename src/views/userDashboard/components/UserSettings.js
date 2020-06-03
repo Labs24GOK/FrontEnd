@@ -1,42 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useRouteMatch, useHistory } from 'react-router-dom';
 import { Typography, Layout, Col, Row, Button } from 'antd';
-
-import axiosWithAuth from '../../../utils/axiosWithAuth';
 
 const UserSettings = () => {
   const { Title, Text } = Typography;
   const { Content } = Layout;
-  const [fetchState, setFetchState] = useState([]);
+  const { url } = useRouteMatch();
 
-  // getting user's id
+  // Extracting User details from user's token
   const token = localStorage.getItem('token');
   const tokenData = JSON.parse(atob(token.split('.')[1]));
   console.log(tokenData);
-  // const userID = tokenData.subject;
   const { email, name } = tokenData;
+  const history = useHistory();
 
-  // user id = 6
-  // console.log('user id', userID);
-
-  // const getUser = () => {
-  //   axiosWithAuth()
-  //     .get(`users/${userID}`)
-  //     .then(res => {
-  //       const userData = res.data[0];
-  //       console.log(userData);
-  //       setFetchState(userData);
-
-  //       // console.log(res.data[0]); // returns object will all needed data
-  //       // console.log(setFetchState(res.data[0])); // undefined?
-  //     })
-  //     .catch(err => {
-  //       console.log('Something broke', err);
-  //     });
-  // };
-
-  // useEffect(() => {
-  //   getUser();
-  // }, []);
+  const handleSubmit = e => {
+    e.preventDefault();
+    history.push(`${url}/edit`);
+  };
 
   return (
     <Content style={{ margin: '1.8rem 0' }}>
@@ -45,18 +26,21 @@ const UserSettings = () => {
           <Title level={3}>Account Settings</Title>
         </Col>
       </Row>
-      <Row>
-        <Col>Name: </Col>
-        <Col>{`${name}`}</Col>
+      <Row style={{ margin: '1.8rem 0' }}>
+        <Col span={1}>
+          <Text type="secondary">Name:</Text>
+        </Col>
+        <Col span={3}>{name}</Col>
       </Row>
-      <Row>
-        <Col>Email: </Col>
-        <Col>{`${email}`}</Col>
+      <Row style={{ margin: '1.8rem 0' }}>
+        <Col span={1}>
+          <Text type="secondary">Email:</Text>
+        </Col>
+        <Col span={3}>{email}</Col>
       </Row>
       <Row>
         <Col>
-          {/* Link to UserSEttingsEdit.js */}
-          <Button>Edit</Button>
+          <Button onClick={handleSubmit}>Edit</Button>
         </Col>
       </Row>
     </Content>
