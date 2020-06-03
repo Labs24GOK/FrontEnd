@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 // import hamburgerMenuIcon from '../../../assets/hamburger_menu_icon.png';
 
 import { getStudentCourses } from '../../getStudentCourses';
+import { getDateStringENGBFormat } from '../../../../utils/helpers';
 
 // import abacusLogo from '../../../assets/demo_logo_abacus.png';
 // import frenchLogo from '../../../assets/demo_logo_french.png';
@@ -34,86 +35,33 @@ function StudentCourseCard({ student }) {
     }
   }, [studentCourse]);
 
+  console.log("SCC-courses: ", studentCourse);
+
   return (
     <div className="studentCourseCard">
       <div className="nameAndHamburgerMenu">
         <div className="names">
           <h2 className="firstName">{student.first_name}</h2>
           <h3 className="additionalNames">{student.additional_names}</h3>
+          <h4>{studentCourse.length} course(s)</h4>
         </div>
-        {/* <img src={hamburgerMenuIcon} /> */}
       </div>
       {!studentCourse || studentCourse.length === 0 ? (
-        <p className="noCourses">
-          {student.first_name} has not registered for any courses yet.
-        </p>
+        <p className="coursesList">{student.first_name} has not registered for any courses yet.</p>
       ) : (
-        <>
+        <div className="coursesList">
           {studentCourse.map(course => (
-            <div key={course.course_id}>
+            <div key={course.course_id} className="studentSubBox">
               <h3>{course.group_type}</h3>
-              <h5>{course.course_days}</h5>
+              <h3><strong>{course.course_days}</strong> from <strong>{course.start_time}</strong> to <strong>{course.end_time}</strong></h3>
+              <h3>Starts <strong>{getDateStringENGBFormat(course.first_day)}</strong></h3>
+              <h3>Ends <strong>{getDateStringENGBFormat(course.last_day)}</strong></h3>
             </div>
           ))}
-          {/* {studentCourse.map(course => (
-            <div className="courseData">
-              <div className="logoAndProgram">
-                <img src={getLogo(course.program)} />
-                <h3>
-                  {course.program}: {course.course}
-                </h3>
-              </div>
-              <table className="dateAndPayment">
-                <thead>
-                  <tr>
-                    <th>Date/Time</th>
-                    <th>Status</th>
-                    <th>Paid?</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="startEndDatesTimes">
-                      {course.start_end_times}
-                      <br />
-                      {course.start_end_dates}
-                    </td>
-                    <td>{course.enrollment_status}</td>
-                    <td>
-                      {course.payment_status === 'Paid' ? (
-                        course.payment_status
-                      ) : (
-                        <button>Pay Now</button>
-                      )}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <table className="progressReports">
-                <thead>
-                  <tr>
-                    <th>Progress Report Date</th>
-                    <th>Details</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      {course.progress_report_last_date} (Month{' '}
-                      {course.progress_report_last_month_number})
-                    </td>
-                    <td>
-                      <button>View</button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          ))} */}
-        </>
+        </div>
       )}
     </div>
-  );
-}
+  )
+};
 
 export default StudentCourseCard;
