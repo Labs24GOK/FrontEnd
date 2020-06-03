@@ -1,0 +1,27 @@
+
+.staffDashboard {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    height: 100vh;
+    box-sizing: border-box;
+    max-width: 100%;
+
+}
+
+.staff {
+  flex: 2 0 auto;
+
+}
+
+
+
+.footer {
+    flex-shrink: 0;
+  }
+
+.staff-courses {
+  // 
+  height: 50vh;
+  background-color: red;
+}
