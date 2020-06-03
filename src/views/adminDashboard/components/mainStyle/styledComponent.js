@@ -152,11 +152,11 @@ export const DashboardWrap = styled.div`
   
 `
 export const TabsWrap = styled.div`
-  width: 200px;
+  width: 150px;
   height: 100vh;
   position: fixed;
   top: 100px;
-  background: #269FB0;
+  background: #15ADA4;
 `
 export const DisplayWrap = styled.div`
   width: 85%;
