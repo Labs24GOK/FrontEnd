@@ -158,7 +158,6 @@ export const TabsWrap = styled.div`
   width: 11rem;
   min-width: 11rem;
   flex: 1 1 auto;
-  /* padding-top: 100px; */
   background: #15ADA4;
 `
 export const DisplayWrap = styled.div`
