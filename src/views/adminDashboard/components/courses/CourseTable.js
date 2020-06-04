@@ -42,42 +42,52 @@ const CourseTable = props => {
     {
       title: 'Course ID',
       dataIndex: 'course_id',
-      key: 1
+      key: 1,
+      fixed: 'left',
+      width: 90
     },
     {
       title: 'Term',
       dataIndex: 'term',
-      key: 2
+      key: 2,
+      fixed: 'left',
+      width: 90
     },
     {
       title: 'Group Type',
       dataIndex: 'group_type',
-      key: 3
+      key: 3,
+      width: 150
     },
     {
       title: 'Level',
       dataIndex: 'level',
-      key: 4
+      key: 4,
+      width: 90
     },
     {
       title: 'Section',
       dataIndex: 'section',
-      key: 5
+      key: 5,
+      width: 90
     },
     {
       title: 'Course Type',
       dataIndex: 'course_type',
-      key: 6
+      key: 6,
+      width: 90
     },
     {
       title: 'School Grade',
       dataIndex: 'school_grade',
-      key: 7
+      key: 7,
+      width: 90
     },
     {
       title: 'Course Schedule',
       dataIndex: 'course_schedule',
-      key: 8
+      key: 8,
+      width: 90
     },
     {
       title: 'Start Time',
@@ -89,7 +99,8 @@ const CourseTable = props => {
             {timeConverter(value)}
           </span>
         );
-      }
+      },
+      width: 90
     },
     {
       title: 'End Time',
@@ -101,32 +112,39 @@ const CourseTable = props => {
             {timeConverter(value)}
           </span>
         );
-      }
+      },
+      width: 90
     },
     {
       title: 'Teacher',
       dataIndex: 'teacher',
-      key: 11
+      key: 11,
+      width: 90
     },
     {
       title: 'Students',
       dataIndex: 'total_students',
-      key: 12
+      key: 12,
+      width: 90
     },
     {
       title: 'Confirmed',
       dataIndex: 'confirmed_students',
-      key: 13
+      key: 13,
+      width: 95
     },
     {
       title: 'Unconfirmed',
       dataIndex: 'unconfirmed_students',
-      key: 14
+      key: 14,
+      width: 95
     },
     {
       title: 'Status',
       dataIndex: 'status',
-      key: 15
+      key: 15,
+      fixed: 'right',
+      width: 90
     }
   ];
 
@@ -182,6 +200,7 @@ const CourseTable = props => {
             columns={tableColumns}
             pagination={false}
             rowKey="course_id"
+            scroll={{ x: 400 }}
             onRow={(record, rowIndex) => {
               return {
                 onClick: event => {
