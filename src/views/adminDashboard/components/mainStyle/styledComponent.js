@@ -151,6 +151,7 @@ export const DashboardWrap = styled.div`
   flex-direction: row;
   padding: 0;
   margin: 0;
+  overflow: hidden;
 `
 export const TabsWrap = styled.div`
   height: 100%;
@@ -165,6 +166,12 @@ export const DisplayWrap = styled.div`
   /* max-width: 100%; */
   /* display: flex; */
   padding: 3.5rem 2rem 0 2.5rem;
+  overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
 `
 // used for active styling on selected tab
 export const TabWrap = styled.div``
