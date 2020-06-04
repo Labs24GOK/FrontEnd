@@ -15,11 +15,8 @@ const [tabColor, setTabColor] = useState("transparent");
       </TabsWrap>
 
       <DisplayWrap>
-          <div>
-              <Display  />
-          </div>
+          <Display  />
       </DisplayWrap>
-
     </DashboardWrap>
   )
 }
