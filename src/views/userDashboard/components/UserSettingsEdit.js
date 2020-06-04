@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
+import axiosWithAuth from '../../../utils/axiosWithAuth';
 
 export default function UserSettingsEdit() {
   const { register, handleSubmit, errors } = useForm();
@@ -12,8 +13,15 @@ export default function UserSettingsEdit() {
   console.log(tokenData);
   const { subject, name, email } = tokenData;
   const onSubmit = data => {
-    data.id = subject;
-    console.log(data);
+    // console.log(data);
+    axiosWithAuth()
+      .put(`/users/${subject}`, data)
+      .then(res => {
+        console.log('success', res);
+      })
+      .catch(err => {
+        console.log('whoops', err);
+      });
   };
   const handleCancel = e => {
     e.preventDefault();
@@ -36,7 +44,6 @@ export default function UserSettingsEdit() {
         Email
         <input type="email" defaultValue={email} name="email" ref={register({ required: true })} />
       </label>
-
       <button onClick={handleCancel}>Cancel</button>
       <input type="submit" />
     </form>
