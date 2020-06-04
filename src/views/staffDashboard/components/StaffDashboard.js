@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axiosWithAuth from '../../../utils/axiosWithAuth';
 import { useHistory } from 'react-router-dom';
-import { Button, Spin, Table } from 'antd';
-import moment from 'moment';
+import {  Table } from 'antd';
 import { timeConverter } from '../../../utils/helpers';
-import AttendanceModal from '../../adminDashboard/components/staff/staffCard/AttendanceModal';
+
 import './staffDashboard.scss';
 
 function StaffDashboard() {
@@ -12,7 +11,7 @@ function StaffDashboard() {
 	const [staffId, setStaffId] = useState();
 	const { push } = useHistory();
 
-	// GetuserId from JWT
+	// Get userId from JWT
 	let token = localStorage.getItem('token');
 	let tokenData = JSON.parse(atob(token.split('.')[1]));
 
@@ -37,22 +36,11 @@ function StaffDashboard() {
 			axiosWithAuth()
 				.get(`/staff/${staffId}/courses`)
 				.then(res => {
-					// console.log(res.data);
 					setStaffCourses(res.data);
 				})
 				.catch(err => console.log(err));
 		}
 	}, [staffId]);
-
-	const [modalVisible, setModalVisible] = useState({
-		visible: false,
-		loading: false,
-	});
-
-	const [courseID, setCourseID] = useState(0);
-
-	const [startDate, setStartDate] = useState(moment().format('YYYY-MM-DD'));
-	const [endDate, setEndDate] = useState(moment().format('YYYY-MM-DD'));
 
 	const staffCourseColumns = [
 		{
@@ -60,33 +48,8 @@ function StaffDashboard() {
 			dataIndex: 'course_id',
 			key: 1,
 		},
-		// {
-		//   title: 'Term',
-		//   dataIndex: 'term',
-		//   key: 2,
-		// },
-		// {
-		//   title: 'Group Type',
-		//   dataIndex: 'group_type',
-		//   key: 3,
-		// },
-		// {
-		//   title: 'Level',
-		//   dataIndex: 'level',
-		//   key: 4,
-		// },
-		// {
-		//   title: 'Section',
-		//   dataIndex: 'section',
-		//   key: 5,
-		// },
-		// {
-		//   title: 'Course Type',
-		//   dataIndex: 'course_type',
-		//   key: 6,
-		// },
 		{
-			title: 'Course Schedule',
+			title: 'Schedule',
 			dataIndex: 'course_schedule',
 			key: 7,
 		},
@@ -106,29 +69,7 @@ function StaffDashboard() {
 				return <span>{timeConverter(value)}</span>;
 			},
 		},
-		// {
-		//   title: 'Status',
-		//   dataIndex: 'status',
-		//   key: 10,
-		// },
-		{
-			title: 'Attendance',
-			key: 11,
-			render: (text, record) => {
-				return (
-					<Button
-						onClick={() => {
-							setCourseID(record.course_id);
-							setStartDate(record.start_date);
-							setEndDate(record.end_date);
-							setModalVisible({ visible: true });
-						}}
-					>
-						Record
-					</Button>
-				);
-			},
-		},
+
 	];
 
 	return (
@@ -143,22 +84,13 @@ function StaffDashboard() {
 							columns={staffCourseColumns}
 							pagination={false}
 							rowKey='course_id'
-							onRow={(record, rowIndex) => {
+							onRow={(record) => {
 								return {
 									onClick: event => {
 										push(`dashboard/${record.course_id}`);
 									},
 								};
 							}}
-						/>
-						<AttendanceModal
-							modalVisible={modalVisible}
-							setModalVisible={setModalVisible}
-							staffID={staffId}
-							teacher={name}
-							courseID={courseID}
-							startDate={startDate}
-							endDate={endDate}
 						/>
 					</>
 				}
