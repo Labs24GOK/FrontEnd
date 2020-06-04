@@ -36,24 +36,22 @@ export const FormSet = styled.div`
 `
 
 export const Div = styled.div`
-display: grid;
-text-align: left;
-grid-template-columns: 1fr 1fr 1fr 1fr;
-grid-gap: 15px;
- margin: 10px;
+  display: grid;
+  text-align: left;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 15px;
+  margin: 10px;
 `
 
 export const Div2 = styled.div`
-display: grid;
-text-align: left;
-grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-grid-gap: 15px;
- margin: 10px;
-}
+  display: grid;
+  text-align: left;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 15px;
+  margin: 10px;
 `
 export const Div3 = styled.div`
-display: flex;
-}
+  display: flex;
 `
 export const Input = styled.input`
   outline: none;
@@ -147,27 +145,35 @@ export const DropdownContent =  styled.div`
 `
 
 export const DashboardWrap = styled.div`
+  height: 100%;
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   padding: 0;
   margin: 0;
   overflow: hidden;
 `
 export const TabsWrap = styled.div`
-  height: 100vh;
+  height: 100%;
   width: 11rem;
-  display: flex;
-  flex-direction: column;
-  padding-top: 100px;
+  min-width: 11rem;
+  flex: 1 1 auto;
+  /* padding-top: 100px; */
   background: #15ADA4;
 `
 export const DisplayWrap = styled.div`
-  width: 80%;
-  height: 100%;
-  /* position: relative; */
-  /* top: 30px; */
-  /* left: 16%; */
+  width: 100%;
+  /* max-width: 100%; */
+  /* display: flex; */
+  padding: 3.5rem 2rem 0 2.5rem;
+  overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
 `
+// used for active styling on selected tab
 export const TabWrap = styled.div``
 
 export const TabsWrapColumn = styled.div`

@@ -134,7 +134,7 @@ const CourseTable = props => {
     return b.id - a.id;
   });
   return (
-    <>
+    <div>
       <h2
         style={{ textAlign: 'left', marginLeft: '1.3rem' }}
       >
@@ -190,7 +190,7 @@ const CourseTable = props => {
               };
             }}
           />}
-    </>
+    </div>
   );
 };
 
