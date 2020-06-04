@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, useParams } from 'react-router-dom';
+import { withRouter, useParams, useHistory } from 'react-router-dom';
 import { getCourseById } from '../../../../actions';
 import CourseInformationTab from './courseCardTabs/CourseInformationTab.js';
 import EnrolledStudentsTab from './courseCardTabs/EnrolledStudentsTab.js';
@@ -11,6 +11,7 @@ import 'antd/dist/antd.css';
 import 'semantic-ui-css/semantic.min.css';
 
 const CourseCard = props => {
+  const { push } = useHistory()
   const { courseID } = useParams()
   
   useEffect(() => {
@@ -42,9 +43,7 @@ const CourseCard = props => {
   ];
 
   const goBack = () => {
-    if (props.courseView === 'courseCardView') {
-      props.setCourseView('courseTableView');
-    }
+    push('/dashboard/courses')
   };
 
   //working
