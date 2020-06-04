@@ -14,7 +14,7 @@ function Index() {
   <div className="staffDashboard">
     <StaffDashboardHeader />
     <Switch>
-      <Route exact path={`${path}`}>
+      <Route exact path={path}>
         <StaffDashboard />  
     </Route>
     <Route path={`${path}/:courseId`}>
