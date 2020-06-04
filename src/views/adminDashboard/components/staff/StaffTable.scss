@@ -52,7 +52,12 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     padding-top: 5px;
+   
   }
+
+ .attendanceStudents {
+   margin-bottom: 18%;
+ }
   
   .react-calendar {
     z-index: 5;
@@ -67,3 +72,5 @@
   .react-calendar__navigation button {
     min-width: 0px;
   }
+
+  
