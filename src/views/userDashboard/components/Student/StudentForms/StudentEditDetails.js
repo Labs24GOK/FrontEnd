@@ -31,7 +31,6 @@ const StudentEditDetails = props => {
     data.school_grade_id = props.student.school_grade_id;
     data.user_id = props.student.user_id;
 
-    console.log("Submitted!", data);
       axiosWithAuth()
         .put(`/student/${props.student.student_id}`, data)
         .then(res => {
@@ -44,10 +43,6 @@ const StudentEditDetails = props => {
   const handleCancel = () => {
     history.push("/student/:id");
   }
-
-  // useEffect(() => {
-  //   console.log("Edit-student", props.student);
-  // }, [props.student])
 
   return (
     <>
