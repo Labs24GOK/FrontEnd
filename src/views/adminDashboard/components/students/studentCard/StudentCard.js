@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getStudentById, toggleEditComponent } from '../../../../../actions';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useParams, useHistory } from 'react-router-dom';
 import StudentInformationTab from './StudentInformationTab';
 import StudentCoursesTab from './StudentCoursesTab';
 import StudentFamilyTab from './StudentFamilyTab';
@@ -15,9 +15,11 @@ import 'antd/dist/antd.css';
 import '../../mainStyle/mainCard.scss';
 
 const StudentCard = props => {
+	const { push } = useHistory()
+	const { studentID } = useParams()
 	useEffect(() => {
-		props.getStudentById(props.studentID);
-	}, []);
+		props.getStudentById(studentID);
+	}, [studentID]);
 
 	const studentPanes = [
 		{
@@ -25,8 +27,7 @@ const StudentCard = props => {
 			render: () => (
 				<Tab.Pane attached={false}>
 					<StudentInformationTab
-						studentID={props.studentID}
-						setStudentView={props.setStudentView}
+						studentID={studentID}
 					/>
 				</Tab.Pane>
 			)
@@ -35,7 +36,7 @@ const StudentCard = props => {
 			menuItem: 'COURSES',
 			render: () => (
 				<Tab.Pane attached={false}>
-					{<StudentCoursesTab studentID={props.studentID} />}
+					{<StudentCoursesTab studentID={studentID} />}
 				</Tab.Pane>
 			)
 		},
@@ -43,7 +44,7 @@ const StudentCard = props => {
 			menuItem: 'PROGRESS',
 			render: () => (
 				<Tab.Pane attached={false}>
-					<StudentProgressTab studentID={props.studentID} />
+					<StudentProgressTab studentID={studentID} />
 				</Tab.Pane>
 			)
 		},
@@ -51,7 +52,7 @@ const StudentCard = props => {
 			menuItem: 'FAMILY',
 			render: () => (
 				<Tab.Pane attached={false}>
-					<StudentFamilyTab studentID={props.studentID} />
+					<StudentFamilyTab studentID={studentID} />
 				</Tab.Pane>
 			)
 		},
@@ -59,17 +60,15 @@ const StudentCard = props => {
 			menuItem: 'PLACEMENT TEST',
 			render: () => (
 				<Tab.Pane attached={false}>
-					<PlacementTest studentID={props.studentID} placementTestById={{}} />
-					<PlacementForm studentID={props.studentID} placementTestById={{}} />
+					<PlacementTest studentID={studentID} placementTestById={{}} />
+					<PlacementForm studentID={studentID} placementTestById={{}} />
 				</Tab.Pane>
 			)
 		}
 	];
 
 	const goBack = () => {
-		if (props.studentView === 'studentCardView') {
-			props.setStudentView('studentTableView');
-		}
+		push('/dashboard/students')
 	};
 
 	return (
