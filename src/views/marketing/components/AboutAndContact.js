@@ -18,10 +18,10 @@ function AboutAndContact() {
                 <section className="about-container" >
                     <h1>About Us</h1>
                     <section className="about-content">
-                        <p>The Garden of Knowledge founded originally as a charity program in 2014, has always had the local comminity at heart. We have a passion for providing the highest standards to students and parents, and a positive, productive work environment for our staff.</p>
+                        <p>Since 2014, The Garden of Knowledge has always had the local community at heart. We have a passion for providing the highest standards to students and parents. Our staff are the cornerstone of our business and we strive to provide a positive and productive work environment.</p>
                     
                             <h3>Our Vision</h3>
-                            <p>Making nationwide interactive language learning a possibility for all.</p>
+                            <p>Making interactive language learning a possibility for all.</p>
                         
                             <h3>Our Mission</h3>
                             <p>We provide the highest standards of language learning, adapting to people's wants and needs. Our students will have a measurable output, both in the center and at school or work.</p>
