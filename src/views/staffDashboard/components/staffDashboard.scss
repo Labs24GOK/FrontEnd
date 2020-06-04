@@ -14,16 +14,26 @@
 
 }
 
-
-
 .footer {
     flex-shrink: 0;
   }
 
 .staff-courses {
- display: flex;
+ padding: 20px 0;
+ margin-bottom: 2%;
+}
+
+.courses {
+  display: flex;
  flex-direction: column;
  align-items: center;
-  height: 70vh;
- 
+    height: 75vh;
+
+}
+.courseItem {
+  line-height: .4%;
+}
+
+.teacher{
+  margin-bottom: 2%;
 }
