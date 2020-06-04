@@ -177,7 +177,7 @@ const AttendanceModal = props => {
             onOk={handleOk}
             onCancel={handleCancel}
             style={{ padding: 0 }}
-            footer={<div className="footer-btns">
+            footer={<div >
                 <Button key='back' onClick={handleCancel}>
                   Return
                 </Button>
@@ -224,7 +224,7 @@ const AttendanceModal = props => {
                 />
               </RightTopDiv>
             </TopSection>
-            <Table
+            <Table className='attendanceStudents'
               dataSource={attendees}
               columns={attendanceColumns}
               pagination={false}
