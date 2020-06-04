@@ -172,19 +172,20 @@ const AttendanceModal = props => {
       ) : (
         <>
           <Modal
-            title='Student List'
+            title={`Course ID: ${props.courseID}`}
             visible={props.modalVisible.visible}
             onOk={handleOk}
             onCancel={handleCancel}
             style={{ padding: 0 }}
-            footer={[
-              <Button key='back' onClick={handleCancel}>
-                Return
-              </Button>,
-              <Button key='submit' type='primary' onClick={handleOk}>
-                Submit
-              </Button>,
-            ]}
+            footer={<div >
+                <Button key='back' onClick={handleCancel}>
+                  Return
+                </Button>
+                <Button key='submit' type='primary' onClick={handleOk}>
+                  Submit
+                </Button>
+              </div>
+            }
           >
             <TopSection>
               <LeftTopDiv>
@@ -223,7 +224,7 @@ const AttendanceModal = props => {
                 />
               </RightTopDiv>
             </TopSection>
-            <Table
+            <Table className='attendanceStudents'
               dataSource={attendees}
               columns={attendanceColumns}
               pagination={false}
