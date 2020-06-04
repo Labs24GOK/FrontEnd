@@ -8,16 +8,16 @@ import './staffDashboard.scss';
 import StaffCourseCard from './StaffCourseCard';
 
 function Index() {
-  let { path } = useRouteMatch();
+  let {path}  = useRouteMatch();
 
   return (
   <div className="staffDashboard">
     <StaffDashboardHeader />
     <Switch>
-      <Route exact path={path}>
+      <Route exact path={`${path}`}>
         <StaffDashboard />  
     </Route>
-    <Route exact path="dashboard/staffCourses/:course_id">
+    <Route path={`${path}/:courseId`}>
       <StaffCourseCard  />
     </Route>
     </Switch>
