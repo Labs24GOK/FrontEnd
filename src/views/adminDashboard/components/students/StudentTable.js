@@ -3,13 +3,10 @@ import { connect } from 'react-redux';
 import { withRouter, useHistory } from 'react-router-dom';
 import { getStudentTable } from '../../../../actions';
 import { Table, Tag, Spin } from 'antd';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import StudentRegistrationForm from './StudentRegistrationForm';
 import SearchStundentTable from './SearchStudentTable';
 import 'antd/dist/antd.css';
 import '../mainStyle/mainTable.scss';
-import StudentCard from './studentCard/StudentCard';
 
 const StudentTable = props => {
   const { push } = useHistory()
@@ -37,8 +34,6 @@ const StudentTable = props => {
     const regDate = new Date(student.registration_date)
     const month = regDate.getMonth();
     const currentMonth = new Date().getMonth()
-    console.log("current Month", currentMonth)
-    console.log("reg Month", month)
     if(month <= currentMonth && !(month < currentMonth - 1)) {
       return {
         ...student,
@@ -48,6 +43,21 @@ const StudentTable = props => {
       return {
         ...student,
         status: []
+      }
+    }
+  })
+
+  const studentEnrolled = studentStatus.map(student => {
+    console.log('studentsss', student)
+    if(student.enrolled === false) {
+      return {
+        ...student,
+        status: [...student.status, 'unenrolled']
+      }
+    } else {
+      return {
+        ...student,
+        status: [...student.status, 'enrolled']
       }
     }
   })
@@ -80,9 +90,19 @@ const StudentTable = props => {
       render: status => (
         <>
           {status.map(tag => {
-            let color = tag.length > 5 ? 'geekblue' : 'green';
-            if (tag === 'new') {
-              color = 'geekblue';
+            let color;
+            switch(tag) {
+              case 'new':
+                color = 'geekblue'
+                break;
+              case 'enrolled':
+                color = 'green'
+                break;
+              case 'unenrolled':
+                color = 'red'
+                break;
+              default:
+                return null;
             }
             return (
               <Tag color={color} key={tag}>
@@ -107,8 +127,6 @@ const StudentTable = props => {
 
   return (
     <div>
-      {console.log("student data", studentData)}
-      {console.log("student data2", studentStatus)}
         <h2 style={{textAlign: "left", marginLeft: "1.3rem"}}>
           Student Table
         </h2>
@@ -130,7 +148,7 @@ const StudentTable = props => {
       ) : (
         <Table
           className='rowHover'
-          dataSource={studentStatus}
+          dataSource={studentEnrolled}
           columns={studentTableColumns}
           pagination={false}
           rowKey='id'
