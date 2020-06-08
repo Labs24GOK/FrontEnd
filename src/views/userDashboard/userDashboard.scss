@@ -25,6 +25,7 @@
 
 
     h1 {
+
         font-size: 2.5rem;
         margin: 3rem 0;
         text-align: left;
@@ -66,7 +67,6 @@
         }
     }
 }
-
 
 .modal-displayed {
     display: block;
@@ -125,6 +125,7 @@
 
     // new styles for StudentRegistrationForm in adminDashboard
     .userAddStudentForm {
+
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -162,8 +163,6 @@
         .add {
             width: 60%;
         }
-
-
     }
 }
 
@@ -266,15 +265,18 @@
     }
 
     .noCourses {
+
         font-size: 1.5rem;
         font-style: oblique;
 
         text-align: center;
 
         margin: 5rem;
+
     }
 
     .coursesList {
+
         font-size: 1 rem;
         text-align: center;
         margin: 0 auto;
@@ -282,31 +284,41 @@
         display: flex;
         justify-content: space-evenly;
         width: 100%;
+
     }
 
 }
 
 .studentTitle {
+
     margin: 2%; 
     font-size: 3rem;
+
 }
 
 .studentBox {    
+
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: stretch;
+
     margin: auto 10rem 2rem;
+
 }
 
 .studentInfoBox {
+
     border: 3px solid black;
-    padding: 1rem;
+
+    padding: 1.5rem;
     margin: auto 3%;   
     width: 100%;
+
     background-color: #EEEEEE;
 
     .studentSubBox {
+
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
@@ -314,18 +326,96 @@
 
         div {
             padding: 1%;
-            width: 80%;
+            width: 95%;
+        }
+
+        .studentCourseBox {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 0 auto;
+
+            div {
+                margin: 0 15px;
+            }
         }
     }
 }
 
 .studentEditButton {
+
     width: 25;
     margin: 0 auto 1%;
+
     display: flex;
     justify-content: center;
+
 }
 
 .noInfo {
+
     text-align: center;
+
+}
+
+.editBox {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+
+    margin: auto 10rem 2rem;
+    width: 90%;
+
+}
+
+.editInfoBox {
+
+    border: 3px solid black;
+
+    padding: 1.5rem;
+    margin: auto 3%;
+    width: 100%;
+
+    background-color: #EEEEEE;
+
+    h2 {
+        text-align: left;
+    }
+
+    h4 {
+        font-size: 1.5rem;
+    }
+
+    .editSubBox {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: stretch;
+
+        div {
+            padding: 4%;
+            width: 80%;
+        }
+
+        h4 {
+            font-size: 1.5rem;
+        }
+    }
+}
+
+.editTitle {
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        margin: 5% 0;
+        font-size: 2.5rem;
+    }
 }

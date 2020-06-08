@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Switch, Link, useParams } from 'react-router-dom';
+import { Route, Switch, useParams, useHistory } from 'react-router-dom';
 
 import UserDashboardHeader from '../UserDashboardHeader';
 import StudentEditDetails from './StudentForms/StudentEditDetails';
@@ -8,12 +8,14 @@ import StudentDetails from './StudentDetails';
 import { getStudentCourses } from '../../getStudentCourses';
 import axiosWithAuth from '../../../../utils/axiosWithAuth';
 
+import { Icon } from 'semantic-ui-react';
+
 function Student({ student }) {
     const {id} = useParams();
+    let history = useHistory();
 
     const [studentData, setStudentData] = useState(["student"]);
     const [studentCourse, setStudentCourse] = useState([]);
-    const [noCourse, setNoCourse] = useState()
 
     useEffect(() => {
         const getStudent = (id) => {
@@ -24,7 +26,9 @@ function Student({ student }) {
 		        })
         }
         return getStudent(id);
-    }, [id])
+    }, [studentData])
+
+
 
     useEffect(() => {
         getStudentCourses(id)
@@ -33,11 +37,21 @@ function Student({ student }) {
             })
     }, [id]);
 
+    const goBack = () => {
+        history.push('/dashboard')
+    }
+
     return (
         <>
             <UserDashboardHeader />
-            <h1 className='studentTitle'>{studentData.first_name} 
-            {studentData.additional_names}</h1>
+            <div
+                className='back-button'
+                onClick={goBack}
+                style={{ cursor: 'pointer', width: '10%', fontSize: '1.75rem', padding: "1%" }}
+            >
+                <Icon name="angle left" />
+				Back
+            </div>
             <div>
                 <Switch>
                     <Route 
