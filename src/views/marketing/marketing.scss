@@ -1,21 +1,20 @@
 //Imports
-
 @import '../../styles/variables';
-
-// Footer
-@import './components/Footer.scss';
 
 // Header
 @import './components/Header.scss';
 
+// Marketing pages
 @import './components/Home.scss';
 @import './components/CourseStructure.scss';
 @import './components/CoursesAndRegistration.scss';
 @import './components/AboutAndContact.scss';
 
+
+
 // Global Styles
 
-.content {
+.middle {
 
     // accounts for header (100 px) and footer (165 px, including tree)
     min-height: calc(100vh - 265px);
@@ -63,3 +62,6 @@ section {
 .two-column-left, .two-column-right {
     width: 45vw;
 }
+
+// Footer
+@import './components/Footer.scss';
