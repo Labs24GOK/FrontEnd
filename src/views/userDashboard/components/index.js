@@ -8,7 +8,7 @@ import UserSettings from './UserSettings';
 import UserSettingsEdit from './UserSettingsEdit';
 import Footer from '../../marketing/components/Footer';
 
-import '../../marketing/marketing.scss';
+
 import '../userDashboard.scss';
 
 function Index() {

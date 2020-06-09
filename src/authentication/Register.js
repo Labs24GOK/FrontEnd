@@ -5,6 +5,10 @@ import { connect } from 'react-redux';
 import { logIn } from '../actions/authenticationActions.js';
 import { familyRegister } from '../actions/registrationActions';
 import { useForm } from 'react-hook-form';
+
+import Header from '../views/marketing/components/Header'
+import Footer from '../views/marketing/components/Footer'
+
 import './loginAndRegister.scss';
 
 function Register(props) {
@@ -22,8 +26,9 @@ function Register(props) {
 
   return (
     <div className="form-container">
-      <h1>Sign Up with The Garden of Knowledge</h1>
-      <form onSubmit={handleSubmit(formSubmit)}>
+      <Header />
+      <form onSubmit={handleSubmit(formSubmit)} className='formz'>
+         <h1>Register</h1>
         <fieldset>
           <label htmlFor="name">Full Name</label>
           <input
@@ -38,10 +43,6 @@ function Register(props) {
             name="email"
             ref={register({ required: true, minLength: 1 })}
           />
-
-          {/* <label htmlFor="username">Username</label>
-                <input type="text" name="username" ref={register({required: true, minLength: 1})}/> */}
-
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -84,6 +85,7 @@ function Register(props) {
             )}
         </div>
       </form>
+      <Footer />
     </div>
   );
 }

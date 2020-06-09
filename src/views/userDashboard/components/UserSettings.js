@@ -1,50 +1,36 @@
 import React from 'react';
 import { useRouteMatch, useHistory } from 'react-router-dom';
-import { Typography, Layout, Col, Row, Button } from 'antd';
+
+import './UserSettings.scss';
+import { PrimaryButton } from '../../../styles/BtnStyle';
 
 const UserSettings = () => {
-  const { Title, Text } = Typography;
-  const { Content } = Layout;
-  const { url } = useRouteMatch();
+	const { url } = useRouteMatch();
+	const history = useHistory();
 
-  // Extracting User details from user's token
-  const token = localStorage.getItem('token');
-  const tokenData = JSON.parse(atob(token.split('.')[1]));
-  console.log(tokenData);
-  const { email, name } = tokenData;
-  const history = useHistory();
+	// Extracting User details from user's token
+	const token = localStorage.getItem('token');
+	const tokenData = JSON.parse(atob(token.split('.')[1]));
+	console.log(tokenData);
+	const { email, name } = tokenData;
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    history.push(`${url}/edit`);
-  };
+	const handleSubmit = e => {
+		e.preventDefault();
+		history.push(`${url}/edit`);
+	};
 
-  return (
-    <Content style={{ margin: '1.8rem 0' }}>
-      <Row>
-        <Col>
-          <Title level={3}>Account Settings</Title>
-        </Col>
-      </Row>
-      <Row style={{ margin: '1.8rem 0' }}>
-        <Col span={1}>
-          <Text type="secondary">Name:</Text>
-        </Col>
-        <Col span={3}>{name}</Col>
-      </Row>
-      <Row style={{ margin: '1.8rem 0' }}>
-        <Col span={1}>
-          <Text type="secondary">Email:</Text>
-        </Col>
-        <Col span={3}>{email}</Col>
-      </Row>
-      <Row>
-        <Col>
-          <Button onClick={handleSubmit}>Edit</Button>
-        </Col>
-      </Row>
-    </Content>
-  );
+	return (
+		<div className='settings-container'>
+			<h1>Review Settings</h1>
+			<div className='input-group'>
+				<label>Full Name:</label>
+				<p>{name}</p>
+				<label>Email:</label>
+				<p>{email}</p>
+			</div>
+			<PrimaryButton onClick={handleSubmit}>Edit</PrimaryButton>
+		</div>
+	);
 };
 
 export default UserSettings;

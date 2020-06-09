@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { withRouter, Link, useHistory, useRouteMatch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import MessageBox from './MessageBox';
+
 import StudentCourseCard from './Student/StudentCourseCard';
+import './UserSettings.scss'
 
 import { getStudentsInFamily } from '../getStudentsinFamily';
 import { getMessagesForUser } from '../getMessagesForUser';
@@ -16,9 +17,9 @@ function UserDashboard(props) {
     students: [],
     messages: [],
   });
-  // const [displayAddStudentModal, setDisplayAddStudentModal] = useState(false);
-  const history = useHistory();
-  let { path, url } = useRouteMatch();
+ 
+  
+  let {  url } = useRouteMatch();
 
   // Get userID from JWT
   let token = localStorage.getItem('token');
@@ -27,7 +28,7 @@ function UserDashboard(props) {
   let userID = tokenData.subject;
   let name = tokenData.name;
 
-  // retrieve list of students associated with this account (serach by user ID)
+  // retrieve list of students associated with this account (search by user ID)
   useEffect(() => {
     getStudentsInFamily(userID)
       .then(result => {
@@ -59,7 +60,7 @@ function UserDashboard(props) {
   }
 console.log("userData.students: ", userData.students);
   return (
-    <div className="userDashboard content">
+    <div className="userDashboard ">
       <h1>Welcome, {name}.</h1>
 
       {userData.students.map((student, id) => (
@@ -68,8 +69,6 @@ console.log("userData.students: ", userData.students);
         </Link>
       ))}
 
-      {/* <MessageBox messages={userData.messages} /> */}
-      {/* <Link to={`${url}/student-register`}>Register a Student</Link> */}
       <Link to={`${url}/student-register`}>
         <div className="studentCourseCard">
           <div className="nameAndHamburgerMenu">

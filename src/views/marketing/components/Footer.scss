@@ -1,17 +1,20 @@
 @import ".././../../styles/variables";
 
+
+
 .footer-grass {
     margin: 0;
     border: 5px solid $tree-light-green;
 }
 
 .tree {
-    width: 30%;
+    width: 0%;
     display: flex;
     margin-top: 20px;
     margin-bottom: -2%;
 
     @media #{$desktop} {
+        
         width: 329px;
         margin-bottom: -.5%;
     }

@@ -97,7 +97,7 @@ const StaffRegistrationForm = props => {
           <div>
             <Label>Admin</Label>
             <div>
-              <select name="admin" className="dropDown" ref={register}>
+              <select name="user_type" className="dropDown" ref={register}>
                 <option value="staff">No</option>
                 <option value="admin">Yes</option>
               </select>
