@@ -3,7 +3,8 @@ import { withRouter, Link, useHistory, useRouteMatch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import StudentCourseCard from './Student/StudentCourseCard';
-import './UserSettings.scss'
+import './UserSettings.scss';
+import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
 import { getStudentsInFamily } from '../getStudentsinFamily';
 import { getMessagesForUser } from '../getMessagesForUser';
@@ -17,9 +18,8 @@ function UserDashboard(props) {
     students: [],
     messages: [],
   });
- 
-  
-  let {  url } = useRouteMatch();
+
+  let { url } = useRouteMatch();
 
   // Get userID from JWT
   let token = localStorage.getItem('token');
@@ -49,16 +49,12 @@ function UserDashboard(props) {
   }, [userData.students]);
 
   // if userData hasn't loaded yet, return a loading message/icon
-  if (
-    Object.keys(userData).length === 0 ||
-    !userData.students ||
-    !userData.messages
-  ) {
+  if (Object.keys(userData).length === 0 || !userData.students || !userData.messages) {
     return <h2>Loading...</h2>;
   } else if (!userID) {
     return <h2>Invalid user ID</h2>;
   }
-console.log("userData.students: ", userData.students);
+  console.log('userData.students: ', userData.students);
   return (
     <div className="userDashboard ">
       <h1>Welcome, {name}.</h1>
@@ -72,14 +68,14 @@ console.log("userData.students: ", userData.students);
       <Link to={`${url}/student-register`}>
         <div className="studentCourseCard">
           <div className="nameAndHamburgerMenu">
-            <div className="names">
-              <h2>New Student</h2>
+            <div className="icon-container">
+              {/* <h2>New Student</h2> */}
+              <i className="fas fa-user-plus add-icon"></i>
             </div>
           </div>
-          <img src={yellowPlus} alt="yellow plus sign" />
+          {/* <img src={yellowPlus} alt="yellow plus sign" /> */}
         </div>
       </Link>
-
     </div>
   );
 }
