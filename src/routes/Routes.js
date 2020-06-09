@@ -5,8 +5,8 @@ import DashboardView from '../views';
 import Register from '../authentication/Register';
 import ProtectedRoute from "./ProtectedRoute";
 
-import Header from "../views/marketing/components/Header";
-import Footer from "../views/marketing/components/Footer";
+// import Header from "../views/marketing/components/Header";
+// import Footer from "../views/marketing/components/Footer";
 
 import Marketing from "../views/marketing/Marketing";
 
