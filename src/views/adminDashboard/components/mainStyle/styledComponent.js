@@ -14,19 +14,19 @@ export const RowFlex = styled.div`
   display: flex;
   justify-content: space-around;
   padding: 10px;
-`;
+`
 
 export const RowFlexEnd = styled.div`
   display: flex;
   justify-content: flex-end;
   padding: 10px;
-`;
+`
+
 export const Column = styled.div`
   width: 100%;
   text-align: left;
   padding: 5px;
-`;
-
+`
 
 export const FormSet = styled.div`
  border: 1px solid transparent; 
@@ -50,9 +50,11 @@ export const Div2 = styled.div`
   grid-gap: 15px;
   margin: 10px;
 `
+
 export const Div3 = styled.div`
   display: flex;
 `
+
 export const Input = styled.input`
   outline: none;
   border-radius: 3px;
@@ -60,6 +62,36 @@ export const Input = styled.input`
   background: white;
   width: 100%;
   padding: 6px;
+  margin: 5px;
+`
+export const Textarea = styled.textarea`
+  outline: none;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  background: white;
+  width: 97%;
+  padding: 10px;
+  margin: 5px auto;
+`
+
+export const Select = styled.select`
+  outline: none;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  background: white;
+  width: 100%;
+  padding: 6px;
+
+`
+
+export const EditName= styled.input`
+  outline: none;
+  border-radius: 3px;
+  border: 1px solid #EEEEEE;
+  background: white;
+  width: 100%;
+  padding: 10px;
+  margin: 6px;
 `
 
 export const DisabledInput = styled.input`
@@ -76,29 +108,35 @@ export const TextDiv = styled.p`
   font-size: 14px
   
 `
+
 export const Label = styled.h5`
  margin: 2px;
 `
+
 export const DropdownLabel = styled.h5`
  margin: 2px;
  color: grey;
  font-weight: lighter;
 `
+
 export const CalenderLabel = styled.h5`
  margin: 2px;
  color: grey;
  font-weight: lighter;
 `
+
 export const RightTopDiv = styled.div `
  display: inline-block;
  width: 50%;
  margin-bottom: 0px;
 `
+
 export const LeftTopDiv = styled.div `
 display: inline-block;
 width: 50%;
 margin-bottom: 0px;
 `
+
 export const TopSection = styled.div `
  display: flex;
  align-items: center;
@@ -126,6 +164,7 @@ export const Button = styled.button`
   border: none;
   cursor: pointer;
 `
+
 export const RedButton = styled.button`
   background-color: #C73642;
   width: 120px;
@@ -135,7 +174,8 @@ export const RedButton = styled.button`
   text-align: center;
   border: none;
   cursor: pointer;
-`;
+`
+
 export const DropdownContent =  styled.div`
   display: block;
   position: absolute;
@@ -153,6 +193,7 @@ export const DashboardWrap = styled.div`
   margin: 0;
   overflow: hidden;
 `
+
 export const TabsWrap = styled.div`
   height: 100%;
   width: 11rem;
@@ -160,6 +201,7 @@ export const TabsWrap = styled.div`
   flex: 1 1 auto;
   background: #15ADA4;
 `
+
 export const DisplayWrap = styled.div`
   width: 100%;
   /* max-width: 100%; */
@@ -172,7 +214,6 @@ export const DisplayWrap = styled.div`
     background: transparent; /* make scrollbar transparent */
 }
 `
-// used for active styling on selected tab
 export const TabWrap = styled.div``
 
 export const TabsWrapColumn = styled.div`
@@ -180,8 +221,6 @@ export const TabsWrapColumn = styled.div`
   flex-direction: column;
   padding-top: 145px;
 `
-
-
 
 //student form and info tab styles
 export const StudentFormWrap = styled.form`
@@ -217,6 +256,7 @@ export const ButtonDiv = styled.div`
 align-self: flex-end;
 margin-right: 15px;
 `
+
 export const CancelButton = styled.button`
 background-color: #C73642; 
 color:#FFFFFF; 
@@ -260,6 +300,18 @@ border-radius: 3px;
 margin: 10px 5px 10px 10px;
 text-align: center;
 color: #FFFFFF; 
+background-color: #26ABBD;
+border: none;
+cursor: pointer;
+`
+
+export const EditButton = styled.button`
+width: 120 px;
+height: 40px;
+border-radius: 3px;
+margin: 10px 5px 10px 10px;
+text-align: center;
+color: #FFFFFF;
 background-color: #26ABBD;
 border: none;
 cursor: pointer;
