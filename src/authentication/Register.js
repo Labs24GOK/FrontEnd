@@ -27,7 +27,7 @@ function Register(props) {
   return (
     <div className="form-container">
       <Header />
-      <form onSubmit={handleSubmit(formSubmit)}>
+      <form onSubmit={handleSubmit(formSubmit)} className='formz'>
          <h1>Register</h1>
         <fieldset>
           <label htmlFor="name">Full Name</label>
