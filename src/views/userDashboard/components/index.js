@@ -14,7 +14,7 @@ import '../userDashboard.scss';
 function Index() {
   let { path } = useRouteMatch();
   return (
-    <div className="content">
+    <div className="userContent">
       <UserDashboardHeader />
       <Switch>
         <Route exact path={path}>
