@@ -1,24 +1,7 @@
 import React, { useEffect, useState } from 'react';
-// import hamburgerMenuIcon from '../../../assets/hamburger_menu_icon.png';
 
 import { getStudentCourses } from '../../getStudentCourses';
 import { getDateStringENGBFormat, timeConverter } from '../../../../utils/helpers';
-
-// import abacusLogo from '../../../assets/demo_logo_abacus.png';
-// import frenchLogo from '../../../assets/demo_logo_french.png';
-import speakOutLogo from '../../../../assets/speakOut_logo_only.png';
-
-
-function getLogo() {
-  //   if (program) {
-  //   {
-  //     return abacusLogo;
-  //   } else if (program === "French") {
-  //     return frenchLogo;
-  //   } else
-  return speakOutLogo;
-}
-// }
 
 // Sets Course state for students
 function StudentCourseCard({ student }) {
@@ -35,8 +18,6 @@ function StudentCourseCard({ student }) {
         .catch(err => console.log(err));
     }
   }, [studentCourse]);
-
-  console.log("SCC-courses: ", studentCourse);
 
   return (
     <div className="studentCourseCard">

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import teacher from '../../../assets/native-english-speaker.jpg'
 import learningFun from '../../../assets/learning-is-fun-small.jpg'
 import family from '../../../assets/family-in-mind-small.jpg'
-import './Home.scss'
 import { scrollToTop } from "../../../utils/helpers";
 
 export default function Home() {

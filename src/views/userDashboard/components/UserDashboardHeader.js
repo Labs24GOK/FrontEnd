@@ -69,7 +69,7 @@ function UserDashboardHeader() {
       </header>
 
       <div className={'hamburger-menu ' + menuDisplayStatus}>
-        {/* <NavLink to='/login' className="hamburger-link"onClick={toggleMenu} >Sign In</NavLink> */}
+        
         <NavLink to="/dashboard" className="hamburger-link" onClick={toggleMenu}>
           Dashboard
         </NavLink>
@@ -79,9 +79,8 @@ function UserDashboardHeader() {
         <NavLink to="/login" className="hamburger-link" onClick={logout}>
           Sign Out
         </NavLink>
-        {/* {toggleMenu} >Sign In</NavLink> */}
+        
       </div>
-      <div>{/* <Link className="logOut" onClick={logout}>Sign Out</Link> */}</div>
     </>
   );
 }

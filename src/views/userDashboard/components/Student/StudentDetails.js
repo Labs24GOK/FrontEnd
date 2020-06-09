@@ -16,7 +16,7 @@ function StudentDetails(props) {
             <div className="studentBox">
                 <div className="studentInfoBox">
                     <h2>Details</h2>
-                    {/* <hr></hr> */}
+                   
                     <div className="studentSubBox">
                         <div>
                             <h3>Student General Info:</h3>
@@ -208,11 +208,4 @@ function StudentDetails(props) {
 
 export default StudentDetails;
 
-// const mapStateToProps = state => {
-//     return {
-//         studentById: state.studentByIdReducer.studentById,
-//         error: state.studentByIdReducer.error
-//     };
-// };
-
-// export default connect(mapStateToProps, {})(StudentDetails);                
+               
