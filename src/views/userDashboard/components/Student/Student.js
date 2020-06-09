@@ -4,6 +4,7 @@ import { Route, Switch, useParams, useHistory } from 'react-router-dom';
 import UserDashboardHeader from '../UserDashboardHeader';
 import StudentEditDetails from './StudentForms/StudentEditDetails';
 import StudentDetails from './StudentDetails';
+import Footer from '../../../marketing/components/Footer';
 
 import { getStudentCourses } from '../../getStudentCourses';
 import axiosWithAuth from '../../../../utils/axiosWithAuth';
@@ -73,7 +74,7 @@ function Student({ student }) {
                         </div>} 
                     />
                 </Switch>
-
+             <Footer />
             </div>     
         </>
     )
