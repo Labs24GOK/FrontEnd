@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { withRouter, Link, useHistory, useRouteMatch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import MessageBox from './MessageBox';
-import StudentCourseCard from './StudentCourseCard';
+import StudentCourseCard from './Student/StudentCourseCard';
 
 import { getStudentsInFamily } from '../getStudentsinFamily';
 import { getMessagesForUser } from '../getMessagesForUser';
+
+import yellowPlus from '../../../assets/yellowPlus.png';
 
 function UserDashboard(props) {
   const [userData, setUserData] = useState({
@@ -55,17 +57,30 @@ function UserDashboard(props) {
   } else if (!userID) {
     return <h2>Invalid user ID</h2>;
   }
-
+console.log("userData.students: ", userData.students);
   return (
     <div className="userDashboard content">
       <h1>Welcome, {name}.</h1>
 
-      <MessageBox messages={userData.messages} />
-      <Link to={`${url}/student-register`}>Register a Student</Link>
-
       {userData.students.map((student, id) => (
-        <StudentCourseCard student={student} />
+        <Link to={`/student/${student.id}`}>
+          <StudentCourseCard student={student} />
+        </Link>
       ))}
+
+      {/* <MessageBox messages={userData.messages} /> */}
+      {/* <Link to={`${url}/student-register`}>Register a Student</Link> */}
+      <Link to={`${url}/student-register`}>
+        <div className="studentCourseCard">
+          <div className="nameAndHamburgerMenu">
+            <div className="names">
+              <h2>New Student</h2>
+            </div>
+          </div>
+          <img src={yellowPlus} alt="yellow plus sign" />
+        </div>
+      </Link>
+
     </div>
   );
 }

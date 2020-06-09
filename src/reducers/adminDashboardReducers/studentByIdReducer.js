@@ -41,7 +41,9 @@ const initialState = {
   locationID: {},
   contactMethodID: {},
   blockID: {},
-  gradeID: {}
+  gradeID: {},
+  editedStudentSuccessMessage: '',
+  editedStudentErrorMessage: ''
 };
 
 export const studentByIdReducer = (
@@ -87,6 +89,7 @@ export const studentByIdReducer = (
         ...state,
         isEditing: false,
         isEdited: true,
+        editedStudentSuccessMessage: 'Student has been successfully edited',
         studentById: action.payload
       };
     case EDIT_STUDENTBYID_FAILURE:
@@ -95,6 +98,7 @@ export const studentByIdReducer = (
         isLoading: false,
         isEditing: true,
         isEdited: false,
+        editedStudentErrorMessage: 'Something went wrong',
         error: action.payload
       };
     //edit dropdown

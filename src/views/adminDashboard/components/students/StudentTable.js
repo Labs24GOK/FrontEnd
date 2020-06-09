@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useHistory } from 'react-router-dom';
 import { getStudentTable } from '../../../../actions';
 import { Table, Spin } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,8 +9,10 @@ import StudentRegistrationForm from './StudentRegistrationForm';
 import SearchStundentTable from './SearchStudentTable';
 import 'antd/dist/antd.css';
 import '../mainStyle/mainTable.scss';
+import StudentCard from './studentCard/StudentCard';
 
 const StudentTable = props => {
+  const { push } = useHistory()
   const [form, setForm] = useState(false);
 
   useEffect(() => {
@@ -71,23 +73,6 @@ const StudentTable = props => {
         <div>
           <SearchStundentTable />
         </div>
-
-        {/* Hiding create student button until functionality is fixed, will be moved to the family tab so a user id which will be passed in through props so that it will autofill the user id field */}
-        {/* <div
-          className='create-new-entry'
-          onClick={handleAddButton}
-          style={{ cursor: 'pointer', color: '#26ABBD' }}
-        >
-          <div style={{ marginRight: '10px' }}>Create New Student</div>
-          <div>
-            <FontAwesomeIcon
-              style={{ width: '25px', height: '25px', cursor: 'pointer' }}
-              icon={faPlusCircle}
-              size='lg'
-            />
-          </div>
-        </div> */}
-
       </div>
 
       {form ? (
@@ -109,8 +94,7 @@ const StudentTable = props => {
           onRow={(record, rowIndex) => {
             return {
               onClick: event => {
-                props.setStudentView('studentCardView');
-                props.setStudentID(record.student_id);
+                push(`/dashboard/students/${record.student_id}`)
               },
             };
           }}

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useParams, useHistory } from 'react-router-dom';
 import { getCourseById } from '../../../../actions';
 import CourseInformationTab from './courseCardTabs/CourseInformationTab.js';
 import EnrolledStudentsTab from './courseCardTabs/EnrolledStudentsTab.js';
@@ -11,9 +11,11 @@ import 'antd/dist/antd.css';
 import 'semantic-ui-css/semantic.min.css';
 
 const CourseCard = props => {
+  const { push } = useHistory()
+  const { courseID } = useParams()
   
   useEffect(() => {
-    props.getCourseById(props.courseID);
+    props.getCourseById(courseID);
   }, []);
 
   const panes = [
@@ -23,7 +25,7 @@ const CourseCard = props => {
         <Tab.Pane attached={false}>
           {
             <CourseInformationTab
-              courseID={props.courseID}
+              courseID={courseID}
               setCourseView={props.setCourseView}
             />
           }
@@ -34,16 +36,14 @@ const CourseCard = props => {
       menuItem: 'ENROLLED STUDENTS',
       render: () => (
         <Tab.Pane attached={false}>
-          {<EnrolledStudentsTab courseID={props.courseId} />}
+          {<EnrolledStudentsTab courseID={courseID} />}
         </Tab.Pane>
       )
     }
   ];
 
   const goBack = () => {
-    if (props.courseView === 'courseCardView') {
-      props.setCourseView('courseTableView');
-    }
+    push('/dashboard/courses')
   };
 
   //working
