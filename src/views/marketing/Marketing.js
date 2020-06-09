@@ -28,7 +28,7 @@ function Marketing({page}) {
     return (
         <div>
             <Header />
-            <div className="content">
+            <div className="middle">
                 {componentToRender()}
             </div>
             <Footer />
