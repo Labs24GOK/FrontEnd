@@ -4,6 +4,9 @@ import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { logIn } from '../actions/authenticationActions.js';
 import { useForm } from 'react-hook-form';
+
+import Header from '../views/marketing/components/Header'
+import Footer from '../views/marketing/components/Footer'
 import './loginAndRegister.scss';
 
 function Login(props) {
@@ -26,8 +29,10 @@ function Login(props) {
 
   return (
     <div className="form-container">
-      <h1>Welcome back!</h1>
-      <form onSubmit={handleSubmit(formSubmit)}>
+      <Header />
+      
+      <form onSubmit={handleSubmit(formSubmit)} className='formz'>
+        <h1>Welcome back!</h1>
         <fieldset>
           <label htmlFor="email">Email</label>
           <input
@@ -65,6 +70,7 @@ function Login(props) {
           )}
         </div>
       </form>
+      <Footer />
     </div>
   );
 }

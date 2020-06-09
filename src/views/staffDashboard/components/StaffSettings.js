@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouteMatch, useHistory } from 'react-router-dom';
-import { Button } from 'antd'
+
+import { PrimaryButton } from '../../../styles/BtnStyle';
 import axiosWithAuth from '../../../utils/axiosWithAuth';
 
 const StaffSettings = () => {
@@ -16,7 +17,7 @@ const StaffSettings = () => {
 		axiosWithAuth()
 			.get(`/staffdashboard/${subject}`)
 			.then(res => {
-				// console.log(res)
+				
 				setStaffData(res.data);
 			})
 			.catch(err => {
@@ -37,7 +38,7 @@ const StaffSettings = () => {
 				<h3 className='settingsItem'>Government ID: {staffData.cpr}</h3>
 				<h3 className='settingsItem'>Phone: {staffData.mobile_number}</h3>
         <h3 >{staffData.email}</h3>
-        <Button className='settingsItem edit' onClick={handleSubmit}>Edit</Button>
+        <PrimaryButton className='settingsItem edit' onClick={handleSubmit}>Edit</PrimaryButton>
 			</div>
 		</>
 	);

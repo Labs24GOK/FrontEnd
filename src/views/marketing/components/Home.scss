@@ -26,7 +26,7 @@
 }
 
 .knowledge-buttons{
-        margin: 5% 0;
+        margin: 7% 0;
         
 
         a {
@@ -36,9 +36,9 @@
             font-weight: 600;
             border: none;
             background-color: $button-green;
-            padding: 11px 5%;
+            padding: 11px 3%;
             border-radius: 7px;
-            margin: 0 6%;
+            margin: 1% 6%;
         }
 
         @media #{$desktop} {
