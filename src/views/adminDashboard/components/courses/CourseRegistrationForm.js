@@ -11,17 +11,16 @@ import '../mainStyle/mainTable.scss';
 
 const CourseRegistrationForm = props => {
 
-  const { register, errors, handleSubmit, watch } = useForm();
-  const dropDowns = ['term_id', 'course_type_id', 'group_type_id', 'school_grade_id', 'level_id', 'course_schedule_id',  'room_id', 'teacher_id']
+  const { register, errors, handleSubmit } = useForm();
+  const dropDowns = ['teacher_id']
   const submitNow = data => {
     for (const property of dropDowns) {
         data[property] = parseInt(data[property])    
     }
     props.addCourse(data);
     props.setForm(false);
+    console.log(data)
   }
-  
-  const currentlySelectedCourse = watch("course_type_id");
 
 	useEffect(() => {
 		props.getDropDownCourses();
@@ -38,58 +37,65 @@ const CourseRegistrationForm = props => {
         <Div>
           <div>
             <Label>Term</Label>
-              <select className="dropDown" name="term_id" ref={register({required: true })}>
-                {createDropdown(props.termDropdown)}	
+              <select className="dropDown" name="term" ref={register({required: true })}>
+                <option value="Fall">Fall</option>
+                <option value="Winter">Winter</option>
+                <option value="Spring">Spring</option>
+                <option value="Summer">Summer</option>
               </select>	 
           </div> 
+
           <div>
-              <Label>Course Type</Label>
-                <select name="course_type_id" className="dropDown" ref={register({required: true})}>
-                  {createDropdown(props.courseTypeDropdown)}
-                </select>	 
-        	</div>
+            <Label>Course Type</Label>
+              <div>
+                <Input type="text" className={errors.course_type && "input-error"} name="course_type" ref={register({required: true})}/>
+                  {errors.course_type && errors.course_type.type === "required" && 'Course type is Required'}
+              </div>
+          </div>
+          
           <div>
               <Label>Group Type</Label>
 						<div>
-              <select name="group_type_id" className="dropDown" ref={register({required: true})}>
-                {createDropdown(props.groupTypeDropdown)}
-              </select>
+              <Input name="group_type" placeholder='Goverment' className="dropDown" ref={register({required: true})} />
+              {errors.group_type && errors.group_type.type === "required" && 'Group type is Required'}
 					  </div>
-          </div>  
+          </div>
+
           <div>
             <Label>School Grade</Label>
-              <div>
-                <select className={"dropDown " + (currentlySelectedCourse !== "2" ? "grey" : "")} name="school_grade_id" disabled={currentlySelectedCourse !== "2"} ref={register({required: true})}>
-                  {createDropdown(props.schoolGradeDropdown)}
-                </select>  
-              </div>
-          </div>  
             <div>
-              <Label>Level</Label>
+              <Input name="school_grade" placeholder='KG 1' ref={register({required: false})} />
+					  </div>
+          </div>
+
+            <div>
+              <Label>Course Level</Label>
               <div>
-                <select className="dropDown" name="level_id" ref={register({required: true})}>
-                  {createDropdown(props.levelDropdown)}
-                </select>  
+                <Input className="dropDown" name="level" ref={register({required: true})} />
 						  </div>
-          </div> 
+          </div>
+
           <div>
             <Label>Section</Label>
               <div>
-                <select className="dropDown"  name="section" ref={register({required: true})}>
-                  <option value="A">A</option>
-                  <option value="B">B</option>
-                  <option value="C">C</option>
-                </select>  
+                <Input name="section" ref={register({required: false})} />
               </div>
-          </div> 
+          </div>
+
           <div>
             <Label>Course Schedule</Label>
               <div>
-                <select className="dropDown"  name="course_schedule_id" ref={register({required: true})}>
-                  {createDropdown(props.courseScheduleDropdown)}
-                </select>
+                <Input placeholder='Sat / Sun / Tue'  name="course_schedule" ref={register({required: true})} />
               </div>
-          </div> 
+          </div>
+
+          <div>
+            <Label>Room</Label>
+              <div>
+                <Input name="room" ref={register({required: true})} />
+              </div>
+          </div>
+
           <div>
             <Label>Start Date</Label>
               <div>
@@ -97,6 +103,7 @@ const CourseRegistrationForm = props => {
                   {errors.start_date && errors.start_date.type === "required" && 'Start Date is Required'}
               </div>
           </div>
+
           <div>
             <Label>End Date</Label>
               <div>
@@ -104,6 +111,7 @@ const CourseRegistrationForm = props => {
                   {errors.end_date && errors.end_date.type === "required" && 'End Date is Required'}
               </div>
           </div>
+
           <div>
             <Label>Start Time</Label>
               <div>
@@ -111,6 +119,7 @@ const CourseRegistrationForm = props => {
                   {errors.start_time && errors.start_time.type === "required" && 'Start Time is Required'}	
               </div>
           </div>
+
           <div>
             <Label>End Time</Label>
               <div>
@@ -118,14 +127,7 @@ const CourseRegistrationForm = props => {
                   {errors.end_time && errors.end_time.type === "required" && 'End Time is Required'}
               </div>
           </div>
-          <div>
-            <Label>Room</Label>
-              <div>
-                <select className="dropDown"  name="room_id" ref={register({required: true})}>
-                  {createDropdown(props.roomDropdown)}
-                </select>
-              </div>
-          </div>
+
           <div>
             <Label>Teacher</Label>
               <div>
@@ -134,13 +136,15 @@ const CourseRegistrationForm = props => {
                 </select>
               </div>
           </div>
+
           <div>
             <Label>Hourly Rate</Label>
               <div>
-                <Input type="text" className={errors.hourly_rate && "input-error"} name="hourly_rate" ref={register({required: true})}/>
+                <Input type="text" placeholder='14' className={errors.hourly_rate && "input-error"} name="hourly_rate" ref={register({required: true})}/>
                   {errors.hourly_rate && errors.hourly_rate.type === "required" && 'Hourly Rate is Required'}
               </div>
           </div>
+
           <div>
             <Label>Status</Label>
               <div>
@@ -152,12 +156,14 @@ const CourseRegistrationForm = props => {
                 </select>
               </div>
           </div>
+
           <div>
-            <Label>Notes</Label>
+            <Label>Course Notes</Label>
               <div>
                 <Input type="text" name="notes" ref={register}/>
               </div>
-          </div>     
+          </div>    
+
         </Div>
       </FormSet>
         <ButtonDiv>
