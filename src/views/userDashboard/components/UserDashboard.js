@@ -62,6 +62,12 @@ console.log("userData.students: ", userData.students);
     <div className="userDashboard content">
       <h1>Welcome, {name}.</h1>
 
+      {userData.students.map((student, id) => (
+        <Link to={`/student/${student.id}`}>
+          <StudentCourseCard student={student} />
+        </Link>
+      ))}
+
       {/* <MessageBox messages={userData.messages} /> */}
       {/* <Link to={`${url}/student-register`}>Register a Student</Link> */}
       <Link to={`${url}/student-register`}>
@@ -75,11 +81,6 @@ console.log("userData.students: ", userData.students);
         </div>
       </Link>
 
-      {userData.students.map((student, id) => (
-        <Link to={`/student/${student.id}`}>
-          <StudentCourseCard student={student} />
-        </Link>
-      ))}
     </div>
   );
 }
