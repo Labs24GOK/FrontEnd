@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
-import { Button } from 'antd';
+
+import { PrimaryButton, SecondaryButton } from '../../../styles/BtnStyle';
 import axiosWithAuth from '../../../utils/axiosWithAuth';
 
 const StaffSettingsEdit = () => {
@@ -74,11 +75,14 @@ const StaffSettingsEdit = () => {
 					defaultValue={staffData.email}
 					ref={register}
 				/>
-
-				<Button className='editfield button' onClick={handleCancel}>
-					Cancel
-				</Button>
-				<input className='editfield' type='submit' />
+				<div className='button-div'>
+					<SecondaryButton type='reset' onClick={handleCancel}>
+						Cancel
+					</SecondaryButton>
+					<PrimaryButton className='submit-btn' type='submit'>
+						Submit
+					</PrimaryButton>
+				</div>
 			</form>
 		</div>
 	);
