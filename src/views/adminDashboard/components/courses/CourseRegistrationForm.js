@@ -11,17 +11,16 @@ import '../mainStyle/mainTable.scss';
 
 const CourseRegistrationForm = props => {
 
-  const { register, errors, handleSubmit, watch } = useForm();
-  const dropDowns = ['term_id', 'course_type_id', 'group_type_id', 'school_grade_id', 'level_id', 'course_schedule_id',  'room_id', 'teacher_id']
+  const { register, errors, handleSubmit } = useForm();
+  const dropDowns = ['teacher_id']
   const submitNow = data => {
     for (const property of dropDowns) {
         data[property] = parseInt(data[property])    
     }
     props.addCourse(data);
     props.setForm(false);
+    console.log(data)
   }
-  
-  const currentlySelectedCourse = watch("course_type_id");
 
 	useEffect(() => {
 		props.getDropDownCourses();
