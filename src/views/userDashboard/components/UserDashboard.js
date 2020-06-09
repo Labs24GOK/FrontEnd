@@ -3,6 +3,7 @@ import { withRouter, Link, useHistory, useRouteMatch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import MessageBox from './MessageBox';
 import StudentCourseCard from './StudentCourseCard';
+import './UserSettings.scss'
 
 import { getStudentsInFamily } from '../getStudentsinFamily';
 import { getMessagesForUser } from '../getMessagesForUser';
@@ -57,10 +58,10 @@ function UserDashboard(props) {
   }
 
   return (
-    <div className="userDashboard content">
+    <div className="userDashboard ">
       <h1>Welcome, {name}.</h1>
 
-      <MessageBox messages={userData.messages} />
+      {/* <MessageBox messages={userData.messages} /> */}
       <Link to={`${url}/student-register`}>Register a Student</Link>
 
       {userData.students.map((student, id) => (
