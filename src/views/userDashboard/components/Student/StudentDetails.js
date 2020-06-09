@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { EditButton } from '../../../adminDashboard/components/mainStyle/styledComponent';
-import { getDateStringENGBFormat } from '../../../../utils/helpers';
+import { getDateStringENGBFormat, timeConverter } from '../../../../utils/helpers';
 
 function StudentDetails(props) {
 
@@ -16,7 +16,7 @@ function StudentDetails(props) {
             <div className="studentBox">
                 <div className="studentInfoBox">
                     <h2>Details</h2>
-                    <hr></hr>
+                    {/* <hr></hr> */}
                     <div className="studentSubBox">
                         <div>
                             <h3>Student General Info:</h3>
@@ -129,9 +129,9 @@ function StudentDetails(props) {
                     {props.course.length > 0 && 
                     props.course.map((course) => (
                         <>
-                            <div className="studentSubBox">
+                            <div className="">
                                 <div className="studentCourseBox">
-                                    <div>
+                                    <div className="courseBoxes">
                                         <p><strong>Term: </strong>
                                         <br></br>
                                         {course.term}</p>
@@ -142,18 +142,18 @@ function StudentDetails(props) {
                                         <br></br>
                                         {getDateStringENGBFormat(course.last_day)}</p>
                                     </div>
-                                    <div>
+                                    <div className="courseBoxes">
                                         <p><strong>Course Days: </strong>
                                         <br></br>
                                         {course.course_days}</p>
                                         <p><strong>Start Time: </strong>
                                         <br></br>
-                                        {course.start_time}</p>
+                                        {timeConverter(course.start_time)}</p>
                                         <p><strong>End Time: </strong>
                                         <br></br>
-                                        {course.end_time}</p>
+                                        {timeConverter(course.end_time)}</p>
                                     </div>
-                                    <div>
+                                    <div className="courseBoxes">
                                         <p><strong>Course Type: </strong>
                                         <br></br>
                                         {course.course_type}</p>
@@ -164,7 +164,7 @@ function StudentDetails(props) {
                                         <br></br>
                                         {course.student_result_type}</p>
                                     </div>
-                                    <div>
+                                    <div className="courseBoxes">
                                         <p><strong>Group Type: </strong>
                                         <br></br>
                                         {course.group_type}</p>
