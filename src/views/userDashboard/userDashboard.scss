@@ -169,7 +169,7 @@
 
 .studentCourseCard {
 
-    border: 3px solid black;
+    border: 1px solid darkgrey;
     padding: 2rem;
 
     margin-bottom: 2rem;
@@ -183,6 +183,16 @@
         width: 12.5%;
         margin: 0 auto;
         padding: 0 1% 0 0;
+    }
+
+    .firstName, .additionalNames {
+        background-color: #70BF44;
+        width: 87vw;
+        padding-left: 13px;
+    }
+
+    .courseAmount {
+        padding-left: 13px;
     }
 
     .nameAndHamburgerMenu {
@@ -309,11 +319,17 @@
 
 .studentInfoBox {
 
-    border: 3px solid black;
+    border: 1px solid darkgrey;
 
     padding: 1.5rem;
     margin: auto 3%;   
     width: 100%;
+
+    h2 {
+        background-color: #70BF44;
+        padding: 6px 0;
+        text-align: center;
+    }
 
     background-color: #EEEEEE;
 
@@ -339,6 +355,7 @@
             div {
                 margin: 0 15px;
             }
+
         }
     }
 }
@@ -417,5 +434,166 @@
     h1 {
         margin: 5% 0;
         font-size: 2.5rem;
+    }
+}
+
+// Media Queries
+
+@media (max-width: 500px) {
+
+    .studentCourseCard {
+        flex-direction: column;
+
+        .coursesList {  
+            flex-direction: column;
+        }
+    }
+
+    .studentSubBox {
+        margin-bottom: 7vh;
+        text-align: left;
+        padding-bottom: 30px;
+        border-bottom: 1px solid darkgrey;
+
+        p {
+            width: 100%;
+        }
+
+        span {
+            font-size: 0.9rem;
+            padding-left: 20px;
+        }
+    }
+
+    .studentBox {
+        flex-direction: column;
+        margin: 0;
+        flex-wrap: wrap;
+    }
+
+    .studentInfoBox {
+        margin-top: 2vh;
+        margin: 0;
+        padding: 0.25rem;
+    }
+
+    .studentCourseBox {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    .courseBoxes {
+        
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: baseline;
+        padding-left: 8px;
+
+        p {
+            width: 33%;
+        }
+
+        p:first-child {
+            margin-top: 3vh;
+        }
+    }
+}
+
+@media (max-width:800px){
+
+    .studentCourseCard {
+        flex-direction: column;
+
+
+
+        .coursesList {
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 0;
+        }
+    }
+
+    .studentSubBox {
+        margin: 2vh 2vw;
+
+        // :nth-child(odd) {
+        //     background-color: #fcfcf2;
+        // }
+    }
+
+    .studentCourseBox {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .courseBoxes {
+        display: flex;
+        justify-content: space-between;
+        padding-left: 8px;
+
+    }
+
+    .studentBox {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .studentInfoBox {
+        margin-bottom: 2vh;
+    }
+
+    p {
+        width: 33%;
+    }
+
+    .noInfo p {
+        width: auto;
+    }
+}
+
+@media (min-width: 767px) {
+
+    .studentCourseCard {
+        flex-direction: column;
+
+        .coursesList {
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 0;
+        }
+    }
+
+    .studentSubBox {
+        margin: 2vh 3vw;
+        text-align: left;
+        // padding: 12px 15px 30px 10px;
+        border: 1px solid darkgrey;
+        padding: 25px;
+    }
+
+    .studentBox {
+        flex-wrap: wrap;
+    }
+
+    .studentCourseBox {
+        display: flex;
+        flex-wrap: wrap;
+        text-align: center;
+    }
+
+    .courseBoxes {
+        width: 23%;
+        padding-top: 3vh;
+    }
+
+    .studentInfoBox {
+        margin-top: 2vh;
+    }
+
+    .noInfo {
+        width: 100%;
     }
 }
