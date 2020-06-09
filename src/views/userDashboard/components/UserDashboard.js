@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { withRouter, Link, useHistory, useRouteMatch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import MessageBox from './MessageBox';
+// import MessageBox from './MessageBox';
 import StudentCourseCard from './StudentCourseCard';
 import './UserSettings.scss'
 
