@@ -1,9 +1,11 @@
 @import "../../styles/variables";
 
-.content {
-    height: 100vh;
+.userContent {
+    min-height: 100vh;
     display: flex;
-	flex-direction: column;
+    flex-direction: column;
+    
+	
 }
 .userDashboardHeader .logOut {
 
@@ -550,9 +552,7 @@
         margin-bottom: 2vh;
     }
 
-    p {
-        width: 33%;
-    }
+    
 
     .noInfo p {
         width: auto;
