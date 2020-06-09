@@ -1,5 +1,10 @@
 @import "../../styles/variables";
 
+.content {
+    height: 100vh;
+    display: flex;
+	flex-direction: column;
+}
 .userDashboardHeader .logOut {
 
     // copied from marketing/Header.scss for now; change to a mixin later
