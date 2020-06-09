@@ -1,111 +1,113 @@
-@import "../styles/variables";
+@import '../styles/variables';
 
-    .form-container {
+.form-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 
-      margin: 0 auto;
-      padding-top: 3rem;
-      text-align: center;
+	// margin: 0 auto;
+	// padding-top: 3rem;
+	// text-align: center;
 
-      width: 90vw;
-      max-width: 800px;
+	// width: 90vw;
+	// max-width: 800px;
 
-      min-height: calc(100vh - 295px);
-      
-      @media #{$desktop} {
-        min-height: calc(100vh - 443px);
-      }
+	// min-height: calc(100vh - 295px);
 
-      h1 {
-        font-size: 3rem;
+	@media #{$desktop} {
+		min-height: calc(100vh - 443px);
+	}
 
-        margin-bottom: 2rem;
+	h1 {
+		font-size: 2rem;
 
-      }
-    }
-    
-    form {
-        display: flex;
-        justify-content: center !important;
-        align-items: center !important;
-        flex-direction: column;
-        text-align: center;
+		margin-bottom: .5rem;
+	}
+}
 
-      fieldset {
-        display: flex;
-        justify-content: center !important;
-        align-items: center !important;
-        flex-direction: column;
-        text-align: center;
+.formz {
+	flex: 1 0 auto;
+}
 
-        label {
+form {
+	display: flex;
+	justify-content: center !important;
+	align-items: center !important;
+	flex-direction: column;
+	// text-align: center;
 
-          font-size: 1.5rem;
+	fieldset {
+		// display: flex;
+		// justify-content: center !important;
+		// align-items: center !important;
+		// flex-direction: column;
+		text-align: center;
 
-          font-weight: bold;
-          color: $tree-green;
-          display: block;
-        }
+		label {
+			font-size: 1.5rem;
+			font-weight: bold;
+			color: $tree-green;
+			display: block;
+		}
 
-        input {
-          border: none;
+		input {
+			border: none;
 
-          font-size: 1.5rem;
-          line-height: 2rem;
+			font-size: 1.5rem;
+			line-height: 2rem;
 
-          margin-top: 1rem;
-          margin-bottom: 2rem;
-          
-          border-bottom: 3px solid #999999;
+			margin: 3% 0;
 
-        }
+			border-bottom: 3px solid #999999;
+		}
 
-        input:focus {
-          border-bottom: 3px solid $tree-light-green;
-        }
-      }
+		input:focus {
+			border-bottom: 3px solid $tree-light-green;
+		}
+	}
 
-      .register, .login-errors {
-        
-        text-align: center;
+	.register,
+	.login-errors {
+		text-align: center;
 
-        color: $tree-green;
+		color: $tree-green;
 
-        p {
-          margin: 0;
-        }
+		p {
+			margin: 0;
+		}
 
-        .reg-link {
-          text-decoration: underline;
-          color: $tree-green;
-        }
-      }
+		.reg-link {
+			text-decoration: underline;
+			color: $tree-green;
+		}
+	}
 
-      .login-errors, .register-errors {
+	.login-errors,
+	.register-errors {
+		margin-top: 1rem;
 
-        margin-top: 1rem;
+		color: $tree-brown;
+		font-weight: bold;
+	}
 
-        color: $tree-brown;
-        font-weight: bold;
-      }
+	button {
+		width: 200px;
 
-      button {
-        width: 200px;
-        
-        font-size: 1.5rem;
-        line-height: 3rem;
+		font-size: 1.5rem;
+		line-height: 3rem;
 
-        border: 1px solid transparent;
+		border: 1px solid transparent;
 
-        border-radius: 7px;
-        color: white;
-        background-color: $tree-green;
-        
-        margin: 0 auto;
-      }
+		border-radius: 7px;
+		color: white;
+		background-color: $tree-green;
 
-      button:hover {
-        cursor: pointer;
+		margin: 0 auto;
+	}
 
-        background-color: lighten($tree-green, 10%);
-      }
-    }
+	button:hover {
+		cursor: pointer;
+
+		background-color: lighten($tree-green, 10%);
+	}
+}
