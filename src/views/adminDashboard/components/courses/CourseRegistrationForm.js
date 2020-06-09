@@ -38,7 +38,7 @@ const CourseRegistrationForm = props => {
         <Div>
           <div>
             <Label>Term</Label>
-              <select className="dropDown" name="term_id" ref={register({required: true })}>
+              <select className="dropDown" name="term" ref={register({required: true })}>
                 <option value="Fall">Fall</option>
                 <option value="Winter">Winter</option>
                 <option value="Spring">Spring</option>
@@ -93,9 +93,7 @@ const CourseRegistrationForm = props => {
           <div>
             <Label>Room</Label>
               <div>
-                <select className="dropDown"  name="room" ref={register({required: true})}>
-                  {createDropdown(props.roomDropdown)}
-                </select>
+                <Input name="room" ref={register({required: true})} />
               </div>
           </div>
 
