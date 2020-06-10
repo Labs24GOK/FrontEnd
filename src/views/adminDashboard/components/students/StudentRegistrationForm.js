@@ -109,7 +109,7 @@ const StudentRegistrationForm = props => {
 					<div className="form-input-div">
 						<Label>School Grade</Label>
 						<div>
-							<select className="dropDown" name="school_grade_id" ref={register({ required: true })}>
+							<select className="dropDown" name="school_grade" ref={register({ required: true })}>
         						{createDropdown(props.schoolGradeTable)}
       						</select>
 						</div>
