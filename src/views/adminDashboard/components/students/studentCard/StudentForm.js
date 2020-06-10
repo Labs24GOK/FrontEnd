@@ -117,24 +117,7 @@ const StudentForm = props => {
 					<div>
 						<Label>School Grade</Label>
 						<div>
-							<select className='dropDown' name="school_grade_id" defaultValue={student.school_grade_id} ref={register({ required: true })}>
-								<option value="1">None</option>
-								<option value="2">KG 1</option>
-								<option value="3">KG 2</option>
-								<option value="4">KG 3</option>
-								<option value="5">Pri 1</option>
-								<option value="6">Pri 2</option>
-								<option value="7">Pri 3</option>
-								<option value="8">Pri 4</option>
-								<option value="9">Pri 5</option>
-								<option value="10">Pri 6</option>
-								<option value="11">Sec 1</option>
-								<option value="12">Sec 2</option>
-								<option value="13">Sec 3</option>
-								<option value="14">Sec 4</option>
-								<option value="15">Sec 5</option>
-								<option value="16">Sec 6</option>
-      						</select>
+							<Input className='dropDown' name="school_grade" defaultValue={student.school_grade} ref={register({ required: true })} />
 						</div>
 					</div>
 					<div style={{ gridColumn: 'span 3' }}>
