@@ -14,7 +14,7 @@ import moment from 'moment-timezone';
 
 const StudentDetails = props => {
   const { Title } = Typography;
-  const { handleChange, formHelper, next } = props;
+  const { handleChange, formHelper, gradeHelper, next } = props;
   const { Option } = Select;
   const { Content } = Layout;
   const dateFormat = 'DD/MM/YYYY';
@@ -167,7 +167,7 @@ const StudentDetails = props => {
                 labelInValue
                 name="school_grade"
                 style={{ width: 100 }}
-                onChange={value => formHelper(value)}
+                onChange={value => gradeHelper(value)}
               >
                 <Option value="None">None</Option>
                 <Option value="KG 1">KG 1</Option>
