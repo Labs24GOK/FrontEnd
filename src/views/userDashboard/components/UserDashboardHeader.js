@@ -42,7 +42,7 @@ function UserDashboardHeader() {
 
         <div className="desktop-header-links">
           <NavLink
-            to="/dashboard"
+            exact to="/dashboard"
             activeClassName="activeNavButton"
             className="desktop-header-link"
           >
