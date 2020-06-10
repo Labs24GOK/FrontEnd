@@ -51,7 +51,7 @@ function Student({ student }) {
                 style={{ cursor: 'pointer', width: '10%', fontSize: '1.75rem', padding: "1%" }}
             >
                 <Icon name="angle left" />
-				Back
+				back
             </div>
             <div>
                 <Switch>
