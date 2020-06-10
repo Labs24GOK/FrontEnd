@@ -98,54 +98,54 @@ export const coursesTableReducer = (
         error: null
       };
     case FETCH_DROPDOWNCOURSES_SUCCESS:
-      let term = action.payload.terms.map(each => {
-        let obj = { value: each.id, label: each.name };
-        return obj;
-      });
-      let courseType = action.payload.course_types.map(
-        each => {
-          let obj = {
-            value: each.id,
-            label: each.description
-          };
-          return obj;
-        }
-      );
-      let groupType = action.payload.group_types.map(
-        each => {
-          let obj = {
-            value: each.id,
-            label: each.short_description
-          };
-          return obj;
-        }
-      );
-      let schoolGrade = action.payload.school_grades.map(
-        each => {
-          let obj = { value: each.id, label: each.name };
-          return obj;
-        }
-      );
-      let level = action.payload.levels.map(each => {
-        let obj = {
-          value: each.id,
-          label: each.description
-        };
-        return obj;
-      });
-      let courseSchedule = action.payload.course_schedules.map(
-        each => {
-          let obj = {
-            value: each.id,
-            label: each.short_description
-          };
-          return obj;
-        }
-      );
-      let room = action.payload.rooms.map(each => {
-        let obj = { value: each.id, label: each.id };
-        return obj;
-      });
+      // let term = action.payload.terms.map(each => {
+      //   let obj = { value: each.id, label: each.name };
+      //   return obj;
+      // });
+      // let courseType = action.payload.course_types.map(
+      //   each => {
+      //     let obj = {
+      //       value: each.id,
+      //       label: each.description
+      //     };
+      //     return obj;
+      //   }
+      // );
+      // let groupType = action.payload.group_types.map(
+      //   each => {
+      //     let obj = {
+      //       value: each.id,
+      //       label: each.short_description
+      //     };
+      //     return obj;
+      //   }
+      // );
+      // let schoolGrade = action.payload.school_grades.map(
+      //   each => {
+      //     let obj = { value: each.id, label: each.name };
+      //     return obj;
+      //   }
+      // );
+      // let level = action.payload.levels.map(each => {
+      //   let obj = {
+      //     value: each.id,
+      //     label: each.description
+      //   };
+      //   return obj;
+      // });
+      // let courseSchedule = action.payload.course_schedules.map(
+      //   each => {
+      //     let obj = {
+      //       value: each.id,
+      //       label: each.short_description
+      //     };
+      //     return obj;
+      //   }
+      // );
+      // let room = action.payload.rooms.map(each => {
+      //   let obj = { value: each.id, label: each.id };
+      //   return obj;
+      // });
       let teacher = action.payload.staff.map(each => {
         let obj = { value: each.id, label: each.name };
         return obj;
@@ -153,13 +153,13 @@ export const coursesTableReducer = (
       return {
         ...state,
         isLoading: false,
-        termTable: term,
-        courseTypeTable: courseType,
-        groupTypeTable: groupType,
-        schoolGradeTable: schoolGrade,
-        levelTable: level,
-        roomTable: room,
-        courseScheduleTable: courseSchedule,
+        // termTable: term,
+        // courseTypeTable: courseType,
+        // groupTypeTable: groupType,
+        // schoolGradeTable: schoolGrade,
+        // levelTable: level,
+        // roomTable: room,
+        // courseScheduleTable: courseSchedule,
         teacherTable: teacher,
         error: null
       };
