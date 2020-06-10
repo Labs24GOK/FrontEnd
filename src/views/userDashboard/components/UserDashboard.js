@@ -3,13 +3,14 @@ import { withRouter, Link, useHistory, useRouteMatch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import StudentCourseCard from './Student/StudentCourseCard';
-import './UserSettings.scss';
-import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
+
+import '../userDashboard.scss'
+
 
 import { getStudentsInFamily } from '../getStudentsinFamily';
 import { getMessagesForUser } from '../getMessagesForUser';
 
-import yellowPlus from '../../../assets/yellowPlus.png';
+
 
 function UserDashboard(props) {
   const [userData, setUserData] = useState({
@@ -66,14 +67,8 @@ function UserDashboard(props) {
       ))}
 
       <Link to={`${url}/student-register`}>
-        <div className="studentCourseCard">
-          <div className="nameAndHamburgerMenu">
-            <div className="icon-container">
-              {/* <h2>New Student</h2> */}
+        <div className="iconContainer">
               <i className="fas fa-user-plus add-icon"></i>
-            </div>
-          </div>
-          {/* <img src={yellowPlus} alt="yellow plus sign" /> */}
         </div>
       </Link>
     </div>
