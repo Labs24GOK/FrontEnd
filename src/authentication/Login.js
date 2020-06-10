@@ -23,6 +23,8 @@ function Login(props) {
       if (tokenData.exp > currentTime) {
         /* check if token is expired */
         return props.history.push('/dashboard');
+      } else {
+        return localStorage.removeItem('token')
       }
     }
   }, [props.history]);

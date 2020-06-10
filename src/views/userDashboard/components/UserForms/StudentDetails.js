@@ -14,7 +14,7 @@ import moment from 'moment-timezone';
 
 const StudentDetails = props => {
   const { Title } = Typography;
-  const { handleChange, formHelper, next } = props;
+  const { handleChange, formHelper, gradeHelper, next } = props;
   const { Option } = Select;
   const { Content } = Layout;
   const dateFormat = 'DD/MM/YYYY';
@@ -162,29 +162,29 @@ const StudentDetails = props => {
 
         <Row justify="space-between">
           <Col>
-            <Form.Item name="school_grade_id" label="Grade Level">
+            <Form.Item name="school_grade" label="Grade Level">
               <Select
                 labelInValue
-                name="school_grade_id"
+                name="school_grade"
                 style={{ width: 100 }}
-                onChange={value => formHelper(value)}
+                onChange={value => gradeHelper(value)}
               >
-                <Option value="1">None</Option>
-                <Option value="2">KG 1</Option>
-                <Option value="3">KG 2</Option>
-                <Option value="4">KG 3</Option>
-                <Option value="5">Pri 1</Option>
-                <Option value="6">Pri 2</Option>
-                <Option value="7">Pri 3</Option>
-                <Option value="8">Pri 4</Option>
-                <Option value="9">Pri 5</Option>
-                <Option value="10">Pri 6</Option>
-                <Option value="11">Sec 1</Option>
-                <Option value="12">Sec 2</Option>
-                <Option value="13">Sec 3</Option>
-                <Option value="14">Sec 4</Option>
-                <Option value="15">Sec 5</Option>
-                <Option value="16">Sec 6</Option>
+                <Option value="None">None</Option>
+                <Option value="KG 1">KG 1</Option>
+                <Option value="KG 2">KG 2</Option>
+                <Option value="KG 3">KG 3</Option>
+                <Option value="Pri 1">Pri 1</Option>
+                <Option value="Pri 2">Pri 2</Option>
+                <Option value="Pri 3">Pri 3</Option>
+                <Option value="Pri 4">Pri 4</Option>
+                <Option value="Pri 5">Pri 5</Option>
+                <Option value="Pri 6">Pri 6</Option>
+                <Option value="Sec 1">Sec 1</Option>
+                <Option value="Sec 2">Sec 2</Option>
+                <Option value="Sec 3">Sec 3</Option>
+                <Option value="Sec 4">Sec 4</Option>
+                <Option value="Sec 5">Sec 5</Option>
+                <Option value="Sec 6">Sec 6</Option>
               </Select>
             </Form.Item>
           </Col>

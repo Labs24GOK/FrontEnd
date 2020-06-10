@@ -37,11 +37,6 @@ const RegisterStudentForm = props => {
         ...studentForm,
         gender: value,
       });
-    } else if (value >= 1 && value <= 16) {
-      setStudentForm({
-        ...studentForm,
-        school_grade_id: value,
-      });
     } else {
       setStudentForm({
         ...studentForm,
@@ -49,6 +44,15 @@ const RegisterStudentForm = props => {
       });
     }
   };
+
+  const gradeHelper = ({value}) => {
+    if (value) {
+      setStudentForm({
+        ...studentForm,
+        school_grade: value,
+      });
+  }
+};
 
   const submitForm = values => {
     props.createNewStudent(studentForm);
@@ -112,6 +116,7 @@ const RegisterStudentForm = props => {
             studentForm={studentForm}
             handleChange={handleChange}
             formHelper={formHelper}
+            gradeHelper={gradeHelper}
             next={next}
           />
         );
