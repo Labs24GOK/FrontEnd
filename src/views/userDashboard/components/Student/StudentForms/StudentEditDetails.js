@@ -34,10 +34,11 @@ const StudentEditDetails = props => {
       axiosWithAuth()
         .put(`/student/${props.student.student_id}`, data)
         .then(res => {
-          console.log("Submit-Res: ", res);
+          
+          history.push(`/student/${props.student.student_id}`);
         })   
 
-        history.push(`/student/${props.student.student_id}`);
+        
   }
 
   const handleCancel = () => {
