@@ -12,7 +12,7 @@ const UserSettings = () => {
 	// Extracting User details from user's token
 	const token = localStorage.getItem('token');
 	const tokenData = JSON.parse(atob(token.split('.')[1]));
-	console.log(tokenData);
+	
 	const { subject } = tokenData;
 
 	useEffect(() => {

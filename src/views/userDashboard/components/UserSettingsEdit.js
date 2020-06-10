@@ -8,7 +8,7 @@ import './UserSettings.scss';
 const UserSettingsEdit = () => {
 	const [ user , setUser] = useState({})
 	const { register, handleSubmit, errors } = useForm();
-	console.log(errors);
+	
 	const history = useHistory();
 
 	const token = localStorage.getItem('token');
@@ -31,7 +31,6 @@ const UserSettingsEdit = () => {
 		axiosWithAuth()
 			.put(`/users/${subject}`, data)
 			.then(res => {
-				console.log(res)
 				history.push(`/dashboard/account-settings`);
 			})
 			.catch(err => {

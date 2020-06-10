@@ -55,7 +55,7 @@ function UserDashboard(props) {
   } else if (!userID) {
     return <h2>Invalid user ID</h2>;
   }
-  console.log('userData.students: ', userData.students);
+  
   return (
     <div className="userDashboard ">
       <h1>Welcome, {name}.</h1>
