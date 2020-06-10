@@ -28,8 +28,10 @@ const StudentEditDetails = props => {
 
   const submitNow = (data) => {
     data.cpr = props.student.cpr;
-    data.school_grade_id = props.student.school_grade_id;
+    data.school_grade = props.student.school_grade;
     data.user_id = props.student.user_id;
+
+    console.log("dadaa", data)
 
       axiosWithAuth()
         .put(`/student/${props.student.student_id}`, data)
