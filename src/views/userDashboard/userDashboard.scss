@@ -1,567 +1,581 @@
 @import '../../styles/variables';
 
 .userContent {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 .userDashboardHeader .logOut {
-  // copied from marketing/Header.scss for now; change to a mixin later
-  display: inline-block;
+	// copied from marketing/Header.scss for now; change to a mixin later
+	display: inline-block;
 
-  font-size: 1.5rem;
-  line-height: 3rem;
+	font-size: 1.5rem;
+	line-height: 3rem;
 
-  padding: 0 1rem;
-  color: $tree-green;
-  border-bottom: 3px solid transparent;
+	padding: 0 1rem;
+	color: $tree-green;
+	border-bottom: 3px solid transparent;
 
-  &:hover {
-    border-bottom: 3px solid $tree-peacock;
-  }
+	&:hover {
+		border-bottom: 3px solid $tree-peacock;
+	}
 }
 
 .userDashboard {
-  width: 90%;
-  margin: 0 auto;
+	width: 90%;
+	flex: 1 0 auto;
+	margin: 0 auto;
 
-  h1 {
-    font-size: 2.5rem;
-    margin: 3rem 0;
-    text-align: left;
-  }
+	h1 {
+		font-size: 2.5rem;
+		margin: 1rem 0;
+		text-align: left;
+	}
 
-  .messageBox {
-    border: 3px solid black;
-    padding: 1rem;
+	.iconContainer {
+		text-align: right;
 
-    background-color: #eeeeee;
+		.add-icon {
+			font-size: 3rem;
+			color: $tree-peacock;
 
-    li {
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
-    }
-  }
+			&:hover {
+				color: $tree-green;
+			}
+		}
+	}
 
-  button {
-    display: block;
+	// .messageBox {
+	// 	border: 3px solid black;
+	// 	padding: 1rem;
 
-    margin: 2rem 0 2rem auto;
+	// 	background-color: #eeeeee;
 
-    font-size: 1.5rem;
-    line-height: 3rem;
-    padding: 0 1rem;
+	// 	li {
+	// 		font-size: 1.25rem;
+	// 		margin-bottom: 1rem;
+	// 	}
+	// }
 
-    color: black;
-    background-color: #eeeeee;
+	// button {
+	// 	display: block;
 
-    border: 3px solid black;
-    border-radius: 5px;
+	// 	margin: 2rem 0 2rem auto;
 
-    cursor: pointer;
+	// 	font-size: 1.5rem;
+	// 	line-height: 3rem;
+	// 	padding: 0 1rem;
 
-    &:hover {
-      background-color: #cccccc;
-    }
-  }
+	// 	color: black;
+	// 	background-color: #eeeeee;
+
+	// 	border: 3px solid black;
+	// 	border-radius: 5px;
+
+	// 	cursor: pointer;
+
+	// 	&:hover {
+	// 		background-color: #cccccc;
+	// 	}
+	// }
 }
 
-.modal-displayed {
-  display: block;
-}
+// .modal-displayed {
+// 	display: block;
+// }
 
-.modal-hidden {
-  display: none;
-}
+// .modal-hidden {
+// 	display: none;
+// }
 
-.addStudentModal {
-  z-index: 2;
+// .addStudentModal {
+// 	z-index: 2;
 
-  position: fixed;
-  top: 0;
-  left: 0;
+// 	position: fixed;
+// 	top: 0;
+// 	left: 0;
 
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
+// 	width: 100vw;
+// 	height: 100vh;
+// 	background-color: rgba(0, 0, 0, 0.8);
 
-  overflow: auto;
-}
+// 	overflow: auto;
+// }
 
 .addStudentModalContents {
-  width: 80vw;
+	width: 80vw;
 
-  margin: 5vh 10vw;
+	margin: 5vh 10vw;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
 
-  border: 3px solid black;
-  background-color: #eeeeee;
+	border: 3px solid black;
+	background-color: #eeeeee;
 
-  h2 {
-    margin: 1rem auto 0 auto;
-  }
+	h2 {
+		margin: 1rem auto 0 auto;
+	}
 
-  .modalButtons {
-    display: flex;
-    justify-content: flex-end;
+	.modalButtons {
+		display: flex;
+		justify-content: flex-end;
 
-    width: 100%;
+		width: 100%;
 
-    margin: 2rem 0;
+		margin: 2rem 0;
 
-    button {
-      margin: 0 2rem;
-    }
-  }
+		button {
+			margin: 0 2rem;
+		}
+	}
 
-  // new styles for StudentRegistrationForm in adminDashboard
-  .userAddStudentForm {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+	// new styles for StudentRegistrationForm in adminDashboard
+	.userAddStudentForm {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 
-    width: 300px;
+		width: 300px;
 
-    div {
-      width: 100%;
-      margin: 0.25rem auto;
-    }
+		div {
+			width: 100%;
+			margin: 0.25rem auto;
+		}
 
-    label {
-      font-weight: bold;
-    }
-  }
+		label {
+			font-weight: bold;
+		}
+	}
 
-  .form-button-div {
-    display: flex;
-    justify-content: flex-end;
+	.form-button-div {
+		display: flex;
+		justify-content: flex-end;
 
-    button {
-      font-size: 1.25rem;
-      line-height: 3rem;
-      height: 3rem;
-      margin: 1rem;
-    }
+		button {
+			font-size: 1.25rem;
+			line-height: 3rem;
+			height: 3rem;
+			margin: 1rem;
+		}
 
-    .cancel {
-      width: 40%;
-    }
+		.cancel {
+			width: 40%;
+		}
 
-    .add {
-      width: 60%;
-    }
-  }
+		.add {
+			width: 60%;
+		}
+	}
 }
 
 .studentCourseCard {
-  border: 1px solid darkgrey;
-  padding: 2rem;
+	border: 1px solid darkgrey;
+	padding: 2rem;
 
-  margin-bottom: 2rem;
+	margin-bottom: 2rem;
 
-  background-color: #eeeeee;
+	background-color: #eeeeee;
 
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 
-  img {
-    width: 12.5%;
-    margin: 0 auto;
-    padding: 0 1% 0 0;
-  }
+	img {
+		width: 12.5%;
+		margin: 0 auto;
+		padding: 0 1% 0 0;
+	}
 
-  .firstName,
-  .additionalNames {
-    background-color: #70bf44;
-    width: 87vw;
-    padding-left: 13px;
-  }
+	.firstName,
+	.additionalNames {
+		background-color: #70bf44;
+		width: 87vw;
+		padding-left: 13px;
+	}
 
-  .courseAmount {
-    padding-left: 13px;
-  }
+	.courseAmount {
+		padding-left: 13px;
+	}
 
-  .nameAndHamburgerMenu {
-    display: flex;
-    justify-content: space-between;
+	.nameAndHamburgerMenu {
+		display: flex;
+		justify-content: space-between;
 
-    // margin-bottom: 2rem;
+		// margin-bottom: 2rem;
 
-    .icon-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-size: 5rem;
-      color: #00A79D;
-      
-        @media #{$desktop} {
-            font-size: 4rem;
-        }
-      }
+		.icon-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			font-size: 5rem;
+			color: #00a79d;
 
-    img {
-      width: 32px;
-      height: 32px;
+			@media #{$desktop} {
+				font-size: 4rem;
+			}
+		}
 
-      cursor: pointer;
-    }
-  }
+		img {
+			width: 32px;
+			height: 32px;
 
-  .firstName {
-    font-size: 2rem;
-    margin-bottom: 0;
-  }
+			cursor: pointer;
+		}
+	}
 
-  .additionalNames {
-    margin: 0;
-  }
+	.firstName {
+		font-size: 2rem;
+		margin-bottom: 0;
+	}
 
-  .courseData {
-    margin-bottom: 5rem;
+	.additionalNames {
+		margin: 0;
+	}
 
-    .logoAndProgram {
-      display: flex;
-      align-items: center;
+	.courseData {
+		margin-bottom: 5rem;
 
-      img {
-        width: 64px;
-        height: auto;
+		.logoAndProgram {
+			display: flex;
+			align-items: center;
 
-        margin-right: 1rem;
-      }
-    }
+			img {
+				width: 64px;
+				height: auto;
 
-    h3 {
-      font-size: 2rem;
-      font-weight: bold;
-    }
+				margin-right: 1rem;
+			}
+		}
 
-    table {
-      margin: 2rem 0 2rem auto;
+		h3 {
+			font-size: 2rem;
+			font-weight: bold;
+		}
 
-      thead {
-        border-bottom: 2px solid black;
-      }
+		table {
+			margin: 2rem 0 2rem auto;
 
-      td,
-      th {
-        font-size: 1.25rem;
-        line-height: 2.5rem;
+			thead {
+				border-bottom: 2px solid black;
+			}
 
-        padding: 0 1rem;
-      }
+			td,
+			th {
+				font-size: 1.25rem;
+				line-height: 2.5rem;
 
-      .startEndDatesTimes {
-        line-height: 2rem;
-      }
-    }
+				padding: 0 1rem;
+			}
 
-    button {
-      margin: 0;
-      padding: 0 0.5rem;
+			.startEndDatesTimes {
+				line-height: 2rem;
+			}
+		}
 
-      font-size: 1rem;
-      line-height: 1.5rem;
+		button {
+			margin: 0;
+			padding: 0 0.5rem;
 
-      border: 2px solid;
+			font-size: 1rem;
+			line-height: 1.5rem;
 
-      background-color: #cccccc;
-    }
-  }
+			border: 2px solid;
 
-  .noCourses {
-    font-size: 1.5rem;
-    font-style: oblique;
+			background-color: #cccccc;
+		}
+	}
 
-    text-align: center;
+	.noCourses {
+		font-size: 1.5rem;
+		font-style: oblique;
 
-    margin: 5rem;
-  }
+		text-align: center;
 
-  .coursesList {
-    font-size: 1 rem;
-    text-align: center;
-    margin: 0 auto;
-    padding: 0 15%;
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-  }
+		margin: 5rem;
+	}
+
+	.coursesList {
+		font-size: 1 rem;
+		text-align: center;
+		margin: 0 auto;
+		padding: 0 15%;
+		display: flex;
+		justify-content: space-evenly;
+		width: 100%;
+	}
 }
 
 .studentTitle {
-  margin: 2%;
-  font-size: 3rem;
+	margin: 2%;
+	font-size: 3rem;
 }
 
 .studentBox {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: stretch;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: stretch;
 
-  margin: auto 10rem 2rem;
+	margin: auto 10rem 2rem;
 }
 
 .studentInfoBox {
-  border: 1px solid darkgrey;
+	border: 1px solid darkgrey;
 
-  padding: 1.5rem;
-  margin: auto 3%;
-  width: 100%;
+	padding: 1.5rem;
+	margin: auto 3%;
+	width: 100%;
 
-  h2 {
-    background-color: #70bf44;
-    padding: 6px 0;
-    text-align: center;
-  }
+	h2 {
+		background-color: #70bf44;
+		padding: 6px 0;
+		text-align: center;
+	}
 
-  background-color: #eeeeee;
+	background-color: #eeeeee;
 
-  .studentSubBox {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: stretch;
+	.studentSubBox {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+		align-items: stretch;
 
-    div {
-      padding: 1%;
-      width: 95%;
-    }
+		div {
+			padding: 1%;
+			width: 95%;
+		}
 
-    .studentCourseBox {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin: 0 auto;
+		.studentCourseBox {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: flex-start;
+			margin: 0 auto;
 
-      div {
-        margin: 0 15px;
-      }
-    }
-  }
+			div {
+				margin: 0 15px;
+			}
+		}
+	}
 }
 
 .studentEditButton {
-  width: 25;
-  margin: 0 auto 1%;
+	width: 25;
+	margin: 0 auto 1%;
 
-  display: flex;
-  justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 
 .noInfo {
-  text-align: center;
+	text-align: center;
 }
 
 .editBox {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: stretch;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: stretch;
 
-  margin: auto 10rem 2rem;
-  width: 90%;
+	margin: auto 10rem 2rem;
+	width: 90%;
 }
 
 .editInfoBox {
-  border: 3px solid black;
+	border: 3px solid black;
 
-  padding: 1.5rem;
-  margin: auto 3%;
-  width: 100%;
+	padding: 1.5rem;
+	margin: auto 3%;
+	width: 100%;
 
-  background-color: #eeeeee;
+	background-color: #eeeeee;
 
-  h2 {
-    text-align: left;
-  }
+	h2 {
+		text-align: left;
+	}
 
-  h4 {
-    font-size: 1.5rem;
-  }
+	h4 {
+		font-size: 1.5rem;
+	}
 
-  .editSubBox {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: stretch;
+	.editSubBox {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+		align-items: stretch;
 
-    div {
-      padding: 4%;
-      width: 80%;
-    }
+		div {
+			padding: 4%;
+			width: 80%;
+		}
 
-    h4 {
-      font-size: 1.5rem;
-    }
-  }
+		h4 {
+			font-size: 1.5rem;
+		}
+	}
 }
 
 .editTitle {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 
-  h1 {
-    margin: 5% 0;
-    font-size: 2.5rem;
-  }
+	h1 {
+		margin: 5% 0;
+		font-size: 2.5rem;
+	}
 }
 
 // Media Queries
 
 @media (max-width: 500px) {
-  .studentCourseCard {
-    flex-direction: column;
+	.studentCourseCard {
+		flex-direction: column;
 
-    .coursesList {
-      flex-direction: column;
-    }
-  }
+		.coursesList {
+			flex-direction: column;
+		}
+	}
 
-  .studentSubBox {
-    margin-bottom: 7vh;
-    text-align: left;
-    padding-bottom: 30px;
-    border-bottom: 1px solid darkgrey;
+	.studentSubBox {
+		margin-bottom: 7vh;
+		text-align: left;
+		padding-bottom: 30px;
+		border-bottom: 1px solid darkgrey;
 
-    p {
-      width: 100%;
-    }
+		p {
+			width: 100%;
+		}
 
-    span {
-      font-size: 0.9rem;
-      padding-left: 20px;
-    }
-  }
+		span {
+			font-size: 0.9rem;
+			padding-left: 20px;
+		}
+	}
 
-  .studentBox {
-    flex-direction: column;
-    margin: 0;
-    flex-wrap: wrap;
-  }
+	.studentBox {
+		flex-direction: column;
+		margin: 0;
+		flex-wrap: wrap;
+	}
 
-  .studentInfoBox {
-    margin-top: 2vh;
-    margin: 0;
-    padding: 0.25rem;
-  }
+	.studentInfoBox {
+		margin-top: 2vh;
+		margin: 0;
+		padding: 0.25rem;
+	}
 
-  .studentCourseBox {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-  }
+	.studentCourseBox {
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: column;
+	}
 
-  .courseBoxes {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: baseline;
-    padding-left: 8px;
+	.courseBoxes {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: baseline;
+		padding-left: 8px;
 
-    p {
-      width: 33%;
-    }
+		p {
+			width: 33%;
+		}
 
-    p:first-child {
-      margin-top: 3vh;
-    }
-  }
+		p:first-child {
+			margin-top: 3vh;
+		}
+	}
 }
 
 @media (max-width: 800px) {
-  .studentCourseCard {
-    flex-direction: column;
+	.studentCourseCard {
+		flex-direction: column;
 
-    .coursesList {
-      flex-wrap: wrap;
-      justify-content: space-around;
-      padding: 0;
-    }
-  }
+		.coursesList {
+			flex-wrap: wrap;
+			justify-content: space-around;
+			padding: 0;
+		}
+	}
 
-  .studentSubBox {
-    margin: 2vh 2vw;
+	.studentSubBox {
+		margin: 2vh 2vw;
 
-    // :nth-child(odd) {
-    //     background-color: #fcfcf2;
-    // }
-  }
+		// :nth-child(odd) {
+		//     background-color: #fcfcf2;
+		// }
+	}
 
-  .studentCourseBox {
-    display: flex;
-    flex-direction: column;
-  }
+	.studentCourseBox {
+		display: flex;
+		flex-direction: column;
+	}
 
-  .courseBoxes {
-    display: flex;
-    justify-content: space-between;
-    padding-left: 8px;
-  }
+	.courseBoxes {
+		display: flex;
+		justify-content: space-between;
+		padding-left: 8px;
+	}
 
-  .studentBox {
-    display: flex;
-    flex-direction: column;
-  }
+	.studentBox {
+		display: flex;
+		flex-direction: column;
+	}
 
-  .studentInfoBox {
-    margin-bottom: 2vh;
-  }
+	.studentInfoBox {
+		margin-bottom: 2vh;
+	}
 
-  .noInfo p {
-    width: auto;
-  }
+	.noInfo p {
+		width: auto;
+	}
 }
 
 @media (min-width: 767px) {
-  .studentCourseCard {
-    flex-direction: column;
+	.studentCourseCard {
+		flex-direction: column;
 
-    .coursesList {
-      flex-wrap: wrap;
-      justify-content: space-around;
-      padding: 0;
-    }
-  }
+		.coursesList {
+			flex-wrap: wrap;
+			justify-content: space-around;
+			padding: 0;
+		}
+	}
 
-  .studentSubBox {
-    margin: 2vh 3vw;
-    text-align: left;
-    // padding: 12px 15px 30px 10px;
-    border: 1px solid darkgrey;
-    padding: 25px;
-  }
+	.studentSubBox {
+		margin: 2vh 3vw;
+		text-align: left;
+		// padding: 12px 15px 30px 10px;
+		border: 1px solid darkgrey;
+		padding: 25px;
+	}
 
-  .studentBox {
-    flex-wrap: wrap;
-  }
+	.studentBox {
+		flex-wrap: wrap;
+	}
 
-  .studentCourseBox {
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-  }
+	.studentCourseBox {
+		display: flex;
+		flex-wrap: wrap;
+		text-align: center;
+	}
 
-  .courseBoxes {
-    width: 23%;
-    padding-top: 3vh;
-  }
+	.courseBoxes {
+		width: 23%;
+		padding-top: 3vh;
+	}
 
-  .studentInfoBox {
-    margin-top: 2vh;
-  }
+	.studentInfoBox {
+		margin-top: 2vh;
+	}
 
-  .noInfo {
-    width: 100%;
-  }
+	.noInfo {
+		width: 100%;
+	}
 }
