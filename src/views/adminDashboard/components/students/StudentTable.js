@@ -2,14 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, useHistory } from 'react-router-dom';
 import { getStudentTable } from '../../../../actions';
-import { Table, Spin } from 'antd';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { Table, Tag, Spin } from 'antd';
 import StudentRegistrationForm from './StudentRegistrationForm';
 import SearchStundentTable from './SearchStudentTable';
 import 'antd/dist/antd.css';
 import '../mainStyle/mainTable.scss';
-import StudentCard from './studentCard/StudentCard';
 
 const StudentTable = props => {
   const { push } = useHistory()
@@ -26,6 +23,44 @@ const StudentTable = props => {
   const handleAddButton = () => {
     setForm(!form);
   };
+
+  const studentData = props.studentList.sort((a, b) => {
+    return b.id - a.id;
+  });
+ 
+  
+  // registration_date: "2020-06-01T07:00:00.000Z" (How a students registration date looks)
+  const studentStatus = studentData.map(student => {
+    const regDate = new Date(student.registration_date)
+    const month = regDate.getMonth();
+    const currentMonth = new Date().getMonth()
+    if(month <= currentMonth && !(month < currentMonth - 1)) {
+      return {
+        ...student,
+        status: student.status ? [...student.status, 'new'] : ['new']
+      }
+    } else {
+      return {
+        ...student,
+        status: []
+      }
+    }
+  })
+
+  const studentEnrolled = studentStatus.map(student => {
+    console.log('studentsss', student)
+    if(student.enrolled === false) {
+      return {
+        ...student,
+        status: [...student.status, 'unenrolled']
+      }
+    } else {
+      return {
+        ...student,
+        status: [...student.status, 'enrolled']
+      }
+    }
+  })
 
   const studentTableColumns = [
     {
@@ -49,6 +84,36 @@ const StudentTable = props => {
       key: 4,
     },
     {
+      title: 'Status',
+      key: 'status',
+      dataIndex: 'status',
+      render: status => (
+        <>
+          {status.map(tag => {
+            let color;
+            switch(tag) {
+              case 'new':
+                color = 'geekblue'
+                break;
+              case 'enrolled':
+                color = 'green'
+                break;
+              case 'unenrolled':
+                color = 'red'
+                break;
+              default:
+                return null;
+            }
+            return (
+              <Tag color={color} key={tag}>
+                {tag.toUpperCase()}
+              </Tag>
+            );
+          })}
+        </>
+      ),
+    },
+    {
       title: 'Gender',
       dataIndex: 'gender',
       key: 5,
@@ -60,10 +125,6 @@ const StudentTable = props => {
     },
   ];
 
-  const studentData = props.studentList.sort((a, b) => {
-    return b.id - a.id;
-  });
- 
   return (
     <div>
         <h2 style={{textAlign: "left", marginLeft: "1.3rem"}}>
@@ -87,7 +148,7 @@ const StudentTable = props => {
       ) : (
         <Table
           className='rowHover'
-          dataSource={studentData}
+          dataSource={studentEnrolled}
           columns={studentTableColumns}
           pagination={false}
           rowKey='id'
