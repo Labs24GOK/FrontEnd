@@ -386,7 +386,7 @@
 }
 
 .editInfoBox {
-	border: 3px solid black;
+	border: 1px solid lightgrey;
 
 	padding: 1.5rem;
 	margin: auto 3%;
@@ -491,6 +491,42 @@
 			margin-top: 3vh;
 		}
 	}
+
+	.editTitle {
+		flex-direction: column;
+
+		h1 {
+			font-size: 1.5rem;
+		}
+	}
+
+	.editBox {
+		flex-direction: column;
+	}
+
+	.editInfoBox {
+
+		margin: auto;
+		margin-bottom: 2vh;
+
+		.editInfoBox:nth-child(2) {
+			margin-bottom: 0;
+		}
+
+		.editSubBox {
+
+			flex-direction: column;
+			align-items: center;
+
+			h4 {
+				font-size: 1rem;
+			}
+
+			div {
+				padding: 2.5%;
+			}
+		}
+	} 
 }
 
 @media (max-width: 800px) {
@@ -577,5 +613,20 @@
 
 	.noInfo {
 		width: 100%;
+	}
+
+	.editInfoBox {
+
+		padding: 1.125rem;
+		margin: 1%;
+
+		.editSubBox {
+
+			
+
+			div {
+				padding: 2.5%;
+			}
+		}
 	}
 }

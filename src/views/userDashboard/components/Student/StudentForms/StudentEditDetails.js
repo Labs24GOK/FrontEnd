@@ -52,7 +52,7 @@ const StudentEditDetails = props => {
     <form onSubmit={handleSubmit(submitNow)}>
       <div className="editTitle">
         <h1>
-          <EditName
+          <input
             type="text"
             className={errors.first_name && "input-error"}
             name="first_name"
@@ -63,7 +63,7 @@ const StudentEditDetails = props => {
         </h1>
         &emsp;
         <h1>
-          <EditName 
+          <input 
             type="text"
             className={errors.additional_names && "input-error"}
             name="additional_names"
