@@ -9,7 +9,7 @@ const StudentReview = props => {
     birthdate,
     gender,
     school_name,
-    school_grade_id,
+    school_grade,
     email,
     address,
     phone_number,
@@ -84,7 +84,7 @@ const StudentReview = props => {
           <Text type="secondary">School Grade</Text>
         </Col>
         <Col span={12}>
-          <Text>{school_grade_id}</Text>
+          <Text>{school_grade}</Text>
         </Col>
       </Row>
 
