@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import axiosWithAuth from '../../../utils/axiosWithAuth';
@@ -6,19 +6,32 @@ import { PrimaryButton, SecondaryButton } from '../../../styles/BtnStyle';
 import './UserSettings.scss';
 
 const UserSettingsEdit = () => {
+	const [ user , setUser] = useState({})
 	const { register, handleSubmit, errors } = useForm();
-	console.log(errors);
+	
 	const history = useHistory();
 
 	const token = localStorage.getItem('token');
 	const tokenData = JSON.parse(atob(token.split('.')[1]));
-	const { subject, name, email } = tokenData;
+	const { subject } = tokenData;
+
+	useEffect(() => {
+		axiosWithAuth()
+					.get(`/users/${subject}`)
+					.then(res => {
+						
+						setUser(res.data[0])
+					})
+					.catch(err => {
+						console.log('whoops', err);
+					});
+			},[])
 
 	const onSubmit = data => {
 		axiosWithAuth()
 			.put(`/users/${subject}`, data)
 			.then(res => {
-				console.log('success', res);
+				history.push(`/dashboard/account-settings`);
 			})
 			.catch(err => {
 				console.log('whoops', err);
@@ -38,7 +51,7 @@ const UserSettingsEdit = () => {
 				</label>
 				<input
 					type='text'
-					defaultValue={name}
+					defaultValue={user.name}
 					name='name'
           ref={register({ required: true, min: 2, maxLength: 100 })}
           className='form-input'
@@ -48,7 +61,7 @@ const UserSettingsEdit = () => {
 				</label>
 				<input
 					type='email'
-					defaultValue={email}
+					defaultValue={user.email}
 					name='email'
           ref={register({ required: true })}
           className='form-input'

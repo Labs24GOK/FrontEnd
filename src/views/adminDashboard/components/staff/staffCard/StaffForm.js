@@ -19,9 +19,6 @@ const StaffForm = props => {
     .toISOString()
     .split('T')[0];
 
-    // useEffect(() => {
-    //   props.editStaffById();
-    // }, []);
 
   const closeBtn = e => {
     e.preventDefault();
@@ -40,20 +37,6 @@ const StaffForm = props => {
               {errors.name && errors.name.type === "required" && 'Name is Required'}
             </div>
           </div>
-          {/* <div>
-            <Label>Short Name</Label>
-            <div>
-              <Input type='text' name= 'short_name' className={errors.short_name && "input-error"} defaultValue = {props.staffById.short_name} ref={register({required:true})} />
-               {errors.short_name && errors.short_name.type === "required" && 'Short name is Required'}
-            </div>
-          </div> */}
-          {/* <div>
-            <Label>Username</Label>
-            <div>
-              <Input type='text' name='username' className={errors.username && "input-error"} defaultValue = {props.staffById.username} ref={register({required:true})}/>
-              {errors.username && errors.username.type === "required" && 'Username is Required'}
-            </div>
-          </div> */}
           <div>
             <Label>Government ID</Label>
             <div>

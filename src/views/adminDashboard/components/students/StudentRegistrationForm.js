@@ -13,12 +13,8 @@ import {FormWrap, Input, Div, FormSet, ButtonDiv, CancelButton, AddButton, Label
 const StudentRegistrationForm = props => {
 
 	const { register, errors, handleSubmit } = useForm();
-	// const dropDowns = ['block_code', 'preferred_contact_type_id', 'school_grade_id', 'location_id', "user_id"]
+	
 	const submitNow = data => {
-		// for (const property of dropDowns) {
-		// 	// if the string should/could be converted to a number
-		// 		data[property] = parseInt(data[property])
-		// }
 		props.createNewStudent(data);
 		props.setForm(false);
 	}

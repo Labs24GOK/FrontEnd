@@ -11,7 +11,6 @@ import AttendanceModal from './AttendanceModal';
 
 const StaffCoursesTab = props => {
   const { staffID, teacher } = props;
-  console.log(teacher);
   useEffect(() => {
     props.getStaffCourses(staffID);
   }, []);
