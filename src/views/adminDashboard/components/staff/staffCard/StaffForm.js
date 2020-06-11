@@ -12,7 +12,7 @@ const StaffForm = props => {
   const { register, errors, handleSubmit} = useForm();
 
   const submitNow = data => {
-    console.log(data)
+    
     props.editStaffById(staffID, data);
   }
 
