@@ -12,6 +12,7 @@ const StaffForm = props => {
   const { register, errors, handleSubmit} = useForm();
 
   const submitNow = data => {
+    
     props.editStaffById(staffID, data);
   }
 
@@ -94,7 +95,7 @@ const StaffForm = props => {
           <div>
             <Label>Admin</Label>
             <div>
-            <select name="admin" defaultValue={props.staffById.user_type} className="dropDown" ref={register}>
+            <select name="user_type" defaultValue={props.staffById.user_type} className="dropDown" ref={register}>
                 <option value="admin">Yes</option>
                 <option value="staff">No</option>
               </select>
