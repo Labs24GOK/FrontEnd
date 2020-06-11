@@ -48,7 +48,6 @@ const StudentTable = props => {
   })
 
   const studentEnrolled = studentStatus.map(student => {
-    console.log('studentsss', student)
     if(student.enrolled === false) {
       return {
         ...student,
