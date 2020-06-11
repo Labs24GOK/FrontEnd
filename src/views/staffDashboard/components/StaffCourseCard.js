@@ -37,7 +37,7 @@ const StaffCourseCard = () => {
     		<h5 className='courseItem'>{timeConverter(courseData.start_time)} - {timeConverter(courseData.end_time)}</h5>
             <h4 className='courseItem'> Course Type: {courseData.course_type}</h4>
             <h4 className='courseItem'> Hourly Rate: {courseData.hourly_rate}</h4>
-            <h4 className='courseItem'> Room: {courseData.room_id} -- Chairs: {courseData.room}</h4>
+            <h4 className='courseItem'> Room:  {courseData.room}</h4>
             <h4 className='courseItem'> Notes: {courseData.notes}</h4>
 			</div>
 			<Button
