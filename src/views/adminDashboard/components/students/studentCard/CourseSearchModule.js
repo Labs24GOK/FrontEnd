@@ -240,7 +240,7 @@ const CourseSearchModule = props => {
   };
 
   return (
-    <div>
+    <div style={{ maxWidth: '100%' }}>
       {props.isLoading
         ? <Spin
             style={{ marginTop: '150px' }}
@@ -248,7 +248,7 @@ const CourseSearchModule = props => {
           />
         : <div>
             <Modal
-              width="70%"
+              width="90%"
               title="Course Search"
               visible={props.modalVisible.visible}
               onOk={handleOk}
@@ -267,6 +267,7 @@ const CourseSearchModule = props => {
               ]}
             >
               <Table
+                style={{ MaxWidth: '99%', overflowX: 'scroll'  }}
                 dataSource={courseData(props.courseList)}
                 columns={tableColumns}
                 pagination={true}
