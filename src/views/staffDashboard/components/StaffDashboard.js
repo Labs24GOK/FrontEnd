@@ -22,7 +22,6 @@ function StaffDashboard() {
 		axiosWithAuth()
 			.get(`/staffdashboard/${user}`)
 			.then(res => {
-				// console.log("res", res.data)
 				setStaff(res.data);
 			})
 			.catch(err => {
