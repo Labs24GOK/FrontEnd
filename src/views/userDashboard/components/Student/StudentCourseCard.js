@@ -21,28 +21,34 @@ function StudentCourseCard({ student }) {
 
   return (
     <div className="container">
-      <div className="student-card">
+      <div className="student">
         <h2>
-          {student.first_name}
+          <span>{student.first_name}</span>
           {student.additional_names}
         </h2>
       </div>
-      <div className="course-card">
-        <p>{studentCourse.length} course(s)</p>
+      <div className="container">
+        <div>
+          <p>{studentCourse.length} course(s)</p>
+        </div>
         {!studentCourse || studentCourse.length === 0 ? (
           <p>{student.first_name} has not registered for any courses yet.</p>
         ) : (
-          <div className="coursesList">
+          <div>
             {studentCourse.map(course => (
-              <div key={course.course_id}>
+              <div key={course.course_id} className="course-content">
                 <p>{course.group_type}</p>
+                <p>{course.course_days}</p>
                 <p>
-                  {course.course_days}
                   {timeConverter(course.start_time)} to {timeConverter(course.end_time)}
                 </p>
                 <p>
-                  Starts{getDateStringENGBFormat(course.first_day)}
-                  Ends{getDateStringENGBFormat(course.last_day)}
+                  <span>Starts</span>
+                  {getDateStringENGBFormat(course.first_day)}
+                </p>
+                <p>
+                  <span>Ends</span>
+                  {getDateStringENGBFormat(course.last_day)}
                 </p>
               </div>
             ))}
