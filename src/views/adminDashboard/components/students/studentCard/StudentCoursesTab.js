@@ -223,7 +223,8 @@ const deleteStudentInfo = async () => {
       dataSource={props.courseByStudentId}
       className="coursesTable" 
       columns={studentCourseColumns} 
-      pagination={false} 
+      pagination={false}
+      style={{ overflowX: 'scroll'  }}
       onRow={record => {
         return {
           onClick: () => {
