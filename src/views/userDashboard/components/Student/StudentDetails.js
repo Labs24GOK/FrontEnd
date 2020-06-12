@@ -1,12 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { EditButton } from '../../../adminDashboard/components/mainStyle/styledComponent';
 import { getDateStringENGBFormat, timeConverter } from '../../../../utils/helpers';
+import { Button } from 'antd';
 
 function StudentDetails(props) {
+    const { push } = useHistory()
 
     return (
         <>  
+            <Button onClick={() => push(`/student/${props.student.student_id}/child-placement`)}>Placement Test</Button>
+            {console.log(props.student)}
             <h1 className='studentTitle'>
                 {props.student.first_name}
                 &nbsp;  
