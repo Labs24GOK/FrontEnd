@@ -8,7 +8,7 @@ import './staffDashboard.scss';
 
 function StaffDashboard() {
 	const [staffCourses, setStaffCourses] = useState([]);
-	const [staffId, setStaffId] = useState();
+	const [staff, setStaff] = useState({});
 	const { push } = useHistory();
 
 	// Get userId from JWT
@@ -16,14 +16,14 @@ function StaffDashboard() {
 	let tokenData = JSON.parse(atob(token.split('.')[1]));
 
 	let user = tokenData.subject;
-	let name = tokenData.name;
 
 	//Get staffId from userId
 	useEffect(() => {
 		axiosWithAuth()
 			.get(`/staffdashboard/${user}`)
 			.then(res => {
-				setStaffId(res.data.staff_id);
+				// console.log("res", res.data)
+				setStaff(res.data);
 			})
 			.catch(err => {
 				console.log(err);
@@ -32,15 +32,15 @@ function StaffDashboard() {
 
 	//Get staff courses with staffId
 	useEffect(() => {
-		if (staffId) {
+		if (staff.staff_id) {
 			axiosWithAuth()
-				.get(`/staff/${staffId}/courses`)
+				.get(`/staff/${staff.staff_id}/courses`)
 				.then(res => {
 					setStaffCourses(res.data);
 				})
 				.catch(err => console.log(err));
 		}
-	}, [staffId]);
+	}, [staff]);
 
 	const staffCourseColumns = [
 		{
@@ -77,7 +77,7 @@ function StaffDashboard() {
 			<div className='staff'>
 				{
 					<>
-						<h1>Welcome {name}. </h1>
+						<h1>Welcome {staff.name}. </h1>
 						<Table
 							dataSource={staffCourses}
 							className='coursesTable'
