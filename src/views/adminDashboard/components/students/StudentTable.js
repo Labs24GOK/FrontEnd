@@ -15,14 +15,6 @@ const StudentTable = props => {
     props.getStudentTable();
   }, []);
 
-  // const handleCancelButtonOnForm = () => {
-  //   setForm(false);
-  // };
-
-  // const handleAddButton = () => {
-  //   setForm(!form);
-  // };
-
   const studentData = props.studentList.sort((a, b) => {
     return b.id - a.id;
   });
