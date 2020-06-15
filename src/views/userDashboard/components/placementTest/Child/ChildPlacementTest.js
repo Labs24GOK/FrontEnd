@@ -9,14 +9,25 @@ const ChildPlacementTest = props => {
   const { push } = useHistory()
   const [page, setPage] = useState(0)
   const [questions, setQuestions] = useState([])
+  const [testTime, setTestTime] = useState(1000 * 60 * 45) // 45 Minutes
 
   const fetchTest = () => {
     return TestObject
   }
 
+  const testTimer = () => {
+    setTimeout(() => {
+      push('/dashboard')
+    }, testTime);
+  }
+
   useEffect(() => {
     setQuestions(fetchTest)
     if (questions) setPage(1)
+  }, [])
+
+  useEffect(() => {
+    testTimer()
   }, [])
 
   const currentQuestion = (num) => {
@@ -26,6 +37,7 @@ const ChildPlacementTest = props => {
   const nextQuestion = () => {
     setPage(page + 1)
   }
+
 
 
   const testHelper = () => {
