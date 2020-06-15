@@ -6,8 +6,9 @@ import StudentEditDetails from './StudentForms/StudentEditDetails';
 import StudentDetails from './StudentDetails';
 import Footer from '../../../marketing/components/Footer';
 
+import { getStudent} from '../../getStudent'
 import { getStudentCourses } from '../../getStudentCourses';
-import axiosWithAuth from '../../../../utils/axiosWithAuth';
+// import axiosWithAuth from '../../../../utils/axiosWithAuth';
 
 import { Icon } from 'semantic-ui-react';
 
@@ -18,15 +19,22 @@ function Student({ student }) {
     const [studentData, setStudentData] = useState(["student"]);
     const [studentCourse, setStudentCourse] = useState([]);
 
+    // Get subject from JWT
+  let token = localStorage.getItem('token');
+  let tokenData = JSON.parse(atob(token.split('.')[1]));
+  const { subject } = tokenData;
+
     useEffect(() => {
-        const getStudent = (id) => {
-            axiosWithAuth()
-                .get(`/student/${id}`)
-		        .then(res => {
-                    setStudentData(res.data);
-		        })
-        }
-        return getStudent(id);
+       getStudent(id)
+       .then(res => {
+           if(subject === res.user_id) {
+                  setStudentData(res)
+           } else{
+               history.push('/dashboard')
+           }
+       }).catch(err => {
+           history.push('/dashboard')
+       })
     }, [studentData])
 
 
