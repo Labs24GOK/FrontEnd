@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Radio } from 'antd';
 
-const ChildQuestions = () => {
+const ChildQuestions = (props) => {
   const [form] = Form.useForm();
+  const nextQuestion = props.nextQuestion
+  const { key, id, question, images, choices } = props.questions[props.page - 2]
   // useEffect to fetch questions from backend and save data to redux which will populate the component
 
   /*
@@ -21,18 +23,18 @@ Shape of question object:
 
   return (
     <Form form={form}>
-      <h3>Question {#}/20: {question}</h3>
+      <h3>{question}</h3>
       <div className="img-container">
         <img src={images[0]} alt="image" />
         <img src={images[1]} alt="image" />
         <img src={images[2]} alt="image" />
       </div>
       <Radio.Group>
-        <Radio value={a}>{choice[0]}</Radio>
-        <Radio value={b}>{choice[1]}</Radio>
-        <Radio value={c}>{choice[2]}</Radio>
+        <Radio value={'a'}>{choices[0]}</Radio>
+        <Radio value={'b'}>{choices[1]}</Radio>
+        <Radio value={'c'}>{choices[2]}</Radio>
       </Radio.Group>
-      <Button onClick={() => {}}>Next</Button>
+      <Button onClick={() => nextQuestion()}>Next</Button>
     </Form>
   );
 };
