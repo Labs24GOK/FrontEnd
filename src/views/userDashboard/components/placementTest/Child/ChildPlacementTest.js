@@ -14,29 +14,31 @@ const ChildPlacementTest = props => {
         key: 1,
         id: 1,
         question: "Five",
-        choices: ['a', 'b', 'c']
+        choices: ["a", "b", "c"],
       },
       {
         key: 2,
         id: 2,
         question: "Pencil",
-        choices: ['a', 'b', 'c']
+        choices: ["a", "b", "c"],
       },
-    ]
-  }
+    ];
+  };
 
   useEffect(() => {
     setQuestions(fetchTest)
-  }, [fetchTest])
+    if (questions) setPage(1)
+  }, [])
+
 
   const testHelper = () => {
     switch (page) {
-      case 0:
+      case 1:
         return (<StartTest />)
       
-      case 1:
+      case 2:
       // return (<ChildQuestions id={page} />)
-      break;
+      return (<h1>TESTING</h1>)
 
       default:
         break;
@@ -45,8 +47,9 @@ const ChildPlacementTest = props => {
 
   return (
     <div>
-      <StartTest />
-      <Button onClick={setPage( page += 1 )}>Next</Button>
+      { questions ? testHelper() : (<h1>LOADING...</h1>) }
+      <Button onClick={() => setPage( page + 1 )}>Next</Button>
+      <Button onClick={() => console.log(page, questions)}>LOG</Button>
     </div>
   );
 };

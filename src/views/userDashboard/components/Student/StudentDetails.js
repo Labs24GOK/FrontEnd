@@ -10,7 +10,6 @@ function StudentDetails(props) {
     return (
         <>  
             <Button onClick={() => push(`/student/${props.student.student_id}/child-placement`)}>Placement Test</Button>
-            {console.log(props.student)}
             <h1 className='studentTitle'>
                 {props.student.first_name}
                 &nbsp;  
