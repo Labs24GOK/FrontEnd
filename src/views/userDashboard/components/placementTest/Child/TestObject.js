@@ -8,7 +8,9 @@ const TestObject = () => [
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
-    ],
+    ]
+  },
+  {
     key: 2,
     id: 2,
     question: 'Pencil',
@@ -17,7 +19,9 @@ const TestObject = () => [
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
-    ],
+    ]
+  },
+  {
     key: 3,
     id: 3,
     question: 'Ball',
@@ -26,7 +30,9 @@ const TestObject = () => [
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
-    ],
+    ]
+  },
+  {
     key: 4,
     id: 4,
     question: 'A big dog',
@@ -35,7 +41,9 @@ const TestObject = () => [
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
-    ],
+    ]
+  },
+  {
     key: 5,
     id: 5,
     question: 'Eyes',
@@ -44,7 +52,9 @@ const TestObject = () => [
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
-    ],
+    ]
+  },
+  {
     key: 6,
     id: 6,
     question: 'I have a long tail',
@@ -53,7 +63,9 @@ const TestObject = () => [
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
-    ],
+    ]
+  },
+  {
     key: 7,
     id: 7,
     question: 'Socks',
@@ -62,7 +74,9 @@ const TestObject = () => [
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
-    ],
+    ]
+  },
+  {
     key: 8,
     id: 8,
     question: 'I cannot ride a bike',
@@ -71,7 +85,9 @@ const TestObject = () => [
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
-    ],
+    ]
+  },
+  {
     key: 9,
     id: 9,
     question: 'Bedroom',
@@ -80,7 +96,9 @@ const TestObject = () => [
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
-    ],
+    ] 
+},
+{
     key: 10,
     id: 10,
     question: 'I like ice cream',
@@ -89,7 +107,9 @@ const TestObject = () => [
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
-    ],
+    ]
+},
+{
     key: 11,
     id: 11,
     question: 'Eighteen',
@@ -98,7 +118,8 @@ const TestObject = () => [
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
-    ],
+    ]
+}, {
     key: 12,
     id: 12,
     question: 'These are kites',
@@ -108,6 +129,7 @@ const TestObject = () => [
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
     ],
+}, {
     key: 13,
     id: 13,
     question: 'Lamp',
@@ -116,7 +138,8 @@ const TestObject = () => [
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
-    ],
+    ], 
+}. {
     key: 14,
     id: 14,
     question: 'They are eating cake',
@@ -125,7 +148,8 @@ const TestObject = () => [
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
-    ],
+    ], 
+}. {
     key: 15,
     id: 15,
     question: 'Juice',
@@ -134,7 +158,8 @@ const TestObject = () => [
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
-    ],
+    ], 
+}. {
     key: 16,
     id: 16,
     question: 'It can swim and jump',
@@ -143,7 +168,8 @@ const TestObject = () => [
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
-    ],
+    ], 
+}. {
     key: 17,
     id: 17,
     question: 'Basketball',
@@ -152,7 +178,8 @@ const TestObject = () => [
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
-    ],
+    ], 
+}. {
     key: 18,
     id: 18,
     question: 'The carrots are between the tomatoes and plums',
@@ -161,7 +188,8 @@ const TestObject = () => [
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
-    ],
+    ], 
+}. {
     key: 19,
     id: 19,
     question: 'Grandparents',
@@ -170,7 +198,8 @@ const TestObject = () => [
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
-    ],
+    ], 
+}. {
     key: 20,
     id: 20,
     question: 'She is getting dressed',
@@ -179,7 +208,8 @@ const TestObject = () => [
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
-    ],
+    ], 
+}. {
     key: 21,
     id: 21,
     question: 'Fifty',
@@ -188,7 +218,8 @@ const TestObject = () => [
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
-    ],
+    ], 
+}. {
     key: 22,
     id: 22,
     question: 'He works on a farm',
@@ -197,7 +228,8 @@ const TestObject = () => [
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
-    ],
+    ], 
+}. {
     key: 23,
     id: 23,
     question: 'Backache',
@@ -206,7 +238,8 @@ const TestObject = () => [
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
-    ],
+    ], 
+}. {
     key: 24,
     id: 24,
     question: 'He is very strong',
@@ -215,7 +248,8 @@ const TestObject = () => [
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
       '../../../../../assets/Logo.png',
-    ],
+    ], 
+}. {
     key: 25,
     id: 25,
     question: 'Snow',
