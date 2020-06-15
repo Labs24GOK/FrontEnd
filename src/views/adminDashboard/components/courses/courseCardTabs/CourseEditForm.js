@@ -66,7 +66,7 @@ return (
           <div>
             <Label>Course Type</Label>
               <div>
-                <Input type="text" className={course_type && "input-error"} name="course_type" defaultValue={course_type} ref={register({required: true})}/>
+                <Input type="text" border={errors.course_type && '2px solid red'} name="course_type" defaultValue={course_type} ref={register({required: true})}/>
                   {errors.course_type && errors.course_type.type === "required" && 'Course type is Required'}
               </div>
           </div>
@@ -74,7 +74,7 @@ return (
           <div>
               <Label>Group Type</Label>
 						<div>
-              <Input name="group_type" placeholder='Goverment' className="dropDown" defaultValue={group_type} ref={register({required: true})} />
+              <Input name="group_type" border={errors.group_type && '2px solid red'} defaultValue={group_type} ref={register({required: true})} />
               {errors.group_type && errors.group_type.type === "required" && 'Group type is Required'}
 					  </div>
           </div>
@@ -82,14 +82,15 @@ return (
           <div>
             <Label>School Grade</Label>
             <div>
-              <Input name="school_grade" placeholder='KG 1' defaultValue={school_grade} ref={register({required: false})} />
+              <Input name="school_grade" defaultValue={school_grade} ref={register({required: false})} />
 					  </div>
           </div>
 
             <div>
               <Label>Course Level</Label>
               <div>
-                <Input className="dropDown" name="level" defaultValue={level} ref={register({required: true})} />
+                <Input border={errors.level && '2px solid red'} name="level" defaultValue={level} ref={register({required: true})} />
+                {errors.level && errors.level.type === "required" && 'Level is Required'}
 						  </div>
           </div>
 
@@ -103,21 +104,22 @@ return (
           <div>
             <Label>Course Schedule</Label>
               <div>
-                <Input placeholder='Sat / Sun / Tue'  name="course_schedule" defaultValue={course_schedule} ref={register({required: true})} />
+                <Input  border={errors.course_schedule && '2px solid red'} name="course_schedule" defaultValue={course_schedule} ref={register({required: true})} />
               </div>
           </div>
 
           <div>
             <Label>Room</Label>
               <div>
-                <Input name="room" defaultValue={room} ref={register({required: true})} />
+                <Input name="room" border={errors.room && '2px solid red'} defaultValue={room} ref={register({required: true})} />
+                {errors.room && errors.room.type === "required" && 'Room is Required'}
               </div>
           </div>
 
           <div>
             <Label>Start Date</Label>
               <div>
-                <Input type="date" className={errors.start_date && "input-error"} name="start_date" defaultValue={startdate} ref={register({required: true})}/>
+                <Input type="date" border={errors.start_date && '2px solid red'} name="start_date" defaultValue={startdate} ref={register({required: true})}/>
                   {errors.start_date && errors.start_date.type === "required" && 'Start Date is Required'}
               </div>
           </div>
@@ -125,7 +127,7 @@ return (
           <div>
             <Label>End Date</Label>
               <div>
-                <Input type="date" className={errors.end_date && "input-error"} name="end_date" defaultValue={enddate} ref={register({required: true})}/>
+                <Input type="date" border={errors.end_date && '2px solid red'} name="end_date" defaultValue={enddate} ref={register({required: true})}/>
                   {errors.end_date && errors.end_date.type === "required" && 'End Date is Required'}
               </div>
           </div>
@@ -133,7 +135,7 @@ return (
           <div>
             <Label>Start Time</Label>
               <div>
-                <Input type="time" className={errors.start_time && "input-error"} name="start_time" defaultValue={start_time} ref={register({required: true})}/>
+                <Input type="time" border={errors.start_time && '2px solid red'} name="start_time" defaultValue={start_time} ref={register({required: true})}/>
                   {errors.start_time && errors.start_time.type === "required" && 'Start Time is Required'}	
               </div>
           </div>
@@ -141,7 +143,7 @@ return (
           <div>
             <Label>End Time</Label>
               <div>
-                <Input type="time" className={errors.end_time && "input-error"} name="end_time" defaultValue={end_time} ref={register({required: true})}/>
+                <Input type="time" border={errors.end_time && '2px solid red'} name="end_time" defaultValue={end_time} ref={register({required: true})}/>
                   {errors.end_time && errors.end_time.type === "required" && 'End Time is Required'}
               </div>
           </div>
@@ -158,7 +160,7 @@ return (
           <div>
             <Label>Hourly Rate</Label>
               <div>
-                <Input type="text" placeholder='14' className={errors.hourly_rate && "input-error"} name="hourly_rate" defaultValue={hourly_rate} ref={register({required: true})}/>
+                <Input type="text"  border={errors.hourly_rate && '2px solid red'} name="hourly_rate" defaultValue={hourly_rate} ref={register({required: true})}/>
                   {errors.hourly_rate && errors.hourly_rate.type === "required" && 'Hourly Rate is Required'}
               </div>
           </div>

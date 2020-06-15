@@ -51,7 +51,7 @@ const StudentRegForm = props => {
 					<div>
 						<Label>ID</Label>
 						<div>
-							<Input type="text" placeholder="xxxxxxxxxx" className={errors.cpr && "input-error"} name="cpr" ref={register({required: true, minLength: 9, maxLength: 9})} />
+							<Input type="text" placeholder="xxxxxxxxxx" border={errors.cpr && '2px solid red'}  name="cpr" ref={register({required: true, minLength: 9, maxLength: 9})} />
 							{errors.cpr && errors.cpr.type === "required" && 'ID is required.'}
 							{errors.cpr && (errors.cpr.type === "minLength" || errors.cpr.type === "maxLength") && 'ID needs to be 9 characters'}
 						</div>
@@ -59,7 +59,7 @@ const StudentRegForm = props => {
 					<div>
 						<Label>First Name</Label>
 						<div>
-							 <Input type="text" className={errors.first_name && "input-error"} name="first_name" ref={register({required: true, maxLength: 80})} />
+							 <Input type="text"  border={errors.first_name && '2px solid red'}  name="first_name" ref={register({required: true, maxLength: 80})} />
 							 {errors.first_name && errors.first_name.type === "required" && 'First name is required.'}
 						</div>
 					</div>
@@ -67,7 +67,7 @@ const StudentRegForm = props => {
 						<Label>Additional Names</Label>
 						<div>
 							{/* regex pattern: 1 or more words, separated by spaces. Optional space at end so error border doesn't come up while typing more names. */}
-							<Input type="text" className={errors.additional_names && "input-error"} name="additional_names" defaultValue={student.additional_names} ref={register({required: true, pattern: /^([a-zA-Z]+ +){0,}([a-zA-Z]+ ?)$/i })} />
+							<Input type="text" border={errors.additional_names && '2px solid red'} name="additional_names" defaultValue={student.additional_names} ref={register({required: true, pattern: /^([a-zA-Z]+ +){0,}([a-zA-Z]+ ?)$/i })} />
 							{errors.additional_names && errors.additional_names.type === "required" && 'Additional Names are required.'}
 							{errors.additional_names && errors.additional_names.type === "pattern" && 'Enter at least 1 additional name.'}
 						</div>
@@ -84,28 +84,28 @@ const StudentRegForm = props => {
 					<div>
 						<Label>Phone Number</Label>
 						<div>
-							<Input type="tel" className={errors.phone_number && "input-error"} name="phone_number" defaultValue={student.phone_number} ref={register({required: true, maxLength: 100})} />
+							<Input type="tel" border={errors.phone_number && '2px solid red'} name="phone_number" defaultValue={student.phone_number} ref={register({required: true, maxLength: 100})} />
 							{errors.phone_number && errors.phone_number.type === "required" && 'Phone Number is required.'}	
 						</div>
 					</div>
 					<div>
 					<Label>Email</Label>
 						<div>
-							<Input type="text" className={errors.email && "input-error"} name="email" ref={register({required: true, pattern: /^\S+@\S+$/i})} />
+							<Input type="text" border={errors.email && '2px solid red'} name="email" ref={register({required: true, pattern: /^\S+@\S+$/i})} />
 							{errors.email && 'Email is required.'}
 						</div>
 					</div>
 					<div>
 						<Label>Birth Date</Label>
 						<div>
-							<Input type="date" className={errors.birthdate && "input-error"} name="birthdate" ref={register({required: true})} />
+							<Input type="date" border={errors.birthdate && '2px solid red'} name="birthdate" ref={register({required: true})} />
 							{errors.birthdate && 'Birth Date is required.'}
 						</div>
 					</div>
 					<div>
 						<Label>School Name</Label>
 						<div>
-							<Input type="text" className={errors.school_name && "input-error"}  name="school_name" ref={register({required: true})} />
+							<Input type="text" border={errors.school_name && '2px solid red'}  name="school_name" ref={register({required: true})} />
 							{errors.school_name && 'School Name is required.'}
 						</div>
 					</div>
@@ -118,28 +118,28 @@ const StudentRegForm = props => {
 					<div style={{ gridColumn: 'span 3' }}>
 						<Label>Address</Label>
 						<div>
-							<Input type='text' className={errors.address && "address-error"} name="address" defaultValue={student.address} ref={register({required: true})} />
+							<Input type='text' border={errors.address && '2px solid red'} name="address" defaultValue={student.address} ref={register({required: true})} />
 							{errors.address && "Address is required."}
 						</div>
 					</div>
 					<div style={{ gridColumn: 'span 2' }}>
 						<Label>Primary Emergency Contact Name</Label>
 						<div>
-							<Input type="text" className={errors.primary_emergency_contact_name && "input-error"} name="primary_emergency_contact_name" defaultValue={student.primary_emergency_contact_name} ref={register({required: true})} />
+							<Input type="text" border={errors.primary_emergency_contact_name && '2px solid red'} name="primary_emergency_contact_name" defaultValue={student.primary_emergency_contact_name} ref={register({required: true})} />
 							{errors.primary_emergency_contact_name && 'Primary Emergency Contact Name is required.'}
 						</div>
 					</div>
 					<div>
 						<Label>Relationship</Label>
 						<div>
-							<Input type="text" className={errors.primary_emergency_relationship && "input-error"} name="primary_emergency_relationship" defaultValue={student.primary_emergency_relationship} ref={register({required: true})} />
+							<Input type="text" border={errors.primary_emergency_relationship && '2px solid red'} name="primary_emergency_relationship" defaultValue={student.primary_emergency_relationship} ref={register({required: true})} />
 							{errors.primary_emergency_relationship && 'Primary Emergency Relationship is required.'}
 						</div>
 					</div>
 					<div>
 						<Label>Emergency Number</Label>
 						<div>
-							<Input type="tel" className={errors.primary_emergency_phone && "input-error"} name="primary_emergency_phone" defaultValue={student.primary_emergency_phone} ref={register({required: true})} />
+							<Input type="tel" border={errors.primary_emergency_phone && '2px solid red'} name="primary_emergency_phone" defaultValue={student.primary_emergency_phone} ref={register({required: true})} />
 							{errors.primary_emergency_phone && errors.primary_emergency_phone.type === "required" && 'Primary Emergency Phone is required.'}
 						</div>
 					</div>

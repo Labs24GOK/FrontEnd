@@ -58,7 +58,7 @@ export const Div3 = styled.div`
 export const Input = styled.input`
   outline: none;
   border-radius: 3px;
-  border: 1px solid transparent;
+  border:  ${props => props.border ||'1px solid transparent'};
   background: white;
   width: 100%;
   padding: 6px;
