@@ -194,9 +194,9 @@ const testObject = [
     question: 'The carrots are between the tomatoes and plums',
     choices: ['a', 'b', 'c'],
     images: [
-      `${primaryTestSource}/18-CarrotsBetween.a.PNG`
-      `${primaryTestSource}/18-CarrotsBetween.b.PNG`
-      `${primaryTestSource}/18-CarrotsBetween.c.PNG`
+      `${primaryTestSource}/18-CarrotsBetween.a.PNG`,
+      `${primaryTestSource}/18-CarrotsBetween.b.PNG`,
+      `${primaryTestSource}/18-CarrotsBetween.c.PNG`,
     ],
   },
   {
@@ -205,9 +205,9 @@ const testObject = [
     question: 'Grandparents',
     choices: ['a', 'b', 'c'],
     images: [
-      `${primaryTestSource}/Grandparents.a.PNG`
-      `${primaryTestSource}/Grandparents.b.PNG`
-      `${primaryTestSource}/Grandparents.c.PNG`
+      `${primaryTestSource}/Grandparents.a.PNG`,
+      `${primaryTestSource}/Grandparents.b.PNG`,
+      `${primaryTestSource}/Grandparents.c.PNG`,
     ],
   },
   {
@@ -216,9 +216,9 @@ const testObject = [
     question: 'She is getting dressed',
     choices: ['a', 'b', 'c'],
     images: [
-      `${primaryTestSource}/20-ShesGettingDressed.a.PNG`
-      `${primaryTestSource}/20-ShesGettingDressed.b.PNG`
-      `${primaryTestSource}/20-ShesGettingDressed.c.PNG`
+      `${primaryTestSource}/20-ShesGettingDressed.a.PNG`,
+      `${primaryTestSource}/20-ShesGettingDressed.b.PNG`,
+      `${primaryTestSource}/20-ShesGettingDressed.c.PNG`,
     ],
   },
   {
@@ -227,9 +227,9 @@ const testObject = [
     question: 'Fifty',
     choices: ['a', 'b', 'c'],
     images: [
-      `${primaryTestSource}/21-Filthy.a.PNG`
-      `${primaryTestSource}/21-Filthy.b.PNG`
-      `${primaryTestSource}/21-Filthy.c.PNG`
+      `${primaryTestSource}/21-Filthy.a.PNG`,
+      `${primaryTestSource}/21-Filthy.b.PNG`,
+      `${primaryTestSource}/21-Filthy.c.PNG`,
     ],
   },
   {
@@ -238,9 +238,9 @@ const testObject = [
     question: 'He works on a farm',
     choices: ['a', 'b', 'c'],
     images: [
-      `${primaryTestSource}/22-HeWorksOnAFarm.a.PNG`
-      `${primaryTestSource}/22-HeWorksOnAFarm.b.PNG`
-      `${primaryTestSource}/22-HeWorksOnAFarm.c.PNG`
+      `${primaryTestSource}/22-HeWorksOnAFarm.a.PNG`,
+      `${primaryTestSource}/22-HeWorksOnAFarm.b.PNG`,
+      `${primaryTestSource}/22-HeWorksOnAFarm.c.PNG`,
     ],
   },
   {
@@ -249,9 +249,9 @@ const testObject = [
     question: 'Backache',
     choices: ['a', 'b', 'c'],
     images: [
-      `${primaryTestSource}/23-Backache.a.PNG`
-      `${primaryTestSource}/23-Backache.b.PNG`
-      `${primaryTestSource}/23-Backache.c.PNG`
+      `${primaryTestSource}/23-Backache.a.PNG`,
+      `${primaryTestSource}/23-Backache.b.PNG`,
+      `${primaryTestSource}/23-Backache.c.PNG`,
     ],
   },
   {
@@ -260,9 +260,9 @@ const testObject = [
     question: 'He is very strong',
     choices: ['a', 'b', 'c'],
     images: [
-      `${primaryTestSource}/24-HesVeryStrong.a.PNG`
-      `${primaryTestSource}/24-HesVeryStrong.b.PNG`
-      `${primaryTestSource}/24-HesVeryStrong.c.PNG`
+      `${primaryTestSource}/24-HesVeryStrong.a.PNG`,
+      `${primaryTestSource}/24-HesVeryStrong.b.PNG`,
+      `${primaryTestSource}/24-HesVeryStrong.c.PNG`,
     ],
   },
   {
@@ -271,9 +271,9 @@ const testObject = [
     question: 'Snow',
     choices: ['a', 'b', 'c'],
     images: [
-      `${primaryTestSource}/25-Snow.a.PNG`
-      `${primaryTestSource}/25-Snow.b.PNG`
-      `${primaryTestSource}/25-Snow.c.PNG`
+      `${primaryTestSource}/25-Snow.a.PNG`,
+      `${primaryTestSource}/25-Snow.b.PNG`,
+      `${primaryTestSource}/25-Snow.c.PNG`,
     ],
   },
   {
@@ -282,7 +282,7 @@ const testObject = [
     question: 'Null',
     choices: ["She's exciting.", "She's difficult.", "She's busy."],
     images: [
-      `${primaryTestSource}/26.PNG`
+      `${primaryTestSource}/26.PNG`,
     ],
   },
   {
@@ -291,7 +291,7 @@ const testObject = [
     question: 'Null',
     choices: ["He's running quickly.", "He's running good.", "He's running quick."],
     images: [
-      `${primaryTestSource}/27.PNG`
+      `${primaryTestSource}/27.PNG`,
     ],
   },
   {
@@ -304,7 +304,7 @@ const testObject = [
       'He went to the doctor yesterday.',
     ],
     images: [
-      `${primaryTestSource}/28.PNG`
+      `${primaryTestSource}/28.PNG`,
     ],
   },
   {
@@ -326,7 +326,7 @@ const testObject = [
       'I can read when I was six.',
     ],
     images: [
-      `${primaryTestSource}/30.PNG`
+      `${primaryTestSource}/30.PNG`,
     ],
   },
   {
@@ -339,7 +339,7 @@ const testObject = [
       'The horse is thirstier than the dog.',
     ],
     images: [
-      `${primaryTestSource}/31.PNG`
+      `${primaryTestSource}/31.PNG`,
     ],
   },
   {
@@ -352,7 +352,7 @@ const testObject = [
       'Giraffes are the tallest than animals in the world.',
     ],
     images: [
-      `${primaryTestSource}/32.PNG`
+      `${primaryTestSource}/32.PNG`,
     ],
   },
   {
@@ -365,7 +365,7 @@ const testObject = [
       "He didn't eat sandwiches for lunch.",
     ],
     images: [
-      `${primaryTestSource}/33.PNG`
+      `${primaryTestSource}/33.PNG`,
     ],
   },
   {
@@ -378,7 +378,7 @@ const testObject = [
       'The man walked on the library.',
     ],
     images: [
-      `${primaryTestSource}/34.PNG`
+      `${primaryTestSource}/34.PNG`,
     ],
   },
   {
@@ -387,7 +387,7 @@ const testObject = [
     question: 'Null',
     choices: ["It's half past two.", "It's quarter past two.", "It's quarter to two.c"],
     images: [
-      `${primaryTestSource}/35.PNG`
+      `${primaryTestSource}/35.PNG`,
     ],
   },
   {
@@ -400,7 +400,7 @@ const testObject = [
       'They go to catch the bus.',
     ],
     images: [
-      `${primaryTestSource}/36.PNG`
+      `${primaryTestSource}/36.PNG`,
     ],
   },
   {
@@ -413,7 +413,7 @@ const testObject = [
       'This is the room who you brush your teeth.',
     ],
     images: [
-      `${primaryTestSource}/37.PNG`
+      `${primaryTestSource}/37.PNG`,
     ],
   },
   {
@@ -426,7 +426,7 @@ const testObject = [
       "He was eating dinner at 8 o' clock.",
     ],
     images: [
-      `${primaryTestSource}/38.PNG`
+      `${primaryTestSource}/38.PNG`,
     ],
   },
   {
@@ -439,7 +439,7 @@ const testObject = [
       'The first mont of the year is June.',
     ],
     images: [
-      `${primaryTestSource}/39.PNG`
+      `${primaryTestSource}/39.PNG`,
     ],
   },
   {
@@ -448,7 +448,7 @@ const testObject = [
     question: 'Null',
     choices: ['Is paper made to wood?', 'Is paper made of wood?', 'Is paper made in wood?'],
     images: [
-      `${primaryTestSource}/40.PNG`
+      `${primaryTestSource}/40.PNG`,
     ],
   },
   {
@@ -457,7 +457,7 @@ const testObject = [
     question: 'Null',
     choices: ['The tea looks like hot.', 'The tea look hot.', 'The tea looks hot.'],
     images: [
-      `${primaryTestSource}/41.PNG`
+      `${primaryTestSource}/41.PNG`,
     ],
   },
   {
@@ -470,7 +470,7 @@ const testObject = [
       "You shouldn't carry heavy bags.",
     ],
     images: [
-      `${primaryTestSource}/42.PNG`
+      `${primaryTestSource}/42.PNG`,
     ],
   },
   {
@@ -479,7 +479,7 @@ const testObject = [
     question: 'Null',
     choices: ['She win the match.', "She's won the match.", "She's winned the match."],
     images: [
-      `${primaryTestSource}/43.PNG`
+      `${primaryTestSource}/43.PNG`,
     ],
   },
   {
@@ -492,7 +492,7 @@ const testObject = [
       'Will the rocket going to the moon.',
     ],
     images: [
-      `${primaryTestSource}/44.PNG`
+      `${primaryTestSource}/44.PNG`,
     ],
   },
   {
@@ -505,7 +505,7 @@ const testObject = [
       'They were walking in the forest when they saw an owl.',
     ],
     images: [
-      `${primaryTestSource}/45.PNG`
+      `${primaryTestSource}/45.PNG`,
     ],
   },
   {
@@ -518,7 +518,7 @@ const testObject = [
       'There are enough food to eat.',
     ],
     images: [
-      `${primaryTestSource}/46.PNG`
+      `${primaryTestSource}/46.PNG`,
     ],
   },
   {
@@ -531,7 +531,7 @@ const testObject = [
       'The door bell rang but everyone was at the door.',
     ],
     images: [
-      `${primaryTestSource}/47.PNG`
+      `${primaryTestSource}/47.PNG`,
     ],
   },
   {
@@ -544,7 +544,7 @@ const testObject = [
       'They may to need their coats.',
     ],
     images: [
-      `${primaryTestSource}/48.PNG`
+      `${primaryTestSource}/48.PNG`,
     ],
   },
   {
@@ -553,7 +553,7 @@ const testObject = [
     question: 'Null',
     choices: ["He's excited.", "He's afraid.", "He's brave."],
     images: [
-      `${primaryTestSource}/49.PNG`
+      `${primaryTestSource}/49.PNG`,
     ],
   },
   {
@@ -566,7 +566,7 @@ const testObject = [
       'I’ve never eaten Italian food before.',
     ],
     images: [
-      `${primaryTestSource}/50.PNG`
+      `${primaryTestSource}/50.PNG`,
     ],
   },
 ];
