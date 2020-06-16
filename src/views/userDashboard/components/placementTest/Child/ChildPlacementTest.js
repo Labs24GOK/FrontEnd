@@ -1,55 +1,58 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'antd';
-import { useHistory, Switch, Route } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import StartTest from './StartTest';
+import ChildQuestions from './ChildQuestions'
+import { useSelector, shallowEqual, useDispatch } from 'react-redux';
+import { nextPage, prevPage, getChildQuestions, startTestTimer, timeOut } from '../../../../../actions/userDashboardActions/placementActions'
 
 const ChildPlacementTest = props => {
+  const dispatch = useDispatch()
   const { push } = useHistory()
-  const [page, setPage] = useState(0)
-  const [questions, setQuestions] = useState([])
+  const testTime = 1000 * 60 * 45 // 45 Minutes
 
-  const fetchTest = () => {
-    return [
-      {
-        key: 1,
-        id: 1,
-        question: "Five",
-        choices: ["a", "b", "c"],
-      },
-      {
-        key: 2,
-        id: 2,
-        question: "Pencil",
-        choices: ["a", "b", "c"],
-      },
-    ];
-  };
+  const { timerActive, questions, currentQuestion, page, userAwnsers } = useSelector( state => ({
+    timerActive: state.placementTestingReducer.timerActive,
+    questions: state.placementTestingReducer.questions,
+    currentQuestion: state.placementTestingReducer.currentQuestion,
+    page: state.placementTestingReducer.page,
+    userAwnsers: state.placementTestingReducer.userAwnsers
+  }), shallowEqual)
+
+  const testTimer = () => {
+    if(!timerActive) {
+      setTimeout(() => {
+        dispatch(timeOut())
+        push('/dashboard')
+      }, testTime);
+    } else {
+      dispatch(startTestTimer)
+    }
+    
+  }
 
   useEffect(() => {
-    setQuestions(fetchTest)
-    if (questions) setPage(1)
+    testTimer()
   }, [])
 
+  useEffect(() => {
+    dispatch(getChildQuestions())
+  }, [])
 
   const testHelper = () => {
-    switch (page) {
-      case 1:
-        return (<StartTest />)
-      
-      case 2:
-      // return (<ChildQuestions id={page} />)
-      return (<h1>TESTING</h1>)
-
-      default:
-        break;
+    if(page === 0) {
+      return <StartTest />
+    }  else if (page >= 1) {
+      return <ChildQuestions currentQuestion={currentQuestion} />
     }
   }
 
   return (
     <div>
       { questions ? testHelper() : (<h1>LOADING...</h1>) }
-      <Button onClick={() => setPage( page + 1 )}>Next</Button>
-      <Button onClick={() => console.log(page, questions)}>LOG</Button>
+      <Button style={{ marginLeft: '40%' }} onClick={() => dispatch(nextPage())}>Next</Button>
+      <Button onClick={() => dispatch(prevPage())}>Previous</Button>
+      <Button onClick={() => console.log(page, currentQuestion)}>LOG</Button>
     </div>
   );
 };
