@@ -4,13 +4,12 @@ import { useHistory } from 'react-router-dom';
 import StartTest from './StartTest';
 import ChildQuestions from './ChildQuestions'
 import { useSelector, shallowEqual, useDispatch } from 'react-redux';
-import { nextPage, prevPage, getChildQuestions } from '../../../../../actions/userDashboardActions/placementActions'
+import { nextPage, prevPage, getChildQuestions, startTestTimer, timeOut } from '../../../../../actions/userDashboardActions/placementActions'
 
 const ChildPlacementTest = props => {
   const dispatch = useDispatch()
   const { push } = useHistory()
-  // const [questions, setQuestions] = useState([])
-  const [testTime, setTestTime] = useState(1000 * 60 * 45) // 45 Minutes
+  const testTime = 1000 * 60 * 45 // 45 Minutes
 
   const { timerActive, questions, currentQuestion, page, userAwnsers } = useSelector( state => ({
     timerActive: state.placementTestingReducer.timerActive,
@@ -21,9 +20,15 @@ const ChildPlacementTest = props => {
   }), shallowEqual)
 
   const testTimer = () => {
-    setTimeout(() => {
-      push('/dashboard')
-    }, testTime);
+    if(!timerActive) {
+      setTimeout(() => {
+        dispatch(timeOut())
+        push('/dashboard')
+      }, testTime);
+    } else {
+      dispatch(startTestTimer)
+    }
+    
   }
 
   useEffect(() => {
