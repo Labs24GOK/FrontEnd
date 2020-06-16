@@ -4,6 +4,7 @@ export const GET_CHILD_QUESTIONS = 'GET_CHILD_QUESTIONS'
 export const NEXT_PAGE = 'NEXT_PAGE'
 export const PREV_PAGE = 'PREV_PAGE'
 export const TEST_TIME_OUT = 'TEST_TIME_OUT'
+export const START_TEST_TIMER = 'START_TEST_TIMER'
 
 export const getChildQuestions = () => ({
     type: GET_CHILD_QUESTIONS,

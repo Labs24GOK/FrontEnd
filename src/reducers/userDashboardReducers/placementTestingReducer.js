@@ -1,4 +1,4 @@
-import { GET_CHILD_QUESTIONS, NEXT_PAGE, PREV_PAGE, TEST_TIME_OUT } from "../../actions/userDashboardActions/placementActions";
+import { GET_CHILD_QUESTIONS, NEXT_PAGE, PREV_PAGE, START_TEST_TIMER, TEST_TIME_OUT } from "../../actions/userDashboardActions/placementActions";
 const initialState = {
   timerActive: false,
   questions: [],
