@@ -18,9 +18,9 @@ const ChildQuestions = props => {
     <Form form={form}>
       <h3>{question}</h3>
       <div className="img-container">
-        <img src={images[0]} alt="image" />
-        <img src={images[1]} alt="image" />
-        <img src={images[2]} alt="image" />
+        {images.map(stupidImg => (
+          <img src={stupidImg} />
+        ))}
       </div>
       <Radio.Group style={radioStyle}>
         <Radio value={'a'}>{choices[0]}</Radio>
