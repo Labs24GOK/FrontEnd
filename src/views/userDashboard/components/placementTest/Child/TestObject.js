@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-const primaryTestSource = '/primary-test-img';
-=======
 const primaryTestSource = '/primary-test-img'
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
 
 const testObject = [
   {
@@ -11,13 +7,9 @@ const testObject = [
     question: 'Five',
     choices: ['a', 'b', 'c'],
     images: [
-<<<<<<< HEAD
       `${primaryTestSource}/01-Five.a.PNG`,
       `${primaryTestSource}/01-Five.b.PNG`,
       `${primaryTestSource}/01-Five.c.PNG`,
-=======
-      `${primaryTestSource}/01-Five.a.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -202,15 +194,9 @@ const testObject = [
     question: 'The carrots are between the tomatoes and plums',
     choices: ['a', 'b', 'c'],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/18-CarrotsBetween.a.PNG`
       `${primaryTestSource}/18-CarrotsBetween.b.PNG`
       `${primaryTestSource}/18-CarrotsBetween.c.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -219,15 +205,9 @@ const testObject = [
     question: 'Grandparents',
     choices: ['a', 'b', 'c'],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/Grandparents.a.PNG`
       `${primaryTestSource}/Grandparents.b.PNG`
       `${primaryTestSource}/Grandparents.c.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -236,15 +216,9 @@ const testObject = [
     question: 'She is getting dressed',
     choices: ['a', 'b', 'c'],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/20-ShesGettingDressed.a.PNG`
       `${primaryTestSource}/20-ShesGettingDressed.b.PNG`
       `${primaryTestSource}/20-ShesGettingDressed.c.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -253,15 +227,9 @@ const testObject = [
     question: 'Fifty',
     choices: ['a', 'b', 'c'],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/21-Filthy.a.PNG`
       `${primaryTestSource}/21-Filthy.b.PNG`
       `${primaryTestSource}/21-Filthy.c.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -270,15 +238,9 @@ const testObject = [
     question: 'He works on a farm',
     choices: ['a', 'b', 'c'],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/22-HeWorksOnAFarm.a.PNG`
       `${primaryTestSource}/22-HeWorksOnAFarm.b.PNG`
       `${primaryTestSource}/22-HeWorksOnAFarm.c.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -287,15 +249,9 @@ const testObject = [
     question: 'Backache',
     choices: ['a', 'b', 'c'],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/23-Backache.a.PNG`
       `${primaryTestSource}/23-Backache.b.PNG`
       `${primaryTestSource}/23-Backache.c.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -304,15 +260,9 @@ const testObject = [
     question: 'He is very strong',
     choices: ['a', 'b', 'c'],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/24-HesVeryStrong.a.PNG`
       `${primaryTestSource}/24-HesVeryStrong.b.PNG`
       `${primaryTestSource}/24-HesVeryStrong.c.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -321,15 +271,9 @@ const testObject = [
     question: 'Snow',
     choices: ['a', 'b', 'c'],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/25-Snow.a.PNG`
       `${primaryTestSource}/25-Snow.b.PNG`
       `${primaryTestSource}/25-Snow.c.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -338,13 +282,7 @@ const testObject = [
     question: 'Null',
     choices: ["She's exciting.", "She's difficult.", "She's busy."],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/26.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -353,13 +291,7 @@ const testObject = [
     question: 'Null',
     choices: ["He's running quickly.", "He's running good.", "He's running quick."],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/27.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -372,13 +304,7 @@ const testObject = [
       'He went to the doctor yesterday.',
     ],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/28.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -387,13 +313,7 @@ const testObject = [
     question: '12th',
     choices: ['Twelve.', 'Twelfth.', 'Twelveth.'],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       // EMPTY
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -406,13 +326,7 @@ const testObject = [
       'I can read when I was six.',
     ],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/30.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -425,13 +339,7 @@ const testObject = [
       'The horse is thirstier than the dog.',
     ],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/31.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -444,13 +352,7 @@ const testObject = [
       'Giraffes are the tallest than animals in the world.',
     ],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/32.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -463,13 +365,7 @@ const testObject = [
       "He didn't eat sandwiches for lunch.",
     ],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/33.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -482,13 +378,7 @@ const testObject = [
       'The man walked on the library.',
     ],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/34.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -497,13 +387,7 @@ const testObject = [
     question: 'Null',
     choices: ["It's half past two.", "It's quarter past two.", "It's quarter to two.c"],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/35.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -516,13 +400,7 @@ const testObject = [
       'They go to catch the bus.',
     ],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/36.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -535,13 +413,7 @@ const testObject = [
       'This is the room who you brush your teeth.',
     ],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/37.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -554,13 +426,7 @@ const testObject = [
       "He was eating dinner at 8 o' clock.",
     ],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/38.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -573,13 +439,7 @@ const testObject = [
       'The first mont of the year is June.',
     ],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/39.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -588,13 +448,7 @@ const testObject = [
     question: 'Null',
     choices: ['Is paper made to wood?', 'Is paper made of wood?', 'Is paper made in wood?'],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/40.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -603,13 +457,7 @@ const testObject = [
     question: 'Null',
     choices: ['The tea looks like hot.', 'The tea look hot.', 'The tea looks hot.'],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/41.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -622,13 +470,7 @@ const testObject = [
       "You shouldn't carry heavy bags.",
     ],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/42.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -637,13 +479,7 @@ const testObject = [
     question: 'Null',
     choices: ['She win the match.', "She's won the match.", "She's winned the match."],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/43.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -656,13 +492,7 @@ const testObject = [
       'Will the rocket going to the moon.',
     ],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/44.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -675,13 +505,7 @@ const testObject = [
       'They were walking in the forest when they saw an owl.',
     ],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/45.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -694,13 +518,7 @@ const testObject = [
       'There are enough food to eat.',
     ],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/46.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -713,13 +531,7 @@ const testObject = [
       'The door bell rang but everyone was at the door.',
     ],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/47.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -732,13 +544,7 @@ const testObject = [
       'They may to need their coats.',
     ],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/48.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -747,13 +553,7 @@ const testObject = [
     question: 'Null',
     choices: ["He's excited.", "He's afraid.", "He's brave."],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/49.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
   {
@@ -766,13 +566,7 @@ const testObject = [
       'I’ve never eaten Italian food before.',
     ],
     images: [
-<<<<<<< HEAD
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-      '../../../../../assets/Logo.png',
-=======
       `${primaryTestSource}/50.PNG`
->>>>>>> 33767447b47537e7ebef204e32160e35392d99d6
     ],
   },
 ];
