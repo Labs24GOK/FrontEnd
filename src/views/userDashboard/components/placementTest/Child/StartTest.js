@@ -28,7 +28,7 @@ const StartTest = () => {
         الآن ، يمكنك ترك الاختبار فارغًا ان لم تستطع الاجابه. جاهز؟ اجلس؟ ابدأ !
       </p>
 
-      <h3>You have 45 minutes</h3>
+      <h3 style={{ padding: "0 5% 5% 5%", textAlign: 'center' }}>You have 45 minutes</h3>
     </>
   );
 };

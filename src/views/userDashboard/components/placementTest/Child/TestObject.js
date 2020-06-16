@@ -1,4 +1,4 @@
-const TestObject = [
+const testObject = [
   {
     key: 1,
     id: 1,
@@ -639,4 +639,4 @@ const TestObject = [
   },
 ];
 
-export default TestObject;
+export default testObject;

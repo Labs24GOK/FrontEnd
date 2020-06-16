@@ -4,22 +4,7 @@ import { Form, Button, Radio } from 'antd';
 const ChildQuestions = (props) => {
   const [form] = Form.useForm();
   const nextQuestion = props.nextQuestion
-  const { key, id, question, images, choices } = props.questions[props.page - 2]
-  // useEffect to fetch questions from backend and save data to redux which will populate the component
-
-  /*
-Shape of question object:
-  {
-    key: num,
-    id: num,
-    question: "string",
-    images: ['url', 'url', 'url'],
-    choices: ['a', 'b', 'c'],
-  }
-
-  Note: display question number will always be 1-20 (don't use question id or key)
-
-*/
+  const { question, images, choices } = props.currentQuestion[0] // currently a array in store
 
   return (
     <Form form={form}>
@@ -34,7 +19,7 @@ Shape of question object:
         <Radio value={'b'}>{choices[1]}</Radio>
         <Radio value={'c'}>{choices[2]}</Radio>
       </Radio.Group>
-      <Button onClick={() => nextQuestion()}>Next</Button>
+      {/* <Button onClick={() => dispatch}>Next</Button> */}
     </Form>
   );
 };

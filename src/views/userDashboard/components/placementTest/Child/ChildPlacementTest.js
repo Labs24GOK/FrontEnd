@@ -38,7 +38,7 @@ const ChildPlacementTest = props => {
     if(page === 0) {
       return <StartTest />
     }  else if (page >= 1) {
-      return <ChildQuestions currentQuestion={currentQuestion} page={page} />
+      return <ChildQuestions currentQuestion={currentQuestion} />
     }
   }
 
