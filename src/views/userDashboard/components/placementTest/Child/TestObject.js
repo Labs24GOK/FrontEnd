@@ -1,4 +1,4 @@
-const primaryTestSource = '/primary-test-img'
+const primaryTestSource = '/primary-test-img';
 
 const testObject = [
   {
@@ -205,9 +205,9 @@ const testObject = [
     question: 'Grandparents',
     choices: ['a', 'b', 'c'],
     images: [
-      `${primaryTestSource}/Grandparents.a.PNG`,
-      `${primaryTestSource}/Grandparents.b.PNG`,
-      `${primaryTestSource}/Grandparents.c.PNG`,
+      `${primaryTestSource}/19-Grandparents.a.PNG`,
+      `${primaryTestSource}/19-Grandparents.b.PNG`,
+      `${primaryTestSource}/19-Grandparents.c.PNG`,
     ],
   },
   {
@@ -227,9 +227,9 @@ const testObject = [
     question: 'Fifty',
     choices: ['a', 'b', 'c'],
     images: [
-      `${primaryTestSource}/21-Filthy.a.PNG`,
-      `${primaryTestSource}/21-Filthy.b.PNG`,
-      `${primaryTestSource}/21-Filthy.c.PNG`,
+      `${primaryTestSource}/21-Fifty.a.PNG`,
+      `${primaryTestSource}/21-Fifty.b.PNG`,
+      `${primaryTestSource}/21-Fifty.c.PNG`,
     ],
   },
   {
@@ -281,18 +281,14 @@ const testObject = [
     id: 26,
     question: 'Null',
     choices: ["She's exciting.", "She's difficult.", "She's busy."],
-    images: [
-      `${primaryTestSource}/26.PNG`,
-    ],
+    images: [`${primaryTestSource}/26.PNG`],
   },
   {
     key: 27,
     id: 27,
     question: 'Null',
     choices: ["He's running quickly.", "He's running good.", "He's running quick."],
-    images: [
-      `${primaryTestSource}/27.PNG`,
-    ],
+    images: [`${primaryTestSource}/27.PNG`],
   },
   {
     key: 28,
@@ -303,9 +299,7 @@ const testObject = [
       'He goed to the doctor yesterday.',
       'He went to the doctor yesterday.',
     ],
-    images: [
-      `${primaryTestSource}/28.PNG`,
-    ],
+    images: [`${primaryTestSource}/28.PNG`],
   },
   {
     key: 29,
@@ -325,9 +319,7 @@ const testObject = [
       "I couldn't read when I am six.",
       'I can read when I was six.',
     ],
-    images: [
-      `${primaryTestSource}/30.PNG`,
-    ],
+    images: [`${primaryTestSource}/30.PNG`],
   },
   {
     key: 31,
@@ -338,9 +330,7 @@ const testObject = [
       'The horse is thirster than the dog.',
       'The horse is thirstier than the dog.',
     ],
-    images: [
-      `${primaryTestSource}/31.PNG`,
-    ],
+    images: [`${primaryTestSource}/31.PNG`],
   },
   {
     key: 32,
@@ -351,9 +341,7 @@ const testObject = [
       'Giraffes are the tallest animals in the world.',
       'Giraffes are the tallest than animals in the world.',
     ],
-    images: [
-      `${primaryTestSource}/32.PNG`,
-    ],
+    images: [`${primaryTestSource}/32.PNG`],
   },
   {
     key: 33,
@@ -364,9 +352,7 @@ const testObject = [
       'He not eat sandwiches for lunch.',
       "He didn't eat sandwiches for lunch.",
     ],
-    images: [
-      `${primaryTestSource}/33.PNG`,
-    ],
+    images: [`${primaryTestSource}/33.PNG`],
   },
   {
     key: 34,
@@ -377,18 +363,14 @@ const testObject = [
       'The man walked into the library.',
       'The man walked on the library.',
     ],
-    images: [
-      `${primaryTestSource}/34.PNG`,
-    ],
+    images: [`${primaryTestSource}/34.PNG`],
   },
   {
     key: 35,
     id: 35,
     question: 'Null',
     choices: ["It's half past two.", "It's quarter past two.", "It's quarter to two.c"],
-    images: [
-      `${primaryTestSource}/35.PNG`,
-    ],
+    images: [`${primaryTestSource}/35.PNG`],
   },
   {
     key: 36,
@@ -399,9 +381,7 @@ const testObject = [
       'They going to catch the bus.',
       'They go to catch the bus.',
     ],
-    images: [
-      `${primaryTestSource}/36.PNG`,
-    ],
+    images: [`${primaryTestSource}/36.PNG`],
   },
   {
     key: 37,
@@ -412,9 +392,7 @@ const testObject = [
       'This is the room where you brush your teeth.',
       'This is the room who you brush your teeth.',
     ],
-    images: [
-      `${primaryTestSource}/37.PNG`,
-    ],
+    images: [`${primaryTestSource}/37.PNG`],
   },
   {
     key: 38,
@@ -425,9 +403,7 @@ const testObject = [
       "He was ate dinner at 8 o' clock.",
       "He was eating dinner at 8 o' clock.",
     ],
-    images: [
-      `${primaryTestSource}/38.PNG`,
-    ],
+    images: [`${primaryTestSource}/38.PNG`],
   },
   {
     key: 39,
@@ -438,27 +414,21 @@ const testObject = [
       'The first month of the year is July.',
       'The first mont of the year is June.',
     ],
-    images: [
-      `${primaryTestSource}/39.PNG`,
-    ],
+    images: [`${primaryTestSource}/39.PNG`],
   },
   {
     key: 40,
     id: 40,
     question: 'Null',
     choices: ['Is paper made to wood?', 'Is paper made of wood?', 'Is paper made in wood?'],
-    images: [
-      `${primaryTestSource}/40.PNG`,
-    ],
+    images: [`${primaryTestSource}/40.PNG`],
   },
   {
     key: 41,
     id: 41,
     question: 'Null',
     choices: ['The tea looks like hot.', 'The tea look hot.', 'The tea looks hot.'],
-    images: [
-      `${primaryTestSource}/41.PNG`,
-    ],
+    images: [`${primaryTestSource}/41.PNG`],
   },
   {
     key: 42,
@@ -469,18 +439,14 @@ const testObject = [
       "You shouldn't carried heavy bags.",
       "You shouldn't carry heavy bags.",
     ],
-    images: [
-      `${primaryTestSource}/42.PNG`,
-    ],
+    images: [`${primaryTestSource}/42.PNG`],
   },
   {
     key: 43,
     id: 43,
     question: 'Null',
     choices: ['She win the match.', "She's won the match.", "She's winned the match."],
-    images: [
-      `${primaryTestSource}/43.PNG`,
-    ],
+    images: [`${primaryTestSource}/43.PNG`],
   },
   {
     key: 44,
@@ -491,9 +457,7 @@ const testObject = [
       'Will the rocket goes to the moon.',
       'Will the rocket going to the moon.',
     ],
-    images: [
-      `${primaryTestSource}/44.PNG`,
-    ],
+    images: [`${primaryTestSource}/44.PNG`],
   },
   {
     key: 45,
@@ -504,9 +468,7 @@ const testObject = [
       'They’re walking in the forest when they’re seeing an owl.',
       'They were walking in the forest when they saw an owl.',
     ],
-    images: [
-      `${primaryTestSource}/45.PNG`,
-    ],
+    images: [`${primaryTestSource}/45.PNG`],
   },
   {
     key: 46,
@@ -517,9 +479,7 @@ const testObject = [
       'There is enough food to eat.',
       'There are enough food to eat.',
     ],
-    images: [
-      `${primaryTestSource}/46.PNG`,
-    ],
+    images: [`${primaryTestSource}/46.PNG`],
   },
   {
     key: 47,
@@ -530,9 +490,7 @@ const testObject = [
       'The door bell rang but anyone was at the door.',
       'The door bell rang but everyone was at the door.',
     ],
-    images: [
-      `${primaryTestSource}/47.PNG`,
-    ],
+    images: [`${primaryTestSource}/47.PNG`],
   },
   {
     key: 48,
@@ -543,18 +501,14 @@ const testObject = [
       'They might to need their coats.',
       'They may to need their coats.',
     ],
-    images: [
-      `${primaryTestSource}/48.PNG`,
-    ],
+    images: [`${primaryTestSource}/48.PNG`],
   },
   {
     key: 49,
     id: 49,
     question: 'Null',
     choices: ["He's excited.", "He's afraid.", "He's brave."],
-    images: [
-      `${primaryTestSource}/49.PNG`,
-    ],
+    images: [`${primaryTestSource}/49.PNG`],
   },
   {
     key: 50,
@@ -565,9 +519,7 @@ const testObject = [
       'I never eat Italian food before.',
       'I’ve never eaten Italian food before.',
     ],
-    images: [
-      `${primaryTestSource}/50.PNG`,
-    ],
+    images: [`${primaryTestSource}/50.PNG`],
   },
 ];
 
