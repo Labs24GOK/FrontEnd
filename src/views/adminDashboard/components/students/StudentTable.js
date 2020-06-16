@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { withRouter, useHistory } from 'react-router-dom';
 import { getStudentTable } from '../../../../actions';
 import { Table, Tag, Spin } from 'antd';
-import StudentRegistrationForm from './StudentRegistrationForm';
 import SearchStundentTable from './SearchStudentTable';
 import 'antd/dist/antd.css';
 import '../mainStyle/mainTable.scss';
@@ -15,14 +14,6 @@ const StudentTable = props => {
   useEffect(() => {
     props.getStudentTable();
   }, []);
-
-  const handleCancelButtonOnForm = () => {
-    setForm(false);
-  };
-
-  const handleAddButton = () => {
-    setForm(!form);
-  };
 
   const studentData = props.studentList.sort((a, b) => {
     return b.id - a.id;
@@ -134,13 +125,6 @@ const StudentTable = props => {
           <SearchStundentTable />
         </div>
       </div>
-
-      {form ? (
-        <StudentRegistrationForm
-          handleCancelButtonOnForm={handleCancelButtonOnForm}
-          setForm={setForm}
-        />
-      ) : null}
 
       {props.isLoading ? (
         <Spin style={{ marginTop: '150px' }} size='large' />
