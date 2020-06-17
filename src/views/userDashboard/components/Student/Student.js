@@ -37,7 +37,7 @@ function Student({ student }) {
        }).catch(err => {
            push('/dashboard')
        })
-    }, [studentData])
+    }, [id])
 
   useEffect(() => {
     getStudentCourses(id).then(res => {

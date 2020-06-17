@@ -1,6 +1,7 @@
 
 import testObject from "../../views/userDashboard/components/placementTest/Child/TestObject";
 export const GET_CHILD_QUESTIONS = 'GET_CHILD_QUESTIONS'
+export const START_TEST = 'START_TEST'
 export const NEXT_PAGE = 'NEXT_PAGE'
 export const PREV_PAGE = 'PREV_PAGE'
 export const TEST_TIME_OUT = 'TEST_TIME_OUT'
@@ -11,8 +12,13 @@ export const getChildQuestions = () => ({
     payload: testObject
 })
 
-export const nextPage = () => ({
-    type: NEXT_PAGE
+export const startTest = () => ({
+    type: START_TEST,
+})
+
+export const nextPage = (data) => ({
+    type: NEXT_PAGE,
+    payload: data
 })
 
 export const prevPage = () => ({
