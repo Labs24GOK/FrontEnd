@@ -50,9 +50,7 @@ const ChildPlacementTest = props => {
   return (
     <div>
       { questions ? testHelper() : (<h1>LOADING...</h1>) }
-      <Button style={{ marginLeft: '40%' }} onClick={() => dispatch(nextPage())}>Next</Button>
-      <Button onClick={() => dispatch(prevPage())}>Previous</Button>
-      <Button onClick={() => console.log(page, currentQuestion)}>LOG</Button>
+      <Button onClick={() => console.log("STATE LOGS ", page, currentQuestion, userAwnsers)}>LOG</Button>
     </div>
   );
 };

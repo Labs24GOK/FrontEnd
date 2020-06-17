@@ -1,10 +1,18 @@
-import { GET_CHILD_QUESTIONS, NEXT_PAGE, PREV_PAGE, START_TEST_TIMER, TEST_TIME_OUT } from "../../actions/userDashboardActions/placementActions";
-const initialState = {
+import {
+  GET_CHILD_QUESTIONS, 
+  START_TEST,
+  NEXT_PAGE, 
+  PREV_PAGE, 
+  START_TEST_TIMER, 
+  TEST_TIME_OUT
+ } from "../../actions/userDashboardActions/placementActions";
+
+ const initialState = {
   timerActive: false,
   questions: [],
   currentQuestion: {},
   page: 0,
-  userAwnsers: [],
+  userAwnsers: []
 };
 
 export const placementTestingReducer = (state = initialState, { type, payload }) => {
@@ -16,21 +24,24 @@ export const placementTestingReducer = (state = initialState, { type, payload })
       return {
         ...state,
         questions: payload
-			};
+      };
+      
+    case START_TEST:
+      console.log(payload)
+      return {
+        ...state,
+        page: state.page + 1,
+        currentQuestion: currentQuestion()
+      };
 
 		case NEXT_PAGE:
+      console.log(payload)
 			return {
 				...state,
         page: state.page + 1,
+        userAwnsers: [...state.userAwnsers, payload],
         currentQuestion: currentQuestion()
 			};
-
-			case PREV_PAGE:
-				return {
-					...state,
-          page: state.page - 1,
-          currentQuestion: currentQuestion()
-        };
 
       case START_TEST_TIMER:
         return {
