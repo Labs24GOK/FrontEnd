@@ -18,8 +18,6 @@ const ChildQuestions = props => {
   const { question, images, choices } = props.currentQuestion[0]; // currently a array in store
 
   const onSubmit = data => {
-    console.log('Data', data);
-    console.log('errors', errors);
     dispatch(nextPage(data.userChoice));
     reset();
   };
