@@ -17,14 +17,13 @@ const ChildQuestions = props => {
   };
 
   const onSubmit = data => {
-    console.log("Data", data)
-    console.log("errors", errors);
     dispatch(nextPage(data.userChoice))
     reset()
   };
   
   return (
     <div>
+      <h3>{question}</h3>
         <div className="img-container">
           {images.map(stupidImg => (
             <img src={stupidImg} />

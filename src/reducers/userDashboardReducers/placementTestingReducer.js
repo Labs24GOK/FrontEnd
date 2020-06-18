@@ -1,6 +1,8 @@
 import {
   GET_CHILD_QUESTIONS, 
   START_TEST,
+  SET_SCORE,
+  TEST_COMPLETED,
   NEXT_PAGE, 
   PREV_PAGE, 
   START_TEST_TIMER, 
@@ -12,7 +14,8 @@ import {
   questions: [],
   currentQuestion: {},
   page: 0,
-  userAwnsers: []
+  userAwnsers: [],
+  score: 0
 };
 
 export const placementTestingReducer = (state = initialState, { type, payload }) => {
@@ -27,15 +30,19 @@ export const placementTestingReducer = (state = initialState, { type, payload })
       };
       
     case START_TEST:
-      console.log(payload)
       return {
         ...state,
         page: state.page + 1,
         currentQuestion: currentQuestion()
       };
 
+    case SET_SCORE:
+      return {
+        ...state,
+        score: payload
+      }
+
 		case NEXT_PAGE:
-      console.log(payload)
 			return {
 				...state,
         page: state.page + 1,
