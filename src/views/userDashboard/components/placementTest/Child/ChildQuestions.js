@@ -3,7 +3,14 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { nextPage } from '../../../../../actions/userDashboardActions/placementActions';
 import { PrimaryButton } from '../../../../../styles/BtnStyle';
-import { ImageContainer, RadioContainer, Question, Image } from './ChildTestSytles';
+import {
+  LabelCard,
+  ImageContainer,
+  RadioContainer,
+  Question,
+  Instruction,
+  Image,
+} from './ChildTestSytles';
 
 const ChildQuestions = props => {
   const dispatch = useDispatch();
@@ -17,19 +24,13 @@ const ChildQuestions = props => {
     reset();
   };
 
-  return (
-    <div className="test-wrapper">
-      <Question>Choose the answer that best matches the phrase:</Question>
-      <Question>"{question}"</Question>
-      <ImageContainer>
-        {images.map(image => (
-          <Image src={image} alt="Test Question" />
-        ))}
-      </ImageContainer>
-      <form onSubmit={handleSubmit(onSubmit)}>
+  const imageChecker = images => {
+    if (images.length === 0) {
+      // No images
+      return (
         <RadioContainer>
           {choices.map(option => (
-            <label name="userChoice">
+            <LabelCard name="userChoice">
               <input
                 key={option}
                 name="userChoice"
@@ -38,9 +39,59 @@ const ChildQuestions = props => {
                 ref={register({ required: true })}
               />
               {option.toUpperCase()}
-            </label>
+            </LabelCard>
           ))}
         </RadioContainer>
+      );
+    } else if (images.length === 1) {
+      // 1 image
+      return (
+        <>
+          <Image src={images} />
+          <RadioContainer>
+            {choices.map(option => (
+              <LabelCard name="userChoice">
+                <input
+                  key={option}
+                  name="userChoice"
+                  type="radio"
+                  value={option}
+                  ref={register({ required: true })}
+                />
+                {option.toUpperCase()}
+              </LabelCard>
+            ))}
+          </RadioContainer>
+        </>
+      );
+    } else {
+      // 3 images
+      return (
+        <RadioContainer>
+          {choices.map((option, index) => (
+            <LabelCard name="userChoice">
+              <Image src={images[index]} alt="Test Question" />
+              <input
+                key={option}
+                name="userChoice"
+                type="radio"
+                value={option}
+                ref={register({ required: true })}
+              />
+              {option.toUpperCase()}
+            </LabelCard>
+          ))}
+        </RadioContainer>
+      );
+    }
+  };
+
+  return (
+    <div className="test-wrapper">
+      <Instruction>Choose the answer that best matches the phrase:</Instruction>
+      <Question>{question}</Question>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        {imageChecker(images)}
         <PrimaryButton type="submit">Next</PrimaryButton>
       </form>
     </div>
@@ -48,18 +99,3 @@ const ChildQuestions = props => {
 };
 
 export default ChildQuestions;
-
-// <Form form={form}>
-//   <h3>{question}</h3>
-// <div className="img-container">
-//   {images.map(stupidImg => (
-//     <img src={stupidImg} />
-//   ))}
-// </div>
-//   <Radio.Group style={radioStyle}>
-//     <Radio value={'a'}>{choices[0]}</Radio>
-//     <Radio value={'b'}>{choices[1]}</Radio>
-//     <Radio value={'c'}>{choices[2]}</Radio>
-//   </Radio.Group>
-//   <Button onClick={() => dispatch}>Next</Button>
-// </Form>

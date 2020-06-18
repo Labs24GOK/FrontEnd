@@ -279,21 +279,21 @@ const testObject = [
   {
     key: 26,
     id: 26,
-    question: 'Null',
+    question: '',
     choices: ["She's exciting.", "She's difficult.", "She's busy."],
     images: [`${primaryTestSource}/26.PNG`],
   },
   {
     key: 27,
     id: 27,
-    question: 'Null',
+    question: '',
     choices: ["He's running quickly.", "He's running good.", "He's running quick."],
     images: [`${primaryTestSource}/27.PNG`],
   },
   {
     key: 28,
     id: 28,
-    question: 'Null',
+    question: '',
     choices: [
       'He go to the doctor yesterday.',
       'He goed to the doctor yesterday.',
@@ -305,7 +305,7 @@ const testObject = [
     key: 29,
     id: 29,
     question: '12th',
-    choices: ['Twelve.', 'Twelfth.', 'Twelveth.'],
+    choices: ['Twelve', 'Twelfth', 'Twelveth'],
     images: [
       // EMPTY
     ],
@@ -313,7 +313,7 @@ const testObject = [
   {
     key: 30,
     id: 30,
-    question: 'Null',
+    question: '',
     choices: [
       'I could read when I was six.',
       "I couldn't read when I am six.",
@@ -324,7 +324,7 @@ const testObject = [
   {
     key: 31,
     id: 31,
-    question: 'Null',
+    question: '',
     choices: [
       'The horse is thirsty than the dog.',
       'The horse is thirster than the dog.',
@@ -335,7 +335,7 @@ const testObject = [
   {
     key: 32,
     id: 32,
-    question: 'Null',
+    question: '',
     choices: [
       'Giraffes are the taller animals in the world.',
       'Giraffes are the tallest animals in the world.',
@@ -346,7 +346,7 @@ const testObject = [
   {
     key: 33,
     id: 33,
-    question: 'Null',
+    question: '',
     choices: [
       "He didn't ate sandwiches for lunch.",
       'He not eat sandwiches for lunch.',
@@ -357,7 +357,7 @@ const testObject = [
   {
     key: 34,
     id: 34,
-    question: 'Null',
+    question: '',
     choices: [
       'The man walked the library.',
       'The man walked into the library.',
@@ -368,14 +368,14 @@ const testObject = [
   {
     key: 35,
     id: 35,
-    question: 'Null',
+    question: '',
     choices: ["It's half past two.", "It's quarter past two.", "It's quarter to two.c"],
     images: [`${primaryTestSource}/35.PNG`],
   },
   {
     key: 36,
     id: 36,
-    question: 'Null',
+    question: '',
     choices: [
       "They're going to catch the bus.",
       'They going to catch the bus.',
@@ -386,7 +386,7 @@ const testObject = [
   {
     key: 37,
     id: 37,
-    question: 'Null',
+    question: '',
     choices: [
       'This is the room which you brush your teeth.',
       'This is the room where you brush your teeth.',
@@ -397,7 +397,7 @@ const testObject = [
   {
     key: 38,
     id: 38,
-    question: 'Null',
+    question: '',
     choices: [
       "He was eat dinner at 8 o' clock.",
       "He was ate dinner at 8 o' clock.",
@@ -408,7 +408,7 @@ const testObject = [
   {
     key: 39,
     id: 39,
-    question: 'Null',
+    question: '',
     choices: [
       'The first month of the year is January.',
       'The first month of the year is July.',
@@ -419,21 +419,21 @@ const testObject = [
   {
     key: 40,
     id: 40,
-    question: 'Null',
+    question: '',
     choices: ['Is paper made to wood?', 'Is paper made of wood?', 'Is paper made in wood?'],
     images: [`${primaryTestSource}/40.PNG`],
   },
   {
     key: 41,
     id: 41,
-    question: 'Null',
+    question: '',
     choices: ['The tea looks like hot.', 'The tea look hot.', 'The tea looks hot.'],
     images: [`${primaryTestSource}/41.PNG`],
   },
   {
     key: 42,
     id: 42,
-    question: 'Null',
+    question: '',
     choices: [
       "You shouldn't to carry heavy bags.",
       "You shouldn't carried heavy bags.",
@@ -444,14 +444,14 @@ const testObject = [
   {
     key: 43,
     id: 43,
-    question: 'Null',
+    question: '',
     choices: ['She win the match.', "She's won the match.", "She's winned the match."],
     images: [`${primaryTestSource}/43.PNG`],
   },
   {
     key: 44,
     id: 44,
-    question: 'Null',
+    question: '',
     choices: [
       'Will the rocket go to the moon.',
       'Will the rocket goes to the moon.',
@@ -462,7 +462,7 @@ const testObject = [
   {
     key: 45,
     id: 45,
-    question: 'Null',
+    question: '',
     choices: [
       'They were walked in the forest when they seeing an owl.',
       'They’re walking in the forest when they’re seeing an owl.',
@@ -473,7 +473,7 @@ const testObject = [
   {
     key: 46,
     id: 46,
-    question: 'Null',
+    question: '',
     choices: [
       'There are enough foods to eat.',
       'There is enough food to eat.',
@@ -484,7 +484,7 @@ const testObject = [
   {
     key: 47,
     id: 47,
-    question: 'Null',
+    question: '',
     choices: [
       'The door bell rang but no-one was at the door.',
       'The door bell rang but anyone was at the door.',
@@ -495,7 +495,7 @@ const testObject = [
   {
     key: 48,
     id: 48,
-    question: 'Null',
+    question: '',
     choices: [
       'They might need their coats.',
       'They might to need their coats.',
@@ -506,14 +506,14 @@ const testObject = [
   {
     key: 49,
     id: 49,
-    question: 'Null',
+    question: '',
     choices: ["He's excited.", "He's afraid.", "He's brave."],
     images: [`${primaryTestSource}/49.PNG`],
   },
   {
     key: 50,
     id: 50,
-    question: 'Null',
+    question: '',
     choices: [
       'I’m never eating Italian food before.',
       'I never eat Italian food before.',
