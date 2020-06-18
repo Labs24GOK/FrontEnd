@@ -8,11 +8,11 @@ export const FETCH_PLACEMENTTESTS_FAILURE = 'FETCH_PLACEMENTTESTS_FAILURE';
 export const getPlacementTests = () => dispatch => {
 	dispatch({ type: FETCH_PLACEMENTTESTS_START });
 	axiosWithAuth()
-		.get(`/api?table=placementexam`)
+		.get(`/placementExam`)
 		.then(res => {
 			dispatch({
 				type: FETCH_PLACEMENTTESTS_SUCCESS,
-				payload: res.data.tableData
+				payload: res.data
 			});
 		})
 		.catch(err => {
@@ -29,11 +29,12 @@ export const FETCH_PLACEMENTTESTTBYID_FAILURE =
 export const getPlacementTestById = id => dispatch => {
 	dispatch({ type: FETCH_PLACEMENTTESTTBYID_START });
 	axiosWithAuth()
-		.get(`/api/?table=placementexam&where=student_id=${id}`)
+		.get(`/placementExam/student/${id}`)  
 		.then(res => {
+			console.log("action - res.data: ", res.data)
 			dispatch({
 				type: FETCH_PLACEMENTTESTTBYID_SUCCESS,
-				payload: res.data.tableData[0]
+				payload: res.data
 			});
 		})
 		.catch(err => {
@@ -56,7 +57,7 @@ export const toggleEditPlacement = () => dispatch => {
 
 export const editPlacementTestById = (id, state) => dispatch => {
 	axiosWithAuth()
-		.put(`/api/?table=student&where=student_id=${id}`, state)
+		.put(`/placementExam/${id}`, state) 
 		.then(res => {
 			dispatch({
 				type: EDIT_PLACEMENTTESTTBYID_SUCCESS,
