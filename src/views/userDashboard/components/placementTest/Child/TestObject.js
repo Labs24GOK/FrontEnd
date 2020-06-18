@@ -8,8 +8,8 @@ const testObject = [
     choices: ['a', 'b', 'c'],
     images: [
       `${primaryTestSource}/01-Five.a.PNG`,
-      `${primaryTestSource}/01-Five.b.PNG`,
       `${primaryTestSource}/01-Five.c.PNG`,
+      `${primaryTestSource}/01-Five.b.PNG`,
     ],
   },
   {

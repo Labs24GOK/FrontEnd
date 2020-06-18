@@ -20,6 +20,11 @@ export const ImageContainer = styled.div`
   }
 `;
 
+export const Image = styled.img`
+  outline: 10px solid #fff;
+  outline-offset: -9px;
+`;
+
 export const RadioContainer = styled.div`
   width: 100%;
   display: flex;

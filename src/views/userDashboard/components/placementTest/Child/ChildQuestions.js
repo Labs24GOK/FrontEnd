@@ -1,9 +1,9 @@
 import React from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { nextPage } from '../../../../../actions/userDashboardActions/placementActions';
 import { PrimaryButton } from '../../../../../styles/BtnStyle';
-import { ImageContainer, RadioContainer, Question } from './ChildTestSytles';
+import { ImageContainer, RadioContainer, Question, Image } from './ChildTestSytles';
 
 const ChildQuestions = props => {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const ChildQuestions = props => {
       <Question>"{question}"</Question>
       <ImageContainer>
         {images.map(image => (
-          <img src={image} alt="Test Question" />
+          <Image src={image} alt="Test Question" />
         ))}
       </ImageContainer>
       <form onSubmit={handleSubmit(onSubmit)}>
