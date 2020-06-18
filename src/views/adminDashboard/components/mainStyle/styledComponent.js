@@ -10,6 +10,19 @@ export const FormWrap = styled.form`
   background-color: #E0EBF0;
   margin: 30px 10px 20px;
 `
+export const FormWrap2 = styled.form`
+  border: 0px transparant;
+  border-radius: 3px;
+  font-size: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  transition: all 200ms ease;
+  background-color: #E0EBF0;
+  margin: 30px 10px 20px;
+`
+
 export const RowFlex = styled.div`
   display: flex;
   justify-content: space-around;
@@ -35,6 +48,14 @@ export const FormSet = styled.div`
  padding: 0 3px 0 20px;
 `
 
+export const FormSet2 = styled.div`
+  border: 1px solid transparent; 
+  margin: 10px 5px 10px 5px;
+  background-color: #d1dfe6;
+  padding: 20px 20px 20px 20px;
+  width: 42%;
+`
+
 export const Div = styled.div`
   display: grid;
   text-align: left;
@@ -54,11 +75,23 @@ export const Div2 = styled.div`
 export const Div3 = styled.div`
   display: flex;
 `
+export const Div4 = styled.div`
+  display: grid;
+  text-align: left;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 15px;
+  margin: 10px;
+  padding: 30px;
+`
+
+export const HR = styled.hr`
+  border: .25px solid #26ABBD;
+`
 
 export const Input = styled.input`
   outline: none;
   border-radius: 3px;
-  border:  ${props => props.border ||'1px solid transparent'};
+  border:  ${props => props.border ||'1px inset transparent'};
   background: white;
   width: 100%;
   padding: 6px;
