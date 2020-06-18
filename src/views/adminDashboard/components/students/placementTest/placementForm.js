@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { editPlacementTestById, toggleEditPlacement } from '../../../../../actions';
+import { editPlacementTestById, toggleEditPlacement, getPlacementTestById } from '../../../../../actions';
 import { withRouter } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { CancelButton, AddButton, ButtonDiv, Div, FormSet, FormWrap, Input, Label, TextDiv} from '../../mainStyle/styledComponent.js';
 import { getDateStringENGBFormat } from "../../../../../utils/helpers";
+import axiosWithAuth from '../../../../../utils/axiosWithAuth';
 
 import '../../mainStyle/mainTable.scss';
 import './placementTest.scss';
@@ -13,6 +14,14 @@ import './placementTest.scss';
 const PlacementForm = props => {
 
     const { register, errors, handleSubmit } = useForm();
+    const [studentTests, setStudentTests] = useState([]);
+    
+    const getStudentPlacementTests = () => {
+        // get all placement test records for this student
+        props.getPlacementTestById(props.studentID)
+        // set those tests in an array so they can be referenced
+        
+    }
 
     const submitNow = data => {
         props.editPlacementTestById(props.studentID, data)
@@ -26,8 +35,8 @@ const PlacementForm = props => {
     const testData = props.placementTestById;
 
     // temp; get from props in finished form
-    const categoryNames = ["Student ID", "Test Date", "Test", "Overall Level", "Speaking Fluency", "Spoken Accuracy", "Oral Level", "Listening Comprehension", "MC Correct", "MC Level", "MC Marked", "Writing Level", "Notes"];
-    const categories = ["student_id", "test_date", "test", "overall_level", "speaking_fluency", "spoken_accuracy", "oral_level", "listening_comprehension", "mc_correct", "mc_level", "mc_marked", "writing_level", "notes"];
+    const categoryNames = ["Student ID", "Test Date", "Test", "Level", "Speaking Fluency", "Spoken Accuracy", "Listening Comprehension", "MC Correct", "MC Marked", "Writing Level", "Notes"];
+    const categories = ["student_id", "test_date", "test", "level_id", "speaking_fluency", "spoken_accuracy", "listening_comprehension", "mc_correct", "mc_marked", "writing_level", "notes"];
    
     return(
         <FormWrap onSubmit={handleSubmit(submitNow)}>
@@ -47,7 +56,7 @@ const PlacementForm = props => {
                         {errors.test && errors.test.type === "required" && 'Test is Required'}	
                 </div> 
                 <div>
-                    <Label>Overall Level</Label>
+                    <Label>Level</Label>
                     <Input type="text" name="overall_level" className={errors.overall_level && "input-error"} ref={register({required: true })} />
                         {errors.overall_level && errors.overall_level.type === "required" && 'Overall Level is Required'}	
                 </div> 
@@ -61,11 +70,11 @@ const PlacementForm = props => {
                     <Input type="text" name="spoken_accuracy" className={errors.spoken_accuracy && "input-error"} ref={register({required: true })} />
                         {errors.spoken_accuracy && errors.spoken_accuracy.type === "required" && 'Spoken Accuracy is Required'}	
                 </div> 
-                <div>
+                {/* <div>
                     <Label>Oral Level</Label>
                     <Input type="text" name="oral_level" className={errors.oral_level && "input-error"} ref={register({required: true })} />
                         {errors.oral_level && errors.oral_level.type === "required" && 'Oral Level is Required'}	
-                </div> 
+                </div>  */}
                 <div>
                     <Label>Listening Comprehension</Label>
                     <Input type="text" name="listening_comprehension" className={errors.listening_comprehension && "input-error"} ref={register({required: true })} />
@@ -76,11 +85,11 @@ const PlacementForm = props => {
                     <Input type="text" name="mc_correct" className={errors.mc_correct && "input-error"} ref={register({required: true })} />
                         {errors.mc_correct && errors.mc_correct.type === "required" && 'MC Correct is Required'}	
                 </div> 
-                <div>
+                {/* <div>
                     <Label>MC Level</Label>
                     <Input type="text" name="ASDF" className={errors.ASDF && "input-error"} ref={register({required: true })} />
                         {errors.ASDF && errors.ASDF.type === "required" && 'MC Level is Required'}	
-                </div> 
+                </div>  */}
                 <div>
                     <Label>MC Marked</Label>
                     <Input type="text" name="mc_marked" className={errors.mc_marked && "input-error"} ref={register({required: true })} />
@@ -120,6 +129,6 @@ const mapStateToProps = state => {
   export default withRouter(
     connect(
       mapStateToProps,
-      { editPlacementTestById, toggleEditPlacement }
+      { editPlacementTestById, toggleEditPlacement, getPlacementTestById }
   )(PlacementForm)
   )
