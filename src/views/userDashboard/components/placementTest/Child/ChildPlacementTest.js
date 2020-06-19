@@ -54,8 +54,9 @@ const ChildPlacementTest = props => {
   };
 
   const gradeLevel = () => {
-    if (score >= 17) {
-      setPhaseOnePassed(true);
+
+    if(score >= 17 && score < 25) {
+      setPhaseOnePassed(true)
     }
   };
 
