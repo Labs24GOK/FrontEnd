@@ -8,15 +8,12 @@ import Footer from '../../../marketing/components/Footer';
 
 import { getStudent } from '../../getStudent';
 import { getStudentCourses } from '../../getStudentCourses';
-// import axiosWithAuth from '../../../../utils/axiosWithAuth';
-
-import { Icon } from 'semantic-ui-react';
 import ChildPlacementTest from '../placementTest/Child/ChildPlacementTest';
 import AdultPlacementTest from '../placementTest/Adult/AdultPlacementTest';
 
 function Student({ student }) {
   const { id } = useParams();
-  const { goBack, push } = useHistory();
+  const { push } = useHistory();
 
   const [studentData, setStudentData] = useState(['student']);
   const [studentCourse, setStudentCourse] = useState([]);
