@@ -6,6 +6,10 @@ export const Instruction = styled.h3`
   color: #333;
   font-weight: 400;
   font-size: 1.6rem;
+
+  @media (max-width: 700px) {
+    padding: 0 1rem;
+  }
 `;
 
 export const Question = styled.h3`
@@ -15,28 +19,18 @@ export const Question = styled.h3`
   font-weight: 500;
 `;
 
-export const ImageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  margin-bottom: 1.5rem;
-
-  @media (min-width: 700px) {
-    flex-direction: row;
-  }
-`;
-
 export const Image = styled.img`
+  width: 100%;
   outline: 10px solid #fff;
   outline-offset: -9px;
 `;
 
 export const RadioContainer = styled.div`
+  width: 80%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin: 2rem 0;
   font-size: 1.5rem;
 
   @media (max-width: 700px) {
@@ -52,3 +46,10 @@ export const LabelCard = styled.div`
   text-align: center;
   line-height: 1.6;
 `;
+
+export const RadioInput = styled.input`
+  transform: scale(2);
+  margin: 1rem 0;
+`;
+
+// question = page number, if >= 25 LabelCard flex-direction: column

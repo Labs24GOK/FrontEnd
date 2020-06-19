@@ -5,11 +5,11 @@ import { nextPage } from '../../../../../actions/userDashboardActions/placementA
 import { PrimaryButton } from '../../../../../styles/BtnStyle';
 import {
   LabelCard,
-  ImageContainer,
   RadioContainer,
   Question,
   Instruction,
   Image,
+  RadioInput,
 } from './ChildTestSytles';
 
 const ChildQuestions = props => {
@@ -29,7 +29,7 @@ const ChildQuestions = props => {
         <RadioContainer>
           {option.map((option, index) => (
             <LabelCard name="userChoice">
-              <input
+              <RadioInput
                 key={option}
                 name="userChoice"
                 type="radio"
@@ -49,7 +49,7 @@ const ChildQuestions = props => {
           <RadioContainer>
             {option.map((option, index) => (
               <LabelCard name="userChoice">
-                <input
+                <RadioInput
                   key={option}
                   name="userChoice"
                   type="radio"
@@ -69,7 +69,7 @@ const ChildQuestions = props => {
           {option.map((option, index) => (
             <LabelCard name="userChoice">
               <Image src={images[index]} alt="Test Question" />
-              <input
+              <RadioInput
                 key={option}
                 name="userChoice"
                 type="radio"

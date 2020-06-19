@@ -6,7 +6,7 @@ import StudentEditDetails from './StudentForms/StudentEditDetails';
 import StudentDetails from './StudentDetails';
 import Footer from '../../../marketing/components/Footer';
 
-import { getStudent} from '../../getStudent'
+import { getStudent } from '../../getStudent';
 import { getStudentCourses } from '../../getStudentCourses';
 // import axiosWithAuth from '../../../../utils/axiosWithAuth';
 
@@ -21,23 +21,24 @@ function Student({ student }) {
   const [studentData, setStudentData] = useState(['student']);
   const [studentCourse, setStudentCourse] = useState([]);
 
-    // Get subject from JWT
+  // Get subject from JWT
   let token = localStorage.getItem('token');
   let tokenData = JSON.parse(atob(token.split('.')[1]));
   const { subject } = tokenData;
 
-    useEffect(() => {
-       getStudent(id)
-       .then(res => {
-           if(subject === res.user_id) {
-                  setStudentData(res)
-           } else{
-               push('/dashboard')
-           }
-       }).catch(err => {
-           push('/dashboard')
-       })
-    }, [id])
+  useEffect(() => {
+    getStudent(id)
+      .then(res => {
+        if (subject === res.user_id) {
+          setStudentData(res);
+        } else {
+          push('/dashboard');
+        }
+      })
+      .catch(err => {
+        push('/dashboard');
+      });
+  }, [id]);
 
   useEffect(() => {
     getStudentCourses(id).then(res => {
@@ -48,25 +49,12 @@ function Student({ student }) {
   return (
     <>
       <UserDashboardHeader />
-      <div
-        className='back-button'
-        onClick={goBack}
-        style={{
-          cursor: 'pointer',
-          width: '10%',
-          fontSize: '1.75rem',
-          padding: '1%',
-        }}
-      >
-        <Icon name='angle left' />
-        back
-      </div>
       <div>
         <Switch>
-          <Route exact path='/student/:id'>
+          <Route exact path="/student/:id">
             <StudentDetails student={studentData} course={studentCourse} />
           </Route>
-          <Route exact path='/student/:id/edit'>
+          <Route exact path="/student/:id/edit">
             <StudentEditDetails student={studentData} course={studentCourse} />
           </Route>
           <Route path={`/student/:id/child-placement`}>
