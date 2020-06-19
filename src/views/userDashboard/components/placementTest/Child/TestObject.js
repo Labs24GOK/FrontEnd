@@ -1,11 +1,10 @@
 const primaryTestSource = '/primary-test-img';
-
 const testObject = [
   {
     key: 1,
     id: 1,
     question: 'Five',
-    choices: ['a', 'b', 'c'],
+    option: ['a', 'b', 'c'],
     images: [
       `${primaryTestSource}/01-Five.a.PNG`,
       `${primaryTestSource}/01-Five.c.PNG`,
@@ -16,7 +15,7 @@ const testObject = [
     key: 2,
     id: 2,
     question: 'Pencil',
-    choices: ['a', 'b', 'c'],
+    option: ['a', 'b', 'c'],
     images: [
       `${primaryTestSource}/02-Pencil.a.PNG`,
       `${primaryTestSource}/02-Pencil.b.PNG`,
@@ -27,7 +26,7 @@ const testObject = [
     key: 3,
     id: 3,
     question: 'Ball',
-    choices: ['a', 'b', 'c'],
+    option: ['a', 'b', 'c'],
     images: [
       `${primaryTestSource}/03-Ball.a.PNG`,
       `${primaryTestSource}/03-Ball.b.PNG`,
@@ -38,7 +37,7 @@ const testObject = [
     key: 4,
     id: 4,
     question: 'A big dog',
-    choices: ['a', 'b', 'c'],
+    option: ['a', 'b', 'c'],
     images: [
       `${primaryTestSource}/04-BigDog.a.PNG`,
       `${primaryTestSource}/04-BigDog.b.PNG`,
@@ -49,7 +48,7 @@ const testObject = [
     key: 5,
     id: 5,
     question: 'Eyes',
-    choices: ['a', 'b', 'c'],
+    option: ['a', 'b', 'c'],
     images: [
       `${primaryTestSource}/05-Eyes.a.PNG`,
       `${primaryTestSource}/05-Eyes.b.PNG`,
@@ -60,7 +59,7 @@ const testObject = [
     key: 6,
     id: 6,
     question: 'I have a long tail',
-    choices: ['a', 'b', 'c'],
+    option: ['a', 'b', 'c'],
     images: [
       `${primaryTestSource}/6.LongTail.a.PNG`,
       `${primaryTestSource}/6.LongTail.b.PNG`,
@@ -71,7 +70,7 @@ const testObject = [
     key: 7,
     id: 7,
     question: 'Socks',
-    choices: ['a', 'b', 'c'],
+    option: ['a', 'b', 'c'],
     images: [
       `${primaryTestSource}/07-Socks.a.PNG`,
       `${primaryTestSource}/07-Socks.b.PNG`,
@@ -82,7 +81,7 @@ const testObject = [
     key: 8,
     id: 8,
     question: 'I cannot ride a bike',
-    choices: ['a', 'b', 'c'],
+    option: ['a', 'b', 'c'],
     images: [
       `${primaryTestSource}/08-CantRide.a.PNG`,
       `${primaryTestSource}/08-CantRide.b.PNG`,
@@ -93,7 +92,7 @@ const testObject = [
     key: 9,
     id: 9,
     question: 'Bedroom',
-    choices: ['a', 'b', 'c'],
+    option: ['a', 'b', 'c'],
     images: [
       `${primaryTestSource}/09-Bedroom.a.PNG`,
       `${primaryTestSource}/09-Bedroom.b.PNG`,
@@ -104,7 +103,7 @@ const testObject = [
     key: 10,
     id: 10,
     question: 'I like ice cream',
-    choices: ['a', 'b', 'c'],
+    option: ['a', 'b', 'c'],
     images: [
       `${primaryTestSource}/10-LikeIceCream.a.PNG`,
       `${primaryTestSource}/10-LikeIceCream.b.PNG`,
@@ -115,7 +114,7 @@ const testObject = [
     key: 11,
     id: 11,
     question: 'Eighteen',
-    choices: ['a', 'b', 'c'],
+    option: ['a', 'b', 'c'],
     images: [
       `${primaryTestSource}/11-Eighteen.a.PNG`,
       `${primaryTestSource}/11-Eighteen.b.PNG`,
@@ -126,7 +125,7 @@ const testObject = [
     key: 12,
     id: 12,
     question: 'These are kites',
-    choices: ['a', 'b', 'c'],
+    option: ['a', 'b', 'c'],
     images: [
       `${primaryTestSource}/12-Kites.a.PNG`,
       `${primaryTestSource}/12-Kites.b.PNG`,
@@ -137,7 +136,7 @@ const testObject = [
     key: 13,
     id: 13,
     question: 'Lamp',
-    choices: ['a', 'b', 'c'],
+    option: ['a', 'b', 'c'],
     images: [
       `${primaryTestSource}/13-Lamp.a.PNG`,
       `${primaryTestSource}/13-Lamp.b.PNG`,
@@ -148,7 +147,7 @@ const testObject = [
     key: 14,
     id: 14,
     question: 'They are eating cake',
-    choices: ['a', 'b', 'c'],
+    option: ['a', 'b', 'c'],
     images: [
       `${primaryTestSource}/14-TheyreEatingCake.a.PNG`,
       `${primaryTestSource}/14-TheyreEatingCake.b.PNG`,
@@ -159,7 +158,7 @@ const testObject = [
     key: 15,
     id: 15,
     question: 'Juice',
-    choices: ['a', 'b', 'c'],
+    option: ['a', 'b', 'c'],
     images: [
       `${primaryTestSource}/15-Juice.a.PNG`,
       `${primaryTestSource}/15-Juice.b.PNG`,
@@ -170,7 +169,7 @@ const testObject = [
     key: 16,
     id: 16,
     question: 'It can swim and jump',
-    choices: ['a', 'b', 'c'],
+    option: ['a', 'b', 'c'],
     images: [
       `${primaryTestSource}/16-SwimAndJump.a.PNG`,
       `${primaryTestSource}/16-SwimAndJump.b.PNG`,
@@ -181,7 +180,7 @@ const testObject = [
     key: 17,
     id: 17,
     question: 'Basketball',
-    choices: ['a', 'b', 'c'],
+    option: ['a', 'b', 'c'],
     images: [
       `${primaryTestSource}/17-Basketball.a.PNG`,
       `${primaryTestSource}/17-Basketball.b.PNG`,
@@ -192,7 +191,7 @@ const testObject = [
     key: 18,
     id: 18,
     question: 'The carrots are between the tomatoes and plums',
-    choices: ['a', 'b', 'c'],
+    option: ['a', 'b', 'c'],
     images: [
       `${primaryTestSource}/18-CarrotsBetween.a.PNG`,
       `${primaryTestSource}/18-CarrotsBetween.b.PNG`,
@@ -203,7 +202,7 @@ const testObject = [
     key: 19,
     id: 19,
     question: 'Grandparents',
-    choices: ['a', 'b', 'c'],
+    option: ['a', 'b', 'c'],
     images: [
       `${primaryTestSource}/19-Grandparents.a.PNG`,
       `${primaryTestSource}/19-Grandparents.b.PNG`,
@@ -214,7 +213,7 @@ const testObject = [
     key: 20,
     id: 20,
     question: 'She is getting dressed',
-    choices: ['a', 'b', 'c'],
+    option: ['a', 'b', 'c'],
     images: [
       `${primaryTestSource}/20-ShesGettingDressed.a.PNG`,
       `${primaryTestSource}/20-ShesGettingDressed.b.PNG`,
@@ -225,7 +224,7 @@ const testObject = [
     key: 21,
     id: 21,
     question: 'Fifty',
-    choices: ['a', 'b', 'c'],
+    option: ['a', 'b', 'c'],
     images: [
       `${primaryTestSource}/21-Fifty.a.PNG`,
       `${primaryTestSource}/21-Fifty.b.PNG`,
@@ -236,7 +235,7 @@ const testObject = [
     key: 22,
     id: 22,
     question: 'He works on a farm',
-    choices: ['a', 'b', 'c'],
+    option: ['a', 'b', 'c'],
     images: [
       `${primaryTestSource}/22-HeWorksOnAFarm.a.PNG`,
       `${primaryTestSource}/22-HeWorksOnAFarm.b.PNG`,
@@ -247,7 +246,7 @@ const testObject = [
     key: 23,
     id: 23,
     question: 'Backache',
-    choices: ['a', 'b', 'c'],
+    option: ['a', 'b', 'c'],
     images: [
       `${primaryTestSource}/23-Backache.a.PNG`,
       `${primaryTestSource}/23-Backache.b.PNG`,
@@ -258,7 +257,7 @@ const testObject = [
     key: 24,
     id: 24,
     question: 'He is very strong',
-    choices: ['a', 'b', 'c'],
+    option: ['a', 'b', 'c'],
     images: [
       `${primaryTestSource}/24-HesVeryStrong.a.PNG`,
       `${primaryTestSource}/24-HesVeryStrong.b.PNG`,
@@ -269,7 +268,7 @@ const testObject = [
     key: 25,
     id: 25,
     question: 'Snow',
-    choices: ['a', 'b', 'c'],
+    option: ['a', 'b', 'c'],
     images: [
       `${primaryTestSource}/25-Snow.a.PNG`,
       `${primaryTestSource}/25-Snow.b.PNG`,
@@ -280,6 +279,7 @@ const testObject = [
     key: 26,
     id: 26,
     question: '',
+    option: ['a', 'b', 'c'],
     choices: ["She's exciting.", "She's difficult.", "She's busy."],
     images: [`${primaryTestSource}/26.PNG`],
   },
@@ -287,6 +287,7 @@ const testObject = [
     key: 27,
     id: 27,
     question: '',
+    option: ['a', 'b', 'c'],
     choices: ["He's running quickly.", "He's running good.", "He's running quick."],
     images: [`${primaryTestSource}/27.PNG`],
   },
@@ -294,6 +295,7 @@ const testObject = [
     key: 28,
     id: 28,
     question: '',
+    option: ['a', 'b', 'c'],
     choices: [
       'He go to the doctor yesterday.',
       'He goed to the doctor yesterday.',
@@ -305,6 +307,7 @@ const testObject = [
     key: 29,
     id: 29,
     question: '12th',
+    option: ['a', 'b', 'c'],
     choices: ['Twelve', 'Twelfth', 'Twelveth'],
     images: [
       // EMPTY
@@ -314,6 +317,7 @@ const testObject = [
     key: 30,
     id: 30,
     question: '',
+    option: ['a', 'b', 'c'],
     choices: [
       'I could read when I was six.',
       "I couldn't read when I am six.",
@@ -325,6 +329,7 @@ const testObject = [
     key: 31,
     id: 31,
     question: '',
+    option: ['a', 'b', 'c'],
     choices: [
       'The horse is thirsty than the dog.',
       'The horse is thirster than the dog.',
@@ -336,6 +341,7 @@ const testObject = [
     key: 32,
     id: 32,
     question: '',
+    option: ['a', 'b', 'c'],
     choices: [
       'Giraffes are the taller animals in the world.',
       'Giraffes are the tallest animals in the world.',
@@ -347,6 +353,7 @@ const testObject = [
     key: 33,
     id: 33,
     question: '',
+    option: ['a', 'b', 'c'],
     choices: [
       "He didn't ate sandwiches for lunch.",
       'He not eat sandwiches for lunch.',
@@ -358,6 +365,7 @@ const testObject = [
     key: 34,
     id: 34,
     question: '',
+    option: ['a', 'b', 'c'],
     choices: [
       'The man walked the library.',
       'The man walked into the library.',
@@ -369,6 +377,7 @@ const testObject = [
     key: 35,
     id: 35,
     question: '',
+    option: ['a', 'b', 'c'],
     choices: ["It's half past two.", "It's quarter past two.", "It's quarter to two.c"],
     images: [`${primaryTestSource}/35.PNG`],
   },
@@ -376,6 +385,7 @@ const testObject = [
     key: 36,
     id: 36,
     question: '',
+    option: ['a', 'b', 'c'],
     choices: [
       "They're going to catch the bus.",
       'They going to catch the bus.',
@@ -387,6 +397,7 @@ const testObject = [
     key: 37,
     id: 37,
     question: '',
+    option: ['a', 'b', 'c'],
     choices: [
       'This is the room which you brush your teeth.',
       'This is the room where you brush your teeth.',
@@ -398,6 +409,7 @@ const testObject = [
     key: 38,
     id: 38,
     question: '',
+    option: ['a', 'b', 'c'],
     choices: [
       "He was eat dinner at 8 o' clock.",
       "He was ate dinner at 8 o' clock.",
@@ -409,6 +421,7 @@ const testObject = [
     key: 39,
     id: 39,
     question: '',
+    option: ['a', 'b', 'c'],
     choices: [
       'The first month of the year is January.',
       'The first month of the year is July.',
@@ -420,6 +433,7 @@ const testObject = [
     key: 40,
     id: 40,
     question: '',
+    option: ['a', 'b', 'c'],
     choices: ['Is paper made to wood?', 'Is paper made of wood?', 'Is paper made in wood?'],
     images: [`${primaryTestSource}/40.PNG`],
   },
@@ -434,6 +448,7 @@ const testObject = [
     key: 42,
     id: 42,
     question: '',
+    option: ['a', 'b', 'c'],
     choices: [
       "You shouldn't to carry heavy bags.",
       "You shouldn't carried heavy bags.",
@@ -445,6 +460,7 @@ const testObject = [
     key: 43,
     id: 43,
     question: '',
+    option: ['a', 'b', 'c'],
     choices: ['She win the match.', "She's won the match.", "She's winned the match."],
     images: [`${primaryTestSource}/43.PNG`],
   },
@@ -452,6 +468,7 @@ const testObject = [
     key: 44,
     id: 44,
     question: '',
+    option: ['a', 'b', 'c'],
     choices: [
       'Will the rocket go to the moon.',
       'Will the rocket goes to the moon.',
@@ -463,6 +480,7 @@ const testObject = [
     key: 45,
     id: 45,
     question: '',
+    option: ['a', 'b', 'c'],
     choices: [
       'They were walked in the forest when they seeing an owl.',
       'They’re walking in the forest when they’re seeing an owl.',
@@ -474,6 +492,7 @@ const testObject = [
     key: 46,
     id: 46,
     question: '',
+    option: ['a', 'b', 'c'],
     choices: [
       'There are enough foods to eat.',
       'There is enough food to eat.',
@@ -485,6 +504,7 @@ const testObject = [
     key: 47,
     id: 47,
     question: '',
+    option: ['a', 'b', 'c'],
     choices: [
       'The door bell rang but no-one was at the door.',
       'The door bell rang but anyone was at the door.',
@@ -496,6 +516,7 @@ const testObject = [
     key: 48,
     id: 48,
     question: '',
+    option: ['a', 'b', 'c'],
     choices: [
       'They might need their coats.',
       'They might to need their coats.',
@@ -507,6 +528,7 @@ const testObject = [
     key: 49,
     id: 49,
     question: '',
+    option: ['a', 'b', 'c'],
     choices: ["He's excited.", "He's afraid.", "He's brave."],
     images: [`${primaryTestSource}/49.PNG`],
   },
@@ -514,6 +536,7 @@ const testObject = [
     key: 50,
     id: 50,
     question: '',
+    option: ['a', 'b', 'c'],
     choices: [
       'I’m never eating Italian food before.',
       'I never eat Italian food before.',
@@ -522,5 +545,4 @@ const testObject = [
     images: [`${primaryTestSource}/50.PNG`],
   },
 ];
-
 export default testObject;
