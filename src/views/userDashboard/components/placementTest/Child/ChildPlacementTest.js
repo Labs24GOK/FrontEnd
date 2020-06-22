@@ -57,6 +57,8 @@ const ChildPlacementTest = props => {
       dispatch(setPage(25))
     }
   };
+  
+  const currentAnwser = grade[page - 1]
 
   useEffect(() => {
     testTimer();
@@ -78,14 +80,16 @@ const ChildPlacementTest = props => {
       dispatch(completeTest({ score, userAwnsers }));
       return <ChildQuestionsPassed />;
     } else if (phaseTwoStart) {
-      return <ChildQuestions currentQuestion={currentQuestion} />;
+      return <ChildQuestions currentQuestion={currentQuestion} currentAnwser={currentAnwser} />;
     } else if (page >= 1 && !phaseOneFailed) {
-      return <ChildQuestions currentQuestion={currentQuestion} />;
+      return <ChildQuestions currentQuestion={currentQuestion} currentAnwser={currentAnwser} />;
     } else if (page >= 50) {
       dispatch(completeTest({ score, userAwnsers }));
       return <ChildQuestionsPassed />;
     }
   };
+
+  
 
   return (
     <div>
