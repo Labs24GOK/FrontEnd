@@ -3,7 +3,7 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/d7cd0bec7a79ce0d7fa1/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/speak-out-fe/test_coverage)
 
 
-# Garden of Knowledge/Speak Out
+# GardenSpeak Out
 
 You can find the deployed project at [speak-out-bh.com](https://speak-out-bh.com/).
 
@@ -38,14 +38,11 @@ You can find the deployed project at [speak-out-bh.com](https://speak-out-bh.com
 
 **LABS 24**
 
-|  [Alec Dye](https://github.com/AlecDye)  |  [Alve McKethen](https://github.com/Gremlin4544)  |  [Brittani Luce](https://github.com/c0derbr1t)  |  [Rudy Goldhaber](https://github.com/SyriiAdvent)  |  [Jeremy McWilliams](https://github.com/J2Macwilliams)|
+|  [Alec Dye](https://github.com/AlecDye)  |  [Alve McKethen](https://github.com/Gremlin4544)  |  [Brittani Luce](https://github.com/c0derbr1t)| [Rudy Goldhaber](https://github.com/SyriiAdvent)  |  [Jeremy McWilliams](https://github.com/J2Macwilliams)|
 | :-------: | :-----------: | :-------: | :--------: | :---------: |
-|                                           [<img src="./profile-pictures/alec-dye.jpg" width = "200" />](https://github.com/AlecDye)        </br>Full Stack Web Developer      
-|                                           [<img src="./profile-pictures/alve-mckethen.jpg" width = "200" />](https://github.com/Gremlin4544)        </br>Full Stack Web Developer      
-|                                           [<img src="./profile-pictures/brittani-luce.jpg" width = "200" />](https://github.com/c0derbr1t)        </br>Full Stack Web Developer         
-|                                           [<img src="./profile-pictures/rudy-goldhaber.jpg" width = "200" />](https://github.com/SyriiAdvent)        </br>Full Stack Web Developer                                                 
-|                                        [<img src="./profile-pictures/jeremy-mcwilliams.jpg" width = "200" />](https://github.com/J2Macwilliams)    </br>Full Stack Web Developer /</br> Team Lead             |
-| [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/AlecDye)   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/alecdye/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Gremlin4544) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/alvemckethen/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/c0derbr1t)  [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/brittani-luce/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/SyriiAdvent)  [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/rudy-goldhaber/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/J2Macwilliams)   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jeremy-mcwilliams/) |  |             
+|                                           [<img src="./profile-pictures/alec-dye.jpg" width = "200" />](https://github.com/AlecDye)        </br>Full Stack Web Developer                                            |                                           [<img src="./profile-pictures/alve-mckethen.jpg" width = "200" />](https://github.com/Gremlin4544)    </br>Full Stack Web Developer                                           |                                               [<img src="./profile-pictures/brittani-luce.jpg" width = "200" />](https://github.com/c0derbr1t)   </br>Full Stack Web Developer                                                |                                                 [<img src="./profile-pictures/rudy-goldhaber.jpg" width = "200" />](https://github.com/SyriiAdvent)   </br>Full Stack Web Developer                                                 |                                        [<img src="./profile-pictures/jeremy-mcwilliams.jpg" width = "200" />](https://github.com/J2Macwilliams)    </br>Full Stack Web Developer /</br> Team Lead                                         |
+| [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/AlecDye)   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/alecdye/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Gremlin4544) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/alvemckethen/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/c0derbr1t)  [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/brittani-luce/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/SyriiAdvent)  [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/rudy-goldhaber/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/J2Macwilliams)   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jeremy-mcwilliams/) |  |
+           
 
 <br>
 <br>
@@ -55,16 +52,16 @@ You can find the deployed project at [speak-out-bh.com](https://speak-out-bh.com
 
 ## Project Overview
 
+### Project Notion Document
+
+| [Product Canvas](https://www.notion.so/The-Garden-of-Knowledge-bf0efc0a7c3847a4b3bfc33d9a12c6e9) |
+
 
 | LABS 20 | LABS 22 | LABS 24 |
 | :-----: | :-----: | :-----: |
 | [Trello Board](https://trello.com/b/SJHPrjVM/labs-20-speak-out) | [Trello Board](https://trello.com/b/dRZzGnhr/labs-22-speak-out) | [Trello Board](https://trello.com/b/ApGJROvk/labs-24-garden-of-knowledge) |
 | [UX Design files](https://www.figma.com/proto/lAawtUck67YJkPuZQK2Vlo/UX6-Group-Project-Speak-Out.?node-id=746%3A21505&viewport=182%2C561%2C0.0289407130330801&scaling=min-zoom) | [UX Design files](https://www.figma.com/file/INzI15d34MpvNvy6FN1wVf/Marketing-Page-(Labs-22)?node-id=118%3A0) |
 
-
-## Project Notion Document
-
-| [Product Canvas](https://www.notion.so/The-Garden-of-Knowledge-bf0efc0a7c3847a4b3bfc33d9a12c6e9) |
 
 
 Easy-to-use, ‘cloud application’ that promotes school’s quality education at an affordable price, enables parents to register their children for classes, schedule a placement test (or have a student to take a placement test online), pay tuition, and track their childrens’ success at school.       
