@@ -5,11 +5,11 @@ import { nextPage } from '../../../../../actions/userDashboardActions/placementA
 import { PrimaryButton } from '../../../../../styles/BtnStyle';
 import {
   LabelCard,
-  ImageContainer,
   RadioContainer,
   Question,
   Instruction,
   Image,
+  RadioInput,
 } from './ChildTestSytles';
 
 const ChildQuestions = props => {
@@ -27,16 +27,16 @@ const ChildQuestions = props => {
       // No images
       return (
         <RadioContainer>
-          {choices.map(option => (
+          {option.map((option, index) => (
             <LabelCard name="userChoice">
-              <input
+              <RadioInput
                 key={option}
                 name="userChoice"
                 type="radio"
                 value={option}
                 ref={register({ required: true })}
               />
-              {option.toUpperCase()}
+              {choices ? choices[index] : option.toUpperCase()}
             </LabelCard>
           ))}
         </RadioContainer>
@@ -47,16 +47,16 @@ const ChildQuestions = props => {
         <>
           <Image src={images} />
           <RadioContainer>
-            {choices.map(option => (
+            {option.map((option, index) => (
               <LabelCard name="userChoice">
-                <input
+                <RadioInput
                   key={option}
                   name="userChoice"
                   type="radio"
                   value={option}
                   ref={register({ required: true })}
                 />
-                {option.toUpperCase()}
+                {choices ? choices[index] : option.toUpperCase()}
               </LabelCard>
             ))}
           </RadioContainer>
@@ -66,10 +66,10 @@ const ChildQuestions = props => {
       // 3 images
       return (
         <RadioContainer>
-          {choices.map((option, index) => (
+          {option.map((option, index) => (
             <LabelCard name="userChoice">
               <Image src={images[index]} alt="Test Question" />
-              <input
+              <RadioInput
                 key={option}
                 name="userChoice"
                 type="radio"

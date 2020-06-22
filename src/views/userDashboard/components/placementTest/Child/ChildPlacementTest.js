@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from 'antd';
 import { useHistory } from 'react-router-dom';
 import StartTest from './StartTest';
-import ChildQuestions from './ChildQuestions'
+import ChildQuestions from './ChildQuestions';
 import { useSelector, shallowEqual, useDispatch } from 'react-redux';
 import { getChildQuestions, startTestTimer, timeOut, setScore, completeTest, setPage } from '../../../../../actions/userDashboardActions/placementActions'
 import { rubric as grade } from './rubric'
@@ -15,37 +15,39 @@ const ChildPlacementTest = props => {
   const [phaseOneFailed, setphaseOneFailed] = useState(false)
   const [phaseTwoStart, setPhaseTwoStart] = useState(false)
 
-  const { timerActive, questions, currentQuestion, page, userAwnsers, score } = useSelector( state => ({
-    timerActive: state.placementTestingReducer.timerActive,
-    questions: state.placementTestingReducer.questions,
-    currentQuestion: state.placementTestingReducer.currentQuestion,
-    page: state.placementTestingReducer.page,
-    userAwnsers: state.placementTestingReducer.userAwnsers,
-    score: state.placementTestingReducer.score
-  }), shallowEqual)
+  const { timerActive, questions, currentQuestion, page, userAwnsers, score } = useSelector(
+    state => ({
+      timerActive: state.placementTestingReducer.timerActive,
+      questions: state.placementTestingReducer.questions,
+      currentQuestion: state.placementTestingReducer.currentQuestion,
+      page: state.placementTestingReducer.page,
+      userAwnsers: state.placementTestingReducer.userAwnsers,
+      score: state.placementTestingReducer.score,
+    }),
+    shallowEqual
+  );
 
   const testTimer = () => {
-    if(!timerActive) {
+    if (!timerActive) {
       setTimeout(() => {
-        dispatch(timeOut())
-        push('/dashboard')
+        dispatch(timeOut());
+        push('/dashboard');
       }, testTime);
     } else {
-      dispatch(startTestTimer)
+      dispatch(startTestTimer);
     }
-    
-  }
-  
+  };
+
   const gradeHelper = () => {
-    let userGrade = 0
+    let userGrade = 0;
     userAwnsers.map((awnser, index) => {
-      if(awnser == grade[index]) {
+      if (awnser == grade[index]) {
         return userGrade++;
       }
-    })
+    });
     return userGrade;
-  }
-  
+  };
+
   const gradeLevel = () => {
     if(score <= 17 && page <= 25 && (page >= 25) && !phaseOneFailed) {
       console.log("Hit")
@@ -54,22 +56,20 @@ const ChildPlacementTest = props => {
       setPhaseTwoStart(true)
       dispatch(setPage(25))
     }
-  }
+  };
 
   useEffect(() => {
-    testTimer()
-  }, [])
+    testTimer();
+  }, []);
 
   useEffect(() => {
-    dispatch(getChildQuestions())
-  }, [])
+    dispatch(getChildQuestions());
+  }, []);
 
   useEffect(() => {
-    dispatch(setScore(gradeHelper()))
-    gradeLevel()
-  }, [page])
-
-
+    dispatch(setScore(gradeHelper()));
+    gradeLevel();
+  }, [page]);
 
   const testHelper = () => {
     if (page === 0) {
