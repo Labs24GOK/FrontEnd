@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 export default class TestTimer extends Component {
   state = {
-    minutes: 45,
-    seconds: 0,
+    minutes: 0,
+    seconds: 10,
   };
 
   componentDidMount() {
@@ -37,7 +38,7 @@ export default class TestTimer extends Component {
     return (
       <div>
         {minutes === 0 && seconds === 0 ? (
-          <h1>Time is up!</h1>
+          <Redirect to="/dashboard/endtest" />
         ) : (
           <h1>
             Time Remaining: {minutes}:{seconds < 10 ? `0${seconds}` : seconds}

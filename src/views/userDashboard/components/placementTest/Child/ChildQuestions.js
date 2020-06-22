@@ -1,7 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import TestTimer from './TestTimer';
 import { nextPage } from '../../../../../actions/userDashboardActions/placementActions';
 import { PrimaryButton } from '../../../../../styles/BtnStyle';
 import {
@@ -12,6 +11,7 @@ import {
   Image,
   RadioInput,
 } from './ChildTestSytles';
+import TestTimer from './TestTimer';
 
 const ChildQuestions = props => {
   const dispatch = useDispatch();
@@ -22,12 +22,6 @@ const ChildQuestions = props => {
     dispatch(nextPage({ question: key, userChoice, anwser: props.currentAnwser }));
     reset();
   };
-
-  // const testTimerStart = page => {
-  //   if (page === 1) {
-  //     return <TestTimer />
-  //   }
-  // }
 
   const imageChecker = images => {
     if (images.length === 0) {
