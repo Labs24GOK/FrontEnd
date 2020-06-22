@@ -4,7 +4,7 @@ import {
   SET_SCORE,
   TEST_COMPLETED,
   NEXT_PAGE, 
-  PREV_PAGE, 
+  SET_PAGE,
   START_TEST_TIMER, 
   TEST_TIME_OUT
  } from "../../actions/userDashboardActions/placementActions";
@@ -48,7 +48,15 @@ export const placementTestingReducer = (state = initialState, { type, payload })
         page: state.page + 1,
         userAwnsers: [...state.userAwnsers, payload],
         currentQuestion: currentQuestion()
-			};
+      };
+      
+    case SET_PAGE:
+      return {
+        ...state,
+        page: payload,
+        userAwnsers: [...state.userAwnsers],
+        currentQuestion: currentQuestion()
+      };
 
       case START_TEST_TIMER:
         return {

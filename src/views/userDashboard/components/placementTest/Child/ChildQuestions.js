@@ -14,7 +14,7 @@ import {
 
 const ChildQuestions = props => {
   const dispatch = useDispatch();
-  const { register, handleSubmit, errors, reset } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const { question, images, choices } = props.currentQuestion[0]; // currently a array in store
 
   const onSubmit = data => {
