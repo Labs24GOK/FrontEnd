@@ -52,12 +52,11 @@ You can find the deployed project at [speak-out-bh.com](https://speak-out-bh.com
 
 ## Project Overview
 
-### Project Notion Document | [Product Canvas](https://www.notion.so/The-Garden-of-Knowledge-bf0efc0a7c3847a4b3bfc33d9a12c6e9) |
 
 
-| LABS 20 | LABS 22 | LABS 24 |
-| :-----: | :-----: | :-----: |
-| [Trello Board](https://trello.com/b/SJHPrjVM/labs-20-speak-out) | [Trello Board](https://trello.com/b/dRZzGnhr/labs-22-speak-out) | [Trello Board](https://trello.com/b/ApGJROvk/labs-24-garden-of-knowledge) |
+| LABS 20 | LABS 22 | LABS 24 | NOTION DOCUMENT |
+| :-----: | :-----: | :---------: | :-----------------: |
+| [Trello Board](https://trello.com/b/SJHPrjVM/labs-20-speak-out) | [Trello Board](https://trello.com/b/dRZzGnhr/labs-22-speak-out) | [Trello Board](https://trello.com/b/ApGJROvk/labs-24-garden-of-knowledge) | [Product Canvas](https://www.notion.so/The-Garden-of-Knowledge-bf0efc0a7c3847a4b3bfc33d9a12c6e9) |
 | [UX Design files](https://www.figma.com/proto/lAawtUck67YJkPuZQK2Vlo/UX6-Group-Project-Speak-Out.?node-id=746%3A21505&viewport=182%2C561%2C0.0289407130330801&scaling=min-zoom) | [UX Design files](https://www.figma.com/file/INzI15d34MpvNvy6FN1wVf/Marketing-Page-(Labs-22)?node-id=118%3A0) |
 
 
