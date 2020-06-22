@@ -52,9 +52,7 @@ You can find the deployed project at [speak-out-bh.com](https://speak-out-bh.com
 
 ## Project Overview
 
-### Project Notion Document
-
-| [Product Canvas](https://www.notion.so/The-Garden-of-Knowledge-bf0efc0a7c3847a4b3bfc33d9a12c6e9) |
+### Project Notion Document | [Product Canvas](https://www.notion.so/The-Garden-of-Knowledge-bf0efc0a7c3847a4b3bfc33d9a12c6e9) |
 
 
 | LABS 20 | LABS 22 | LABS 24 |
@@ -95,7 +93,7 @@ Easy-to-use, ‘cloud application’ that promotes school’s quality education 
 
 ## Ant Design - an add-on for styles for forms in React components.
 - Use Case: Needed consistent styling for forms used throughout the application that was more flexible and easier to achieve than with Styled Components
-- Pros: made it easy to implement multi-step form design
+- Pros: made it easy to implement and design multi-step form layout
 
 #### Front end deployed to AWS Amplify
 
