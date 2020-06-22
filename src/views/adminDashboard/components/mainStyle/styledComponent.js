@@ -10,17 +10,19 @@ export const FormWrap = styled.form`
   background-color: #E0EBF0;
   margin: 30px 10px 20px;
 `
+
 export const FormWrap2 = styled.form`
   border: 0px transparant;
   border-radius: 3px;
   font-size: 12px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
   transition: all 200ms ease;
   background-color: #E0EBF0;
-  margin: 30px 10px 20px;
+  display: grid;
+  text-align: right;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+  padding: 30px 0 30px 60px;
+  margin: 30px auto 20px;
 `
 
 export const RowFlex = styled.div`
@@ -49,11 +51,11 @@ export const FormSet = styled.div`
 `
 
 export const FormSet2 = styled.div`
-  border: 1px solid transparent; 
-  margin: 10px 5px 10px 5px;
+  border:  1px solid transparent;
+  margin: 20px;
   background-color: #d1dfe6;
-  padding: 20px 20px 20px 20px;
-  width: 42%;
+  padding: 20px;
+  width: 90%;
 `
 
 export const Div = styled.div`
@@ -82,6 +84,14 @@ export const Div4 = styled.div`
   grid-gap: 15px;
   margin: 10px;
   padding: 30px;
+`
+
+export const Div5 = styled.div`
+  display: flex;
+  text-align: left;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
 `
 
 export const HR = styled.hr`
@@ -138,8 +148,16 @@ export const DisabledInput = styled.input`
 `
 
 export const TextDiv = styled.p`
-  font-size: 14px
+  font-size: 14px;
   
+`
+
+export const FlexDiv = styled.p`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
 `
 
 export const Label = styled.h5`

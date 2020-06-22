@@ -31,7 +31,6 @@ export const getPlacementTestById = id => dispatch => {
 	axiosWithAuth()
 		.get(`/placementExam/student/${id}`)  
 		.then(res => {
-			console.log("action - res.data: ", res.data)
 			dispatch({
 				type: FETCH_PLACEMENTTESTTBYID_SUCCESS,
 				payload: res.data
@@ -52,10 +51,11 @@ export const EDIT_PLACEMENTTESTTBYID_FAILURE =
 	'EDIT_PLACEMENTTESTTBYID_FAILURE';
 
 export const toggleEditPlacement = () => dispatch => {
-	dispatch({ type: EDIT_PLACEMENTTESTTBYID_START });
+	
 };
 
 export const editPlacementTestById = (id, state) => dispatch => {
+	
 	axiosWithAuth()
 		.put(`/placementExam/${id}`, state) 
 		.then(res => {
@@ -68,6 +68,32 @@ export const editPlacementTestById = (id, state) => dispatch => {
 			dispatch({
 				type: EDIT_PLACEMENTTESTTBYID_FAILURE,
 				payload: err.data
+			});
+		});
+};
+
+export const ADD_PLACEMENTTEST_START = 'ADD_PLACEMENTTEST_START';
+export const ADD_PLACEMENTTEST_SUCCESS = 'ADD_PLACEMENTTEST_SUCCESS';
+export const ADD_PLACEMENTTEST_FAILURE = 'ADD_PLACEMENTTEST_FAILURE';
+
+export const addPlacementTest = (state) => dispatch => {
+	// console.log("Action-state: ", state)
+	dispatch({ type: ADD_PLACEMENTTEST_START })
+	// console.log("Action Start")
+	axiosWithAuth()
+		.post(`/placementExam`, state)
+		.then(res => {
+			// console.log("Action: ", res.data);
+			dispatch({
+				type: ADD_PLACEMENTTEST_SUCCESS,
+				payload: res.data
+			});
+		})
+		.catch(err => {
+			// console.log("Action-Error: ", err);
+			dispatch({
+				type: ADD_PLACEMENTTEST_FAILURE,
+				payload: err
 			});
 		});
 };

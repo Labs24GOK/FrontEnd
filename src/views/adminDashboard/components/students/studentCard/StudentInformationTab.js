@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import {
   getStudentById,
   toggleEditComponent,
-  toggleEditPlacement,
   toggleDeleteModel,
   deleteStudentById,
 } from '../../../../../actions';
@@ -185,7 +184,6 @@ export default withRouter(
   connect(mapStateToProps, {
     getStudentById,
     toggleEditComponent,
-    toggleEditPlacement,
     toggleDeleteModel,
     deleteStudentById,
   })(StudentInformationTab)
