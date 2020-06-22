@@ -5,7 +5,7 @@ export const START_TEST = 'START_TEST'
 export const SET_SCORE = 'SET_SCORE'
 export const TEST_COMPLETED = 'TEST_COMPLETED'
 export const NEXT_PAGE = 'NEXT_PAGE'
-export const PREV_PAGE = 'PREV_PAGE'
+export const SET_PAGE = 'SET_PAGE'
 export const TEST_TIME_OUT = 'TEST_TIME_OUT'
 export const START_TEST_TIMER = 'START_TEST_TIMER'
 
@@ -38,5 +38,10 @@ export const completeTest = payload => dispatch => {
 
 export const nextPage = (data) => ({
     type: NEXT_PAGE,
+    payload: data
+})
+
+export const setPage = (data) => ({
+    type: SET_PAGE,
     payload: data
 })
