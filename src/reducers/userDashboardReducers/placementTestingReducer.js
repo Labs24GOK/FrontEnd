@@ -30,6 +30,7 @@ export const placementTestingReducer = (state = initialState, { type, payload })
       };
       
     case START_TEST:
+      console.log("HIT2")
       return {
         ...state,
         page: state.page + 1,

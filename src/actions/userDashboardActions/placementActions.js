@@ -16,13 +16,14 @@ export const getChildQuestions = () => ({
   payload: testObject,
 });
 
-export const startTest = () => ({
-  type: START_TEST,
-});
+// export const startTest = () => ({
+//   type: START_TEST,
+// });
 
-// export const startTest = () => dispatch => (
-//   dispatch(editStudentById())
-// );
+export const startTest = (studentID, state) => dispatch => (
+  dispatch(editStudentById(studentID, state), dispatch({ type: START_TEST }))
+);
+
 
 export const startTestTimer = () => ({
   type: TEST_TIME_OUT,

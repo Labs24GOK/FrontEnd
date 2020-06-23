@@ -1,15 +1,20 @@
 import React from 'react';
 import { Button } from 'antd';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { startTest } from '../../../../../actions/userDashboardActions/placementActions';
 import { useDispatch } from 'react-redux';
 
 const StartTest = ({ student }) => {
-  const { push } = useHistory();
+  const { id: studentID } = useParams()
   const dispatch = useDispatch();
   const { attempts } = student;
 
+  delete student.enrolled;
+  delete student.delinquent;
+  delete student.student_id;
+  delete student.parent_name;
   student = { ...student, attempts: attempts + 1 };
+  
 
   return (
     <>
@@ -35,7 +40,7 @@ const StartTest = ({ student }) => {
       </p>
 
       <h3 style={{ padding: '0 5% 5% 5%', textAlign: 'center' }}>You have 45 minutes</h3>
-      <Button style={{ marginLeft: '40%' }} onClick={() => dispatch(startTest(student))}>
+      <Button style={{ marginLeft: '40%' }} onClick={() => dispatch(startTest(studentID, student))}>
         Next
       </Button>
     </>
