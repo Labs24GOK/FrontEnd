@@ -3,7 +3,7 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/d7cd0bec7a79ce0d7fa1/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/speak-out-fe/test_coverage)
 
 
-# Speak Out
+# GardenSpeak Out
 
 You can find the deployed project at [speak-out-bh.com](https://speak-out-bh.com/).
 
@@ -36,6 +36,13 @@ You can find the deployed project at [speak-out-bh.com](https://speak-out-bh.com
 |                                           [<img src="./profile-pictures/hiter-harris.png" width = "200" />](https://github.com/hiterharris)        </br>Full Stack Web Developer                                            |                                           [<img src="./profile-pictures/AlvinLin.jpg" width = "200" />](https://github.com/aalvinlin)    </br>Full Stack Web Developer                                           |                                               [<img src="./profile-pictures/AmmonMatthews.jpeg" width = "200" />](https://github.com/AmmonMatthews)   </br>Full Stack Web Developer                                                |                                                 [<img src="./profile-pictures/RichardMachado.gif" width = "200" />](https://github.com/richardmachado)   </br>Full Stack Web Developer                                                 |                                        [<img src="./profile-pictures/jeremy-mcwilliams.jpg" width = "200" />](https://github.com/J2Macwilliams)    </br>Full Stack Web Developer /</br> Team Lead                                         |
 | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/hiterharris)   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/hiter-harris-iv/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/aalvinlin) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/aalvinlin/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/AmmonMatthews)  [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/hamatthews/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/richardmachado)  [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/richard-machado/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/J2Macwilliams)   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jeremy-mcwilliams/) |  |
 
+**LABS 24**
+
+|  [Alec Dye](https://github.com/AlecDye)  |  [Alve McKethen](https://github.com/Gremlin4544)  |  [Brittani Luce](https://github.com/c0derbr1t)| [Rudy Goldhaber](https://github.com/SyriiAdvent)  |  [Jeremy McWilliams](https://github.com/J2Macwilliams)|
+| :-------: | :-----------: | :-------: | :--------: | :---------: |
+|                                           [<img src="./profile-pictures/alec-dye.jpg" width = "200" />](https://github.com/AlecDye)        </br>Full Stack Web Developer                                            |                                           [<img src="./profile-pictures/alve-mckethen.jpg" width = "200" />](https://github.com/Gremlin4544)    </br>Full Stack Web Developer                                           |                                               [<img src="./profile-pictures/brittani-luce.jpg" width = "200" />](https://github.com/c0derbr1t)   </br>Full Stack Web Developer                                                |                                                 [<img src="./profile-pictures/rudy-goldhaber.jpg" width = "200" />](https://github.com/SyriiAdvent)   </br>Full Stack Web Developer                                                 |                                        [<img src="./profile-pictures/jeremy-mcwilliams.jpg" width = "200" />](https://github.com/J2Macwilliams)    </br>Full Stack Web Developer /</br> Team Lead                                         |
+| [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/AlecDye)   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/alecdye/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Gremlin4544) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/alvemckethen/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/c0derbr1t)  [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/brittani-luce/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/SyriiAdvent)  [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/rudy-goldhaber/) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/J2Macwilliams)   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jeremy-mcwilliams/) |  |
+           
 
 <br>
 <br>
@@ -46,11 +53,12 @@ You can find the deployed project at [speak-out-bh.com](https://speak-out-bh.com
 ## Project Overview
 
 
-| LABS 20 | LABS 22 |
-| :-----: | :-----: |
-| [Trello Board](https://trello.com/b/SJHPrjVM/labs-20-speak-out) | [Trello Board](https://trello.com/b/dRZzGnhr/labs-22-speak-out) |
-| [Product Canvas](https://www.notion.so/Speak-Out-bf0efc0a7c3847a4b3bfc33d9a12c6e9) | [Product Canvas](https://www.notion.so/Speak-Out-bf0efc0a7c3847a4b3bfc33d9a12c6e9) |
+
+| LABS 20 | LABS 22 | LABS 24 | NOTION DOCUMENT |
+| :-----: | :-----: | :---------: | :-----------------: |
+| [Trello Board](https://trello.com/b/SJHPrjVM/labs-20-speak-out) | [Trello Board](https://trello.com/b/dRZzGnhr/labs-22-speak-out) | [Trello Board](https://trello.com/b/ApGJROvk/labs-24-garden-of-knowledge) | [Product Canvas](https://www.notion.so/The-Garden-of-Knowledge-bf0efc0a7c3847a4b3bfc33d9a12c6e9) |
 | [UX Design files](https://www.figma.com/proto/lAawtUck67YJkPuZQK2Vlo/UX6-Group-Project-Speak-Out.?node-id=746%3A21505&viewport=182%2C561%2C0.0289407130330801&scaling=min-zoom) | [UX Design files](https://www.figma.com/file/INzI15d34MpvNvy6FN1wVf/Marketing-Page-(Labs-22)?node-id=118%3A0) |
+
 
 
 Easy-to-use, ‘cloud application’ that promotes school’s quality education at an affordable price, enables parents to register their children for classes, schedule a placement test (or have a student to take a placement test online), pay tuition, and track their childrens’ success at school.       
@@ -61,8 +69,11 @@ Easy-to-use, ‘cloud application’ that promotes school’s quality education 
 -    Create Students View
 -    Add/View/Update Student Record
 -    Add/View/Update Staff Records
--    Online Student Registration
+-    Add/View/Update Courses
+-    Online Student Registration/Course Enrollment
 -    Record Student Attendance
+-    Online Placement Test Taking & Grading
+
 
 ## Tech Stack
 
@@ -78,6 +89,10 @@ Easy-to-use, ‘cloud application’ that promotes school’s quality education 
 ## Styled Components - an add-on for creating dynamic styles directly in React components.
 - Use Case: Having a base library implemented for overall site styling will cover most use cases, but we may need more flexibility on a per-component basis and the ability to add/alter styles dynamically based user interaction/the state of the application, and Styled Components can provide this.
 - Pros: easy to use, easy to create, can make them custom
+
+## Ant Design - an add-on for styles for forms in React components.
+- Use Case: Needed consistent styling for forms used throughout the application that was more flexible and easier to achieve than with Styled Components
+- Pros: made it easy to implement and design multi-step form layout
 
 #### Front end deployed to AWS Amplify
 
