@@ -11,13 +11,14 @@ import {
   Image,
   RadioInput,
 } from './ChildTestSytles';
+import TestTimer from './TestTimer';
 
 const ChildQuestions = props => {
   const dispatch = useDispatch();
   const { register, handleSubmit, reset } = useForm();
   const { question, images, choices, option, key } = props.currentQuestion[0]; // currently a array in store
 
-  const onSubmit = ({userChoice}) => {
+  const onSubmit = ({ userChoice }) => {
     dispatch(nextPage({ question: key, userChoice, anwser: props.currentAnwser }));
     reset();
   };
@@ -86,6 +87,7 @@ const ChildQuestions = props => {
 
   return (
     <div className="test-wrapper">
+      <TestTimer />
       <Instruction>Choose the answer that best matches the phrase:</Instruction>
       <Question>{question}</Question>
       <form onSubmit={handleSubmit(onSubmit)}>

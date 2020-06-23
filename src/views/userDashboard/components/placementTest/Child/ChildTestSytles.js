@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import '../../../../../styles/_variables.scss';
 
+export const TestTimer = styled.div`
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 1.5;
+`;
+
 export const Instruction = styled.h3`
   text-align: center;
   color: #333;
