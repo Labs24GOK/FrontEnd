@@ -10,15 +10,11 @@ export const SET_PAGE = 'SET_PAGE';
 export const TEST_TIME_OUT = 'TEST_TIME_OUT';
 export const START_TEST_TIMER = 'START_TEST_TIMER';
 
-// Initialise Child Placemment Test
+// Initialize child placement test
 export const getChildQuestions = () => ({
   type: GET_CHILD_QUESTIONS,
   payload: testObject,
 });
-
-// export const startTest = () => ({
-//   type: START_TEST,
-// });
 
 export const startTest = (studentID, state) => dispatch => (
   dispatch(editStudentById(studentID, state), dispatch({ type: START_TEST }))
@@ -30,8 +26,7 @@ export const startTestTimer = () => ({
 });
 
 export const timeOut = payload => dispatch => {
-  // type: TEST_TIME_OUT,
-  console.log('TEST_TIME_OUT', payload);
+  payload,
 };
 
 export const setScore = payload => ({
@@ -40,7 +35,7 @@ export const setScore = payload => ({
 });
 
 export const completeTest = payload => dispatch => {
-  console.log('TEST COMPLETE OBJECT', payload);
+ payload,
 };
 
 export const nextPage = data => ({

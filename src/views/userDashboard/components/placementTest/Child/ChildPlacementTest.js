@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from 'antd';
 import { useHistory, useParams } from 'react-router-dom';
 import StartTest from './StartTest';
 import ChildQuestions from './ChildQuestions';
 import { useSelector, shallowEqual, useDispatch } from 'react-redux';
 import {
   getChildQuestions,
-  startTestTimer,
-  timeOut,
   setScore,
   completeTest,
   setPage,
@@ -67,9 +64,7 @@ const ChildPlacementTest = props => {
   }, [page]);
 
   useEffect(() => {
-    console.log('students', student);
     if (student.attempts >= 3) {
-      console.log('students2', student);
       push('/dashboard');
     }
   }, [student.attempts, page]);

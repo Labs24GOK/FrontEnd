@@ -24,7 +24,6 @@ const StudentReview = props => {
   return (
     <Content style={{ margin: '1.8rem 0' }}>
       <Title level={3}>Review Registration</Title>
-      {console.log(props)}
       <Row style={{ margin: '1.6rem 0' }}>
         <Col span={12}>
           <Text type="secondary">cpr</Text>
