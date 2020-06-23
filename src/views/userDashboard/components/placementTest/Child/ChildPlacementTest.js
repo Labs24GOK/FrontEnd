@@ -81,14 +81,14 @@ const ChildPlacementTest = props => {
       return <StartTest student={student} />;
     } else if (page >= 25 && phaseOneFailed) {
       dispatch(completeTest({ score, userAwnsers }));
-      return <ChildQuestionsPassed />;
+      return <ChildQuestionsPassed userTest={userTest} />;
     } else if (phaseTwoStart) {
       return <ChildQuestions currentQuestion={currentQuestion} currentAnwser={currentAnwser} />;
     } else if (page >= 1 && !phaseOneFailed) {
       return <ChildQuestions currentQuestion={currentQuestion} currentAnwser={currentAnwser} />;
     } else if (page >= 50) {
       dispatch(completeTest({ score, userAwnsers }));
-      return <ChildQuestionsPassed />;
+      return <ChildQuestionsPassed userTest={userTest} />;
     }
   };
 
