@@ -1,5 +1,6 @@
 import testObject from '../../views/userDashboard/components/placementTest/Child/TestObject';
 import { editStudentById } from '../adminDashboardActions/studentByIdAction';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 export const GET_CHILD_QUESTIONS = 'GET_CHILD_QUESTIONS';
 export const START_TEST = 'START_TEST';
 export const SET_SCORE = 'SET_SCORE';
@@ -26,11 +27,23 @@ export const setScore = payload => ({
   type: SET_SCORE,
   payload,
 });
-export const completeTest = payload => dispatch => ({
-  type: TEST_COMPLETED,
-  payload,
-});
-export const nextPage = data => ({
+// export const completeTest = payload => dispatch => ({
+//   type: TEST_COMPLETED,
+//   payload,
+// });
+
+export const completeTest = payload => dispatch => {
+  console.log("AYIGESFDIBA", payload)
+  axiosWithAuth()
+    .post(`/student/??????`, payload)
+    .then(res => {
+      
+      console.log(res)
+    })
+    .catch(err => console.log(err))
+};
+
+export const nextPage = data => (console.log(data), {
   type: NEXT_PAGE,
   payload: data,
 });

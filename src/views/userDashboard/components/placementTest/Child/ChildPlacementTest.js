@@ -32,6 +32,12 @@ const ChildPlacementTest = props => {
     shallowEqual
   );
 
+  const userTest = {
+    questionsDone: page,
+    score,
+    answers: [userAwnsers]
+  }
+
   const gradeHelper = () => {
     let userGrade = 0;
     userAwnsers.map((awnser, index) => {
@@ -74,18 +80,21 @@ const ChildPlacementTest = props => {
       return <StartTest student={student} />;
     } else if (page >= 25 && phaseOneFailed) {
       dispatch(completeTest({ score, userAwnsers }));
-      return <ChildQuestionsPassed />;
+      return <ChildQuestionsPassed userTest={userTest} />;
     } else if (phaseTwoStart) {
       return <ChildQuestions currentQuestion={currentQuestion} currentAnwser={currentAnwser} />;
     } else if (page >= 1 && !phaseOneFailed) {
       return <ChildQuestions currentQuestion={currentQuestion} currentAnwser={currentAnwser} />;
     } else if (page >= 50) {
       dispatch(completeTest({ score, userAwnsers }));
-      return <ChildQuestionsPassed />;
+      return <ChildQuestionsPassed userTest={userTest} />;
     }
   };
 
-  return <div className="testWrapper">{questions ? testHelper() : <h1>LOADING...</h1>}</div>;
+  return <div className="testWrapper">
+    {questions ? testHelper() : <h1>LOADING...</h1>}
+    <button onClick={() => console.log(userAwnsers)}>lLOG</button>
+  </div>;
 };
 
 export default ChildPlacementTest;

@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { completeTest } from '../../../../../actions/userDashboardActions/placementActions';
 
-const ChildQuestionsPassed = () => {
+const ChildQuestionsPassed = ({ userTest }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(completeTest());
+    dispatch(completeTest(userTest));
   }, []);
 
   return (
