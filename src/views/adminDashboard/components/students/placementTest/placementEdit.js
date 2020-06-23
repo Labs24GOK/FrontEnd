@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { editPlacementTestById } from '../../../../../actions/adminDashboardActions/placementTestAction';
 import { withRouter } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { CancelButton, AddButton, ButtonDiv, Div4, FormSet, FormWrap, Input, DisabledInput, Label, TextDiv} from '../../mainStyle/styledComponent.js';
-import { getDateStringENGBFormat } from "../../../../../utils/helpers";
-import axiosWithAuth from '../../../../../utils/axiosWithAuth';
+import { CancelButton, AddButton, ButtonDiv, Div4, FormSet, FormWrap, Input, DisabledInput, Label } from '../../mainStyle/styledComponent.js';
+// import { getDateStringENGBFormat } from "../../../../../utils/helpers";
+// import axiosWithAuth from '../../../../../utils/axiosWithAuth';
 
 import '../../mainStyle/mainTable.scss';
 import './placementTest.scss';
@@ -16,16 +16,7 @@ const PlacementEdit = props => {
 
     const record = props.placementTestById[0];
 
-    // useEffect(() => {
-    //     let stringDate = getDateStringENGBFormat(record.test_date);
-    // })
     let testDate = new Date(record.test_date).toISOString().split('T')[0];
-
-    console.log("Edit Props - record: ", record);
-    console.log("Edit testDate: ", testDate);
-
-
-
 
     const submitNow = data => {
         const studentID = props.studentID;
@@ -42,7 +33,6 @@ const PlacementEdit = props => {
             notes: data.notes || null
         }
         props.editPlacementTestById(record.id, editData);
-        console.log("Submit editData: ", editData)
         props.setEditTest(false);
     }
     

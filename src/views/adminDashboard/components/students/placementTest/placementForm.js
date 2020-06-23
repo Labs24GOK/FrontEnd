@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { addPlacementTest } from '../../../../../actions/adminDashboardActions/placementTestAction';
 import { withRouter } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { CancelButton, AddButton, ButtonDiv, Div4, FormSet, FormWrap, Input, DisabledInput, Label, TextDiv} from '../../mainStyle/styledComponent.js';
-import { getDateStringENGBFormat } from "../../../../../utils/helpers";
-import axiosWithAuth from '../../../../../utils/axiosWithAuth';
+import { CancelButton, AddButton, ButtonDiv, Div4, FormSet, FormWrap, Input, DisabledInput, Label } from '../../mainStyle/styledComponent.js';
 
 import '../../mainStyle/mainTable.scss';
 import './placementTest.scss';
@@ -14,20 +12,11 @@ import './placementTest.scss';
 const PlacementForm = props => {
     const { register, errors, handleSubmit } = useForm();
 
-    // accuracy: "3"
-    // comprehension: "4"
-    // fluency: "2"
-    // level_id: "1"
-    // notes: "NOTES"
-    // student_id: "1"
-    // test: "Primary"
-    // test_date: "2020-06-19"
-    // writing_level: ""
-
     const submitNow = data => {
         const studentID = props.studentID;
         let sendData = {
             test_date: data.test_date,
+            test_type: 2,
             student_id: studentID,
             test: data.test,
             level_id: data.level_id,
@@ -35,10 +24,9 @@ const PlacementForm = props => {
             accuracy: data.accuracy || null,
             comprehension: data.comprehension || null,
             writing_level: data.writing_level || null,
+            answers: null,
             notes: data.notes || null
         }
-        console.log("form data: ", data);
-        console.log("form sendData: ", sendData);
         props.addPlacementTest(sendData);
         props.setAddTest(!props.addTest);
     }

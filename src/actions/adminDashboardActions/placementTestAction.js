@@ -44,6 +44,51 @@ export const getPlacementTestById = id => dispatch => {
 		});
 };
 
+export const FETCH_PLACEMENTTESTTBYIDANDTYPE_START = 
+	'FETCH_PLACEMENTTESTTBYIDANDTYPE_START';
+export const FETCH_PLACEMENTTESTTBYIDANDONLINE_SUCCESS =
+	'FETCH_PLACEMENTTESTTBYIDANDONLINE_SUCCESS';
+export const FETCH_PLACEMENTTESTTBYIDANDORAL_SUCCESS =
+	'FETCH_PLACEMENTTESTTBYIDANDORAL_SUCCESS';
+export const FETCH_PLACEMENTTESTTBYIDANDTYPE_FAILURE =
+	'FETCH_PLACEMENTTESTTBYIDANDTYPE_FAILURE';
+
+export const getPlacementTestByIdAndOnline = (id) => dispatch => {
+	dispatch({ type: FETCH_PLACEMENTTESTTBYIDANDTYPE_START });
+	axiosWithAuth()
+		.get(`/placementExam/examType/1/student/${id}`)  
+		.then(res => {
+			dispatch({
+				type: FETCH_PLACEMENTTESTTBYIDANDONLINE_SUCCESS,
+				payload: res.data
+			});
+		})
+		.catch(err => {
+			dispatch({
+				type: FETCH_PLACEMENTTESTTBYIDANDTYPE_FAILURE,
+				payload: err.data
+			});
+		});
+};
+
+export const getPlacementTestByIdAndOral = (id) => dispatch => {
+	dispatch({ type: FETCH_PLACEMENTTESTTBYIDANDTYPE_START });
+	axiosWithAuth()
+		.get(`/placementExam/examType/2/student/${id}`)
+		.then(res => {
+			dispatch({
+				type: FETCH_PLACEMENTTESTTBYIDANDORAL_SUCCESS,
+				payload: res.data
+			});
+		})
+		.catch(err => {
+			dispatch({
+				type: FETCH_PLACEMENTTESTTBYIDANDTYPE_FAILURE,
+				payload: err.data
+			});
+		});
+};
+
 export const EDIT_PLACEMENTTESTTBYID_START = 'EDIT_PLACEMENTTESTTBYID_START';
 export const EDIT_PLACEMENTTESTTBYID_SUCCESS =
 	'EDIT_PLACEMENTTESTTBYID_SUCCESS';

@@ -5,6 +5,10 @@ import {
     FETCH_PLACEMENTTESTTBYID_START,
     FETCH_PLACEMENTTESTTBYID_SUCCESS,
     FETCH_PLACEMENTTESTTBYID_FAILURE,
+    FETCH_PLACEMENTTESTTBYIDANDTYPE_START,
+    FETCH_PLACEMENTTESTTBYIDANDONLINE_SUCCESS,
+    FETCH_PLACEMENTTESTTBYIDANDORAL_SUCCESS,
+    FETCH_PLACEMENTTESTTBYIDANDTYPE_FAILURE,
     EDIT_PLACEMENTTESTTBYID_START,
     EDIT_PLACEMENTTESTTBYID_SUCCESS,
     EDIT_PLACEMENTTESTTBYID_FAILURE,
@@ -18,6 +22,8 @@ import {
         error: null,
         placementTest: [],
         placementTestById: [],
+        onlinePlacementTestById: [],
+        oralPlacementTestById: [],
         isTestEditing: false,
         isTestEditted: false,
         isTestAdding: false,
@@ -61,6 +67,36 @@ import {
                 placementTestById: action.payload
             };
         case FETCH_PLACEMENTTESTTBYID_FAILURE:
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
+            }
+
+        // get by ID and typeID
+        case FETCH_PLACEMENTTESTTBYIDANDTYPE_START:
+            return {
+                ...state,
+                isLoading: true,
+                error: null
+            };
+        case FETCH_PLACEMENTTESTTBYIDANDONLINE_SUCCESS:
+                return {
+                    ...state,
+                    isLoading: false,
+                    error: null,
+                    onlinePlacementTestById: action.payload
+                };
+
+        case FETCH_PLACEMENTTESTTBYIDANDORAL_SUCCESS:
+                return {
+                    ...state,
+                    isLoading: false,
+                    error: null,
+                    oralPlacementTestById: action.payload
+                };    
+            
+        case FETCH_PLACEMENTTESTTBYIDANDTYPE_FAILURE:
             return {
                 ...state,
                 isLoading: false,
