@@ -33,11 +33,11 @@ export const setScore = payload => ({
 // });
 
 export const completeTest = payload => dispatch => {
-  console.log("AYIGESFDIBA", payload)
+  console.log("AYIGESFDIBA", JSON.stringify(payload))
   axiosWithAuth()
-    .post(`/student/??????`, payload)
+    .post(`/placementExam/student`, payload)
     .then(res => {
-      
+
       console.log(res)
     })
     .catch(err => console.log(err))

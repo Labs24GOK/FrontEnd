@@ -19,7 +19,7 @@ const ChildQuestions = props => {
   const { question, images, choices, option, key } = props.currentQuestion[0]; // currently a array in store
 
   const onSubmit = ({ userChoice }) => {
-    dispatch(nextPage({ question: key, userChoice, anwser: props.currentAnwser }));
+    dispatch(nextPage({ question: key, userChoice, answer: props.currentAnswer }));
     reset();
   };
 
