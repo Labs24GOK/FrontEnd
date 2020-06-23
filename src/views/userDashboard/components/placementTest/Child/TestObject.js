@@ -17,8 +17,8 @@ const testObject = [
     question: 'Pencil',
     option: ['a', 'b', 'c'],
     images: [
-      `${primaryTestSource}/02-Pencil.a.PNG`,
       `${primaryTestSource}/02-Pencil.b.PNG`,
+      `${primaryTestSource}/02-Pencil.a.PNG`,
       `${primaryTestSource}/02-Pencil.c.PNG`,
     ],
   },
@@ -72,9 +72,9 @@ const testObject = [
     question: 'Socks',
     option: ['a', 'b', 'c'],
     images: [
-      `${primaryTestSource}/07-Socks.a.PNG`,
       `${primaryTestSource}/07-Socks.b.PNG`,
       `${primaryTestSource}/07-Socks.c.PNG`,
+      `${primaryTestSource}/07-Socks.a.PNG`,
     ],
   },
   {
@@ -182,8 +182,8 @@ const testObject = [
     question: 'Basketball',
     option: ['a', 'b', 'c'],
     images: [
-      `${primaryTestSource}/17-Basketball.a.PNG`,
       `${primaryTestSource}/17-Basketball.b.PNG`,
+      `${primaryTestSource}/17-Basketball.a.PNG`,
       `${primaryTestSource}/17-Basketball.c.PNG`,
     ],
   },
@@ -193,9 +193,9 @@ const testObject = [
     question: 'The carrots are between the tomatoes and plums',
     option: ['a', 'b', 'c'],
     images: [
-      `${primaryTestSource}/18-CarrotsBetween.a.PNG`,
       `${primaryTestSource}/18-CarrotsBetween.b.PNG`,
       `${primaryTestSource}/18-CarrotsBetween.c.PNG`,
+      `${primaryTestSource}/18-CarrotsBetween.a.PNG`,
     ],
   },
   {
@@ -378,7 +378,7 @@ const testObject = [
     id: 35,
     question: '',
     option: ['a', 'b', 'c'],
-    choices: ["It's half past two.", "It's quarter past two.", "It's quarter to two.c"],
+    choices: ["It's half past two.", "It's quarter past two.", "It's quarter to two."],
     images: [`${primaryTestSource}/35.PNG`],
   },
   {
@@ -425,7 +425,7 @@ const testObject = [
     choices: [
       'The first month of the year is January.',
       'The first month of the year is July.',
-      'The first mont of the year is June.',
+      'The first month of the year is June.',
     ],
     images: [`${primaryTestSource}/39.PNG`],
   },
@@ -441,6 +441,7 @@ const testObject = [
     key: 41,
     id: 41,
     question: '',
+    option: ['a', 'b', 'c'],
     choices: ['The tea looks like hot.', 'The tea look hot.', 'The tea looks hot.'],
     images: [`${primaryTestSource}/41.PNG`],
   },
