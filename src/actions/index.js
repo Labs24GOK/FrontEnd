@@ -185,8 +185,8 @@ export {
 export {
 	getPlacementTests,
 	getPlacementTestById,
-	toggleEditPlacement,
 	editPlacementTestById,
+	addPlacementTest,
 	FETCH_PLACEMENTTESTS_START,
 	FETCH_PLACEMENTTESTS_SUCCESS,
 	FETCH_PLACEMENTTESTS_FAILURE,
@@ -196,6 +196,9 @@ export {
 	EDIT_PLACEMENTTESTTBYID_START,
 	EDIT_PLACEMENTTESTTBYID_SUCCESS,
 	EDIT_PLACEMENTTESTTBYID_FAILURE,
+	ADD_PLACEMENTTEST_START,
+	ADD_PLACEMENTTEST_SUCCESS,
+	ADD_PLACEMENTTEST_FAILURE
 } from './adminDashboardActions/placementTestAction';
 
 export {
