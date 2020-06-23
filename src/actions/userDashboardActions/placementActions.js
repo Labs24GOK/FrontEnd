@@ -29,7 +29,6 @@ export const setScore = payload => ({
 });
 
 export const completeTest = payload => dispatch => {
-  console.log("AYIGESFDIBA", JSON.stringify(payload))
   axiosWithAuth()
     .post(`/placementExam/student`, payload)
     .then(res => {
