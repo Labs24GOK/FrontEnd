@@ -1,104 +1,92 @@
-@import ".././../../styles/variables";
+@import '.././../../styles/variables';
 
 header {
-    height: 100px;
-    
-    display: flex;
-    // justify-content: space-between;
-    // align-items: center;
+  height: 100px;
+  margin-bottom: 1rem;
+  display: flex;
+  // justify-content: space-between;
+  // align-items: center;
 
-    border-bottom: 2px solid $tree-peacock;
+  border-bottom: 2px solid $tree-peacock;
 
-    img {
-
-        height: 80px;
-        margin: 10px;
-    }
+  img {
+    height: 80px;
+    margin: 10px;
+  }
 }
 
 header.mobile {
-
-    @media #{$desktop} {
-        display: none;
-    }
-}
-
-
-header.desktop  {
-    
+  @media #{$desktop} {
     display: none;
-
-    @media #{$desktop} {
-        display: flex;
-    }
-   
-
-    .desktop-header-link    {
-        display: inline-block;
-
-        font-size: 1.5rem;
-        line-height: 3rem;
-        
-        padding: 0 1rem;
-        color: $tree-green;
-        border-bottom: 3px solid transparent;
-
-        &:hover {
-            border-bottom: 3px solid $tree-peacock;
-        }
-    }
-    .activeNavButton {
-        border-bottom: 3px solid $tree-peacock;
-   }
+  }
 }
 
+header.desktop {
+  display: none;
 
-
-.hamburger-menu {
-
-    min-width: 250px;
-
+  @media #{$desktop} {
     display: flex;
-    flex-direction: column;
+  }
 
-    
+  .desktop-header-link {
+    display: inline-block;
+
     font-size: 1.5rem;
     line-height: 3rem;
 
-    // background-color: color.scale($tree-light-green, $lightness: -10%);
-    background-color: lighten($tree-light-green, 30%);
+    padding: 0 1rem;
+    color: $tree-green;
+    border-bottom: 3px solid transparent;
 
-    position: absolute;
-    right: 0;
-
-    @media #{$desktop} {
-        display: none;
+    &:hover {
+      border-bottom: 3px solid $tree-peacock;
     }
+  }
+  .activeNavButton {
+    border-bottom: 3px solid $tree-peacock;
+  }
+}
 
-    .hamburger-link {
-        display: block;
+.hamburger-menu {
+  min-width: 250px;
 
-        color: $tree-green;
+  display: flex;
+  flex-direction: column;
 
-        text-align: right;
-        padding-right: 0.5rem;
+  font-size: 1.5rem;
+  line-height: 3rem;
 
-        &:hover {
+  // background-color: color.scale($tree-light-green, $lightness: -10%);
+  background-color: lighten($tree-light-green, 30%);
 
-            background-color: lighten($tree-light-green, 15%);
+  position: absolute;
+  right: 0;
 
-        }
+  @media #{$desktop} {
+    display: none;
+  }
 
+  .hamburger-link {
+    display: block;
+
+    color: $tree-green;
+
+    text-align: right;
+    padding-right: 0.5rem;
+
+    &:hover {
+      background-color: lighten($tree-light-green, 15%);
     }
+  }
 }
 
 .hamburger-menu-icon {
-    cursor: pointer;
+  cursor: pointer;
 
-    width: 64px;
-    height: 64px;
+  width: 64px;
+  height: 64px;
 }
 
 .hamburger-menu-hidden {
-    display: none;
+  display: none;
 }

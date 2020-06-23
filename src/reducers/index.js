@@ -16,6 +16,7 @@ import { addStaffReducer } from './adminDashboardReducers/addStaffReducer';
 import { deleteModalReducer } from './adminDashboardReducers/deleteModalReducer';
 import { registrationReducer } from './registrationReducer';
 import { landingPageReducer } from './landingPageReducers/landingPageReducers';
+import { placementTestingReducer } from './userDashboardReducers/placementTestingReducer'
 
 export const reducer = combineReducers({
   authenticationReducer,
@@ -34,6 +35,6 @@ export const reducer = combineReducers({
   addStaffReducer,
   registrationReducer,
   landingPageReducer,
-  deleteModalReducer
+  deleteModalReducer,
+  placementTestingReducer
 });
-

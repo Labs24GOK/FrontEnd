@@ -7,7 +7,7 @@ import RegisterStudentForm from './UserForms/RegisterStudentForm';
 import UserSettings from './UserSettings';
 import UserSettingsEdit from './UserSettingsEdit';
 import Footer from '../../marketing/components/Footer';
-
+import EndTest from './placementTest/EndTest';
 
 import '../userDashboard.scss';
 
@@ -28,6 +28,9 @@ function Index() {
         </Route>
         <Route path={`${path}/account-settings/edit`}>
           <UserSettingsEdit />
+        </Route>
+        <Route path={`${path}/endtest`}>
+          <EndTest />
         </Route>
       </Switch>
       <Footer />
