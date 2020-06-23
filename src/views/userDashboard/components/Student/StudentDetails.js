@@ -6,6 +6,7 @@ import { Button } from 'antd';
 
 function StudentDetails(props) {
   const { push } = useHistory();
+  console.log('props', props.student);
 
   return (
     <>
@@ -116,9 +117,11 @@ function StudentDetails(props) {
             ))}
           {props.course.length === 0 && (
             <div className="studentSubBox">
+              {/* {props.student.attempts < 3 ? ( */}
               <Button onClick={() => push(`/student/${props.student.student_id}/child-placement`)}>
                 Placement Test
               </Button>
+              {/* // ) : null} */}
               <div className="noInfo">
                 <p>This student is not currently enrolled in any courses.</p>
               </div>
