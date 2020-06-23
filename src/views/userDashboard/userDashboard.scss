@@ -623,3 +623,15 @@
     }
   }
 }
+
+.studentWrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.testWrapper {
+  // width: 90%;
+  flex: 2 0 auto;
+  // margin: 0 auto;
+}

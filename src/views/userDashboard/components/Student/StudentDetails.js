@@ -117,11 +117,12 @@ function StudentDetails(props) {
           {props.course.length === 0 && (
             <div className="studentSubBox">
               {props.student.attempts <= 2 ? (
-                <Button onClick={() => push(`/student/${props.student.student_id}/child-placement`)}>
+                <Button
+                  onClick={() => push(`/student/${props.student.student_id}/child-placement`)}
+                >
                   Placement Test
                 </Button>
-                ) : null
-              }
+              ) : null}
               <div className="noInfo">
                 <p>This student is not currently enrolled in any courses.</p>
               </div>

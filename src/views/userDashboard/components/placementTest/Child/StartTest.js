@@ -1,11 +1,11 @@
 import React from 'react';
 import { Button } from 'antd';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { startTest } from '../../../../../actions/userDashboardActions/placementActions';
 import { useDispatch } from 'react-redux';
 
 const StartTest = ({ student }) => {
-  const { id: studentID } = useParams()
+  const { id: studentID } = useParams();
   const dispatch = useDispatch();
   const { attempts } = student;
 
@@ -14,11 +14,11 @@ const StartTest = ({ student }) => {
   delete student.student_id;
   delete student.parent_name;
   student = { ...student, attempts: attempts + 1 };
-  
 
   return (
     <>
-      {console.log(student)}
+      <h3 style={{ textAlign: 'center' }}>Test Attempts: {student.attempts} / 3</h3>
+
       <h1>Primary Schoolers English Placement Test</h1>
       <h1>امتحان تحديد المستوى للمرحله الابتدائيه</h1>
 

@@ -4,42 +4,36 @@ import { useHistory, useParams } from 'react-router-dom';
 import StartTest from './StartTest';
 import ChildQuestions from './ChildQuestions';
 import { useSelector, shallowEqual, useDispatch } from 'react-redux';
-import { getChildQuestions, startTestTimer, timeOut, setScore, completeTest, setPage } from '../../../../../actions/userDashboardActions/placementActions'
-import { rubric as grade } from './rubric'
+import {
+  getChildQuestions,
+  startTestTimer,
+  timeOut,
+  setScore,
+  completeTest,
+  setPage,
+} from '../../../../../actions/userDashboardActions/placementActions';
+import { rubric as grade } from './rubric';
 import ChildQuestionsPassed from './ChildQuestionsPassed';
 import { getStudentById } from '../../../../../actions';
 
 const ChildPlacementTest = props => {
-  const dispatch = useDispatch()
-  const { push } = useHistory()
-  const { id: studentID } = useParams()
-  const testTime = 1000 * 60 * 45 // 45 Minutes
-  const [phaseOneFailed, setphaseOneFailed] = useState(false)
-  const [phaseTwoStart, setPhaseTwoStart] = useState(false)
+  const dispatch = useDispatch();
+  const { push } = useHistory();
+  const { id: studentID } = useParams();
+  const [phaseOneFailed, setphaseOneFailed] = useState(false);
+  const [phaseTwoStart, setPhaseTwoStart] = useState(false);
 
-  const { timerActive, questions, currentQuestion, page, userAwnsers, score, student } = useSelector(
+  const { questions, currentQuestion, page, userAwnsers, score, student } = useSelector(
     state => ({
-      timerActive: state.placementTestingReducer.timerActive,
       questions: state.placementTestingReducer.questions,
       currentQuestion: state.placementTestingReducer.currentQuestion,
       page: state.placementTestingReducer.page,
       userAwnsers: state.placementTestingReducer.userAwnsers,
       score: state.placementTestingReducer.score,
-      student: state.studentByIdReducer.studentById
+      student: state.studentByIdReducer.studentById,
     }),
     shallowEqual
   );
-
-  const testTimer = () => {
-    if (!timerActive) {
-      setTimeout(() => {
-        dispatch(timeOut());
-        push('/dashboard');
-      }, testTime);
-    } else {
-      dispatch(startTestTimer);
-    }
-  };
 
   const gradeHelper = () => {
     let userGrade = 0;
@@ -52,20 +46,18 @@ const ChildPlacementTest = props => {
   };
 
   const gradeLevel = () => {
-    if(score <= 17 && page <= 25 && (page >= 25) && !phaseOneFailed) {
-      setphaseOneFailed(true)
-    } else if(score >= 17 && page <= 25) {
-      setPhaseTwoStart(true)
-      dispatch(setPage(25))
+    if (score <= 17 && page <= 25 && page >= 25 && !phaseOneFailed) {
+      setphaseOneFailed(true);
+    } else if (score >= 17 && page <= 25) {
+      setPhaseTwoStart(true);
+      dispatch(setPage(25));
     }
   };
-  
-  const currentAnwser = grade[page - 1]
 
-
+  const currentAnwser = grade[page - 1];
 
   useEffect(() => {
-    dispatch(getStudentById(studentID))
+    dispatch(getStudentById(studentID));
     dispatch(getChildQuestions());
   }, []);
 
@@ -73,12 +65,12 @@ const ChildPlacementTest = props => {
     dispatch(setScore(gradeHelper()));
     gradeLevel();
   }, [page]);
-  
+
   useEffect(() => {
-    console.log("students", student)
-    if(student.attempts >= 3) {
-      console.log("students2", student)
-      push('/dashboard')
+    console.log('students', student);
+    if (student.attempts >= 3) {
+      console.log('students2', student);
+      push('/dashboard');
     }
   }, [student.attempts, page]);
 
@@ -98,13 +90,7 @@ const ChildPlacementTest = props => {
     }
   };
 
-  return (
-    <div>
-      { questions ? testHelper() : (<h1>LOADING...</h1>) }
-      <Button onClick={() => console.log("STATE LOGS ", page, currentQuestion, userAwnsers)}>LOG</Button>
-      <Button onClick={() => console.log("score", score, phaseOneFailed, phaseTwoStart)}>Score</Button>
-    </div>
-  );
+  return <div className="testWrapper">{questions ? testHelper() : <h1>LOADING...</h1>}</div>;
 };
 
 export default ChildPlacementTest;
