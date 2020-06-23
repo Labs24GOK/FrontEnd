@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'antd';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import StartTest from './StartTest';
 import ChildQuestions from './ChildQuestions';
 import { useSelector, shallowEqual, useDispatch } from 'react-redux';
 import { getChildQuestions, startTestTimer, timeOut, setScore, completeTest, setPage } from '../../../../../actions/userDashboardActions/placementActions'
 import { rubric as grade } from './rubric'
 import ChildQuestionsPassed from './ChildQuestionsPassed';
+import { getStudentById } from '../../../../../actions';
 
 const ChildPlacementTest = props => {
   const dispatch = useDispatch()
   const { push } = useHistory()
+  const { id: studentID } = useParams()
   const testTime = 1000 * 60 * 45 // 45 Minutes
   const [phaseOneFailed, setphaseOneFailed] = useState(false)
   const [phaseTwoStart, setPhaseTwoStart] = useState(false)
 
-  const { timerActive, questions, currentQuestion, page, userAwnsers, score } = useSelector(
+  const { timerActive, questions, currentQuestion, page, userAwnsers, score, student } = useSelector(
     state => ({
       timerActive: state.placementTestingReducer.timerActive,
       questions: state.placementTestingReducer.questions,
@@ -23,6 +25,7 @@ const ChildPlacementTest = props => {
       page: state.placementTestingReducer.page,
       userAwnsers: state.placementTestingReducer.userAwnsers,
       score: state.placementTestingReducer.score,
+      student: state.studentByIdReducer.studentById
     }),
     shallowEqual
   );
@@ -65,6 +68,7 @@ const ChildPlacementTest = props => {
   }, []);
 
   useEffect(() => {
+    dispatch(getStudentById(studentID))
     dispatch(getChildQuestions());
   }, []);
 
@@ -75,7 +79,7 @@ const ChildPlacementTest = props => {
 
   const testHelper = () => {
     if (page === 0) {
-      return <StartTest />;
+      return <StartTest student={student} />;
     } else if (page >= 25 && phaseOneFailed) {
       dispatch(completeTest({ score, userAwnsers }));
       return <ChildQuestionsPassed />;
@@ -88,9 +92,7 @@ const ChildPlacementTest = props => {
       return <ChildQuestionsPassed />;
     }
   };
-
   
-
   return (
     <div>
       { questions ? testHelper() : (<h1>LOADING...</h1>) }

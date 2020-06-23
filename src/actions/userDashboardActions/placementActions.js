@@ -1,4 +1,6 @@
+import axiosWithAuth from '../../utils/axiosWithAuth'
 import testObject from '../../views/userDashboard/components/placementTest/Child/TestObject';
+import { editStudentById } from '../adminDashboardActions/studentByIdAction';
 export const GET_CHILD_QUESTIONS = 'GET_CHILD_QUESTIONS';
 export const START_TEST = 'START_TEST';
 export const SET_SCORE = 'SET_SCORE';
@@ -17,6 +19,10 @@ export const getChildQuestions = () => ({
 export const startTest = () => ({
   type: START_TEST,
 });
+
+// export const startTest = () => dispatch => (
+//   dispatch(editStudentById())
+// );
 
 export const startTestTimer = () => ({
   type: TEST_TIME_OUT,

@@ -4,11 +4,13 @@ import { useHistory } from "react-router-dom";
 import { startTest } from "../../../../../actions/userDashboardActions/placementActions";
 import { useDispatch } from "react-redux";
 
-const StartTest = () => {
+const StartTest = ({ student }) => {
   const { push } = useHistory()
   const dispatch = useDispatch()
+
   return (
     <>
+    {console.log(student)}
       <h1>Primary Schoolers English Placement Test</h1>
       <h1>امتحان تحديد المستوى للمرحله الابتدائيه</h1>
 
@@ -32,7 +34,7 @@ const StartTest = () => {
       </p>
 
       <h3 style={{ padding: "0 5% 5% 5%", textAlign: 'center' }}>You have 45 minutes</h3>
-      <Button style={{ marginLeft: '40%' }} onClick={() => dispatch(startTest())}>Next</Button>
+      <Button style={{ marginLeft: '40%' }} onClick={() => dispatch(startTest(student))}>Next</Button>
     </>
   );
 };
