@@ -3,8 +3,8 @@ import { Redirect } from 'react-router-dom';
 
 export default class TestTimer extends Component {
   state = {
-    minutes: 0,
-    seconds: 10,
+    minutes: 45,
+    seconds: 0,
   };
 
   componentDidMount() {

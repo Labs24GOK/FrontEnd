@@ -44,9 +44,9 @@ function Student({ student }) {
   }, [id]);
 
   return (
-    <>
+    <div className="studentWrapper">
       <UserDashboardHeader />
-      <div>
+      <>
         <Switch>
           <Route exact path="/student/:id">
             <StudentDetails student={studentData} course={studentCourse} />
@@ -62,8 +62,8 @@ function Student({ student }) {
           </Route>
         </Switch>
         <Footer />
-      </div>
-    </>
+      </>
+    </div>
   );
 }
 
