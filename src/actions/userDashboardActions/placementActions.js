@@ -27,23 +27,18 @@ export const setScore = payload => ({
   type: SET_SCORE,
   payload,
 });
-// export const completeTest = payload => dispatch => ({
-//   type: TEST_COMPLETED,
-//   payload,
-// });
 
 export const completeTest = payload => dispatch => {
   console.log("AYIGESFDIBA", JSON.stringify(payload))
   axiosWithAuth()
     .post(`/placementExam/student`, payload)
     .then(res => {
-
-      console.log(res)
+      return null;
     })
     .catch(err => console.log(err))
 };
 
-export const nextPage = data => (console.log(data), {
+export const nextPage = data => ({
   type: NEXT_PAGE,
   payload: data,
 });

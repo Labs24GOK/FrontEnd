@@ -94,7 +94,6 @@ const ChildPlacementTest = props => {
 
   return <div className="testWrapper">
     {questions ? testHelper() : <h1>LOADING...</h1>}
-    <button onClick={() => console.log("")}></button>
   </div>;
 };
 
