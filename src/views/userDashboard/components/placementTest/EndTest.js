@@ -18,9 +18,10 @@ function EndTest() {
   }, []);
 
   return (
-    <div className="endtest">
+    <div className="endTest">
       <h1>Time's Up</h1>
       <p>Your completed answers have been submitted</p>
+      <p>We will reach out to you shortly</p>
     </div>
   );
 }
