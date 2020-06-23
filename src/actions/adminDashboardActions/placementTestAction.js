@@ -8,11 +8,11 @@ export const FETCH_PLACEMENTTESTS_FAILURE = 'FETCH_PLACEMENTTESTS_FAILURE';
 export const getPlacementTests = () => dispatch => {
 	dispatch({ type: FETCH_PLACEMENTTESTS_START });
 	axiosWithAuth()
-		.get(`/api?table=placementexam`)
+		.get(`/placementExam`)
 		.then(res => {
 			dispatch({
 				type: FETCH_PLACEMENTTESTS_SUCCESS,
-				payload: res.data.tableData
+				payload: res.data
 			});
 		})
 		.catch(err => {
@@ -29,16 +29,61 @@ export const FETCH_PLACEMENTTESTTBYID_FAILURE =
 export const getPlacementTestById = id => dispatch => {
 	dispatch({ type: FETCH_PLACEMENTTESTTBYID_START });
 	axiosWithAuth()
-		.get(`/api/?table=placementexam&where=student_id=${id}`)
+		.get(`/placementExam/student/${id}`)  
 		.then(res => {
 			dispatch({
 				type: FETCH_PLACEMENTTESTTBYID_SUCCESS,
-				payload: res.data.tableData[0]
+				payload: res.data
 			});
 		})
 		.catch(err => {
 			dispatch({
 				type: FETCH_PLACEMENTTESTTBYID_FAILURE,
+				payload: err.data
+			});
+		});
+};
+
+export const FETCH_PLACEMENTTESTTBYIDANDTYPE_START = 
+	'FETCH_PLACEMENTTESTTBYIDANDTYPE_START';
+export const FETCH_PLACEMENTTESTTBYIDANDONLINE_SUCCESS =
+	'FETCH_PLACEMENTTESTTBYIDANDONLINE_SUCCESS';
+export const FETCH_PLACEMENTTESTTBYIDANDORAL_SUCCESS =
+	'FETCH_PLACEMENTTESTTBYIDANDORAL_SUCCESS';
+export const FETCH_PLACEMENTTESTTBYIDANDTYPE_FAILURE =
+	'FETCH_PLACEMENTTESTTBYIDANDTYPE_FAILURE';
+
+export const getPlacementTestByIdAndOnline = (id) => dispatch => {
+	dispatch({ type: FETCH_PLACEMENTTESTTBYIDANDTYPE_START });
+	axiosWithAuth()
+		.get(`/placementExam/examType/1/student/${id}`)  
+		.then(res => {
+			dispatch({
+				type: FETCH_PLACEMENTTESTTBYIDANDONLINE_SUCCESS,
+				payload: res.data
+			});
+		})
+		.catch(err => {
+			dispatch({
+				type: FETCH_PLACEMENTTESTTBYIDANDTYPE_FAILURE,
+				payload: err.data
+			});
+		});
+};
+
+export const getPlacementTestByIdAndOral = (id) => dispatch => {
+	dispatch({ type: FETCH_PLACEMENTTESTTBYIDANDTYPE_START });
+	axiosWithAuth()
+		.get(`/placementExam/examType/2/student/${id}`)
+		.then(res => {
+			dispatch({
+				type: FETCH_PLACEMENTTESTTBYIDANDORAL_SUCCESS,
+				payload: res.data
+			});
+		})
+		.catch(err => {
+			dispatch({
+				type: FETCH_PLACEMENTTESTTBYIDANDTYPE_FAILURE,
 				payload: err.data
 			});
 		});
@@ -51,12 +96,13 @@ export const EDIT_PLACEMENTTESTTBYID_FAILURE =
 	'EDIT_PLACEMENTTESTTBYID_FAILURE';
 
 export const toggleEditPlacement = () => dispatch => {
-	dispatch({ type: EDIT_PLACEMENTTESTTBYID_START });
+	
 };
 
 export const editPlacementTestById = (id, state) => dispatch => {
+	
 	axiosWithAuth()
-		.put(`/api/?table=student&where=student_id=${id}`, state)
+		.put(`/placementExam/${id}`, state) 
 		.then(res => {
 			dispatch({
 				type: EDIT_PLACEMENTTESTTBYID_SUCCESS,
@@ -67,6 +113,32 @@ export const editPlacementTestById = (id, state) => dispatch => {
 			dispatch({
 				type: EDIT_PLACEMENTTESTTBYID_FAILURE,
 				payload: err.data
+			});
+		});
+};
+
+export const ADD_PLACEMENTTEST_START = 'ADD_PLACEMENTTEST_START';
+export const ADD_PLACEMENTTEST_SUCCESS = 'ADD_PLACEMENTTEST_SUCCESS';
+export const ADD_PLACEMENTTEST_FAILURE = 'ADD_PLACEMENTTEST_FAILURE';
+
+export const addPlacementTest = (state) => dispatch => {
+	// console.log("Action-state: ", state)
+	dispatch({ type: ADD_PLACEMENTTEST_START })
+	// console.log("Action Start")
+	axiosWithAuth()
+		.post(`/placementExam`, state)
+		.then(res => {
+			// console.log("Action: ", res.data);
+			dispatch({
+				type: ADD_PLACEMENTTEST_SUCCESS,
+				payload: res.data
+			});
+		})
+		.catch(err => {
+			// console.log("Action-Error: ", err);
+			dispatch({
+				type: ADD_PLACEMENTTEST_FAILURE,
+				payload: err
 			});
 		});
 };

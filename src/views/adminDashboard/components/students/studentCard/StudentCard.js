@@ -61,7 +61,7 @@ const StudentCard = props => {
 			render: () => (
 				<Tab.Pane attached={false}>
 					<PlacementTest studentID={studentID} placementTestById={{}} />
-					<PlacementForm studentID={studentID} placementTestById={{}} />
+					{/* <PlacementForm studentID={studentID} placementTestById={{}} /> */}
 				</Tab.Pane>
 			)
 		}
