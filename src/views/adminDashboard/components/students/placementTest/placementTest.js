@@ -99,11 +99,12 @@ const PlacementTest = props => {
                                                         )
                                                     })}
                                                 </FlexDiv>
+                                                <HR></HR>
                                             </div>
                                         </>
                                     : 
                                         <>
-                                            <Div4 key={`record-${id+1}`} style={{ backgroundColor: background }} >
+                                            <Div4 key={`record-${id+1}`}>
                                                 <div>
                                                     <Label>Test Date: </Label>
                                                     <TextDiv>
@@ -127,7 +128,7 @@ const PlacementTest = props => {
                                             <div style={{ backgroundColor: '#e0ebf0', padding: '5px' }}>
                                                 <Label>Answers: </Label>
                                                 <FlexDiv style={{ gridColumnStart: "2", gridColumnEnd: "4", paddingTop: "12px" }}>
-                                                    {JSON.parse(item.answers).map((ans, id) => {
+                                                    {item.answers.map((ans, id) => {
                                                         console.log(ans);
                                                         return (
                                                             
@@ -143,14 +144,13 @@ const PlacementTest = props => {
                                                         )
                                                     })}
                                                 </FlexDiv>
-                                            </div>  
+                                                <HR></HR>
+                                            </div>
                                         </>
                                     )
                                 )
-                                
                             })}
                         </Div5>
-                        <HR></HR>
                         </>
                     }
                     </div>
