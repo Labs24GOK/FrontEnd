@@ -3,6 +3,7 @@ import { Button } from 'antd';
 import { useParams } from 'react-router-dom';
 import { startTest } from '../../../../../actions/userDashboardActions/placementActions';
 import { useDispatch } from 'react-redux';
+import { PrimaryButton } from '../../../../../styles/BtnStyle';
 
 const StartTest = ({ student }) => {
   const { id: studentID } = useParams();
@@ -39,10 +40,10 @@ const StartTest = ({ student }) => {
         ترك الاختبار فارغًا ان لم تستطع الاجابه. جاهز؟ اجلس؟ ابدأ !
       </p>
 
-      <h3 style={{ padding: '0 5% 5% 5%', textAlign: 'center' }}>You have 45 minutes</h3>
-      <Button style={{ marginLeft: '40%' }} onClick={() => dispatch(startTest(studentID, student))}>
-        Next
-      </Button>
+      <div className="start-test-container">
+        <h3>You have 45 minutes</h3>
+        <PrimaryButton onClick={() => dispatch(startTest(studentID, student))}>Next</PrimaryButton>
+      </div>
     </>
   );
 };
