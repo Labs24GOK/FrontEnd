@@ -54,7 +54,7 @@ const ChildPlacementTest = props => {
       setphaseOneFailed(true);
     } else if (score >= 17 && page <= 25) {
       setPhaseTwoStart(true);
-      dispatch(setPage(25));
+      dispatch(setPage(26));
     }
   };
 
@@ -69,9 +69,11 @@ const ChildPlacementTest = props => {
     dispatch(setScore(gradeHelper()));
     gradeLevel();
   }, [page]);
+  
+  
 
   useEffect(() => {
-    if (student.attempts >= 3) {
+    if (student.attempts > 3) {
       push('/dashboard');
     }
   }, [student.attempts, page]);
@@ -79,14 +81,14 @@ const ChildPlacementTest = props => {
   const testHelper = () => {
     if (page === 0) {
       return <StartTest student={student} />;
-    } else if (page >= 25 && phaseOneFailed) {
+    } else if (page > 25 && phaseOneFailed) {
       dispatch(completeTest({ score, userAwnsers }));
       return <ChildQuestionsPassed userTest={userTest} />;
-    } else if (phaseTwoStart) {
+    } else if (phaseTwoStart && page < 5) {
       return <ChildQuestions currentQuestion={currentQuestion} currentAnwser={currentAnwser} />;
-    } else if (page >= 1 && !phaseOneFailed) {
+    } else if (page >= 1 && !phaseOneFailed && page < 51) {
       return <ChildQuestions currentQuestion={currentQuestion} currentAnwser={currentAnwser} />;
-    } else if (page >= 50) {
+    } else if (page >= 51) {
       dispatch(completeTest({ score, userAwnsers }));
       return <ChildQuestionsPassed userTest={userTest} />;
     }
