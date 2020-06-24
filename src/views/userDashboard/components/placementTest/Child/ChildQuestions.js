@@ -46,7 +46,7 @@ const ChildQuestions = props => {
       // 1 image
       return (
         <>
-          <Image src={process.env.PUBLIC_URL + `${images}`} />
+          <Image src={`${process.env.PUBLIC_URL}${images}`} />
           <RadioContainer>
             {option.map((option, index) => (
               <LabelCard name="userChoice">
@@ -69,7 +69,7 @@ const ChildQuestions = props => {
         <RadioContainer>
           {option.map((option, index) => (
             <LabelCard name="userChoice">
-              <Image src={process.env.PUBLIC_URL + `${images[index]}`} alt="Test Question" />
+              <Image src={`${process.env.PUBLIC_URL}${images[index]}`} alt="Test Question" />
               <RadioInput
                 key={option}
                 name="userChoice"
