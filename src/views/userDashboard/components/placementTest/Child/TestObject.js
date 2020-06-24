@@ -367,7 +367,7 @@ const testObject = [
     question: '',
     option: ['a', 'b', 'c'],
     choices: [
-      'The man walked the library.',
+      'The man walked under the library.',
       'The man walked into the library.',
       'The man walked on the library.',
     ],
@@ -471,9 +471,9 @@ const testObject = [
     question: '',
     option: ['a', 'b', 'c'],
     choices: [
-      'Will the rocket go to the moon.',
-      'Will the rocket goes to the moon.',
-      'Will the rocket going to the moon.',
+      'Will the rocket go to the moon?',
+      'Will the rocket goes to the moon?',
+      'Will the rocket going to the moon?',
     ],
     images: [`${primaryTestSource}/44.PNG`],
   },
