@@ -50,10 +50,3 @@ const StartTest = ({ student }) => {
 
 export default StartTest;
 
-
-// {
-//   "student_id":"6",
-//   "questionsDone":24,
-//   "score":14,
-//   "answers":[[{"question":1,"userChoice":"b","anwser":"b"},{"question":2,"userChoice":"b","anwser":"a"},{"question":3,"userChoice":"b","anwser":"c"},{"question":4,"userChoice":"b","anwser":"c"},{"question":5,"userChoice":"b","anwser":"a"},{"question":6,"userChoice":"b","anwser":"b"},{"question":7,"userChoice":"b","anwser":"c"},{"question":8,"userChoice":"b","anwser":"a"},{"question":9,"userChoice":"b","anwser":"b"},{"question":10,"userChoice":"b","anwser":"c"},{"question":11,"userChoice":"b","anwser":"b"},{"question":12,"userChoice":"b","anwser":"b"},{"question":13,"userChoice":"b","anwser":"a"},{"question":14,"userChoice":"b","anwser":"b"},{"question":15,"userChoice":"b","anwser":"a"},{"question":16,"userChoice":"b","anwser":"c"},{"question":17,"userChoice":"b","anwser":"a"},{"question":18,"userChoice":"b","anwser":"c"},{"question":19,"userChoice":"b","anwser":"b"},{"question":20,"userChoice":"b","anwser":"b"},{"question":21,"userChoice":"b","anwser":"c"},{"question":22,"userChoice":"b","anwser":"c"},{"question":23,"userChoice":"b","anwser":"a"},{"question":24,"userChoice":"b","anwser":"b"}]]
-// }

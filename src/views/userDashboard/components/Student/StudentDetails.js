@@ -116,7 +116,7 @@ function StudentDetails(props) {
             ))}
           {props.course.length === 0 && (
             <div className="studentSubBox">
-              {props.student.attempts <= 2 ? (
+              {props.student.attempts < 3 ? (
                 <Button
                   onClick={() => push(`/student/${props.student.student_id}/child-placement`)}
                 >
