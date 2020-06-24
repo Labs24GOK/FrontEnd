@@ -1,4 +1,4 @@
-const primaryTestSource = '/primary-test-img';
+const primaryTestSource = `%PUBLIC_URL%/primary-test-img`;
 const testObject = [
   {
     key: 1,
