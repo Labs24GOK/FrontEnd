@@ -122,20 +122,16 @@ export const ADD_PLACEMENTTEST_SUCCESS = 'ADD_PLACEMENTTEST_SUCCESS';
 export const ADD_PLACEMENTTEST_FAILURE = 'ADD_PLACEMENTTEST_FAILURE';
 
 export const addPlacementTest = (state) => dispatch => {
-	// console.log("Action-state: ", state)
 	dispatch({ type: ADD_PLACEMENTTEST_START })
-	// console.log("Action Start")
 	axiosWithAuth()
 		.post(`/placementExam`, state)
 		.then(res => {
-			// console.log("Action: ", res.data);
 			dispatch({
 				type: ADD_PLACEMENTTEST_SUCCESS,
 				payload: res.data
 			});
 		})
 		.catch(err => {
-			// console.log("Action-Error: ", err);
 			dispatch({
 				type: ADD_PLACEMENTTEST_FAILURE,
 				payload: err
