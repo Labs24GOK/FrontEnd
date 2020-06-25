@@ -84,7 +84,6 @@ const PlacementTest = props => {
                                                 <Label>Answers: </Label>
                                                 <FlexDiv style={{ gridColumnStart: "2", gridColumnEnd: "4", paddingTop: "12px" }}>
                                                     {item.answers.map((ans, id) => {
-                                                        console.log(ans);
                                                         return (
                                                             
                                                             (ans.userChoice === ans.answer ? 
@@ -129,9 +128,7 @@ const PlacementTest = props => {
                                                 <Label>Answers: </Label>
                                                 <FlexDiv style={{ gridColumnStart: "2", gridColumnEnd: "4", paddingTop: "12px" }}>
                                                     {item.answers.map((ans, id) => {
-                                                        console.log(ans);
                                                         return (
-                                                            
                                                             (ans.userChoice === ans.answer ? 
                                                                 <p key={`answer${id}`} style={{ fontSize: "14px", padding: '0 12px' }}>
                                                                     {ans.question}) &nbsp; {ans.userChoice}
@@ -331,7 +328,6 @@ const PlacementTest = props => {
     ) : (
         <PlacementForm setAddTest={setAddTest} addTest={addTest} {...props} />
     )}
-    {/* <button onClick={() => console.log(props.onlinePlacementTestById, props.oralPlacementTestById)}>Log</button> */}
     </>
     );
 }
