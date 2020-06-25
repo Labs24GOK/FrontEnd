@@ -14,7 +14,7 @@ import './placementTest.scss';
 const PlacementEdit = props => {
     const { register, errors, handleSubmit } = useForm();
 
-    const record = props.placementTestById[0];
+    const record = props.oralPlacementTestById[0];
 
     let testDate = new Date(record.test_date).toISOString().split('T')[0];
 
