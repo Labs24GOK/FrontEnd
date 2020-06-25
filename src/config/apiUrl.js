@@ -1,5 +1,5 @@
-const productionURL = `https://speakout-lambda.herokuapp.com`;
-// const stagingURL = `https://speakout-lambda-staging.herokuapp.com`;
+const productionURL = `https://gardenofknowledge.herokuapp.com`;
+
 const localhost = `http://localhost:4000`;
 
 
